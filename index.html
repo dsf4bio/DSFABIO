@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabio Digital Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0a1e2a;
+      color: #eee;
+      line-height: 1.6;
+    }
+    a {color: #f7ca18; text-decoration: none;}
+    header {
+      background: #071421cc;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #d4a017;
+      z-index: 1000;
+    }
+    header h1 {
+      color: #f7ca18;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 600;
+    }
+    nav a:hover { color: #ffd700; }
+
+    .spacer {height: 80px;}
+
+    /* HERO */
+    #hero {
+      background: linear-gradient(rgba(10,30,42,0.7), rgba(10,30,42,0.7)), url('https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+    #hero h2 {
+      font-size: 2.8rem;
+      color: #f7ca18;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px #000;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+    .features {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .features div {
+      background: #112d44;
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      border: 1px solid #d4a017;
+      color: #f7ca18;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    section {margin-bottom: 4rem;}
+
+    /* SERVIZI */
+    #services h2,
+    #why h2 {
+      color: #f7ca18;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #112d44;
+      border: 2px solid #d4a017;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 1rem;
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      color: #f7ca18;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: #ddd;
+      font-size: 1rem;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      border-color: #ffd700;
+    }
+
+    /* WHY US */
+    .why {
+      background: #071421;
+      padding: 2rem;
+      border: 2px solid #d4a017;
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .why-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .why-box {
+      background: #0f2c42;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid #f7ca18;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .why-box strong { color: #f7ca18; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #071421;
+      border-top: 2px solid #d4a017;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (min-width: 700px) {
+      .why-boxes {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .why-box {
+        flex: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Fabio Digital</h1>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#services">Servizi</a>
+    <a href="#why">Perché Noi</a>
+  </nav>
+</header>
+
+<div class="spacer"></div>
+
+<section id="hero">
+  <h2>Soluzioni Digitali per Ristoranti e Locali</h2>
+  <p>Menu digitali, ordini via WhatsApp e strumenti per aumentare le vendite – tutto incluso, semplice e professionale.</p>
+  <div class="features">
+    <div>✅ Facile da usare</div>
+    <div>⚙️ Aggiornamenti inclusi</div>
+    <div>📱 Nessuna app da installare</div>
+  </div>
+</section>
+
+<main>
+  <section id="services">
+    <h2>I Nostri Servizi</h2>
+    <div class="services">
+      <div class="card reveal">
+        <img src="https://cdn.pixabay.com/photo/2020/05/17/07/57/qr-code-5180363_960_720.jpg" alt="Menu digitale base">
+        <h3>Menu Digitale Base</h3>
+        <p>Un menu digitale semplice, accessibile tramite QR code, senza bisogno di scaricare app.</p>
+      </div>
+      <div class="card reveal">
+        <img src="https://cdn.pixabay.com/photo/2020/04/02/08/37/whatsapp-4993546_960_720.png" alt="Ordini WhatsApp">
+        <h3>Ordini via WhatsApp</h3>
+        <p>Il cliente visualizza il menu e invia l’ordine comodamente dal tavolo, via WhatsApp.</p>
+      </div>
+      <div class="card reveal">
+        <img src="https://cdn.pixabay.com/photo/2017/05/23/22/36/chips-2333033_960_720.jpg" alt="Upsell smart">
+        <h3>Ordini + Upsell</h3>
+        <p>Ordine smart con suggerimenti extra (es. birra + snack) per aumentare lo scontrino.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="why reveal">
+      <h2>Perché scegliere noi</h2>
+      <div class="why-boxes">
+        <div class="why-box">
+          💼 <strong>Servizio completo</strong><br>
+          Setup iniziale, modifiche, immagini, aggiornamenti inclusi.
+        </div>
+        <div class="why-box">
+          📲 <strong>Semplicità totale</strong><br>
+          Tutto gestito tramite link, niente app da installare o gestire.
+        </div>
+        <div class="why-box">
+          🚀 <strong>Più vendite garantite</strong><br>
+          Tecniche di upsell e ordini rapidi migliorano lo scontrino.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Fabio Digital Solutions – Tutti i diritti riservati
+</footer>
+
+<script>
+  // Scroll reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+  window.addEventListener('scroll', () => {
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const visible = 150;
+      if (elementTop < windowHeight - visible) {
+        reveals[i].style.opacity = 1;
+        reveals[i].style.transform = "translateY(0)";
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

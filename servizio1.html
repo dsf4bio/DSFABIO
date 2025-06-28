@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Digitale Base | DSFabio digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Montserrat', Arial, sans-serif; background: #0a1e2a; color: #eee; margin: 0; line-height: 1.6;}
+    header { background: #071421cc; position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 2px solid #d4a017; z-index: 1000;}
+    .logo { color: #ffd700; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px;}
+    nav { display: flex; align-items: center; gap: 1.5rem;}
+    nav a { color: #ffd700; font-weight: 600; text-decoration: none; transition: color 0.2s;}
+    nav a:hover { color: #fffbe0; }
+    .spacer {height: 80px;}
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem;}
+    h1 { color: #ffd700; font-size: 2.2rem; margin-bottom: 0.7rem;}
+    .subtitle { font-size: 1.15rem; color: #fffbe0; margin-bottom: 2rem;}
+    .service-hero { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; margin-bottom: 2.5rem;}
+    .service-hero img { width: 320px; border-radius: 16px; box-shadow: 0 4px 24px #ffd70033;}
+    .service-info { flex: 1 1 300px;}
+    .demo-btn {
+      display: flex; align-items: center; justify-content: center;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      padding: 1rem 2.2rem;
+      border-radius: 2rem;
+      font-size: 1.15rem;
+      margin: 1.5rem auto 0 auto;
+      text-decoration: none;
+      box-shadow: 0 2px 10px #25d36644;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      width: max-content;
+      gap: 0.7rem;
+    }
+    .demo-btn svg { width: 28px; height: 28px; }
+    .demo-btn:hover { background: #128c7e; transform: scale(1.05);}
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 #25d36655; }
+      70% { box-shadow: 0 0 0 10px #25d36611; }
+      100% { box-shadow: 0 0 0 0 #25d36655; }
+    }
+    .benefits { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2.5rem 0;}
+    .benefit { background: #112d44; border-radius: 12px; padding: 1.2rem 1rem; flex: 1 1 220px; min-width: 200px; color: #ffd700; display: flex; align-items: flex-start; gap: 1rem; box-shadow: 0 2px 8px #ffd70022; opacity:0; transform:translateY(40px); transition: all 0.7s;}
+    .benefit.visible {opacity:1; transform:translateY(0);}
+    .benefit svg { width: 32px; height: 32px; flex-shrink: 0;}
+    .benefit span { color: #fffbe0; font-weight: 600;}
+    .section-title { color: #ffd700; font-size: 1.3rem; margin: 2.5rem 0 1rem 0;}
+    .price-table { background: #112d44; border-radius: 12px; padding: 1.2rem 1.5rem; color: #ffd700; margin-bottom: 2rem;}
+    .price-table strong { color: #fffbe0; font-size: 1.2rem;}
+    form { background: #112d44; border-radius: 12px; padding: 1.2rem 1.5rem; color: #ffd700; margin-bottom: 2rem;}
+    label { display: block; margin-top: 1rem; color: #ffd700; font-weight: 600;}
+    input, textarea { width: 100%; border-radius: 6px; border: none; padding: 0.7rem; margin-top: 0.3rem; font-size: 1rem;}
+    input[type="submit"] { background: #ffd700; color: #0a1e2a; font-weight: 700; cursor: pointer; transition: background 0.2s;}
+    input[type="submit"]:hover { background: #fffbe0;}
+    .wa-btn {
+      display: flex; align-items: center; justify-content: center;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      margin: 1rem auto 0 auto;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      width: max-content;
+      gap: 0.7rem;
+    }
+    .wa-btn svg { width: 24px; height: 24px; }
+    .wa-btn:hover { background: #128c7e; transform: scale(1.05);}
+    @media (max-width: 700px) {
+      .service-hero { flex-direction: column; align-items: flex-start;}
+      .service-hero img { width: 100%; max-width: 340px;}
+      .benefits { flex-direction: column;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">DSFabio digital</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+<div class="spacer"></div>
+
+<main>
+  <!-- HERO SERVIZIO -->
+  <section class="service-hero">
+    <div class="service-info">
+      <h1>Menu Digitale Base</h1>
+      <div class="subtitle">
+        Il menu digitale semplice, veloce e moderno per il tuo locale.<br>
+        Attivazione in <strong>2 giorni lavorativi</strong>. QR code incluso.
+      </div>
+      <ul style="color:#ffd700; font-size:1.07rem; margin-bottom:1.5rem;">
+        <li>✅ Consultabile da smartphone, senza app</li>
+        <li>✅ Aggiornamenti, modifiche e prezzi: pensiamo a tutto noi</li>
+        <li>✅ Più igiene, meno carta</li>
+      </ul>
+    </div>
+    <div>
+      <img src="https://i.postimg.cc/MTDWZ0Kx/yumm-app-it.png" alt="Anteprima Menu Digitale Base" />
+      <a class="demo-btn" href="https://demo.menudigitale.it" target="_blank">
+        <svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#25d366"/>
+          <path d="M23.5 17.5c-.4-.2-2.3-1.1-2.7-1.3-.4-.2-.7-.2-1 .2-.3.4-1.1 1.3-1.4 1.5-.3.2-.5.2-.9 0-.4-.2-1.5-.6-2.8-1.8-1-1-1.7-2.2-1.9-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.3 0-.6 0-.8 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8 0 1.6 1.1 3.2 1.3 3.5.2.3 2.2 3.5 5.4 4.7 3.2 1.2 3.2.8 3.8.8.6 0 1.9-.7 2.2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.4-.2-.8-.4z" fill="#fff"/>
+        </svg>
+        Guarda e prova la demo
+      </a>
+    </div>
+  </section>
+
+  <!-- BENEFICI -->
+  <div class="section-title">Benefici per il tuo locale</div>
+  <div class="benefits">
+    <div class="benefit">
+      <svg fill="none" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" stroke="#ffd700" stroke-width="2"/><path d="M10 17l4 4 8-8" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Immagine più moderna e professionale</span>
+    </div>
+    <div class="benefit">
+      <svg fill="none" viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="20" rx="6" stroke="#ffd700" stroke-width="2"/><rect x="13" y="13" width="6" height="6" rx="1" fill="#ffd700"/></svg>
+      <span>Aggiornamenti, aggiunte e modifiche sempre inclusi</span>
+    </div>
+    <div class="benefit">
+      <svg fill="none" viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="20" rx="6" stroke="#ffd700" stroke-width="2"/><path d="M16 10v8l5 3" stroke="#ffd700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Più igiene e sicurezza per i clienti</span>
+    </div>
+    <div class="benefit">
+      <svg fill="none" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" stroke="#ffd700" stroke-width="2"/><path d="M16 8v8l6 4" stroke="#ffd700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Zero pensieri: aggiorniamo noi il menu per te tutto l'anno</span>
+    </div>
+  </div>
+
+  <!-- COSTI E TEMPI -->
+  <div class="section-title">Costi e tempi di consegna</div>
+  <div class="price-table">
+    <div><strong>Prezzo:</strong> <span style="font-size:1.3rem;">99,00&nbsp;€</span> <span style="font-size:1rem;">/ anno</span></div>
+    <div style="margin-top:0.5rem;"><strong>Tutto compreso:</strong> aggiornamenti, modifiche, aggiunte, gestione prezzi, assistenza, QR code personalizzato.</div>
+    <div><strong>Consegna:</strong> 2 giorni lavorativi</div>
+    <div style="margin-top:0.6rem; color:#fffbe0;">Rinnovo annuale senza obblighi. Puoi disdire quando vuoi, senza penali.</div>
+  </div>
+
+<!-- CTA CONTATTO -->
+<div class="section-title">Richiedi informazioni o attiva subito</div>
+<form id="contact-form" autocomplete="off" style="background:#112d44;border-radius:12px;padding:1.2rem 1.5rem;color:#ffd700;margin-bottom:2rem;">
+  <label for="nome">Nome *</label>
+  <input type="text" id="nome" name="Nome" required maxlength="80" />
+  
+  <label for="email">Email *</label>
+  <input type="email" id="email" name="Email" required maxlength="120" />
+  
+  <label for="messaggio">Messaggio *</label>
+  <textarea id="messaggio" name="Messaggio" rows="4" maxlength="800" required
+    placeholder='Scrivi la tua richiesta (max 800 caratteri)'>Salve, sono interessato al servizio "Menu Digitale Base". Vorrei ricevere maggiori informazioni su costi, tempi e rinnovo annuale. Grazie!</textarea>
+  
+  <div style="font-size:0.95rem;color:#fffbe0;margin-top:0.2rem;">(Max 800 caratteri)</div>
+  <input type="submit" value="Invia richiesta" style="background:#ffd700;color:#0a1e2a;font-weight:700;cursor:pointer;transition:background 0.2s;margin-top:1.5rem;" />
+  <div id="form-success" style="color:#25d366;font-weight:700;margin-top:1.2rem;display:none;">Richiesta inviata! Ti risponderemo al più presto.</div>
+</form>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var data = new FormData(form);
+
+  // Blocco invio se messaggio supera 800 caratteri
+  if (form.messaggio.value.length > 800) {
+    alert("Il messaggio può contenere al massimo 800 caratteri.");
+    return false;
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbyqGsD1bQ-VcweqXUmjZBzOoP3g6ctMOcUECALxg6ok3RbGxkcX6qNiAGJpoNsQF3-Wjw/exec", {
+    method: "POST",
+    body: data
+  })
+  .then(response => {
+    if (response.ok) {
+      form.reset();
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      alert("Errore nell'invio. Riprova più tardi.");
+    }
+  })
+  .catch(() => alert("Errore di rete. Riprova più tardi."));
+});
+</script>
+
+  <a class="wa-btn" href="https://wa.me/393331234567?text=Salve,%20sono%20interessato%20al%20servizio%20Menu%20Digitale%20Base.%20Vorrei%20ricevere%20maggiori%20informazioni%20su%20costi,%20tempi%20e%20rinnovo%20annuale." target="_blank">
+    <svg viewBox="0 0 32 32" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="16" fill="#25d366"/>
+      <path d="M23.5 17.5c-.4-.2-2.3-1.1-2.7-1.3-.4-.2-.7-.2-1 .2-.3.4-1.1 1.3-1.4 1.5-.3.2-.5.2-.9 0-.4-.2-1.5-.6-2.8-1.8-1-1-1.7-2.2-1.9-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.3 0-.6 0-.8 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8 0 1.6 1.1 3.2 1.3 3.5.2.3 2.2 3.5 5.4 4.7 3.2 1.2 3.2.8 3.8.8.6 0 1.9-.7 2.2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.4-.2-.8-.4z" fill="#fff"/>
+    </svg>
+    Scrivimi su WhatsApp
+  </a>
+</main>
+
+<footer>
+  © 2025 DSFabio digital – Tutti i diritti riservati
+</footer>
+<script>
+  // Reveal benefits on scroll
+  function revealOnScroll(selector) {
+    const els = document.querySelectorAll(selector);
+    for (let i = 0; i < els.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = els[i].getBoundingClientRect().top;
+      const visible = 150;
+      if (elementTop < windowHeight - visible) {
+        setTimeout(() => els[i].classList.add('visible'), 100 + i * 180);
+      }
+    }
+  }
+  window.addEventListener('scroll', () => {
+    revealOnScroll('.benefit');
+  });
+  window.addEventListener('DOMContentLoaded', () => {
+    revealOnScroll('.benefit');
+  });
+</script>
+</body>
+</html>

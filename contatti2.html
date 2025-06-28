@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contatti | DSFabio digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Montserrat', sans-serif; background: #0a1e2a; color: #eee; margin: 0; line-height: 1.6;}
+    header { background: #071421cc; position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 2px solid #d4a017; z-index: 1000;}
+    .logo { display: flex; align-items: baseline; gap: 0.5rem;}
+    .logo .dsfabio { color: #f7ca18; font-size: 1.6rem; font-weight: 700; letter-spacing: 1px;}
+    .logo .digital { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #ffd700; font-weight: 900; letter-spacing: 2px; text-shadow: 0 2px 10px #f7ca1855, 0 1px 0 #fff, 0 0 8px #ffd70099; background: linear-gradient(90deg, #ffd700 60%, #fffbe0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+    nav { display: flex; align-items: center;}
+    nav a { margin-left: 1.5rem; font-weight: 600; transition: color 0.2s; color: #ffd700; text-decoration: none;}
+    nav a:hover { color: #fffbe0; }
+    .spacer {height: 80px;}
+    main { max-width: 500px; margin: 0 auto; padding: 2rem 1rem;}
+    h1 { color: #ffd700; font-size: 2rem; margin-bottom: 1.5rem;}
+    .contact-info { background: #112d44; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; color: #ffd700;}
+    .contact-info b { color: #fffbe0;}
+    form { background: #112d44; border-radius: 12px; padding: 1.2rem 1.5rem; color: #ffd700;}
+    label { display: block; margin-top: 1rem; color: #ffd700; font-weight: 600;}
+    input, textarea { width: 100%; border-radius: 6px; border: none; padding: 0.7rem; margin-top: 0.3rem; font-size: 1rem;}
+    input[type="submit"] { background: #ffd700; color: #0a1e2a; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 1.5rem;}
+    input[type="submit"]:hover { background: #fffbe0;}
+    .wa-btn { display: flex; align-items: center; justify-content: center; gap: 0.7rem; background: #25d366; color: #fff; font-weight: 700; padding: 0.8rem 2rem; border-radius: 2rem; font-size: 1.1rem; margin: 1.5rem auto 0 auto; text-decoration: none; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; width: max-content;}
+    .wa-btn svg { width: 24px; height: 24px; }
+    .wa-btn:hover { background: #128c7e; transform: scale(1.05);}
+    .form-success {color: #25d366; font-weight: 700; margin-top: 1.2rem;}
+    @media (max-width: 700px) {
+      main { padding: 1rem 0.5rem;}
+      h1 { font-size: 1.3rem;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <span class="dsfabio">DSFabio</span>
+    <span class="digital">digital</span>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+<div class="spacer"></div>
+<main>
+  <h1>Contattaci</h1>
+  <div class="contact-info">
+    <b>Email:</b> info@dsfabio.digital<br>
+    <b>Telefono:</b> +39 333 1234567<br>
+    <b>WhatsApp:</b>
+    <a class="wa-btn" href="https://wa.me/393331234567?text=Salve,%20vorrei%20informazioni%20sui%20menu%20digitali." target="_blank">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="16" fill="#25D366"/>
+        <path d="M23.472 19.339c-.398-.199-2.353-1.162-2.717-1.296-.365-.133-.63-.199-.895.199-.266.398-1.027 1.296-1.26 1.563-.232.266-.465.299-.863.1-.398-.199-1.68-.62-3.2-1.977-1.183-1.056-1.98-2.362-2.214-2.76-.232-.398-.025-.613.174-.812.18-.179.398-.465.598-.697.199-.232.266-.398.398-.664.133-.266.066-.498-.033-.697-.1-.199-.895-2.158-1.226-2.955-.324-.778-.655-.672-.895-.684-.232-.012-.498-.015-.764-.015-.266 0-.697.1-1.062.498-.365.398-1.393 1.361-1.393 3.324 0 1.963 1.427 3.858 1.627 4.126.199.266 2.81 4.293 6.805 5.846.952.328 1.693.523 2.272.668.955.229 1.823.197 2.51.12.765-.086 2.353-.961 2.687-1.889.332-.928.332-1.724.232-1.889-.1-.166-.365-.266-.763-.465z" fill="#fff"/>
+      </svg>
+      Chatta su WhatsApp
+    </a>
+  </div>
+  <form id="contact-form" autocomplete="off">
+    <label for="nome">Nome *</label>
+    <input type="text" id="nome" name="Nome" required maxlength="80" />
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="Email" required maxlength="120" />
+
+    <label for="messaggio">Messaggio *</label>
+    <textarea id="messaggio" name="Messaggio" rows="4" maxlength="800" required
+      placeholder='Scrivi la tua richiesta (max 800 caratteri)'>Salve, vorrei informazioni sui menu digitali.</textarea>
+
+    <div style="font-size:0.95rem;color:#fffbe0;margin-top:0.2rem;">(Max 800 caratteri)</div>
+    <input type="submit" value="Invia richiesta" />
+    <div id="form-success" class="form-success" style="display:none;">Richiesta inviata! Ti risponderemo al più presto.</div>
+  </form>
+</main>
+<footer>
+  © 2025 DSFabio digital – Tutti i diritti riservati
+</footer>
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var data = new FormData(form);
+
+  if (form.messaggio.value.length > 800) {
+    alert("Il messaggio può contenere al massimo 800 caratteri.");
+    return false;
+  }
+
+  fetch("URL_DEL_TUO_APPS_SCRIPT", {
+    method: "POST",
+    body: data
+  })
+  .then(response => {
+    if (response.ok) {
+      form.reset();
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      alert("Errore nell'invio. Riprova più tardi.");
+    }
+  })
+  .catch(() => alert("Errore di rete. Riprova più tardi."));
+});
+</script>
+</body>
+</html>

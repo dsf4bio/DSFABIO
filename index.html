@@ -32,14 +32,59 @@
       font-size: 1.6rem;
       font-weight: 700;
     }
+    nav {
+      display: flex;
+      align-items: center;
+    }
     nav a {
       margin-left: 1.5rem;
       font-weight: 600;
+      transition: color 0.2s;
     }
     nav a:hover { color: #ffd700; }
 
+    /* Mobile menu styles */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-left: 1.5rem;
+    }
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #f7ca18;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.4s;
+    }
+    @media (max-width: 800px) {
+      nav {
+        position: fixed;
+        top: 64px;
+        right: -100vw;
+        width: 220px;
+        height: calc(100vh - 64px);
+        background: #071421f2;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        transition: right 0.3s;
+        box-shadow: -2px 0 12px #0005;
+      }
+      nav.open {
+        right: 0;
+      }
+      nav a {
+        margin: 1rem 0;
+        font-size: 1.1rem;
+        width: 100%;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
     .spacer {height: 80px;}
-
     /* HERO */
     #hero {
       background: linear-gradient(rgba(10,30,42,0.7), rgba(10,30,42,0.7)), url('https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg') center/cover no-repeat;
@@ -87,8 +132,7 @@
     section {margin-bottom: 4rem;}
 
     /* SERVIZI */
-    #services h2,
-    #why h2 {
+    #services h2 {
       color: #f7ca18;
       text-align: center;
       margin-bottom: 2rem;
@@ -127,30 +171,21 @@
       transform: scale(1.03);
       border-color: #ffd700;
     }
-
-    /* WHY US */
-    .why {
-      background: #071421;
-      padding: 2rem;
-      border: 2px solid #d4a017;
-      border-radius: 12px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #f7ca18;
+      color: #071421;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
     }
-    .why-boxes {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    .card a:hover {
+      background: #ffd700;
+      color: #071421;
     }
-    .why-box {
-      background: #0f2c42;
-      padding: 1rem 1.5rem;
-      border-left: 4px solid #f7ca18;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .why-box strong { color: #f7ca18; }
 
     /* FOOTER */
     footer {
@@ -162,17 +197,6 @@
       color: #aaa;
     }
 
-    @media (min-width: 700px) {
-      .why-boxes {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      .why-box {
-        flex: 1;
-      }
-    }
-
-    /* Responsive Text Sizes */
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.2rem;
@@ -192,8 +216,7 @@
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
       }
-      #services h2,
-      #why h2 {
+      #services h2 {
         font-size: 1.5rem;
       }
       .card h3 {
@@ -201,10 +224,6 @@
       }
       .card p {
         font-size: 0.9rem;
-      }
-      .why-box {
-        font-size: 0.9rem;
-        padding: 0.8rem 1rem;
       }
       footer {
         font-size: 0.8rem;
@@ -221,10 +240,17 @@
 
 <header>
   <h1>Fabio Digital</h1>
-  <nav>
-    <a href="#hero">Home</a>
-    <a href="#services">Servizi</a>
-    <a href="#why">Perché Noi</a>
+  <div class="menu-toggle" id="menuToggle" aria-label="Apri menu" tabindex="0">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contatti.html">Contatti</a>
+    <a href="privacy.html">Privacy & Cookie</a>
   </nav>
 </header>
 
@@ -237,6 +263,7 @@
     <div>✅ Facile da usare</div>
     <div>⚙️ Aggiornamenti inclusi</div>
     <div>📱 Nessuna app da installare</div>
+    <div>🌐 Dominio e Hosting Gratis</div>
   </div>
 </section>
 
@@ -248,36 +275,19 @@
         <img src="https://cdn.pixabay.com/photo/2020/05/17/07/57/qr-code-5180363_960_720.jpg" alt="Menu digitale base" />
         <h3>Menu Digitale Base</h3>
         <p>Un menu digitale semplice, accessibile tramite QR code, senza bisogno di scaricare app.</p>
+        <a href="menu-digitale-base.html">Scopri di più</a>
       </div>
       <div class="card reveal">
         <img src="https://cdn.pixabay.com/photo/2020/04/02/08/37/whatsapp-4993546_960_720.png" alt="Ordini WhatsApp" />
         <h3>Ordini via WhatsApp</h3>
         <p>Il cliente visualizza il menu e invia l’ordine comodamente dal tavolo, via WhatsApp.</p>
+        <a href="ordini-whatsapp.html">Scopri di più</a>
       </div>
       <div class="card reveal">
         <img src="https://cdn.pixabay.com/photo/2017/05/23/22/36/chips-2333033_960_720.jpg" alt="Upsell smart" />
         <h3>Ordini + Upsell</h3>
         <p>Ordine smart con suggerimenti extra (es. birra + snack) per aumentare lo scontrino.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="why">
-    <div class="why reveal">
-      <h2>Perché scegliere noi</h2>
-      <div class="why-boxes">
-        <div class="why-box">
-          💼 <strong>Servizio completo</strong><br />
-          Setup iniziale, modifiche, immagini, aggiornamenti inclusi.
-        </div>
-        <div class="why-box">
-          📲 <strong>Semplicità totale</strong><br />
-          Tutto gestito tramite link, niente app da installare o gestire.
-        </div>
-        <div class="why-box">
-          🚀 <strong>Più vendite garantite</strong><br />
-          Tecniche di upsell e ordini rapidi migliorano lo scontrino.
-        </div>
+        <a href="ordini-upsell.html">Scopri di più</a>
       </div>
     </div>
   </section>
@@ -300,6 +310,27 @@
         reveals[i].style.transform = "translateY(0)";
       }
     }
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+  });
+  menuToggle.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      mainNav.classList.toggle('open');
+    }
+  });
+  // Close menu on link click (mobile)
+  const navLinks = mainNav.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 800) {
+        mainNav.classList.remove('open');
+      }
+    });
   });
 </script>
 

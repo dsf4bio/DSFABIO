@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fabio Digital Solutions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
     html {scroll-behavior: smooth;}
@@ -172,6 +172,45 @@
       }
     }
 
+    /* Responsive Text Sizes */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.85rem;
+      }
+      #hero h2 {
+        font-size: 1.8rem;
+      }
+      #hero p {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+      .features div {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+      }
+      #services h2,
+      #why h2 {
+        font-size: 1.5rem;
+      }
+      .card h3 {
+        font-size: 1.1rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+      }
+      .why-box {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+      }
+      footer {
+        font-size: 0.8rem;
+      }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -206,17 +245,17 @@
     <h2>I Nostri Servizi</h2>
     <div class="services">
       <div class="card reveal">
-        <img src="https://cdn.pixabay.com/photo/2020/05/17/07/57/qr-code-5180363_960_720.jpg" alt="Menu digitale base">
+        <img src="https://cdn.pixabay.com/photo/2020/05/17/07/57/qr-code-5180363_960_720.jpg" alt="Menu digitale base" />
         <h3>Menu Digitale Base</h3>
         <p>Un menu digitale semplice, accessibile tramite QR code, senza bisogno di scaricare app.</p>
       </div>
       <div class="card reveal">
-        <img src="https://cdn.pixabay.com/photo/2020/04/02/08/37/whatsapp-4993546_960_720.png" alt="Ordini WhatsApp">
+        <img src="https://cdn.pixabay.com/photo/2020/04/02/08/37/whatsapp-4993546_960_720.png" alt="Ordini WhatsApp" />
         <h3>Ordini via WhatsApp</h3>
         <p>Il cliente visualizza il menu e invia l’ordine comodamente dal tavolo, via WhatsApp.</p>
       </div>
       <div class="card reveal">
-        <img src="https://cdn.pixabay.com/photo/2017/05/23/22/36/chips-2333033_960_720.jpg" alt="Upsell smart">
+        <img src="https://cdn.pixabay.com/photo/2017/05/23/22/36/chips-2333033_960_720.jpg" alt="Upsell smart" />
         <h3>Ordini + Upsell</h3>
         <p>Ordine smart con suggerimenti extra (es. birra + snack) per aumentare lo scontrino.</p>
       </div>
@@ -228,15 +267,15 @@
       <h2>Perché scegliere noi</h2>
       <div class="why-boxes">
         <div class="why-box">
-          💼 <strong>Servizio completo</strong><br>
+          💼 <strong>Servizio completo</strong><br />
           Setup iniziale, modifiche, immagini, aggiornamenti inclusi.
         </div>
         <div class="why-box">
-          📲 <strong>Semplicità totale</strong><br>
+          📲 <strong>Semplicità totale</strong><br />
           Tutto gestito tramite link, niente app da installare o gestire.
         </div>
         <div class="why-box">
-          🚀 <strong>Più vendite garantite</strong><br>
+          🚀 <strong>Più vendite garantite</strong><br />
           Tecniche di upsell e ordini rapidi migliorano lo scontrino.
         </div>
       </div>

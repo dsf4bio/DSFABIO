@@ -15,7 +15,16 @@
       color: #eee;
       line-height: 1.6;
     }
-    a {color: #f7ca18; text-decoration: none;}
+    a {
+      color: #f7ca18;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover, a:focus {
+      color: #ffd700;
+      outline: none;
+    }
+
     header {
       background: #071421cc;
       position: fixed;
@@ -23,20 +32,32 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 1rem 1.5rem;
       border-bottom: 2px solid #d4a017;
       z-index: 1000;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.4);
     }
     header h1 {
       color: #f7ca18;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 700;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 1.25rem;
     }
     nav a {
-      margin-left: 1.5rem;
       font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
     }
-    nav a:hover { color: #ffd700; }
+    nav a:hover, nav a:focus {
+      background: #d4a017;
+      color: #071421;
+      outline: none;
+    }
 
     .spacer {height: 80px;}
 
@@ -49,7 +70,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       animation: fadeIn 1.5s ease-out forwards;
     }
     #hero h2 {
@@ -65,17 +86,34 @@
     }
     .features {
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .features::-webkit-scrollbar {
+      height: 6px;
+    }
+    .features::-webkit-scrollbar-thumb {
+      background-color: #d4a017cc;
+      border-radius: 3px;
     }
     .features div {
+      flex: 0 0 auto;
       background: #112d44;
-      padding: 0.8rem 1.2rem;
+      padding: 0.8rem 1.4rem;
       border-radius: 6px;
       border: 1px solid #d4a017;
       color: #f7ca18;
       font-weight: 600;
+      white-space: nowrap;
+      user-select: none;
+      cursor: default;
+      transition: background-color 0.3s;
+    }
+    .features div:hover {
+      background-color: #1a3a66;
     }
 
     main {
@@ -113,6 +151,7 @@
       width: 100%;
       border-radius: 6px;
       margin-bottom: 1rem;
+      user-select: none;
     }
     .card h3 {
       color: #f7ca18;
@@ -160,6 +199,7 @@
       border-top: 2px solid #d4a017;
       font-size: 0.9rem;
       color: #aaa;
+      user-select: none;
     }
 
     @media (min-width: 700px) {
@@ -179,7 +219,8 @@
       }
       nav a {
         margin-left: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        padding: 0.2rem 0.5rem;
       }
       #hero h2 {
         font-size: 1.8rem;
@@ -233,7 +274,7 @@
 <section id="hero">
   <h2>Soluzioni Digitali per Ristoranti e Locali</h2>
   <p>Menu digitali, ordini via WhatsApp e strumenti per aumentare le vendite – tutto incluso, semplice e professionale.</p>
-  <div class="features">
+  <div class="features" tabindex="0" aria-label="Vantaggi del servizio">
     <div>✅ Facile da usare</div>
     <div>⚙️ Aggiornamenti inclusi</div>
     <div>📱 Nessuna app da installare</div>

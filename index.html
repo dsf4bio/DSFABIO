@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSFabio Digital – Soluzioni per Ristorazione</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #1f2937;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #111827;
+    }
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+    }
+    .logo span {
+      color: #facc15;
+      font-style: italic;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    .intro {
+      max-width: 600px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .intro p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #d1d5db;
+    }
+    .cta-button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #facc15;
+      color: #1f2937;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services {
+      display: grid;
+      gap: 2rem;
+    }
+    @media(min-width: 768px) {
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .service-card {
+      background-color: #374151;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .service-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      margin: 1rem 0 0.5rem;
+      color: #facc15;
+    }
+    .service-card p {
+      color: #e5e7eb;
+    }
+    .service-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #facc15;
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #111827;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">DSFabio <span>digital</span></div>
+    <div class="intro">
+      <h1>Soluzioni smart per bar, ristoranti e locali</h1>
+      <p>Trasforma il tuo menu in uno strumento che semplifica gli ordini, <strong>aumenta le vendite</strong> e migliora l’esperienza dei clienti.</p>
+      <a href="#services" class="cta-button">Scopri i servizi</a>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section id="services">
+    <h2 data-aos="fade-up">I Nostri Servizi</h2>
+    <div class="services">
+      <div class="service-card" data-aos="zoom-in">
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu Digitale Base">
+        <h3>Menu Digitale Base</h3>
+        <p>Menu consultabile da QR Code, facile e veloce, senza installazioni o complicazioni.</p>
+        <a href="servizio1.html">Scopri di più</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in">
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Ordini WhatsApp">
+        <h3>Ordini via WhatsApp</h3>
+        <p>I clienti ordinano direttamente dal tavolo via WhatsApp. Semplice per loro, efficiente per te.</p>
+        <a href="ordini-whatsapp.html">Scopri di più</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in">
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Upsell Smart">
+        <h3>Ordini + Upsell</h3>
+        <p>Offri suggerimenti intelligenti (es. bevanda + snack) per aumentare lo scontrino medio.</p>
+        <a href="upsell-smart.html">Scopri di più</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contattaci</h2>
+    <p>Ricevi un preventivo personalizzato per il tuo locale. Assistenza e aggiornamenti inclusi per 12 mesi.</p>
+    <a class="cta-button" href="mailto:info@fabiodigital.com">Contattaci ora</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>DSFabio Digital Solutions – Tutti i diritti riservati © 2025</p>
+    <p><a href="#why" style="color:#facc15;">Perché scegliere noi</a> · <a href="#faq" style="color:#facc15;">FAQ</a> · <a href="#privacy" style="color:#facc15;">Privacy Policy</a></p>
+  </footer>
+
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+</body>
+</html>

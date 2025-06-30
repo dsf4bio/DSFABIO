@@ -457,21 +457,18 @@
     <section id="demo-session" aria-label="Demo dei Modelli Disponibili" data-aos="fade-up">
         <div class="demo-grid">
           <div class="demo-card">
-            <div class="demo-icon"><i class="fas fa-qrcode"></i></div>
+            <div class="demo-icon" aria-hidden="true"><i class="fas fa-utensils"></i></div>
             <h3>Menu Digitale</h3>
-            <p>Menu digitale semplice e veloce.</p>
             <a href="demo-menu-digitale.html" class="btn-demo" role="button">Prova il modello</a>
           </div>
           <div class="demo-card">
-            <div class="demo-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="demo-icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></div>
             <h3>Menu + WhatsApp</h3>
-            <p>Ordina dal tavolo via WhatsApp.</p>
             <a href="demo-menu-whatsapp.html" class="btn-demo" role="button">Prova il modello</a>
           </div>
           <div class="demo-card">
-            <div class="demo-icon"><i class="fas fa-arrow-up"></i></div>
+            <div class="demo-icon" aria-hidden="true"><i class="fas fa-lightbulb"></i></div>
             <h3>Menu + WhatsApp + Upsell</h3>
-            <p>Suggerimenti per aumentare lo scontrino.</p>
             <a href="demo-menu-upsell.html" class="btn-demo" role="button">Prova il modello</a>
           </div>
         </div>
@@ -504,11 +501,10 @@
         align-items: center;
         border: 1.3px solid #facc15;
         font-family: 'Inter', sans-serif;
-        /* Proporzione visiva: 4:5 (adatta per card verticali) */
         aspect-ratio: 4 / 5;
         min-height: 260px;
         max-height: 480px;
-        justify-content: space-between;
+        justify-content: center;
         padding: 2rem 1rem 2rem 1rem;
         transition: box-shadow 0.2s;
       }
@@ -516,24 +512,16 @@
         box-shadow: 0 8px 25px rgb(250 204 21 / 0.18);
       }
       .demo-icon {
-        font-size: 2rem;
+        font-size: 2.8rem;
         color: #facc15;
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
       }
       .demo-card h3 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: #1f2937;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1.2rem;
         text-align: center;
-      }
-      .demo-card p {
-        color: #374151;
-        font-size: 1rem;
-        margin-bottom: 1.1rem;
-        line-height: 1.4;
-        text-align: center;
-        flex: 1 0 auto;
       }
       .btn-demo {
         background-color: #1f2937;
@@ -559,11 +547,13 @@
         #demo-session { padding: 2rem 1.1rem; }
         .demo-grid { gap: 1.1rem; }
         .demo-card { min-height: 170px; font-size: 0.95rem; }
+        .demo-icon { font-size: 2rem; }
       }
       @media (max-width: 700px) {
         #demo-session { padding: 1.5rem 0.5rem; }
         .demo-grid { gap: 0.5rem; }
         .demo-card { min-height: 120px; font-size: 0.85rem; }
+        .demo-icon { font-size: 1.4rem; }
       }
       @media (max-width: 480px) {
         #demo-session { padding: 1rem 0.15rem; }
@@ -576,8 +566,10 @@
           font-size: 0.7rem;
           padding: 0.7rem 0.2rem 0.7rem 0.2rem;
         }
+        .demo-icon { font-size: 1.1rem; }
       }
       </style>
+      
       
       
       
@@ -609,6 +601,7 @@
   </script>
 </body>
 </html>
+
 
 
 

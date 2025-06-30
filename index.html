@@ -479,29 +479,29 @@
       <style>
       #demo-session {
         background: linear-gradient(120deg, #facc15 10%, #fffbe7 100%);
-        padding: 2.5rem 2.3rem; /* Spaziatura laterale uguale a gap tra i box */
+        padding: 3.5rem 2.3rem; /* padding verticale aumentato per simmetria */
         max-width: 1200px;
         margin: 0 auto 2.5rem auto;
         border-radius: 14px;
         box-shadow: 0 4px 24px rgb(250 204 21 / 0.15);
         font-family: 'Inter', sans-serif;
-        min-height: 340px;
+        min-height: 476px; /* 340px + 40% */
         display: flex;
         align-items: stretch;
       }
       .demo-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2.3rem; /* Spazio tra i box e dai margini */
+        gap: 2.3rem;
         width: 100%;
         height: 100%;
-        min-height: 290px;
+        min-height: 476px; /* coerente con la sessione */
         align-items: stretch;
       }
       .demo-card {
         background: #fff;
         border-radius: 10px;
-        padding: 1.87rem 0.43rem 1.7rem 0.43rem; /* -15% rispetto a 2.2rem 0.5rem 2rem 0.5rem */
+        padding: 2.62rem 0.43rem 2.38rem 0.43rem; /* +40% rispetto alla versione base */
         box-shadow: 0 1.7px 10px rgb(31 41 55 / 0.06);
         display: flex;
         flex-direction: column;
@@ -509,7 +509,7 @@
         border: 1.3px solid #facc15;
         font-size: 0.85rem;
         font-family: 'Inter', sans-serif;
-        min-height: 290px;
+        min-height: 406px; /* 290px + 40% */
         height: 100%;
         justify-content: space-between;
         transition: box-shadow 0.2s;
@@ -561,21 +561,21 @@
         outline: none;
       }
       @media (max-width: 900px) {
-        #demo-session { padding: 2rem 1.1rem; }
-        .demo-grid { gap: 1.1rem; min-height: 110px; }
-        .demo-card { padding: 1.1rem 0.2rem 0.8rem 0.2rem; min-height: 110px; }
+        #demo-session { padding: 2.5rem 1.1rem; min-height: 220px; }
+        .demo-grid { gap: 1.1rem; min-height: 220px; }
+        .demo-card { padding: 1.54rem 0.2rem 1.12rem 0.2rem; min-height: 154px; }
         .demo-card h3 { font-size: 0.85rem; }
         .demo-card p { font-size: 0.7rem; }
         .btn-demo { font-size: 0.7rem; }
         .demo-icon { font-size: 1.3rem; }
       }
       @media (max-width: 700px) {
-        #demo-session { padding: 1.5rem 0.5rem; }
-        .demo-grid { gap: 0.5rem; min-height: 70px; }
+        #demo-session { padding: 1.5rem 0.5rem; min-height: 112px; }
+        .demo-grid { gap: 0.5rem; min-height: 112px; }
         .demo-card {
-          padding: 0.5rem 0.03rem 0.4rem 0.03rem;
+          padding: 0.7rem 0.03rem 0.56rem 0.03rem;
           font-size: 0.6rem;
-          min-height: 70px;
+          min-height: 98px;
         }
         .demo-icon { font-size: 0.6rem; }
         .demo-card h3 { font-size: 0.6rem; }
@@ -583,16 +583,16 @@
         .btn-demo { font-size: 0.5rem; padding: 0.2rem 0.4rem; }
       }
       @media (max-width: 480px) {
-        #demo-session { padding: 1rem 0.15rem; }
+        #demo-session { padding: 1rem 0.15rem; min-height: 70px; }
         .demo-grid {
           grid-template-columns: repeat(3, 1fr);
           gap: 0.15rem;
-          min-height: 50px;
+          min-height: 70px;
         }
         .demo-card {
-          padding: 0.15rem 0.005rem 0.13rem 0.005rem;
+          padding: 0.21rem 0.005rem 0.18rem 0.005rem;
           font-size: 0.45rem;
-          min-height: 50px;
+          min-height: 70px;
         }
         .demo-icon { font-size: 0.45rem; }
         .demo-card h3 { font-size: 0.45rem; }
@@ -600,8 +600,6 @@
         .btn-demo { font-size: 0.38rem; padding: 0.08rem 0.16rem; }
       }
       </style>
-      
-            
       
   
   <!-- Contact Section -->
@@ -631,4 +629,5 @@
   </script>
 </body>
 </html>
+
 

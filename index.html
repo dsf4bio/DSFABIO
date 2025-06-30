@@ -629,37 +629,38 @@
       }
       </style>
       <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        if(window.matchMedia('(max-width: 700px)').matches) {
-          const cards = document.querySelectorAll('.flip-card .flip-inner');
-          let timers = new Map();
-      
-          function isCentered(entry) {
-            const rect = entry.boundingClientRect;
-            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-            const cardCenter = rect.top + rect.height / 2;
-            return cardCenter > viewportHeight * 0.35 && cardCenter < viewportHeight * 0.65;
-          }
-      
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              const el = entry.target;
-              if(isCentered(entry) && entry.isIntersecting) {
-                if (!el.classList.contains('revealed')) {
-                  clearTimeout(timers.get(el));
-                  timers.set(el, setTimeout(() => el.classList.add('revealed'), 120));
-                }
-              } else {
-                clearTimeout(timers.get(el));
-                timers.set(el, setTimeout(() => el.classList.remove('revealed'), 900));
-              }
-            });
-          }, { threshold: 0.5 });
-      
-          cards.forEach(card => observer.observe(card));
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.matchMedia('(max-width: 700px)').matches) {
+    const cards = document.querySelectorAll('.flip-card .flip-inner');
+    const lastPositions = new WeakMap();
+
+    function handleScroll() {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const center = window.innerHeight / 2;
+        const currentMiddle = rect.top + rect.height / 2;
+
+        const prevMiddle = lastPositions.get(card) || currentMiddle;
+        const wasRevealed = card.classList.contains('revealed');
+
+        const scrollingUp = currentMiddle < prevMiddle;
+        const scrollingDown = currentMiddle > prevMiddle;
+
+        if (!wasRevealed && scrollingUp && currentMiddle <= center) {
+          card.classList.add('revealed');
+        } else if (wasRevealed && scrollingDown && currentMiddle > center) {
+          card.classList.remove('revealed');
         }
+
+        lastPositions.set(card, currentMiddle);
       });
-      </script>
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // iniziale
+  }
+});
+</script>
       
       
       

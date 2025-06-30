@@ -455,11 +455,10 @@
     <!-- Demo Section -->
 
     <section id="demo-session" aria-label="Demo dei Modelli Disponibili" data-aos="fade-up">
-        <h2 class="demo-title">Prova i Modelli Demo</h2>
         <div class="demo-grid">
           <div class="demo-card">
             <div class="demo-icon"><i class="fas fa-qrcode"></i></div>
-            <h3>Menu Digitale classico</h3>
+            <h3>Menu Digitale</h3>
             <p>Menu digitale semplice e veloce.</p>
             <a href="demo-menu-digitale.html" class="btn-demo" role="button">Prova il modello</a>
           </div>
@@ -480,72 +479,76 @@
       <style>
       #demo-session {
         background: linear-gradient(120deg, #facc15 10%, #fffbe7 100%);
-        padding: 2rem 0.5vw 1.5rem 0.5vw;
+        padding: 2.5rem 2.3rem; /* Spaziatura laterale uguale a gap tra i box */
         max-width: 1200px;
         margin: 0 auto 2.5rem auto;
         border-radius: 14px;
         box-shadow: 0 4px 24px rgb(250 204 21 / 0.15);
         font-family: 'Inter', sans-serif;
-      }
-      .demo-title {
-        font-size: 2rem;
-        font-weight: 800;
-        color: #1f2937;
-        margin-bottom: 1.1rem;
-        letter-spacing: 1.2px;
-        text-align: center;
-        font-family: 'Inter', sans-serif;
+        min-height: 340px;
+        display: flex;
+        align-items: stretch;
       }
       .demo-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 0.7rem;
+        gap: 2.3rem; /* Spazio tra i box e dai margini */
         width: 100%;
+        height: 100%;
+        min-height: 290px;
+        align-items: stretch;
       }
       .demo-card {
         background: #fff;
         border-radius: 10px;
-        padding: 0.8rem 0.2rem 0.7rem 0.2rem;
-        box-shadow: 0 2px 12px rgb(31 41 55 / 0.06);
+        padding: 1.87rem 0.43rem 1.7rem 0.43rem; /* -15% rispetto a 2.2rem 0.5rem 2rem 0.5rem */
+        box-shadow: 0 1.7px 10px rgb(31 41 55 / 0.06);
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 1px solid #facc15;
-        min-width: 0;
-        font-size: 1rem;
+        border: 1.3px solid #facc15;
+        font-size: 0.85rem;
         font-family: 'Inter', sans-serif;
+        min-height: 290px;
+        height: 100%;
+        justify-content: space-between;
+        transition: box-shadow 0.2s;
+      }
+      .demo-card:hover, .demo-card:focus-within {
+        box-shadow: 0 8px 25px rgb(250 204 21 / 0.18);
       }
       .demo-icon {
-        font-size: 2rem;
+        font-size: 1.87rem;
         color: #facc15;
-        margin-bottom: 0.3rem;
+        margin-bottom: 1rem;
       }
       .demo-card h3 {
-        font-size: 1.15rem;
+        font-size: 1rem;
         font-weight: 700;
         color: #1f2937;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.43rem;
         text-align: center;
         font-family: 'Inter', sans-serif;
       }
       .demo-card p {
         color: #374151;
-        font-size: 0.95rem;
-        margin-bottom: 0.4rem;
-        line-height: 1.2;
+        font-size: 0.85rem;
+        margin-bottom: 0.93rem;
+        line-height: 1.4;
         text-align: center;
         font-family: 'Inter', sans-serif;
+        flex: 1 0 auto;
       }
       .btn-demo {
         background-color: #1f2937;
         color: #facc15;
         font-weight: 700;
-        padding: 0.5rem 1rem;
-        border-radius: 7px;
+        padding: 0.6rem 1.1rem;
+        border-radius: 6.8px;
         border: none;
         cursor: pointer;
-        font-size: 0.95rem;
-        box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
+        font-size: 0.85rem;
+        box-shadow: 0 1.7px 7px rgb(31 41 55 / 0.08);
         transition: background-color 0.3s, box-shadow 0.3s;
         text-decoration: none;
         display: inline-block;
@@ -554,44 +557,51 @@
       .btn-demo:hover, .btn-demo:focus {
         background-color: #374151;
         color: #ffe066;
-        box-shadow: 0 4px 12px rgb(250 204 21 / 0.15);
+        box-shadow: 0 3.4px 10px rgb(250 204 21 / 0.15);
         outline: none;
       }
-      /* Responsive: sempre 3 colonne, i box si restringono e il testo si adatta */
       @media (max-width: 900px) {
-        .demo-title { font-size: 1.3rem; }
-        .demo-card h3 { font-size: 1rem; }
-        .demo-card p { font-size: 0.85rem; }
-        .btn-demo { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
-        .demo-icon { font-size: 1.4rem; }
+        #demo-session { padding: 2rem 1.1rem; }
+        .demo-grid { gap: 1.1rem; min-height: 110px; }
+        .demo-card { padding: 1.1rem 0.2rem 0.8rem 0.2rem; min-height: 110px; }
+        .demo-card h3 { font-size: 0.85rem; }
+        .demo-card p { font-size: 0.7rem; }
+        .btn-demo { font-size: 0.7rem; }
+        .demo-icon { font-size: 1.3rem; }
       }
       @media (max-width: 700px) {
-        .demo-title { font-size: 1.1rem; }
-        .demo-grid { gap: 0.4rem; }
+        #demo-session { padding: 1.5rem 0.5rem; }
+        .demo-grid { gap: 0.5rem; min-height: 70px; }
         .demo-card {
-          padding: 0.5rem 0.1rem 0.4rem 0.1rem;
-          font-size: 0.85rem;
+          padding: 0.5rem 0.03rem 0.4rem 0.03rem;
+          font-size: 0.6rem;
+          min-height: 70px;
         }
-        .demo-icon { font-size: 1.1rem; }
-        .demo-card h3 { font-size: 0.85rem; }
-        .demo-card p { font-size: 0.75rem; }
-        .btn-demo { font-size: 0.75rem; padding: 0.3rem 0.6rem; }
+        .demo-icon { font-size: 0.6rem; }
+        .demo-card h3 { font-size: 0.6rem; }
+        .demo-card p { font-size: 0.5rem; }
+        .btn-demo { font-size: 0.5rem; padding: 0.2rem 0.4rem; }
       }
       @media (max-width: 480px) {
-        .demo-title { font-size: 1rem; }
+        #demo-session { padding: 1rem 0.15rem; }
         .demo-grid {
           grid-template-columns: repeat(3, 1fr);
+          gap: 0.15rem;
+          min-height: 50px;
         }
         .demo-card {
-          padding: 0.3rem 0.05rem 0.3rem 0.05rem;
-          font-size: 0.7rem;
+          padding: 0.15rem 0.005rem 0.13rem 0.005rem;
+          font-size: 0.45rem;
+          min-height: 50px;
         }
-        .demo-icon { font-size: 0.85rem; }
-        .demo-card h3 { font-size: 0.7rem; }
-        .demo-card p { font-size: 0.6rem; }
-        .btn-demo { font-size: 0.62rem; padding: 0.2rem 0.3rem; }
+        .demo-icon { font-size: 0.45rem; }
+        .demo-card h3 { font-size: 0.45rem; }
+        .demo-card p { font-size: 0.38rem; }
+        .btn-demo { font-size: 0.38rem; padding: 0.08rem 0.16rem; }
       }
       </style>
+      
+            
       
   
   <!-- Contact Section -->

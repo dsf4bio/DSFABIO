@@ -477,204 +477,7 @@
   </div>
 </section>
 
-<style>
-#demo-session {
-  background: linear-gradient(120deg, #facc15 10%, #fffbe7 100%);
-  padding: 2rem 0.5vw 1.5rem 0.5vw;
-  max-width: 1200px;
-  margin: 0 auto 2.5rem auto;
-  border-radius: 14px;
-  box-shadow: 0 4px 24px rgb(250 204 21 / 0.15);
-}
-.demo-flex {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0.7rem;
-  width: 100%;
-  max-width: 100vw;
-}
-.demo-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 1.1rem 0.5rem 1rem 0.5rem;
-  box-shadow: 0 2px 12px rgb(31 41 55 / 0.06);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #facc15;
-  min-width: 0;
-  flex: 1 1 0;
-  max-width: 110px;
-  font-size: 0.85rem;
-}
-.demo-icon {
-  font-size: 1.6rem;
-  color: #facc15;
-  margin-bottom: 0.5rem;
-}
-.demo-card h3 {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 0.4rem;
-  text-align: center;
-}
-.demo-card p {
-  color: #374151;
-  font-size: 0.82rem;
-  margin-bottom: 0.7rem;
-  line-height: 1.3;
-  text-align: center;
-}
-.btn-demo {
-  background-color: #1f2937;
-  color: #facc15;
-  font-weight: 700;
-  padding: 0.5rem 0.7rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.83rem;
-  box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
-  transition: background-color 0.3s, box-shadow 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-.btn-demo:hover, .btn-demo:focus {
-  background-color: #374151;
-  color: #ffe066;
-  box-shadow: 0 4px 12px rgb(250 204 21 / 0.15);
-  outline: none;
-}
-@media (max-width: 600px) {
-  .demo-flex {
-    gap: 0.5rem;
-    padding: 0 0.2rem;
-  }
-  .demo-card {
-    max-width: 33vw;
-    min-width: 0;
-    padding: 0.6rem 0.2rem 0.7rem 0.2rem;
-    font-size: 0.75rem;
-  }
-  .demo-icon {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-  }
-  .demo-card h3 {
-    font-size: 0.82rem;
-    margin-bottom: 0.2rem;
-  }
-  .demo-card p {
-    font-size: 0.7rem;
-    margin-bottom: 0.4rem;
-  }
-  .btn-demo {
-    font-size: 0.72rem;
-    padding: 0.4rem 0.5rem;
-    border-radius: 7px;
-  }
-}
-</style>
 
-
-<style>
-/* DEMO SESSION: 3 riquadri sempre orizzontali anche su mobile */
-#demo-session {
-  background: linear-gradient(120deg, #facc15 10%, #fffbe7 100%);
-  padding: 4rem 1vw 3rem 1vw;
-  max-width: 1200px;
-  margin: 0 auto 4rem auto;
-  border-radius: 18px;
-  box-shadow: 0 8px 40px rgb(250 204 21 / 0.25);
-}
-.demo-flex {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 2rem;
-}
-.demo-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-  box-shadow: 0 4px 24px rgb(31 41 55 / 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1.5px solid #facc15;
-  min-width: 0;
-  flex: 1 1 0;
-  max-width: 350px;
-}
-.demo-icon {
-  font-size: 3.2rem;
-  color: #facc15;
-  margin-bottom: 1.2rem;
-}
-.demo-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 0.7rem;
-  text-align: center;
-}
-.demo-card p {
-  color: #374151;
-  font-size: 1rem;
-  margin-bottom: 1.2rem;
-  line-height: 1.4;
-  text-align: center;
-}
-.btn-demo {
-  background-color: #1f2937;
-  color: #facc15;
-  font-weight: 800;
-  padding: 1rem 2.2rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-  box-shadow: 0 6px 15px rgb(31 41 55 / 0.12);
-  transition: background-color 0.3s, box-shadow 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-.btn-demo:hover, .btn-demo:focus {
-  background-color: #374151;
-  color: #ffe066;
-  box-shadow: 0 8px 25px rgb(250 204 21 / 0.25);
-  outline: none;
-}
-/* Mantieni i riquadri orizzontali anche su mobile */
-@media (max-width: 900px) {
-  .demo-flex {
-    gap: 1rem;
-  }
-  .demo-card {
-    padding: 1.5rem 0.7rem 1rem 0.7rem;
-    font-size: 0.95rem;
-  }
-}
-@media (max-width: 600px) {
-  .demo-flex {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    gap: 0.7rem;
-  }
-  .demo-card {
-    min-width: 240px;
-    max-width: 270px;
-    flex: 0 0 auto;
-  }
-  #demo-session {
-    padding: 2rem 0.4rem 1.7rem 0.4rem;
-  }
-}
-</style>
 
   <!-- How It Works Section -->
   <section id="how-it-works" aria-label="Come funziona DSFabio Digital" data-aos="fade-up">
@@ -697,7 +500,124 @@
       </div>
     </div>
   </section>
-
+  <section id="demo-session" aria-label="Demo dei Modelli Disponibili" data-aos="fade-up">
+    <h2 class="demo-title">Prova i Modelli Demo</h2>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <div class="demo-icon"><i class="fas fa-qrcode"></i></div>
+        <h3>Menu Digitale</h3>
+        <p>Menu digitale semplice e veloce.</p>
+        <a href="demo-menu-digitale.html" class="btn-demo" role="button">Prova il modello</a>
+      </div>
+      <div class="demo-card">
+        <div class="demo-icon"><i class="fab fa-whatsapp"></i></div>
+        <h3>Menu + WhatsApp</h3>
+        <p>Ordina dal tavolo via WhatsApp.</p>
+        <a href="demo-menu-whatsapp.html" class="btn-demo" role="button">Prova il modello</a>
+      </div>
+      <div class="demo-card">
+        <div class="demo-icon"><i class="fas fa-arrow-up"></i></div>
+        <h3>Menu + WhatsApp + Upsell</h3>
+        <p>Suggerimenti per aumentare lo scontrino.</p>
+        <a href="demo-menu-upsell.html" class="btn-demo" role="button">Prova il modello</a>
+      </div>
+    </div>
+  </section>
+  <style>
+  #demo-session {
+    background: linear-gradient(120deg, #facc15 10%, #fffbe7 100%);
+    padding: 2rem 0.5vw 1.5rem 0.5vw;
+    max-width: 1200px;
+    margin: 0 auto 2.5rem auto;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgb(250 204 21 / 0.15);
+  }
+  .demo-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 1.1rem;
+    letter-spacing: 1.2px;
+    text-align: center;
+  }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    width: 100%;
+  }
+  .demo-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 0.8rem 0.2rem 0.7rem 0.2rem;
+    box-shadow: 0 2px 12px rgb(31 41 55 / 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #facc15;
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+  .demo-icon {
+    font-size: 1.3rem;
+    color: #facc15;
+    margin-bottom: 0.3rem;
+  }
+  .demo-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.2rem;
+    text-align: center;
+  }
+  .demo-card p {
+    color: #374151;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .btn-demo {
+    background-color: #1f2937;
+    color: #facc15;
+    font-weight: 700;
+    padding: 0.4rem 0.6rem;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-demo:hover, .btn-demo:focus {
+    background-color: #374151;
+    color: #ffe066;
+    box-shadow: 0 4px 12px rgb(250 204 21 / 0.15);
+    outline: none;
+  }
+  @media (max-width: 900px) {
+    .demo-card h3 { font-size: 0.85rem; }
+    .demo-card p { font-size: 0.7rem; }
+    .btn-demo { font-size: 0.7rem; }
+  }
+  @media (max-width: 600px) {
+    .demo-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+    }
+    .demo-card {
+      padding: 0.5rem 0.1rem 0.4rem 0.1rem;
+      font-size: 0.7rem;
+    }
+    .demo-icon { font-size: 1rem; }
+    .demo-card h3 { font-size: 0.7rem; }
+    .demo-card p { font-size: 0.6rem; }
+    .btn-demo { font-size: 0.62rem; padding: 0.3rem 0.4rem; }
+  }
+  </style>
+  
   <!-- Contact Section -->
   <section id="contact" aria-label="Contatti" data-aos="fade-up">
     <h2>Contattaci</h2>

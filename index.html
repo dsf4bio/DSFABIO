@@ -461,10 +461,11 @@
           <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-front">
-                <div class="flip-icon"><i class="fas fa-qrcode"></i></div>
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=facearea&w=80&h=80&facepad=2&q=80" alt="Menu Digitale" class="flip-avatar" />
                 <h3>Menu Digitale</h3>
               </div>
               <div class="flip-back">
+                <div class="flip-icon"><i class="fas fa-qrcode"></i></div>
                 <p>Menu consultabile da QR Code, semplice e veloce.</p>
                 <a href="demo-menu-digitale.html" class="btn-primary">Prova il modello</a>
               </div>
@@ -474,10 +475,11 @@
           <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-front">
-                <div class="flip-icon"><i class="fab fa-whatsapp"></i></div>
+                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=facearea&w=80&h=80&facepad=2&q=80" alt="WhatsApp" class="flip-avatar" />
                 <h3>Menu + WhatsApp</h3>
               </div>
               <div class="flip-back">
+                <div class="flip-icon"><i class="fab fa-whatsapp"></i></div>
                 <p>Ordina dal tavolo via WhatsApp, senza errori.</p>
                 <a href="demo-menu-whatsapp.html" class="btn-primary">Prova il modello</a>
               </div>
@@ -487,10 +489,11 @@
           <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-front">
-                <div class="flip-icon"><i class="fas fa-lightbulb"></i></div>
+                <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=facearea&w=80&h=80&facepad=2&q=80" alt="Upsell" class="flip-avatar" />
                 <h3>Menu + Upsell</h3>
               </div>
               <div class="flip-back">
+                <div class="flip-icon"><i class="fas fa-lightbulb"></i></div>
                 <p>Suggerimenti smart per aumentare lo scontrino medio.</p>
                 <a href="demo-menu-upsell.html" class="btn-primary">Prova il modello</a>
               </div>
@@ -498,7 +501,6 @@
           </div>
         </div>
       </section>
-      
       <style>
       .demo-flip-grid {
         display: flex;
@@ -506,7 +508,7 @@
         justify-content: center;
         max-width: 1000px;
         margin: 0 auto;
-        flex-wrap: nowrap; /* default: affiancate */
+        flex-wrap: nowrap;
       }
       .flip-card {
         background: transparent;
@@ -519,19 +521,19 @@
         position: relative;
         width: 100%;
         height: 100%;
-        transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+        transition: transform 1.2s cubic-bezier(.4,2,.6,1); /* più lenta */
         transform-style: preserve-3d;
       }
       .flip-card:hover .flip-inner,
       .flip-card:focus-within .flip-inner {
         transform: rotateY(180deg);
       }
-      /* Reveal automatico su mobile */
       @media (max-width: 700px) {
         .demo-flip-grid {
-          flex-direction: column; /* disposti verticalmente */
+          flex-direction: column;
           gap: 1.5rem;
           max-width: 90vw;
+          align-items: center;
         }
         .flip-card {
           width: 100%;
@@ -558,16 +560,23 @@
         background: #fff;
         color: #1f2937;
         border: 2px solid #1f2937;
+        padding-top: 1.5rem;
       }
-      .flip-icon {
-        font-size: 3rem;
-        color: #facc15;
-        margin-bottom: 1.2rem;
+      .flip-avatar {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 1.1rem;
+        border: 3px solid #facc15;
+        box-shadow: 0 2px 8px rgba(250,204,21,0.15);
+        background: #fff;
       }
       .flip-front h3 {
         font-size: 1.25rem;
         font-weight: 800;
         margin: 0;
+        text-align: center;
       }
       .flip-back {
         background: #1f2937;
@@ -577,6 +586,11 @@
         padding: 2rem 1rem;
         text-align: center;
         justify-content: center;
+      }
+      .flip-icon {
+        font-size: 2.5rem;
+        color: #facc15;
+        margin-bottom: 1.2rem;
       }
       .flip-back p {
         font-size: 1rem;
@@ -602,26 +616,52 @@
         box-shadow: 0 8px 25px rgb(250 204 21 / 0.15);
         outline: none;
       }
+      @media (max-width: 900px) {
+        .flip-card { width: 240px; height: 210px; }
+        .flip-avatar { width: 44px; height: 44px; }
+        .flip-icon { font-size: 1.5rem; }
+      }
+      @media (max-width: 700px) {
+        .flip-card { width: 90vw; max-width: 320px; height: 170px; }
+        .flip-avatar { width: 38px; height: 38px; }
+        .flip-icon { font-size: 1.1rem; }
+      }
       </style>
-      
       <script>
       document.addEventListener('DOMContentLoaded', function() {
         if(window.matchMedia('(max-width: 700px)').matches) {
           const cards = document.querySelectorAll('.flip-card .flip-inner');
+          let timers = new Map();
+      
+          // Funzione per sapere se la card è centrata nello schermo
+          function isCentered(entry) {
+            const rect = entry.boundingClientRect;
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            const cardCenter = rect.top + rect.height / 2;
+            return cardCenter > viewportHeight * 0.35 && cardCenter < viewportHeight * 0.65;
+          }
+      
           const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-              if(entry.isIntersecting) {
-                entry.target.classList.add('revealed');
+              const el = entry.target;
+              if(isCentered(entry) && entry.isIntersecting) {
+                // Ritardo apertura (veloce)
+                if (!el.classList.contains('revealed')) {
+                  clearTimeout(timers.get(el));
+                  timers.set(el, setTimeout(() => el.classList.add('revealed'), 120));
+                }
               } else {
-                entry.target.classList.remove('revealed');
+                // Ritardo chiusura (più lento)
+                clearTimeout(timers.get(el));
+                timers.set(el, setTimeout(() => el.classList.remove('revealed'), 900));
               }
             });
           }, { threshold: 0.5 });
+      
           cards.forEach(card => observer.observe(card));
         }
       });
       </script>
-      
       
       
   <!-- Contact Section -->
@@ -651,6 +691,5 @@
   </script>
 </body>
 </html>
-
 
 

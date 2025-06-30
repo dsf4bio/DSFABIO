@@ -125,7 +125,7 @@
       font-size: 3rem;
       font-weight: 700;
       color: #facc15;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
@@ -247,12 +247,12 @@
       text-align: center;
     }
 
-    /* New Section: Come funziona */
+    /* New Section: Perche scegere un menu */
     section#how-it-works {
       background-color: #111827;
-      padding: 1rem 8vw;
+      padding: 3rem 5vw;
       max-width: 1200px;
-      margin: 0 auto 4rem auto;
+      margin: 0 auto 1rem auto;
       text-align: center;
     }
     section#how-it-works h2 {
@@ -266,13 +266,13 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 1rem;
     }
     .step {
       background: #374151;
       border-radius: 12px;
-      padding: 2rem 1.5rem;
-      max-width: 280px;
+      padding: 1rem 3rem;
+      max-width: 300px;
       box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
       transition: box-shadow 0.3s ease;
       cursor: default;
@@ -286,7 +286,7 @@
     .step-icon {
       font-size: 3.5rem;
       color: #facc15;
-      margin-bottom: 1rem;
+      margin-bottom:1rem;
       animation: iconPulse 2.5s infinite;
     }
     @keyframes iconPulse {
@@ -310,7 +310,7 @@
     /* Contact Section */
     section#contact {
       width: 100%;
-      background-color: #111827;
+      background-color: #1f2937;
       padding: 1rem 5vw;
       text-align: center;
     }
@@ -448,20 +448,19 @@
         <div class="why-icon"><i class="fas fa-mobile-alt"></i></div>
         <h3>Design Responsive</h3>
         <p>Accesso facile e veloce da qualsiasi dispositivo, per te e i tuoi clienti.</p>
-      </div>
     </div>
   </section>
 
     <!-- Demo Section -->
  
-    <section id="demo-session" style="background:linear-gradient(135deg,#facc15 0%,#111827 100%);padding:3.5rem 0;">
-        <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:2.5rem;">Prova i Modelli Demo</h2>
+    <section id="demo-session" style="background:linear-gradient(135deg,#facc15 0%,#111827 100%);padding:2.5rem 0;">
+        <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:1.5rem;">Prova i Modelli Demo</h2>
         <div class="demo-flip-grid">
           <!-- Card 1 -->
           <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-front">
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=facearea&w=80&h=80&facepad=2&q=80" alt="Menu Digitale" class="flip-avatar" />
+                <img src="https://i.postimg.cc/kg0MTXpr/menu-base.jpg" alt="Menu Digitale" class="flip-avatar" />
                 <h3>Menu Digitale</h3>
               </div>
               <div class="flip-back">
@@ -475,7 +474,7 @@
           <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-front">
-                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=facearea&w=80&h=80&facepad=2&q=80" alt="WhatsApp" class="flip-avatar" />
+                <img src="https://i.postimg.cc/0Q7fH4rn/mennn.jpg" alt="WhatsApp" class="flip-avatar" />
                 <h3>Menu + WhatsApp</h3>
               </div>
               <div class="flip-back">
@@ -489,7 +488,7 @@
           <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-front">
-                <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=facearea&w=80&h=80&facepad=2&q=80" alt="Upsell" class="flip-avatar" />
+                <img src="https://i.postimg.cc/W40NCLBd/upsell.webp" alt="Upsell" class="flip-avatar" />
                 <h3>Menu + Upsell</h3>
               </div>
               <div class="flip-back">
@@ -512,8 +511,8 @@
       }
       .flip-card {
         background: transparent;
-        width: 320px;
-        height: 340px;
+        width: 360px;
+        height: 325px;
         perspective: 1000px;
         flex-shrink: 0;
       }
@@ -550,21 +549,21 @@
         height: 100%;
         backface-visibility: hidden;
         border-radius: 18px;
-        box-shadow: 0 4px 24px rgba(31,41,55,0.08);
+        box-shadow: 0 12px 24px rgba(31,41,55,0.08);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
       }
       .flip-front {
-        background: #fff;
+        background: #ffffff;
         color: #1f2937;
         border: 2px solid #1f2937;
         padding-top: 1.5rem;
       }
       .flip-avatar {
-        width: 96px;
-        height: 96px;
+        width: 150px;
+        height: 150px;
         object-fit: cover;
         border-radius: 50%;
         margin-bottom: 1.1rem;
@@ -664,23 +663,44 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
   <!-- How It Works Section -->
-  <section id="how-it-works" aria-label="Come funziona DSFabio Digital" data-aos="fade-up">
-    <h2>Come funziona</h2>
+  <section id="how-it-works" aria-label="Perché devi avere un menu digitale" data-aos="fade-up">
+    <h2>Perché devi avere un menu digitale</h2>
     <div class="steps">
       <div class="step" tabindex="0">
         <div class="step-icon"><i class="fas fa-qrcode"></i></div>
-        <h3>1. Scansiona il QR Code</h3>
-        <p>I clienti accedono al menu digitale direttamente dal tavolo, senza installazioni.</p>
+        <h3>💬 Ordini precisi e senza errori</h3>
+        <p>Il cliente sceglie esattamente cosa vuole, riducendo incomprensioni e sprechi.</p>
       </div>
       <div class="step" tabindex="0">
         <div class="step-icon"><i class="fas fa-mobile-alt"></i></div>
-        <h3>2. Ordina via WhatsApp</h3>
-        <p>Ordini semplici e veloci direttamente dal telefono, senza errori.</p>
+        <h3>💸 Aumenti lo scontrino medio</h3>
+        <p>Suggerimenti automatici spingono il cliente a spendere di più.</p>
       </div>
       <div class="step" tabindex="0">
         <div class="step-icon"><i class="fas fa-chart-pie"></i></div>
-        <h3>3. Aumenta le vendite</h3>
-        <p>Offri suggerimenti intelligenti per incrementare lo scontrino medio.</p>
+        <h3>📱 Esperienza moderna</h3>
+        <p>Il cliente apprezza la tecnologia semplice e immediata, che rende il locale più accattivante.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" aria-label="Perché devi avere un menu digitale" data-aos="fade-up">
+    <div class="steps">
+      <div class="step" tabindex="0">
+        <div class="step-icon"><i class="fas fa-qrcode"></i></div>
+        <h3>💬 Ordini precisi e senza errori</h3>
+        <p>Il cliente sceglie esattamente cosa vuole, riducendo incomprensioni e sprechi.</p>
+      </div>
+      <div class="step" tabindex="0">
+        <div class="step-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>💸 Aumenti lo scontrino medio</h3>
+        <p>Suggerimenti automatici spingono il cliente a spendere di più.</p>
+      </div>
+      <div class="step" tabindex="0">
+        <div class="step-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>📱 Esperienza moderna</h3>
+        <p>Il cliente apprezza la tecnologia semplice e immediata, che rende il locale più accattivante.</p>
       </div>
     </div>
   </section>
@@ -712,5 +732,4 @@ document.addEventListener('DOMContentLoaded', function () {
   </script>
 </body>
 </html>
-
 

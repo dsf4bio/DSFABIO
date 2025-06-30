@@ -452,30 +452,133 @@
     </div>
   </section>
 
-<!-- DEMO SESSION: 3 riquadri sempre orizzontali anche su mobile -->
+<!-- DEMO SESSION: 3 riquadri sempre visibili in orizzontale anche su mobile -->
 <section id="demo-session" aria-label="Demo dei Modelli Disponibili" data-aos="fade-up">
-  <h2 style="font-size:2rem;font-weight:800;color:#1f2937;margin-bottom:2rem;letter-spacing:1.5px;text-align:center;">Prova i Modelli Demo</h2>
+  <h2 style="font-size:1.3rem;font-weight:800;color:#1f2937;margin-bottom:1.3rem;letter-spacing:1.2px;text-align:center;">Prova i Modelli Demo</h2>
   <div class="demo-flex">
     <div class="demo-card">
       <div class="demo-icon"><i class="fas fa-qrcode"></i></div>
       <h3>Menu Digitale</h3>
-      <p>Visualizza il menu digitale semplice e veloce, accessibile da QR Code senza installazioni.</p>
+      <p>Visualizza il menu digitale semplice e veloce.</p>
       <a href="demo-menu-digitale.html" class="btn-demo" role="button">Prova il modello</a>
     </div>
     <div class="demo-card">
       <div class="demo-icon"><i class="fab fa-whatsapp"></i></div>
-      <h3>Menu + Ordine WhatsApp</h3>
-      <p>Permetti ai clienti di ordinare direttamente dal tavolo tramite WhatsApp in pochi click.</p>
+      <h3>Menu + WhatsApp</h3>
+      <p>Ordina dal tavolo tramite WhatsApp.</p>
       <a href="demo-menu-whatsapp.html" class="btn-demo" role="button">Prova il modello</a>
     </div>
     <div class="demo-card">
       <div class="demo-icon"><i class="fas fa-arrow-up"></i></div>
       <h3>Menu + WhatsApp + Upsell</h3>
-      <p>Aumenta lo scontrino medio con suggerimenti automatici e promozioni durante l’ordine.</p>
+      <p>Incrementa lo scontrino con suggerimenti.</p>
       <a href="demo-menu-upsell.html" class="btn-demo" role="button">Prova il modello</a>
     </div>
   </div>
 </section>
+
+<style>
+#demo-session {
+  background: linear-gradient(120deg, #facc15 10%, #fffbe7 100%);
+  padding: 2rem 0.5vw 1.5rem 0.5vw;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem auto;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgb(250 204 21 / 0.15);
+}
+.demo-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.7rem;
+  width: 100%;
+  max-width: 100vw;
+}
+.demo-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.1rem 0.5rem 1rem 0.5rem;
+  box-shadow: 0 2px 12px rgb(31 41 55 / 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #facc15;
+  min-width: 0;
+  flex: 1 1 0;
+  max-width: 110px;
+  font-size: 0.85rem;
+}
+.demo-icon {
+  font-size: 1.6rem;
+  color: #facc15;
+  margin-bottom: 0.5rem;
+}
+.demo-card h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+.demo-card p {
+  color: #374151;
+  font-size: 0.82rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
+  text-align: center;
+}
+.btn-demo {
+  background-color: #1f2937;
+  color: #facc15;
+  font-weight: 700;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.83rem;
+  box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-demo:hover, .btn-demo:focus {
+  background-color: #374151;
+  color: #ffe066;
+  box-shadow: 0 4px 12px rgb(250 204 21 / 0.15);
+  outline: none;
+}
+@media (max-width: 600px) {
+  .demo-flex {
+    gap: 0.5rem;
+    padding: 0 0.2rem;
+  }
+  .demo-card {
+    max-width: 33vw;
+    min-width: 0;
+    padding: 0.6rem 0.2rem 0.7rem 0.2rem;
+    font-size: 0.75rem;
+  }
+  .demo-icon {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .demo-card h3 {
+    font-size: 0.82rem;
+    margin-bottom: 0.2rem;
+  }
+  .demo-card p {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+  .btn-demo {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 7px;
+  }
+}
+</style>
+
 
 <style>
 /* DEMO SESSION: 3 riquadri sempre orizzontali anche su mobile */
@@ -622,3 +725,4 @@
   </script>
 </body>
 </html>
+

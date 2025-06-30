@@ -453,7 +453,7 @@
   </section>
 
     <!-- Demo Section -->
-    <section id="demo-session" aria-label="Demo Flip Cards" style="background:linear-gradient(135deg,#111827 0%,#facc15 100%);padding:3.5rem 0;">
+    <section id="demo-session" style="background:linear-gradient(135deg,#111827 0%,#facc15 100%);padding:3.5rem 0;">
         <h2 style="color:#fff;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:2.5rem;">Prova i Modelli Demo</h2>
         <div class="demo-flip-grid">
           <!-- Card 1 -->
@@ -519,8 +519,15 @@
         transition: transform 0.7s cubic-bezier(.4,2,.6,1);
         transform-style: preserve-3d;
       }
-      .flip-card:hover .flip-inner, .flip-card:focus-within .flip-inner {
+      .flip-card:hover .flip-inner,
+      .flip-card:focus-within .flip-inner {
         transform: rotateY(180deg);
+      }
+      /* Reveal su mobile: classe aggiunta da JS */
+      @media (max-width: 700px) {
+        .flip-card .flip-inner.revealed {
+          transform: rotateY(180deg);
+        }
       }
       .flip-front, .flip-back {
         position: absolute;
@@ -585,12 +592,28 @@
         .flip-card { width: 200px; height: 250px; }
         .flip-icon { font-size: 2rem; }
       }
-      @media (max-width: 600px) {
+      @media (max-width: 700px) {
         .demo-flip-grid { flex-direction: column; align-items: center; }
         .flip-card { width: 95vw; max-width: 320px; height: 180px; }
         .flip-icon { font-size: 1.3rem; }
       }
       </style>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Attiva solo su mobile
+        if(window.matchMedia('(max-width: 700px)').matches) {
+          const cards = document.querySelectorAll('.flip-card .flip-inner');
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if(entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+              }
+            });
+          }, { threshold: 0.5 });
+          cards.forEach(card => observer.observe(card));
+        }
+      });
+      </script>
       
       
       
@@ -621,7 +644,6 @@
   </script>
 </body>
 </html>
-
 
 
 

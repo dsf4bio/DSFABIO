@@ -82,7 +82,7 @@
     }
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 1.5;
       max-width: 700px;
       animation: slideInLeft 1.2s ease forwards;
     }
@@ -105,12 +105,12 @@
     .hero-content h1 {
       font-size: 3.5rem;
       font-weight: 800;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       line-height: 1.1;
     }
     .hero-content p {
       font-size: 1.3rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1rem;
       color: #d1d5db;
       line-height: 1.5;
     }
@@ -119,10 +119,10 @@
     section#services {
       width: 100%;
       background-color: #111827;
-      padding: 4rem 5vw;
+      padding: 1.5rem 5vw;
     }
     section#services h2 {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #facc15;
       margin-bottom: 2.5rem;
@@ -135,16 +135,16 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
+      gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
     .service-card {
       background: #374151;
       border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
-      border: 1px solid rgba(250, 204, 21, 0.15); /* micro bordo sottilissimo */
+      padding: 3rem;
+      box-shadow:  2px 8px rgb(0 0 0 / 0.2);
+      border: 1px solid rgba(250, 204, 21, 1); /* micro bordo sottilissimo */
       display: flex;
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -157,7 +157,7 @@
     }
     .service-card img {
       width: 100%;
-      height: 320px; /* immagine verticale, più alta della larghezza */
+      height: 350px; /* immagine verticale, più alta della larghezza */
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
@@ -191,7 +191,7 @@
     /* New Section: Perché scegliere DSFabio Digital */
     section#why-choose {
       background-color: #1f2937;
-      padding: 4rem 5vw;
+      padding: 0.3rem 6vw;
       text-align: center;
       max-width: 1200px;
       margin: 0 auto 4rem auto;
@@ -250,7 +250,7 @@
     /* New Section: Come funziona */
     section#how-it-works {
       background-color: #111827;
-      padding: 4rem 5vw;
+      padding: 1rem 8vw;
       max-width: 1200px;
       margin: 0 auto 4rem auto;
       text-align: center;
@@ -311,7 +311,7 @@
     section#contact {
       width: 100%;
       background-color: #111827;
-      padding: 4rem 5vw;
+      padding: 1rem 5vw;
       text-align: center;
     }
     section#contact h2 {
@@ -628,6 +628,7 @@
         .flip-icon { font-size: 1.1rem; }
       }
       </style>
+
       <script>
 document.addEventListener('DOMContentLoaded', function () {
   if (window.matchMedia('(max-width: 700px)').matches) {
@@ -661,9 +662,29 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-      
-      
-      
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" aria-label="Come funziona DSFabio Digital" data-aos="fade-up">
+    <h2>Come funziona</h2>
+    <div class="steps">
+      <div class="step" tabindex="0">
+        <div class="step-icon"><i class="fas fa-qrcode"></i></div>
+        <h3>1. Scansiona il QR Code</h3>
+        <p>I clienti accedono al menu digitale direttamente dal tavolo, senza installazioni.</p>
+      </div>
+      <div class="step" tabindex="0">
+        <div class="step-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>2. Ordina via WhatsApp</h3>
+        <p>Ordini semplici e veloci direttamente dal telefono, senza errori.</p>
+      </div>
+      <div class="step" tabindex="0">
+        <div class="step-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>3. Aumenta le vendite</h3>
+        <p>Offri suggerimenti intelligenti per incrementare lo scontrino medio.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" aria-label="Contatti" data-aos="fade-up">
     <h2>Contattaci</h2>
@@ -691,6 +712,5 @@ document.addEventListener('DOMContentLoaded', function () {
   </script>
 </body>
 </html>
-
 
 

@@ -453,8 +453,9 @@
   </section>
 
     <!-- Demo Section -->
-    <section id="demo-session" style="background:linear-gradient(135deg,#111827 0%,#facc15 100%);padding:3.5rem 0;">
-        <h2 style="color:#fff;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:2.5rem;">Prova i Modelli Demo</h2>
+ 
+    <section id="demo-session" style="background:linear-gradient(135deg,#facc15 0%,#111827 100%);padding:3.5rem 0;">
+        <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:2.5rem;">Prova i Modelli Demo</h2>
         <div class="demo-flip-grid">
           <!-- Card 1 -->
           <div class="flip-card">
@@ -497,6 +498,7 @@
           </div>
         </div>
       </section>
+      
       <style>
       .demo-flip-grid {
         display: flex;
@@ -504,13 +506,14 @@
         justify-content: center;
         max-width: 1000px;
         margin: 0 auto;
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* default: affiancate */
       }
       .flip-card {
         background: transparent;
-        width: 260px;
-        height: 320px;
+        width: 320px;
+        height: 340px;
         perspective: 1000px;
+        flex-shrink: 0;
       }
       .flip-inner {
         position: relative;
@@ -523,8 +526,18 @@
       .flip-card:focus-within .flip-inner {
         transform: rotateY(180deg);
       }
-      /* Reveal su mobile: classe aggiunta da JS */
+      /* Reveal automatico su mobile */
       @media (max-width: 700px) {
+        .demo-flip-grid {
+          flex-direction: column; /* disposti verticalmente */
+          gap: 1.5rem;
+          max-width: 90vw;
+        }
+        .flip-card {
+          width: 100%;
+          max-width: 320px;
+          height: 180px;
+        }
         .flip-card .flip-inner.revealed {
           transform: rotateY(180deg);
         }
@@ -534,8 +547,8 @@
         width: 100%;
         height: 100%;
         backface-visibility: hidden;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px rgb(250 204 21 / 0.08);
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(31,41,55,0.08);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -544,6 +557,7 @@
       .flip-front {
         background: #fff;
         color: #1f2937;
+        border: 2px solid #1f2937;
       }
       .flip-icon {
         font-size: 3rem;
@@ -551,13 +565,14 @@
         margin-bottom: 1.2rem;
       }
       .flip-front h3 {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 800;
         margin: 0;
       }
       .flip-back {
-        background: #facc15;
-        color: #1f2937;
+        background: #1f2937;
+        color: #facc15;
+        border: 2px solid #fff;
         transform: rotateY(180deg);
         padding: 2rem 1rem;
         text-align: center;
@@ -568,8 +583,8 @@
         margin-bottom: 1.2rem;
       }
       .btn-primary {
-        background-color: #1f2937;
-        color: #facc15;
+        background-color: #facc15;
+        color: #1f2937;
         font-weight: 700;
         padding: 0.7rem 1.3rem;
         border-radius: 8px;
@@ -582,31 +597,23 @@
         display: inline-block;
       }
       .btn-primary:hover, .btn-primary:focus {
-        background-color: #374151;
-        color: #ffe066;
+        background-color: #eab308;
+        color: #1f2937;
         box-shadow: 0 8px 25px rgb(250 204 21 / 0.15);
         outline: none;
       }
-      @media (max-width: 900px) {
-        .demo-flip-grid { gap: 1.2rem; }
-        .flip-card { width: 200px; height: 250px; }
-        .flip-icon { font-size: 2rem; }
-      }
-      @media (max-width: 700px) {
-        .demo-flip-grid { flex-direction: column; align-items: center; }
-        .flip-card { width: 95vw; max-width: 320px; height: 180px; }
-        .flip-icon { font-size: 1.3rem; }
-      }
       </style>
+      
       <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Attiva solo su mobile
         if(window.matchMedia('(max-width: 700px)').matches) {
           const cards = document.querySelectorAll('.flip-card .flip-inner');
           const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
               if(entry.isIntersecting) {
                 entry.target.classList.add('revealed');
+              } else {
+                entry.target.classList.remove('revealed');
               }
             });
           }, { threshold: 0.5 });

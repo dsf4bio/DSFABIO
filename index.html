@@ -629,30 +629,23 @@
 }
       </style>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const cards = document.querySelectorAll('.flip-card .flip-inner');
-  const lastPositions = new WeakMap();
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.flip-card');
 
   function handleScroll() {
-    const center = window.innerHeight / 2;
+    const centerY = window.innerHeight / 2;
 
     cards.forEach(card => {
+      const inner = card.querySelector('.flip-inner');
       const rect = card.getBoundingClientRect();
-      const currentMiddle = rect.top + rect.height / 2;
-      const prevMiddle = lastPositions.get(card) || currentMiddle;
+      const middleY = rect.top + rect.height / 2;
 
-      const scrollingUp = currentMiddle < prevMiddle;
-      const scrollingDown = currentMiddle > prevMiddle;
-      const wasRevealed = card.classList.contains('revealed');
-
-      if (!wasRevealed && scrollingDown && currentMiddle < center) {
-        card.classList.add('revealed');
-      } else if (wasRevealed && scrollingUp && currentMiddle > center + 50) {
-        card.classList.remove('revealed');
+      if (middleY < centerY) {
+        inner.classList.add('revealed');
+      } else {
+        inner.classList.remove('revealed');
       }
-
-      lastPositions.set(card, currentMiddle);
     });
   }
 

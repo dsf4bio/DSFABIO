@@ -501,9 +501,9 @@
         </div>
       </section>
       <style>
-   .demo-flip-grid {
+  .demo-flip-grid {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   justify-content: center;
   max-width: 1000px;
   margin: 0 auto;
@@ -512,8 +512,8 @@
 
 .flip-card {
   background: transparent;
-  width: 360px;
-  height: 325px;
+  width: 320px;
+  height: 200px;
   perspective: 1000px;
   flex-shrink: 0;
 }
@@ -522,7 +522,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 1.2s cubic-bezier(.4,2,.6,1);
+  transition: transform 1s ease;
   transform-style: preserve-3d;
 }
 
@@ -536,38 +536,35 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 18px;
-  box-shadow: 0 12px 24px rgba(31,41,55,0.08);
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 
 .flip-front {
   background: #ffffff;
   color: #1f2937;
   border: 2px solid #1f2937;
-  padding-top: 1.5rem;
 }
 
 .flip-avatar {
   width: 135px;
   height: 135px;
-  min-width: 135px;
-  min-height: 135px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.7rem;
   border: 2px solid #facc15;
   box-shadow: 0 2px 8px rgba(250,204,21,0.15);
   background: #fff;
-  transition: width 0.3s, height 0.3s;
 }
 
 .flip-front h3 {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin: 0;
   text-align: center;
 }
@@ -577,61 +574,48 @@
   color: #facc15;
   border: 2px solid #fff;
   transform: rotateY(180deg);
-  padding: 2rem 1rem;
   text-align: center;
-  justify-content: center;
+  padding: 1rem;
 }
 
 .flip-icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #facc15;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .flip-back p {
-  font-size: 1rem;
-  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
 .btn-primary {
   background-color: #facc15;
   color: #1f2937;
   font-weight: 700;
-  padding: 0.7rem 1.3rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
   box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
-  transition: background-color 0.3s, box-shadow 0.3s;
   text-decoration: none;
   display: inline-block;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .btn-primary:hover, .btn-primary:focus {
   background-color: #eab308;
-  color: #1f2937;
-  box-shadow: 0 8px 25px rgb(250 204 21 / 0.15);
+  box-shadow: 0 8px 20px rgba(250,204,21,0.2);
   outline: none;
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
-  .demo-flip-grid {
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 90vw;
-    align-items: center;
-  }
-
+@media (max-width: 768px) {
   .flip-card {
     width: 90vw;
     max-width: 320px;
-    height: auto;
-  }
-
-  .flip-inner {
-    height: auto;
+    height: 220px;
   }
 
   .flip-avatar {
@@ -639,8 +623,8 @@
     height: 135px;
   }
 
-  .flip-icon {
-    font-size: 1.5rem;
+  .flip-front h3 {
+    font-size: 1rem;
   }
 }
       </style>

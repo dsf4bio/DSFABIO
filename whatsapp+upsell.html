@@ -495,14 +495,16 @@
   </a>
 </footer>
 
-  <!-- AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      once: true,
-      easing: 'ease-out-cubic',
-      duration: 700,
-    });
-  </script>
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true,
+    duration: 700,
+    easing: 'ease-out-cubic',
+    startEvent: 'DOMContentLoaded',
+    disable: window.innerWidth < 768 // disabilita su mobile per massima stabilità
+  });
+</script>
 </body>
 </html>

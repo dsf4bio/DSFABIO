@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DSFabio Digital – Soluzioni per Ristorazione</title>
+  <title>DSFabio Digital – Menu Digitale Chiavi in Mano</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
   <style>
     /* Reset base */
     *, *::before, *::after {
@@ -30,707 +33,435 @@
       text-decoration: underline;
       outline: none;
     }
+    h1, h2, h3 {
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2.8rem;
+      color: #facc15;
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #facc15aa;
+    }
+    h2 {
+      font-size: 2rem;
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 1.5px;
+    }
+    h3 {
+      font-size: 1.5rem;
+      color: #facc15;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #d1d5db;
+      max-width: 900px;
+      margin: 0 auto 1.5rem auto;
+      text-align: center;
+      line-height: 1.5;
+    }
 
-    /* Pulsante */
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem 1.5rem;
+    }
+
+    /* Image prodotto */
+    .product-image {
+      display: block;
+      max-width: 700px;
+      width: 100%;
+      margin: 5rem auto 3rem auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(250, 204, 21, 0.761);
+      border: 2px solid #facc15;
+      transition: transform 0.3s ease;
+    }
+    .product-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* Pulsante primario */
     .btn-primary {
       background-color: #facc15;
       color: #1f2937;
       font-weight: 700;
-      padding: 1rem 3rem;
-      border-radius: 10px;
+      padding: 1rem 1rem;
+      border-radius: 12px;
       border: none;
       cursor: pointer;
-      font-size: 1.2rem;
-      box-shadow: 0 6px 15px rgb(250 204 21 / 0.5);
+      font-size: 1.3rem;
+      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.234);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
-      display: inline-block;
+      display: block;
+      margin: 0 auto 3rem auto;
+      max-width: 260px;
+      text-align: center;
     }
     .btn-primary:hover, .btn-primary:focus {
       background-color: #eab308;
-      box-shadow: 0 8px 25px rgb(234 179 8 / 0.7);
+      box-shadow: 0 12px 30px rgb(234 179 8 / 0.9);
       outline: none;
     }
 
-    /* Hero Section (testata) */
-    header.hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(135deg, #111827 40%, #374151 100%);
-      position: relative;
-      padding: 0 2rem;
-      overflow: hidden;
-    }
-    header.hero::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, #facc15 0%, transparent 70%);
-      opacity: 0.15;
-      animation: pulse 6s ease-in-out infinite;
-      z-index: 0;
-      border-radius: 50%;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.15; }
-      50% { transform: scale(1.3); opacity: 0.3; }
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1.5;
-      max-width: 700px;
-      animation: slideInLeft 1.2s ease forwards;
-    }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    .logo {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 1rem;
-      user-select: none;
-    }
-    .logo span {
-      color: #facc15;
-      font-style: italic;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    .hero-content h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      line-height: 1.1;
-    }
-    .hero-content p {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: #d1d5db;
-      line-height: 1.5;
-    }
-
-    /* Services Section */
-    section#services {
-      width: 100%;
+    /* Sezione prezzo */
+    .price-section {
       background-color: #111827;
-      padding: 1.5rem 5vw;
-    }
-    section#services h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #facc15;
-      margin-bottom: 2rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      letter-spacing: 1.5px;
-      text-align: center;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .service-card {
-      background: #374151;
-      border-radius: 12px;
-      padding: 3rem;
-      box-shadow:  2px 8px rgb(0 0 0 / 0.2);
-      border: 1px solid rgba(250, 204, 21, 1); /* micro bordo sottilissimo */
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .service-card:hover, .service-card:focus-within {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgb(250 204 21 / 0.5);
-      outline: none;
-    }
-    .service-card img {
-      width: 100%;
-      height: 350px; /* immagine verticale, più alta della larghezza */
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      flex-shrink: 0;
-    }
-    .service-card h3 {
-      color: #facc15;
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    .service-card p {
-      color: #d1d5db;
-      flex-grow: 1;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      line-height: 1.4;
-    }
-    .service-card a {
-      font-weight: 600;
-      color: #facc15;
-      text-decoration: underline;
-      align-self: flex-start;
-      transition: color 0.3s ease;
-    }
-    .service-card a:hover, .service-card a:focus {
-      color: #eab308;
-      outline: none;
-    }
-
-    /* New Section: Perché scegliere DSFabio Digital */
-    section#why-choose {
-      background-color: #1f2937;
-      padding: 0.3rem 6vw;
-      text-align: center;
-      max-width: 1200px;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 25px rgba(250,204,21,0.4);
+      max-width: 700px;
       margin: 0 auto 4rem auto;
+      text-align: center;
     }
-    section#why-choose h2 {
-      font-size: 2rem;
+    .price-section p.offer-label {
+      color: #f59e0b;
       font-weight: 700;
-      color: #facc15;
-      margin-bottom: 2rem;
-      letter-spacing: 1.5px;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
     }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
+    .price-section strong.price {
+      font-size: 3.8rem;
+      color: #fbbf24;
+      text-shadow: 0 0 20px #fbbf24;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .price-section span.daily {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fde68a;
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .price-section ul {
+      list-style: none;
+      padding-left: 0;
+      max-width: 900px;
+      margin: 0 auto 2.5rem auto;
+      color: #f3f4f6;
+      font-weight: 600;
+      font-size: 1.05rem;
       text-align: left;
     }
-    .why-item {
-      background: #374151;
-      border-radius: 12px;
-      padding: 1.8rem;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .why-item:hover {
-      box-shadow: 0 8px 25px rgb(250 204 21 / 0.6);
-    }
-    .why-icon {
-      font-size: 3rem;
-      color: #facc15;
-      margin-bottom: 1rem;
-      animation: iconBounce 2s infinite;
-    }
-    @keyframes iconBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .why-item h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      color: #facc15;
-      text-align: center;
-    }
-    .why-item p {
-      color: #d1d5db;
-      font-size: 1rem;
+    .price-section ul li {
+      position: relative;
+      padding-left: 2.8rem;
+      margin-bottom: 1.1rem;
       line-height: 1.4;
-      text-align: center;
     }
-
-    /* New Section: Perche scegere un menu */
-    section#how-it-works {
-      background-color: #1f2937;
-      padding: 3rem 5vw;
-      max-width: 1200px;
-      margin: 0 auto 1rem auto;
-      text-align: center;
-    }
-    section#how-it-works h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #facc15;
-      margin-bottom: 2rem;
-      letter-spacing: 1.5px;
-    }
-    .steps {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .step {
-      background: #374151;
-      border-radius: 12px;
-      padding: 1rem 3rem;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .step:hover {
-      box-shadow: 0 8px 25px rgb(250 204 21 / 0.6);
-    }
-    .step-icon {
-      font-size: 3.5rem;
-      color: #facc15;
-      margin-bottom:1rem;
-      animation: iconPulse 2.5s infinite;
-    }
-    @keyframes iconPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-    .step h3 {
+    .price-section ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #fbbf24;
+      font-weight: 900;
       font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #facc15;
-      text-align: center;
+      user-select: none;
     }
-    .step p {
-      color: #d1d5db;
+    .price-section p.urgency {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fde68a;
+      text-shadow: 0 0 10px #fbbf24;
+    }
+
+    /* Form contatti */
+    form.contact-form {
+      background: #111827;
+      max-width: 700px;
+      margin: 0 auto 5rem auto;
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
+      color: #f3f4f6;
+      transition: box-shadow 0.3s ease;
+    }
+    form.contact-form:hover {
+      box-shadow: 0 12px 30px rgba(250, 204, 21, 0.7);
+    }
+    form.contact-form label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
       font-size: 1rem;
-      line-height: 1.4;
-      text-align: center;
     }
-
-    /* Contact Section */
-    section#contact {
+    form.contact-form input[type="text"],
+    form.contact-form input[type="email"],
+    form.contact-form textarea {
       width: 100%;
-      background-color: #1f2937;
-      padding: 5rem 1vw;
-      text-align: center;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #facc15;
+      background: #1f2937;
+      color: #f3f4f6;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      resize: vertical;
+      transition: border-color 0.3s ease;
     }
-    section#contact h2 {
-      font-size: 1.8rem;
+    form.contact-form input[type="text"]:focus,
+    form.contact-form input[type="email"]:focus,
+    form.contact-form textarea:focus {
+      border-color: #fbbf24;
+      outline: none;
+      background: #272f42;
+    }
+    form.contact-form textarea {
+      min-height: 120px;
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+    form.contact-form button {
+      margin-top: 1.5rem;
+      background-color: #facc15;
+      color: #1f2937;
       font-weight: 700;
-      color: #facc15;
-      margin-bottom: 1.5rem;
-      letter-spacing: 1.2px;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgb(250 204 21 / 0.7);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+      width: 100%;
     }
-    section#contact p {
-      color: #d1d5db;
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      line-height: 1.5;
+    form.contact-form button:hover, form.contact-form button:focus {
+      background-color: #eab308;
+      box-shadow: 0 12px 30px rgb(234 179 8 / 0.9);
+      outline: none;
+    }
+    form.contact-form .required-note {
+      font-size: 0.85rem;
+      color: #fde68a;
+      margin-top: -0.8rem;
+      margin-bottom: 1.2rem;
+      font-style: italic;
     }
 
-    /* Footer */
-    footer {
-      background-color: #111827;
-      padding: 2rem 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-    footer a {
-      margin: 0 0.5rem;
-      color: #facc15;
-      font-weight: 600;
+    /* Pulsante WhatsApp fisso */
+    .whatsapp-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.6);
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      z-index: 9999;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: background-color 0.3s ease;
     }
-    footer a:hover, footer a:focus {
-      color: #eab308;
+    .whatsapp-fixed:hover, .whatsapp-fixed:focus {
+      background-color: #1ebe57;
       outline: none;
+    }
+    .whatsapp-icon {
+      width: 22px;
+      height: 22px;
+      fill: white;
     }
 
     /* Responsive */
-    @media (max-width: 1000px) {
-      header.hero {
-        padding: 4rem 1.5rem;
-      }
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      .hero-content p {
-        font-size: 1.1rem;
-      }
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .service-card img {
-        height: 280px;
-      }
-      .why-grid, .steps {
-        grid-template-columns: 1fr !important;
-        display: block;
-      }
-      .why-item, .step {
-        max-width: 100% !important;
-        margin-bottom: 2rem;
-      }
-    }
-    @media (max-width: 700px) {
-      .hero-content h1 {
+    @media (max-width: 768px) {
+      h1 {
         font-size: 2rem;
       }
-      .btn-primary {
-        padding: 0.8rem 2rem;
+      .price-section strong.price {
+        font-size: 3rem;
+      }
+      .price-section span.daily {
+        font-size: 1.1rem;
+      }
+      .price-section ul {
         font-size: 1rem;
       }
+      .product-image {
+        max-width: 100%;
+      }
+      .btn-primary {
+        max-width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+      form.contact-form {
+        padding: 1.5rem 1.8rem;
+      }
     }
+    
   </style>
-  <!-- Icone dinamiche tramite FontAwesome CDN -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <main class="container" role="main" aria-label="Pagina di vendita servizio Menu Digitale DSFabio Digital">
 
-  <!-- Hero Section -->
-  <header class="hero" role="banner">
-    <div class="hero-content" data-aos="fade-right">
-      <div class="logo" aria-label="Logo Dsfabio Digital">DSFabio <span>digital</span></div>
-      <h1>Soluzioni smart per bar, ristoranti e locali</h1>
-      <p>Trasforma il tuo menu in uno strumento che semplifica gli ordini, <strong>aumenta le vendite</strong> e migliora l’esperienza dei clienti.</p>
-      <a href="#services" class="btn-primary" role="button">Scopri i servizi</a>
-    </div>
-  </header>
+    <h1 data-aos="fade-down" data-aos-duration="700" data-aos-delay="50">
+      Menu digitale con ordinazione su Whatsapp.<br><strong>Solo 0,79€ al giorno</strong> al giorno
+    </h1>
+    <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="150">
+      Un sistema moderno, personalizzato e già ottimizzato per far crescere il tuo locale.<br>
+      Nessuna complessità tecnica, realizzo tutto io per te, con precisione e rapidità.
+    </p>
 
-  <!-- Services Section -->
-  <section id="services" aria-label="Sezione servizi">
-    <h2 data-aos="fade-up">I Nostri Servizi</h2>
-    <div class="services-grid">
-      <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Menu Digitale Base">
-        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu Digitale Base" />
-        <h3>Menu Digitale Base</h3>
-        <p>Menu consultabile da QR Code, facile e veloce, senza installazioni o complicazioni.</p>
-        <a href="servizio1.html">Scopri di più</a>
-      </article>
-      <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Ordini via WhatsApp">
-        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Ordini WhatsApp" />
-        <h3>Ordini via WhatsApp</h3>
-        <p>I clienti ordinano direttamente dal tavolo via WhatsApp. Semplice per loro, efficiente per te.</p>
-        <a href="ordini-whatsapp.html">Scopri di più</a>
-      </article>
-      <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Ordini + Upsell">
-        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Upsell Smart" />
-        <h3>Ordini + Upsell</h3>
-        <p>Offri suggerimenti intelligenti (es. bevanda + snack) per aumentare lo scontrino medio.</p>
-        <a href="upsell-smart.html">Scopri di più</a>
-      </article>
-    </div>
-  </section>
+    <p data-aos="fade-up" data-aos-duration="650" data-aos-delay="200" style="margin-top: 0.5rem; font-size: 1rem; color: #fef9c3;">
+      Nessuna app, nessuna stampa, nessun pensiero.
+    </p>
 
-  <!-- Why Choose Section -->
-  <section id="why-choose" aria-label="Perché scegliere DSFabio Digital" data-aos="fade-up">
-    <h2>Perché scegliere DSFabio Digital</h2>
-    <div class="why-grid">
-      <div class="why-item" tabindex="0">
-        <div class="why-icon"><i class="fas fa-bolt"></i></div>
-        <h3>Soluzioni Veloci</h3>
-        <p>Implementazioni rapide e senza complicazioni per iniziare subito a migliorare il tuo servizio.</p>
-      </div>
-      <div class="why-item" tabindex="0">
-        <div class="why-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Aumento Vendite</h3>
-        <p>Strumenti intelligenti per incrementare lo scontrino medio e fidelizzare i clienti.</p>
-      </div>
-      <div class="why-item" tabindex="0">
-        <div class="why-icon"><i class="fas fa-headset"></i></div>
-        <h3>Assistenza Dedicata</h3>
-        <p>Supporto continuo e aggiornamenti per garantirti sempre la migliore esperienza.</p>
-      </div>
-      <div class="why-item" tabindex="0">
-        <div class="why-icon"><i class="fas fa-mobile-alt"></i></div>
-        <h3>Design Responsive</h3>
-        <p>Accesso facile e veloce da qualsiasi dispositivo, per te e i tuoi clienti.</p>
-    </div>
-  </section>
+    <img 
+      src="https://i.postimg.cc/kg0MTXpr/menu-base.jpg" 
+      alt="Demo Menu Digitale DSFabio Digital" 
+      class="product-image" 
+      data-aos="zoom-in" 
+      data-aos-duration="700" 
+      data-aos-delay="300" 
+      />
 
-    <!-- Demo Section -->
- 
-    <section id="demo-session" style="background:linear-gradient(135deg,#facc15 0%,#111827 100%);padding:2.5rem 0;">
-        <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:1.5rem;">Prova i Modelli Demo</h2>
-        <div class="demo-flip-grid">
-          <!-- Card 1 -->
-          <div class="flip-card">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="https://i.postimg.cc/kg0MTXpr/menu-base.jpg" alt="Menu Digitale" class="flip-avatar" />
-                <h3>Menu Digitale</h3>
-              </div>
-              <div class="flip-back">
-                <div class="flip-icon"><i class="fas fa-qrcode"></i></div>
-                <p>Menu consultabile da QR Code, semplice e veloce.</p>
-                <a href="demo-menu-digitale.html" class="btn-primary">Prova il modello</a>
-              </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="flip-card">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="https://i.postimg.cc/0Q7fH4rn/mennn.jpg" alt="WhatsApp" class="flip-avatar" />
-                <h3>Menu + WhatsApp</h3>
-              </div>
-              <div class="flip-back">
-                <div class="flip-icon"><i class="fab fa-whatsapp"></i></div>
-                <p>Ordina dal tavolo via WhatsApp, senza errori.</p>
-                <a href="demo-menu-whatsapp.html" class="btn-primary">Prova il modello</a>
-              </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="flip-card">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="https://i.postimg.cc/W40NCLBd/upsell.webp" alt="Upsell" class="flip-avatar" />
-                <h3>Menu + Upsell</h3>
-              </div>
-              <div class="flip-back">
-                <div class="flip-icon"><i class="fas fa-lightbulb"></i></div>
-                <p>Suggerimenti smart per aumentare lo scontrino medio.</p>
-                <a href="demo-menu-upsell.html" class="btn-primary">Prova il modello</a>
-              </div>
-            </div>
-          </div>
+    <a href="demo-menu-digitale.html" 
+       class="btn-primary" 
+       aria-label="Prova la demo reale del menu digitale"
+       data-aos="fade-up"
+       data-aos-duration="700"
+       data-aos-delay="400"
+       >
+       Prova la demo reale
+    </a>
+
+    <section 
+      class="price-section" 
+      aria-label="Offerta esclusiva menu digitale completo"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-delay="500"
+      >
+      <p class="offer-label">Offerta esclusiva <strong>chiavi in mano</strong></p>
+      <strong class="price">289€/anno</strong>
+      <span class="daily">Solo 0,79€ al giorno per un salto di qualità enorme</span>
+
+      <ul>
+        <li>Hosting e dominio inclusi, senza alcun costo aggiuntivo nascosto</li>
+        <li>Modifiche, aggiornamenti e inserimenti nuovi prodotti <strong>illimitati</strong>, entro 30 minuti dalla tua richiesta</li>
+        <li>QR Code personalizzato e pronto da stampare subito, nessuna ristampa e nessun costo extra</li>
+        <li>Ordinazioni via WhatsApp semplici e immediate, senza errori, più velocità e clienti soddisfatti</li>
+        <li>Sistema upsell intelligente per aumentare lo scontrino medio senza sforzi aggiuntivi</li>
+        <li>Pacchetto completo chiavi in mano: tu chiedi, io faccio tutto, zero pensieri</li>
+      </ul>
+
+      <p class="urgency">Offerta limitata, <strong>disponibile solo per nuovi clienti</strong>. Non perdere questa occasione per modernizzare il tuo locale!</p>
+    </section>
+
+    <!-- SEZIONE RECENSIONI -->
+    <section 
+      style="background:#1e293b; padding: 3rem 2rem; margin-bottom: 4rem; border-radius: 16px; box-shadow: 0 0 20px rgba(250,204,21,0.1); max-width: 900px; margin-left:auto; margin-right:auto;"
+      data-aos="fade-right"
+      data-aos-duration="800"
+      data-aos-delay="550"
+      >
+      <h2 style="margin-bottom: 2rem;">Cosa dicono i clienti</h2>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; color: #f3f4f6; font-size: 1.05rem;">
+        <div>
+          <p style="font-style: italic;">"Finalmente un menu che fa davvero colpo! I clienti ordinano più facilmente e noi lavoriamo meglio."</p>
+          <strong>– Luca, Trattoria Romana</strong>
         </div>
-      </section>
-      <style>
-    .demo-flip-grid {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      max-width: 1000px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      padding: 2rem;
-    }
-
-    .flip-card {
-      background: transparent;
-      width: 320px;
-      height: 200px;
-      perspective: 1000px;
-      flex-shrink: 0;
-    }
-
-    .flip-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 1s ease;
-      transform-style: preserve-3d;
-    }
-
-    .flip-inner.revealed {
-      transform: rotateY(180deg);
-    }
-
-    .flip-front, .flip-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 16px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .flip-front {
-      background: #ffffff;
-      color: #1f2937;
-      border: 2px solid #1f2937;
-    }
-
-    .flip-avatar {
-      width: 135px;
-      height: 135px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 0.7rem;
-      border: 2px solid #facc15;
-      box-shadow: 0 2px 8px rgba(250,204,21,0.15);
-      background: #fff;
-    }
-
-    .flip-front h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 0;
-      text-align: center;
-    }
-
-    .flip-back {
-      background: #1f2937;
-      color: #facc15;
-      border: 2px solid #fff;
-      transform: rotateY(180deg);
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .flip-icon {
-      font-size: 2rem;
-      color: #facc15;
-      margin-bottom: 1rem;
-    }
-
-    .flip-back p {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn-primary {
-      background-color: #facc15;
-      color: #1f2937;
-      font-weight: 700;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
-      text-decoration: none;
-      display: inline-block;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .btn-primary:hover, .btn-primary:focus {
-      background-color: #eab308;
-      box-shadow: 0 8px 20px rgba(250,204,21,0.2);
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      .flip-card {
-        width: 90vw;
-        max-width: 320px;
-        height: 220px;
-      }
-
-      .flip-avatar {
-        width: 135px;
-        height: 135px;
-      }
-
-      .flip-front h3 {
-        font-size: 1rem;
-      }
-    }
-  </style>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.flip-card');
-
-      function handleScroll() {
-        const centerY = window.innerHeight / 2;
-
-        cards.forEach(card => {
-          const inner = card.querySelector('.flip-inner');
-          const rect = card.getBoundingClientRect();
-          const middleY = rect.top + rect.height / 2;
-
-          if (middleY < centerY) {
-            inner.classList.add('revealed');
-          } else {
-            inner.classList.remove('revealed');
-          }
-        });
-      }
-
-      window.addEventListener('scroll', handleScroll);
-      window.addEventListener('load', handleScroll);
-});
-</script>
-
-  <!-- Perché scegliere un menu digitale? -->
-
-  <section id="benefici" aria-label="Perché scegliere un menu digitale"
-  style="background-color:#111827; padding:2rem 5vw; width:100%; margin: 0 0 4rem 0; color:#fff; font-family: 'Inter', sans-serif;">
-  <h2 style="color:#facc15; font-weight: 800; font-size: 2.25rem; margin-bottom:2.5rem; letter-spacing:1.5px; text-align:center;">
-    Perché scegliere un menu digitale?
-  </h2>
-  <ul style="list-style:none; padding:0; max-width:900px; margin:0 auto; font-size:1.15rem; line-height:1.7; font-weight: 500;">
-    <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-right:1rem;" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <strong style="font-weight: 700;">Aumenti lo scontrino medio</strong><br />
-        Suggerimenti automatici che invogliano il cliente ad aggiungere prodotti, aumentando i guadagni senza fatica.
+        <div>
+          <p style="font-style: italic;">"In 2 giorni avevo il mio menu pronto. Assistenza velocissima, tutto perfetto!"</p>
+          <strong>– Marta, Bar Caffetteria 84</strong>
+        </div>
+        <div>
+          <p style="font-style: italic;">"Abbiamo aumentato lo scontrino medio grazie ai suggerimenti automatici. Ottimo investimento."</p>
+          <strong>– Gianni, Ristorante Pizzeria Da Gino</strong>
+        </div>
       </div>
-    </li>
-    <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-right:1rem;" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <strong style="font-weight: 700;">Riduci i tempi di attesa</strong><br />
-        Il cliente ordina subito dal telefono, permettendoti di servire più tavoli con meno stress.
-      </div>
-    </li>
-    <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-right:1rem;" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <strong style="font-weight: 700;">Modifichi il menu in tempo reale</strong><br />
-        Cambi piatti e prezzi in un clic, senza ristampe o errori.
-      </div>
-    </li>
-    <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-right:1rem;" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <strong style="font-weight: 700;">Offri un’esperienza digitale accattivante</strong><br />
-        Un menu moderno e coinvolgente che conquista e fidelizza i clienti.
-      </div>
-    </li>
-    <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-right:1rem;" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <strong style="font-weight: 700;">Distinguiti dalla concorrenza</strong><br />
-        Un locale innovativo e tecnologico attira più clienti e fa parlare bene di te.
-      </div>
-    </li>
-  </ul>
-</section>
-<section style="background: #1f2937; color: #facc15; padding: 3rem 1rem; text-align: center;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem;">Contattami ora</h2>
-  <p style="margin: 0 auto 2rem auto; max-width: 500px; font-size: 1rem;">
-Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo per te in soli 2 giorni.
-  </p>
-  
-  
-  <a href="https://wa.me/393440301412" class="btn-primary">Scrivimi su WhatsApp</a>
-</section>
+    </section>
 
-<section style="height: 100px; background: linear-gradient(to top, #1f2937, transparent);"></section>
-<footer style="text-align: center; padding: 2rem 1rem; font-size: 0.9rem; color: #888;">
-  © 2025 DSFabio digital - Tutti i diritti riservati
-</footer>
-  <!-- Script animazioni -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SEZIONE DOMANDE FREQUENTI -->
+    <section 
+      style="background:#111827; padding: 3rem 2rem; margin-bottom: 3rem; border-radius: 16px; box-shadow: 0 0 20px rgba(250,204,21,0.2); max-width: 900px; margin-left:auto; margin-right:auto;"
+      data-aos="fade-left"
+      data-aos-duration="800"
+      data-aos-delay="600"
+      >
+      <h2 style="margin-bottom: 1.5rem;">Domande frequenti</h2>
+      <div style="text-align: left; color: #e5e7eb; font-size: 1.05rem;">
+        <p><strong>Quanto tempo ci vuole per avere il menu?</strong><br>In soli 2 giorni lavorativi hai il tuo menu online, pronto da usare.</p>
+        <p><strong>Posso chiedere modifiche in seguito?</strong><br>Certo! Tutti gli aggiornamenti sono inclusi e illimitati.</p>
+        <p><strong>Serve un'app per ricevere gli ordini?</strong><br>No, basta WhatsApp! Il cliente ordina direttamente dal menu.</p>
+        <p><strong>Devo stampare un nuovo QR ogni volta?</strong><br>No, il QR resta sempre valido. Aggiorniamo noi il contenuto.</p>
+      </div>
+    </section>
+
+    <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="650" style="max-width:600px; margin: 2rem auto; font-size:1.15rem; color:#d1d5db; text-align:center;">
+      Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo per te in soli 2 giorni lavorativi.
+    </p>
+
+    <!-- FORM CONTATTI -->
+    <form 
+      class="contact-form" 
+      action="#" 
+      method="POST" 
+      aria-label="Modulo contatti per richiedere informazioni o preventivo"
+      data-aos="fade-up"
+      data-aos-duration="700"
+      data-aos-delay="700"
+    >
+      <label for="nome">Nome <span aria-hidden="true" style="color:#fbbf24">*</span></label>
+      <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required aria-required="true" autocomplete="name" />
+
+      <label for="email">Email <span aria-hidden="true" style="color:#fbbf24">*</span></label>
+      <input type="email" id="email" name="email" placeholder="La tua email" required aria-required="true" autocomplete="email" />
+
+      <label for="messaggio">Messaggio <span aria-hidden="true" style="color:#fbbf24">*</span></label>
+      <textarea id="messaggio" name="messaggio" placeholder="Raccontami qualcosa del tuo locale o cosa desideri realizzare..." required aria-required="true"></textarea>
+
+      <button type="submit" aria-label="Invia richiesta">Invia richiesta</button>
+    </form>
+
+  </main>
+
+  <a href="https://wa.me/393440301412" class="whatsapp-fixed" aria-label="Contattami su WhatsApp" data-aos="zoom-in" data-aos-duration="650" data-aos-delay="600">
+    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 0 5.373 0 12c0 2.12.55 4.1 1.52 5.82L0 24l6.4-1.54A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.22-1.29-6.27-3.48-8.52zM12 21.72a9.72 9.72 0 01-4.93-1.36l-.35-.21-3.8.92.94-3.71-.23-.38A9.73 9.73 0 012.28 12a9.72 9.72 0 0116.2-7.14 9.67 9.67 0 013 6.84c0 5.4-4.4 9.78-9.5 9.78z" fill="white"/>
+      <path d="M17.03 14.24c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.68.81-.83.98-.15.16-.3.18-.55.06-.25-.13-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.015-.38.11-.5.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.87-.2-.5-.4-.43-.57-.44-.15-.007-.33-.008-.5-.008s-.44.06-.67.3c-.23.25-.9.88-.9 2.14 0 1.26.92 2.49 1.05 2.66.13.17 1.81 2.76 4.39 3.87.61.26 1.08.41 1.45.53.61.2 1.17.17 1.61.1.49-.08 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.31z" fill="white"/>
+    </svg>
+    Manda un messaggio
+  </a>
+
+  <footer style="background:#0f172a; padding: 2.5rem 1rem; text-align: center; color: #64748b; font-size: 0.8rem;"
+    data-aos="fade-up" data-aos-duration="700" data-aos-delay="800">
+    <p style="margin-bottom: 1.2rem;">© 2025 DSFabio digital – Tutti i diritti riservati</p>
+    <a href="index.html" style="display:inline-block; padding: 0.6rem 1.4rem; font-size: 0.85rem; background-color:#facc15; color:#1f2937; border-radius: 8px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 10px rgba(250,204,21,0.2); transition: background-color 0.3s ease;">
+      Torna alla home
+    </a>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
-      duration: 900,
-      once: true
+      once: true,
+      easing: 'ease-out-cubic',
+      duration: 700,
     });
   </script>
-
-
 </body>
 </html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modelli di Menu Digitali</title>
+<meta name="description" content="Esplora i modelli e richiedi 15 giorni di prova gratuita." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+    --yellow: #fbbf24;
+    --blue: #3b82f6;
+    --gray: #94a3b8;
+    --red: #ef4444;
+    --whatsapp-green: #25d366;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem 1rem 6rem;
+  }
+  h1,h2,h3 {
+    color: var(--yellow);
+    margin: 0.5rem 0;
+  }
+  h2 {
+    color: var(--text);
+    margin: 0.5rem 0;   
+  }
+
+  /* GRID MODELLI */
+  .model-section {
+    margin-bottom: 3rem;
+  }
+  .model-grid {                 
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+    gap: 1.5rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (max-width: 768px) {
+    .model-grid {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+  .model-item {
+    background: var(--card);
+    border: 0.8px solid #334155;
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+    position: relative;
+  }
+  /* Category border colors */
+  .model-item.classico {
+    border-color: var(--yellow);
+  }
+  .model-item.whatsapp {
+    border-color: #22c55e;
+  }
+  .model-item.sala {
+    border-color: var(--blue);
+  }
+  .model-item:hover {
+    box-shadow: 0 0 8px rgba(251,191,36,0.15);
+    transform: translateY(-4px);
+    border-color: var(--yellow);
+  }
+  .model-item img {
+    width: 100%;
+    aspect-ratio: 3 / 5;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+  }
+  .model-item h3 {
+    font-size: 1rem;
+    margin: 0.3rem 0 0.2rem;
+  }
+  .model-item code {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+    color: var(--gray);
+  }
+  /* Pulsante Vedi */
+  .btn-view {
+    background: var(--blue);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+  }
+  .btn-view:hover {
+    background-color: #2563eb;
+  }
+  /* Pulsante Aggiungi */
+  .btn-add {
+    background: var(--yellow);
+    color: var(--bg);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: filter 0.2s ease;
+    position: relative;
+  }
+  .btn-add.loading {
+    pointer-events: none;
+    color: transparent;
+  }
+  .btn-add.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2.5px solid #333;
+    border-top-color: var(--yellow);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  .btn-add:hover:not(.loading) {
+    filter: brightness(0.9);
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* CARRELLO */
+  .cart-icon {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+    background: var(--yellow);
+    color: var(--bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 1100;
+    transition: transform 0.3s;
+    user-select: none;
+  }
+  .cart-icon.bump {
+    animation: bump 0.4s ease;
+  }
+  .cart-icon::after {
+    content: attr(data-count);
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--red);
+    color: white;
+    font-size: 0.75rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+  .cart-icon[data-count]:not([data-count="0"])::after {
+    display: flex;
+  }
+  @keyframes bump {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  /* MODALE */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+  }
+  .modal {
+    background: var(--card);
+    border-radius: 10px;
+    width: 80vw;
+    max-width: 400px;
+    max-height: 95vh;
+    padding: 1rem 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    color: var(--yellow);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .modal p {
+    margin: 0.2rem 0 1rem;
+    line-height: 1.3;
+  }
+  .close-modal {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--gray);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .close-modal:hover {
+    color: var(--yellow);
+  }
+  .cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #243352;
+    border-radius: 6px;
+    padding: 0.5rem 2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .cart-summary code {
+    background: #1a2546;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--gray);
+  }
+  .remove-btn {
+    background: var(--red);
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+  }
+  .remove-btn:hover {
+    background: #b91c1c;
+  }
+  .order-info {
+    background: #243352;
+    padding-bottom: 0.3rem;
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 0.80rem;
+    line-height: 1.4;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  .order-info strong {
+    color: var(--yellow);
+  }
+
+  /* FORM */
+  form {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  label {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    color: var(--gray);
+  }
+  input, textarea {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    background: #0e1a2e;
+    color: var(--text);
+    font-size: 0.9rem;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+    max-height: 150px;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--yellow);
+  }
+  /* WHATSAPP BUTTON */
+  .whatsapp-btn {
+    margin-top: 0.5rem;
+    background-color: var(--whatsapp-green);
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .whatsapp-btn:hover {
+    background-color: #0a6a09;
+  }
+</style>
+</head>
+<body>
+
+<!-- Icona carrello -->
+<div class="cart-icon" id="cartIcon" aria-label="Carrello, clicca per aprire" data-count="0">🛒</div>
+
+<h1 style="text-align:center; font-size:2.5rem; margin-bottom:5rem;">MENU DIGITALI <br> Scegli il tuo modello preferito.</h1>
+
+<!-- MENÙ DIGITALE CLASSICO -->
+<section id="classico" class="model-section">
+  <h2>Menù Digitale Classico</h2>
+  <div class="model-grid">
+    <div class="model-item classico">
+      <h3>Classico A</h3>
+      <code>MDC-001</code>
+      <img src="https://i.postimg.cc/MTDWZ0Kx/yumm-app-it.png" alt="Menu Digitale Classico" />
+      <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+      <button class="btn-add" data-model="MDC-001" data-type="Menù Digitale Classico – MDC">Provalo Gratis</button>
+    </div>
+    <div class="model-item classico">
+      <h3>Classico B</h3>
+      <code>MDC-002</code>
+      <img src="https://i.postimg.cc/MTDWZ0Kx/yumm-app-it.png" alt="Menu Digitale Classico" />
+      <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+      <button class="btn-add" data-model="MDC-002" data-type="Menu Digitale Classico – MDC">Provalo Gratis</button>
+    </div>
+    <div class="model-item classico">
+      <h3>Classico C</h3>
+      <code>MDC-003</code>
+      <img src="https://i.postimg.cc/MTDWZ0Kx/yumm-app-it.png" alt="Menu Digitale Classico" />
+      <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+      <button class="btn-add" data-model="MDC-003" data-type="Menu Digitale Classico – MDC">Provalo Gratis</button>
+    </div>
+  </div>
+</section>
+
+<!-- MENÙ + WHATSAPP -->
+<section id="ordiniwhatsapp" class="model-section"></section> class="model-section">
+  <h2>Menù con Ordine su WhatsApp</h2>
+  <div class="model-grid">
+    <div class="model-item whatsapp">
+      <h3>WhatsApp A</h3>
+      <code>MDW-001</code>
+      <img src="https://i.postimg.cc/MTDWZ0Kx/yumm-app-it.png" alt="Menu WA A" />
+      <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+      <button class="btn-add" data-model="MDW-001" data-type="Menù WhatsApp – MDW">Aggiungi</button>
+    </div>
+    <div class="model-item whatsapp">
+      <h3>WhatsApp B</h3>
+      <code>MDW-002</code>
+      <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu WA B" />
+      <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+      <button class="btn-add" data-model="MDW-002" data-type="Menù WhatsApp – MDW">Aggiungi</button>
+    </div>
+    <div class="model-item whatsapp">
+      <h3>WhatsApp C</h3>
+      <code>MDW-003</code>
+      <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu WA C" />
+      <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+      <button class="btn-add" data-model="MDW-003" data-type="Menù WhatsApp – MDW">Aggiungi</button>
+    </div>
+    <div class="model-item whatsapp">
+        <h3>WhatsApp add</h3>
+        <code>MDW-002</code>
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu WA B" />
+        <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+        <button class="btn-add" data-model="MDW-002" data-type="Menù WhatsApp – MDW">Aggiungi</button>
+      </div>
+  </div>
+</section>
+
+<!-- MENÙ + WHATSAPP UPSELL -->
+<section id="whatsapp+upsell" class="model-section">
+    <h2>Menù con Ordine su WhatsApp + Upsell</h2>
+    <div class="model-grid">
+      <div class="model-item sala">
+        <h3>Sala A</h3>
+        <code>MDWU-001</code>
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu Sala A" />
+        <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+        <button class="btn-add" data-model="MDWU-001" data-type="Menù Sala + WhatsApp – MDWU">Aggiungi</button>
+      </div>
+  
+      <div class="model-item sala">
+        <h3>Sala B</h3>
+        <code>MDWU-002</code>
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu Sala B" />
+        <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+        <button class="btn-add" data-model="MDWU-002" data-type="Menù + WhatsApp + Upsell – MDWU">Aggiungi</button>
+      </div>
+  
+      <div class="model-item sala">
+        <h3>Sala C</h3>
+        <code>MDWU-003</code>
+        <img src="https://i.postimg.cc/tTyqHvb2/con-ordine.jpg" alt="Menu Sala C" />
+        <button class="btn-view" onclick="window.open('#', '_blank')">Vedi menu</button>
+        <button class="btn-add" data-model="MDWU-003" data-type="Menù WhatsApp + Upsell – MDWU">Aggiungi</button>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- MODALE CARRELLO -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal" role="document">
+      <button class="close-modal" aria-label="Chiudi carrello" id="closeModalBtn">&times;</button>
+      <h2 id="modalTitle">Il tuo carrello</h2>
+      <div id="cartContent" aria-live="polite" aria-atomic="true">
+        <p>Il carrello è vuoto.</p>
+      </div>
+      <div class="order-info" tabindex="0" style="overflow: visible; max-height: none; padding-top: 0; margin-bottom: 1rem;">
+        <ul style="padding-left: 1.5rem; margin: 0; line-height: 1.5; list-style: none;">
+          <li>✅ <strong>Prova gratuita per 15 giorni</strong> – senza impegno.</li>
+          <li>✅ Fino a <strong>50 prodotti</strong> e <strong>3 categorie personalizzate</strong>.</li>
+          <li>✅ <strong>QR code pronto da stampare</strong>.</li>
+          <li>✅ <strong>Icone social</strong> e dominio con <strong>certificato SSL</strong>.</li>
+          <li>✅ <strong>Hosting incluso</strong>, nessuna configurazione da fare.</li>
+          <li>✅ Setup completo con i tuoi prodotti, pronto all’uso.</li>
+          <li>✅ <strong>Assistenza rapida</strong> e supporto dedicato.</li>
+          <li>✅ Decidi solo <strong>dopo averlo testato</strong> nel tuo locale!</li>
+        </ul>
+      </div>
+      
+      <form id="orderForm" novalidate>
+        <div class="form-row">
+          <label for="name">Nome <span aria-hidden="true" style="color:#fbbf24">*</span></label>
+          <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" />
+        </div>
+        <div class="form-row">
+          <label for="email">Email <span aria-hidden="true" style="color:#fbbf24">*</span></label>
+          <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" />
+        </div>
+        <div class="form-row">
+          <label for="message">Messaggio (opzionale)</label>
+          <textarea id="message" name="message" maxlength="700" placeholder="Scrivi eventuali richieste o informazioni"></textarea>
+        </div>
+        <button type="submit" class="whatsapp-btn">Richiedi ora su WhatsApp la tua demo gratuita, senza impegni</button>
+      </form>
+    </div>
+  </div>
+  
+
+<script>
+  const cartIcon = document.getElementById('cartIcon');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const cartContent = document.getElementById('cartContent');
+  const orderForm = document.getElementById('orderForm');
+
+  let cart = null;
+
+  function updateCartIcon() {
+    if(cart) {
+      cartIcon.dataset.count = '1';
+      cartIcon.classList.add('bump');
+      setTimeout(() => cartIcon.classList.remove('bump'), 400);
+    } else {
+      cartIcon.dataset.count = '0';
+    }
+  }
+
+  function openModal() {
+    modalOverlay.style.display = 'flex';
+    modalOverlay.focus();
+    renderCart();
+  }
+  function closeModal() {
+    modalOverlay.style.display = 'none';
+  }
+  function renderCart() {
+    if(!cart) {
+      cartContent.innerHTML = '<p>Il carrello è vuoto.</p>';
+      return;
+    }
+    cartContent.innerHTML = `
+      <div class="cart-summary" role="region" aria-label="Dettaglio prodotto nel carrello">
+        <div>
+          <strong>${cart.type}</strong><br/>
+          Codice: <code>${cart.model}</code>
+        </div>
+        <button class="remove-btn" aria-label="Rimuovi prodotto dal carrello">&times;</button>
+      </div>
+    `;
+    const removeBtn = cartContent.querySelector('.remove-btn');
+    removeBtn.onclick = () => {
+      cart = null;
+      closeModal();
+      updateCartIcon();
+    };
+  }
+
+  function showLoader(btn) {
+    btn.classList.add('loading');
+    btn.disabled = true;
+    return new Promise(res => setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      res();
+    }, 500));
+  }
+
+  function alertAndPrevent() {
+    alert("Svuota il carrello per scegliere un altro modello.");
+  }
+
+  document.querySelectorAll('.btn-add').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      if(cart) {
+        alertAndPrevent();
+        return;
+      }
+      await showLoader(btn);
+      const model = btn.dataset.model;
+      const type = btn.dataset.type;
+      cart = { model, type };
+      updateCartIcon();
+      openModal();
+    });
+  });
+
+  cartIcon.addEventListener('click', () => {
+    if(cart) openModal();
+  });
+  closeModalBtn.addEventListener('click', closeModal);
+
+  // Form submit
+  orderForm.addEventListener('submit', e => {
+    e.preventDefault();
+    if(!cart) {
+      alert("Aggiungi un menu prima di inviare la richiesta.");
+      return;
+    }
+    const name = orderForm.name.value.trim();
+    const email = orderForm.email.value.trim();
+    if(name.length < 2) {
+      alert("Inserisci un nome valido.");
+      orderForm.name.focus();
+      return;
+    }
+    if(!validateEmail(email)) {
+      alert("Inserisci una email valida.");
+      orderForm.email.focus();
+      return;
+    }
+    const message = encodeURIComponent(`Richiesta prova menu digitale:\nModello: ${cart.type} (${cart.model})\nNome: ${name}\nEmail: ${email}\nMessaggio: ${orderForm.message.value.trim()}`);
+    const whatsappURL = `https://wa.me/393440301412?text=${message}`;
+    window.open(whatsappURL, '_blank');
+
+    alert("Richiesta inviata! Ti contatteremo al più presto.");
+    cart = null;
+    updateCartIcon();
+    closeModal();
+    orderForm.reset();
+  });
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+</script>
+<footer style="background:#0f172a; padding: 2.5rem 1rem; text-align: center; color: #94a3b8; font-size: 0.8rem;">
+  <p style="margin-bottom: 1rem;">© 2025 DSFabio Digital – Tutti i diritti riservati.</p>
+  <button onclick="window.location.href='/'"
+    style="background-color:#fbbf24; color:#0f172a; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s;">
+    Torna alla Home
+  </button>
+</footer>
+
+
+</body>
+</html>

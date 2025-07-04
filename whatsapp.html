@@ -5,15 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DSFabio Digital – Menu Digitale Chiavi in Mano</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  
+
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
-    /* Reset base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -42,8 +39,7 @@
       font-size: 2.3rem;
       color: #facc15;
       text-align: left;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
+      margin: 3rem 0 1rem 0;
       text-shadow: 0 0 8px #facc15aa;
     }
     h2 {
@@ -67,30 +63,24 @@
       text-align: left;
       line-height: 1.5;
     }
-
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem 3rem 1.5rem;
     }
-
-    /* Image prodotto */
     .product-image {
       display: block;
       max-width: 700px;
       width: 100%;
-      margin: 5rem auto 3rem auto;
+      margin: 4rem auto 3rem auto;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(250, 204, 21, 0.761);
+      box-shadow: 0 10px 30px rgba(250, 204, 21, 0.76);
       border: 2px solid #facc15;
       transition: transform 0.3s ease;
     }
     .product-image:hover {
       transform: scale(1.05);
     }
-
-    /* Pulsante primario */
     .btn-primary {
       background-color: #facc15;
       color: #1f2937;
@@ -100,7 +90,7 @@
       border: none;
       cursor: pointer;
       font-size: 1.3rem;
-      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.234);
+      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.23);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       display: block;
@@ -113,55 +103,26 @@
       box-shadow: 0 12px 30px rgb(234 179 8 / 0.9);
       outline: none;
     }
-
-    /* Sezione prezzo */
-    .price-section {
-      background-color: #111827;
-      padding: 3rem 2rem;
-      border-radius: 16px;
-      box-shadow: 0 12px 25px rgba(250,204,21,0.4);
-      max-width: 700px;
-      margin: 0 auto 4rem auto;
-      text-align: center;
-    }
-    .price-section p.offer-label {
-      color: #f59e0b;
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 0.3rem;
-      text-transform: uppercase;
-    }
-    .price-section strong.price {
-      font-size: 3.8rem;
-      color: #fbbf24;
-      text-shadow: 0 0 20px #fbbf24;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-    .price-section span.daily {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fde68a;
-      display: block;
-      margin-bottom: 2rem;
-    }
-    .price-section ul {
-      list-style: none;
-      padding-left: 0;
+    /* Benefit list */
+    .benefits-list {
       max-width: 900px;
-      margin: 0 auto 2.5rem auto;
-      color: #f3f4f6;
+      margin: 0 auto 4rem auto;
+      padding: 1.5rem 2rem;
+      background-color: #243352;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(250,204,21,0.2);
+      color: #fef9c3;
       font-weight: 600;
-      font-size: 1.05rem;
-      text-align: left;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      list-style: none;
     }
-    .price-section ul li {
+    .benefits-list li {
+      margin-bottom: 1rem;
       position: relative;
-      padding-left: 2.8rem;
-      margin-bottom: 1.1rem;
-      line-height: 1.4;
+      padding-left: 2.5rem;
     }
-    .price-section ul li::before {
+    .benefits-list li::before {
       content: "✔";
       position: absolute;
       left: 0;
@@ -170,16 +131,67 @@
       font-weight: 900;
       font-size: 1.3rem;
       user-select: none;
+      line-height: 1;
     }
-    .price-section p.urgency {
+    /* Recensioni */
+    .reviews {
+      background: #1e293b;
+      padding: 3rem 2rem;
+      margin-bottom: 4rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(250,204,21,0.1);
       max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fde68a;
-      text-shadow: 0 0 10px #fbbf24;
+      margin-left:auto; 
+      margin-right:auto;
+      color: #f3f4f6;
+      font-size: 1.05rem;
     }
-
+    .review-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .review-item img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 8px #facc15a0;
+      flex-shrink: 0;
+    }
+    .review-item strong {
+      color: #fbbf24;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    .review-item p {
+      font-style: italic;
+      margin: 0;
+      text-align: left;
+    }
+    /* FAQ */
+    .faq {
+      background:#111827;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(250,204,21,0.2);
+      max-width: 900px;
+      margin-left:auto;
+      margin-right:auto;
+      color: #e5e7eb;
+      font-size: 1.05rem;
+    }
+    .faq p {
+      text-align: left;
+      margin: 0 0 1.5rem 0;
+    }
+    .faq strong {
+      font-weight: 700;
+      color: #fbbf24;
+    }
     /* Form contatti */
     form.contact-form {
       background: #111827;
@@ -253,8 +265,7 @@
       margin-bottom: 1.2rem;
       font-style: italic;
     }
-
-    /* Pulsante WhatsApp fisso */
+    /* WhatsApp fisso */
     .whatsapp-fixed {
       position: fixed;
       bottom: 20px;
@@ -283,20 +294,10 @@
       height: 22px;
       fill: white;
     }
-
     /* Responsive */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.rem;
-      }
-      .price-section strong.price {
-        font-size: 3rem;
-      }
-      .price-section span.daily {
-        font-size: 1.1rem;
-      }
-      .price-section ul {
-        font-size: 1rem;
+        font-size: 2rem;
       }
       .product-image {
         max-width: 100%;
@@ -310,22 +311,18 @@
         padding: 1.5rem 1.8rem;
       }
     }
-    
   </style>
 </head>
 <body>
-  <main class="container" role="main" aria-label="Pagina di vendita servizio Menu Digitale DSFabio Digital">
+  <main class="container" role="main" aria-label="Pagina approfondimento servizio Menu Digitale DSFabio Digital">
 
     <h1 data-aos="fade-down" data-aos-duration="700" data-aos-delay="50">
-      Il tuo menu digitale con ordini WhatsApp.<br><strong>Solo 0,79€/giorno, tutto incluso.</strong>
+      Il tuo menu digitale con ordini WhatsApp.<br><strong>Provalo gratis e senza impegno.</strong>
     </h1>
+    
     <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="150">
-      Un sistema moderno, personalizzato e già ottimizzato per far crescere il tuo locale.<br>
-      Nessuna complessità tecnica, realizzo tutto io per te, con precisione e rapidità.
-    </p>
-
-    <p data-aos="fade-up" data-aos-duration="650" data-aos-delay="200" style="margin-top: 0.5rem; font-size: 1rem; color: #fef9c3;">
-      Nessuna app, nessuna stampa, nessun pensiero.
+      Un sistema semplice, personalizzato e ottimizzato per far crescere il tuo locale.<br>
+      Io realizzo tutto per te, senza complicazioni tecniche.
     </p>
 
     <img 
@@ -335,182 +332,190 @@
       data-aos="zoom-in" 
       data-aos-duration="700" 
       data-aos-delay="300" 
-      />
+    
+    />
+    <section aria-label="Benefici menu digitale" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200" style="max-width:900px; margin: 3rem auto; padding: 2rem 2.5rem; background: #1e293b; border-radius: 16px; box-shadow: 0 0 20px rgba(250, 204, 21, 0.3); color: #fef9c3; font-weight: 600; line-height: 1.6;">
+        <h2 style="color: #facc15; text-align: left; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800;">6 Motivi per cui il tuo locale ha bisogno di un menu digitale</h2>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
+            <div><strong>Aumenta le vendite</strong> con ordini più rapidi e suggerimenti mirati che fanno crescere lo scontrino medio.</div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
+            <div><strong>Risparmia tempo e denaro</strong> eliminando i costi di stampa e aggiornando il menu in tempo reale, senza pensieri.</div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
+            <div><strong>Migliora la reputazione</strong> offrendo un menu moderno e facile da usare, che i clienti apprezzano e condividono.</div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
+            <div><strong>Nessuna preoccupazione per aggiornamenti</strong>: basta inviarmi le modifiche e io le applico in meno di 30 minuti, senza costi extra.</div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
+            <div><strong>Ordini facili e veloci via WhatsApp</strong>, senza bisogno di app aggiuntive per il cliente.</div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.8rem;">
+            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
+            <div><strong>Un menu sempre aggiornato e professionale</strong> che valorizza il tuo locale e conquista nuovi clienti.</div>
+          </li>
+        </ul>
+        <p style="margin-top: 2rem; text-align: center; font-size: 1.1rem; color: #fde68a; font-weight: 700;">
+          Scegli la soluzione che ti libera da pensieri e ti fa concentrarti sul tuo lavoro, mentre io mi occupo del resto.
+        </p>
+      </section>
+      
 
-    <a href="demo1.html" 
-       class="btn-primary" 
-       aria-label="Prova la demo reale del menu digitale"
-       data-aos="fade-up"
-       data-aos-duration="700"
-       data-aos-delay="400"
-       >
-       Prova la demo reale
+
+    <ul class="benefits-list" data-aos="fade-up" data-aos-duration="700" data-aos-delay="350" aria-label="Vantaggi principali del servizio menu digitale">
+      <li>Prova gratuita di 15 giorni con fino a 50 prodotti e 3 categorie incluse</li>
+      <li>QR Code personalizzato, logo e nome sul menu, icone social</li>
+      <li>Hosting, dominio SSL di secondo livello e setup completo inclusi</li>
+      <li>Modifiche e aggiornamenti illimitati e rapidissimi</li>
+      <li>Ordini semplici e veloci via WhatsApp, senza app aggiuntive</li>
+      <li>Sistema intelligente di upsell per aumentare lo scontrino medio</li>
+      <li>Assistenza dedicata per un menu sempre perfetto</li>
+    </ul>
+
+    <a 
+      href="modelli.html" 
+      class="btn-primary" 
+      aria-label="Vedi tutti i modelli e prova gratis"
+      data-aos="fade-up" 
+      data-aos-duration="700" 
+      data-aos-delay="200"
+    >
+      Richiedi una prova gratis di 15 giorni
     </a>
 
-    <section 
-    class="price-section" 
-    aria-label="Offerta esclusiva menu digitale completo"
-    data-aos="fade-up"
-    data-aos-duration="800"
-    data-aos-delay="500"
-    style="text-align: left;"
-  >
-    <h2 class="offer-label" style="text-align: center !important;">Offerta esclusiva <strong>chiavi in mano</strong></h2>
-    <strong class="price" style="display: block; text-align: center !important;">289€/anno</strong>
-    <span class="daily" style="display: block; text-align: center !important;">Solo 0,79€ al giorno per un salto di qualità enorme</span>
-  
-    <ul>
-      <li>Hosting e dominio inclusi, senza alcun costo aggiuntivo nascosto</li>
-      <li>Modifiche, aggiornamenti e inserimenti nuovi prodotti <strong>illimitati</strong>, entro 30 minuti dalla tua richiesta</li>
-      <li>QR Code personalizzato e pronto da stampare subito, nessuna ristampa e nessun costo extra</li>
-      <li>Ordinazioni via WhatsApp semplici e immediate, senza errori, più velocità e clienti soddisfatti</li>
-      <li>Sistema upsell intelligente per aumentare lo scontrino medio senza sforzi aggiuntivi</li>
-      <li>Pacchetto completo chiavi in mano: tu chiedi, io faccio tutto, zero pensieri</li>
-    </ul>
-  
-    <p class="urgency" style="text-align: center !important;">Offerta limitata, <strong>disponibile solo per nuovi clienti</strong>. Non perdere questa occasione per modernizzare il tuo locale!</p>
-  </section>
-  
-  
-
-<!-- SEZIONE RECENSIONI -->
-<section 
-  style="background:#1e293b; padding: 3rem 2rem; margin-bottom: 4rem; border-radius: 16px; box-shadow: 0 0 20px rgba(250,204,21,0.1); max-width: 900px; margin-left:auto; margin-right:auto;"
-  data-aos="fade-right"
-  data-aos-duration="800"
-  data-aos-delay="550"
->
-  <h2 style="margin-bottom: 2rem; text-align: center;">Cosa dicono i nostri clienti</h2>
-  <div style="display: flex; flex-direction: column; gap: 2.5rem; color: #f3f4f6; font-size: 1.05rem;">
-
-    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Luca" style="width:64px; height:64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px #facc15a0;">
-      <div style="flex: 1;">
-        <strong style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: #fbbf24;">Luca, Trattoria Romana</strong>
-        <p style="font-style: italic; margin: 0; text-align: left !important;">
-          "Finalmente un menu che fa davvero colpo! I clienti ordinano più facilmente e noi lavoriamo meglio."
-        </p>
+    <section class="reviews" aria-label="Recensioni dei clienti" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">
+      <h2>Cosa dicono i nostri clienti</h2>
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Luca" />
+        <div>
+          <strong>Luca, Trattoria Romana</strong>
+          <p>"Finalmente un menu che fa davvero colpo! I clienti ordinano più facilmente e noi lavoriamo meglio."</p>
+        </div>
       </div>
-    </div>
-
-    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-      <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Foto Marta" style="width:64px; height:64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px #facc15a0;">
-      <div style="flex: 1;">
-        <strong style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: #fbbf24;">Marta, Bar Caffetteria 84</strong>
-        <p style="font-style: italic; margin: 0; text-align: left !important;">
-          "In 2 giorni avevo il mio menu pronto. Assistenza velocissima, tutto perfetto!"
-        </p>
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Foto Marta" />
+        <div>
+          <strong>Marta, Bar Caffetteria 84</strong>
+          <p>"In 2 giorni avevo il mio menu pronto. Assistenza velocissima, tutto perfetto!"</p>
+        </div>
       </div>
-    </div>
-
-    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-      <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Foto Gianni" style="width:64px; height:64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px #facc15a0;">
-      <div style="flex: 1;">
-        <strong style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: #fbbf24;">Jessy, Ristorante Indiano</strong>
-        <p style="font-style: italic; margin: 0; text-align: left !important;">
-          "Abbiamo aumentato lo scontrino medio grazie ai suggerimenti automatici. Ottimo investimento."
-        </p>
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Foto Gianni" />
+        <div>
+          <strong>Jessy, Ristorante Indiano</strong>
+          <p>"Le modifiche sono istantanee e non devo più ristampare nulla. Un risparmio enorme."</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-      <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Foto Silvia" style="width:64px; height:64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px #facc15a0;">
-      <div style="flex: 1;">
-        <strong style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: #fbbf24;">Silvia, Osteria del Centro</strong>
-        <p style="font-style: italic; margin: 0; text-align: left !important;">
-          "Un servizio impeccabile, il menu digitale ha semplificato molto il nostro lavoro e i clienti sono entusiasti."
-        </p>
-      </div>
-    </div>
+    <section class="faq" aria-label="Domande frequenti" data-aos="fade-left" data-aos-duration="700" data-aos-delay="450">
+      <h2>Domande frequenti</h2>
+      <p><strong>Quanto dura la prova gratuita?</strong><br>15 giorni, senza limiti di funzionalità, per testare il menu completo.</p>
+      <p><strong>Posso cambiare il menu in qualsiasi momento?</strong><br>Sì, modifiche e aggiornamenti sono illimitati e rapidissimi.</p>
+      <p><strong>Serve un sito web o app speciale?</strong><br>No, il menu funziona via browser con un semplice QR Code e ordini via WhatsApp.</p>
+      <p><strong>Come funziona l’hosting e il dominio?</strong><br>È tutto incluso nel servizio, senza costi extra.</p>
+    </section>
 
-  </div>
-</section>
-
-
-
-<!-- SEZIONE DOMANDE FREQUENTI -->
-<section 
-  style="background:#111827; padding: 3rem 2rem; margin-bottom: 3rem; border-radius: 16px; box-shadow: 0 0 20px rgba(250,204,21,0.2); max-width: 900px; margin-left:auto; margin-right:auto;"
-  data-aos="fade-left"
-  data-aos-duration="800"
-  data-aos-delay="600"
->
-  <h2 style="margin-bottom: 1.5rem; text-align: center;">Domande frequenti</h2>
-  <div style="color: #e5e7eb; font-size: 1.05rem;">
-    <p style="text-align: left; margin: 0 0 1.5rem 0; max-width: none;">
-      <strong>Quanto tempo ci vuole per avere il menu?</strong><br>In soli 2 giorni lavorativi hai il tuo menu online, pronto da usare.
-    </p>
-    <p style="text-align: left; margin: 0 0 1.5rem 0; max-width: none;">
-      <strong>Posso chiedere modifiche in seguito?</strong><br>Certo! Tutti gli aggiornamenti sono inclusi e illimitati.
-    </p>
-    <p style="text-align: left; margin: 0 0 1.5rem 0; max-width: none;">
-      <strong>Serve un'app per ricevere gli ordini?</strong><br>No, basta WhatsApp! Il cliente ordina direttamente dal menu.
-    </p>
-    <p style="text-align: left; margin: 0 0 1.5rem 0; max-width: none;">
-      <strong>Devo stampare un nuovo QR ogni volta?</strong><br>No, il QR resta sempre valido. Aggiorniamo noi il contenuto.
-    </p>
-  </div>
-</section>
-
-
-
-    <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="650" style="max-width:600px; margin: 2rem auto; font-size:1.15rem; color:#d1d5db; text-align:center;">
-      Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo per te in soli 2 giorni lavorativi.
-    </p>
-
-    <!-- FORM CONTATTI -->
     <form 
-    id="contactForm"
       class="contact-form" 
       action="#" 
       method="POST" 
-      aria-label="Modulo contatti per richiedere informazioni o preventivo"
+      aria-label="Modulo contatti per informazioni e demo gratuita"
       data-aos="fade-up"
       data-aos-duration="700"
-      data-aos-delay="700"
+      data-aos-delay="500"
     >
+      <h2>Contattaci per maggiori informazioni o demo gratuita</h2>
+
       <label for="nome">Nome <span aria-hidden="true" style="color:#fbbf24">*</span></label>
-      <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required aria-required="true" autocomplete="name" />
+      <input id="nome" name="nome" type="text" required aria-required="true" placeholder="Il tuo nome" autocomplete="name" />
 
       <label for="email">Email <span aria-hidden="true" style="color:#fbbf24">*</span></label>
-      <input type="email" id="email" name="email" placeholder="La tua email" required aria-required="true" autocomplete="email" />
+      <input id="email" name="email" type="email" required aria-required="true" placeholder="esempio@dominio.com" autocomplete="email" />
 
-      <label for="messaggio">Messaggio <span aria-hidden="true" style="color:#fbbf24">*</span></label>
-      <textarea id="messaggio" name="messaggio" placeholder="Raccontami qualcosa del tuo locale o cosa desideri realizzare..." required aria-required="true"></textarea>
+      <label for="messaggio">Messaggio</label>
+      <textarea id="messaggio" name="messaggio" maxlength="700" placeholder="Scrivi la tua richiesta o domanda (max 700 caratteri)"></textarea>
 
       <button type="submit" aria-label="Invia richiesta">Invia richiesta</button>
     </form>
 
+    <a 
+      href="modelli.html" 
+      class="btn-primary" 
+      aria-label="Vedi tutti i modelli e prova gratis"
+      data-aos="fade-up" 
+      data-aos-duration="700" 
+      data-aos-delay="150"
+    >
+    Scegli un modello, lo preparo io per te!   </a>
+
   </main>
 
-  <a href="https://wa.me/393440301412" class="whatsapp-fixed" aria-label="Contattami su WhatsApp" data-aos="zoom-in" data-aos-duration="650" data-aos-delay="600">
-    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 0 5.373 0 12c0 2.12.55 4.1 1.52 5.82L0 24l6.4-1.54A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.22-1.29-6.27-3.48-8.52zM12 21.72a9.72 9.72 0 01-4.93-1.36l-.35-.21-3.8.92.94-3.71-.23-.38A9.73 9.73 0 012.28 12a9.72 9.72 0 0116.2-7.14 9.67 9.67 0 013 6.84c0 5.4-4.4 9.78-9.5 9.78z" fill="white"/>
-      <path d="M17.03 14.24c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.68.81-.83.98-.15.16-.3.18-.55.06-.25-.13-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.015-.38.11-.5.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.87-.2-.5-.4-.43-.57-.44-.15-.007-.33-.008-.5-.008s-.44.06-.67.3c-.23.25-.9.88-.9 2.14 0 1.26.92 2.49 1.05 2.66.13.17 1.81 2.76 4.39 3.87.61.26 1.08.41 1.45.53.61.2 1.17.17 1.61.1.49-.08 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.31z" fill="white"/>
-    </svg>
-    Manda un messaggio
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    });
+  </script>
+
+
+<footer style="
+  background: #0f172a; 
+  padding: 2.5rem 1rem 3rem 1rem; 
+  text-align: center !important;
+  position: relative;
+  color: #cbd5e1;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+">
+  <a 
+    href="https://wa.me/3440301412" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    aria-label="Mandami un messaggio su WhatsApp"
+    style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25d366;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.6);
+      margin-bottom: 1rem;
+      transition: background-color 0.3s ease;
+    "
+    onmouseover="this.style.backgroundColor='#1ebe57'"
+    onmouseout="this.style.backgroundColor='#25d366'"
+  >
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+      alt="WhatsApp" 
+      style="width: 24px; height: 24px; object-fit: contain;"
+    />
+    Mandami un messaggio
   </a>
 
-  <footer style="background: #0f172a; padding: 5rem 1rem 3rem 1rem; text-align: center !important;">
-    <p style="margin-bottom: 1rem; font-size: 0.65rem !important; color: #cbd5e1 !important; text-align: center !important;">
-      © 2025 DSFabio digital – Tutti i diritti riservati
-    </p>
-    <a href="index.html" style="display: inline-block !important; padding: 0.5rem 1.2rem !important; font-size: 0.75rem !important; background-color: #facc15 !important; color: #1f2937 !important; border-radius: 8px !important; font-weight: 600 !important; text-decoration: none !important; box-shadow: 0 4px 10px rgba(250,204,21,0.2) !important; transition: background-color 0.3s ease !important;">
-      Torna alla home
-    </a>
-  </footer>
-  
+  <p style="margin: 0;">
+    © 2025 DSFabio digital – Tutti i diritti riservati
+  </p>
+</footer>
 
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    once: true,
-    duration: 700,
-    easing: 'ease-out-cubic',
-    startEvent: 'DOMContentLoaded',
-    disable: window.innerWidth < 768 // disabilita su mobile per massima stabilità
-  });
-</script>
+
 </body>
 </html>

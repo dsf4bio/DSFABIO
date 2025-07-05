@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+</head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prezzi Menu Digitale</title>
@@ -40,8 +41,161 @@
     footer{text-align:center;font-size:.9rem;padding:2rem 1rem;background:#0b1623;color:#bbb;}
     @media(max-width:768px){.pricing-card{width:100%;}}
   </style>
+  </script>
 </head>
 <body>
+  <nav class="navbar" role="navigation" aria-label="Menu principale">
+    <div class="logo-nav" aria-label="Logo DSFabio Digital">
+      <a href="index.html" style="color: var(--primary); text-decoration: none;">DSFabio<span style="color: var(--white); font-style: italic; margin-left: 4px;">Digital</span></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks" aria-hidden="true">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#demo-session">Demo gratuita</a></li>
+      <li><a href="#prezzi">Prezzi</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contatti</a></li>
+    </ul>
+  </nav>
+  
+  
+  <style>
+    :root {
+      --primary: #facc15;
+      --primary-dark: #eab308;
+      --bg-dark: #111827;
+      --white: #fff;
+    }
+    .navbar {
+      background: var(--bg-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    .logo-nav {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      user-select: none;
+      cursor: default;
+    }
+    .logo-nav span {
+      color: var(--white);
+      font-style: italic;
+      margin-left: 4px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    .nav-links li a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      color: var(--primary);
+      text-decoration: none;
+      display: block;
+    }
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      color: var(--primary-dark);
+      outline: none;
+      text-decoration: underline;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 28px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    @media (max-width: 900px) {
+      .nav-links {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 80vw;
+        max-width: 320px;
+        background: linear-gradient(120deg, var(--bg-dark) 80%, var(--primary) 120%);
+        box-shadow: -4px 0 24px rgba(0,0,0,0.7);
+        padding: 2rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .nav-links.open {
+        max-height: 500px; /* sufficiente per mostrare tutti i link */
+        opacity: 1;
+        pointer-events: auto;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+      }
+      .nav-toggle {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+  
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+      navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
+    });
+  
+    // Chiudi menu mobile al click su link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navLinks.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
+  </script>
+  
 
 <header>
   <h1>Prezzi & Pacchetti</h1>

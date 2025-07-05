@@ -1,6 +1,149 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principale">
+        <div class="logo-nav" aria-label="Logo DSFabio Digital">
+          DSFabio<span>Digital</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" aria-hidden="true">
+          <li><a href="modelli.html">Demo gratuita</a></li>
+          <li><a href="prezzi.html">Prezzi</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contatti</a></li>
+        </ul>
+      </nav>
+      
+      <style>
+        .navbar {
+          background: #111827;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+        }
+        .logo-nav {
+          font-size: 1.8rem;
+          font-weight: 900;
+          color: #facc15;
+          user-select: none;
+          cursor: default;
+        }
+        .logo-nav span {
+          color: #fff;
+          font-style: italic;
+          margin-left: 4px;
+        }
+        .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 2rem;
+          margin: 0;
+          padding: 0;
+          transition: right 0.3s ease;
+        }
+        .nav-links li a {
+          font-weight: 600;
+          font-size: 1rem;
+          padding: 0.5rem 0;
+          color: #facc15;
+          text-decoration: none;
+          display: block;
+        }
+        .nav-links li a:hover,
+        .nav-links li a:focus {
+          color: #eab308;
+          outline: none;
+          text-decoration: underline;
+        }
+        .nav-toggle {
+          display: none;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 28px;
+          height: 24px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 1100;
+        }
+        .nav-toggle span {
+          display: block;
+          height: 3px;
+          width: 100%;
+          background: #facc15;
+          border-radius: 3px;
+          transition: all 0.3s ease;
+        }
+        .nav-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 6px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+        @media (max-width: 900px) {
+          .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100vw;
+            width: 80vw;
+            max-width: 320px;
+            height: 100vh;
+            background: linear-gradient(120deg, #111827 80%, #facc15 120%);
+            flex-direction: column;
+            gap: 1.8rem;
+            align-items: flex-start;
+            padding: 4.5rem 2rem 2rem 2rem;
+            box-shadow: -4px 0 24px rgba(0,0,0,0.7);
+            transition: right 0.4s cubic-bezier(.45,1.2,.45,1);
+            z-index: 1050;
+          }
+          .nav-links.open {
+            right: 0;
+          }
+          .nav-toggle {
+            display: flex;
+          }
+        }
+      </style>
+      
+      <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('open');
+          navToggle.classList.toggle('active');
+          navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+          navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
+        });
+        // Chiudi menu mobile al click su link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (navLinks.classList.contains('open')) {
+              navLinks.classList.remove('open');
+              navToggle.classList.remove('active');
+              navToggle.setAttribute('aria-expanded', 'false');
+              navLinks.setAttribute('aria-hidden', 'true');
+            }
+          });
+        });
+      </script>
+
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DSFabio Digital – Soluzioni per Ristorazione</title>
@@ -425,9 +568,9 @@
     </div>
   </section>
 
-  <!-- Why Choose Section -->
-  <section id="why-choose" aria-label="Perché scegliere DSFabio Digital" data-aos="fade-up">
-    <h2>Perché scegliere DSFabio Digital</h2>
+  <!-- Why Choose me Section -->
+  <section id="why-choose" aria-label="Perché scegliere ME?" data-aos="fade-up">
+    <h2>Perché scegliere ME?</h2>
     <div class="why-grid">
       <div class="why-item" tabindex="0">
         <div class="why-icon"><i class="fas fa-bolt"></i></div>
@@ -465,8 +608,8 @@
               </div>
               <div class="flip-back">
                 <div class="flip-icon"><i class="fas fa-qrcode"></i></div>
-                <p>Menu consultabile da QR Code, semplice e veloce.</p>
-                <a href="modelli.html" class="btn-primary">Prova il modello</a>
+                <p>Menu Digitale con accesso da QR Code, semplice, veloce e smart</p>
+                <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
               </div>
             </div>
           </div>
@@ -475,12 +618,12 @@
             <div class="flip-inner">
               <div class="flip-front">
                 <img src="https://i.postimg.cc/0Q7fH4rn/mennn.jpg" alt="WhatsApp" class="flip-avatar" />
-                <h3>Menu + WhatsApp</h3>
+                <h3>Menu con ordini su WhatsApp</h3>
               </div>
               <div class="flip-back">
                 <div class="flip-icon"><i class="fab fa-whatsapp"></i></div>
-                <p>Ordina dal tavolo via WhatsApp, senza errori.</p>
-                <a href="modelli.html" class="btn-primary">Prova il modello</a>
+                <p>Il cliente ordina dal proprio tavolo via WhatsApp, senza errori.</p>
+                <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
               </div>
             </div>
           </div>
@@ -489,12 +632,12 @@
             <div class="flip-inner">
               <div class="flip-front">
                 <img src="https://i.postimg.cc/W40NCLBd/upsell.webp" alt="Upsell" class="flip-avatar" />
-                <h3>Menu + Upsell</h3>
+                <h3>Menu con ordini su WhatSapp + Upsell</h3>
               </div>
               <div class="flip-back">
                 <div class="flip-icon"><i class="fas fa-lightbulb"></i></div>
-                <p>Suggerimenti smart per aumentare lo scontrino medio.</p>
-                <a href="modelli.html" class="btn-primary">Prova il modello</a>
+                <p>Suggerimenti durante l'ordine per vendere di più senza sforzo.</p>
+                <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
               </div>
             </div>
           </div>
@@ -653,12 +796,12 @@
 });
 </script>
 
-  <!-- Perché scegliere un menu digitale? -->
+  <!--Perché ti serve un menu digitale? -->
 
-  <section id="benefici" aria-label="Perché scegliere un menu digitale"
+  <section id="benefici" aria-label="Perché ti serve un menu digitale?"
   style="background-color:#111827; padding:2rem 5vw; width:100%; margin: 0 0 4rem 0; color:#fff; font-family: 'Inter', sans-serif;">
   <h2 style="color:#facc15; font-weight: 800; font-size: 2.25rem; margin-bottom:2.5rem; letter-spacing:1.5px; text-align:center;">
-    Perché scegliere un menu digitale?
+    Perché ti serve un menu digitale?
   </h2>
   <ul style="list-style:none; padding:0; max-width:900px; margin:0 auto; font-size:1.15rem; line-height:1.7; font-weight: 500;">
     <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
@@ -667,7 +810,7 @@
       </svg>
       <div>
         <strong style="font-weight: 700;">Aumenti lo scontrino medio</strong><br />
-        Suggerimenti automatici che invogliano il cliente ad aggiungere prodotti, aumentando i guadagni senza fatica.
+        Suggerimenti automatici che invogliano il cliente ad aggiungere prodotti, aumentando i guadagni senza sforzo.
       </div>
     </li>
     <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
@@ -684,8 +827,8 @@
         <path d="M20 6L9 17L4 12" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div>
-        <strong style="font-weight: 700;">Modifichi il menu in tempo reale</strong><br />
-        Cambi piatti e prezzi in un clic, senza ristampe o errori.
+        <strong style="font-weight: 700;">Modifiche al menu in tempo reale</strong><br />
+        Aggiungi nuovi prodotti e aggiorna i prezzi con un clic, senza costi di ristampa.
       </div>
     </li>
     <li style="display:flex; align-items:flex-start; margin-bottom:1.8rem;">
@@ -709,19 +852,37 @@
   </ul>
 </section>
 <section style="background: #1f2937; color: #facc15; padding: 3rem 1rem; text-align: center;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem;">Contattami ora</h2>
+  <h2 style="font-size: 2rem; margin-bottom: 1rem;">Prova il servizio gratis</h2>
   <p style="margin: 0 auto 2rem auto; max-width: 500px; font-size: 1rem;">
-Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo per te in soli 2 giorni.
+Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo io per te in soli 2 giorni.
   </p>
   
   
-  <a href="https://wa.me/393440301412" class="btn-primary">Scrivimi su WhatsApp</a>
+  <a href="modelli.html" class="btn-primary">VAI E SCEGLI IL TUO MENU</a>
 </section>
 
-<section style="height: 100px; background: linear-gradient(to top, #1f2937, transparent);"></section>
-<footer style="text-align: center; padding: 2rem 1rem; font-size: 0.9rem; color: #888;">
-  © 2025 DSFabio digital - Tutti i diritti riservati
-</footer>
+<style>
+  .whatsapp-footer-btn {
+    margin-top: 2rem;
+    background-color: #47e744;
+    color: white;
+    border-radius: 32px;
+    padding: 0.7rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-footer-btn:hover,
+  .whatsapp-footer-btn:focus {
+    background-color: #334155;
+  }
+</style>
+
   <!-- Script animazioni -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -731,6 +892,77 @@ Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo per te 
     });
   </script>
 
+<!-- FOOTER + PULSANTE WHATSAPP + COPYRIGHT -->
+<footer style="padding:2rem 1rem;text-align:center;background:#0A1931;color:#fff;">
+  <button id="contactBtn" style="background:#c1a12c;color:#ffffff;font-weight:700;padding:1rem 2rem;font-size:1rem;border:none;border-radius:50px;cursor:pointer;transition:transform 0.2s;">
+    💬 Contattaci
+  </button>
+  <p style="margin-top:1.5rem;font-size:0.95rem;color:#ccc;">&copy; 2025 Dsfabio Digital. Tutti i diritti riservati.</p>
+</footer>
 
+<!-- MODALE CONTATTO -->
+<div id="contactModal" style="position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;z-index:9999;">
+  <div style="background:#2a2a2f;padding:2rem;border-radius:16px;max-width:420px;width:90%;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+    <span id="closeModal" style="position:absolute;top:10px;right:14px;font-size:1.5rem;font-weight:bold;cursor:pointer;color:#ff9f04;">&times;</span>
+    <h2 style="margin-top:0;font-size:1.4rem;color:#ffffff;">Invia un messaggio</h2>
+    <form id="contactForm">
+      <input type="text" id="name" required placeholder="Il tuo nome" style="width:100%;margin-top:1rem;padding:0.75rem;border:1px solid #ffffff;border-radius:8px;font-size:1rem;" />
+      <input type="email" id="email" required placeholder="La tua email" style="width:100%;margin-top:1rem;padding:0.75rem;border:1px solid #ffdb4a;border-radius:8px;font-size:1rem;" />
+      <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..." style="width:100%;margin-top:1rem;padding:0.75rem;border:1px solid hsl(0, 100%, 99%);border-radius:8px;font-size:1rem;resize:vertical;min-height:140px;"></textarea>
+      <div id="charCount" style="font-size:0.85rem;color:#ffffff;text-align:right;margin-top:2px;">0 / 700</div>
+      <button type="submit" style="margin-top:1.5rem;background:#55ff12;color:#fff;border:none;padding:0.75rem 1.5rem;font-size:1rem;border-radius:50px;cursor:pointer;font-weight:600;width:100%;">
+        Invia su WhatsApp
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  const modal = document.getElementById("contactModal");
+  const openBtn = document.getElementById("contactBtn");
+  const closeBtn = document.getElementById("closeModal");
+  const form = document.getElementById("contactForm");
+  const msgField = document.getElementById("userMsg");
+  const charCount = document.getElementById("charCount");
+
+  openBtn.addEventListener("click", () => {
+    modal.style.opacity = "1";
+    modal.style.pointerEvents = "auto";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.opacity = "0";
+    modal.style.pointerEvents = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.opacity = "0";
+      modal.style.pointerEvents = "none";
+    }
+  });
+
+  msgField.addEventListener("input", () => {
+    charCount.textContent = `${msgField.value.length} / 700`;
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = msgField.value.trim();
+
+    const header = "**Nuovo messaggio dal sito web**";
+    const body = `${header}\n👤 Nome: ${name}\n📧 Email: ${email}\n💬 Messaggio:\n\n${message}`;
+    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+    window.open(url, "_blank");
+
+    form.reset();
+    charCount.textContent = "0 / 700";
+    modal.style.opacity = "0";
+    modal.style.pointerEvents = "none";
+  });
+</script>
 </body>
 </html>

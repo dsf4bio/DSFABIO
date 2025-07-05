@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prezzi Menu Digitale</title>
+  <meta name="description" content="Tre pacchetti chiari, 15 giorni di prova gratuita e tutto il valore che serve per far crescere il tuo locale.">
+  <style>
+    body{margin:0;font-family:system-ui,sans-serif;background:#0d1b2a;color:#f8f9fa;}
+    header{padding:4rem 1rem 2rem;text-align:center;}
+    header h1{font-size:2.5rem;color:#ffc107;margin-bottom:1rem;}
+    header p{font-size:1.1rem;max-width:600px;margin:0 auto;color:#cfd8dc;}
+    /*---------- Pricing ----------*/
+    .pricing-section{padding:3rem 1rem;}
+    .pricing-title{text-align:center;font-size:2rem;margin-bottom:2rem;}
+    .pricing-cards{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;}
+    .pricing-card{background:#112240;border:1px solid #1e2d3d;border-radius:1rem;padding:2rem;width:320px;position:relative;display:flex;flex-direction:column;transition:.3s;}
+    .pricing-card:hover{transform:translateY(-8px);border-color:#ffc107;}
+    .pricing-card h3{font-size:1.2rem;margin-bottom:.5rem;color:#ffc107;}
+    .price{font-size:2.2rem;font-weight:700;margin:1rem 0;}
+    .price span{font-size:.8rem;font-weight:400;}
+    .features{list-style:none;margin:1rem 0 2rem;line-height:1.6;}
+    .features li{display:flex;align-items:center;}
+    .features span{margin-right:.5rem;font-size:1.2rem;}
+    .btn-demo{display:block;text-align:center;background:#25d366;color:#fff;padding:.9rem 1.2rem;border-radius:.6rem;font-weight:600;text-decoration:none;}
+    .btn-demo:hover{filter:brightness(1.1);}
+    .featured{border-color:#ffc107;}
+    .badge{position:absolute;top:-12px;right:16px;background:#ffc107;color:#0d1b2a;padding:.2rem .8rem;border-radius:999px;font-size:.75rem;font-weight:700;}
+    /*---------- Form ----------*/
+    .contact-section{background:#102030;padding:3rem 1rem;margin-top:4rem;}
+    .contact-section h2{text-align:center;margin-bottom:1.5rem;font-size:2rem;color:#ffc107;}
+    form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;}
+    input,textarea{padding:.8rem;border:1px solid #334;background:#0d1b2a;color:#fff;border-radius:.4rem;font-size:1rem;}
+    input:focus,textarea:focus{outline:2px solid #ffc107;}
+    button{background:#25d366;color:#fff;padding:.9rem;border:none;font-weight:600;border-radius:.5rem;cursor:pointer;}
+    button:hover{filter:brightness(1.1);}
+    /*---------- Note prezzo ----------*/
+    .value-note{padding:3rem 1rem;text-align:center;max-width:800px;margin:0 auto;line-height:1.6;color:#cfd8dc;}
+    .value-note h2{color:#ffc107;margin-bottom:1rem;font-size:1.8rem;}
+    footer{text-align:center;font-size:.9rem;padding:2rem 1rem;background:#0b1623;color:#bbb;}
+    @media(max-width:768px){.pricing-card{width:100%;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Prezzi & Pacchetti</h1>
+  <p>15 giorni di prova gratuita, nessun costo nascosto e supporto completo. Scegli oggi il pacchetto che farà crescere il tuo locale.</p>
+</header>
+
+<section class="pricing-section">
+  <h2 class="pricing-title">Confronta i Pacchetti</h2>
+  <div class="pricing-cards">
+    <!-- Base -->
+    <article class="pricing-card">
+      <h3>Menu Digitale Base</h3>
+      <p class="price">99€<span>/anno</span></p>
+      <ul class="features">
+        <li><span>✅</span> QR Code dinamico</li>
+        <li><span>✅</span> Menu aggiornabile in tempo reale</li>
+        <li><span>✅</span> Hosting &amp; dominio inclusi</li>
+        <li><span>✅</span> Modifiche illimitate</li>
+        <li><span>✅</span> Accesso immediato via link/QR</li>
+        <li><span>✅</span> 15 giorni di prova gratuita</li>
+        <li><span>❌</span> Ordini via WhatsApp</li>
+        <li><span>❌</span> Suggerimenti Upsell</li>
+      </ul>
+      <a href="https://wa.me/39440301412" class="btn-demo" target="_blank">Richiedi demo</a>
+    </article>
+
+    <!-- WhatsApp -->
+    <article class="pricing-card featured">
+      <h3>Ordini su WhatsApp</h3>
+      <p class="price">249€<span>/anno</span></p>
+      <ul class="features">
+        <li><span>✅</span> QR Code dinamico</li>
+        <li><span>✅</span> Menu aggiornabile in tempo reale</li>
+        <li><span>✅</span> Hosting &amp; dominio inclusi</li>
+        <li><span>✅</span> Modifiche illimitate</li>
+        <li><span>✅</span> Accesso immediato via link/QR</li>
+        <li><span>✅</span> 15 giorni di prova gratuita</li>
+        <li><span>✅</span> Ordini via WhatsApp</li>
+        <li><span>❌</span> Suggerimenti Upsell</li>
+      </ul>
+      <a href="https://wa.me/393440301412" class="btn-demo" target="_blank">Richiedi demo</a>
+      <span class="badge">Più scelto</span>
+    </article>
+
+    <!-- Upsell -->
+    <article class="pricing-card">
+      <h3>WhatsApp + Upsell</h3>
+      <p class="price">289€<span>/anno</span></p>
+      <ul class="features">
+        <li><span>✅</span> QR Code dinamico</li>
+        <li><span>✅</span> Menu aggiornabile in tempo reale</li>
+        <li><span>✅</span> Hosting &amp; dominio inclusi</li>
+        <li><span>✅</span> Modifiche illimitate</li>
+        <li><span>✅</span> Accesso immediato via link/QR</li>
+        <li><span>✅</span> 15 giorni di prova gratuita</li>
+        <li><span>✅</span> Ordini via WhatsApp</li>
+        <li><span>✅</span> Suggerimenti Upsell</li>
+      </ul>
+      <a href="https://wa.me/393440301412" class="btn-demo" target="_blank">Richiedi demo</a>
+    </article>
+  </div>
+</section>
+
+<section class="contact-section">
+  <h2>Contattaci via WhatsApp</h2>
+  <form id="waForm">
+    <input type="text" id="nome" placeholder="Il tuo nome" required>
+    <input type="email" id="email" placeholder="La tua email" required>
+    <input type="text" id="modello" placeholder="Modello (facoltativo)">
+    <textarea id="messaggio" rows="5" maxlength="700" placeholder="Scrivi la tua richiesta (max 700 caratteri)" required></textarea>
+    <button type="submit">Invia su WhatsApp</button>
+  </form>
+</section>
+
+<section class="value-note">
+  <h2>Il vero valore dietro il prezzo</h2>
+  <p>Paghi una sola volta l’anno e ti liberi per 12 mesi da ogni pensiero tecnico: hosting, dominio, aggiornamenti e assistenza sono inclusi. Il rinnovo è automatico: nessun rischio di blackout del menù e zero costi imprevisti.</p>
+  <p>Così puoi concentrarti su ciò che conta — offrire un’esperienza migliore ai tuoi clienti — mentre noi ci occupiamo di tutto il resto. Il costo? Meno di un caffè al giorno, ma il valore che ottieni in termini di tempo risparmiato, vendite potenziali e immagine professionale è decisamente maggiore.</p>
+</section>
+
+<footer>&copy; 2025 DSFabio Digital – Tutti i diritti riservati</footer>
+
+<script>
+const numeroWA = "393440301412"; // <-- inserisci qui il tuo numero con prefisso internazionale
+
+document.getElementById("waForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const nome = encodeURIComponent(document.getElementById("nome").value);
+  const email = encodeURIComponent(document.getElementById("email").value);
+  const modello = encodeURIComponent(document.getElementById("modello").value);
+  const msg = encodeURIComponent(document.getElementById("messaggio").value);
+
+  let testo = `Ciao, sono ${nome}.%0AEmail: ${email}%0A`;
+  if(modello) testo += `Modello: ${modello}%0A`;
+  testo += `Messaggio:%0A${msg}`;
+
+  window.open(`https://wa.me/${numeroWA}?text=${testo}`, '_blank');
+});
+</script>
+
+</body>
+</html>

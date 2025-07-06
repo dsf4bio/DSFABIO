@@ -1068,28 +1068,23 @@ Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo io per 
   });
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = msgField.value.trim();
+  e.preventDefault();
 
-    const header = "*Nuovo messaggio dal sito web*";
-const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
-const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = msgField.value.trim();
 
-const newWindow = window.open("", "_blank");
-if (newWindow) {
-  newWindow.location.href = url;
-} else {
-  window.location.href = url;
-}
+  const header = "*Nuovo messaggio dal sito web*";
+  const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
+  const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
 
-form.reset();
-charCount.textContent = "0 / 700";
-modal.style.opacity = "0";
-modal.style.pointerEvents = "none";
-  });
+  window.location.href = url; 
+
+  form.reset();
+  charCount.textContent = "0 / 700";
+  modal.style.opacity = "0";
+  modal.style.pointerEvents = "none";
+});
 </script>
-
 </body>
 </html>

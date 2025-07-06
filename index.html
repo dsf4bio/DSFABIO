@@ -604,7 +604,7 @@
     <!-- Demo Section -->
  
     <section id="demo-session" style="background:linear-gradient(135deg,#facc15 0%,#111827 100%);padding:2.5rem 0;">
-        <h2 style="color:#1f2937;font-size:1.8rem;font-weight:700;text-align:center;letter-spacing:1.2px;margin-bottom:1.5rem;">Prova i Modelli Demo</h2>
+        <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:1.5rem;">Prova i Modelli Demo</h2>
         <div class="demo-flip-grid">
           <!-- Card 1 -->
           <div class="flip-card">
@@ -1074,14 +1074,20 @@ Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo io per 
     const message = msgField.value.trim();
 
     const header = "*Nuovo messaggio dal sito web*";
-    const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
-    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-    window.open(url, "_blank");
+const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
+const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
 
-    form.reset();
-    charCount.textContent = "0 / 700";
-    modal.style.opacity = "0";
-    modal.style.pointerEvents = "none";
+const newWindow = window.open("", "_blank");
+if (newWindow) {
+  newWindow.location.href = url;
+} else {
+  window.location.href = url;
+}
+
+form.reset();
+charCount.textContent = "0 / 700";
+modal.style.opacity = "0";
+modal.style.pointerEvents = "none";
   });
 </script>
 

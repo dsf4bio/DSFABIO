@@ -55,8 +55,8 @@
     </button>
     <ul class="nav-links" id="navLinks" aria-hidden="true">
       <li><a href="index.html">Home</a></li>
-      <li><a href="#demo-session">Demo gratuita</a></li>
-      <li><a href="#prezzi">Prezzi</a></li>
+      <li><a href="modelli.html">Demo gratuita</a></li>
+      <li><a href="prezzi.html">Prezzi</a></li>
       <li><a href="#privacy">Privacy</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contatti</a></li>
@@ -259,42 +259,193 @@
   </div>
 </section>
 
-<section class="contact-section">
-  <h2>Contattaci via WhatsApp</h2>
-  <form id="waForm">
-    <input type="text" id="nome" placeholder="Il tuo nome" required>
-    <input type="email" id="email" placeholder="La tua email" required>
-    <input type="text" id="modello" placeholder="Modello (facoltativo)">
-    <textarea id="messaggio" rows="5" maxlength="700" placeholder="Scrivi la tua richiesta (max 700 caratteri)" required></textarea>
-    <button type="submit">Invia su WhatsApp</button>
-  </form>
-</section>
 
-<section class="value-note">
-  <h2>Il vero valore dietro il prezzo</h2>
-  <p>Paghi una sola volta l’anno e ti liberi per 12 mesi da ogni pensiero tecnico; hosting, dominio, aggiornamenti e assistenza sono inclusi. Il rinnovo è automatico: nessun rischio di blackout del menù e zero costi imprevisti.</p>
-  <p>Così puoi concentrarti su ciò che conta, offrire un’esperienza migliore ai tuoi clienti, mentre noi ci occupiamo di tutto il resto. Il costo? Meno di un caffè al giorno, ma il valore che ottieni in termini di tempo risparmiato, vendite potenziali e immagine professionale è decisamente maggiore.</p>
-</section>
+<!-- FOOTER + PULSANTE WHATSAPP + COPYRIGHT -->
+<footer style="padding:1.5rem 1rem; text-align:center; background:#0d1b2a; color:#fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <button id="contactBtn" 
+    style="
+      background: #0d1b2a; /* blu notte */
+      color: #fff;
+      font-weight: 700;
+      padding: 0.6rem 1.8rem;
+      font-size: 1rem;
+      border: 2px solid #facc15;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(250, 204, 21, 0.7);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    "
+    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 5px 18px rgba(250, 204, 21, 0.9)';"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 3px 10px rgba(250, 204, 21, 0.7)';"
+  >
+    💬 Contattaci
+  </button>
+  <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #ccc; letter-spacing: 0.02em;">
+    &copy; 2025 DSFabio Digital. Tutti i diritti riservati.
+  </p>
+</footer>
 
-<footer>&copy; 2025 DSFabio Digital – Tutti i diritti riservati</footer>
+<!-- MODALE CONTATTO -->
+<div id="contactModal" 
+  style="
+    position: fixed; inset: 0; 
+    background: rgba(0,0,0,0.85); 
+    display: flex; align-items: center; justify-content: center; 
+    opacity: 0; pointer-events: none; 
+    transition: opacity 0.35s ease;
+    z-index: 9999;
+  "
+>
+  <div 
+    style="
+      background: #121217;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      max-width: 440px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      color: #f0f0f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <button id="closeModal" 
+      aria-label="Chiudi modale" 
+      style="
+        position: absolute; top: 15px; right: 18px; 
+        background: transparent; border: none; 
+        font-size: 1.8rem; font-weight: 700; 
+        color: #facc15; 
+        cursor: pointer;
+        transition: color 0.3s ease;
+        user-select: none;
+      "
+      onmouseover="this.style.color='#fff';"
+      onmouseout="this.style.color='#facc15';"
+    >
+      &times;
+    </button>
+    <h2 style="margin-top: 0; font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: 0.02em;">
+      Invia un messaggio
+    </h2>
+    <form id="contactForm" style="margin-top: 1rem; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 1rem;">
+      <input type="text" id="name" required placeholder="Il tuo nome" 
+        style="
+          width: 100%; padding: 0.6rem 1rem; 
+          border: 1px solid #0d1b2a; /* blu notte */
+          border-radius: 6px; 
+          font-size: 1rem; background: #1a1a1f; color: #fff; 
+          transition: border-color 0.3s ease;
+          box-sizing: border-box;
+        "
+        onfocus="this.style.borderColor='#facc15';" 
+        onblur="this.style.borderColor='#0d1b2a';"
+      />
+      <input type="email" id="email" required placeholder="La tua email" 
+        style="
+          width: 100%; padding: 0.6rem 1rem; 
+          border: 1px solid #fff; /* bianco */
+          border-radius: 6px; 
+          font-size: 1rem; background: #1a1a1f; color: #fff; 
+          transition: border-color 0.3s ease;
+          box-sizing: border-box;
+        "
+        onfocus="this.style.borderColor='#facc15';" 
+        onblur="this.style.borderColor='#fff';"
+      />
+      <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..." 
+        style="
+          width: 100%; padding: 0.8rem 1rem; 
+          border: 1px solid #0d1b2a; /* blu notte */
+          border-radius: 6px; 
+          font-size: 1rem; background: #1a1a1f; color: #fff; 
+          resize: vertical; min-height: 140px; 
+          transition: border-color 0.3s ease;
+          box-sizing: border-box;
+        "
+        onfocus="this.style.borderColor='#facc15';" 
+        onblur="this.style.borderColor='#0d1b2a';"
+      ></textarea>
+      <div id="charCount" 
+        style="font-size: 0.85rem; color: #facc15; text-align: right; margin-top: 4px; letter-spacing: 0.02em;">
+        0 / 700
+      </div>
+      <button type="submit" 
+        style="
+          margin-top: 1.5rem; background: #25d366; /* verde WhatsApp */
+          color: #0d1b2a; border: none; padding: 0.7rem 1.5rem; 
+          font-size: 1rem; border-radius: 40px; cursor: pointer; 
+          font-weight: 700; width: 100%; 
+          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.7);
+          transition: background 0.3s ease, box-shadow 0.3s ease;
+        "
+        onmouseover="this.style.background='#1ebe57'; this.style.boxShadow='0 8px 24px rgba(30, 190, 87, 0.9)';"
+        onmouseout="this.style.background='#25d366'; this.style.boxShadow='0 6px 18px rgba(37, 211, 102, 0.7)';"
+      >
+        Invia su WhatsApp
+      </button>
+    </form>
+  </div>
+</div>
 
+<!-- SCRIPT -->
 <script>
-const numeroWA = "393440301412"; // <-- inserisci qui il tuo numero con prefisso internazionale
+  const modal = document.getElementById("contactModal");
+  const openBtn = document.getElementById("contactBtn");
+  const closeBtn = document.getElementById("closeModal");
+  const form = document.getElementById("contactForm");
+  const msgField = document.getElementById("userMsg");
+  const charCount = document.getElementById("charCount");
 
-document.getElementById("waForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const nome = encodeURIComponent(document.getElementById("nome").value);
-  const email = encodeURIComponent(document.getElementById("email").value);
-  const modello = encodeURIComponent(document.getElementById("modello").value);
-  const msg = encodeURIComponent(document.getElementById("messaggio").value);
+  openBtn.addEventListener("click", () => {
+    modal.style.opacity = "1";
+    modal.style.pointerEvents = "auto";
+  });
 
-  let testo = `Ciao, sono ${nome}.%0AEmail: ${email}%0A`;
-  if(modello) testo += `Modello: ${modello}%0A`;
-  testo += `Messaggio:%0A${msg}`;
+  closeBtn.addEventListener("click", () => {
+    modal.style.opacity = "0";
+    modal.style.pointerEvents = "none";
+  });
 
-  window.open(`https://wa.me/${numeroWA}?text=${testo}`, '_blank');
-});
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.opacity = "0";
+      modal.style.pointerEvents = "none";
+    }
+  });
+
+  msgField.addEventListener("input", () => {
+    charCount.textContent = `${msgField.value.length} / 700`;
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = msgField.value.trim();
+
+    const header = "*Nuovo messaggio dal sito web*";
+    const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
+    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+    window.open(url, "_blank");
+
+    form.reset();
+    charCount.textContent = "0 / 700";
+    modal.style.opacity = "0";
+    modal.style.pointerEvents = "none";
+  });
 </script>
+
 
 </body>
 </html>

@@ -606,24 +606,137 @@
   </script>
 
 <!-- FOOTER + PULSANTE WHATSAPP + COPYRIGHT -->
-<footer style="padding:2rem 1rem;text-align:center;background:#0A1931;color:#fff;">
-  <button id="contactBtn" style="background:#c1a12c;color:#ffffff;font-weight:700;padding:1rem 2rem;font-size:1rem;border:none;border-radius:50px;cursor:pointer;transition:transform 0.2s;">
+<footer style="padding:1.5rem 1rem; text-align:center; background:#0d1b2a; color:#fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <button id="contactBtn" 
+    style="
+      background: #0d1b2a; /* blu notte */
+      color: #fff;
+      font-weight: 700;
+      padding: 0.6rem 1.8rem;
+      font-size: 1rem;
+      border: 2px solid #facc15;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(250, 204, 21, 0.7);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    "
+    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 5px 18px rgba(250, 204, 21, 0.9)';"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 3px 10px rgba(250, 204, 21, 0.7)';"
+  >
     💬 Contattaci
   </button>
-  <p style="margin-top:1.5rem;font-size:0.95rem;color:#ccc;">&copy; 2025 Dsfabio Digital. Tutti i diritti riservati.</p>
+  <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #ccc; letter-spacing: 0.02em;">
+    &copy; 2025 DSFabio Digital. Tutti i diritti riservati.
+  </p>
 </footer>
 
 <!-- MODALE CONTATTO -->
-<div id="contactModal" style="position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;z-index:9999;">
-  <div style="background:#2a2a2f;padding:2rem;border-radius:16px;max-width:420px;width:90%;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
-    <span id="closeModal" style="position:absolute;top:10px;right:14px;font-size:1.5rem;font-weight:bold;cursor:pointer;color:#ff9f04;">&times;</span>
-    <h2 style="margin-top:0;font-size:1.4rem;color:#ffffff;">Invia un messaggio</h2>
-    <form id="contactForm">
-      <input type="text" id="name" required placeholder="Il tuo nome" style="width:100%;margin-top:1rem;padding:0.75rem;border:1px solid #ffffff;border-radius:8px;font-size:1rem;" />
-      <input type="email" id="email" required placeholder="La tua email" style="width:100%;margin-top:1rem;padding:0.75rem;border:1px solid #ffdb4a;border-radius:8px;font-size:1rem;" />
-      <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..." style="width:100%;margin-top:1rem;padding:0.75rem;border:1px solid hsl(0, 100%, 99%);border-radius:8px;font-size:1rem;resize:vertical;min-height:140px;"></textarea>
-      <div id="charCount" style="font-size:0.85rem;color:#ffffff;text-align:right;margin-top:2px;">0 / 700</div>
-      <button type="submit" style="margin-top:1.5rem;background:#55ff12;color:#fff;border:none;padding:0.75rem 1.5rem;font-size:1rem;border-radius:50px;cursor:pointer;font-weight:600;width:100%;">
+<div id="contactModal" 
+  style="
+    position: fixed; inset: 0; 
+    background: rgba(0,0,0,0.85); 
+    display: flex; align-items: center; justify-content: center; 
+    opacity: 0; pointer-events: none; 
+    transition: opacity 0.35s ease;
+    z-index: 9999;
+  "
+>
+  <div 
+    style="
+      background: #121217;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      max-width: 440px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      color: #f0f0f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <button id="closeModal" 
+      aria-label="Chiudi modale" 
+      style="
+        position: absolute; top: 15px; right: 18px; 
+        background: transparent; border: none; 
+        font-size: 1.8rem; font-weight: 700; 
+        color: #facc15; 
+        cursor: pointer;
+        transition: color 0.3s ease;
+        user-select: none;
+      "
+      onmouseover="this.style.color='#fff';"
+      onmouseout="this.style.color='#facc15';"
+    >
+      &times;
+    </button>
+    <h2 style="margin-top: 0; font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: 0.02em;">
+      Invia un messaggio
+    </h2>
+    <form id="contactForm" style="margin-top: 1rem; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 1rem;">
+      <input type="text" id="name" required placeholder="Il tuo nome" 
+        style="
+          width: 100%; padding: 0.6rem 1rem; 
+          border: 1px solid #0d1b2a; /* blu notte */
+          border-radius: 6px; 
+          font-size: 1rem; background: #1a1a1f; color: #fff; 
+          transition: border-color 0.3s ease;
+          box-sizing: border-box;
+        "
+        onfocus="this.style.borderColor='#facc15';" 
+        onblur="this.style.borderColor='#0d1b2a';"
+      />
+      <input type="email" id="email" required placeholder="La tua email" 
+        style="
+          width: 100%; padding: 0.6rem 1rem; 
+          border: 1px solid #fff; /* bianco */
+          border-radius: 6px; 
+          font-size: 1rem; background: #1a1a1f; color: #fff; 
+          transition: border-color 0.3s ease;
+          box-sizing: border-box;
+        "
+        onfocus="this.style.borderColor='#facc15';" 
+        onblur="this.style.borderColor='#fff';"
+      />
+      <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..." 
+        style="
+          width: 100%; padding: 0.8rem 1rem; 
+          border: 1px solid #0d1b2a; /* blu notte */
+          border-radius: 6px; 
+          font-size: 1rem; background: #1a1a1f; color: #fff; 
+          resize: vertical; min-height: 140px; 
+          transition: border-color 0.3s ease;
+          box-sizing: border-box;
+        "
+        onfocus="this.style.borderColor='#facc15';" 
+        onblur="this.style.borderColor='#0d1b2a';"
+      ></textarea>
+      <div id="charCount" 
+        style="font-size: 0.85rem; color: #facc15; text-align: right; margin-top: 4px; letter-spacing: 0.02em;">
+        0 / 700
+      </div>
+      <button type="submit" 
+        style="
+          margin-top: 1.5rem; background: #25d366; /* verde WhatsApp */
+          color: #0d1b2a; border: none; padding: 0.7rem 1.5rem; 
+          font-size: 1rem; border-radius: 40px; cursor: pointer; 
+          font-weight: 700; width: 100%; 
+          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.7);
+          transition: background 0.3s ease, box-shadow 0.3s ease;
+        "
+        onmouseover="this.style.background='#1ebe57'; this.style.boxShadow='0 8px 24px rgba(30, 190, 87, 0.9)';"
+        onmouseout="this.style.background='#25d366'; this.style.boxShadow='0 6px 18px rgba(37, 211, 102, 0.7)';"
+      >
         Invia su WhatsApp
       </button>
     </form>
@@ -666,8 +779,8 @@
     const email = document.getElementById("email").value.trim();
     const message = msgField.value.trim();
 
-    const header = "**Nuovo messaggio dal sito web**";
-    const body = `${header}\n👤 Nome: ${name}\n📧 Email: ${email}\n💬 Messaggio:\n\n${message}`;
+    const header = "*Nuovo messaggio dal sito web*";
+    const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
     const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
     window.open(url, "_blank");
 
@@ -677,5 +790,6 @@
     modal.style.pointerEvents = "none";
   });
 </script>
+
 </body>
 </html>

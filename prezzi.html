@@ -210,11 +210,11 @@
       <h3>Menu Digitale Base</h3>
       <p class="price">99€<span>/anno</span></p>
       <ul class="features">
-        <li><span>✅</span> QR Code dinamico</li>
+        <li><span>✅</span> QR Code personalizzato</li>
         <li><span>✅</span> Menu aggiornabile in tempo reale</li>
         <li><span>✅</span> Hosting &amp; dominio inclusi</li>
         <li><span>✅</span> Modifiche illimitate</li>
-        <li><span>✅</span> Accesso immediato via link/QR</li>
+        <li><span>✅</span> Accesso immediato via QR code</li>
         <li><span>✅</span> 15 giorni di prova gratuita</li>
         <li><span>❌</span> Ordini via WhatsApp</li>
         <li><span>❌</span> Suggerimenti Upsell</li>
@@ -227,11 +227,11 @@
       <h3>Ordini su WhatsApp</h3>
       <p class="price">249€<span>/anno</span></p>
       <ul class="features">
-        <li><span>✅</span> QR Code dinamico</li>
+        <li><span>✅</span> QR Code personalizzato</li>
         <li><span>✅</span> Menu aggiornabile in tempo reale</li>
         <li><span>✅</span> Hosting &amp; dominio inclusi</li>
         <li><span>✅</span> Modifiche illimitate</li>
-        <li><span>✅</span> Accesso immediato via link/QR</li>
+        <li><span>✅</span> Accesso immediato via QR code</li>
         <li><span>✅</span> 15 giorni di prova gratuita</li>
         <li><span>✅</span> Ordini via WhatsApp</li>
         <li><span>❌</span> Suggerimenti Upsell</li>
@@ -245,11 +245,11 @@
       <h3>WhatsApp + Upsell</h3>
       <p class="price">289€<span>/anno</span></p>
       <ul class="features">
-        <li><span>✅</span> QR Code dinamico</li>
+        <li><span>✅</span> QR Code personalizzato</li>
         <li><span>✅</span> Menu aggiornabile in tempo reale</li>
         <li><span>✅</span> Hosting &amp; dominio inclusi</li>
         <li><span>✅</span> Modifiche illimitate</li>
-        <li><span>✅</span> Accesso immediato via link/QR</li>
+        <li><span>✅</span> Accesso immediato via QR code</li>
         <li><span>✅</span> 15 giorni di prova gratuita</li>
         <li><span>✅</span> Ordini via WhatsApp</li>
         <li><span>✅</span> Suggerimenti Upsell</li>
@@ -258,7 +258,6 @@
     </article>
   </div>
 </section>
-
 
 <!-- FOOTER + PULSANTE WHATSAPP + COPYRIGHT -->
 <footer style="padding:1.5rem 1rem; text-align:center; background:#0d1b2a; color:#fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -429,23 +428,23 @@
   });
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = msgField.value.trim();
+  e.preventDefault();
 
-    const header = "*Nuovo messaggio dal sito web*";
-    const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
-    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-    window.open(url, "_blank");
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = msgField.value.trim();
 
-    form.reset();
-    charCount.textContent = "0 / 700";
-    modal.style.opacity = "0";
-    modal.style.pointerEvents = "none";
-  });
+  const header = "*Nuovo messaggio dal sito web*";
+  const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
+  const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+
+  window.location.href = url; 
+
+  form.reset();
+  charCount.textContent = "0 / 700";
+  modal.style.opacity = "0";
+  modal.style.pointerEvents = "none";
+});
 </script>
-
-
 </body>
 </html>

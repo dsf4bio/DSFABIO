@@ -633,8 +633,6 @@
       once: true
     });
   </script>
-
-
 <!-- FOOTER + PULSANTE WHATSAPP + COPYRIGHT -->
 <footer style="padding:1.5rem 1rem; text-align:center; background:#0d1b2a; color:#fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <button id="contactBtn" 
@@ -804,22 +802,23 @@
   });
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = msgField.value.trim();
+  e.preventDefault();
 
-    const header = "*Nuovo messaggio dal sito web*";
-    const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
-    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-    window.open(url, "_blank");
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = msgField.value.trim();
 
-    form.reset();
-    charCount.textContent = "0 / 700";
-    modal.style.opacity = "0";
-    modal.style.pointerEvents = "none";
-  });
+  const header = "*Nuovo messaggio dal sito web*";
+  const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
+  const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+
+  window.location.href = url; 
+
+  form.reset();
+  charCount.textContent = "0 / 700";
+  modal.style.opacity = "0";
+  modal.style.pointerEvents = "none";
+});
 </script>
-
 </body>
 </html>

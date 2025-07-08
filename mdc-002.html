@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Menu Pizzeria Elegante</title>
+  <style>
+  :root {
+    --p: #6a8f3f;
+    --bg: #fffaf5;
+    --txt: #2d2d2d;
+    --sub: #5a5a5a;
+    --highlight: #a34e2d;
+    --accent: #f2e9da;
+    --light: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--txt);
+    line-height: 1.5;
+  }
+  header {
+    position: relative;
+    height: 220px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.8);
+  }
+  header .topbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+  }
+  header img.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    border: 2px solid #fff;
+  }
+  header h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  header p {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  header .cta {
+    background: var(--highlight);
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  header .cta:hover {
+    background: #87341a;
+  }
+  .container {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  .flip-card {
+    background: var(--light);
+    height: 100px;
+    perspective: 800px;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease;
+  }
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: var(--txt);
+    transition: transform .6s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-inner,
+  .flip-card.active .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border: 2px solid var(--highlight);
+    border-radius: 14px;
+    background: var(--accent);
+  }
+  .face.back {
+    background: var(--highlight);
+    color: #fff;
+    transform: rotateY(180deg);
+    font-size: .9rem;
+    padding: 10px;
+    overflow: auto;
+  }
+  .panel {
+    display: none;
+    animation: fade .5s ease forwards;
+  }
+  .panel.active {
+    display: block;
+  }
+  ul.menu {
+    list-style: none;
+    padding: 0;
+  }
+  li.menu-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 14px 0;
+    position: relative;
+  }
+  li.menu-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .menu-info {
+    flex: 1;
+  }
+  .menu-info .name {
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 4px;
+  }
+  .menu-info .desc {
+    font-size: .85em;
+    color: var(--sub);
+  }
+  .price {
+    position: absolute;
+    right: 0;
+    top: 14px;
+    font-weight: bold;
+    color: var(--highlight);
+  }
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  footer {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+    background: var(--accent);
+    color: var(--sub);
+    font-size: .85em;
+  }
+  .social {
+    margin-top: 10px;
+  }
+  .social a {
+    text-decoration: none;
+    color: var(--highlight);
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+  .social a:hover {
+    color: var(--p);
+  }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head><body>
+  <header>
+    <div class="topbar">
+      <img src="https://picsum.photos/seed/logo/100" alt="Logo" class="logo">
+    </div>
+    <div class="headline">
+      <h1>Ristorante da Fabio</h1>
+      <p>Pizzeria · Cucina Italiana · Passione dal 1998</p>
+      <a href="#cats" class="cta">Scopri il menu</a>
+    </div>
+  </header>
+  <div class="container">
+    <div class="grid" id="cats">
+      <div class="flip-card active" data-cat="pizze"><div class="flip-inner"><div class="face front">Pizze 🍕</div><div class="face back">Visualizza Pizze</div></div></div>
+      <div class="flip-card" data-cat="primi"><div class="flip-inner"><div class="face front">Primi 🥣</div><div class="face back">Visualizza Primi</div></div></div>
+      <div class="flip-card" data-cat="secondi"><div class="flip-inner"><div class="face front">Secondi 🥩</div><div class="face back">Visualizza Secondi</div></div></div>
+      <div class="flip-card" data-cat="contorni"><div class="flip-inner"><div class="face front">Contorni 🥗</div><div class="face back">Visualizza Contorni</div></div></div>
+      <div class="flip-card" data-cat="bevande"><div class="flip-inner"><div class="face front">Bevande 🍷</div><div class="face back">Visualizza Bevande</div></div></div>
+    </div>
+  
+    <div id="pizze" class="panel active">
+      <ul class="menu">
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/pizza1/80" alt="Margherita">
+          <div class="menu-info">
+            <div class="name">Margherita</div>
+            <div class="desc">Pomodoro, mozzarella, basilico</div>
+          </div>
+          <div class="price">€6</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/pizza2/80" alt="Diavola">
+          <div class="menu-info">
+            <div class="name">Diavola</div>
+            <div class="desc">Pomodoro, mozzarella, salame piccante</div>
+          </div>
+          <div class="price">€8</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/pizza3/80" alt="4 Formaggi">
+          <div class="menu-info">
+            <div class="name">Quattro Formaggi</div>
+            <div class="desc">Mozzarella, gorgonzola, fontina, parmigiano</div>
+          </div>
+          <div class="price">€9</div>
+        </li>
+      </ul>
+    </div>
+    <div id="primi" class="panel">
+      <ul class="menu">
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/pasta1/80" alt="Carbonara">
+          <div class="menu-info">
+            <div class="name">Carbonara</div>
+            <div class="desc">Uova, guanciale, pecorino romano</div>
+          </div>
+          <div class="price">€10</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/pasta2/80" alt="Amatriciana">
+          <div class="menu-info">
+            <div class="name">Amatriciana</div>
+            <div class="desc">Pomodoro, guanciale, pecorino</div>
+          </div>
+          <div class="price">€9</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/pasta3/80" alt="Pesto">
+          <div class="menu-info">
+            <div class="name">Pasta al Pesto</div>
+            <div class="desc">Pesto di basilico, pinoli, parmigiano</div>
+          </div>
+          <div class="price">€9</div>
+        </li>
+      </ul>
+    </div>
+    <div id="secondi" class="panel">
+      <ul class="menu">
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/secondo1/80" alt="Bistecca">
+          <div class="menu-info">
+            <div class="name">Bistecca</div>
+            <div class="desc">Carne di manzo alla griglia</div>
+          </div>
+          <div class="price">€15</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/secondo2/80" alt="Pollo arrosto">
+          <div class="menu-info">
+            <div class="name">Pollo Arrosto</div>
+            <div class="desc">Con erbe aromatiche e patate</div>
+          </div>
+          <div class="price">€12</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/secondo3/80" alt="Salmone">
+          <div class="menu-info">
+            <div class="name">Salmone</div>
+            <div class="desc">Filetto di salmone al forno</div>
+          </div>
+          <div class="price">€14</div>
+        </li>
+      </ul>
+    </div>
+    <div id="contorni" class="panel">
+      <ul class="menu">
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/contorno1/80" alt="Insalata mista">
+          <div class="menu-info">
+            <div class="name">Insalata Mista</div>
+            <div class="desc">Lattuga, pomodori, carote</div>
+          </div>
+          <div class="price">€4</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/contorno2/80" alt="Patate al forno">
+          <div class="menu-info">
+            <div class="name">Patate al Forno</div>
+            <div class="desc">Con rosmarino e olio d'oliva</div>
+          </div>
+          <div class="price">€5</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/contorno3/80" alt="Verdure grigliate">
+          <div class="menu-info">
+            <div class="name">Verdure Grigliate</div>
+            <div class="desc">Zucchine, peperoni, melanzane</div>
+          </div>
+          <div class="price">€6</div>
+        </li>
+      </ul>
+    </div>
+    <div id="bevande" class="panel">
+      <ul class="menu">
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/acqua/80" alt="Acqua">
+          <div class="menu-info">
+            <div class="name">Acqua Naturale/Frizzante</div>
+            <div class="desc">Bottiglia 0.5L</div>
+          </div>
+          <div class="price">€1.5</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/vino/80" alt="Vino">
+          <div class="menu-info">
+            <div class="name">Vino della casa</div>
+            <div class="desc">Bianco o rosso - Calice</div>
+          </div>
+          <div class="price">€3.5</div>
+        </li>
+        <li class="menu-item">
+          <img src="https://picsum.photos/seed/caffe/80" alt="Caffè">
+          <div class="menu-info">
+            <div class="name">Caffè</div>
+            <div class="desc">Espresso italiano</div>
+          </div>
+          <div class="price">€1.2</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <p>Via Roma 1 · Tel. 0123 456789 · P.IVA 1234567890</p>
+    <div class="social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-tripadvisor"></i></a>
+    </div>
+    <p style="margin-top:10px;font-size:.75em">* Chiedi al personale per informazioni su allergeni. Alcuni piatti possono contenere tracce di frutta a guscio, sedano o soia.</p>
+  </footer>
+  <script>
+  const cards = document.querySelectorAll('.flip-card'), panels = document.querySelectorAll('.panel');
+  cards.forEach(c => c.onclick = () => {
+    cards.forEach(card => card.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    c.classList.add('active');
+    document.getElementById(c.dataset.cat).classList.add('active');
+  });
+  </script>
+
+  <!-- Sezione offerta persuasiva + call to action -->
+<section style="background:#1e293b; color:#f8fafc; padding:4rem 2rem; font-family:'Inter', sans-serif; text-align:center;">
+  <h2 style="color:#fbbf24; font-size:2.5rem; font-weight:800; margin-bottom:1.2rem;">
+    Il tuo menu digitale pronto in 48 ore
+  </h2>
+
+  <p style="max-width:720px; margin:0 auto 1.5rem; font-size:1.15rem; line-height:1.6;">
+    Prova gratuita senza impegno. Ricevi un <strong>menu digitale personalizzato</strong> con i tuoi piatti, prezzi e QR code pronto all’uso. Pensiamo a tutto noi, in sole <strong>48 ore</strong>.
+  </p>
+
+  <div style="background:#0f172a; border-radius:16px; padding:2rem; max-width:700px; margin:2rem auto; text-align:left; box-shadow:0 0 25px rgba(0,0,0,0.3);">
+    <h3 style="color:#fbbf24; font-size:1.3rem; margin-bottom:1rem; text-align:center;">✅ Tutto incluso, MDC-002</h3>
+    <ul style="list-style:none; padding:0; font-size:1.05rem; line-height:1.7;">
+      <li>✔ Menu aggiornabile in qualsiasi momento</li>
+      <li>✔ QR code pronto da stampare e metterli sui tavoli</li>
+      <li>✔ Hosting + Dominio + Certificato SSL inclusi</li>
+      <li>✔ Nessun costo aggiuntivo o sorpresa</li>
+      <li>✔ Supporto veloce garantito entro 45 minuti</li>
+      <li>✔ Funziona su smartphone e tablet</li>
+      <li>✔ Disdici in qualsiasi momento, senza penali</li>
+    </ul>
+  </div>
+
+  <p style="max-width:720px; margin:0 auto 1.5rem; font-size:1.15rem; line-height:1.6;">
+      Alla fine della prova potrai attivare il servizio a soli <strong style="color:#fbbf24;">149€/anno</strong>, equivalente a <strong>0,40€ al giorno</strong>
+      , tutto incluso, aggiornamenti sui prezzi, aggiungere, modificare o rimuovere prodotti in qualsiasi momento.
+      <strong>Non ci sono costi nascosti</strong>, il prezzo è fisso e non cambierà mai.
+    </p>
+  
+
+  <p style="max-width:700px; margin:1.5rem auto; font-size:1.15rem;">
+    Richiedi adesso la tua <strong>prova gratuita</strong> e scopri quanto è semplice digitalizzare il tuo menu.
+  </p>
+
+  <button class="open-modal" 
+    data-codice="MDC-002" 
+    data-nome-modello="Menu digitale con ordini WhatsApp + sugerimenti"
+    style="padding:1rem 2rem; font-size:1.15rem; background:#fbbf24; color:#0f172a; font-weight:800; border:none; border-radius:10px; cursor:pointer; transition:transform 0.2s; box-shadow:0 8px 24px rgba(251,191,36,0.4);">
+    🚀 Attiva la prova gratuita
+  </button>
+
+  <div style="margin-top:2rem;">
+    <a href="modelli.html" style="color:#fbbf24; text-decoration:underline;">🔙 Torna alla scelta dei modelli</a>
+  </div>
+</section>
+
+
+<!-- Modale nascosta -->
+<div id="demo-modal" aria-hidden="true" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.9); backdrop-filter:blur(2px); z-index:1000;">
+<div style="background:#0f172a; color:#ffffff; max-width:520px; margin:6% auto; padding:2rem 2.5rem; border-radius:12px; position:relative; box-shadow:0 0 20px rgba(0,0,0,0.6);">
+  <button type="button" aria-label="Chiudi" onclick="closeModal()" 
+          style="position:absolute; top:12px; right:16px; font-size:1.6rem; background:none; border:none; color:#fbbf24; cursor:pointer;">
+    &times;
+  </button>
+
+  <h2 id="modello-titolo" style="margin-bottom:1rem; font-size:1.4rem; color:#fbbf24;">Menu digitale con ordini WhatsApp per pizzerie (MDC-002)</h2>
+
+  <form id="demo-form" style="display:flex; flex-direction:column; gap:0.8rem;">
+    <input type="hidden" id="codice-menu" name="codice">
+    <input type="hidden" id="nome-modello" name="modello">
+
+    <label for="nome">Nome *</label>
+    <input type="text" id="nome" name="nome" required style="padding:0.6rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;">
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required style="padding:0.6rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;">
+
+    <label for="messaggio">Messaggio *</label>
+    <textarea id="messaggio" name="messaggio" maxlength="700" required style="padding:0.6rem; height:110px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"></textarea>
+
+    <button type="submit" style="margin-top:0.8rem; padding:0.8rem; font-size:1rem; background:#25D366; color:#fff; border:none; border-radius:8px; cursor:pointer;">
+      📲 Invia su WhatsApp
+    </button>
+  </form>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.open-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const codice = btn.dataset.codice;
+    const modello = btn.dataset.nomeModello;
+
+    document.getElementById('codice-menu').value = codice;
+    document.getElementById('nome-modello').value = modello;
+    document.getElementById('modello-titolo').innerText = `${modello} (${codice})`;
+
+    document.getElementById('demo-modal').style.display = 'block';
+    document.getElementById('demo-modal').setAttribute('aria-hidden', 'false');
+  });
+});
+
+function closeModal() {
+  document.getElementById('demo-modal').style.display = 'none';
+  document.getElementById('demo-modal').setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('demo-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById('nome').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const messaggio = document.getElementById('messaggio').value.trim();
+  const codice = document.getElementById('codice-menu').value;
+  const modello = document.getElementById('nome-modello').value;
+
+  const testo =
+`👤Nome: ${nome}
+
+📧 Email: ${email}
+
+📃 Modello: ${codice}
+Nome modello: ${modello}
+
+💬: ${messaggio}`;
+
+  const numeroWA = '393440301412';
+  window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
+
+  closeModal();
+
+  setTimeout(() => {
+    window.location.href = '/thankyou.html';
+  }, 1200);
+});
+</script>
+  </body></html>
+  

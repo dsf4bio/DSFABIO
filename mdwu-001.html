@@ -62,6 +62,11 @@
       cursor: not-allowed;
       opacity: 0.5;
     }
+    #modalContent {
+  max-height: 85vh;      /* altezza max 80% viewport */
+  overflow-y: auto;      /* scroll verticale se necessario */
+}
+
   </style>
 </head>
 <body>
@@ -94,14 +99,14 @@
         <p class="text-xs text-gray-500 italic mb-2">Perfetti da condividere mentre aspetti il tuo drink!</p>
         <div id="upsellSuggestions" class="grid grid-cols-2 gap-2">
           <div class="border rounded-lg p-2 text-center shadow">
-            <img src="https://i.postimg.cc/yYBjPYXj/tagliere-ppp.png" alt="Salumi" class="w-full h-20 object-cover rounded mb-1">
+            <img src="https://i.postimg.cc/sDk4m9YS/tagliere-1.png" alt="Salumi" class="w-full h-20 object-cover rounded mb-1">
             <label class="text-xs">
               <input type="checkbox" class="mr-1 upsell-item" data-name="Tagliere di Salumi" data-prezzo="7.00">
               Tagliere - €7.00
             </label>
           </div>
           <div class="border rounded-lg p-2 text-center shadow">
-            <img src="https://i.postimg.cc/Dw6Ms491/patatine.png" alt="Patatine" class="w-full h-20 object-cover rounded mb-1">
+            <img src="https://i.postimg.cc/pTGw71Cq/patatine5.png" alt="Patatine" class="w-full h-20 object-cover rounded mb-1">
             <label class="text-xs">
               <input type="checkbox" class="mr-1 upsell-item" data-name="Patatine Fritte" data-prezzo="4.00">
               Patatine - €4.00
@@ -109,6 +114,17 @@
           </div>
         </div>
       </div>
+      <div class="mb-4 space-y-2 text-sm">
+        <label class="block text-gray-700 font-semibold">Nome *</label>
+        <input type="text" id="userName" required placeholder="Inserisci il tuo nome" class="w-full border border-gray-300 rounded px-3 py-2">
+      
+        <label class="block text-gray-700 font-semibold">Numero Tavolo *</label>
+        <input type="number" id="tableNumber" required placeholder="Es. 5" min="1" class="w-full border border-gray-300 rounded px-3 py-2">
+      
+        <label class="block text-gray-700 font-semibold">Note (max 300 caratteri)</label>
+        <textarea id="orderNote" maxlength="300" placeholder="Scrivi qui eventuali richieste..." class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+      </div>
+      
       <div class="font-semibold text-right mb-3">Totale: <span id="totalAmount">€0.00</span></div>
       <button id="sendOrder" class="w-full bg-[#25D366] text-white py-2 rounded-lg font-semibold text-lg" disabled>📲 Invia Ordine WhatsApp</button>
     </div>
@@ -277,16 +293,31 @@ const prodotti = [
     });
 
     sendOrderBtn.onclick = () => {
-      let msg = '*Ordine:*\n';
-      cart.forEach(p => {
-        msg += `- ${p.nome} x${p.qty} = €${(p.prezzo * p.qty).toFixed(2)}\n`;
-      });
-      upsellSelected.forEach(p => {
-        msg += `- ${p.nome} = €${p.prezzo.toFixed(2)}\n`;
-      });
-      msg += `\nTotale: ${document.getElementById('totalAmount').textContent}`;
-      window.open(`https://wa.me/393440301412?text=${encodeURIComponent(msg)}`, '_blank');
-    };
+  const nome = document.getElementById('userName').value.trim();
+  const tavolo = document.getElementById('tableNumber').value.trim();
+  const note = document.getElementById('orderNote').value.trim();
+
+  if (!nome || !tavolo) {
+    alert("Per favore inserisci nome e numero tavolo.");
+    return;
+  }
+
+  let msg = `*Ordine:*\n`;
+  cart.forEach(p => {
+    msg += `- ${p.nome} x${p.qty} = €${(p.prezzo * p.qty).toFixed(2)}\n`;
+  });
+  upsellSelected.forEach(p => {
+    msg += `- ${p.nome} = €${p.prezzo.toFixed(2)}\n`;
+  });
+
+  msg += `\n👤 Nome: ${nome}`;
+  msg += `\n🍽️ Tavolo: ${tavolo}`;
+  if (note) msg += `\n📝 Note: ${note}`;
+  msg += `\n\nTotale: ${document.getElementById('totalAmount').textContent}`;
+
+  window.open(`https://wa.me/393440301412?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
   </script>
 
 <footer class="bg-gray-800 text-gray-400 py-4 mt-16 text-sm">

@@ -284,7 +284,7 @@ const prodotti = [
       upsellSelected.forEach(p => {
         msg += `- ${p.nome} = €${p.prezzo.toFixed(2)}\n`;
       });
-      msg += `\nTotale stimato: ${document.getElementById('totalAmount').textContent}`;
+      msg += `\nTotale: ${document.getElementById('totalAmount').textContent}`;
       window.open(`https://wa.me/393440301412?text=${encodeURIComponent(msg)}`, '_blank');
     };
   </script>

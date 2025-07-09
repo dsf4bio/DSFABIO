@@ -158,7 +158,7 @@
     }
     .service-card img {
       width: 100%;
-      height: 350px; /* immagine verticale, più alta della larghezza */
+      height: 340px; /* immagine verticale, più alta della larghezza */
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
@@ -550,30 +550,43 @@
     </div>
   </header>
 
-  <!-- Services Section -->
-  <section id="services" aria-label="Sezione servizi">
-    <h2 data-aos="fade-up">I Nostri Servizi</h2>
-    <div class="services-grid">
-      <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Menu Digitale Classico">
-        <img src="https://i.postimg.cc/N0qKFPgL/a-mega-1.png" alt="Menu Digitale Classico" />
-        <h3>Menu Digitale Classico</h3>
-        <p>Menu consultabile da QR Code, facile e veloce, senza installazioni o complicazioni.</p>
-        <a href="menu-digitale.html">Scopri di più</a>
-      </article>
-      <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Ordini via WhatsApp">
-        <img src="https://i.postimg.cc/qMYFtWzs/whatsapps.png" alt="Ordini WhatsApp" />
-        <h3>Ordini via WhatsApp</h3>
-        <p>I clienti ordinano direttamente dal tavolo via WhatsApp. Semplice per loro, efficiente per te.</p>
-        <a href="whatsapp.html">Scopri di più</a>
-      </article>
-      <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Ordini via WhatsApp + Upsell">
-        <img src="https://i.postimg.cc/mD0SH7TZ/upsell.png" alt="Upsell Smart" />
-        <h3>Ordini via WhatsApp + Upsell</h3>
-        <p>Offri suggerimenti intelligenti (es. bevanda + snack) per aumentare lo scontrino medio.</p>
-        <a href="whatsapp+upsell.html">Scopri di più</a>
-      </article>
-    </div>
-  </section>
+<!-- Services Section -->
+<section id="services" aria-label="Sezione servizi">
+  <h2 data-aos="fade-up">I Nostri Servizi</h2>
+  <div class="services-grid">
+    <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Menu Digitale Classico">
+      <img src="https://i.postimg.cc/T1b3YyRD/sfondo-ok.png" alt="Menu Digitale Classico" class="service-img" />
+      <h3>Menu Digitale Classico</h3>
+      <p>Menu consultabile da QR Code, facile e veloce, senza installazioni o complicazioni.</p>
+      <a href="menu-digitale.html">Scopri di più</a>
+    </article>
+    <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Ordini via WhatsApp">
+      <img src="https://i.postimg.cc/rm3pkGLT/sfondo-ok-1.png" alt="Ordini WhatsApp" class="service-img" />
+      <h3>Ordini via WhatsApp</h3>
+      <p>I clienti ordinano direttamente dal tavolo via WhatsApp. Semplice per loro, efficiente per te.</p>
+      <a href="whatsapp.html">Scopri di più</a>
+    </article>
+    <article class="service-card" data-aos="zoom-in" tabindex="0" role="region" aria-label="Ordini via WhatsApp + Upsell">
+      <img src="https://i.postimg.cc/nhR66j0n/1.png" alt="Upsell Smart" class="service-img" />
+      <h3>Ordini via WhatsApp + Upsell</h3>
+      <p>Offri suggerimenti intelligenti (es. bevanda + snack) per aumentare lo scontrino medio.</p>
+      <a href="whatsapp+upsell.html">Scopri di più</a>
+    </article>
+  </div>
+</section>
+
+<style>
+  /* Immagini più larghe del 10% e bordi leggermente arrotondati */
+  .service-img {
+    width: 110%;       /* 10% più larghe */
+    max-width: none;   /* evita limitazioni max-width */
+    border-radius: 12px;  /* bordi leggermente arrotondati */
+    display: block;
+    margin: 0 auto 1rem auto; /* centratura e margine sotto */
+    object-fit: cover;  /* mantiene proporzioni */
+  }
+</style>
+
 
   <!-- Why Choose me Section -->
   <section id="why-choose" aria-label="Perché scegliere ME?" data-aos="fade-up">
@@ -602,206 +615,212 @@
   </section>
 
     <!-- Demo Section -->
- 
     <section id="demo-session" style="background:linear-gradient(135deg,#facc15 0%,#111827 100%);padding:2.5rem 0;">
-        <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:1.5rem;">Prova i Modelli Demo</h2>
-        <div class="demo-flip-grid">
-          <!-- Card 1 -->
-          <div class="flip-card">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="https://i.postimg.cc/kg0MTXpr/menu-base.jpg" alt="Menu Digitale" class="flip-avatar" />
-                <h3>Menu Digitale</h3>
-              </div>
-              <div class="flip-back">
-                <div class="flip-icon"><i class="fas fa-qrcode"></i></div>
-                <p>Menu Digitale con accesso da QR Code, semplice, veloce e smart</p>
-                <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
-              </div>
+      <h2 style="color:#1f2937;font-size:2rem;font-weight:800;text-align:center;letter-spacing:1.2px;margin-bottom:1.5rem;">
+        Prova i Modelli Demo
+      </h2>
+      <div class="demo-flip-grid">
+        <!-- Card 1 -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="https://i.postimg.cc/6q0kBwkX/avatar1.png" alt="Menu Digitale" class="flip-avatar" />
+              <h3>Menu Digitale classico</h3>
             </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="flip-card">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="https://i.postimg.cc/0Q7fH4rn/mennn.jpg" alt="WhatsApp" class="flip-avatar" />
-                <h3>Menu con ordini su WhatsApp</h3>
-              </div>
-              <div class="flip-back">
-                <div class="flip-icon"><i class="fab fa-whatsapp"></i></div>
-                <p>Il cliente ordina dal proprio tavolo via WhatsApp, senza errori.</p>
-                <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
-              </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="flip-card">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="https://i.postimg.cc/W40NCLBd/upsell.webp" alt="Upsell" class="flip-avatar" />
-                <h3>Menu con ordini su WhatSapp + Upsell</h3>
-              </div>
-              <div class="flip-back">
-                <div class="flip-icon"><i class="fas fa-lightbulb"></i></div>
-                <p>Suggerimenti durante l'ordine per vendere di più senza sforzo.</p>
-                <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
-              </div>
+            <div class="flip-back">
+              <div class="flip-icon"><i class="fas fa-qrcode"></i></div>
+              <p>Menu Digitale con accesso da QR Code, semplice, veloce e smart</p>
+              <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
             </div>
           </div>
         </div>
-      </section>
-      <style>
-    .demo-flip-grid {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      max-width: 1000px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      padding: 2rem;
-    }
-
-    .flip-card {
-      background: transparent;
-      width: 320px;
-      height: 200px;
-      perspective: 1000px;
-      flex-shrink: 0;
-    }
-
-    .flip-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 1s ease;
-      transform-style: preserve-3d;
-    }
-
-    .flip-inner.revealed {
-      transform: rotateY(180deg);
-    }
-
-    .flip-front, .flip-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 16px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .flip-front {
-      background: #ffffff;
-      color: #1f2937;
-      border: 2px solid #1f2937;
-    }
-
-    .flip-avatar {
-      width: 135px;
-      height: 135px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 0.7rem;
-      border: 2px solid #facc15;
-      box-shadow: 0 2px 8px rgba(250,204,21,0.15);
-      background: #fff;
-    }
-
-    .flip-front h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 0;
-      text-align: center;
-    }
-
-    .flip-back {
-      background: #1f2937;
-      color: #facc15;
-      border: 2px solid #fff;
-      transform: rotateY(180deg);
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .flip-icon {
-      font-size: 2rem;
-      color: #facc15;
-      margin-bottom: 1rem;
-    }
-
-    .flip-back p {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn-primary {
-      background-color: #facc15;
-      color: #1f2937;
-      font-weight: 700;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
-      text-decoration: none;
-      display: inline-block;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .btn-primary:hover, .btn-primary:focus {
-      background-color: #eab308;
-      box-shadow: 0 8px 20px rgba(250,204,21,0.2);
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      .flip-card {
-        width: 90vw;
-        max-width: 320px;
-        height: 220px;
+    
+        <!-- Card 2 -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="https://i.postimg.cc/6qp0GGjy/avatar2.png" alt="WhatsApp" class="flip-avatar" />
+              <h3>Ordini su WhatsApp</h3>
+            </div>
+            <div class="flip-back">
+              <div class="flip-icon"><i class="fab fa-whatsapp"></i></div>
+              <p>Il cliente ordina dal proprio tavolo via WhatsApp, senza errori.</p>
+              <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Card 3 -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="https://i.postimg.cc/mDwjDSSv/avatar3.png" alt="Upsell" class="flip-avatar" />
+              <h3>Ordini su WhatsApp + Upsell</h3>
+            </div>
+            <div class="flip-back">
+              <div class="flip-icon"><i class="fas fa-lightbulb"></i></div>
+              <p>Suggerimenti durante l'ordine per vendere di più senza sforzo.</p>
+              <a href="modelli.html" class="btn-primary">SCEGLI UN MODELLO</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <style>
+      .demo-flip-grid {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;         /* mobile: colonna */
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
       }
-
+    
+      @media (min-width: 1024px) {
+        .demo-flip-grid {
+          flex-wrap: nowrap;     /* desktop: fila */
+          justify-content: center;
+        }
+      }
+    
+      .flip-card {
+        background: transparent;
+        width: 320px;
+        height: 260px;
+        perspective: 1000px;
+        flex-shrink: 0;
+      }
+    
+      @media (max-width: 768px) {
+        .flip-card {
+          width: 90vw;
+          max-width: 320px;
+          height: 280px;   /* altezza maggiore su mobile */
+        }
+      }
+    
+      .flip-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s ease;
+        transform-style: preserve-3d;
+      }
+    
+      .flip-inner.revealed {
+        transform: rotateY(180deg);
+      }
+    
+      .flip-front, .flip-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 18px;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+      }
+    
+      .flip-front {
+        background: #fff;
+        color: #1f2937;
+        border: 2px solid #1f2937;
+        justify-content: flex-start;
+        padding-top: 1.5rem;
+        gap: 1rem;
+      }
+    
       .flip-avatar {
         width: 135px;
-        height: 135px;
+        aspect-ratio: 1 / 1;   /* immagine sempre quadrata */
+        object-fit: cover;
+        border-radius: 50%;    /* tonda */
+        border: 2px solid #facc15;
+        box-shadow: 0 2px 8px rgba(250,204,21,0.15);
+        background: #fff;
+        display: block;
       }
-
+    
       .flip-front h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0;
+        text-align: center;
       }
-    }
-  </style>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.flip-card');
-
-      function handleScroll() {
-        const centerY = window.innerHeight / 2;
-
-        cards.forEach(card => {
-          const inner = card.querySelector('.flip-inner');
-          const rect = card.getBoundingClientRect();
-          const middleY = rect.top + rect.height / 2;
-
-          if (middleY < centerY) {
-            inner.classList.add('revealed');
-          } else {
-            inner.classList.remove('revealed');
-          }
-        });
+    
+      .flip-back {
+        background: #1f2937;
+        color: #facc15;
+        border: 2px solid #fff;
+        transform: rotateY(180deg);
+        text-align: center;
+        justify-content: center;
       }
-
-      window.addEventListener('scroll', handleScroll);
-      window.addEventListener('load', handleScroll);
-});
-</script>
+    
+      .flip-icon {
+        font-size: 2rem;
+        color: #facc15;
+        margin-bottom: 1rem;
+      }
+    
+      .flip-back p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+    
+      .btn-primary {
+        background-color: #facc15;
+        color: #1f2937;
+        font-weight: 700;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 8px rgb(31 41 55 / 0.08);
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+    
+      .btn-primary:hover, .btn-primary:focus {
+        background-color: #eab308;
+        box-shadow: 0 8px 20px rgba(250,204,21,0.2);
+        outline: none;
+      }
+    </style>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.flip-card');
+    
+        function handleScroll() {
+          const centerY = window.innerHeight / 2;
+    
+          cards.forEach(card => {
+            const inner = card.querySelector('.flip-inner');
+            const rect = card.getBoundingClientRect();
+            const middleY = rect.top + rect.height / 2;
+    
+            if (middleY < centerY) {
+              inner.classList.add('revealed');
+            } else {
+              inner.classList.remove('revealed');
+            }
+          });
+        }
+    
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+      });
+    </script>
+    
+    
 
   <!--Perché ti serve un menu digitale? -->
 

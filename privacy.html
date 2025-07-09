@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Informativa Privacy – DSFabio Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #1f2937;
+      color: #d1d5db;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #facc15;
+    }
+    a {
+      color: #facc15;
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #111827;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .back-button {
+  position: fixed;
+  top: calc(20px + env(safe-area-inset-top));
+  left: calc(20px + env(safe-area-inset-left));
+  background-color: #374151;
+  color: #facc15;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 999;
+}
+
+.back-button:hover {
+  background-color: #4b5563;
+}
+
+@media (max-width: 600px) {
+  .back-button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <button class="back-button" onclick="history.back()">
+    ← Indietro
+  </button>
+
+  <div class="container">
+    <h1>Informativa sulla Privacy</h1>
+    <p>Questa informativa descrive come <strong>DSFabio Digital</strong> gestisce i dati personali.</p>
+
+    <h2>1. Comunicazioni via WhatsApp</h2>
+    <p>Qualsiasi contatto tra l’utente e DSFabio Digital avviene esclusivamente tramite <strong>WhatsApp</strong>. Tali comunicazioni sono protette da crittografia end-to-end e <strong>non vengono raccolti, salvati o trattati dati personali</strong> da parte nostra.</p>
+
+    <h2>2. Nessuna raccolta di dati personali</h2>
+    <p>Non raccogliamo, memorizziamo o trattiamo dati identificativi come nome, cognome, indirizzo email o numero di telefono. Nessun dato viene archiviato nei nostri server, né richiesto tramite moduli o iscrizioni.</p>
+
+    <h2>3. Google Analytics</h2>
+    <p>Utilizziamo <strong>Google Analytics</strong> per raccogliere informazioni anonime sull’uso del sito al solo scopo di migliorare l’esperienza utente. I dati raccolti (es. pagine visitate, tipo di dispositivo, tempo medio di permanenza) sono trattati in forma aggregata e non identificano personalmente l’utente.</p>
+
+    <h2>4. Finalità del trattamento</h2>
+    <p>L’unica finalità del trattamento è l’analisi dell’utilizzo del sito per ottimizzare contenuti e funzionalità.</p>
+
+    <h2>5. Diritti dell’utente</h2>
+    <p>Non essendo effettuata alcuna raccolta di dati personali, non è necessario richiedere modifiche o cancellazioni. Per qualunque dubbio, puoi comunque contattarci tramite WhatsApp.</p>
+
+    <h2>6. Titolare del trattamento</h2>
+    <p><strong>DSFabio Digital</strong><br/>
+    Contattaci via WhatsApp direttamente dal sito per ogni informazione.</p>
+  </div>
+
+  <footer>
+    © 2025 DSFabio Digital – Tutti i diritti riservati
+  </footer>
+</body>
+</html>

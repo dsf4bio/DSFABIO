@@ -549,6 +549,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
     transition: background 0.3s;
   }
 </style>
+
 <!-- Offerta finale -->
 <div class="offerta-wrapper">
 
@@ -646,28 +647,35 @@ document.getElementById('orderForm').onsubmit = function(e) {
         background: rgba(15,23,42,0.9);
         backdrop-filter: blur(2px);
         z-index: 10000;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .offerta-wrapper .offerta-modal::-webkit-scrollbar {
-        width: 0;
-        background: transparent;
+        overflow: hidden; /* blocca scroll pagina dietro */
       }
       .offerta-wrapper .offerta-modal[aria-hidden="false"] {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
       }
       .offerta-wrapper .modal-content {
         background: #0f172a;
         color: #fff;
+        width: 100%;
         max-width: 480px;
-        margin: 5% auto;
-        padding: 1.5rem 1.3rem;
+        max-height: 90vh;
+        overflow-y: auto; /* scroll interno */
         border-radius: 14px;
         border: 1px solid #334155;
         box-shadow: 0 0 18px rgba(0,0,0,0.5);
         position: relative;
         outline: none;
+        padding: 1.5rem 1.3rem;
+        box-sizing: border-box;
+  
+        /* Nascondi scrollbar - Chrome, Edge, Safari */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+      }
+      .offerta-wrapper .modal-content::-webkit-scrollbar {
+        display: none; /* Chrome, Safari e Opera */
       }
       .offerta-wrapper .close-btn {
         position: absolute;
@@ -712,10 +720,12 @@ document.getElementById('orderForm').onsubmit = function(e) {
   
         modal.setAttribute('aria-hidden', 'false');
         wrapper.querySelector('.modal-content').focus();
+        document.body.style.overflow = 'hidden'; // blocca scroll pagina dietro
       });
   
       btnClose.addEventListener('click', () => {
         modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; // riabilita scroll pagina dietro
       });
   
       form.addEventListener('submit', e => {
@@ -733,6 +743,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
         window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
   
         modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
   
         setTimeout(() => {
           window.location.href = '/thankyou.html';
@@ -740,6 +751,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
       });
     })();
   </script>
+  
+  
   </body>
   </html>
-  

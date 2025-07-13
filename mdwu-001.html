@@ -339,11 +339,11 @@ const prodotti = [
 <!-- Offerta finale -->
 <div class="offerta-wrapper">
 
-  <!-- Solo il pulsante CTA visibile -->
+  <!-- CTA -->
   <section class="offerta-cta" style="text-align:center; padding:3rem 2rem; background:#1e293b; color:#f8fafc; font-family:'Inter', sans-serif;">
     <p style="max-width:500px; margin:0 auto 1.5rem; font-size:1.1rem; line-height:1.4;">
-      Puoi avere un <strong>menu digitale personalizzato</strong> con tutti i tuoi prodotti, <strong>gratis per 15 giorni</strong>, pronto all’uso.  
-      Richiedi subito la tua prova gratuita e scopri quanto è semplice!
+      Puoi avere un <strong>menu digitale come questo</strong>, con il nome della tua attività e tutti i tuoi prodotti, <strong>gratis per 15 giorni</strong> e subito pronto all’uso.  
+      Richiedi ora la tua prova gratuita e scopri quanto è semplice!
     </p>
     <button class="open-modal"
       data-codice="MDWU-001"
@@ -352,58 +352,80 @@ const prodotti = [
       🚀 Richiedi la tua prova gratuita
     </button>
   </section>
-  
 
-  <!-- Modale con l’offerta completa -->
+  <!-- Modale -->
   <div id="demo-modal" aria-hidden="true" class="offerta-modal" role="dialog" aria-modal="true" aria-labelledby="modello-titolo">
     <div class="modal-content" tabindex="-1">
       <button type="button" aria-label="Chiudi" class="close-btn">&times;</button>
 
-      <h2 id="modello-titolo" style="margin-bottom:1rem; font-size:1.6rem; color:#fbbf24;"></h2>
+      <h2 id="modello-titolo" style="margin-bottom:1rem; font-size:1.5rem; color:#fbbf24;"></h2>
 
-      <p style="font-size:1rem; line-height:1.5; margin-bottom:1rem;">
+      <p style="font-size:0.95rem; line-height:1.5; margin-bottom:1rem;">
         Prova gratuita senza impegno. Ricevi un <strong>menu digitale personalizzato</strong> con i tuoi piatti, prezzi e QR code pronto all’uso. Pensiamo a tutto noi, in sole <strong>48 ore</strong>.
       </p>
 
-      <div style="background:#0f172a; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem; box-shadow:0 0 20px rgba(0,0,0,0.4);">
-        <h3 style="color:#fbbf24; font-size:1.3rem; margin-bottom:1rem; text-align:center;">✅ Tutto incluso:</h3>
-        <ul style="list-style:none; padding-left:1rem; font-size:1.05rem; line-height:1.6;">
-          <li>✔ Menu aggiornabile in qualsiasi momento</li>
-          <li>✔ QR code pronto da stampare e metterli sui tavoli</li>
-          <li>✔ Hosting + Dominio + Certificato SSL inclusi</li>
-          <li>✔ Nessun costo aggiuntivo o sorpresa</li>
-          <li>✔ Supporto veloce garantito entro 45 minuti</li>
-          <li>✔ Funziona su smartphone e tablet</li>
+      <div style="background:#0f172a; border-radius:14px; padding:1rem 1.2rem; margin-bottom:1.2rem; box-shadow:0 0 12px rgba(0,0,0,0.35);">
+        <h3 style="color:#fbbf24; font-size:1.15rem; margin-bottom:0.8rem; text-align:center;">✅ Tutto incluso:</h3>
+        <ul style="list-style:none; padding-left:0.8rem; font-size:0.95rem; line-height:1.5; color:#e2e8f0;">
+          <li style="margin-bottom:0.4rem;">✔ Menu aggiornabile in qualsiasi momento</li>
+          <li style="margin-bottom:0.4rem;">✔ QR code pronto da stampare e posizionare sui tavoli</li>
+          <li style="margin-bottom:0.4rem;">✔ Hosting, dominio e certificato SSL inclusi</li>
+          <li style="margin-bottom:0.4rem;">✔ Nessun costo nascosto o sorpresa</li>
+          <li style="margin-bottom:0.4rem;">✔ Supporto veloce garantito in 45 minuti</li>
+          <li style="margin-bottom:0.4rem;">✔ Funziona su smartphone e tablet</li>
           <li>✔ Disdici in qualsiasi momento, senza penali</li>
         </ul>
       </div>
 
-      <p style="font-size:1rem; line-height:1.5; margin-bottom:2rem;">
-        Alla fine della prova potrai attivare il servizio a soli <strong style="color:#fbbf24;">289€/anno</strong>, equivalente a <strong>0,79€ al giorno</strong>. Tutto incluso, aggiornamenti illimitati e nessun costo nascosto.
+      <p style="font-size:0.95rem; line-height:1.5; margin-bottom:1.5rem;">
+        Alla fine della prova potrai attivare il servizio a soli <strong style="color:#fbbf24;">289€/anno</strong>, ovvero <strong>0,79€ al giorno</strong>. Tutto incluso, aggiornamenti illimitati e nessun costo extra.
       </p>
-
-      <form id="demo-form" style="display:flex; flex-direction:column; gap:0.8rem;">
+      <form id="demo-form" style="display:flex; flex-direction:column; gap:0.6rem;">
         <input type="hidden" id="codice-menu" name="codice">
         <input type="hidden" id="nome-modello" name="modello">
-
+      
         <label for="nome">Nome *</label>
-        <input type="text" id="nome" name="nome" required style="padding:0.6rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;">
-
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          required
+          placeholder="il tuo nome"
+          style="padding:0.5rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"
+        >
+      
         <label for="email">Email *</label>
-        <input type="email" id="email" name="email" required style="padding:0.6rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;">
-
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="la tua email"
+          style="padding:0.5rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"
+        >
+      
         <label for="messaggio">Messaggio *</label>
-        <textarea id="messaggio" name="messaggio" maxlength="700" required style="padding:0.6rem; height:110px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"></textarea>
-
-        <button type="submit" style="margin-top:0.8rem; padding:0.8rem; font-size:1rem; background:#25D366; color:#fff; border:none; border-radius:8px; cursor:pointer;">
+        <textarea
+          id="messaggio"
+          name="messaggio"
+          maxlength="700"
+          required
+          placeholder="Scrivi se hai richieste particolari o il link del tuo attuale menu..."
+          style="padding:0.5rem; height:100px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"
+        ></textarea>
+      
+        <button
+          type="submit"
+          style="margin-top:0.6rem; padding:0.7rem; font-size:1rem; background:#25D366; color:#fff; border:none; border-radius:8px; cursor:pointer;"
+        >
           📲 Invia su WhatsApp
         </button>
       </form>
+      
     </div>
   </div>
 
   <style>
-    /* Isolamento CSS */
     .offerta-wrapper .offerta-modal {
       display: none;
       position: fixed;
@@ -413,7 +435,7 @@ const prodotti = [
       z-index: 10000;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
     }
     .offerta-wrapper .offerta-modal::-webkit-scrollbar {
       width: 0;
@@ -425,20 +447,20 @@ const prodotti = [
     .offerta-wrapper .modal-content {
       background: #0f172a;
       color: #fff;
-      max-width: 600px;
+      max-width: 480px;
       margin: 5% auto;
-      padding: 2rem 2.5rem;
-      border-radius: 16px;
+      padding: 1.5rem 1.3rem;
+      border-radius: 14px;
       border: 1px solid #334155;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      box-shadow: 0 0 18px rgba(0,0,0,0.5);
       position: relative;
       outline: none;
     }
     .offerta-wrapper .close-btn {
       position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 1.8rem;
+      top: 10px;
+      right: 14px;
+      font-size: 1.6rem;
       background: none;
       border: none;
       color: #fbbf24;
@@ -498,5 +520,6 @@ const prodotti = [
     });
   })();
 </script>
+
 </body>
 </html>

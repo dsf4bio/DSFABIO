@@ -2,250 +2,1032 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Chi Sono – DSFabio Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="description" content="Scopri chi c'è dietro DSFabio Digital: un approccio umano prima che tecnico per soluzioni digitali semplici ed efficaci" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    body {
+    :root {
+      --bg-dark: #0c1222;
+      --bg-card: #111827;
+      --bg-section: #161f38;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --yellow: #facc15;
+      --yellow-light: #fde68a;
+      --blue: #3b82f6;
+      --blue-light: #93c5fd;
+      --green: #22c55e;
+      --green-light: #86efac;
+      --purple: #8b5cf6;
+      --gray: #94a3b8;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
-      background-color: #1f2937;
-      color: #f9fafb;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
+      color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 80px;
+    }
+
+    /* Background pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.03) 0%, transparent 30%);
+      z-index: -2;
+    }
+
+    /* Noise texture */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiNjY2MiIGZpbHRlcj0idXJsKCNhKSIgZD0iTTAgMGgzMDB2MzAwSDB6Ii8+PC9zdmc+');
+      opacity: 0.03;
+      z-index: -1;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.5);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, var(--blue), var(--purple));
+      border-radius: 5px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(12, 18, 34, 0.85);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+
+    .logo-nav {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-nav span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      letter-spacing: 1px;
+    }
+
+    .logo-icon {
+      font-size: 2.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+      margin: 0;
       padding: 0;
     }
-    a.back-button {
-      position: fixed;
-      top: calc(20px + env(safe-area-inset-top));
-      left: calc(20px + env(safe-area-inset-left));
-      background-color: #374151;
-      color: #facc15;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
+
+    .nav-links li a {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.6rem 0;
+      position: relative;
+      transition: var(--transition);
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: var(--yellow);
+    }
+
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+      width: 100%;
+      opacity: 1;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow), var(--blue));
+      border-radius: 1px;
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 32px;
+      height: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+      transition: var(--transition);
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: var(--yellow);
+      border-radius: 3px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Back Button */
+    .back-button {
+      position: fixed;
+      top: calc(20px + env(safe-area-inset-top));
+      left: calc(20px + env(safe-area-inset-left));
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(10px);
+      color: var(--yellow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.8rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
       z-index: 999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    a.back-button:hover {
-      background-color: #4b5563;
+
+    .back-button:hover {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--yellow-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+      border-color: rgba(59, 130, 246, 0.3);
     }
-    header {
-      background: linear-gradient(135deg, #111827, #374151);
-      padding: 2rem 5vw;
-      text-align: center;
+
+    .back-button i {
+      transition: transform 0.3s ease;
     }
-    header h1 {
-      font-size: 2.5rem;
-      color: #facc15;
-      margin-bottom: 1rem;
+
+    .back-button:hover i {
+      transform: translateX(-5px);
     }
-    header p {
-      font-size: 1.1rem;
-      color: #d1d5db;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto 4rem;
-      padding: 0 6vw;
-    }
-    section {
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(12, 18, 34, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 0 4rem;
       margin-bottom: 3rem;
     }
-    h2 {
-      color: #facc15;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #facc15;
-      padding-bottom: 0.3rem;
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      z-index: -1;
     }
-    p {
-      color: #e5e7eb;
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(12, 18, 34, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 1.5rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      background: linear-gradient(90deg, var(--text) 0%, var(--yellow-light) 50%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin: 4rem 0 2.5rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title h2 span {
+      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+      border-radius: 2px;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: rgba(22, 31, 56, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin: 2rem 0 4rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+    }
+
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section h2 {
+      color: var(--yellow);
+      font-size: 1.9rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .content-section h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--yellow), var(--blue));
+      border-radius: 2px;
+    }
+
+    .content-section p {
+      color: var(--text-secondary);
       font-size: 1.05rem;
+      line-height: 1.7;
       margin-bottom: 1.5rem;
     }
-    ul.values-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-    ul.values-list li {
-      background: #374151;
-      border-radius: 12px;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
-      flex: 1 1 250px;
-      text-align: center;
-      font-weight: 600;
-      color: #facc15;
-      font-size: 1.1rem;
-      transition: box-shadow 0.3s ease;
-    }
-    ul.values-list li:hover {
-      box-shadow: 0 8px 25px rgb(250 204 21 / 0.7);
-    }
-    /* Testimonials */
-    .testimonials {
+
+    /* Values Section */
+    .values-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
     }
-    .testimonial-card {
-      background: #374151;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+
+    .value-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: default;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      color: #e5e7eb;
-      transition: box-shadow 0.3s ease;
-    }
-    .testimonial-card:hover {
-      box-shadow: 0 10px 25px rgb(250 204 21 / 0.7);
-    }
-    .testimonial-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 3px solid #facc15;
-      box-shadow: 0 2px 8px rgb(250 204 21 / 0.6);
-    }
-    .testimonial-name {
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      color: #facc15;
-      font-size: 1.1rem;
-    }
-    .testimonial-role {
-      font-size: 0.9rem;
-      font-style: italic;
-      margin-bottom: 1rem;
-      color: #9ca3af;
-    }
-    .testimonial-text {
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #d1d5db;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 300px) {
-      ul.values-list {
+    .value-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow), var(--blue));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .value-item:hover {
+      transform: translateY(-8px);
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.2);
+    }
+
+    .value-item:hover::before {
+      opacity: 1;
+    }
+
+    .value-item h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Testimonials Section */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow), var(--blue));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .testimonial-content {
+      padding: 1.8rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .testimonial-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      border: 2px solid var(--yellow);
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+      transition: var(--transition);
+      background: var(--bg-dark);
+    }
+
+    .testimonial-card:hover .testimonial-avatar {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(250, 204, 21, 0.4);
+    }
+
+    .testimonial-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover .testimonial-name {
+      color: var(--yellow);
+    }
+
+    .testimonial-role {
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--gray);
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: "";
+      font-size: 2.5rem;
+      color: var(--yellow);
+      opacity: 0.2;
+      line-height: 1;
+    }
+
+    .testimonial-text::before {
+      margin-right: 0.5rem;
+    }
+
+    .testimonial-text::after {
+      margin-left: 0.5rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--bg-section) 0%, #1e293b 100%);
+      border-radius: var(--radius-lg);
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(250, 204, 21, 0.05) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .cta-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .cta-content p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+      color: #0f172a;
+      padding: 1.2rem 2.8rem;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 10px 25px -5px rgba(250, 204, 21, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px -5px rgba(250, 204, 21, 0.4);
+      background: linear-gradient(90deg, #fde047 0%, #fef3c7 100%);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    .copyright {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+      transition: var(--transition);
+      z-index: 999;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
         flex-direction: column;
+        background: rgba(12, 18, 34, 0.95);
+        backdrop-filter: blur(10px);
+        width: 80%;
+        max-width: 320px;
+        height: calc(100vh - 80px);
+        padding: 2.5rem 2rem;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .nav-links.open {
+        right: 0;
+      }
+      
+      .nav-toggle {
+        display: flex;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.7rem;
+      }
+      
+      .content-section {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.2rem;
+      }
+      
+      .hero-content h1 {
+        font-size: 1.7rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.5rem;
+      }
+      
+      .nav-links {
+        width: 90%;
       }
       
       .back-button {
-        top: 10px;
-        left: 10px;
-        padding: 8px 12px;
-        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+      }
+      
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="Menu principale">
+        <a href="index.html" class="logo-nav" aria-label="DSFabio Digital - Home">
+          <i class="fas fa-utensils logo-icon"></i>
+          DSFabio<span>Digital</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" aria-hidden="true">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="modelli.html"><i class="fas fa-th-large"></i> Demo gratuita</a></li>
+          <li><a href="prezzi.html"><i class="fas fa-tag"></i> Prezzi</a></li>
+          <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+          <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<a href="index.html" class="back-button" aria-label="Indietro">← Indietro</a>
+  <!-- Back Button -->
+  <a href="index.html" class="back-button" aria-label="Torna alla home">
+    <i class="fas fa-arrow-left"></i> Indietro
+  </a>
 
-<header>
-  <h1>Chi c’è dietro DSFabio Digital?</h1>
-  <p>Soluzioni semplici e intelligenti per migliorare la tua vita quotidiana, con passione, empatia e attenzione ai dettagli.</p>
-</header>
-
-<main>
-
-  <section>
-    <h2>Un approccio umano prima che tecnico</h2>
-    <p>
-      Mi chiamo Fabio, sono uno sviluppatore curioso e appassionato, convinto che la tecnologia debba servire le persone e migliorare la vita di tutti i giorni.
-      Il mio obiettivo non è solo fornire strumenti digitali, ma creare esperienze semplici, efficaci e costruite su misura per chi le utilizza.
-    </p>
-  </section>
-
-  <section>
-    <h2>I miei valori</h2>
-    <ul class="values-list" aria-label="Valori di DSFabio Digital">
-      <li>Onestà e Trasparenza</li>
-      <li>Empatia e Ascolto Attivo</li>
-      <li>Semplicità e Chiarezza</li>
-      <li>Qualità e Cura dei Dettagli</li>
-      <li>Innovazione con Scopo</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Perché scegliere DSFabio Digital?</h2>
-    <p>
-      Ogni progetto nasce dall’ascolto delle tue reali esigenze. Con metodi agili e un dialogo costante, costruisco soluzioni che fanno davvero la differenza.
-      La tua soddisfazione è la mia priorità assoluta, perché credo che un lavoro fatto bene sia il miglior biglietto da visita.
-    </p>
-  </section>
-
-  <section>
-    <h2>Testimonianze</h2>
-    <div class="testimonials" role="list">
-
-      <article class="testimonial-card" role="listitem">
-        <img src="https://i.pravatar.cc/80?img=12" alt="Avatar di Marco Rossi" class="testimonial-avatar" />
-        <div class="testimonial-name">Marco Rossi</div>
-        <div class="testimonial-role">Ristoratore, Milano</div>
-        <p class="testimonial-text">"Grazie a Fabio ho digitalizzato il mio menù in modo semplice e veloce. Il supporto è sempre stato rapido e professionale."</p>
-      </article>
-
-      <article class="testimonial-card" role="listitem">
-        <img src="https://i.pravatar.cc/80?img=45" alt="Avatar di Lucia Bianchi" class="testimonial-avatar" />
-        <div class="testimonial-name">Lucia Bianchi</div>
-        <div class="testimonial-role">Manager Pizzeria, Roma</div>
-        <p class="testimonial-text">"Il menù digitale ha rivoluzionato il nostro servizio al tavolo. Consiglio DSFabio Digital a chiunque voglia innovare senza complicazioni."</p>
-      </article>
-
-      <article class="testimonial-card" role="listitem">
-        <img src="https://i.pravatar.cc/80?img=33" alt="Avatar di Paolo Conti" class="testimonial-avatar" />
-        <div class="testimonial-name">Paolo Conti</div>
-        <div class="testimonial-role">Chef, Torino</div>
-        <p class="testimonial-text">"Finalmente un servizio su misura che ascolta davvero le esigenze del cliente e propone soluzioni efficaci."</p>
-      </article>
-
-      <article class="testimonial-card" role="listitem">
-        <img src="https://i.pravatar.cc/80?img=5" alt="Avatar di Francesca Esposito" class="testimonial-avatar" />
-        <div class="testimonial-name">Francesca Esposito</div>
-        <div class="testimonial-role">Proprietaria Bar, Napoli</div>
-        <p class="testimonial-text">"Fabio è sempre disponibile e attento. Il menù digitale funziona alla perfezione e ha migliorato molto l’esperienza dei miei clienti."</p>
-      </article>
-
-      <article class="testimonial-card" role="listitem">
-        <img src="https://i.pravatar.cc/80?img=64" alt="Avatar di Alessandro Greco" class="testimonial-avatar" />
-        <div class="testimonial-name">Alessandro Greco</div>
-        <div class="testimonial-role">Consulente Marketing, Firenze</div>
-        <p class="testimonial-text">"Un servizio professionale, innovativo e umano. Fabio sa davvero come aiutarti a far crescere il tuo business."</p>
-      </article>
-
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content fade-in">
+        <h1>Chi c'è dietro DSFabio Digital?</h1>
+        <p>Soluzioni semplici e intelligenti per migliorare la tua vita quotidiana, con passione, empatia e attenzione ai dettagli.</p>
+      </div>
     </div>
   </section>
 
-</main>
+  <div class="container">
+    <section class="content-section fade-in">
+      <h2>Un approccio umano prima che tecnico</h2>
+      <p>Mi chiamo Fabio, sono uno sviluppatore curioso e appassionato, convinto che la tecnologia debba servire le persone e migliorare la vita di tutti i giorni.</p>
+      <p>Il mio obiettivo non è solo fornire strumenti digitali, ma creare esperienze semplici, efficaci e costruite su misura per chi le utilizza.</p>
+    </section>
 
-<footer>
-  <p style="text-align:center; color:#9ca3af; padding: 2rem 1rem;">
-    © 2025 DSFabio Digital – Tutti i diritti riservati.
-  </p>
-</footer>
+    <section class="content-section fade-in">
+      <h2>I miei <span>valori</span></h2>
+      <div class="values-list">
+        <div class="value-item">
+          <h3>Onestà e Trasparenza</h3>
+        </div>
+        <div class="value-item">
+          <h3>Empatia e Ascolto Attivo</h3>
+        </div>
+        <div class="value-item">
+          <h3>Semplicità e Chiarezza</h3>
+        </div>
+        <div class="value-item">
+          <h3>Qualità e Cura dei Dettagli</h3>
+        </div>
+        <div class="value-item">
+          <h3>Innovazione con Scopo</h3>
+        </div>
+      </div>
+    </section>
 
+    <section class="content-section fade-in">
+      <h2>Perché scegliere <span>DSFabio Digital?</span></h2>
+      <p>Ogni progetto nasce dall'ascolto delle tue reali esigenze. Con metodi agili e un dialogo costante, costruisco soluzioni che fanno davvero la differenza.</p>
+      <p>La tua soddisfazione è la mia priorità assoluta, perché credo che un lavoro fatto bene sia il miglior biglietto da visita.</p>
+    </section>
+
+    <section class="content-section fade-in">
+      <h2>Testimonianze</h2>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-content">
+            <img src="https://i.pravatar.cc/80?img=12" alt="Avatar di Marco Rossi" class="testimonial-avatar" />
+            <div class="testimonial-name">Marco Rossi</div>
+            <div class="testimonial-role">Ristoratore, Milano</div>
+            <p class="testimonial-text">Grazie a Fabio ho digitalizzato il mio menù in modo semplice e veloce. Il supporto è sempre stato rapido e professionale.</p>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-content">
+            <img src="https://i.pravatar.cc/80?img=45" alt="Avatar di Lucia Bianchi" class="testimonial-avatar" />
+            <div class="testimonial-name">Lucia Bianchi</div>
+            <div class="testimonial-role">Manager Pizzeria, Roma</div>
+            <p class="testimonial-text">Il menù digitale ha rivoluzionato il nostro servizio al tavolo. Consiglio DSFabio Digital a chiunque voglia innovare senza complicazioni.</p>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-content">
+            <img src="https://i.pravatar.cc/80?img=33" alt="Avatar di Paolo Conti" class="testimonial-avatar" />
+            <div class="testimonial-name">Paolo Conti</div>
+            <div class="testimonial-role">Chef, Torino</div>
+            <p class="testimonial-text">Finalmente un servizio su misura che ascolta davvero le esigenze del cliente e propone soluzioni efficaci.</p>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-content">
+            <img src="https://i.pravatar.cc/80?img=5" alt="Avatar di Francesca Esposito" class="testimonial-avatar" />
+            <div class="testimonial-name">Francesca Esposito</div>
+            <div class="testimonial-role">Proprietaria Bar, Napoli</div>
+            <p class="testimonial-text">Fabio è sempre disponibile e attento. Il menù digitale funziona alla perfezione e ha migliorato molto l'esperienza dei miei clienti.</p>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-content">
+            <img src="https://i.pravatar.cc/80?img=64" alt="Avatar di Alessandro Greco" class="testimonial-avatar" />
+            <div class="testimonial-name">Alessandro Greco</div>
+            <div class="testimonial-role">Consulente Marketing, Firenze</div>
+            <p class="testimonial-text">Un servizio professionale, innovativo e umano. Fabio sa davvero come aiutarti a far crescere il tuo business.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Pronto a Trasformare il Tuo Menù?</h2>
+        <p>Prova gratuitamente uno dei nostri modelli premium e scopri come possiamo aiutarti ad aumentare le vendite e migliorare l'esperienza dei tuoi clienti. Nessun impegno, puoi annullare in qualsiasi momento.</p>
+        <a href="modelli.html" class="btn-cta">Inizia la Tua Prova Gratuita <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="termini.html">Termini e Condizioni</a>
+        <a href="index.html">Home</a>
+        <a href="modelli.html">Modelli</a>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+      navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navLinks.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
+    
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Initial check for elements already in view
+      setTimeout(() => {
+        fadeElements.forEach(element => {
+          if (isElementInViewport(element)) {
+            element.classList.add('visible');
+          }
+        });
+      }, 300);
+    });
+    
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+        rect.bottom >= 0
+      );
+    }
+  </script>
 </body>
 </html>

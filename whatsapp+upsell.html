@@ -1,454 +1,1157 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DSFabio Digital – Menu Digitale Chiavi in Mano</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>DSFabio Digital – Menu Digitale Ultra Moderno con Ordini WhatsApp</title>
+<meta name="description" content="Menu digitale con ordini WhatsApp e suggerimenti intelligenti per ristoranti, bar e locali. Prova gratuita e senza impegno." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+:root {
+  --bg-dark: #0c1222;
+  --bg-card: #111827;
+  --bg-section: #161f38;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --yellow: #facc15;
+  --yellow-light: #fde68a;
+  --blue: #3b82f6;
+  --blue-light: #93c5fd;
+  --green: #22c55e;
+  --green-light: #86efac;
+  --purple: #8b5cf6;
+  --gray: #94a3b8;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #1f2937;
-      color: #fff;
-      scroll-behavior: smooth;
-      line-height: 1.6;
-      font-size: 16px;
-    }
-    a {
-      color: #facc15;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover, a:focus {
-      color: #eab308;
-      text-decoration: underline;
-      outline: none;
-    }
-    h1, h2, h3 {
-      font-weight: 800;
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-    }
-    h1 {
-      font-size: 3rem;
-      color: #facc15;
-      text-align: center;
-      margin: 3rem 0 1rem 0;
-      text-shadow: 0 0 8px #facc15aa;
-    }
-    h2 {
-      font-size: 2rem;
-      color: #fbbf24;
-      text-align: center;
-      margin-bottom: 2rem;
-      letter-spacing: 1.5px;
-    }
-    h3 {
-      font-size: 1.5rem;
-      color: #facc15;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #d1d5db;
-      max-width: 900px;
-      margin: 0 auto 1.5rem auto;
-      text-align: center;
-      line-height: 1.5;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem 3rem 1.5rem;
-    }
-    .product-image {
-      display: block;
-      max-width: 700px;
-      width: 100%;
-      margin: 4rem auto 3rem auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(250, 204, 21, 0.76);
-      border: 2px solid #facc15;
-      transition: transform 0.3s ease;
-    }
-    .product-image:hover {
-      transform: scale(1.05);
-    }
-    .btn-primary {
-      background-color: #facc15;
-      color: #1f2937;
-      font-weight: 700;
-      padding: 1rem 1rem;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-size: 1.3rem;
-      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.23);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      display: block;
-      margin: 0 auto 3rem auto;
-      max-width: 260px;
-      text-align: center;
-    }
-    .btn-primary:hover, .btn-primary:focus {
-      background-color: #eab308;
-      box-shadow: 0 12px 30px rgb(234 179 8 / 0.9);
-      outline: none;
-    }
-    /* Benefit list */
-    .benefits-list {
-      max-width: 900px;
-      margin: 0 auto 4rem auto;
-      padding: 1.5rem 2rem;
-      background-color: #243352;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(250,204,21,0.2);
-      color: #fef9c3;
-      font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      list-style: none;
-    }
-    .benefits-list li {
-      margin-bottom: 1rem;
-      position: relative;
-      padding-left: 2.5rem;
-    }
-    .benefits-list li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #fbbf24;
-      font-weight: 900;
-      font-size: 1.3rem;
-      user-select: none;
-      line-height: 1;
-    }
-    /* Recensioni */
-    .reviews {
-      background: #1e293b;
-      padding: 3rem 2rem;
-      margin-bottom: 4rem;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(250,204,21,0.1);
-      max-width: 900px;
-      margin-left:auto; 
-      margin-right:auto;
-      color: #f3f4f6;
-      font-size: 1.05rem;
-    }
-    .review-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-    }
-    .review-item img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 8px #facc15a0;
-      flex-shrink: 0;
-    }
-    .review-item strong {
-      color: #fbbf24;
-      font-size: 0.9rem;
-      margin-bottom: 0.3rem;
-      display: block;
-    }
-    .review-item p {
-      font-style: italic;
-      margin: 0;
-      text-align: left;
-    }
-    /* FAQ */
-    .faq {
-      background:#111827;
-      padding: 3rem 2rem;
-      margin-bottom: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(250,204,21,0.2);
-      max-width: 900px;
-      margin-left:auto;
-      margin-right:auto;
-      color: #e5e7eb;
-      font-size: 1.05rem;
-    }
-    .faq p {
-      text-align: left;
-      margin: 0 0 1.5rem 0;
-    }
-    .faq strong {
-      font-weight: 700;
-      color: #fbbf24;
-    }
-    /* Form contatti */
-    form.contact-form {
-      background: #111827;
-      max-width: 750px;
-      margin: 0 auto 5rem auto;
-      padding: 2rem 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
-      color: #f3f4f6;
-      transition: box-shadow 0.3s ease;
-    }
-    form.contact-form:hover {
-      box-shadow: 0 12px 30px rgba(250, 204, 21, 0.7);
-    }
-    form.contact-form label {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 0.2rem;
-      font-size: 1rem;
-    }
-    form.contact-form input[type="text"],
-    form.contact-form input[type="email"],
-    form.contact-form textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      border: 1px solid #facc15;
-      background: #1f2937;
-      color: #f3f4f6;
-      font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-    }
-    form.contact-form input[type="text"]:focus,
-    form.contact-form input[type="email"]:focus,
-    form.contact-form textarea:focus {
-      border-color: #fbbf24;
-      outline: none;
-      background: #272f42;
-    }
-    form.contact-form textarea {
-      min-height: 120px;
-      font-size: 1.05rem;
-      line-height: 1.4;
-    }
-    form.contact-form button {
-      margin-top: 1.5rem;
-      background-color: #facc15;
-      color: #1f2937;
-      font-weight: 700;
-      padding: 1rem 2.5rem;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgb(250 204 21 / 0.7);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      display: block;
-      width: 100%;
-    }
-    form.contact-form button:hover, form.contact-form button:focus {
-      background-color: #eab308;
-      box-shadow: 0 12px 30px rgb(234 179 8 / 0.9);
-      outline: none;
-    }
-    form.contact-form .required-note {
-      font-size: 0.85rem;
-      color: #fde68a;
-      margin-top: -0.8rem;
-      margin-bottom: 1.2rem;
-      font-style: italic;
-    }
-    /* WhatsApp fisso */
-    .whatsapp-fixed {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 30px;
-      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.6);
-      padding: 0.5rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      z-index: 9999;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .whatsapp-fixed:hover, .whatsapp-fixed:focus {
-      background-color: #1ebe57;
-      outline: none;
-    }
-    .whatsapp-icon {
-      width: 22px;
-      height: 22px;
-      fill: white;
-    }
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .product-image {
-        max-width: 100%;
-      }
-      .btn-primary {
-        max-width: 100%;
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-      }
-      form.contact-form {
-        padding: 1.5rem 1.8rem;
-      }
-    }
-  </style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
+/* Background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.03) 0%, transparent 30%);
+  z-index: -2;
+}
+
+/* Noise texture */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiNjY2MiIGZpbHRlcj0idXJsKCNhKSIgZD0iTTAgMGgzMDB2MzAwSDB6Ii8+PC9zdmc+');
+  opacity: 0.03;
+  z-index: -1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--blue), var(--purple));
+  border-radius: 5px;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header & Navigation */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(12, 18, 34, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.logo-nav {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-nav span {
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.logo-icon {
+  font-size: 2.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.6rem 0;
+  position: relative;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--yellow);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--yellow), var(--blue));
+  border-radius: 1px;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  transition: var(--transition);
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--yellow);
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin: 4rem 0 2.5rem;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+
+.section-title h2 span {
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  border-radius: 2px;
+}
+
+/* Main Content */
+main {
+  padding: 4rem 0;
+}
+
+main h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  color: var(--text);
+  font-weight: 800;
+}
+
+main h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 0 0 2.5rem 0;
+  color: var(--yellow);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+main h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow), var(--blue));
+  border-radius: 2px;
+}
+
+main h3 {
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1.5rem;
+  color: var(--yellow);
+  text-align: center;
+}
+
+main p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 1.5rem auto;
+  text-align: center;
+  line-height: 1.6;
+}
+
+main strong {
+  color: var(--text);
+  background: rgba(250, 204, 21, 0.15);
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+/* Highlighted text */
+.highlight-text {
+  background: linear-gradient(120deg, transparent 50%, rgba(250, 204, 21, 0.2) 50%);
+  padding: 0 6px;
+  font-weight: 700;
+}
+
+/* Product Image - MODIFICATO PER COPRIRE IL CONTAINER */
+.product-image {
+  display: block;
+  max-width: 700px;
+  width: 100%;
+  margin: 3rem auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: var(--transition);
+  aspect-ratio: 4/3; /* MANTIENE IL RAPPORTO D'ASPECTO */
+  object-fit: cover; /* COPRE TUTTO IL CONTAINER */
+  object-position: center; /* CENTRA L'IMMAGINE */
+}
+
+/* Benefits Section */
+.benefits-section {
+  background: rgba(22, 31, 56, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  margin: 4rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: 4rem auto;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.8rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  border-left: 4px solid var(--yellow);
+}
+
+.benefit-item:hover {
+  transform: translateX(8px);
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: var(--blue);
+}
+
+.benefit-icon {
+  flex-shrink: 0;
+  margin-right: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 50%;
+  color: var(--yellow);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.benefit-content {
+  color: var(--text-secondary);
+}
+
+.benefit-content strong {
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* How It Works Section */
+.how-works-section {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 5px 15px rgba(250, 204, 21, 0.1);
+}
+
+.how-works-section h2 {
+  font-size: 1.8rem;
+  color: var(--yellow);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.how-works-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Reviews Section */
+.reviews-section {
+  margin: 4rem 0;
+}
+
+.review-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  padding: 1.8rem;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.review-item img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid var(--yellow);
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+}
+
+.review-item strong {
+  color: var(--yellow);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.review-item p {
+  font-style: italic;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* FAQ Section */
+.faq-section {
+  margin: 4rem 0;
+  max-width: 900px;
+  margin: 4rem auto;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.faq-item:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item strong {
+  color: var(--yellow);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.faq-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 4rem 0;
+  margin: 4rem 0;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+  color: #0f172a;
+  padding: 1.2rem 2.8rem;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 10px 25px -5px rgba(250, 204, 21, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: auto;
+  max-width: 500px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px -5px rgba(250, 204, 21, 0.4);
+  background: linear-gradient(90deg, #fde047 0%, #fef3c7 100%);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 2rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--yellow);
+}
+
+.copyright {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+  transition: var(--transition);
+  z-index: 999;
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
+}
+
+/* Contact Modal */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: var(--bg-dark);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.contact-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.contact-modal.active .modal-content {
+  transform: translateY(0);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--yellow);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.contact-form {
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  background: rgba(15, 23, 42, 0.5);
+  color: var(--text);
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.char-count {
+  font-size: 0.85rem;
+  color: var(--yellow);
+  text-align: right;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+.submit-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, var(--green) 0%, #16a34a 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.5);
+  background: linear-gradient(90deg, #22c55e 0%, #15803d 100%);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+  .container {
+    padding: 0 4%;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    flex-direction: column;
+    background: rgba(12, 18, 34, 0.95);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    max-width: 320px;
+    height: calc(100vh - 80px);
+    padding: 2.5rem 2rem;
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .nav-links.open {
+    right: 0;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
+  
+  main h1 {
+    font-size: 2.3rem;
+  }
+  
+  main h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 8%;
+  }
+  
+  main h1 {
+    font-size: 2rem;
+  }
+  
+  /* FORZA LE IMMAGINI A COPRIRE IL CONTAINER */
+  .product-image {
+    aspect-ratio: 4/3 !important;
+    min-height: 300px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  .review-item img {
+    width: 64px !important;
+    height: 64px !important;
+  }
+  
+  .benefit-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .benefit-icon {
+    margin-bottom: 0.8rem;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 5%;
+  }
+  
+  main h1 {
+    font-size: 1.8rem;
+  }
+  
+  main h2 {
+    font-size: 1.6rem;
+  }
+  
+  /* FORZA LE IMMAGINI A COPRIRE IL CONTAINER SU SCHERMI PICCOLI */
+  .product-image {
+    aspect-ratio: 4/3 !important;
+    min-height: 250px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  .review-item img {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  
+  .btn-primary {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+</style>
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="Menu principale">
-    <div class="logo-nav" aria-label="Logo DSFabio Digital">
-      DSFabio<span>Digital</span>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="Menu principale">
+        <a href="index.html" class="logo-nav" aria-label="DSFabio Digital - Home">
+          <i class="fas fa-utensils logo-icon"></i>
+          DSFabio<span>Digital</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" aria-hidden="true">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="modelli.html"><i class="fas fa-th-large"></i> Demo gratuita</a></li>
+          <li><a href="prezzi.html"><i class="fas fa-tag"></i> Prezzi</a></li>
+          <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+      </nav>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <ul class="nav-links" id="navLinks" aria-hidden="true">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="modelli.html">Demo gratuita</a></li>
-      <li><a href="prezzi.html">Prezzi</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
-  
-  <style>
-    :root {
-      --primary: #facc15;
-      --primary-dark: #eab308;
-      --bg-dark: #111827;
-      --white: #fff;
-    }
-    .navbar {
-      background: var(--bg-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    }
-    .logo-nav {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--primary);
-      user-select: none;
-      cursor: default;
-    }
-    .logo-nav span {
-      color: var(--white);
-      font-style: italic;
-      margin-left: 4px;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-    }
-    .nav-links li a {
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.5rem 0;
-      color: var(--primary);
-      text-decoration: none;
-      display: block;
-    }
-    .nav-links li a:hover,
-    .nav-links li a:focus {
-      color: var(--primary-dark);
-      outline: none;
-      text-decoration: underline;
-    }
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 28px;
-      height: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 1100;
-    }
-    .nav-toggle span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background: var(--primary);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .nav-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 6px);
-    }
-    .nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-    @media (max-width: 900px) {
-      .nav-links {
-        flex-direction: column;
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 80vw;
-        max-width: 320px;
-        background: linear-gradient(120deg, var(--bg-dark) 80%, var(--primary) 120%);
-        box-shadow: -4px 0 24px rgba(0,0,0,0.7);
-        padding: 2rem;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-      }
-      .nav-links.open {
-        max-height: 500px; /* sufficiente per mostrare tutti i link */
-        opacity: 1;
-        pointer-events: auto;
-        transition: max-height 0.5s ease, opacity 0.5s ease;
-      }
-      .nav-toggle {
-        display: flex;
-      }
-    }
-  </style>
-  
+  </header>
+
+  <main class="container" role="main" aria-label="Pagina approfondimento servizio Menu Digitale Ultra Moderno con Ordini WhatsApp DSFabio Digital">
+    <h1>Menu Digitale Ultra Moderno con Ordini WhatsApp + Suggerimenti Intelligenti</h1>
+    
+    <p style="text-align:center;font-size:1.2rem;color:var(--yellow-light);font-weight:600;">
+      Ideale per bar, ristoranti e pizzerie che vogliono aumentare lo scontrino medio senza complicazioni.
+    </p>
+
+    <img 
+      src="https://i.postimg.cc/PqCBhXRY/2.png" 
+      alt="Demo Menu Digitale DSFabio Digital" 
+      class="product-image" 
+    />
+
+    <div class="how-works-section">
+      <h2>Come funziona il sistema di suggerimenti?</h2>
+      <p>
+        Quando il cliente seleziona un piatto, il sistema propone in automatico un'aggiunta ideale (es. bevanda, contorno, dessert). 
+        Tutto questo avviene direttamente nel menu, prima che venga generato l'ordine WhatsApp.
+      </p>
+      <p>
+        Risultato? Più vendite, clienti più soddisfatti, zero stress per te.
+      </p>
+    </div>
+    
+    <div class="benefits-section">
+      <h2>7 Motivi per cui il tuo locale ha bisogno di un menu digitale</h2>
+      <ul class="benefits-list">
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✔️</div>
+          <div class="benefit-content">
+            <strong>Aumenta le vendite</strong>
+            <p>Con ordini WhatsApp e suggerimenti automatici che spingono i clienti ad aggiungere extra.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✔️</div>
+          <div class="benefit-content">
+            <strong>Ordini facili e veloci su WhatsApp</strong>
+            <p>Il cliente invia l'ordine con un clic, senza scaricare nulla.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✔️</div>
+          <div class="benefit-content">
+            <strong>Risparmia tempo e denaro</strong>
+            <p>Gestisci il menu in tempo reale ed elimina i costi di ristampa.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✔️</div>
+          <div class="benefit-content">
+            <strong>Migliora la reputazione</strong>
+            <p>Offrendo un menu moderno e facile da usare, che i clienti apprezzano e condividono.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✔️</div>
+          <div class="benefit-content">
+            <strong>Nessuna preoccupazione per aggiornamenti</strong>
+            <p>Basta inviarmi le modifiche e io le applico in meno di 30 minuti, senza costi extra.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✔️</div>
+          <div class="benefit-content">
+            <strong>Un menu sempre aggiornato e professionale</strong>
+            <p>che valorizza il tuo locale e conquista nuovi clienti.</p>
+          </div>
+        </li>
+      </ul>
+      <p style="margin-top: 2rem; text-align: center; font-size: 1.1rem; color: var(--yellow-light); font-weight: 700;">
+        Scegli la soluzione che ti libera da pensieri e ti fa concentrare sul tuo lavoro, mentre io mi occupo del resto.
+      </p>
+    </div>
+
+    <div class="benefits-section">
+      <h2>Cosa Include il Servizio</h2>
+      <ul class="benefits-list">
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>Prova gratuita di 15 giorni</strong>
+            <p>Per darti modo di toccare con mano i benefici senza impegno.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>QR Code personalizzato</strong>
+            <p>Con logo e nome del tuo locale, icone social e stile coordinato.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>Hosting e dominio inclusi</strong>
+            <p>Con certificato SSL e setup completo senza costi aggiuntivi.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>Modifiche e aggiornamenti illimitati</strong>
+            <p>Rapidi e senza costi extra, per mantenere sempre il menu aggiornato.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>Ordini semplici e veloci via WhatsApp</strong>
+            <p>Senza app aggiuntive per il cliente.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>Sistema intelligente di upsell</strong>
+            <p>Per aumentare lo scontrino medio con suggerimenti mirati.</p>
+          </div>
+        </li>
+        <li class="benefit-item fade-in">
+          <div class="benefit-icon">✓</div>
+          <div class="benefit-content">
+            <strong>Assistenza dedicata</strong>
+            <p>Per garantirti un menu sempre perfetto e risolvere qualsiasi dubbio.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <a href="modelli.html" class="btn-primary" aria-label="Vedi tutti i modelli e prova gratis">
+        ESPLORA TUTTI I MODELLI
+      </a>
+    </div>
+
+    <!-- Recensioni -->
+    <div class="reviews-section">
+      <h2>Cosa dicono i nostri clienti</h2>
+      
+      <div class="review-item fade-in">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Foto Marco" />
+        <div>
+          <strong>Marco, Osteria del Borgo</strong>
+          <p>"Da quando usiamo il menu con WhatsApp e suggerimenti, lo scontrino medio è salito di almeno il 15%. Super soddisfatti!"</p>
+        </div>
+      </div>
+
+      <div class="review-item fade-in">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Foto Chiara" />
+        <div>
+          <strong>Chiara, Pasticceria Dolce Senso</strong>
+          <p>"I clienti adorano ordinare direttamente dal telefono. E il sistema suggerisce sempre qualcosa in più. Una svolta!"</p>
+        </div>
+      </div>
+
+      <div class="review-item fade-in">
+        <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="Foto Enzo" />
+        <div>
+          <strong>Enzo, Braceria San Lorenzo</strong>
+          <p>"Il servizio è impeccabile. Basta inviare un messaggio e le modifiche al menu sono online in pochi minuti."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Domande frequenti</h2>
+      
+      <div class="faq-item fade-in">
+        <strong>Quanto dura la prova gratuita?</strong>
+        <p>15 giorni completi, per testare il menu con ordini WhatsApp e suggerimenti attivi.</p>
+      </div>
+      
+      <div class="faq-item fade-in">
+        <strong>Come funzionano i suggerimenti durante l'ordine?</strong>
+        <p>Il sistema propone automaticamente bevande, contorni o dolci in base a ciò che il cliente sta ordinando.</p>
+      </div>
+      
+      <div class="faq-item fade-in">
+        <strong>Serve scaricare un'app?</strong>
+        <p>No, tutto funziona via browser e WhatsApp. Il cliente scansiona il QR Code e ordina in pochi tap.</p>
+      </div>
+      
+      <div class="faq-item fade-in">
+        <strong>Chi gestisce aggiornamenti e modifiche?</strong>
+        <p>Ci penso io: tu mi invii le variazioni e io le applico, senza costi extra.</p>
+      </div>
+      
+      <div class="faq-item fade-in">
+        <strong>L'hosting è incluso?</strong>
+        <p>Sì, hosting sicuro, dominio e certificato SSL sono inclusi nel prezzo annuale.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a href="modelli.html" class="btn-primary" aria-label="Vedi tutti i modelli e prova gratis">
+        Provalo gratis e scopri quanto puoi vendere in più con il sistema
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <button id="contactBtn" class="btn-service">
+        <i class="fas fa-comments"></i> Contattaci
+      </button>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="termini.html">Termini e Condizioni</a>
+        <a href="contatti.html">Contatti</a>
+      </div>
+      <div class="copyright">
+        &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal" aria-label="Chiudi modale">
+        &times;
+      </button>
+      <h2>Invia un messaggio</h2>
+      <form id="contactForm" class="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" required placeholder="Il tuo nome">
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" required placeholder="La tua email">
+        </div>
+        <div class="form-group">
+          <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+          <div id="charCount" class="char-count">0 / 700</div>
+        </div>
+        <button type="submit" class="submit-btn">Invia su WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
   <script>
+    // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-  
+    
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('open');
       navToggle.classList.toggle('active');
       navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
       navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
     });
-  
-    // Chiudi menu mobile al click su link
+    
+    // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         if (navLinks.classList.contains('open')) {
@@ -459,355 +1162,91 @@
         }
       });
     });
-  </script>
-
-  <main class="container" role="main" aria-label="Pagina approfondimento servizio Menu Digitale DSFabio Digital">
-    <h1>Menu Digitale Ultra Moderno con Ordini WhatsApp + Suggerimenti Intelligenti</h1>
-    <p style="text-align:center;font-size:1.2rem;color:#fcd34d;font-weight:600;">
-      Ideale per bar, ristoranti e pizzerie che vogliono aumentare lo scontrino medio senza complicazioni.
-    </p>
-
-    <img 
-      src="https://i.postimg.cc/PqCBhXRY/2.png" 
-      alt="Demo Menu Digitale DSFabio Digital" 
-      class="product-image" 
-    />
-
-    <section style="background:#111827;padding:2.5rem;border-radius:16px;max-width:900px;margin:3rem auto;">
-      <h2 style="color:#facc15;">Come funziona il sistema di suggerimenti?</h2>
-      <p>
-        Quando il cliente seleziona un piatto, il sistema propone in automatico un'aggiunta ideale (es. bevanda, contorno, dessert). 
-        Tutto questo avviene direttamente nel menu, prima che venga generato l’ordine WhatsApp.
-      </p>
-      <p>
-        Risultato? Più vendite, clienti più soddisfatti, zero stress per te.
-      </p>
-    </section>
     
-    <section aria-label="Benefici menu digitale" style="max-width:900px; margin: 3rem auto; padding: 2rem 2.5rem; background: #1e293b; border-radius: 16px; box-shadow: 0 0 20px rgba(250, 204, 21, 0.3); color: #fef9c3; font-weight: 600; line-height: 1.6;">
-        <h2 style="color: #facc15; text-align: center; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800;">7 Motivi per cui il tuo locale ha bisogno di un menu digitale</h2>
-        <ul style="list-style: none; padding-left: 0;">
-         
-          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
-            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
-            <div><strong>Aumenta le vendite</strong> con ordini WhatsApp e suggerimenti automatici che spingono i clienti ad aggiungere extra.</div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
-            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
-            <div><strong>Ordini facili e veloci su WhatsApp</strong>, il cliente invia l’ordine con un clic, senza scaricare nulla.</div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
-            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
-            <div><strong>Risparmia tempo e denaro</strong> Gestisci il menu in tempo reale ed elimina i costi di ristampa.</div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
-            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
-            <div><strong>Migliora la reputazione</strong> offrendo un menu moderno e facile da usare, che i clienti apprezzano e condividono.</div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem;">
-            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
-            <div><strong>Nessuna preoccupazione per aggiornamenti</strong>: basta inviarmi le modifiche e io le applico in meno di 30 minuti, senza costi extra.</div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.8rem;">
-            <span style="color: #fbbf24; font-size: 1.8rem; line-height: 1;">✔️</span>
-            <div><strong>Un menu sempre aggiornato e professionale</strong> che valorizza il tuo locale e conquista nuovi clienti.</div>
-          </li>
-        </ul>
-        <p style="margin-top: 2rem; text-align: center; font-size: 1.1rem; color: #fde68a; font-weight: 700;">
-          Scegli la soluzione che ti libera da pensieri e ti fa concentrarti sul tuo lavoro, mentre io mi occupo del resto.
-        </p>
-      </section>
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
       
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Initial check for elements already in view
+      setTimeout(() => {
+        fadeElements.forEach(element => {
+          if (isElementInViewport(element)) {
+            element.classList.add('visible');
+          }
+        });
+      }, 300);
+      
+      // Contact modal
+      const modal = document.getElementById("contactModal");
+      const openBtn = document.getElementById("contactBtn");
+      const closeBtn = document.getElementById("closeModal");
+      const form = document.getElementById("contactForm");
+      const msgField = document.getElementById("userMsg");
+      const charCount = document.getElementById("charCount");
 
-    <ul class="benefits-list" aria-label="Vantaggi principali del servizio menu digitale">
-      <li>Prova gratuita di 15 giorni per darti modo di toccare con mano i benefici</li>
-      <li>QR Code personalizzato, logo e nome sul menu, icone social</li>
-      <li>Hosting, dominio con certificato SSL e setup completo inclusi</li>
-      <li>Modifiche e aggiornamenti illimitati e rapidissimi</li>
-      <li>Ordini semplici e veloci via WhatsApp, senza app aggiuntive</li>
-      <li>Sistema intelligente di upsell per aumentare lo scontrino medio</li>
-      <li>Assistenza dedicata per un menu sempre perfetto</li>
-    </ul>
+      openBtn.addEventListener("click", () => {
+        modal.classList.add('active');
+      });
 
-    <a 
-      href="modelli.html" 
-      class="btn-primary" 
-      aria-label="Vedi tutti i modelli e prova gratis"
-    >
-      ESPLORA TUTTI I MODELLI
-    </a>
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove('active');
+      });
 
-    <section class="reviews" aria-label="Recensioni dei clienti">
-      <h2>Cosa dicono i nostri clienti</h2>
-    
-      <div class="review-item">
-        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Foto Marco" />
-        <div>
-          <strong>Marco, Osteria del Borgo</strong>
-          <p>"Da quando usiamo il menu con WhatsApp e suggerimenti, lo scontrino medio è salito di almeno il 15%. Super soddisfatti!"</p>
-        </div>
-      </div>
-    
-      <div class="review-item">
-        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Foto Chiara" />
-        <div>
-          <strong>Chiara, Pasticceria Dolce Senso</strong>
-          <p>"I clienti adorano ordinare direttamente dal telefono. E il sistema suggerisce sempre qualcosa in più. Una svolta!"</p>
-        </div>
-      </div>
-    
-      <div class="review-item">
-        <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="Foto Enzo" />
-        <div>
-          <strong>Enzo, Braceria San Lorenzo</strong>
-          <p>"Il servizio è impeccabile. Basta inviare un messaggio e le modifiche al menu sono online in pochi minuti."</p>
-        </div>
-      </div>
-    </section>
-    
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
 
-    <section class="faq" aria-label="Domande frequenti">
-      <h2>Domande frequenti</h2>
-    
-      <p><strong>Quanto dura la prova gratuita?</strong><br>15 giorni completi, per testare il menu con ordini WhatsApp e suggerimenti attivi.</p>
-    
-      <p><strong>Come funzionano i suggerimenti durante l’ordine?</strong><br>Il sistema propone automaticamente bevande, contorni o dolci in base a ciò che il cliente sta ordinando.</p>
-    
-      <p><strong>Serve scaricare un'app?</strong><br>No, tutto funziona via browser e WhatsApp. Il cliente scansiona il QR Code e ordina in pochi tap.</p>
-    
-      <p><strong>Chi gestisce aggiornamenti e modifiche?</strong><br>Ci penso io: tu mi invii le variazioni e io le applico, senza costi extra.</p>
-    
-      <p><strong>L’hosting è incluso?</strong><br>Sì, hosting sicuro, dominio e certificato SSL sono inclusi nel prezzo annuale.</p>
-    </section>
-    
-    <a 
-      href="modelli.html" 
-      class="btn-primary" 
-      aria-label="Vedi tutti i modelli e prova gratis"
-    >
-    Provalo gratis e scopri quanto puoi vendere in più con il sistema</a>
+      msgField.addEventListener("input", () => {
+        charCount.textContent = `${msgField.value.length} / 700`;
+      });
 
-  </main>
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-</script>
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = msgField.value.trim();
 
-<style>
-  .whatsapp-footer-btn {
-    margin-top: 2rem;
-    background-color: #47e744;
-    color: white;
-    border-radius: 32px;
-    padding: 0.7rem 1.6rem;
-    font-size: 1rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    transition: background-color 0.3s ease;
-  }
+        const header = "*Nuovo messaggio dal sito web*";
+        const body = `${header}
+*👤 Nome:* ${name}
+*📧 Email:* ${email}
+*💬 Messaggio:*
+${message}`;
+        const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
 
-  .whatsapp-footer-btn:hover,
-  .whatsapp-footer-btn:focus {
-    background-color: #334155;
-  }
-</style>
+        window.location.href = url; 
 
-  <!-- Script animazioni -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 900,
-      once: true
+        form.reset();
+        charCount.textContent = "0 / 700";
+        modal.classList.remove('active');
+      });
     });
-  </script>
-
-<!-- FOOTER + PULSANTE WHATSAPP + COPYRIGHT -->
-<footer style="padding:1.5rem 1rem; text-align:center; background:#0d1b2a; color:#fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <button id="contactBtn" 
-    style="
-      background: #0d1b2a; /* blu notte */
-      color: #fff;
-      font-weight: 700;
-      padding: 0.6rem 1.8rem;
-      font-size: 1rem;
-      border: 2px solid #facc15;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 3px 10px rgba(250, 204, 21, 0.7);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      user-select: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    "
-    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 5px 18px rgba(250, 204, 21, 0.9)';"
-    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 3px 10px rgba(250, 204, 21, 0.7)';"
-  >
-    💬 Contattaci
-  </button>
-  <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #ccc; letter-spacing: 0.02em;">
-    &copy; 2025 DSFabio Digital. Tutti i diritti riservati.
-  </p>
-</footer>
-
-<!-- MODALE CONTATTO -->
-<div id="contactModal" 
-  style="
-    position: fixed; inset: 0; 
-    background: rgba(0,0,0,0.85); 
-    display: flex; align-items: center; justify-content: center; 
-    opacity: 0; pointer-events: none; 
-    transition: opacity 0.35s ease;
-    z-index: 9999;
-  "
->
-  <div 
-    style="
-      background: #121217;
-      padding: 2.5rem 2rem;
-      border-radius: 20px;
-      max-width: 440px;
-      width: 90%;
-      position: relative;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-      color: #f0f0f5;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      user-select: text;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    "
-  >
-    <button id="closeModal" 
-      aria-label="Chiudi modale" 
-      style="
-        position: absolute; top: 15px; right: 18px; 
-        background: transparent; border: none; 
-        font-size: 1.8rem; font-weight: 700; 
-        color: #facc15; 
-        cursor: pointer;
-        transition: color 0.3s ease;
-        user-select: none;
-      "
-      onmouseover="this.style.color='#fff';"
-      onmouseout="this.style.color='#facc15';"
-    >
-      &times;
-    </button>
-    <h2 style="margin-top: 0; font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: 0.02em;">
-      Invia un messaggio
-    </h2>
-    <form id="contactForm" style="margin-top: 1rem; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 1rem;">
-      <input type="text" id="name" required placeholder="Il tuo nome" 
-        style="
-          width: 100%; padding: 0.6rem 1rem; 
-          border: 1px solid #0d1b2a; /* blu notte */
-          border-radius: 6px; 
-          font-size: 1rem; background: #1a1a1f; color: #fff; 
-          transition: border-color 0.3s ease;
-          box-sizing: border-box;
-        "
-        onfocus="this.style.borderColor='#facc15';" 
-        onblur="this.style.borderColor='#0d1b2a';"
-      />
-      <input type="email" id="email" required placeholder="La tua email" 
-        style="
-          width: 100%; padding: 0.6rem 1rem; 
-          border: 1px solid #fff; /* bianco */
-          border-radius: 6px; 
-          font-size: 1rem; background: #1a1a1f; color: #fff; 
-          transition: border-color 0.3s ease;
-          box-sizing: border-box;
-        "
-        onfocus="this.style.borderColor='#facc15';" 
-        onblur="this.style.borderColor='#fff';"
-      />
-      <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..." 
-        style="
-          width: 100%; padding: 0.8rem 1rem; 
-          border: 1px solid #0d1b2a; /* blu notte */
-          border-radius: 6px; 
-          font-size: 1rem; background: #1a1a1f; color: #fff; 
-          resize: vertical; min-height: 140px; 
-          transition: border-color 0.3s ease;
-          box-sizing: border-box;
-        "
-        onfocus="this.style.borderColor='#facc15';" 
-        onblur="this.style.borderColor='#0d1b2a';"
-      ></textarea>
-      <div id="charCount" 
-        style="font-size: 0.85rem; color: #facc15; text-align: right; margin-top: 4px; letter-spacing: 0.02em;">
-        0 / 700
-      </div>
-      <button type="submit" 
-        style="
-          margin-top: 1.5rem; background: #25d366; /* verde WhatsApp */
-          color: #0d1b2a; border: none; padding: 0.7rem 1.5rem; 
-          font-size: 1rem; border-radius: 40px; cursor: pointer; 
-          font-weight: 700; width: 100%; 
-          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.7);
-          transition: background 0.3s ease, box-shadow 0.3s ease;
-        "
-        onmouseover="this.style.background='#1ebe57'; this.style.boxShadow='0 8px 24px rgba(30, 190, 87, 0.9)';"
-        onmouseout="this.style.background='#25d366'; this.style.boxShadow='0 6px 18px rgba(37, 211, 102, 0.7)';"
-      >
-        Invia su WhatsApp
-      </button>
-    </form>
-  </div>
-</div>
-
-<!-- SCRIPT -->
-<script>
-  const modal = document.getElementById("contactModal");
-  const openBtn = document.getElementById("contactBtn");
-  const closeBtn = document.getElementById("closeModal");
-  const form = document.getElementById("contactForm");
-  const msgField = document.getElementById("userMsg");
-  const charCount = document.getElementById("charCount");
-
-  openBtn.addEventListener("click", () => {
-    modal.style.opacity = "1";
-    modal.style.pointerEvents = "auto";
-  });
-
-  closeBtn.addEventListener("click", () => {
-    modal.style.opacity = "0";
-    modal.style.pointerEvents = "none";
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.opacity = "0";
-      modal.style.pointerEvents = "none";
+    
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+        rect.bottom >= 0
+      );
     }
-  });
-
-  msgField.addEventListener("input", () => {
-    charCount.textContent = `${msgField.value.length} / 700`;
-  });
-
-  form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = msgField.value.trim();
-
-  const header = "*Nuovo messaggio dal sito web*";
-  const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
-  const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-
-  window.location.href = url; 
-
-  form.reset();
-  charCount.textContent = "0 / 700";
-  modal.style.opacity = "0";
-  modal.style.pointerEvents = "none";
-});
-</script>
+  </script>
 </body>
 </html>

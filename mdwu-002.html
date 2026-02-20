@@ -385,7 +385,7 @@
     box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
   }
 
-  /* Modale rinnovato */
+  /* Modale rinnovato - SOLO LE CORREZIONI RICHIESTE */
   .modal {
     display: none;
     position: fixed;
@@ -408,14 +408,15 @@
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     max-width: 520px;
     width: 100%;
-    padding: 1.8rem 1.5rem 1.5rem; /* Ridotto padding inferiore */
+    padding: 1.8rem 1.5rem 2rem; /* Spazio extra per il pulsante */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     position: relative;
     transform: translateY(100%);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     max-height: 95vh;
     overflow-y: auto;
+    will-change: transform; /* Ottimizza l'animazione per eliminare la vibrazione */
   }
 
   .modal.active .modal-content {
@@ -761,7 +762,7 @@
     margin-top: 0.2rem;
   }
 
-  /* Bottone WhatsApp migliorato */
+  /* Bottone WhatsApp migliorato - SOLO LE CORREZIONI RICHIESTE */
   #send-whatsapp {
     background-color: var(--whatsapp);
     color: var(--light);
@@ -780,12 +781,10 @@
     transition: var(--transition);
     font-family: var(--font-primary);
     letter-spacing: 0.5px;
-    margin-top: 1.5rem;
-    position: sticky;
+    position: sticky; /* Mantiene il pulsante in fondo durante lo scrolling */
     bottom: 0;
     z-index: 10;
-    left: 0;
-    right: 0;
+    margin-top: 1.5rem;
   }
 
   #send-whatsapp:hover:not(:disabled) {
@@ -1135,9 +1134,6 @@
     }
     
     #send-whatsapp {
-      font-size: 1.05rem;
-      padding: 1rem;
-      border-radius: 12px;
       position: fixed;
       bottom: 20px;
       left: 15px;
@@ -1168,7 +1164,7 @@
     }
     
     .modal-content {
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
 
@@ -1197,22 +1193,6 @@
   }
   .modal-content::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
-  }
-  
-  /* Animazione più fluida per la modale */
-  @keyframes modalOpen {
-    from { 
-      transform: translateY(100%);
-      opacity: 0.7;
-    }
-    to { 
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  .modal.active .modal-content {
-    animation: modalOpen 0.45s forwards;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -1713,15 +1693,15 @@
       orderModal.classList.add('active');
       document.querySelector('.modal-content').focus();
     }, 10);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Blocca lo scrolling dello sfondo
   }
 
   function closeOrderModal() {
     orderModal.classList.remove('active');
     setTimeout(() => {
       orderModal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }, 450);
+      document.body.style.overflow = 'auto'; // Riattiva lo scrolling dello sfondo
+    }, 400);
   }
 
   // Gestione form
@@ -1757,18 +1737,11 @@
 
   // Invia ordine
   function sendOrder() {
-    console.log("sendOrder function called");
-    
-    if (!validateForm()) {
-      console.log("Validation failed");
-      return;
-    }
+    if (!validateForm()) return;
     
     const name = document.getElementById('customerName').value.trim();
     const table = document.getElementById('tableNumber').value.trim();
     const notes = document.getElementById('notes').value.trim();
-    
-    console.log("Form data:", { name, table, notes });
     
     let msg = `*Nuovo ordine dal tavolo ${table}*\n👤 Nome: ${name}\n\n*Ordine:*\n`;
     let totale = 0;
@@ -1781,28 +1754,18 @@
     msg += `\n*Totale: €${totale.toFixed(2)}*`;
     if (notes) msg += `\n\n*Note:* ${notes}`;
     
-    console.log("WhatsApp message:", msg);
-    
     const numero = "393440301412";
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
-    console.log("Opening WhatsApp URL:", url);
+    window.open(url, '_blank');
     
-    try {
-      window.open(url, '_blank');
-      
-      // Resetta il carrello
-      cart = [];
-      updateCartUI();
-      closeOrderModal();
-      
-      // Resetta il form
-      document.getElementById('orderForm').reset();
-      document.getElementById('notesCounter').textContent = "200 caratteri rimasti";
-      console.log("Order sent successfully");
-    } catch (error) {
-      console.error("Error sending order:", error);
-      alert("Si è verificato un errore durante l'invio dell'ordine. Riprova.");
-    }
+    // Resetta il carrello
+    cart = [];
+    updateCartUI();
+    closeOrderModal();
+    
+    // Resetta il form
+    document.getElementById('orderForm').reset();
+    document.getElementById('notesCounter').textContent = "200 caratteri rimasti";
   }
 
   // Inizializzazione
@@ -1818,13 +1781,7 @@
     document.getElementById('clearCart').addEventListener('click', clearCart);
     
     // Collegamento corretto del pulsante WhatsApp
-    const sendBtn = document.getElementById('send-whatsapp');
-    if (sendBtn) {
-      sendBtn.addEventListener('click', sendOrder);
-      console.log("WhatsApp button event listener attached");
-    } else {
-      console.error("Send WhatsApp button not found");
-    }
+    document.getElementById('send-whatsapp').addEventListener('click', sendOrder);
     
     // Chiudi modale cliccando fuori
     orderModal.addEventListener('click', (e) => {
@@ -1837,90 +1794,72 @@
     const notes = document.getElementById('notes');
     const notesCounter = document.getElementById('notesCounter');
     
-    if (notes && notesCounter) {
-      notes.addEventListener('input', function() {
-        const max = 200;
-        const len = notes.value.length;
-        if (len > max) notes.value = notes.value.substring(0, max);
-        notesCounter.textContent = (max - notes.value.length) + " caratteri rimasti";
-      });
-    }
+    notes.addEventListener('input', function() {
+      const max = 200;
+      const len = notes.value.length;
+      if (len > max) notes.value = notes.value.substring(0, max);
+      notesCounter.textContent = (max - notes.value.length) + " caratteri rimasti";
+    });
     
     // Gestione form validation in tempo reale
-    const customerName = document.getElementById('customerName');
-    const tableNumber = document.getElementById('tableNumber');
-    
-    if (customerName) {
-      customerName.addEventListener('input', validateForm);
-    }
-    
-    if (tableNumber) {
-      tableNumber.addEventListener('input', validateForm);
-    }
+    document.getElementById('customerName').addEventListener('input', validateForm);
+    document.getElementById('tableNumber').addEventListener('input', validateForm);
     
     // Demo modal
     const demoModal = document.getElementById('demoModal');
     const openDemoBtn = document.getElementById('openDemoModal');
     const closeDemoBtn = document.getElementById('closeDemoModal');
     
-    if (openDemoBtn && demoModal && closeDemoBtn) {
-      openDemoBtn.addEventListener('click', () => {
-        demoModal.style.display = 'block';
-        setTimeout(() => {
-          demoModal.setAttribute('aria-hidden', 'false');
-          document.querySelector('.modal-content-offerta').focus();
-        }, 10);
-      });
-      
-      closeDemoBtn.addEventListener('click', () => {
-        demoModal.setAttribute('aria-hidden', 'true');
-        setTimeout(() => {
-          demoModal.style.display = 'none';
-        }, 300);
-      });
-      
-      // Chiudi demo modal cliccando fuori
-      demoModal.addEventListener('click', (e) => {
-        if (e.target === demoModal) {
-          closeDemoBtn.click();
-        }
-      });
-      
-      // Gestione form demo
-      const demoForm = document.getElementById('demoForm');
-      if (demoForm) {
-        demoForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          const nome = document.getElementById('demoNome').value.trim();
-          const email = document.getElementById('demoEmail').value.trim();
-          const messaggio = document.getElementById('demoMessaggio').value.trim();
-          
-          if (!nome || !email || !messaggio) {
-            alert('Per favore compila tutti i campi obbligatori');
-            return;
-          }
-          
-          const testo = `🆕 Richiesta demo\n\n👤 Nome: ${nome}\n📧 Email: ${email}\n\n💬 Messaggio:\n${messaggio}`;
-          const numeroWA = '393440301412';
-          window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
-          
-          // Chiudi modale
-          closeDemoBtn.click();
-          
-          // Mostra conferma
-          alert('Richiesta inviata con successo! Ti contatteremo entro 24 ore.');
-        });
+    openDemoBtn.addEventListener('click', () => {
+      demoModal.style.display = 'block';
+      setTimeout(() => {
+        demoModal.setAttribute('aria-hidden', 'false');
+        document.querySelector('.modal-content-offerta').focus();
+      }, 10);
+    });
+    
+    closeDemoBtn.addEventListener('click', () => {
+      demoModal.setAttribute('aria-hidden', 'true');
+      setTimeout(() => {
+        demoModal.style.display = 'none';
+      }, 300);
+    });
+    
+    // Chiudi demo modal cliccando fuori
+    demoModal.addEventListener('click', (e) => {
+      if (e.target === demoModal) {
+        closeDemoBtn.click();
       }
-    }
+    });
+    
+    // Gestione form demo
+    document.getElementById('demoForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const nome = document.getElementById('demoNome').value.trim();
+      const email = document.getElementById('demoEmail').value.trim();
+      const messaggio = document.getElementById('demoMessaggio').value.trim();
+      
+      if (!nome || !email || !messaggio) {
+        alert('Per favore compila tutti i campi obbligatori');
+        return;
+      }
+      
+      const testo = `🆕 Richiesta demo\n\n👤 Nome: ${nome}\n📧 Email: ${email}\n\n💬 Messaggio:\n${messaggio}`;
+      const numeroWA = '393440301412';
+      window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
+      
+      // Chiudi modale
+      closeDemoBtn.click();
+      
+      // Mostra conferma
+      alert('Richiesta inviata con successo! Ti contatteremo entro 24 ore.');
+    });
     
     // Simula caricamento
     setTimeout(() => {
       document.body.style.opacity = 1;
     }, 100);
-    
-    // Debug iniziale
-    console.log("Menu digitale inizializzato correttamente");
   });
 </script>
 </body>

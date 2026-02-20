@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Bar Nerone - Menu Digitale | Ordina via WhatsApp</title>
 <meta name="description" content="Ordina comodamente dal tuo tavolo al Bar Nerone. Menu digitale con sistema di ordinazione WhatsApp integrato.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="icon" href="image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
 <style>
   :root {
     /* Palette colori premium */
@@ -25,7 +24,7 @@
     --gold-dark: #D97706;
     
     /* Transizioni */
-    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -409,12 +408,12 @@
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     max-width: 520px;
     width: 100%;
-    padding: 1.8rem 1.5rem 2rem;
+    padding: 1.8rem 1.5rem 1.5rem; /* Ridotto padding inferiore */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     position: relative;
     transform: translateY(100%);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     max-height: 95vh;
     overflow-y: auto;
   }
@@ -782,8 +781,11 @@
     font-family: var(--font-primary);
     letter-spacing: 0.5px;
     margin-top: 1.5rem;
-    position: relative;
+    position: sticky;
+    bottom: 0;
     z-index: 10;
+    left: 0;
+    right: 0;
   }
 
   #send-whatsapp:hover:not(:disabled) {
@@ -1128,13 +1130,21 @@
     
     .modal-content {
       border-radius: var(--border-radius) var(--border-radius) 0 0;
-      padding: 1.5rem 1.2rem 65px;
+      padding: 1.5rem 1.2rem 75px; /* Spazio aggiuntivo per il pulsante WhatsApp */
+      max-height: 92vh;
     }
     
     #send-whatsapp {
       font-size: 1.05rem;
       padding: 1rem;
       border-radius: 12px;
+      position: fixed;
+      bottom: 20px;
+      left: 15px;
+      right: 15px;
+      margin: 0;
+      z-index: 100;
+      width: auto;
     }
     
     .offerta-cta p {
@@ -1158,7 +1168,7 @@
     }
     
     .modal-content {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
 
@@ -1188,6 +1198,22 @@
   .modal-content::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
   }
+  
+  /* Animazione più fluida per la modale */
+  @keyframes modalOpen {
+    from { 
+      transform: translateY(100%);
+      opacity: 0.7;
+    }
+    to { 
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal.active .modal-content {
+    animation: modalOpen 0.45s forwards;
+  }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -1216,7 +1242,7 @@
     
     <div class="modal-header">
       <h2 class="modal-title" id="modalTitle">Il tuo ordine</h2>
-      
+      <button class="clear-cart" id="clearCart" aria-label="Svuota il carrello">Svuota tutto</button>
     </div>
     
     <div class="order-summary" id="orderSummary">
@@ -1518,7 +1544,7 @@
   }
 
   // Aggiungi prodotto upsell al carrello
-  function aggiungiUpsell(nome) {
+  window.aggiungiUpsell = function(nome) {
     const prod = upsell.find(u => u.nome === nome);
     if (!prod) return;
     
@@ -1672,6 +1698,12 @@
     `).join('');
   }
 
+  // Svuota il carrello
+  function clearCart() {
+    cart = [];
+    updateCartUI();
+    renderOrderSummary();
+  }
 
   // Gestione modale
   function openOrderModal() {
@@ -1689,7 +1721,7 @@
     setTimeout(() => {
       orderModal.style.display = 'none';
       document.body.style.overflow = 'auto';
-    }, 500);
+    }, 450);
   }
 
   // Gestione form
@@ -1725,11 +1757,18 @@
 
   // Invia ordine
   function sendOrder() {
-    if (!validateForm()) return;
+    console.log("sendOrder function called");
+    
+    if (!validateForm()) {
+      console.log("Validation failed");
+      return;
+    }
     
     const name = document.getElementById('customerName').value.trim();
     const table = document.getElementById('tableNumber').value.trim();
     const notes = document.getElementById('notes').value.trim();
+    
+    console.log("Form data:", { name, table, notes });
     
     let msg = `*Nuovo ordine dal tavolo ${table}*\n👤 Nome: ${name}\n\n*Ordine:*\n`;
     let totale = 0;
@@ -1742,18 +1781,28 @@
     msg += `\n*Totale: €${totale.toFixed(2)}*`;
     if (notes) msg += `\n\n*Note:* ${notes}`;
     
+    console.log("WhatsApp message:", msg);
+    
     const numero = "393440301412";
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+    console.log("Opening WhatsApp URL:", url);
     
-    // Resetta il carrello
-    cart = [];
-    updateCartUI();
-    closeOrderModal();
-    
-    // Resetta il form
-    document.getElementById('orderForm').reset();
-    document.getElementById('notesCounter').textContent = "200 caratteri rimasti";
+    try {
+      window.open(url, '_blank');
+      
+      // Resetta il carrello
+      cart = [];
+      updateCartUI();
+      closeOrderModal();
+      
+      // Resetta il form
+      document.getElementById('orderForm').reset();
+      document.getElementById('notesCounter').textContent = "200 caratteri rimasti";
+      console.log("Order sent successfully");
+    } catch (error) {
+      console.error("Error sending order:", error);
+      alert("Si è verificato un errore durante l'invio dell'ordine. Riprova.");
+    }
   }
 
   // Inizializzazione
@@ -1769,7 +1818,13 @@
     document.getElementById('clearCart').addEventListener('click', clearCart);
     
     // Collegamento corretto del pulsante WhatsApp
-    document.getElementById('send-whatsapp').addEventListener('click', sendOrder);
+    const sendBtn = document.getElementById('send-whatsapp');
+    if (sendBtn) {
+      sendBtn.addEventListener('click', sendOrder);
+      console.log("WhatsApp button event listener attached");
+    } else {
+      console.error("Send WhatsApp button not found");
+    }
     
     // Chiudi modale cliccando fuori
     orderModal.addEventListener('click', (e) => {
@@ -1782,72 +1837,90 @@
     const notes = document.getElementById('notes');
     const notesCounter = document.getElementById('notesCounter');
     
-    notes.addEventListener('input', function() {
-      const max = 200;
-      const len = notes.value.length;
-      if (len > max) notes.value = notes.value.substring(0, max);
-      notesCounter.textContent = (max - notes.value.length) + " caratteri rimasti";
-    });
+    if (notes && notesCounter) {
+      notes.addEventListener('input', function() {
+        const max = 200;
+        const len = notes.value.length;
+        if (len > max) notes.value = notes.value.substring(0, max);
+        notesCounter.textContent = (max - notes.value.length) + " caratteri rimasti";
+      });
+    }
     
     // Gestione form validation in tempo reale
-    document.getElementById('customerName').addEventListener('input', validateForm);
-    document.getElementById('tableNumber').addEventListener('input', validateForm);
+    const customerName = document.getElementById('customerName');
+    const tableNumber = document.getElementById('tableNumber');
+    
+    if (customerName) {
+      customerName.addEventListener('input', validateForm);
+    }
+    
+    if (tableNumber) {
+      tableNumber.addEventListener('input', validateForm);
+    }
     
     // Demo modal
     const demoModal = document.getElementById('demoModal');
     const openDemoBtn = document.getElementById('openDemoModal');
     const closeDemoBtn = document.getElementById('closeDemoModal');
     
-    openDemoBtn.addEventListener('click', () => {
-      demoModal.style.display = 'block';
-      setTimeout(() => {
-        demoModal.setAttribute('aria-hidden', 'false');
-        document.querySelector('.modal-content-offerta').focus();
-      }, 10);
-    });
-    
-    closeDemoBtn.addEventListener('click', () => {
-      demoModal.setAttribute('aria-hidden', 'true');
-      setTimeout(() => {
-        demoModal.style.display = 'none';
-      }, 300);
-    });
-    
-    // Chiudi demo modal cliccando fuori
-    demoModal.addEventListener('click', (e) => {
-      if (e.target === demoModal) {
-        closeDemoBtn.click();
+    if (openDemoBtn && demoModal && closeDemoBtn) {
+      openDemoBtn.addEventListener('click', () => {
+        demoModal.style.display = 'block';
+        setTimeout(() => {
+          demoModal.setAttribute('aria-hidden', 'false');
+          document.querySelector('.modal-content-offerta').focus();
+        }, 10);
+      });
+      
+      closeDemoBtn.addEventListener('click', () => {
+        demoModal.setAttribute('aria-hidden', 'true');
+        setTimeout(() => {
+          demoModal.style.display = 'none';
+        }, 300);
+      });
+      
+      // Chiudi demo modal cliccando fuori
+      demoModal.addEventListener('click', (e) => {
+        if (e.target === demoModal) {
+          closeDemoBtn.click();
+        }
+      });
+      
+      // Gestione form demo
+      const demoForm = document.getElementById('demoForm');
+      if (demoForm) {
+        demoForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const nome = document.getElementById('demoNome').value.trim();
+          const email = document.getElementById('demoEmail').value.trim();
+          const messaggio = document.getElementById('demoMessaggio').value.trim();
+          
+          if (!nome || !email || !messaggio) {
+            alert('Per favore compila tutti i campi obbligatori');
+            return;
+          }
+          
+          const testo = `🆕 Richiesta demo\n\n👤 Nome: ${nome}\n📧 Email: ${email}\n\n💬 Messaggio:\n${messaggio}`;
+          const numeroWA = '393440301412';
+          window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
+          
+          // Chiudi modale
+          closeDemoBtn.click();
+          
+          // Mostra conferma
+          alert('Richiesta inviata con successo! Ti contatteremo entro 24 ore.');
+        });
       }
-    });
-    
-    // Gestione form demo
-    document.getElementById('demoForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const nome = document.getElementById('demoNome').value.trim();
-      const email = document.getElementById('demoEmail').value.trim();
-      const messaggio = document.getElementById('demoMessaggio').value.trim();
-      
-      if (!nome || !email || !messaggio) {
-        alert('Per favore compila tutti i campi obbligatori');
-        return;
-      }
-      
-      const testo = `🆕 Richiesta demo\n\n👤 Nome: ${nome}\n📧 Email: ${email}\n\n💬 Messaggio:\n${messaggio}`;
-      const numeroWA = '393440301412';
-      window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
-      
-      // Chiudi modale
-      closeDemoBtn.click();
-      
-      // Mostra conferma
-      alert('Richiesta inviata con successo! Ti contatteremo entro 24 ore.');
-    });
+    }
     
     // Simula caricamento
     setTimeout(() => {
       document.body.style.opacity = 1;
     }, 100);
+    
+    // Debug iniziale
+    console.log("Menu digitale inizializzato correttamente");
   });
 </script>
 </body>

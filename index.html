@@ -89,12 +89,11 @@ body::after {
   border-radius: 5px;
 }
 
-/* Container - PIÙ AMPIO */
+/* Container - CENTRATO */
 .container {
-  width: 100%;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 4%;
+  padding: 0 2rem;
 }
 
 /* Header & Navigation - ALLINEATO A SINISTRA */
@@ -326,6 +325,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0 auto;
+  display: block;
 }
 
 .btn-cta:hover {
@@ -372,12 +372,11 @@ header {
   background: rgba(22, 31, 56, 0.3);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
-  padding: 3rem;
-  margin: 2rem auto 4rem;
+  padding: 4rem;
+  margin: 2rem 0 4rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
   transition: var(--transition);
-  width: 100%;
 }
 
 #services:hover {
@@ -389,7 +388,7 @@ header {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  gap: 3.5rem;
   max-width: 1600px;
   margin: 0 auto;
   justify-content: center;
@@ -399,15 +398,13 @@ header {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: var(--transition);
   position: relative;
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(255, 255, 255, 0.05);
   height: 100%;
   display: flex;
   flex-direction: column;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  transition: none; /* RIMOSSO effetto hover */
 }
 
 .service-card::before {
@@ -434,20 +431,11 @@ header {
   background: linear-gradient(90deg, #93c5fd, #3b82f6);
 }
 
-.service-card:hover {
-  transform: translateY(-12px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
+/* RIMOSSO effetto hover per le cards dei servizi */
 .service-img-container {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 2/3; /* RAPPORTO RETTANGOLARE 2/3 */
+  aspect-ratio: 4/3;
 }
 
 .service-img-container::after {
@@ -463,23 +451,16 @@ header {
   transition: var(--transition);
 }
 
-.service-card:hover .service-img-container::after {
-  opacity: 1;
-}
-
+/* RIMOSSO effetto hover per le cards dei servizi */
 .service-card img {
   width: 100%;
   height: 100%;
   object-fit: contain; /* MOSTRA L'IMMAGINE PER INTERO */
   object-position: center;
-  transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: block;
 }
 
-.service-card:hover img {
-  transform: scale(1.05);
-}
-
+/* RIMOSSO effetto hover per le cards dei servizi */
 .service-content {
   padding: 1.8rem;
   flex-grow: 1;
@@ -488,19 +469,19 @@ header {
 }
 
 .service-card h3 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1.8rem;
   color: var(--text);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .service-card p {
   color: var(--text-secondary);
   flex-grow: 1;
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -554,8 +535,7 @@ header {
 /* Why Choose Section - CENTRATO */
 #why-choose {
   padding: 3rem 0;
-  margin: 2rem auto 4rem;
-  width: 100%;
+  margin: 2rem 0 4rem;
 }
 
 .why-grid {
@@ -644,16 +624,15 @@ header {
   line-height: 1.6;
 }
 
-/* Demo Section - CENTRATO */
+/* Demo Section - CARDS RETTANGOLARI CON FLIP AL PASSAGGIO DEL MOUSE */
 #demo-session {
   background: linear-gradient(135deg, rgba(12, 18, 34, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
   padding: 4rem 0;
-  margin: 2rem auto 4rem;
+  margin: 2rem 0 4rem;
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
 }
 
 #demo-session::before {
@@ -694,7 +673,7 @@ header {
 .flip-card {
   background: transparent;
   width: 100%;
-  height: 360px;
+  height: 225px; /* Altezza ridotta per rapporto stile credit card (16:10) */
   perspective: 1000px;
 }
 
@@ -720,7 +699,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.8rem;
+  padding: 1.4rem;
   transition: var(--transition);
 }
 
@@ -729,7 +708,7 @@ header {
   color: var(--text);
   border: 1px solid rgba(255, 255, 255, 0.05);
   justify-content: flex-start;
-  gap: 1.5rem;
+  gap: 1.2rem;
   overflow: hidden;
 }
 
@@ -738,10 +717,9 @@ header {
 }
 
 .flip-avatar {
-  width: 140px;
+  width: 100px;
   aspect-ratio: 1 / 1;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--yellow);
   box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
@@ -756,8 +734,8 @@ header {
 }
 
 .flip-front h3 {
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin: 0;
   text-align: center;
   color: var(--text);
@@ -775,12 +753,12 @@ header {
   transform: rotateY(180deg);
   text-align: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: 1.6rem 1.2rem;
 }
 
 .flip-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.9rem;
 }
 
 .flip-icon.classico {
@@ -796,17 +774,16 @@ header {
 }
 
 .flip-back p {
-  font-size: 1.05rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.02rem;
+  margin-bottom: 1.2rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 /* Benefits Section - CENTRATO */
 #benefici {
   padding: 3rem 0;
-  margin: 2rem auto 4rem;
-  width: 100%;
+  margin: 2rem 0 4rem;
 }
 
 .benefits-list {
@@ -868,10 +845,9 @@ header {
   padding: 4rem 0;
   background: linear-gradient(135deg, var(--bg-section) 0%, #1e293b 100%);
   border-radius: var(--radius-lg);
-  margin: 3rem auto;
+  margin: 3rem 0;
   position: relative;
   overflow: hidden;
-  width: 100%;
 }
 
 .cta-section::before {
@@ -940,10 +916,6 @@ footer {
   font-size: 0.95rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 2rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .footer-links {
@@ -1170,17 +1142,7 @@ footer {
   transform: translateY(0);
 }
 
-/* New Flip Animation on Scroll */
-.flip-card {
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
-}
-
-.flip-card.flipped {
-  transform: rotateY(180deg);
-}
-
-/* Responsive Design - CORREZIONE CENTRATURA */
+/* Responsive Design */
 @media (max-width: 1100px) {
   .hero-content h1 {
     font-size: 2.8rem;
@@ -1445,62 +1407,64 @@ footer {
   </section>
 
   <!-- Demo Section - CENTRATO -->
-  <section id="demo-session" class="container">
-    <div class="section-title">
-      <h2>Prova i <span>Modelli Demo</span></h2>
-    </div>
-    <div class="demo-flip-grid">
-      <!-- Card 1 -->
-      <div class="flip-card fade-in">
-        <div class="flip-inner">
-          <div class="flip-front classico">
-            <img src="https://i.postimg.cc/6q0kBwkX/avatar1.png" alt="Menu Digitale" class="flip-avatar" />
-            <h3>Menu Digitale classico</h3>
-          </div>
-          <div class="flip-back classico">
-            <div class="flip-icon classico">
-              <i class="fas fa-qrcode"></i>
+  <section id="demo-session">
+    <div class="container">
+      <div class="section-title">
+        <h2>Prova i <span>Modelli Demo</span></h2>
+      </div>
+      <div class="demo-flip-grid">
+        <!-- Card 1 -->
+        <div class="flip-card fade-in">
+          <div class="flip-inner">
+            <div class="flip-front classico">
+              <img src="https://i.postimg.cc/6q0kBwkX/avatar1.png" alt="Menu Digitale" class="flip-avatar" />
+              <h3>Menu Digitale classico</h3>
             </div>
-            <p>Menu Digitale con accesso da QR Code, semplice, veloce e smart</p>
-            <a href="modelli.html" class="btn-service">
-              <i class="fas fa-arrow-right"></i> Scegli un modello
-            </a>
+            <div class="flip-back classico">
+              <div class="flip-icon classico">
+                <i class="fas fa-qrcode"></i>
+              </div>
+              <p>Menu Digitale con accesso da QR Code, semplice, veloce e smart</p>
+              <a href="modelli.html" class="btn-service">
+                <i class="fas fa-arrow-right"></i> Scegli un modello
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="flip-card fade-in">
-        <div class="flip-inner">
-          <div class="flip-front whatsapp">
-            <img src="https://i.postimg.cc/6qp0GGjy/avatar2.png" alt="WhatsApp" class="flip-avatar" />
-            <h3>Ordini su WhatsApp</h3>
-          </div>
-          <div class="flip-back whatsapp">
-            <div class="flip-icon whatsapp">
-              <i class="fab fa-whatsapp"></i>
+        <!-- Card 2 -->
+        <div class="flip-card fade-in">
+          <div class="flip-inner">
+            <div class="flip-front whatsapp">
+              <img src="https://i.postimg.cc/6qp0GGjy/avatar2.png" alt="WhatsApp" class="flip-avatar" />
+              <h3>Ordini su WhatsApp</h3>
             </div>
-            <p>Il cliente ordina dal proprio tavolo via WhatsApp, senza errori.</p>
-            <a href="modelli.html" class="btn-service">
-              <i class="fas fa-arrow-right"></i> Scegli un modello
-            </a>
+            <div class="flip-back whatsapp">
+              <div class="flip-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <p>Il cliente ordina dal proprio tavolo via WhatsApp, senza errori.</p>
+              <a href="modelli.html" class="btn-service">
+                <i class="fas fa-arrow-right"></i> Scegli un modello
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="flip-card fade-in">
-        <div class="flip-inner">
-          <div class="flip-front sala">
-            <img src="https://i.postimg.cc/mDwjDSSv/avatar3.png" alt="Upsell" class="flip-avatar" />
-            <h3>Ordini su WhatsApp + Upsell</h3>
-          </div>
-          <div class="flip-back sala">
-            <div class="flip-icon sala">
-              <i class="fas fa-lightbulb"></i>
+        <!-- Card 3 -->
+        <div class="flip-card fade-in">
+          <div class="flip-inner">
+            <div class="flip-front sala">
+              <img src="https://i.postimg.cc/mDwjDSSv/avatar3.png" alt="Upsell" class="flip-avatar" />
+              <h3>Ordini su WhatsApp + Upsell</h3>
             </div>
-            <p>Suggerimenti durante l'ordine per vendere di più senza sforzo.</p>
-            <a href="modelli.html" class="btn-service">
-              <i class="fas fa-arrow-right"></i> Scegli un modello
-            </a>
+            <div class="flip-back sala">
+              <div class="flip-icon sala">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <p>Suggerimenti durante l'ordine per vendere di più senza sforzo.</p>
+              <a href="modelli.html" class="btn-service">
+                <i class="fas fa-arrow-right"></i> Scegli un modello
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1654,21 +1618,12 @@ footer {
     // Scroll animations
     document.addEventListener('DOMContentLoaded', function() {
       const fadeElements = document.querySelectorAll('.fade-in');
-      const flipCards = document.querySelectorAll('.service-card');
       
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
-            
-            // Flip the card when it becomes visible
-            if (entry.target.classList.contains('service-card')) {
-              setTimeout(() => {
-                entry.target.style.transform = 'rotateY(180deg)';
-                entry.target.classList.add('flipped');
-              }, 300);
-            }
           }
         });
       }, {
@@ -1684,28 +1639,26 @@ footer {
         fadeElements.forEach(element => {
           if (isElementInViewport(element)) {
             element.classList.add('visible');
-            
-            // Flip the card if it's already in view
-            if (element.classList.contains('service-card')) {
-              element.style.transform = 'rotateY(180deg)';
-              element.classList.add('flipped');
-            }
           }
         });
       }, 300);
       
-      // Flip cards on hover
+      // SOLO per le cards demo, attiva il flip al passaggio del mouse
+      const flipCards = document.querySelectorAll('.flip-card');
       flipCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-          card.style.transform = 'rotateY(180deg)';
-          card.classList.add('flipped');
+          const inner = card.querySelector('.flip-inner');
+          inner.classList.add('revealed');
         });
         
         card.addEventListener('mouseleave', () => {
-          card.style.transform = 'rotateY(0deg)';
-          card.classList.remove('flipped');
+          const inner = card.querySelector('.flip-inner');
+          inner.classList.remove('revealed');
         });
       });
+      
+      // RIMOSSO l'effetto flip per le cards dei servizi
+      // Le cards dei servizi non girano più
       
       // Contact modal
       const modal = document.getElementById("contactModal");

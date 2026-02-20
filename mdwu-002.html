@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -781,6 +782,8 @@
     font-family: var(--font-primary);
     letter-spacing: 0.5px;
     margin-top: 1.5rem;
+    position: relative;
+    z-index: 10;
   }
 
   #send-whatsapp:hover:not(:disabled) {
@@ -1213,7 +1216,7 @@
     
     <div class="modal-header">
       <h2 class="modal-title" id="modalTitle">Il tuo ordine</h2>
-    
+      
     </div>
     
     <div class="order-summary" id="orderSummary">
@@ -1252,8 +1255,9 @@
       </div>
       
       <button type="button" id="send-whatsapp" aria-label="Invia ordine su WhatsApp" disabled>
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTJhMiAyIDAgMSAwIDAgNEgyYTQgNCAwIDAgMS00LTQtNCA0IDAgMCAxIDQtNCBhMiAyIDAgMSAwIDAtNCA0IDQgMCAwIDEgNCA0IDQgNCAwIDAgMS00IDQiLz48cGF0aCBkPSJNMTIgMjBoOC04LTgtOCA4LTgiLz48L3N2Zz4=" 
-             class="whatsapp-icon" alt="WhatsApp" /> Invia Ordine su WhatsApp
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+             class="whatsapp-icon" alt="WhatsApp" onerror="this.src='https://via.placeholder.com/24x24/25D366/FFFFFF?text=W'" />
+        Invia Ordine su WhatsApp
       </button>
     </form>
   </div>
@@ -1330,8 +1334,9 @@
         </div>
         
         <button type="submit" class="submit-button-offerta">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTJhMiAyIDAgMSAwIDAgNEgyYTQgNCAwIDAgMS00LTQtNCA0IDAgMCAxIDQtNCBhMiAyIDAgMSAwIDAtNCA0IDQgMCAwIDEgNCA0IDQgNCAwIDAgMS00IDQiLz48cGF0aCBkPSJNMTIgMjBoOC04LTgtOCA4LTgiLz48L3N2Zz4=" 
-               class="whatsapp-icon" alt="WhatsApp"> Invia richiesta
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+               class="whatsapp-icon" alt="WhatsApp" onerror="this.src='https://via.placeholder.com/24x24/25D366/FFFFFF?text=W'" />
+          Invia richiesta
         </button>
       </form>
     </div>
@@ -1763,6 +1768,7 @@
     
     document.getElementById('clearCart').addEventListener('click', clearCart);
     
+    // Collegamento corretto del pulsante WhatsApp
     document.getElementById('send-whatsapp').addEventListener('click', sendOrder);
     
     // Chiudi modale cliccando fuori

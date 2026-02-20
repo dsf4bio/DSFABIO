@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DS Digital - Assistenza</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  background:#e6e8ef; /* più contrasto */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.container{
+  background:#ffffff;
+  width:100%;
+  max-width:700px;
+  padding:60px 40px;
+  border-radius:24px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.18);
+  text-align:center;
+}
+
+h1{
+  font-size:2.5em;
+  color:#212121;
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:1.2em;
+  font-weight:normal;
+  color:#ff9800;
+  margin-bottom:40px;
+}
+
+.description{
+  font-size:1em;
+  color:#444;
+  margin-bottom:50px;
+  line-height:1.6;
+}
+
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* BASE PULSANTI */
+.service-btn{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  padding:30px;
+  border-radius:20px;
+  font-size:1.2em;
+  font-weight:600;
+  transition:all 0.25s ease;
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* MENU DIGITALE */
+.menu-btn{
+  background:#fff3e0;          /* arancio molto chiaro */
+  border:2px solid #ff9800;
+  color:#212121;
+}
+
+.menu-btn:hover{
+  background:#ff9800;
+  color:#ffffff;
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* GESTIONALE */
+.gestionale-btn{
+  background:#e3f2fd;          /* blu molto chiaro */
+  border:2px solid #1976d2;
+  color:#212121;
+}
+
+.gestionale-btn:hover{
+  background:#1976d2;
+  color:#ffffff;
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.18);
+}
+
+.service-sub{
+  font-size:0.9em;
+  margin-top:8px;
+  font-weight:400;
+  opacity:0.85;
+}
+
+.footer{
+  margin-top:60px;
+  font-size:0.85em;
+  color:#777;
+}
+
+@media(max-width:480px){
+  .container{
+    padding:40px 25px;
+  }
+  h1{
+    font-size:2em;
+  }
+  .service-btn{
+    font-size:1.05em;
+    padding:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>DS Digital</h1>
+  <h2>Centro Assistenza</h2>
+
+  <p class="description">
+    Seleziona il servizio per cui desideri richiedere assistenza o un aggiornamento.
+  </p>
+
+  <div class="buttons">
+
+    <a href="assistenzamenu.html" class="service-btn menu-btn">
+      Aggiornamento Menu Digitale
+      <span class="service-sub">Modifica piatti, prezzi o contenuti del menu</span>
+    </a>
+
+    <a href="assitenzagestionale.html" class="service-btn gestionale-btn">
+      Aggiornamento Gestionale Ordini
+      <span class="service-sub">Richieste tecniche o modifiche al sistema di ordinazioni</span>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    DS Digital © 2026
+  </div>
+</div>
+
+</body>
+</html>

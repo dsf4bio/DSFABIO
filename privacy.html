@@ -1,99 +1,327 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Informativa Privacy – DSFabio Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #1f2937;
-      color: #d1d5db;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #facc15;
-    }
-    a {
-      color: #facc15;
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: #111827;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.3);
-      position: relative;
-    }
-    .back-button {
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Informativa Privacy – DSFabio Digital</title>
+<meta name="description" content="Informativa sulla privacy di DSFabio Digital - Soluzioni digitali per ristoranti e locali." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+:root {
+  --bg-dark: #0c1222;
+  --bg-card: #111827;
+  --bg-section: #161f38;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --yellow: #facc15;
+  --yellow-light: #fde68a;
+  --blue: #3b82f6;
+  --blue-light: #93c5fd;
+  --green: #22c55e;
+  --green-light: #86efac;
+  --purple: #8b5cf6;
+  --gray: #94a3b8;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
+/* Background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.03) 0%, transparent 30%);
+  z-index: -2;
+}
+
+/* Noise texture */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiNjY2MiIGZpbHRlcj0idXJsKCNhKSIgZD0iTTAgMGgzMDB2MzAwSDB6Ii8+PC9zdmc+');
+  opacity: 0.03;
+  z-index: -1;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+/* Back Button - Coerente con il design del sito */
+.back-button {
   position: fixed;
   top: calc(20px + env(safe-area-inset-top));
   left: calc(20px + env(safe-area-inset-left));
-  background-color: #374151;
-  color: #facc15;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 100%);
+  color: white;
   border: none;
-  padding: 10px 14px;
+  padding: 0.85rem 1.4rem;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1rem;
   font-weight: 600;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   z-index: 999;
+  font-size: 1.05rem;
 }
 
 .back-button:hover {
-  background-color: #4b5563;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
 }
 
-@media (max-width: 600px) {
-  .back-button {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+.back-button i {
+  font-size: 1.1rem;
+}
+
+/* Privacy Content */
+.privacy-content {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.privacy-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.privacy-content h2 {
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1.5rem;
+  color: var(--yellow);
+  position: relative;
+  padding-left: 15px;
+}
+
+.privacy-content h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 70%;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--yellow), var(--blue));
+  border-radius: 2px;
+}
+
+.privacy-content p {
+  margin-bottom: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.privacy-content strong {
+  color: var(--text);
+  background: rgba(250, 204, 21, 0.15);
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.privacy-content a {
+  color: var(--yellow);
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.privacy-content a:hover {
+  color: var(--yellow-light);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 3rem;
+}
+
+.copyright {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+    margin: 3rem auto;
+  }
+  
+  .privacy-content {
+    padding: 2rem;
+  }
+  
+  .privacy-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .privacy-content h2 {
+    font-size: 1.6rem;
   }
 }
 
-  </style>
+@media (max-width: 480px) {
+  .back-button {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .privacy-content {
+    padding: 1.8rem;
+  }
+  
+  .privacy-content h1 {
+    font-size: 1.9rem;
+  }
+}
+</style>
 </head>
 <body>
+  <!-- Back Button - Coerente con il design del sito -->
   <button class="back-button" onclick="history.back()">
-    ← Indietro
+    <i class="fas fa-arrow-left"></i> Indietro
   </button>
 
+  <!-- Privacy Content -->
   <div class="container">
-    <h1>Informativa sulla Privacy</h1>
-    <p>Questa informativa descrive come <strong>DSFabio Digital</strong> gestisce i dati personali.</p>
+    <div class="privacy-content">
+      <h1>Informativa sulla Privacy</h1>
+      <p>Questa informativa descrive come <strong>DSFabio Digital</strong> gestisce i dati personali.</p>
 
-    <h2>1. Comunicazioni via WhatsApp</h2>
-    <p>Qualsiasi contatto tra l’utente e DSFabio Digital avviene esclusivamente tramite <strong>WhatsApp</strong>. Tali comunicazioni sono protette da crittografia end-to-end e <strong>non vengono raccolti, salvati o trattati dati personali</strong> da parte nostra.</p>
+      <h2>1. Comunicazioni via WhatsApp</h2>
+      <p>Qualsiasi contatto tra l'utente e DSFabio Digital avviene esclusivamente tramite <strong>WhatsApp</strong>. Tali comunicazioni sono protette da crittografia end-to-end e <strong>non vengono raccolti, salvati o trattati dati personali</strong> da parte nostra.</p>
 
-    <h2>2. Nessuna raccolta di dati personali</h2>
-    <p>Non raccogliamo, memorizziamo o trattiamo dati identificativi come nome, cognome, indirizzo email o numero di telefono. Nessun dato viene archiviato nei nostri server, né richiesto tramite moduli o iscrizioni.</p>
+      <h2>2. Nessuna raccolta di dati personali</h2>
+      <p>Non raccogliamo, memorizziamo o trattiamo dati identificativi come nome, cognome, indirizzo email o numero di telefono. Nessun dato viene archiviato nei nostri server, né richiesto tramite moduli o iscrizioni.</p>
 
-    <h2>3. Google Analytics</h2>
-    <p>Utilizziamo <strong>Google Analytics</strong> per raccogliere informazioni anonime sull’uso del sito al solo scopo di migliorare l’esperienza utente. I dati raccolti (es. pagine visitate, tipo di dispositivo, tempo medio di permanenza) sono trattati in forma aggregata e non identificano personalmente l’utente.</p>
+      <h2>3. Google Analytics</h2>
+      <p>Utilizziamo <strong>Google Analytics</strong> per raccogliere informazioni anonime sull'uso del sito al solo scopo di migliorare l'esperienza utente. I dati raccolti (es. pagine visitate, tipo di dispositivo, tempo medio di permanenza) sono trattati in forma aggregata e non identificano personalmente l'utente.</p>
 
-    <h2>4. Finalità del trattamento</h2>
-    <p>L’unica finalità del trattamento è l’analisi dell’utilizzo del sito per ottimizzare contenuti e funzionalità.</p>
+      <h2>4. Finalità del trattamento</h2>
+      <p>L'unica finalità del trattamento è l'analisi dell'utilizzo del sito per ottimizzare contenuti e funzionalità.</p>
 
-    <h2>5. Diritti dell’utente</h2>
-    <p>Non essendo effettuata alcuna raccolta di dati personali, non è necessario richiedere modifiche o cancellazioni. Per qualunque dubbio, puoi comunque contattarci tramite WhatsApp.</p>
+      <h2>5. Diritti dell'utente</h2>
+      <p>Non essendo effettuata alcuna raccolta di dati personali, non è necessario richiedere modifiche o cancellazioni. Per qualunque dubbio, puoi comunque contattarci tramite WhatsApp.</p>
 
-    <h2>6. Titolare del trattamento</h2>
-    <p><strong>DSFabio Digital</strong><br/>
-    Contattaci via WhatsApp direttamente dal sito per ogni informazione.</p>
+      <h2>6. Titolare del trattamento</h2>
+      <p><strong>DSFabio Digital</strong><br/>
+      Contattaci via WhatsApp direttamente dal sito per ogni informazione.</p>
+    </div>
   </div>
 
+  <!-- Footer -->
   <footer>
-    © 2025 DSFabio Digital – Tutti i diritti riservati
+    <div class="container">
+      <div class="copyright">
+        &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
+      </div>
+    </div>
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // WhatsApp Floating Button
+    const whatsappButton = document.createElement('a');
+    whatsappButton.href = "https://wa.me/393440301412";
+    whatsappButton.className = "whatsapp-float";
+    whatsappButton.ariaLabel = "Contattaci su WhatsApp";
+    whatsappButton.innerHTML = '<i class="fab fa-whatsapp"></i>';
+    document.body.appendChild(whatsappButton);
+    
+    // WhatsApp Button Animation
+    whatsappButton.style.cssText = `
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+      transition: var(--transition);
+      z-index: 999;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    `;
+    
+    // Add keyframes for pulse animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+        70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+      }
+      
+      .whatsapp-float:hover {
+        transform: scale(1.15) rotate(10deg);
+        box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </body>
 </html>

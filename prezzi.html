@@ -1,1323 +1,1416 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Prezzi Menu Digitale | DSFabio Digital</title>
-  <meta name="description" content="Tre pacchetti chiari, 15 giorni di prova gratuita e tutto il valore che serve per far crescere il tuo locale." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    :root {
-      --bg-dark: #0c1222;
-      --bg-card: #111827;
-      --bg-section: #161f38;
-      --card: #1e293b;
-      --text: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --yellow: #facc15;
-      --yellow-light: #fde68a;
-      --blue: #3b82f6;
-      --blue-light: #93c5fd;
-      --green: #22c55e;
-      --green-light: #86efac;
-      --purple: #8b5cf6;
-      --gray: #94a3b8;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-      padding-bottom: 80px;
-    }
-
-    /* Background pattern */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.03) 0%, transparent 30%);
-      z-index: -2;
-    }
-
-    /* Noise texture */
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiNjY2MiIGZpbHRlcj0idXJsKCNhKSIgZD0iTTAgMGgzMDB2MzAwSDB6Ii8+PC9zdmc+');
-      opacity: 0.03;
-      z-index: -1;
-    }
-
-    /* Scrollbar styling */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.5);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, var(--blue), var(--purple));
-      border-radius: 5px;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Header & Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: rgba(12, 18, 34, 0.85);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 0;
-    }
-
-    .logo-nav {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-
-    .logo-nav span {
-      font-weight: 300;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      letter-spacing: 1px;
-    }
-
-    .logo-icon {
-      font-size: 2.2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.8rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links li a {
-      font-weight: 500;
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      padding: 0.6rem 0;
-      position: relative;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-links li a:hover,
-    .nav-links li a.active {
-      color: var(--yellow);
-    }
-
-    .nav-links li a:hover::after,
-    .nav-links li a.active::after {
-      width: 100%;
-      opacity: 1;
-    }
-
-    .nav-links li a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--yellow), var(--blue));
-      border-radius: 1px;
-      transition: var(--transition);
-      opacity: 0;
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 32px;
-      height: 28px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 1100;
-      transition: var(--transition);
-    }
-
-    .nav-toggle span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background: var(--yellow);
-      border-radius: 3px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .nav-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 6px);
-    }
-
-    .nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 6rem 0 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(12, 18, 34, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-      z-index: -1;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 1.2rem;
-      line-height: 1.1;
-      background: linear-gradient(90deg, var(--text) 0%, var(--yellow-light) 50%, var(--blue-light) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero p {
-      font-size: 1.4rem;
-      max-width: 800px;
-      margin: 0 auto;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    /* Section Title */
-    .section-title {
-      text-align: center;
-      margin: 4rem 0 2.5rem;
-      position: relative;
-    }
-
-    .section-title h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      display: inline-block;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-title h2 span {
-      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .section-title::after {
-      content: "";
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-      border-radius: 2px;
-    }
-
-    /* Pricing Cards */
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .pricing-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: var(--transition);
-      position: relative;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pricing-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--yellow), var(--blue));
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .pricing-card.base::before {
-      background: linear-gradient(90deg, #fde047, #facc15);
-    }
-
-    .pricing-card.whatsapp::before {
-      background: linear-gradient(90deg, #6ee7b7, #22c55e);
-    }
-
-    .pricing-card.upsell::before {
-      background: linear-gradient(90deg, #93c5fd, #3b82f6);
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .pricing-card:hover::before {
-      opacity: 1;
-    }
-
-    .pricing-card.featured {
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
-      transform: scale(1.03);
-    }
-
-    .pricing-card.featured:hover {
-      transform: scale(1.03) translateY(-12px);
-    }
-
-    .badge {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
-      color: #0f172a;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      z-index: 2;
-      box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
-    }
-
-    .pricing-header {
-      padding: 1.8rem 1.8rem 1.2rem;
-      background: rgba(30, 41, 59, 0.3);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0;
-    }
-
-    .pricing-card h3 i {
-      color: var(--yellow);
-    }
-
-    .pricing-card.base h3 i {
-      color: var(--yellow);
-    }
-
-    .pricing-card.whatsapp h3 i {
-      color: var(--green);
-    }
-
-    .pricing-card.upsell h3 i {
-      color: var(--blue);
-    }
-
-    .price {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin: 1rem 0;
-      display: flex;
-      align-items: baseline;
-      gap: 0.3rem;
-    }
-
-    .price span {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--gray);
-    }
-
-    .pricing-features {
-      padding: 1.5rem 1.8rem;
-      flex-grow: 1;
-    }
-
-    .features {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-    }
-
-    .features li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      gap: 0.8rem;
-    }
-
-    .features li:last-child {
-      margin-bottom: 0;
-    }
-
-    .features span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .features li.included span {
-      background: rgba(34, 197, 94, 0.2);
-      color: var(--green);
-    }
-
-    .features li.not-included span {
-      background: rgba(156, 163, 175, 0.1);
-      color: var(--gray);
-    }
-
-    .pricing-action {
-      padding: 0 1.8rem 1.8rem;
-    }
-
-    .btn-demo {
-      display: block;
-      width: 100%;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 100%);
-      color: white;
-      padding: 0.9rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1.05rem;
-      border: none;
-      cursor: pointer;
-      user-select: none;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-      text-decoration: none;
-      text-align: center;
-    }
-
-    .btn-demo:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-      background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
-    }
-
-    .btn-demo:active {
-      transform: translateY(0);
-    }
-
-    .btn-demo::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 20px;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(30deg);
-      transition: 0.5s;
-    }
-
-    .btn-demo:hover::after {
-      left: 120%;
-    }
-
-    /* Value Note Section */
-    .value-note {
-      background: rgba(22, 31, 56, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      margin: 4rem 0;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
-      transition: var(--transition);
-    }
-
-    .value-note:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .value-note h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .value-note p {
-      font-size: 1.15rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .highlight {
-      background: linear-gradient(120deg, transparent 50%, rgba(250, 204, 21, 0.2) 50%);
-      padding: 0 6px;
-      font-weight: 700;
-    }
-
-    /* CTA Section */
-    .cta-section {
-      text-align: center;
-      padding: 4rem 0;
-      background: linear-gradient(135deg, var(--bg-section) 0%, #1e293b 100%);
-      border-radius: var(--radius-lg);
-      margin: 3rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(250, 204, 21, 0.05) 0%, transparent 70%);
-      z-index: 0;
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .cta-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .cta-content p {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn-cta {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
-      color: #0f172a;
-      padding: 1.2rem 2.8rem;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 1.25rem;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 10px 25px -5px rgba(250, 204, 21, 0.3);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .btn-cta:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px -5px rgba(250, 204, 21, 0.4);
-      background: linear-gradient(90deg, #fde047 0%, #fef3c7 100%);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2.5rem 0;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: 2rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 1.2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--text-secondary);
-      transition: var(--transition);
-      font-weight: 500;
-    }
-
-    .footer-links a:hover {
-      color: var(--yellow);
-    }
-
-    .copyright {
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 60px;
-      height: 60px;
-      background: var(--green);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
-      transition: var(--transition);
-      z-index: 999;
-      text-decoration: none;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.15) rotate(10deg);
-      box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
-    }
-
-    /* Contact Modal */
-    .contact-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
-      z-index: 9999;
-    }
-
-    .modal-content {
-      background: var(--bg-dark);
-      padding: 2.5rem;
-      border-radius: var(--radius-lg);
-      max-width: 480px;
-      width: 90%;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-
-    .contact-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .contact-modal.active .modal-content {
-      transform: translateY(0);
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--yellow);
-      cursor: pointer;
-      transition: var(--transition);
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-
-    .close-modal:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .modal-content h2 {
-      margin-top: 0;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: 0.02em;
-      text-align: center;
-    }
-
-    .contact-form {
-      margin-top: 1.5rem;
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .form-group {
-      position: relative;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.85rem 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      font-size: 1.05rem;
-      background: rgba(15, 23, 42, 0.5);
-      color: var(--text);
-      transition: var(--transition);
-      box-sizing: border-box;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--yellow);
-      box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
-    }
-
-    .form-group textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .char-count {
-      font-size: 0.85rem;
-      color: var(--yellow);
-      text-align: right;
-      margin-top: 4px;
-      letter-spacing: 0.02em;
-    }
-
-    .submit-btn {
-      margin-top: 0.5rem;
-      background: linear-gradient(90deg, var(--green) 0%, #16a34a 100%);
-      color: white;
-      border: none;
-      padding: 0.9rem 1.5rem;
-      font-size: 1.1rem;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      width: 100%;
-      box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
-      transition: var(--transition);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(34, 197, 94, 0.5);
-      background: linear-gradient(90deg, #22c55e 0%, #15803d 100%);
-    }
-
-    .submit-btn:active {
-      transform: translateY(0);
-    }
-
-    /* Animations */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-
-    .float {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 900px) {
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        right: -100%;
-        flex-direction: column;
-        background: rgba(12, 18, 34, 0.95);
-        backdrop-filter: blur(10px);
-        width: 80%;
-        max-width: 320px;
-        height: calc(100vh - 80px);
-        padding: 2.5rem 2rem;
-        transition: right 0.4s ease;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-        border-left: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      
-      .nav-links.open {
-        right: 0;
-      }
-      
-      .nav-toggle {
-        display: flex;
-      }
-      
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.9rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 4rem 0 3rem;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.7rem;
-      }
-      
-      .pricing-card.featured {
-        transform: scale(1);
-      }
-      
-      .pricing-card.featured:hover {
-        transform: translateY(-12px);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1.2rem;
-      }
-      
-      .hero h1 {
-        font-size: 1.7rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.5rem;
-      }
-      
-      .nav-links {
-        width: 90%;
-      }
-      
-      .price {
-        font-size: 2.3rem;
-      }
-      
-      .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        bottom: 1.5rem;
-        right: 1.5rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Prezzi Menu Digitale | DSFabio Digital</title>
+<meta name="description" content="Tre pacchetti chiari, 15 giorni di prova gratuita e tutto il valore che serve per far crescere il tuo locale." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+:root {
+  --bg-dark: #0c1222;
+  --bg-card: #111827;
+  --bg-section: #161f38;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --yellow: #facc15;
+  --yellow-light: #fde68a;
+  --blue: #3b82f6;
+  --blue-light: #93c5fd;
+  --green: #22c55e;
+  --green-light: #86efac;
+  --purple: #8b5cf6;
+  --gray: #94a3b8;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  /* Imposta il tema scuro per prevenire conversioni indesiderate */
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+  /* Impedisce ai browser di applicare filtri indesiderati */
+  background-color: var(--bg-dark) !important;
+  color: var(--text) !important;
+}
+
+/* Background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.03) 0%, transparent 30%);
+  z-index: -2;
+}
+
+/* Noise texture */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiNjY2MiIGZpbHRlcj0idXJsKCNhKSIgZD0iTTAgMGgzMDB2MzAwSDB6Ii8+PC9zdmc+');
+  opacity: 0.03;
+  z-index: -1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--blue), var(--purple));
+  border-radius: 5px;
+}
+
+/* Container - PIÙ AMPIO */
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/* Header & Navigation - ALLINEATO A SINISTRA */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(12, 18, 34, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.logo-nav {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-nav span {
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.logo-icon {
+  font-size: 2.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.6rem 0;
+  position: relative;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--yellow);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--yellow), var(--blue));
+  border-radius: 1px;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  transition: var(--transition);
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--yellow);
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Section Title - CENTRATO */
+.section-title {
+  text-align: center;
+  margin: 6rem 0 3rem;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+
+.section-title h2 span {
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  border-radius: 2px;
+}
+
+/* Pricing Cards */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.pricing-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow), var(--blue));
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.pricing-card.base::before {
+  background: linear-gradient(90deg, #fde047, #facc15);
+}
+
+.pricing-card.whatsapp::before {
+  background: linear-gradient(90deg, #6ee7b7, #22c55e);
+}
+
+.pricing-card.upsell::before {
+  background: linear-gradient(90deg, #93c5fd, #3b82f6);
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.pricing-card:hover::before {
+  opacity: 1;
+}
+
+.pricing-card.featured {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: scale(1.01);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.01) translateY(-5px);
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+  color: #0f172a;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.2);
+}
+
+.pricing-header {
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pricing-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.pricing-card h3 i {
+  font-size: 1.2rem;
+}
+
+.pricing-card.base h3 i {
+  color: var(--yellow);
+}
+
+.pricing-card.whatsapp h3 i {
+  color: var(--green);
+}
+
+.pricing-card.upsell h3 i {
+  color: var(--blue);
+}
+
+.price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0.8rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.price span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+.pricing-features {
+  padding: 1.2rem;
+  flex-grow: 1;
+}
+
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.features li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.features li:last-child {
+  margin-bottom: 0;
+}
+
+.features span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.75rem;
+}
+
+.features li.included span {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--green);
+}
+
+.features li.not-included span {
+  background: rgba(156, 163, 175, 0.1);
+  color: var(--gray);
+}
+
+.pricing-action {
+  padding: 1rem;
+}
+
+.btn-demo {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 100%);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-demo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+}
+
+.btn-demo:active {
+  transform: translateY(0);
+}
+
+.btn-demo::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20px;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(30deg);
+  transition: 0.5s;
+}
+
+.btn-demo:hover::after {
+  left: 120%;
+}
+
+/* Value Note Section */
+.value-note {
+  background: rgba(22, 31, 56, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin: 3rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.15);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-note::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow), var(--blue));
+  opacity: 0.3;
+}
+
+.value-note:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.value-note h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.value-note p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.highlight {
+  background: linear-gradient(120deg, transparent 50%, rgba(250, 204, 21, 0.2) 50%);
+  padding: 0 6px;
+  font-weight: 600;
+}
+
+/* CTA Section - CENTRATO */
+.cta-section {
+  text-align: center;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--bg-section) 0%, #1e293b 100%);
+  border-radius: var(--radius-md);
+  margin: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  width: 95%;
+}
+
+.cta-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(250, 204, 21, 0.07) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.cta-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
+  color: #0f172a;
+  padding: 1rem 2.2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 6px 15px -3px rgba(250, 204, 21, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -3px rgba(250, 204, 21, 0.4);
+  background: linear-gradient(90deg, #fde047 0%, #fef3c7 100%);
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 50px;
+  height: 50px;
+  background: var(--bg-card);
+  color: var(--yellow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  z-index: 999;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: var(--bg-section);
+  color: var(--yellow-light);
+}
+
+/* Footer - CENTRATO */
+footer {
+  text-align: center;
+  padding: 3.5rem 0 3rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 2.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.8rem 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: var(--transition);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.05rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+}
+
+.footer-links a:hover {
+  color: var(--yellow);
+  background: rgba(250, 204, 21, 0.1);
+}
+
+.copyright {
+  color: var(--gray);
+  font-size: 0.95rem;
+  margin-top: 1.2rem;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 65px;
+  height: 65px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 6px 25px rgba(34, 197, 94, 0.5);
+  transition: var(--transition);
+  z-index: 999;
+  text-decoration: none;
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.8); }
+  70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.7);
+}
+
+/* Contact Modal */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: var(--bg-dark);
+  padding: 3.2rem;
+  border-radius: var(--radius-lg);
+  max-width: 550px;
+  width: 95%;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(30px);
+  transition: transform 0.5s ease;
+}
+
+.contact-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.contact-modal.active .modal-content {
+  transform: translateY(0);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  background: none;
+  border: none;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--yellow);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  color: var(--yellow-light);
+  margin-top: -0.3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.contact-form {
+  margin-top: 1.2rem;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text);
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
+}
+
+.form-group textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.char-count {
+  font-size: 0.9rem;
+  color: var(--yellow);
+  text-align: right;
+  margin-top: 5px;
+  letter-spacing: 0.02em;
+}
+
+.submit-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, var(--green) 0%, #16a34a 100%);
+  color: white;
+  border: none;
+  padding: 1.1rem 1.6rem;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  box-shadow: 0 7px 20px rgba(34, 197, 94, 0.4);
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(34, 197, 94, 0.6);
+  background: linear-gradient(90deg, #22c55e 0%, #15803d 100%);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Aggiunto per prevenire conversione automatica del tema scuro */
+@media (prefers-color-scheme: dark) {
+  body {
+    filter: none !important;
+    background-color: var(--bg-dark) !important;
+  }
+  
+  img {
+    filter: none !important;
+  }
+  
+  a, a:visited, a:hover, a:active {
+    color: var(--text) !important;
+  }
+}
+
+/* Aggiunto per prevenire conversione automatica su Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  body {
+    filter: none !important;
+  }
+}
+
+/* Aggiunto per prevenire conversione automatica su Firefox */
+@-moz-document url-prefix() {
+  body {
+    filter: none !important;
+  }
+}
+
+/* Aggiunto per gli elementi form */
+input, textarea, select, button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bg-card) !important;
+  color: var(--text) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    flex-direction: column;
+    background: rgba(12, 18, 34, 0.95);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    max-width: 320px;
+    height: calc(100vh - 80px);
+    padding: 2.8rem 2.2rem;
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .nav-links.open {
+    right: 0;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+  
+  .pricing-card.featured:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .value-note {
+    margin: 2.5rem 0;
+    padding: 1.8rem;
+  }
+  
+  .value-note h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 3%;
+  }
+  
+  .section-title h2 {
+    font-size: 1.6rem;
+  }
+  
+  .price {
+    font-size: 1.9rem;
+  }
+  
+  .btn-demo {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+}
+</style>
 </head>
 <body>
-  <!-- Header & Navigation -->
-  <header>
-    <div class="container">
-      <nav class="navbar" role="navigation" aria-label="Menu principale">
-        <a href="index.html" class="logo-nav" aria-label="DSFabio Digital - Home">
-          <i class="fas fa-utensils logo-icon"></i>
-          DSFabio<span>Digital</span>
-        </a>
-        <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links" id="navLinks" aria-hidden="true">
-          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="modelli.html"><i class="fas fa-th-large"></i> Demo gratuita</a></li>
-          <li><a href="prezzi.html" class="active"><i class="fas fa-tag"></i> Prezzi</a></li>
-          <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<!-- Header & Navigation - ALLINEATO A SINISTRA -->
+<header>
+  <div class="container">
+    <nav class="navbar" role="navigation" aria-label="Menu principale">
+      <a href="index.html" class="logo-nav" aria-label="DSFabio Digital - Home">
+        <i class="fas fa-utensils logo-icon"></i>
+        DSFabio<span>Digital</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" aria-hidden="true">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="modelli.html"><i class="fas fa-th-large"></i> Demo gratuita</a></li>
+        <li><a href="prezzi.html" class="active"><i class="fas fa-tag"></i> Prezzi</a></li>
+        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Prezzi & Pacchetti</h1>
-      <p>15 giorni di prova gratuita, nessun costo nascosto e supporto completo. Scegli oggi il pacchetto che farà crescere il tuo locale.</p>
+<div class="container">
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="section-title">
+      <h2>Confronta i <span>Pacchetti</span></h2>
+    </div>
+    
+    <div class="pricing-cards">
+      <!-- Base -->
+      <article class="pricing-card base fade-in">
+        <div class="pricing-header">
+          <h3><i class="fas fa-book"></i> Menu Digitale Base</h3>
+          <div class="price">149€<span>/anno</span></div>
+        </div>
+        
+        <div class="pricing-features">
+          <ul class="features">
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>QR Code personalizzato</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Menu aggiornabile in tempo reale</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Hosting & dominio inclusi</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Modifiche illimitate</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Accesso immediato via QR code</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>15 giorni di prova gratuita</div>
+            </li>
+            <li class="not-included">
+              <span><i class="fas fa-times"></i></span>
+              <div>Ordini via WhatsApp</div>
+            </li>
+            <li class="not-included">
+              <span><i class="fas fa-times"></i></span>
+              <div>Suggerimenti Upsell</div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="pricing-action">
+          <a href="#contactModal" class="btn-demo">
+            <i class="fas fa-magic"></i> Richiedi demo
+          </a>
+        </div>
+      </article>
+
+      <!-- WhatsApp -->
+      <article class="pricing-card whatsapp featured fade-in">
+        <div class="badge">Più scelto</div>
+        <div class="pricing-header">
+          <h3><i class="fab fa-whatsapp"></i> Ordini su WhatsApp</h3>
+          <div class="price">249€<span>/anno</span></div>
+        </div>
+        
+        <div class="pricing-features">
+          <ul class="features">
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>QR Code personalizzato</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Menu aggiornabile in tempo reale</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Hosting & dominio inclusi</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Modifiche illimitate</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Accesso immediato via QR code</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>15 giorni di prova gratuita</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Ordini via WhatsApp</div>
+            </li>
+            <li class="not-included">
+              <span><i class="fas fa-times"></i></span>
+              <div>Suggerimenti Upsell</div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="pricing-action">
+          <a href="#contactModal" class="btn-demo">
+            <i class="fas fa-magic"></i> Richiedi demo
+          </a>
+        </div>
+      </article>
+
+      <!-- Upsell -->
+      <article class="pricing-card upsell fade-in">
+        <div class="pricing-header">
+          <h3><i class="fas fa-bolt"></i> WhatsApp + Upsell</h3>
+          <div class="price">289€<span>/anno</span></div>
+        </div>
+        
+        <div class="pricing-features">
+          <ul class="features">
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>QR Code personalizzato</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Menu aggiornabile in tempo reale</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Hosting & dominio inclusi</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Modifiche illimitate</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Accesso immediato via QR code</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>15 giorni di prova gratuita</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Ordini via WhatsApp</div>
+            </li>
+            <li class="included">
+              <span><i class="fas fa-check"></i></span>
+              <div>Suggerimenti Upsell</div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="pricing-action">
+          <a href="#contactModal" class="btn-demo">
+            <i class="fas fa-magic"></i> Richiedi demo
+          </a>
+        </div>
+      </article>
     </div>
   </section>
 
-  <div class="container">
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-      <div class="section-title">
-        <h2>Confronta i <span>Pacchetti</span></h2>
-      </div>
-      
-      <div class="pricing-cards">
-        <!-- Base -->
-        <article class="pricing-card base fade-in">
-          <div class="pricing-header">
-            <h3><i class="fas fa-book"></i> Menu Digitale Base</h3>
-            <div class="price">149€<span>/anno</span></div>
-          </div>
-          
-          <div class="pricing-features">
-            <ul class="features">
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>QR Code personalizzato</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Menu aggiornabile in tempo reale</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Hosting & dominio inclusi</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Modifiche illimitate</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Accesso immediato via QR code</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>15 giorni di prova gratuita</div>
-              </li>
-              <li class="not-included">
-                <span><i class="fas fa-times"></i></span>
-                <div>Ordini via WhatsApp</div>
-              </li>
-              <li class="not-included">
-                <span><i class="fas fa-times"></i></span>
-                <div>Suggerimenti Upsell</div>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="pricing-action">
-            <a href="mdc-002.html" class="btn-demo" target="_blank">
-              <i class="fas fa-magic"></i> Richiedi demo
-            </a>
-          </div>
-        </article>
+  <!-- Value Note Section -->
+  <section class="value-note fade-in">
+    <h2>Perché i nostri pacchetti fanno la differenza</h2>
+    <p>
+      Con i nostri pacchetti non stai solo acquistando un menu digitale, ma un <span class="highlight">intero sistema</span> per aumentare le vendite e migliorare l'esperienza dei tuoi clienti.
+      Il nostro approccio è <span class="highlight">semplice, efficace e senza costi nascosti</span> - paghi solo per ciò che utilizzi, con un supporto continuo e aggiornamenti gratuiti.
+    </p>
+  </section>
 
-        <!-- WhatsApp -->
-        <article class="pricing-card whatsapp featured fade-in">
-          <div class="badge">Più scelto</div>
-          <div class="pricing-header">
-            <h3><i class="fab fa-whatsapp"></i> Ordini su WhatsApp</h3>
-            <div class="price">249€<span>/anno</span></div>
-          </div>
-          
-          <div class="pricing-features">
-            <ul class="features">
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>QR Code personalizzato</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Menu aggiornabile in tempo reale</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Hosting & dominio inclusi</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Modifiche illimitate</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Accesso immediato via QR code</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>15 giorni di prova gratuita</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Ordini via WhatsApp</div>
-              </li>
-              <li class="not-included">
-                <span><i class="fas fa-times"></i></span>
-                <div>Suggerimenti Upsell</div>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="pricing-action">
-            <a href="mdw-001.html" class="btn-demo" target="_blank">
-              <i class="fas fa-magic"></i> Richiedi demo
-            </a>
-          </div>
-        </article>
-
-        <!-- Upsell -->
-        <article class="pricing-card upsell fade-in">
-          <div class="pricing-header">
-            <h3><i class="fas fa-bolt"></i> WhatsApp + Upsell</h3>
-            <div class="price">289€<span>/anno</span></div>
-          </div>
-          
-          <div class="pricing-features">
-            <ul class="features">
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>QR Code personalizzato</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Menu aggiornabile in tempo reale</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Hosting & dominio inclusi</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Modifiche illimitate</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Accesso immediato via QR code</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>15 giorni di prova gratuita</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Ordini via WhatsApp</div>
-              </li>
-              <li class="included">
-                <span><i class="fas fa-check"></i></span>
-                <div>Suggerimenti Upsell</div>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="pricing-action">
-            <a href="mdwu-001.html" class="btn-demo" target="_blank">
-              <i class="fas fa-magic"></i> Richiedi demo
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Value Note Section -->
-    <section class="value-note fade-in">
-      <h2>Perché i nostri pacchetti fanno la differenza</h2>
-      <p>
-        Con i nostri pacchetti non stai solo acquistando un menu digitale, ma un <span class="highlight">intero sistema</span> per aumentare le vendite e migliorare l'esperienza dei tuoi clienti.
-        Il nostro approccio è <span class="highlight">semplice, efficace e senza costi nascosti</span> - paghi solo per ciò che utilizzi, con un supporto continuo e aggiornamenti gratuiti.
-      </p>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
       <div class="cta-content">
         <h2>Pronto a Trasformare il Tuo Menù?</h2>
-        <p>Prova gratuitamente uno dei nostri modelli premium e scopri come possiamo aiutarti ad aumentare le vendite e migliorare l'esperienza dei tuoi clienti. Nessun impegno, puoi annullare in qualsiasi momento.</p>
-        <a href="modelli.html" class="btn-cta">Inizia la Tua Prova Gratuita <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <button id="contactBtn" class="submit-btn">
-        <i class="fas fa-comments"></i> Contattaci per informazioni
-      </button>
-      
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="termini.html">Termini e Condizioni</a>
-        <a href="index.html">Home</a>
-        <a href="modelli.html">Modelli</a>
-      </div>
-      
-      <div class="copyright">
-        &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
+        <p>Vuoi un menu moderno, elegante e pronto a farti <span style="color: var(--yellow); font-weight: 600;">vendere di più</span>? Chiedi una <strong>prova gratuita di 15 giorni</strong> e scopri come possiamo aiutarti.</p>
+        <a href="#contactModal" class="btn-cta">RICHIEDI LA TUA PROVA GRATUITA</a>
       </div>
     </div>
-  </footer>
+  </section>
+</div>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Contact Modal -->
-  <div class="contact-modal" id="contactModal">
-    <div class="modal-content">
-      <button class="close-modal" id="closeModal" aria-label="Chiudi modale">
-        &times;
-      </button>
-      <h2>Richiedi Informazioni</h2>
-      <form id="contactForm" class="contact-form">
-        <div class="form-group">
-          <input type="text" id="name" required placeholder="Il tuo nome">
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" required placeholder="La tua email">
-        </div>
-        <div class="form-group">
-          <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
-          <div id="charCount" class="char-count">0 / 700</div>
-        </div>
-        <button type="submit" class="submit-btn">Invia su WhatsApp</button>
-      </form>
+<!-- Footer - CENTRATO -->
+<footer>
+  <div class="container">
+    <button id="contactBtn" class="btn-service">
+  
+    </button>
+    <div class="footer-links">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+      <a href="privacy.html"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
+      <a href="assistenaza.html"><i class="fas fa-headset"></i> Assistenza</a>
+    </div>
+    <div class="copyright">
+      &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
     </div>
   </div>
+</footer>
 
-  <script>
-    // Mobile Navigation Toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      navToggle.classList.toggle('active');
-      navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
-      navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navLinks.classList.contains('open')) {
-          navLinks.classList.remove('open');
-          navToggle.classList.remove('active');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navLinks.setAttribute('aria-hidden', 'true');
-        }
-      });
-    });
-    
-    // Scroll animations
-    document.addEventListener('DOMContentLoaded', function() {
-      const fadeElements = document.querySelectorAll('.fade-in');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-      
-      fadeElements.forEach(element => {
-        observer.observe(element);
-      });
-      
-      // Initial check for elements already in view
-      setTimeout(() => {
-        fadeElements.forEach(element => {
-          if (isElementInViewport(element)) {
-            element.classList.add('visible');
-          }
-        });
-      }, 300);
-      
-      // Contact modal
-      const modal = document.getElementById("contactModal");
-      const openBtn = document.getElementById("contactBtn");
-      const closeBtn = document.getElementById("closeModal");
-      const form = document.getElementById("contactForm");
-      const msgField = document.getElementById("userMsg");
-      const charCount = document.getElementById("charCount");
+<!-- Back to top button -->
+<a href="#" class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</a>
 
-      openBtn.addEventListener("click", () => {
-        modal.classList.add('active');
-      });
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
-      closeBtn.addEventListener("click", () => {
-        modal.classList.remove('active');
-      });
+<!-- Contact Modal -->
+<div class="contact-modal" id="contactModal">
+  <div class="modal-content">
+    <button class="close-modal" id="closeModal" aria-label="Chiudi modale">
+      &times;
+    </button>
+    <h2>Richiedi la tua prova gratuita</h2>
+    <p>
+      Distinguiti dalla concorrenza con un menu digitale moderno e strategico. <br>
+      Gratis per 15 giorni senza impegno!
+    </p>
+    <form id="contactForm" class="contact-form">
+      <div class="form-group">
+        <input type="text" id="name" required placeholder="Il tuo nome">
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" required placeholder="La tua email">
+      </div>
+      <div class="form-group">
+        <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+        <div id="charCount" class="char-count">0 / 700</div>
+      </div>
+      <button type="submit" class="submit-btn">Richiedi Prova Gratuita</button>
+    </form>
+  </div>
+</div>
 
-      window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-        }
-      });
+<script>
+// Mobile Navigation Toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  navToggle.classList.toggle('active');
+  navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+  navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
+});
 
-      msgField.addEventListener("input", () => {
-        charCount.textContent = `${msgField.value.length} / 700`;
-      });
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = msgField.value.trim();
-
-        const header = "*Nuovo messaggio dal sito web*";
-        const body = `${header}\n\n*👤 Nome:* ${name}\n*📧 Email:* ${email}\n\n*💬 Messaggio:*\n${message}`;
-        const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-
-        window.location.href = url; 
-
-        form.reset();
-        charCount.textContent = "0 / 700";
-        modal.classList.remove('active');
-      });
-    });
-    
-    function isElementInViewport(el) {
-      const rect = el.getBoundingClientRect();
-      return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
-        rect.bottom >= 0
-      );
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navLinks.setAttribute('aria-hidden', 'true');
     }
-  </script>
+  });
+});
+
+// Scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  // Initial check for elements already in view
+  setTimeout(() => {
+    fadeElements.forEach(element => {
+      if (isElementInViewport(element)) {
+        element.classList.add('visible');
+      }
+    });
+  }, 300);
+
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+  
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Contact modal
+  const modal = document.getElementById("contactModal");
+  const openBtn = document.getElementById("contactBtn");
+  const closeBtn = document.getElementById("closeModal");
+  const form = document.getElementById("contactForm");
+  const msgField = document.getElementById("userMsg");
+  const charCount = document.getElementById("charCount");
+  
+  // Gestisci solo i pulsanti CTA per aprire il modale
+  document.querySelectorAll('.btn-cta, .btn-demo, #contactBtn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (btn.classList.contains('btn-demo')) {
+        e.preventDefault();
+      }
+      modal.classList.add('active');
+    });
+  });
+  
+  openBtn.addEventListener("click", () => {
+    modal.classList.add('active');
+  });
+  
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove('active');
+  });
+  
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+  
+  msgField.addEventListener("input", () => {
+    charCount.textContent = `${msgField.value.length} / 700`;
+  });
+  
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = msgField.value.trim();
+    const header = "*Richiesta prova gratuita*";
+    const body = `${header}
+*👤 Nome:* ${name}
+*📧 Email:* ${email}
+*💬 Richiesta:* Prova gratuita di un menu digitale
+*📱 Pagina:* Prezzi
+*💬 Messaggio:*
+${message}`;
+    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+    window.location.href = url;
+    form.reset();
+    charCount.textContent = "0 / 700";
+    modal.classList.remove('active');
+  });
+});
+
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+    rect.bottom >= 0
+  );
+}
+</script>
 </body>
 </html>

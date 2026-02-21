@@ -30,7 +30,6 @@
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  /* Imposta il tema scuro per prevenire conversioni indesiderate */
   color-scheme: dark;
 }
 
@@ -51,9 +50,19 @@ body {
   position: relative;
   overflow-x: hidden;
   padding-bottom: 80px;
-  /* Impedisce ai browser di applicare filtri indesiderati */
   background-color: var(--bg-dark) !important;
   color: var(--text) !important;
+  transition: overflow 0.3s ease;
+}
+
+/* === FIX MODALE: Blocca scroll body quando aperta === */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 /* Background pattern */
@@ -79,7 +88,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiNjY2MiIGZpbHRlcj0idXJsKCNhKSIgZD0iTTAgMGgzMDB2MzAwSDB6Ii8+PC9zdmc+');
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='a'%3E%3CfeTurbulence baseFrequency='0.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23ccc' filter='url(%23a)' d='M0 0h300v300H0z'/%3E%3C/svg%3E");
   opacity: 0.03;
   z-index: -1;
 }
@@ -96,7 +105,7 @@ body::after {
   border-radius: 5px;
 }
 
-/* Container - PIÙ AMPIO */
+/* Container */
 .container {
   width: 100%;
   max-width: 1600px;
@@ -104,7 +113,7 @@ body::after {
   padding: 0 4%;
 }
 
-/* Header & Navigation - ALLINEATO A SINISTRA */
+/* Header & Navigation */
 header {
   position: sticky;
   top: 0;
@@ -226,7 +235,7 @@ header {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Section Title - CENTRATO */
+/* Section Title */
 .section-title {
   text-align: center;
   margin: 6rem 0 3rem;
@@ -294,17 +303,9 @@ header {
   transition: var(--transition);
 }
 
-.pricing-card.base::before {
-  background: linear-gradient(90deg, #fde047, #facc15);
-}
-
-.pricing-card.whatsapp::before {
-  background: linear-gradient(90deg, #6ee7b7, #22c55e);
-}
-
-.pricing-card.upsell::before {
-  background: linear-gradient(90deg, #93c5fd, #3b82f6);
-}
+.pricing-card.base::before { background: linear-gradient(90deg, #fde047, #facc15); }
+.pricing-card.whatsapp::before { background: linear-gradient(90deg, #6ee7b7, #22c55e); }
+.pricing-card.upsell::before { background: linear-gradient(90deg, #93c5fd, #3b82f6); }
 
 .pricing-card:hover {
   transform: translateY(-5px);
@@ -312,9 +313,7 @@ header {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.pricing-card:hover::before {
-  opacity: 1;
-}
+.pricing-card:hover::before { opacity: 1; }
 
 .pricing-card.featured {
   border-color: rgba(255, 255, 255, 0.1);
@@ -356,21 +355,10 @@ header {
   margin: 0;
 }
 
-.pricing-card h3 i {
-  font-size: 1.2rem;
-}
-
-.pricing-card.base h3 i {
-  color: var(--yellow);
-}
-
-.pricing-card.whatsapp h3 i {
-  color: var(--green);
-}
-
-.pricing-card.upsell h3 i {
-  color: var(--blue);
-}
+.pricing-card h3 i { font-size: 1.2rem; }
+.pricing-card.base h3 i { color: var(--yellow); }
+.pricing-card.whatsapp h3 i { color: var(--green); }
+.pricing-card.upsell h3 i { color: var(--blue); }
 
 .price {
   font-size: 2.2rem;
@@ -407,9 +395,7 @@ header {
   font-size: 0.95rem;
 }
 
-.features li:last-child {
-  margin-bottom: 0;
-}
+.features li:last-child { margin-bottom: 0; }
 
 .features span {
   display: flex;
@@ -433,9 +419,7 @@ header {
   color: var(--gray);
 }
 
-.pricing-action {
-  padding: 1rem;
-}
+.pricing-action { padding: 1rem; }
 
 .btn-demo {
   display: block;
@@ -463,9 +447,7 @@ header {
   background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
 }
 
-.btn-demo:active {
-  transform: translateY(0);
-}
+.btn-demo:active { transform: translateY(0); }
 
 .btn-demo::after {
   content: "";
@@ -479,9 +461,7 @@ header {
   transition: 0.5s;
 }
 
-.btn-demo:hover::after {
-  left: 120%;
-}
+.btn-demo:hover::after { left: 120%; }
 
 /* Value Note Section */
 .value-note {
@@ -538,7 +518,7 @@ header {
   font-weight: 600;
 }
 
-/* CTA Section - CENTRATO */
+/* CTA Section */
 .cta-section {
   text-align: center;
   padding: 3rem 0;
@@ -643,7 +623,7 @@ header {
   color: var(--yellow-light);
 }
 
-/* Footer - CENTRATO */
+/* Footer */
 footer {
   text-align: center;
   padding: 3.5rem 0 3rem;
@@ -720,26 +700,38 @@ footer {
   box-shadow: 0 10px 30px rgba(34, 197, 94, 0.7);
 }
 
-/* Contact Modal */
+/* === CONTACT MODAL - CORRETTO E STABILE === */
 .contact-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 9999;
+  visibility: hidden;
+  padding: 1rem;
+}
+
+.contact-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .modal-content {
   background: var(--bg-dark);
-  padding: 3.2rem;
+  padding: 2rem;
   border-radius: var(--radius-lg);
-  max-width: 550px;
-  width: 95%;
+  /* 85% dello schermo su mobile come richiesto */
+  width: 92%;
+  max-width: 500px;
+  /* Altezza massima per permettere scroll interno */
+  max-height: 85vh;
+  overflow-y: auto;
   position: relative;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
   color: var(--text);
@@ -747,69 +739,77 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(30px);
-  transition: transform 0.5s ease;
-}
-
-.contact-modal.active {
-  opacity: 1;
-  pointer-events: auto;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-modal.active .modal-content {
   transform: translateY(0);
 }
 
+/* Scrollbar interno alla modale */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(250, 204, 21, 0.3);
+  border-radius: 3px;
+}
+
 .close-modal {
   position: absolute;
-  top: 1.8rem;
-  right: 1.8rem;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--yellow);
   cursor: pointer;
   transition: var(--transition);
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  z-index: 10;
+  flex-shrink: 0;
 }
 
 .close-modal:hover {
   color: white;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   transform: rotate(90deg);
 }
 
 .modal-content h2 {
-  margin-top: 0;
-  font-size: 2.2rem;
+  margin: 0.5rem 0 0.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: 0.02em;
   text-align: center;
+  padding-right: 2rem; /* Spazio per il bottone close */
 }
 
 .modal-content p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--yellow-light);
-  margin-top: -0.3rem;
-  margin-bottom: 2rem;
+  margin: 0 0 1.5rem;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .contact-form {
-  margin-top: 1.2rem;
   width: 100%;
-  max-width: 450px;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.2rem;
 }
 
 .form-group {
@@ -819,34 +819,35 @@ footer {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1rem 1.4rem;
+  padding: 0.9rem 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   background: rgba(15, 23, 42, 0.6);
   color: var(--text);
   transition: var(--transition);
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
 }
 
 .form-group textarea {
-  min-height: 160px;
+  min-height: 120px;
+  max-height: 200px;
   resize: vertical;
 }
 
 .char-count {
-  font-size: 0.9rem;
-  color: var(--yellow);
+  font-size: 0.85rem;
+  color: var(--gray);
   text-align: right;
-  margin-top: 5px;
-  letter-spacing: 0.02em;
+  margin-top: 4px;
 }
 
 .submit-btn {
@@ -854,9 +855,9 @@ footer {
   background: linear-gradient(90deg, var(--green) 0%, #16a34a 100%);
   color: white;
   border: none;
-  padding: 1.1rem 1.6rem;
-  font-size: 1.2rem;
-  border-radius: 14px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   width: 100%;
@@ -867,7 +868,7 @@ footer {
 }
 
 .submit-btn:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: 0 10px 28px rgba(34, 197, 94, 0.6);
   background: linear-gradient(90deg, #22c55e 0%, #15803d 100%);
 }
@@ -883,9 +884,7 @@ footer {
   100% { transform: translateY(0px); }
 }
 
-.float {
-  animation: float 6s ease-in-out infinite;
-}
+.float { animation: float 6s ease-in-out infinite; }
 
 .fade-in {
   opacity: 0;
@@ -898,37 +897,21 @@ footer {
   transform: translateY(0);
 }
 
-/* Aggiunto per prevenire conversione automatica del tema scuro */
+/* Dark mode prevention */
 @media (prefers-color-scheme: dark) {
-  body {
-    filter: none !important;
-    background-color: var(--bg-dark) !important;
-  }
-  
-  img {
-    filter: none !important;
-  }
-  
-  a, a:visited, a:hover, a:active {
-    color: var(--text) !important;
-  }
+  body { filter: none !important; background-color: var(--bg-dark) !important; }
+  img { filter: none !important; }
+  a, a:visited, a:hover, a:active { color: var(--text) !important; }
 }
 
-/* Aggiunto per prevenire conversione automatica su Chrome */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  body {
-    filter: none !important;
-  }
+  body { filter: none !important; }
 }
 
-/* Aggiunto per prevenire conversione automatica su Firefox */
 @-moz-document url-prefix() {
-  body {
-    filter: none !important;
-  }
+  body { filter: none !important; }
 }
 
-/* Aggiunto per gli elementi form */
 input, textarea, select, button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -956,64 +939,53 @@ input, textarea, select, button {
     border-left: 1px solid rgba(255, 255, 255, 0.05);
   }
   
-  .nav-links.open {
-    right: 0;
-  }
-  
-  .nav-toggle {
-    display: flex;
-  }
-  
-  .section-title h2 {
-    font-size: 1.8rem;
-  }
-  
-  .pricing-card.featured {
-    transform: scale(1);
-  }
-  
-  .pricing-card.featured:hover {
-    transform: translateY(-5px);
-  }
+  .nav-links.open { right: 0; }
+  .nav-toggle { display: flex; }
+  .section-title h2 { font-size: 1.8rem; }
+  .pricing-card.featured { transform: scale(1); }
+  .pricing-card.featured:hover { transform: translateY(-5px); }
 }
 
 @media (max-width: 768px) {
-  .pricing-cards {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
+  .pricing-cards { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .value-note { margin: 2.5rem 0; padding: 1.8rem; }
+  .value-note h2 { font-size: 1.6rem; }
   
-  .value-note {
-    margin: 2.5rem 0;
+  /* Modale su tablet: leggermente più larga */
+  .modal-content {
+    width: 90%;
     padding: 1.8rem;
-  }
-  
-  .value-note h2 {
-    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 3%;
+  .container { padding: 0 3%; }
+  .section-title h2 { font-size: 1.6rem; }
+  .price { font-size: 1.9rem; }
+  .btn-demo { padding: 0.7rem; font-size: 0.95rem; }
+  
+  /* Modale mobile: 85% come richiesto */
+  .modal-content {
+    width: 85%;
+    padding: 1.5rem;
+    max-height: 80vh;
   }
   
-  .section-title h2 {
-    font-size: 1.6rem;
-  }
+  .modal-content h2 { font-size: 1.5rem; }
+  .modal-content p { font-size: 0.95rem; }
   
-  .price {
-    font-size: 1.9rem;
-  }
-  
-  .btn-demo {
-    padding: 0.7rem;
-    font-size: 0.95rem;
+  .close-modal {
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 1.8rem;
+    width: 36px;
+    height: 36px;
   }
 }
 </style>
 </head>
 <body>
-<!-- Header & Navigation - ALLINEATO A SINISTRA -->
+<!-- Header & Navigation -->
 <header>
   <div class="container">
     <nav class="navbar" role="navigation" aria-label="Menu principale">
@@ -1022,9 +994,7 @@ input, textarea, select, button {
         DSFabio<span>Digital</span>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks" aria-hidden="true">
         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -1051,48 +1021,20 @@ input, textarea, select, button {
           <h3><i class="fas fa-book"></i> Menu Digitale Base</h3>
           <div class="price">149€<span>/anno</span></div>
         </div>
-        
         <div class="pricing-features">
           <ul class="features">
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>QR Code personalizzato</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Menu aggiornabile in tempo reale</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Hosting & dominio inclusi</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Modifiche illimitate</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Accesso immediato via QR code</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>15 giorni di prova gratuita</div>
-            </li>
-            <li class="not-included">
-              <span><i class="fas fa-times"></i></span>
-              <div>Ordini via WhatsApp</div>
-            </li>
-            <li class="not-included">
-              <span><i class="fas fa-times"></i></span>
-              <div>Suggerimenti Upsell</div>
-            </li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>QR Code personalizzato</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Menu aggiornabile in tempo reale</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Hosting & dominio inclusi</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Modifiche illimitate</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Accesso immediato via QR code</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>15 giorni di prova gratuita</div></li>
+            <li class="not-included"><span><i class="fas fa-times"></i></span><div>Ordini via WhatsApp</div></li>
+            <li class="not-included"><span><i class="fas fa-times"></i></span><div>Suggerimenti Upsell</div></li>
           </ul>
         </div>
-        
         <div class="pricing-action">
-          <a href="#contactModal" class="btn-demo">
-            <i class="fas fa-magic"></i> Richiedi demo
-          </a>
+          <a href="#contactModal" class="btn-demo"><i class="fas fa-magic"></i> Richiedi demo</a>
         </div>
       </article>
 
@@ -1103,48 +1045,20 @@ input, textarea, select, button {
           <h3><i class="fab fa-whatsapp"></i> Ordini su WhatsApp</h3>
           <div class="price">249€<span>/anno</span></div>
         </div>
-        
         <div class="pricing-features">
           <ul class="features">
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>QR Code personalizzato</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Menu aggiornabile in tempo reale</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Hosting & dominio inclusi</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Modifiche illimitate</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Accesso immediato via QR code</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>15 giorni di prova gratuita</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Ordini via WhatsApp</div>
-            </li>
-            <li class="not-included">
-              <span><i class="fas fa-times"></i></span>
-              <div>Suggerimenti Upsell</div>
-            </li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>QR Code personalizzato</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Menu aggiornabile in tempo reale</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Hosting & dominio inclusi</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Modifiche illimitate</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Accesso immediato via QR code</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>15 giorni di prova gratuita</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Ordini via WhatsApp</div></li>
+            <li class="not-included"><span><i class="fas fa-times"></i></span><div>Suggerimenti Upsell</div></li>
           </ul>
         </div>
-        
         <div class="pricing-action">
-          <a href="#contactModal" class="btn-demo">
-            <i class="fas fa-magic"></i> Richiedi demo
-          </a>
+          <a href="#contactModal" class="btn-demo"><i class="fas fa-magic"></i> Richiedi demo</a>
         </div>
       </article>
 
@@ -1154,48 +1068,20 @@ input, textarea, select, button {
           <h3><i class="fas fa-bolt"></i> WhatsApp + Upsell</h3>
           <div class="price">289€<span>/anno</span></div>
         </div>
-        
         <div class="pricing-features">
           <ul class="features">
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>QR Code personalizzato</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Menu aggiornabile in tempo reale</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Hosting & dominio inclusi</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Modifiche illimitate</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Accesso immediato via QR code</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>15 giorni di prova gratuita</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Ordini via WhatsApp</div>
-            </li>
-            <li class="included">
-              <span><i class="fas fa-check"></i></span>
-              <div>Suggerimenti Upsell</div>
-            </li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>QR Code personalizzato</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Menu aggiornabile in tempo reale</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Hosting & dominio inclusi</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Modifiche illimitate</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Accesso immediato via QR code</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>15 giorni di prova gratuita</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Ordini via WhatsApp</div></li>
+            <li class="included"><span><i class="fas fa-check"></i></span><div>Suggerimenti Upsell</div></li>
           </ul>
         </div>
-        
         <div class="pricing-action">
-          <a href="#contactModal" class="btn-demo">
-            <i class="fas fa-magic"></i> Richiedi demo
-          </a>
+          <a href="#contactModal" class="btn-demo"><i class="fas fa-magic"></i> Richiedi demo</a>
         </div>
       </article>
     </div>
@@ -1222,12 +1108,10 @@ input, textarea, select, button {
   </section>
 </div>
 
-<!-- Footer - CENTRATO -->
+<!-- Footer -->
 <footer>
   <div class="container">
-    <button id="contactBtn" class="btn-service">
-  
-    </button>
+    <button id="contactBtn" class="btn-service" aria-label="Contattaci"></button>
     <div class="footer-links">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
       <a href="privacy.html#privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
@@ -1235,15 +1119,12 @@ input, textarea, select, button {
       <a href="privacy.html#cookies"><i class="fas fa-cookie"></i>Cookies</a>
       <a href="assistenaza.html"><i class="fas fa-headset"></i> Assistenza</a>
     </div>
-    <div class="copyright">
-      &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
-    </div>
+    <div class="copyright">&copy; 2026 DSFabio Digital. Tutti i diritti riservati.</div>
   </div>
 </footer>
 
-
 <!-- Back to top button -->
-<a href="#" class="back-to-top" id="backToTop">
+<a href="#" class="back-to-top" id="backToTop" aria-label="Torna su">
   <i class="fas fa-arrow-up"></i>
 </a>
 
@@ -1253,22 +1134,17 @@ input, textarea, select, button {
 </a>
 
 <!-- Contact Modal -->
-<div class="contact-modal" id="contactModal">
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-content">
-    <button class="close-modal" id="closeModal" aria-label="Chiudi modale">
-      &times;
-    </button>
-    <h2>Richiedi la tua prova gratuita</h2>
-    <p>
-      Distinguiti dalla concorrenza con un menu digitale moderno e strategico. <br>
-      Gratis per 15 giorni senza impegno!
-    </p>
+    <button class="close-modal" id="closeModal" aria-label="Chiudi modale">&times;</button>
+    <h2 id="modalTitle">Richiedi la tua prova gratuita</h2>
+    <p>Distinguiti dalla concorrenza con un menu digitale moderno e strategico.<br>Gratis per 15 giorni senza impegno!</p>
     <form id="contactForm" class="contact-form">
       <div class="form-group">
-        <input type="text" id="name" required placeholder="Il tuo nome">
+        <input type="text" id="name" required placeholder="Il tuo nome" autocomplete="name">
       </div>
       <div class="form-group">
-        <input type="email" id="email" required placeholder="La tua email">
+        <input type="email" id="email" required placeholder="La tua email" autocomplete="email">
       </div>
       <div class="form-group">
         <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
@@ -1279,107 +1155,34 @@ input, textarea, select, button {
   </div>
 </div>
 
-<!-- Cookie Banner conforme e stilizzato -->
-<style>
-  #cookieBanner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #20232a;
-    color: #f5f5f5;
-    font-size: 14px;
-    padding: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    z-index: 9999;
-  }
-  #cookieBanner a {
-    color: #61dafb;
-    text-decoration: underline;
-  }
-  #cookieBanner button {
-    margin-left: 8px;
-    padding: 8px 14px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-  }
-  #acceptCookies {
-    background: #61dafb;
-    color: #20232a;
-  }
-  #rejectCookies {
-    background: #444;
-    color: #f5f5f5;
-  }
-  #manageCookies {
-    background: transparent;
-    color: #61dafb;
-    border: 1px solid #61dafb;
-  }
-  </style>
-  
-  <div id="cookieBanner">
-    <div>
-      Questo sito utilizza cookie per ottimizzare l’esperienza, offrirti funzionalità personalizzate e analisi statistiche. 
-      <a href="privacy.html#cookies">Scopri di più</a>.
-    </div>
-    <div>
-      <button id="rejectCookies">Rifiuta tutti</button>
-      <button id="manageCookies">Impostazioni</button>
-      <button id="acceptCookies">Accetta tutti</button>
-    </div>
-  </div>
-  
-  <script>
-  document.getElementById('acceptCookies').addEventListener('click', function() {
-    // salva consenso e attiva cookie non essenziali
-    document.getElementById('cookieBanner').style.display = 'none';
-  });
-  
-  document.getElementById('rejectCookies').addEventListener('click', function() {
-    // salva rifiuto e blocca cookie non essenziali
-    document.getElementById('cookieBanner').style.display = 'none';
-  });
-  
-  document.getElementById('manageCookies').addEventListener('click', function() {
-    // apri pannello dettagliato di scelta cookie
-    window.location.href = '/cookies';
-  });
-  </script>
-
-
-
-
 <script>
 // Mobile Navigation Toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  navToggle.classList.toggle('active');
-  navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
-  navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
-});
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (navLinks.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('active');
-      navToggle.setAttribute('aria-expanded', 'false');
-      navLinks.setAttribute('aria-hidden', 'true');
-    }
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+    navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
   });
-});
 
-// Scroll animations
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navLinks.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+}
+
+// Scroll animations & utilities
 document.addEventListener('DOMContentLoaded', function() {
+  // Fade-in observer
   const fadeElements = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1388,97 +1191,116 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
-  fadeElements.forEach(element => {
-    observer.observe(element);
-  });
+  fadeElements.forEach(element => observer.observe(element));
 
-  // Initial check for elements already in view
   setTimeout(() => {
     fadeElements.forEach(element => {
-      if (isElementInViewport(element)) {
-        element.classList.add('visible');
-      }
+      if (isElementInViewport(element)) element.classList.add('visible');
     });
   }, 300);
 
-  // Back to top button
+  // Back to top
   const backToTop = document.getElementById('backToTop');
-  
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
-    }
-  });
-  
-  backToTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
     });
-  });
+    
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
-  // Contact modal
+  // === CONTACT MODAL - LOGICA CORRETTA ===
   const modal = document.getElementById("contactModal");
-  const openBtn = document.getElementById("contactBtn");
   const closeBtn = document.getElementById("closeModal");
   const form = document.getElementById("contactForm");
   const msgField = document.getElementById("userMsg");
   const charCount = document.getElementById("charCount");
   
-  // Gestisci solo i pulsanti CTA per aprire il modale
+  // Funzioni helper per aprire/chiudere
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add('active');
+    // Blocca scroll del body (con fix per iOS)
+    document.body.classList.add('modal-open');
+    // Focus sul primo campo dopo animazione
+    setTimeout(() => document.getElementById("name")?.focus(), 200);
+  }
+  
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    // Riabilita scroll
+    document.body.classList.remove('modal-open');
+  }
+  
+  // Apri modale da tutti i trigger
   document.querySelectorAll('.btn-cta, .btn-demo, #contactBtn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      if (btn.classList.contains('btn-demo')) {
-        e.preventDefault();
-      }
-      modal.classList.add('active');
+      if (btn.classList.contains('btn-demo')) e.preventDefault();
+      openModal();
     });
   });
   
-  openBtn.addEventListener("click", () => {
-    modal.classList.add('active');
-  });
+  // Chiudi con pulsante X
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
   
-  closeBtn.addEventListener("click", () => {
-    modal.classList.remove('active');
-  });
+  // Chiudi cliccando sullo sfondo (non sul contenuto)
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
   
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
+  // Chiudi con tasto ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal?.classList.contains('active')) {
+      closeModal();
     }
   });
   
-  msgField.addEventListener("input", () => {
-    charCount.textContent = `${msgField.value.length} / 700`;
-  });
+  // Character counter
+  if (msgField && charCount) {
+    msgField.addEventListener("input", () => {
+      charCount.textContent = `${msgField.value.length} / 700`;
+    });
+  }
   
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = msgField.value.trim();
-    const header = "*Richiesta prova gratuita*";
-    const body = `${header}
+  // Form submit
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name")?.value.trim() || '';
+      const email = document.getElementById("email")?.value.trim() || '';
+      const message = msgField?.value.trim() || '';
+      
+      const header = "*Richiesta prova gratuita*";
+      const body = `${header}
 *👤 Nome:* ${name}
 *📧 Email:* ${email}
 *💬 Richiesta:* Prova gratuita di un menu digitale
 *📱 Pagina:* Prezzi
 *💬 Messaggio:*
 ${message}`;
-    const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-    window.location.href = url;
-    form.reset();
-    charCount.textContent = "0 / 700";
-    modal.classList.remove('active');
-  });
+      
+      const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
+      window.location.href = url;
+      
+      form.reset();
+      if (charCount) charCount.textContent = "0 / 700";
+      closeModal();
+    });
+  }
 });
 
 function isElementInViewport(el) {

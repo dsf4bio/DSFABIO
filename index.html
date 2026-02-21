@@ -255,7 +255,7 @@ header {
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   z-index: 2;
   animation: fadeInUp 1.2s ease forwards;
@@ -268,7 +268,7 @@ header {
 }
 
 .logo {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1.2rem;
   display: flex;
@@ -388,7 +388,7 @@ header {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
   gap: 2.5rem;
   max-width: 1600px;
   margin: 0 auto;
@@ -470,7 +470,7 @@ header {
 .service-card img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* MOSTRA L'IMMAGINE PER INTERO */
+  object-fit: cover;
   object-position: center;
   transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: block;
@@ -481,7 +481,7 @@ header {
 }
 
 .service-content {
-  padding: 1.8rem;
+  padding: 0.8rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -510,6 +510,7 @@ header {
   color: white;
   padding: 0.85rem 1.4rem;
   border-radius: 12px;
+  text-align: center;
   font-weight: 600;
   font-size: 1.05rem;
   border: none;
@@ -648,12 +649,12 @@ header {
 #demo-session {
   background: linear-gradient(135deg, rgba(12, 18, 34, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
   padding: 4rem 0;
-  margin: 2rem auto 4rem;
+  margin: 0.8rem auto 4rem;
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
+  width: 90%;
 }
 
 #demo-session::before {
@@ -670,9 +671,9 @@ header {
 #demo-session h2 {
   position: relative;
   z-index: 1;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 2.5rem;
+  margin-bottom:1.5rem;
   background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -683,7 +684,7 @@ header {
 .demo-flip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
+  gap: 2.2rem;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -694,7 +695,7 @@ header {
 .flip-card {
   background: transparent;
   width: 100%;
-  height: 360px;
+  height: 240px;
   perspective: 1000px;
 }
 
@@ -720,7 +721,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.8rem;
+  padding: 1.1rem;
   transition: var(--transition);
 }
 
@@ -738,7 +739,7 @@ header {
 }
 
 .flip-avatar {
-  width: 140px;
+  width: 150px;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   object-position: center;
@@ -756,8 +757,8 @@ header {
 }
 
 .flip-front h3 {
-  font-size: 1.0rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin: 0;
   text-align: center;
   color: var(--text);
@@ -779,8 +780,8 @@ header {
 }
 
 .flip-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .flip-icon.classico {
@@ -796,7 +797,7 @@ header {
 }
 
 .flip-back p {
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
   color: var(--text-secondary);
   line-height: 1.6;
@@ -806,7 +807,7 @@ header {
 #benefici {
   padding: 3rem 0;
   margin: 2rem auto 4rem;
-  width: 100%;
+  width: 90%;
 }
 
 .benefits-list {
@@ -820,7 +821,7 @@ header {
 .benefit-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.5rem;
   padding: 1.5rem;
   background: var(--bg-card);
   border-radius: var(--radius-md);
@@ -865,13 +866,13 @@ header {
 /* CTA Section - CENTRATO */
 .cta-section {
   text-align: center;
-  padding: 4rem 0;
+  padding: 3rem 0;
   background: linear-gradient(135deg, var(--bg-section) 0%, #1e293b 100%);
   border-radius: var(--radius-lg);
   margin: 3rem auto;
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 90%;
 }
 
 .cta-section::before {
@@ -1229,10 +1230,10 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .hero {
     height: auto;
-    padding: 5rem 0 4rem;
+    padding: 3rem 0 4rem;
   }
   
   .hero-content h1 {
@@ -1268,7 +1269,7 @@ footer {
   }
   
   .flip-avatar {
-    width: 120px;
+    width: 140px;
     aspect-ratio: 1/1;
   }
 }
@@ -1279,7 +1280,7 @@ footer {
   }
   
   .hero-content h1 {
-    font-size: 1.55rem;
+    font-size: 1.65rem;
   }
   
   .hero-content p {
@@ -1581,7 +1582,7 @@ footer {
       <div class="cta-content">
         <h2>Prova il servizio gratis</h2>
         <p>Vuoi un menu moderno, elegante e pronto a farti vendere di più? Lo creo io per te in soli 2 giorni.</p>
-        <a href="modelli.html" class="btn-cta">VAI E SCEGLI IL TUO MENU <i class="fas fa-arrow-right"></i></a>
+        <a href="modelli.html" class="btn-cta">VAI E SCEGLI IL TUO <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

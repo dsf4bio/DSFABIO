@@ -263,11 +263,11 @@ body::after {
 /* Footer - CENTRATO */
 footer {
   text-align: center;
-  padding: 3.5rem 0 3rem;
+  padding: 2.5rem 0;
   color: var(--text-secondary);
   font-size: 0.95rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -277,8 +277,8 @@ footer {
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 1.8rem 0;
+  gap: 1.5rem;
+  margin: 1.2rem 0;
   flex-wrap: wrap;
 }
 
@@ -286,23 +286,16 @@ footer {
   color: var(--text-secondary);
   transition: var(--transition);
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 1.05rem;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
 }
 
 .footer-links a:hover {
   color: var(--yellow);
-  background: rgba(250, 204, 21, 0.1);
 }
 
 .copyright {
   color: var(--gray);
-  font-size: 0.95rem;
-  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
 /* WhatsApp Floating Button */
@@ -382,10 +375,6 @@ footer {
 </style>
 </head>
 <body>
-<!-- Back Button -->
-<button class="back-button" onclick="history.back()">
-  <i class="fas fa-arrow-left"></i> Indietro
-</button>
 
 <!-- Section Title -->
 <div class="container">
@@ -518,99 +507,24 @@ footer {
 
 <!-- Footer - CENTRATO -->
 <footer>
-  <div class="container">
-    <div class="footer-links">
-      <a href="#privacy"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-      <a href="#cookies"><i class="fas fa-cookie"></i> Utilizzo dei Cookies</a>
-      <a href="#terms"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
-    </div>
+  <div class="footer-links">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="privacy.html#privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
+    <a href="privacy.html#terms"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
+    <a href="privacy.html#cookies"><i class="fas fa-cookie"></i>Cookies</a>
+    <a href="assistenaza.html"><i class="fas fa-headset"></i> Assistenza</a>
+  </div>
     <div class="copyright">
       &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
     </div>
   </div>
 </footer>
 
+
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
-
-
-<!-- Cookie Banner conforme e stilizzato -->
-<style>
-  #cookieBanner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #20232a;
-    color: #f5f5f5;
-    font-size: 14px;
-    padding: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    z-index: 9999;
-  }
-  #cookieBanner a {
-    color: #61dafb;
-    text-decoration: underline;
-  }
-  #cookieBanner button {
-    margin-left: 8px;
-    padding: 8px 14px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-  }
-  #acceptCookies {
-    background: #61dafb;
-    color: #20232a;
-  }
-  #rejectCookies {
-    background: #444;
-    color: #f5f5f5;
-  }
-  #manageCookies {
-    background: transparent;
-    color: #61dafb;
-    border: 1px solid #61dafb;
-  }
-  </style>
-  
-  <div id="cookieBanner">
-    <div>
-      Questo sito utilizza cookie per ottimizzare l’esperienza, offrirti funzionalità personalizzate e analisi statistiche. 
-      <a href="privacy.html#cookies">Scopri di più</a>.
-    </div>
-    <div>
-      <button id="rejectCookies">Rifiuta tutti</button>
-      <button id="manageCookies">Impostazioni</button>
-      <button id="acceptCookies">Accetta tutti</button>
-    </div>
-  </div>
-  
-  <script>
-  document.getElementById('acceptCookies').addEventListener('click', function() {
-    // salva consenso e attiva cookie non essenziali
-    document.getElementById('cookieBanner').style.display = 'none';
-  });
-  
-  document.getElementById('rejectCookies').addEventListener('click', function() {
-    // salva rifiuto e blocca cookie non essenziali
-    document.getElementById('cookieBanner').style.display = 'none';
-  });
-  
-  document.getElementById('manageCookies').addEventListener('click', function() {
-    // apri pannello dettagliato di scelta cookie
-    window.location.href = '/cookies';
-  });
-  </script>
-
-
-
 
 
 <script>

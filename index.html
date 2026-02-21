@@ -7,7 +7,6 @@
 <meta name="description" content="Soluzioni digitali innovative per ristoranti, bar e locali. Menu digitali, ordini su WhatsApp e strumenti per aumentare le vendite." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
 <style>
   :root {
     --bg-dark: #0c1222;
@@ -31,12 +30,16 @@
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
+    /* Imposta il tema scuro per prevenire conversioni indesiderate */
+    color-scheme: dark;
   }
   
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
@@ -48,6 +51,9 @@
     position: relative;
     overflow-x: hidden;
     padding-bottom: 80px;
+    /* Impedisce ai browser di applicare filtri indesiderati */
+    background-color: var(--bg-dark) !important;
+    color: var(--text) !important;
   }
   
   /* Background pattern */
@@ -1195,6 +1201,46 @@
     transform: rotateY(180deg);
   }
   
+  /* Aggiunto per prevenire conversione automatica del tema scuro */
+  @media (prefers-color-scheme: dark) {
+    body {
+      filter: none !important;
+      background-color: var(--bg-dark) !important;
+    }
+    
+    img {
+      filter: none !important;
+    }
+    
+    a, a:visited, a:hover, a:active {
+      color: var(--text) !important;
+    }
+  }
+  
+  /* Aggiunto per prevenire conversione automatica su Chrome */
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    body {
+      filter: none !important;
+    }
+  }
+  
+  /* Aggiunto per prevenire conversione automatica su Firefox */
+  @-moz-document url-prefix() {
+    body {
+      filter: none !important;
+    }
+  }
+  
+  /* Aggiunto per gli elementi form */
+  input, textarea, select, button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bg-card) !important;
+    color: var(--text) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
   /* Responsive Design - CORREZIONE CENTRATURA */
   @media (max-width: 1100px) {
     .hero-content h1 {
@@ -1335,7 +1381,6 @@
     }
   }
   </style>
-
 </head>
 <body>
   <!-- Header & Navigation - ALLINEATO A SINISTRA -->

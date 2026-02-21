@@ -1340,8 +1340,9 @@ input, textarea, select, button {
     </button>
     <div class="footer-links">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-      <a href="privacy.html"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
+      <a href="privacy.html#privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
+      <a href="privacy.html#terms"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
+      <a href="privacy.html#cookies"><i class="fas fa-cookie"></i>Cookies</a>
       <a href="assistenaza.html"><i class="fas fa-headset"></i> Assistenza</a>
     </div>
     <div class="copyright">
@@ -1368,7 +1369,7 @@ input, textarea, select, button {
     </button>
     <h2>Richiedi la tua prova gratuita</h2>
     <p>
-      *Questo è un menu digitale consultabile, non interattivo con sistema di ordinazione.*
+      Eleva l’esperienza dei tuoi clienti e aumenta il valore di ogni ordine.
     </p>
     <form id="contactForm" class="contact-form">
       <div class="form-group">
@@ -1385,6 +1386,80 @@ input, textarea, select, button {
     </form>
   </div>
 </div>
+
+<!-- Cookie Banner conforme e stilizzato -->
+<style>
+  #cookieBanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #20232a;
+    color: #f5f5f5;
+    font-size: 14px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    z-index: 9999;
+  }
+  #cookieBanner a {
+    color: #61dafb;
+    text-decoration: underline;
+  }
+  #cookieBanner button {
+    margin-left: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  #acceptCookies {
+    background: #61dafb;
+    color: #20232a;
+  }
+  #rejectCookies {
+    background: #444;
+    color: #f5f5f5;
+  }
+  #manageCookies {
+    background: transparent;
+    color: #61dafb;
+    border: 1px solid #61dafb;
+  }
+  </style>
+  
+  <div id="cookieBanner">
+    <div>
+      Questo sito utilizza cookie per ottimizzare l’esperienza, offrirti funzionalità personalizzate e analisi statistiche. 
+      <a href="privacy.html#cookies">Scopri di più</a>.
+    </div>
+    <div>
+      <button id="rejectCookies">Rifiuta tutti</button>
+      <button id="manageCookies">Impostazioni</button>
+      <button id="acceptCookies">Accetta tutti</button>
+    </div>
+  </div>
+  
+  <script>
+  document.getElementById('acceptCookies').addEventListener('click', function() {
+    // salva consenso e attiva cookie non essenziali
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+  
+  document.getElementById('rejectCookies').addEventListener('click', function() {
+    // salva rifiuto e blocca cookie non essenziali
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+  
+  document.getElementById('manageCookies').addEventListener('click', function() {
+    // apri pannello dettagliato di scelta cookie
+    window.location.href = '/cookies';
+  });
+  </script>
+
 
 <script>
 // Mobile Navigation Toggle

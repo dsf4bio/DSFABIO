@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>Informativa Privacy – DSFabio Digital</title>
-<meta name="description" content="Informativa sulla privacy di DSFabio Digital - Soluzioni digitali per ristoranti e locali." />
+<title>Privacy Policy – DSFabio Digital</title>
+<meta name="description" content="Informativa sulla privacy, utilizzo dei cookies e termini e condizioni di DSFabio Digital." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
@@ -30,12 +30,16 @@
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  /* Imposta il tema scuro per prevenire conversioni indesiderate */
+  color-scheme: dark;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -47,6 +51,9 @@ body {
   position: relative;
   overflow-x: hidden;
   padding-bottom: 80px;
+  /* Impedisce ai browser di applicare filtri indesiderati */
+  background-color: var(--bg-dark) !important;
+  color: var(--text) !important;
 }
 
 /* Background pattern */
@@ -77,14 +84,15 @@ body::after {
   z-index: -1;
 }
 
-/* Container */
+/* Container - PIÙ AMPIO */
 .container {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 4%;
 }
 
-/* Back Button - Coerente con il design del sito */
+/* Back Button */
 .back-button {
   position: fixed;
   top: calc(20px + env(safe-area-inset-top));
@@ -115,6 +123,83 @@ body::after {
   font-size: 1.1rem;
 }
 
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin: 4rem 0 2rem;
+  position: relative;
+}
+
+.section-title h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(90deg, var(--text) 0%, var(--yellow-light) 50%, var(--blue-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+
+.section-title h2 span {
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
+  border-radius: 2px;
+}
+
+/* Navigation Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0 3rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tab:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--yellow);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.tab.active {
+  background: linear-gradient(90deg, rgba(250, 204, 21, 0.15), rgba(59, 130, 246, 0.15));
+  color: var(--yellow);
+  border-color: rgba(250, 204, 21, 0.3);
+  font-weight: 600;
+}
+
 /* Privacy Content */
 .privacy-content {
   background: var(--bg-card);
@@ -122,16 +207,7 @@ body::after {
   padding: 3rem;
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.privacy-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--text);
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  margin-bottom: 4rem;
 }
 
 .privacy-content h2 {
@@ -152,6 +228,12 @@ body::after {
   width: 4px;
   background: linear-gradient(to bottom, var(--yellow), var(--blue));
   border-radius: 2px;
+}
+
+.privacy-content h3 {
+  font-size: 1.4rem;
+  margin: 1.8rem 0 1rem;
+  color: var(--text);
 }
 
 .privacy-content p {
@@ -178,39 +260,99 @@ body::after {
   color: var(--yellow-light);
 }
 
-/* Footer */
+/* Footer - CENTRATO */
 footer {
   text-align: center;
-  padding: 2.5rem 0;
+  padding: 3.5rem 0 3rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 3rem;
+  margin-top: 2.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.8rem 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: var(--transition);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.05rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+}
+
+.footer-links a:hover {
+  color: var(--yellow);
+  background: rgba(250, 204, 21, 0.1);
 }
 
 .copyright {
   color: var(--gray);
-  font-size: 0.9rem;
-  margin-top: 1rem;
+  font-size: 0.95rem;
+  margin-top: 1.2rem;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 65px;
+  height: 65px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 6px 25px rgba(34, 197, 94, 0.5);
+  transition: var(--transition);
+  z-index: 999;
+  text-decoration: none;
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.8); }
+  70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.7);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.5rem;
-    margin: 3rem auto;
+    padding: 0 3%;
   }
   
   .privacy-content {
     padding: 2rem;
   }
   
-  .privacy-content h1 {
-    font-size: 2.2rem;
+  .section-title h1 {
+    font-size: 2rem;
   }
   
-  .privacy-content h2 {
-    font-size: 1.6rem;
+  .section-title h2 {
+    font-size: 1.8rem;
   }
 }
 
@@ -224,104 +366,326 @@ footer {
     padding: 1.8rem;
   }
   
-  .privacy-content h1 {
-    font-size: 1.9rem;
+  .section-title h1 {
+    font-size: 1.7rem;
+  }
+  
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+  
+  .tab {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 </style>
 </head>
 <body>
-  <!-- Back Button - Coerente con il design del sito -->
-  <button class="back-button" onclick="history.back()">
-    <i class="fas fa-arrow-left"></i> Indietro
-  </button>
+<!-- Back Button -->
+<button class="back-button" onclick="history.back()">
+  <i class="fas fa-arrow-left"></i> Indietro
+</button>
 
-  <!-- Privacy Content -->
-  <div class="container">
-    <div class="privacy-content">
-      <h1>Informativa sulla Privacy</h1>
-      <p>Questa informativa descrive come <strong>DSFabio Digital</strong> gestisce i dati personali.</p>
-
-      <h2>1. Comunicazioni via WhatsApp</h2>
-      <p>Qualsiasi contatto tra l'utente e DSFabio Digital avviene esclusivamente tramite <strong>WhatsApp</strong>. Tali comunicazioni sono protette da crittografia end-to-end e <strong>non vengono raccolti, salvati o trattati dati personali</strong> da parte nostra.</p>
-
-      <h2>2. Nessuna raccolta di dati personali</h2>
-      <p>Non raccogliamo, memorizziamo o trattiamo dati identificativi come nome, cognome, indirizzo email o numero di telefono. Nessun dato viene archiviato nei nostri server, né richiesto tramite moduli o iscrizioni.</p>
-
-      <h2>3. Google Analytics</h2>
-      <p>Utilizziamo <strong>Google Analytics</strong> per raccogliere informazioni anonime sull'uso del sito al solo scopo di migliorare l'esperienza utente. I dati raccolti (es. pagine visitate, tipo di dispositivo, tempo medio di permanenza) sono trattati in forma aggregata e non identificano personalmente l'utente.</p>
-
-      <h2>4. Finalità del trattamento</h2>
-      <p>L'unica finalità del trattamento è l'analisi dell'utilizzo del sito per ottimizzare contenuti e funzionalità.</p>
-
-      <h2>5. Diritti dell'utente</h2>
-      <p>Non essendo effettuata alcuna raccolta di dati personali, non è necessario richiedere modifiche o cancellazioni. Per qualunque dubbio, puoi comunque contattarci tramite WhatsApp.</p>
-
-      <h2>6. Titolare del trattamento</h2>
-      <p><strong>DSFabio Digital</strong><br/>
-      Contattaci via WhatsApp direttamente dal sito per ogni informazione.</p>
-    </div>
+<!-- Section Title -->
+<div class="container">
+  <div class="section-title">
+    <h1>Privacy Policy & Termini</h1>
+  </div>
+  
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <a href="#privacy" class="tab active">Privacy Policy</a>
+    <a href="#cookies" class="tab">Utilizzo dei Cookies</a>
+    <a href="#terms" class="tab">Termini e Condizioni</a>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="copyright">
-        &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
-      </div>
-    </div>
-  </footer>
-
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <script>
-    // WhatsApp Floating Button
-    const whatsappButton = document.createElement('a');
-    whatsappButton.href = "https://wa.me/393440301412";
-    whatsappButton.className = "whatsapp-float";
-    whatsappButton.ariaLabel = "Contattaci su WhatsApp";
-    whatsappButton.innerHTML = '<i class="fab fa-whatsapp"></i>';
-    document.body.appendChild(whatsappButton);
-    
-    // WhatsApp Button Animation
-    whatsappButton.style.cssText = `
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 60px;
-      height: 60px;
-      background: var(--green);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
-      transition: var(--transition);
-      z-index: 999;
-      text-decoration: none;
-      animation: pulse 2s infinite;
-    `;
-    
-    // Add keyframes for pulse animation
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-        70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-      }
+  <!-- Privacy Content -->
+  <div class="privacy-content">
+    <!-- Privacy Section -->
+    <div id="privacy">
+      <h2>1. Informativa sulla Privacy</h2>
       
-      .whatsapp-float:hover {
-        transform: scale(1.15) rotate(10deg);
-        box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
-      }
-    `;
-    document.head.appendChild(style);
+      <h3>Principio di trasparenza</h3>
+      <p>Questa informativa è scritta in modo chiaro e diretto, senza linguaggio tecnico eccessivo. La privacy è importante, ma non deve essere complicata.</p>
+      
+      <h3>Cosa NON facciamo</h3>
+      <p>La nostra filosofia è semplice: <strong>non raccogliamo dati personali se non strettamente necessari</strong>. Ecco cosa non facciamo:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non raccogliamo, memorizziamo o trattiamo nomi, cognomi, indirizzi email o numeri di telefono</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non creiamo profili utente o database di clienti</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non vendiamo o condividiamo dati con terze parti</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non utilizziamo il tuo numero di telefono per scopi diversi dalla comunicazione diretta</li>
+      </ul>
+      
+      <h3>Comunicazioni via WhatsApp</h3>
+      <p>Tutte le comunicazioni avvengono esclusivamente tramite <strong>WhatsApp</strong>. Questo è importante perché:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">WhatsApp utilizza la <strong>crittografia end-to-end</strong>, che significa che solo tu e noi possiamo leggere i messaggi</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non abbiamo accesso ai tuoi dati di contatto oltre al numero necessario per la comunicazione</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">I messaggi non vengono archiviati sui nostri server, ma rimangono solo su WhatsApp</li>
+      </ul>
+      
+      <h3>Google Analytics</h3>
+      <p>L'unica eccezione è l'utilizzo di <strong>Google Analytics</strong> per analizzare l'utilizzo del sito:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Raccogliamo dati <strong>anonimi</strong> come pagine visitate, tempo di permanenza e tipo di dispositivo</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Questi dati sono utilizzati esclusivamente per migliorare l'esperienza utente del sito</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">I dati sono trattati in forma aggregata e non possono identificarti personalmente</li>
+      </ul>
+      
+      <h3>Il tuo consenso</h3>
+      <p>Continuando a utilizzare il sito, accetti l'utilizzo di Google Analytics per raccogliere dati anonimi. Se desideri disattivarlo, puoi utilizzare l'estensione del browser "Google Analytics Opt-out" o modificare le impostazioni di privacy del tuo browser.</p>
+    </div>
+    
+    <!-- Cookies Section -->
+    <div id="cookies" style="display: none;">
+      <h2>2. Utilizzo dei Cookies</h2>
+      
+      <h3>Semplice e senza fronzoli</h3>
+      <p>La nostra politica sui cookie è diretta: <strong>usiamo solo i cookie strettamente necessari</strong> per il funzionamento del sito.</p>
+      
+      <h3>Cosa sono i cookie e perché li usiamo</h3>
+      <p>I cookie sono piccoli file di testo che i siti web memorizzano sul tuo dispositivo. Noi li utilizziamo solo per:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Mantenere attiva la sessione durante la navigazione</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Ricordare le tue preferenze di navigazione</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Analizzare in modo anonimo l'utilizzo del sito tramite Google Analytics</li>
+      </ul>
+      
+      <h3>Google Analytics</h3>
+      <p>L'unico cookie che raccoglie dati analitici è quello di Google Analytics. Questo cookie:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Raccoglie dati in forma <strong>anonima</strong> e aggregata</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non può identificarti personalmente</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Viene utilizzato esclusivamente per migliorare il sito</li>
+      </ul>
+      
+      <h3>Come gestire i cookie</h3>
+      <p>Puoi gestire i cookie in qualsiasi momento attraverso le impostazioni del tuo browser. Ecco come:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">In Chrome: Impostazioni > Privacy e sicurezza > Cookie e dati dei siti</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">In Firefox: Opzioni > Privacy e sicurezza > Cookie e dati dei siti</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">In Safari: Preferenze > Privacy > Blocca tutti i cookie</li>
+      </ul>
+      
+      <p>Se disattivi i cookie, alcune funzionalità del sito potrebbero non funzionare correttamente, ma potrai comunque visualizzare i contenuti.</p>
+    </div>
+    
+    <!-- Terms Section -->
+    <div id="terms" style="display: none;">
+      <h2>3. Termini e Condizioni</h2>
+      
+      <h3>La nostra filosofia</h3>
+      <p>I nostri termini e condizioni sono pensati per essere <strong>chiari, equi e trasparenti</strong>. Non ci sono clausole nascoste o condizioni impossibili da accettare.</p>
+      
+      <h3>Prova gratuita</h3>
+      <p>Quando offriamo una prova gratuita:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non richiediamo dati di pagamento per attivare la prova</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Puoi annullare in qualsiasi momento senza costi</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non ti invieremo spam o messaggi indesiderati</li>
+      </ul>
+      
+      <h3>Proprietà intellettuale</h3>
+      <p>I modelli di menu digitali che creiamo per i nostri clienti:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Sono di proprietà esclusiva del cliente una volta completati e pagati</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Possono essere utilizzati liberamente dal cliente per il proprio business</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non rivendichiamo alcun diritto sui contenuti creati per il cliente</li>
+      </ul>
+      
+      <h3>Limitazioni di responsabilità</h3>
+      <p>Sebbene facciamo del nostro meglio:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non possiamo garantire il funzionamento perfetto di WhatsApp o di altri servizi di terze parti</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Non siamo responsabili per eventuali interruzioni del servizio WhatsApp</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Forniamo supporto tecnico per i nostri servizi, ma non per problemi legati a dispositivi o connessioni dei clienti</li>
+      </ul>
+      
+      <h3>Modifiche ai termini</h3>
+      <p>Se dovessimo modificare questi termini:</p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Aggiorniamo questa pagina con la nuova data</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Le modifiche non influenzeranno i contratti esistenti</li>
+        <li style="margin-bottom: 0.8rem; line-height: 1.7;">Le nuove condizioni si applicheranno solo ai nuovi servizi</li>
+      </ul>
+      
+      <p>Questi termini e condizioni riflettono la nostra promessa: <strong>semplicità, trasparenza e rispetto reciproco</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer - CENTRATO -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="#privacy"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+      <a href="#cookies"><i class="fas fa-cookie"></i> Utilizzo dei Cookies</a>
+      <a href="#terms"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
+    </div>
+    <div class="copyright">
+      &copy; 2026 DSFabio Digital. Tutti i diritti riservati.
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<!-- Cookie Banner conforme e stilizzato -->
+<style>
+  #cookieBanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #20232a;
+    color: #f5f5f5;
+    font-size: 14px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    z-index: 9999;
+  }
+  #cookieBanner a {
+    color: #61dafb;
+    text-decoration: underline;
+  }
+  #cookieBanner button {
+    margin-left: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  #acceptCookies {
+    background: #61dafb;
+    color: #20232a;
+  }
+  #rejectCookies {
+    background: #444;
+    color: #f5f5f5;
+  }
+  #manageCookies {
+    background: transparent;
+    color: #61dafb;
+    border: 1px solid #61dafb;
+  }
+  </style>
+  
+  <div id="cookieBanner">
+    <div>
+      Questo sito utilizza cookie per ottimizzare l’esperienza, offrirti funzionalità personalizzate e analisi statistiche. 
+      <a href="privacy.html#cookies">Scopri di più</a>.
+    </div>
+    <div>
+      <button id="rejectCookies">Rifiuta tutti</button>
+      <button id="manageCookies">Impostazioni</button>
+      <button id="acceptCookies">Accetta tutti</button>
+    </div>
+  </div>
+  
+  <script>
+  document.getElementById('acceptCookies').addEventListener('click', function() {
+    // salva consenso e attiva cookie non essenziali
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+  
+  document.getElementById('rejectCookies').addEventListener('click', function() {
+    // salva rifiuto e blocca cookie non essenziali
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+  
+  document.getElementById('manageCookies').addEventListener('click', function() {
+    // apri pannello dettagliato di scelta cookie
+    window.location.href = '/cookies';
+  });
   </script>
+
+
+
+
+
+<script>
+// Tab navigation
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.tab');
+  const sections = {
+    privacy: document.getElementById('privacy'),
+    cookies: document.getElementById('cookies'),
+    terms: document.getElementById('terms')
+  };
+  
+  // Check URL hash and show corresponding section
+  function showSection(id) {
+    // Hide all sections
+    Object.values(sections).forEach(section => {
+      section.style.display = 'none';
+    });
+    
+    // Show the requested section
+    if (sections[id]) {
+      sections[id].style.display = 'block';
+      
+      // Update active tab
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('href') === '#' + id) {
+          tab.classList.add('active');
+        }
+      });
+    }
+  }
+  
+  // Initialize based on URL hash
+  const hash = window.location.hash.substring(1);
+  if (hash && sections[hash]) {
+    showSection(hash);
+  } else {
+    showSection('privacy');
+  }
+  
+  // Tab click handlers
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      showSection(targetId);
+      window.history.pushState(null, null, '#' + targetId);
+    });
+  });
+  
+  // Handle browser back/forward navigation
+  window.addEventListener('popstate', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash && sections[hash]) {
+      showSection(hash);
+    } else {
+      showSection('privacy');
+    }
+  });
+});
+
+// WhatsApp Floating Button Animation
+document.addEventListener('DOMContentLoaded', function() {
+  const whatsappButton = document.querySelector('.whatsapp-float');
+  if (whatsappButton) {
+    whatsappButton.addEventListener('mouseenter', function() {
+      this.style.animationPlayState = 'paused';
+    });
+    
+    whatsappButton.addEventListener('mouseleave', function() {
+      this.style.animationPlayState = 'running';
+    });
+  }
+});
+</script>
 </body>
 </html>

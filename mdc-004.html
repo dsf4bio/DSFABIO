@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Menu | Bistrot Urbano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --bg: #121212; 
+            --card: #1E1E1E; 
+            --accent: #FF5722; 
+            --text: #FFFFFF; 
+            --text-dim: #b0b0b0;
+            --success: #4CAF50;
+            --wine: #722F37;
+            --beer: #F4A460;
+            --coffee: #6F4E37;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            font-family: 'Open Sans', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            padding-bottom: 100px;
+            line-height: 1.5;
+        }
+
+        /* --- HEADER --- */
+        header { 
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); 
+            padding: 30px 20px; 
+            text-align: center; 
+            border-bottom: 3px solid var(--accent); 
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+        h1 { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 2.5rem; 
+            margin: 0 0 5px 0; 
+            color: var(--accent); 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        header p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
+        .subtitle { font-size: 0.8rem; color: #666; margin-top: 5px; }
+
+        /* --- SEARCH BAR --- */
+        .search-box {
+            padding: 15px 20px;
+            background: var(--card);
+            position: sticky;
+            top: 110px;
+            z-index: 150;
+        }
+        .search-box input {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #333;
+            background: #2a2a2a;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-box input::placeholder { color: #666; }
+
+        /* --- FILTER BAR - CENTERED ON DESKTOP --- */
+        .filter-bar { 
+            position: sticky; 
+            top: 170px; 
+            background: var(--bg); 
+            z-index: 100; 
+            padding: 15px 20px; 
+            display: flex; 
+            gap: 10px; 
+            overflow-x: auto; 
+            scrollbar-width: none;
+            border-bottom: 1px solid #222;
+            justify-content: flex-start;
+        }
+        .filter-bar::-webkit-scrollbar { display: none; }
+        
+        .btn { 
+            background: var(--card); 
+            color: white; 
+            border: 2px solid #333; 
+            padding: 12px 24px; 
+            border-radius: 30px; 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 0.85rem;
+            text-transform: uppercase; 
+            cursor: pointer; 
+            white-space: nowrap;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        .btn:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,87,34,0.3);
+        }
+        .btn.active { 
+            background: var(--accent); 
+            border-color: var(--accent); 
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,87,34,0.4);
+        }
+
+        /* Center on desktop */
+        @media (min-width: 1024px) {
+            .filter-bar {
+                justify-content: center;
+                flex-wrap: wrap;
+                overflow-x: visible;
+            }
+            .btn {
+                margin: 5px;
+            }
+        }
+
+        /* --- CATEGORY TITLE --- */
+        .category-title {
+            padding: 40px 20px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            border-left: 5px solid var(--accent);
+            margin: 30px 0 20px;
+            background: linear-gradient(90deg, rgba(255,87,34,0.15) 0%, transparent 100%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .category-title i {
+            font-size: 1.5rem;
+        }
+
+        /* --- GRID & CARDS --- */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 25px; 
+            padding: 0 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .dish { 
+            background: var(--card); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            border: 1px solid #2a2a2a;
+        }
+        .dish:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 40px rgba(255,87,34,0.25);
+            border-color: var(--accent);
+        }
+        
+        .dish-img { 
+            height: 200px; 
+            width: 100%; 
+            object-fit: cover; 
+            position: relative;
+        }
+        .dish-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 50px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+        
+        .dish-body { padding: 20px; }
+        
+        .dish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .dish-title { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 1.4rem; 
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .dish-price { 
+            color: var(--accent); 
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700; 
+            font-size: 1.4rem; 
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+        
+        .dish-desc { 
+            font-size: 0.9rem; 
+            color: var(--text-dim); 
+            margin: 12px 0; 
+            line-height: 1.5;
+            min-height: 45px;
+        }
+        
+        .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .badge { 
+            background: #333; 
+            padding: 4px 12px; 
+            font-size: 0.75rem; 
+            border-radius: 5px; 
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge.veg { background: #2e7d32; color: white; }
+        .badge.spicy { background: #c62828; color: white; }
+        .badge.best { background: var(--accent); color: white; }
+        .badge.new { background: #1976D2; color: white; }
+
+        /* --- IMPROVED DRINKS SECTION --- */
+        .drinks-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .drink-category {
+            margin-bottom: 40px;
+            background: var(--card);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+        }
+
+        .drink-category-header {
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        .drink-category-header i {
+            font-size: 1.8rem;
+        }
+
+        .drink-category-header.water { color: #4FC3F7; background: rgba(79, 195, 247, 0.1); }
+        .drink-category-header.beer { color: var(--beer); background: rgba(244, 164, 96, 0.1); }
+        .drink-category-header.wine { color: #E57373; background: rgba(229, 115, 115, 0.1); }
+        .drink-category-header.coffee { color: #A1887F; background: rgba(161, 136, 127, 0.1); }
+        .drink-category-header.cocktail { color: #BA68C8; background: rgba(186, 104, 200, 0.1); }
+
+        .drink-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1px;
+            background: #2a2a2a;
+        }
+
+        .drink-card {
+            background: var(--card);
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drink-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: transparent;
+            transition: background 0.3s;
+        }
+
+        .drink-card:hover {
+            background: #252525;
+            transform: translateX(5px);
+        }
+
+        .drink-card:hover::before {
+            background: var(--accent);
+        }
+
+        .drink-info {
+            flex: 1;
+        }
+
+        .drink-info h4 {
+            margin: 0 0 5px 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .drink-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .drink-price {
+            color: var(--accent);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+
+        .drink-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(255,87,34,0.2);
+            color: var(--accent);
+            border-radius: 3px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        /* --- FLOATING BUTTONS --- */
+        .fab-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+            animation: pulse 2s infinite;
+        }
+        .fab:hover { transform: scale(1.1); }
+        .fab.whatsapp { background: #25D366; }
+        .fab.cart { background: var(--accent); animation: none; }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a1a1a;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+        footer h3 { color: var(--accent); font-family: 'Oswald', sans-serif; margin-bottom: 15px; }
+        footer p { margin: 8px 0; color: var(--text-dim); font-size: 0.9rem; }
+        .socials { margin: 20px 0; }
+        .socials a { 
+            color: white; 
+            font-size: 1.5rem; 
+            margin: 0 15px; 
+            transition: color 0.3s;
+        }
+        .socials a:hover { color: var(--accent); }
+
+        /* --- UTILS --- */
+        .hidden { display: none !important; }
+        .no-results {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .dish-img { height: 200px; }
+            .filter-bar { 
+                top: 160px; 
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+            .search-box { top: 100px; }
+            .category-title { font-size: 1.5rem; }
+            .drink-category-header { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1><i class="fas fa-utensils"></i> Bistrot Urbano</h1>
+        <p>Modern Italian Kitchen</p>
+        <div class="subtitle">📍 Via della Cucina 42, Milano • 🕐 12:00 - 23:30</div>
+    </header>
+
+    <!-- Search -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Cerca un piatto o una bevanda..." onkeyup="searchMenu()">
+    </div>
+
+    <!-- Filter Bar - CENTERED ON DESKTOP -->
+    <div class="filter-bar">
+        <button class="btn active" onclick="filterMenu('all', this)"><i class="fas fa-th"></i> Tutto</button>
+        <button class="btn" onclick="filterMenu('antipasti', this)"><i class="fas fa-apple-alt"></i> Antipasti</button>
+        <button class="btn" onclick="filterMenu('primi', this)"><i class="fas fa-utensils"></i> Primi</button>
+        <button class="btn" onclick="filterMenu('pizze', this)"><i class="fas fa-pizza-slice"></i> Pizze</button>
+        <button class="btn" onclick="filterMenu('secondi', this)"><i class="fas fa-drumstick-bite"></i> Secondi</button>
+        <button class="btn" onclick="filterMenu('contorni', this)"><i class="fas fa-carrot"></i> Contorni</button>
+        <button class="btn" onclick="filterMenu('dolci', this)"><i class="fas fa-ice-cream"></i> Dolci</button>
+        <button class="btn" onclick="filterMenu('bevande', this)"><i class="fas fa-wine-glass-alt"></i> Bevande</button>
+    </div>
+
+    <!-- MENU SECTIONS -->
+    <div id="menuContainer">
+
+        <!-- ANTIPASTI -->
+        <h2 class="category-title" id="cat-antipasti"><i class="fas fa-apple-alt"></i> Antipasti</h2>
+        <div class="grid" id="grid-antipasti">
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1541544744-378ca6f009b5?w=500" class="dish-img" alt="Caprese">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Caprese Classica</h3>
+                        <span class="dish-price">€10</span>
+                    </div>
+                    <p class="dish-desc">Pomodori Cuore di Bue, mozzarella di bufala DOP, basilico fresco, olio EVO.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500" class="dish-img" alt="Carpaccio">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Carpaccio di Manzo</h3>
+                        <span class="dish-price">€14</span>
+                    </div>
+                    <p class="dish-desc">Taglio fine a mano, rucola, scaglie di parmigiano 24 mesi, salsa tartufata.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1563240670-a7c7fac1b778?w=500" class="dish-img" alt="Bruschette">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Bruschette Miste</h3>
+                        <span class="dish-price">€8</span>
+                    </div>
+                    <p class="dish-desc">3 pezzi: pomodoro e basilico, crema di olive, funghi trifolati.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1541138895495-3e5c9f8c6f2f?w=500" class="dish-img" alt="Tagliere">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Tagliere della Casa</h3>
+                        <span class="dish-price">€18</span>
+                    </div>
+                    <p class="dish-desc">Selezione di salumi artigianali, formaggi stagionati, mostarde e miele.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500" class="dish-img" alt="Curry">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Crocchè di Patate</h3>
+                        <span class="dish-price">€7</span>
+                    </div>
+                    <p class="dish-desc">Patate, prezzemolo, parmigiano, panatura croccante. Serviti con salsa yogurt.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1563379926898-0c8a8c7e5c8e?w=500" class="dish-img" alt="Polpette">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Polpette al Sugo</h3>
+                        <span class="dish-price">€9</span>
+                    </div>
+                    <p class="dish-desc">Polpette di manzo e maiale, sugo di pomodoro cotto 4 ore, basilico.</p>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1626082927389-6c8fa3c6d0c8?w=500" class="dish-img" alt="Fritto">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Fritto Misto Urbano</h3>
+                        <span class="dish-price">€12</span>
+                    </div>
+                    <p class="dish-desc">Olive ascolane, supplì, fiori di zucca, mozzarelline in carrozza.</p>
+                    <div class="badges"><span class="badge spicy">🌶️ Piccante</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1572449401457-7f8f8d8c8f8f?w=500" class="dish-img" alt="Tartare">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Tartare di Tonno</h3>
+                        <span class="dish-price">€16</span>
+                    </div>
+                    <p class="dish-desc">Tonno fresco, avocado, mango, sesamo, salsa agrodolce allo zenzero.</p>
+                    <div class="badges"><span class="badge new">✨ New</span></div>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1606450899629-6e61f9c8f8f8?w=500" class="dish-img" alt="Alici">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Alici Marinate</h3>
+                        <span class="dish-price">€11</span>
+                    </div>
+                    <p class="dish-desc">Alici fresche marinate in limone e prezzemolo, servite con crostini.</p>
+                </div>
+            </div>
+            <div class="dish cat-antipasti">
+                <img src="https://images.unsplash.com/photo-1547592164-6f5f64c7f8f8?w=500" class="dish-img" alt="Vitello">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Vitello Tonnato</h3>
+                        <span class="dish-price">€13</span>
+                    </div>
+                    <p class="dish-desc">Fesa di vitello cotta a bassa temperatura, crema di tonno, capperi.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRIMI PIATTI -->
+        <h2 class="category-title" id="cat-primi"><i class="fas fa-utensils"></i> Primi Piatti</h2>
+        <div class="grid" id="grid-primi">
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=500" class="dish-img" alt="Carbonara">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Carbonara Originale</h3>
+                        <span class="dish-price">€13</span>
+                    </div>
+                    <p class="dish-desc">Guanciale croccante, pecorino romano DOP, tuorlo d'uovo, pepe nero.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1563379926898-0c8a8c7e5c8e?w=500" class="dish-img" alt="Amatriciana">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Amatriciana</h3>
+                        <span class="dish-price">€12</span>
+                    </div>
+                    <p class="dish-desc">Guanciale, pomodoro San Marzano, pecorino, peperoncino.</p>
+                    <div class="badges"><span class="badge spicy">🌶️ Piccante</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=500" class="dish-img" alt="Cacio e Pepe">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Cacio e Pepe</h3>
+                        <span class="dish-price">€11</span>
+                    </div>
+                    <p class="dish-desc">Pecorino romano stagionato, pepe nero tostato, tecnica di mantecatura perfetta.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1574868233972-1d073248a8f3?w=500" class="dish-img" alt="Lasagna">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Lasagna della Nonna</h3>
+                        <span class="dish-price">€14</span>
+                    </div>
+                    <p class="dish-desc">Pasta fresca, ragù cotto 6 ore, besciamella fatta in casa, parmigiano.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=500" class="dish-img" alt="Pesto">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Trenette al Pesto</h3>
+                        <span class="dish-price">€13</span>
+                    </div>
+                    <p class="dish-desc">Pesto genovese DOP, fagiolini, patate, pinoli tostati, parmigiano.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500" class="dish-img" alt="Ragù">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Pappardelle al Ragù</h3>
+                        <span class="dish-price">€15</span>
+                    </div>
+                    <p class="dish-desc">Pasta fresca all'uovo, ragù misto di carne, vino rosso, erbe aromatiche.</p>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1588013273468-420d104d7a72?w=500" class="dish-img" alt="Arrabbiata">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Penne all'Arrabbiata</h3>
+                        <span class="dish-price">€10</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro San Marzano, aglio, peperoncino fresco, prezzemolo.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span><span class="badge spicy">🌶️</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1611270629569-8b3588018bb8?w=500" class="dish-img" alt="Vongole">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Spaghetti alle Vongole</h3>
+                        <span class="dish-price">€16</span>
+                    </div>
+                    <p class="dish-desc">Vongole veraci, aglio, prezzemolo, vino bianco, olio EVO a crudo.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1565299580072-8f8f8c8c8f8f?w=500" class="dish-img" alt="Gnocchi">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Gnocchi ai 4 Formaggi</h3>
+                        <span class="dish-price">€13</span>
+                    </div>
+                    <p class="dish-desc">Gnocchi di patate fatti in casa, crema di gorgonzola, fontina, parmigiano, taleggio.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-primi">
+                <img src="https://images.unsplash.com/photo-1565299621848-8f8f8c8c8f8f?w=500" class="dish-img" alt="Risotto">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Risotto allo Zafferano</h3>
+                        <span class="dish-price">€14</span>
+                    </div>
+                    <p class="dish-desc">Carnaroli mantecato con zafferano, midollo, parmigiano, burro chiarificato.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PIZZE -->
+        <h2 class="category-title" id="cat-pizze"><i class="fas fa-pizza-slice"></i> Le Nostre Pizze</h2>
+        <div class="grid" id="grid-pizze">
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500" class="dish-img" alt="Margherita">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Margherita DOP</h3>
+                        <span class="dish-price">€8</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro San Marzano, mozzarella fior di latte, basilico fresco, olio EVO.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span><span class="badge best">⭐ Classica</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500" class="dish-img" alt="Diavola">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Diavola</h3>
+                        <span class="dish-price">€10</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro, mozzarella, salame piccante, peperoncino fresco, origano.</p>
+                    <div class="badges"><span class="badge spicy">🌶️ Piccante</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" class="dish-img" alt="Ortolana">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Ortolana</h3>
+                        <span class="dish-price">€11</span>
+                    </div>
+                    <p class="dish-desc">Verdure grigliate di stagione, mozzarella, olive taggiasche, olio al tartufo.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=500" class="dish-img" alt="Quattro Formaggi">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Quattro Formaggi</h3>
+                        <span class="dish-price">€12</span>
+                    </div>
+                    <p class="dish-desc">Mozzarella, gorgonzola, fontina, parmigiano, noci caramellate.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1565299581016-8f8f8c8c8f8f?w=500" class="dish-img" alt="Prosciutto">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Prosciutto e Funghi</h3>
+                        <span class="dish-price">€11</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro, mozzarella, prosciutto cotto, funghi champignon trifolati.</p>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500" class="dish-img" alt="Capricciosa">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Capricciosa</h3>
+                        <span class="dish-price">€12</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro, mozzarella, prosciutto cotto, funghi, carciofini, olive.</p>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1565299621848-8f8f8c8c8f8f?w=500" class="dish-img" alt="Marinara">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Marinara</h3>
+                        <span class="dish-price">€6</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro San Marzano, aglio, origano, olio EVO. Senza mozzarella.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=500" class="dish-img" alt="Salsiccia">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Salsiccia e Friarielli</h3>
+                        <span class="dish-price">€11</span>
+                    </div>
+                    <p class="dish-desc">Mozzarella, salsiccia di maiale, friarielli saltati, peperoncino.</p>
+                    <div class="badges"><span class="badge spicy">🌶️ Piccante</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" class="dish-img" alt="Vegetariana">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Vegetariana</h3>
+                        <span class="dish-price">€10</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro, mozzarella, melanzane, zucchine, peperoni, pomodorini.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-pizze">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500" class="dish-img" alt="Bufalina">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Bufalina Special</h3>
+                        <span class="dish-price">€13</span>
+                    </div>
+                    <p class="dish-desc">Pomodoro, mozzarella di bufala DOP, pomodorini confit, basilico.</p>
+                    <div class="badges"><span class="badge best">⭐ Premium</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECONDI -->
+        <h2 class="category-title" id="cat-secondi"><i class="fas fa-drumstick-bite"></i> Secondi Piatti</h2>
+        <div class="grid" id="grid-secondi">
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500" class="dish-img" alt="Tagliata">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Tagliata di Scottona</h3>
+                        <span class="dish-price">€22</span>
+                    </div>
+                    <p class="dish-desc">Carne alla griglia, rucola fresca, scaglie di grana, balsamico.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1546241072-48010ad2862c?w=500" class="dish-img" alt="Ossobuco">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Ossobuco alla Milanese</h3>
+                        <span class="dish-price">€20</span>
+                    </div>
+                    <p class="dish-desc">Cotto lentamente con vino bianco, servito con gremolada.</p>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=500" class="dish-img" alt="Pollo">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Pollo al Mattone</h3>
+                        <span class="dish-price">€16</span>
+                    </div>
+                    <p class="dish-desc">Pollo ruspante cotto sotto mattone, pelle croccante, erbe aromatiche.</p>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500" class="dish-img" alt="Bistecca">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Bistecca alla Fiorentina</h3>
+                        <span class="dish-price">€45</span>
+                    </div>
+                    <p class="dish-desc">Taglio da 1kg di Chianina IGP, cottura alla brace, sale grosso.</p>
+                    <div class="badges"><span class="badge best">⭐ Premium</span></div>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1544025162-d76690b67f61?w=500" class="dish-img" alt="Arista">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Arista al Latte</h3>
+                        <span class="dish-price">€18</span>
+                    </div>
+                    <p class="dish-desc">Maiale tenerissimo cotto nel latte con rosmarino e salvia.</p>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1565299621848-8f8f8c8c8f8f?w=500" class="dish-img" alt="Branzino">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Branzino al Forno</h3>
+                        <span class="dish-price">€24</span>
+                    </div>
+                    <p class="dish-desc">Pesce fresco del giorno, patate, olive, pomodorini, vino bianco.</p>
+                    <div class="badges"><span class="badge new">✨ Fresh</span></div>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500" class="dish-img" alt="Saltimbocca">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Saltimbocca alla Romana</h3>
+                        <span class="dish-price">€19</span>
+                    </div>
+                    <p class="dish-desc">Vitello, prosciutto crudo, salvia, vino bianco, burro.</p>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500" class="dish-img" alt="Coniglio">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Coniglio alla Cacciatora</h3>
+                        <span class="dish-price">€17</span>
+                    </div>
+                    <p class="dish-desc">Coniglio, pomodoro, olive, capperi, rosmarino, vino rosso.</p>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1547592164-6f5f64c7f8f8?w=500" class="dish-img" alt="Abbacchio">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Abbacchio al Forno</h3>
+                        <span class="dish-price">€21</span>
+                    </div>
+                    <p class="dish-desc">Agnello giovane, patate, rosmarino, aglio, vino bianco.</p>
+                </div>
+            </div>
+            <div class="dish cat-secondi">
+                <img src="https://images.unsplash.com/photo-1544025162-d76690b67f61?w=500" class="dish-img" alt="Trippa">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Trippa alla Romana</h3>
+                        <span class="dish-price">€14</span>
+                    </div>
+                    <p class="dish-desc">Trippa, pomodoro, mentuccia, pecorino, vino bianco.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTORNI -->
+        <h2 class="category-title" id="cat-contorni"><i class="fas fa-carrot"></i> Contorni</h2>
+        <div class="grid" id="grid-contorni">
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=500" class="dish-img" alt="Patatine">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Patatine Fritte</h3>
+                        <span class="dish-price">€4</span>
+                    </div>
+                    <p class="dish-desc">Patate fresche tagliate a mano, fritte in olio di girasole.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1563240670-a7c7fac1b778?w=500" class="dish-img" alt="Insalata">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Insalata Mista</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Lattuga, pomodori, carote, rucola, condimento a scelta.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500" class="dish-img" alt="Spinaci">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Spinaci al Burro</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Spinaci freschi saltati con burro e noce moscata.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1565299621848-8f8f8c8c8f8f?w=500" class="dish-img" alt="Grigliata">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Verdure Grigliate</h3>
+                        <span class="dish-price">€6</span>
+                    </div>
+                    <p class="dish-desc">Melanzane, zucchine, peperoni e cipolle alla brace.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=500" class="dish-img" alt="Patate">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Patate al Forno</h3>
+                        <span class="dish-price">€4</span>
+                    </div>
+                    <p class="dish-desc">Patate a cubetti con rosmarino, aglio e olio EVO.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500" class="dish-img" alt="Cicoria">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Cicoria Ripassata</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Cicoria saltata con aglio, olio e peperoncino.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span><span class="badge spicy">🌶️</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1563240670-a7c7fac1b778?w=500" class="dish-img" alt="Carciofi">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Carciofi alla Giudia</h3>
+                        <span class="dish-price">€7</span>
+                    </div>
+                    <p class="dish-desc">Carciofi fritti interi, croccanti fuori e teneri dentro.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=500" class="dish-img" alt="Purè">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Purè di Patate</h3>
+                        <span class="dish-price">€4</span>
+                    </div>
+                    <p class="dish-desc">Crema di patate con latte, burro e parmigiano.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500" class="dish-img" alt="Peperoni">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Peperoni Arrostiti</h3>
+                        <span class="dish-price">€6</span>
+                    </div>
+                    <p class="dish-desc">Peperoni al forno con acciughe e capperi.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-contorni">
+                <img src="https://images.unsplash.com/photo-1563240670-a7c7fac1b778?w=500" class="dish-img" alt="Fagiolini">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Fagiolini al Vapore</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Fagiolini freschi, olio EVO, limone e sale.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOLCI -->
+        <h2 class="category-title" id="cat-dolci"><i class="fas fa-ice-cream"></i> Dolci</h2>
+        <div class="grid" id="grid-dolci">
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500" class="dish-img" alt="Tiramisu">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Tiramisù Classico</h3>
+                        <span class="dish-price">€6</span>
+                    </div>
+                    <p class="dish-desc">La ricetta originale: mascarpone, savoiardi, caffè, cacao amaro.</p>
+                    <div class="badges"><span class="badge best">⭐ Top</span></div>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500" class="dish-img" alt="Cannolo">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Cannolo Siciliano</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Cialda croccante, ricotta fresca, gocce di cioccolato, pistacchio.</p>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" class="dish-img" alt="Panna Cotta">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Panna Cotta</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Crema di panna e vaniglia con coulis di frutti di bosco.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1578985545128-8f8f8c8c8f8f?w=500" class="dish-img" alt="Cheesecake">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Cheesecake New York</h3>
+                        <span class="dish-price">€7</span>
+                    </div>
+                    <p class="dish-desc">Base di biscotti, crema di formaggio, topping a scelta.</p>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500" class="dish-img" alt="Gelato">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Gelato Artigianale</h3>
+                        <span class="dish-price">€4</span>
+                    </div>
+                    <p class="dish-desc">3 gusti a scelta tra: fiordilatte, cioccolato, pistacchio, fragola.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" class="dish-img" alt="Torta">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Torta della Nonna</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Pasta frolla, crema pasticcera, pinoli tostati, zucchero a velo.</p>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500" class="dish-img" alt="Semifreddo">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Semifreddo al Torrone</h3>
+                        <span class="dish-price">€6</span>
+                    </div>
+                    <p class="dish-desc">Crema al torrone, nocciole caramellate, cioccolato fondente.</p>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500" class="dish-img" alt="Baba">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Babà al Rum</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Dolce napoletano imbevuto di rum, panna montata.</p>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" class="dish-img" alt="Affogato">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Affogato al Caffè</h3>
+                        <span class="dish-price">€5</span>
+                    </div>
+                    <p class="dish-desc">Gelato alla vaniglia "affogato" in espresso caldo.</p>
+                    <div class="badges"><span class="badge veg">🥗 Veg</span></div>
+                </div>
+            </div>
+            <div class="dish cat-dolci">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500" class="dish-img" alt="Zuppa">
+                <div class="dish-body">
+                    <div class="dish-header">
+                        <h3 class="dish-title">Zuppa Inglese</h3>
+                        <span class="dish-price">€6</span>
+                    </div>
+                    <p class="dish-desc">Savoiardi al liquore, crema pasticcera e al cioccolato.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEVANDE - IMPROVED SECTION -->
+        <h2 class="category-title" id="cat-bevande"><i class="fas fa-wine-glass-alt"></i> Bevande</h2>
+        
+        <div class="drinks-container">
+            <!-- Acqua -->
+            <div class="drink-category">
+                <div class="drink-category-header water">
+                    <i class="fas fa-tint"></i>
+                    <span>Acqua</span>
+                </div>
+                <div class="drink-grid">
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Acqua Naturale 50cl <span class="drink-tag">Fresca</span></h4>
+                            <p>Sorgente pura delle Alpi</p>
+                        </div>
+                        <div class="drink-price">€2.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Acqua Frizzante 50cl <span class="drink-tag">Gasata</span></h4>
+                            <p>Con bollicine fini</p>
+                        </div>
+                        <div class="drink-price">€2.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Acqua 1 Litro</h4>
+                            <p>Naturale o Frizzante</p>
+                        </div>
+                        <div class="drink-price">€4.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Acqua Tonica</h4>
+                            <p>Schweppes / Fever-Tree</p>
+                        </div>
+                        <div class="drink-price">€3.50</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Birra -->
+            <div class="drink-category">
+                <div class="drink-category-header beer">
+                    <i class="fas fa-beer"></i>
+                    <span>Birra</span>
+                </div>
+                <div class="drink-grid">
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra alla Spina 33cl <span class="drink-tag">Artigianale</span></h4>
+                            <p>Lager chiara artigianale</p>
+                        </div>
+                        <div class="drink-price">€5.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra alla Spina 50cl <span class="drink-tag">Artigianale</span></h4>
+                            <p>Lager chiara artigianale</p>
+                        </div>
+                        <div class="drink-price">€7.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra in Bottiglia 33cl</h4>
+                            <p>Peroni / Moretti / Heineken</p>
+                        </div>
+                        <div class="drink-price">€5.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra IPA <span class="drink-tag">Craft</span></h4>
+                            <p>India Pale Ale - Baladin / Birra del Borgo</p>
+                        </div>
+                        <div class="drink-price">€6.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra Rossa / Amber</h4>
+                            <p>Stile viennese o dublino</p>
+                        </div>
+                        <div class="drink-price">€6.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra Wheat / Weizen</h4>
+                            <p>Birra di frumento tedesca</p>
+                        </div>
+                        <div class="drink-price">€6.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Birra Analcolica 0.0%</h4>
+                            <p>Peroni / Moretti Zero</p>
+                        </div>
+                        <div class="drink-price">€4.50</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vino -->
+            <div class="drink-category">
+                <div class="drink-category-header wine">
+                    <i class="fas fa-wine-bottle"></i>
+                    <span>Vino</span>
+                </div>
+                <div class="drink-grid">
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Vino Rosso della Casa</h4>
+                            <p>Bicchiere 12cl / Caraffa 50cl / Bottiglia</p>
+                        </div>
+                        <div class="drink-price">€4 / €12 / €18</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Vino Bianco della Casa</h4>
+                            <p>Bicchiere 12cl / Caraffa 50cl / Bottiglia</p>
+                        </div>
+                        <div class="drink-price">€4 / €12 / €18</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Prosecco DOC <span class="drink-tag">Bollicine</span></h4>
+                            <p>Calice 12cl / Bottiglia 75cl</p>
+                        </div>
+                        <div class="drink-price">€6 / €25</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Franciacorta DOCG</h4>
+                            <p>Spumante metodo classico</p>
+                        </div>
+                        <div class="drink-price">€35</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Chianti Classico DOCG</h4>
+                            <p>Toscana - Riserva disponibile</p>
+                        </div>
+                        <div class="drink-price">€28</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Pinot Grigio DOC</h4>
+                            <p>Alto Adige / Friuli</p>
+                        </div>
+                        <div class="drink-price">€24</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Rosato IGT</h4>
+                            <p>Puglia / Sicilia</p>
+                        </div>
+                        <div class="drink-price">€22</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Barolo DOCG</h4>
+                            <p>Piemonte - Nebbiolo</p>
+                        </div>
+                        <div class="drink-price">€45</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Amarone della Valpolicella</h4>
+                            <p>Veneto - Corvina, Rondinella</p>
+                        </div>
+                        <div class="drink-price">€48</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caffè & Digestivi -->
+            <div class="drink-category">
+                <div class="drink-category-header coffee">
+                    <i class="fas fa-coffee"></i>
+                    <span>Caffè & Digestivi</span>
+                </div>
+                <div class="drink-grid">
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Espresso</h4>
+                            <p>Caffè 100% Arabica tostatura media</p>
+                        </div>
+                        <div class="drink-price">€1.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Cappuccino</h4>
+                            <p>Espresso + latte montato a vapore</p>
+                        </div>
+                        <div class="drink-price">€2.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Caffè Macchiato</h4>
+                            <p>Caldo o freddo</p>
+                        </div>
+                        <div class="drink-price">€1.80</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Caffè Corretto</h4>
+                            <p>Con grappa / sambuca / cognac</p>
+                        </div>
+                        <div class="drink-price">€3.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Amaro della Casa <span class="drink-tag">Digestivo</span></h4>
+                            <p>Ricetta artigianale segreta</p>
+                        </div>
+                        <div class="drink-price">€4.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Limoncello</h4>
+                            <p>Di Sorrento IGP - Fatto in casa</p>
+                        </div>
+                        <div class="drink-price">€4.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Grappa</h4>
+                            <p>Poli / Nardini / Barricata</p>
+                        </div>
+                        <div class="drink-price">€5.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Sambuca</h4>
+                            <p>Molinari / Romana</p>
+                        </div>
+                        <div class="drink-price">€4.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analcolici & Cocktail -->
+            <div class="drink-category">
+                <div class="drink-category-header cocktail">
+                    <i class="fas fa-cocktail"></i>
+                    <span>Analcolici & Cocktail</span>
+                </div>
+                <div class="drink-grid">
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Coca-Cola / Fanta / Sprite</h4>
+                            <p>Lattina 33cl</p>
+                        </div>
+                        <div class="drink-price">€3.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Succo di Frutta</h4>
+                            <p>Pesca / Arancia / Pompelmo / Pomodoro</p>
+                        </div>
+                        <div class="drink-price">€3.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Tè Freddo</h4>
+                            <p>Limone / Pesca / Verde</p>
+                        </div>
+                        <div class="drink-price">€3.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Red Bull</h4>
+                            <p>Energetico 25cl</p>
+                        </div>
+                        <div class="drink-price">€4.50</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Spritz <span class="drink-tag">Aperitivo</span></h4>
+                            <p>Aperol / Campari / Select / Hugo</p>
+                        </div>
+                        <div class="drink-price">€7.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Americano</h4>
+                            <p>Campari, Vermouth rosso, soda</p>
+                        </div>
+                        <div class="drink-price">€8.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Negroni</h4>
+                            <p>Gin, Campari, Vermouth rosso</p>
+                        </div>
+                        <div class="drink-price">€9.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Mojito</h4>
+                            <p>Rum bianco, lime, menta, soda</p>
+                        </div>
+                        <div class="drink-price">€9.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Gin Tonic</h4>
+                            <p>Gin premium, tonica, lime</p>
+                        </div>
+                        <div class="drink-price">€10.00</div>
+                    </div>
+                    <div class="drink-card cat-bevande">
+                        <div class="drink-info">
+                            <h4>Margarita</h4>
+                            <p>Tequila, triple sec, lime</p>
+                        </div>
+                        <div class="drink-price">€10.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="fab-container">
+        <a href="https://wa.me/393331234567?text=Ciao%20Bistrot%20Urbano,%20vorrei%20ordinare..." class="fab whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="fab cart" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Bistrot Urbano</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Via della Cucina 42, 20121 Milano</p>
+        <p><i class="fas fa-phone"></i> +39 02 1234567</p>
+        <p><i class="fas fa-clock"></i> Lun-Dom: 12:00 - 15:00 / 19:00 - 23:30</p>
+        
+        <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
+        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 20px;">
+            * Prezzi IVA inclusa. Allergeni: chiedere al personale. 
+            Immagini a scopo illustrativo.
+        </p>
+        <p style="font-size: 0.7rem; opacity: 0.3;">© 2024 Bistrot Urbano - Menu Digitale v3.0</p>
+    </footer>
+
+    <script>
+        // --- FILTER FUNCTION ---
+        function filterMenu(category, btn) {
+            // Update buttons
+            document.querySelectorAll('.filter-bar .btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Show/hide categories
+            const categories = ['antipasti', 'primi', 'pizze', 'secondi', 'contorni', 'dolci', 'bevande'];
+            
+            categories.forEach(cat => {
+                const grid = document.getElementById('grid-' + cat);
+                const title = document.getElementById('cat-' + cat);
+                
+                if (category === 'all' || category === cat) {
+                    if(grid) grid.classList.remove('hidden');
+                    if(title) title.classList.remove('hidden');
+                } else {
+                    if(grid) grid.classList.add('hidden');
+                    if(title) title.classList.add('hidden');
+                }
+            });
+            
+            // Also filter individual dishes for smoother experience
+            document.querySelectorAll('.dish').forEach(dish => {
+                if (category === 'all' || dish.classList.contains('cat-' + category)) {
+                    dish.style.display = 'block';
+                } else {
+                    dish.style.display = 'none';
+                }
+            });
+            
+            // Hide/show drink categories
+            document.querySelectorAll('.drink-category').forEach(cat => {
+                if (category === 'all' || category === 'bevande') {
+                    cat.style.display = 'block';
+                } else {
+                    cat.style.display = 'none';
+                }
+            });
+            
+            // Scroll to first visible category
+            setTimeout(() => {
+                const firstVisible = document.querySelector('.category-title:not(.hidden)');
+                if(firstVisible) {
+                    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+
+        // --- SEARCH FUNCTION ---
+        function searchMenu() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const allDishes = document.querySelectorAll('.dish, .drink-card');
+            
+            let hasResults = false;
+            
+            allDishes.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = item.classList.contains('drink-card') ? 'flex' : 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide category titles based on search
+            document.querySelectorAll('.category-title').forEach(title => {
+                title.style.display = query ? 'none' : 'block';
+            });
+            
+            // Show message if no results
+            let noResults = document.getElementById('noResults');
+            if (!hasResults && query) {
+                if (!noResults) {
+                    noResults = document.createElement('div');
+                    noResults.id = 'noResults';
+                    noResults.className = 'no-results';
+                    noResults.innerHTML = '😕 Nessun piatto trovato per "' + query + '"<br><small>Prova con altri ingredienti</small>';
+                    document.getElementById('menuContainer').appendChild(noResults);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        }
+
+        // --- SCROLL TO TOP ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- INITIALIZE ---
+        filterMenu('all', document.querySelector('.filter-bar .btn.active'));
+    </script>
+</body>
+</html>

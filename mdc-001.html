@@ -1,631 +1,1805 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Menu Pizzeria Elegante - Variante Verde</title>
-    <style>
-    :root {
-      --p: #ffb81e;
-      --bg: #fefdfb;
-      --txt: #2e2e2e;
-      --sub: #666;
-      --highlight: #7a8e32;
-      --accent: #f4f1eb;
-      --light: #ffffff;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background: var(--bg);
-      color: var(--txt);
-      line-height: 1.6;
-    }
-    header {
-      position: relative;
-      height: 240px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://i.postimg.cc/MTmt6G4G/cover-pizza.png') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      color: #fff;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    }
-    header .topbar {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 10px 20px;
-    }
-    header img.logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      border: 2px solid #fff;
-    }
-    header h1 {
-      font-size: 2.1em;
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-    header p {
-      font-size: 1em;
-      margin-bottom: 10px;
-    }
-    header .cta {
-      background: var(--highlight);
-      color: #fff;
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-    header .cta:hover {
-      background: #8b844e;
-    }
-    .container {
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-    .flip-card {
-      background: var(--light);
-      height: 100px;
-      perspective: 800px;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-      transition: transform 0.4s ease;
-    }
-    .flip-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      color: var(--txt);
-      transition: transform .6s;
-      transform-style: preserve-3d;
-    }
-    .flip-card:hover .flip-inner,
-    .flip-card.active .flip-inner {
-      transform: rotateY(180deg);
-    }
-    .face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      border: 2px solid var(--highlight);
-      border-radius: 12px;
-      background: var(--accent);
-    }
-    .face.back {
-      background: var(--highlight);
-      color: #fff;
-      transform: rotateY(180deg);
-      font-size: .9rem;
-      padding: 10px;
-      overflow: auto;
-    }
-    .panel {
-      display: none;
-      animation: fade .5s ease forwards;
-    }
-    .panel.active {
-      display: block;
-    }
-    ul.menu {
-      list-style: none;
-      padding: 0;
-    }
-    li.menu-item {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 16px 0;
-      position: relative;
-    }
-    li.menu-item img {
-      width: 60px;
-      height: 60px;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .menu-info {
-      flex: 1;
-    }
-    .menu-info .name {
-      font-weight: 600;
-      font-size: 1em;
-      margin-bottom: 4px;
-    }
-    .menu-info .desc {
-      font-size: .85em;
-      color: var(--sub);
-    }
-    .price {
-      position: absolute;
-      right: 0;
-      top: 18px;
-      font-weight: bold;
-      color: var(--highlight);
-    }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: none; }
-    }
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      padding: 20px;
-      background: var(--accent);
-      color: var(--sub);
-      font-size: .85em;
-    }
-    .social {
-      margin-top: 10px;
-    }
-    .social a {
-      text-decoration: none;
-      color: var(--highlight);
-      font-size: 1.5em;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-    .social a:hover {
-      color: var(--p);
-    }
-    </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head><body>
-    <header>
-      <div class="topbar">
-        <img src="https://i.postimg.cc/N09gdJkf/avatar.jpg" alt="Logo" class="logo">
-      </div>
-      <div class="headline">
-        <h1>Pizzeria La Fornace del Gusto</h1>
-        <p>Pizzeria · Cucina Italiana · Passione dal 1983</p>
-        <a href="#cats" class="cta">Scopri il menu</a>
-      </div>
-    </header>
-    <div class="container">
-      <!-- Categorie con data-cat per navigazione -->
-      <div class="grid" id="cats">
-        <div class="flip-card active" data-cat="pizze">
-          <div class="flip-inner">
-            <div class="face front">Pizze 🍕</div>
-            <div class="face back">Visualizza Pizze</div>
-          </div>
-        </div>
-        <div class="flip-card" data-cat="primi">
-          <div class="flip-inner">
-            <div class="face front">Primi 🥣</div>
-            <div class="face back">Visualizza Primi</div>
-          </div>
-        </div>
-        <div class="flip-card" data-cat="secondi">
-          <div class="flip-inner">
-            <div class="face front">Secondi 🥩</div>
-            <div class="face back">Visualizza Secondi</div>
-          </div>
-        </div>
-        <div class="flip-card" data-cat="contorni">
-          <div class="flip-inner">
-            <div class="face front">Contorni 🥗</div>
-            <div class="face back">Visualizza Contorni</div>
-          </div>
-        </div>
-        <div class="flip-card" data-cat="bevande">
-          <div class="flip-inner">
-            <div class="face front">Bevande 🍷</div>
-            <div class="face back">Visualizza Bevande</div>
-          </div>
-        </div>
-      </div>
-    
-      <!-- Pannelli categorie -->
-      <div id="pizze" class="panel active">
-        <ul class="menu">
-          <li class="menu-item">
-            <img src="https://i.postimg.cc/XJB3mTDx/1.png" alt="Margherita">
-            <div class="menu-info">
-              <div class="name">Margherita</div>
-              <div class="desc">Pomodoro, mozzarella, basilico</div>
-            </div>
-            <div class="price">€6</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://i.postimg.cc/mrDTNcYv/3.png" alt="Diavola">
-            <div class="menu-info">
-              <div class="name">Diavola</div>
-              <div class="desc">Pomodoro, mozzarella, salame piccante</div>
-            </div>
-            <div class="price">€8</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://i.postimg.cc/q754mkQz/2.png" alt="Quattro Formaggi">
-            <div class="menu-info">
-              <div class="name">Quattro Formaggi</div>
-              <div class="desc">Mozzarella, gorgonzola, fontina, parmigiano</div>
-            </div>
-            <div class="price">€9</div>
-          </li>
-        </ul>
-      </div>
-      <div id="pizze" class="panel active">
-        <ul class="menu">
-          <li class="menu-item">
-            <img src="https://i.postimg.cc/Z5jTdPdP/4.png" alt="Salsiccia e Friarielli">
-            <div class="menu-info">
-              <div class="name">Salsiccia e Friarielli</div>
-              <div class="desc">Mozzarella, salsiccia, friarielli (cime di rapa), aglio, olio extra vergine d’oliva</div>
-            </div>
-            <div class="price">€10</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://i.postimg.cc/FFcNZXSH/6.png" alt="Ortolana">
-            <div class="menu-info">
-              <div class="name">Ortolana</div>
-              <div class="desc">Pomodoro, mozzarella, melanzane grigliate, zucchine, peperoni, cipolla rossa, basilico</div>
-            </div>
-            <div class="price">€7.5</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://i.postimg.cc/HnQmsbmy/7.png" alt="Capricciosa">
-            <div class="menu-info">
-              <div class="name">Capricciosa</div>
-              <div class="desc">Pomodoro, mozzarella, prosciutto cotto, funghi champignon, carciofi, olive nere, origano</div>
-            </div>
-            <div class="price">€8</div>
-          </li>
-        </ul>
-      </div>
-
-
-
-    
-      <div id="primi" class="panel">
-        <ul class="menu">
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/pasta1/80" alt="Carbonara">
-            <div class="menu-info">
-              <div class="name">Carbonara</div>
-              <div class="desc">Uova, guanciale, pecorino romano</div>
-            </div>
-            <div class="price">€10</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/pasta2/80" alt="Amatriciana">
-            <div class="menu-info">
-              <div class="name">Amatriciana</div>
-              <div class="desc">Pomodoro, guanciale, pecorino</div>
-            </div>
-            <div class="price">€9</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/pasta3/80" alt="Pesto">
-            <div class="menu-info">
-              <div class="name">Pasta al Pesto</div>
-              <div class="desc">Pesto di basilico, pinoli, parmigiano</div>
-            </div>
-            <div class="price">€9</div>
-          </li>
-        </ul>
-      </div>
-    
-      <div id="secondi" class="panel">
-        <ul class="menu">
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/secondo1/80" alt="Bistecca">
-            <div class="menu-info">
-              <div class="name">Bistecca</div>
-              <div class="desc">Carne di manzo alla griglia</div>
-            </div>
-            <div class="price">€15</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/secondo2/80" alt="Pollo arrosto">
-            <div class="menu-info">
-              <div class="name">Pollo Arrosto</div>
-              <div class="desc">Con erbe aromatiche e patate</div>
-            </div>
-            <div class="price">€12</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/secondo3/80" alt="Salmone">
-            <div class="menu-info">
-              <div class="name">Salmone</div>
-              <div class="desc">Filetto di salmone al forno</div>
-            </div>
-            <div class="price">€14</div>
-          </li>
-        </ul>
-      </div>
-    
-      <div id="contorni" class="panel">
-        <ul class="menu">
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/contorno1/80" alt="Insalata mista">
-            <div class="menu-info">
-              <div class="name">Insalata Mista</div>
-              <div class="desc">Lattuga, pomodori, carote</div>
-            </div>
-            <div class="price">€4</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/contorno2/80" alt="Patate al forno">
-            <div class="menu-info">
-              <div class="name">Patate al Forno</div>
-              <div class="desc">Con rosmarino e olio d'oliva</div>
-            </div>
-            <div class="price">€5</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/contorno3/80" alt="Verdure grigliate">
-            <div class="menu-info">
-              <div class="name">Verdure Grigliate</div>
-              <div class="desc">Zucchine, peperoni, melanzane</div>
-            </div>
-            <div class="price">€6</div>
-          </li>
-        </ul>
-      </div>
-    
-      <div id="bevande" class="panel">
-        <ul class="menu">
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/acqua/80" alt="Acqua">
-            <div class="menu-info">
-              <div class="name">Acqua Naturale/Frizzante</div>
-              <div class="desc">Bottiglia 0.5L</div>
-            </div>
-            <div class="price">€1.5</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/vino/80" alt="Vino">
-            <div class="menu-info">
-              <div class="name">Vino della casa</div>
-              <div class="desc">Bianco o rosso - Calice</div>
-            </div>
-            <div class="price">€3.5</div>
-          </li>
-          <li class="menu-item">
-            <img src="https://picsum.photos/seed/caffe/80" alt="Caffè">
-            <div class="menu-info">
-              <div class="name">Caffè</div>
-              <div class="desc">Espresso italiano</div>
-            </div>
-            <div class="price">€1.2</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-    <footer>
-      <p>Via Roma 1 · Tel. 0123 456789 · P.IVA 1234567890</p>
-      <div class="social">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-tripadvisor"></i></a>
-      </div>
-      <p style="margin-top:10px;font-size:.75em">* Chiedi al personale per informazioni su allergeni. Alcuni piatti possono contenere tracce di frutta a guscio, sedano o soia.</p>
-    </footer>
-    <script>
-    const cards = document.querySelectorAll('.flip-card'), panels = document.querySelectorAll('.panel');
-    cards.forEach(c => c.onclick = () => {
-      cards.forEach(card => card.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      c.classList.add('active');
-      document.getElementById(c.dataset.cat).classList.add('active');
-    });
-    </script>
-
-<!-- Offerta finale -->
-<div class="offerta-wrapper">
-
-  <!-- CTA -->
-  <section class="offerta-cta" style="text-align:center; padding:3rem 2rem; background:#1e293b; color:#f8fafc; font-family:'Inter', sans-serif;">
-    <p style="max-width:500px; margin:0 auto 1.5rem; font-size:1.1rem; line-height:1.4;">
-      Puoi avere un <strong>menu digitale come questo</strong>, con il nome della tua attività e tutti i tuoi prodotti, <strong>gratis per 15 giorni</strong> e subito pronto all’uso.  
-      Richiedi ora la tua prova gratuita e scopri quanto è semplice!
-    </p>
-    <button class="open-modal"
-      data-codice="MDC-001"
-      data-nome-modello="Menu digitale classico"
-      style="padding:1rem 2rem; font-size:1.15rem; background:#fbbf24; color:#0f172a; font-weight:800; border:none; border-radius:10px; cursor:pointer; box-shadow:0 8px 24px rgba(251,191,36,0.4);">
-      🚀 Richiedi la tua prova gratuita
-    </button>
-  </section>
-
-  <!-- Modale -->
-  <div id="demo-modal" aria-hidden="true" class="offerta-modal" role="dialog" aria-modal="true" aria-labelledby="modello-titolo">
-    <div class="modal-content" tabindex="-1">
-      <button type="button" aria-label="Chiudi" class="close-btn">&times;</button>
-
-      <h2 id="modello-titolo" style="margin-bottom:1rem; font-size:1.5rem; color:#fbbf24;"></h2>
-
-      <p style="font-size:0.95rem; line-height:1.5; margin-bottom:1rem;">
-        Prova gratuita senza impegno. Ricevi un <strong>menu digitale personalizzato</strong> con i tuoi piatti, prezzi e QR code pronto all’uso. Pensiamo a tutto noi, in sole <strong>48 ore</strong>.
-      </p>
-
-      <div style="background:#0f172a; border-radius:14px; padding:1rem 1.2rem; margin-bottom:1.2rem; box-shadow:0 0 12px rgba(0,0,0,0.35);">
-        <h3 style="color:#fbbf24; font-size:1.15rem; margin-bottom:0.8rem; text-align:center;">✅ Tutto incluso:</h3>
-        <ul style="list-style:none; padding-left:0.8rem; font-size:0.95rem; line-height:1.5; color:#e2e8f0;">
-          <li style="margin-bottom:0.4rem;">✔ Menu aggiornabile in qualsiasi momento</li>
-          <li style="margin-bottom:0.4rem;">✔ QR code pronto da stampare e posizionare sui tavoli</li>
-          <li style="margin-bottom:0.4rem;">✔ Hosting, dominio e certificato SSL inclusi</li>
-          <li style="margin-bottom:0.4rem;">✔ Nessun costo nascosto o sorpresa</li>
-          <li style="margin-bottom:0.4rem;">✔ Supporto veloce garantito in 45 minuti</li>
-          <li style="margin-bottom:0.4rem;">✔ Funziona su smartphone e tablet</li>
-          <li>✔ Disdici in qualsiasi momento, senza penali</li>
-        </ul>
-      </div>
-
-      <p style="font-size:0.95rem; line-height:1.5; margin-bottom:1.5rem;">
-        Alla fine della prova potrai attivare il servizio a soli <strong style="color:#fbbf24;">149€/anno</strong>, ovvero <strong>0,40€ al giorno</strong>. Tutto incluso, aggiornamenti illimitati e nessun costo extra.
-      </p>
-      <form id="demo-form" style="display:flex; flex-direction:column; gap:0.6rem;">
-        <input type="hidden" id="codice-menu" name="codice">
-        <input type="hidden" id="nome-modello" name="modello">
-      
-        <label for="nome">Nome *</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          required
-          placeholder="il tuo nome"
-          style="padding:0.5rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"
-        >
-      
-        <label for="email">Email *</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          placeholder="la tua email"
-          style="padding:0.5rem; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"
-        >
-      
-        <label for="messaggio">Messaggio *</label>
-        <textarea
-          id="messaggio"
-          name="messaggio"
-          maxlength="700"
-          required
-          placeholder="Scrivi se hai richieste particolari o il link del tuo attuale menu..."
-          style="padding:0.5rem; height:100px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#fff;"
-        ></textarea>
-      
-        <button
-          type="submit"
-          style="margin-top:0.6rem; padding:0.7rem; font-size:1rem; background:#25D366; color:#fff; border:none; border-radius:8px; cursor:pointer;"
-        >
-          📲 Invia su WhatsApp
-        </button>
-      </form>
-      
-    </div>
-  </div>
-
-  <style>
-    .offerta-wrapper .offerta-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(15,23,42,0.9);
-      backdrop-filter: blur(2px);
-      z-index: 10000;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .offerta-wrapper .offerta-modal::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
-    .offerta-wrapper .offerta-modal[aria-hidden="false"] {
-      display: block;
-    }
-    .offerta-wrapper .modal-content {
-      background: #0f172a;
-      color: #fff;
-      max-width: 480px;
-      margin: 5% auto;
-      padding: 1.5rem 1.3rem;
-      border-radius: 14px;
-      border: 1px solid #334155;
-      box-shadow: 0 0 18px rgba(0,0,0,0.5);
-      position: relative;
-      outline: none;
-    }
-    .offerta-wrapper .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      font-size: 1.6rem;
-      background: none;
-      border: none;
-      color: #fbbf24;
-      cursor: pointer;
-      line-height: 1;
-    }
-  </style>
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Gusto 360° | Menu Digitale Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+/* Colori principali */
+--primary: #C72C41;
+--primary-light: #E63946;
+--primary-dark: #A02030;
+--secondary: #F1FAEE;
+--accent: #A8DADC;
+--dark: #1D3557;
+--light: #F8F9FA;
+--success: #4CAF50;
+/* Effetti */
+--shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+--shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+--shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+--radius-sm: 8px;
+--radius-md: 16px;
+--radius-lg: 24px;
+--transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+--transition-fast: all 0.15s ease;
+/* Dimensioni */
+--header-height: 280px;
+--search-height: 60px;
+--tab-height: 65px;
+--footer-height: 0px; /* Impostato a 0 poiché non serve più */
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+-webkit-tap-highlight-color: transparent;
+touch-action: manipulation;
+}
+body {
+font-family: 'Poppins', sans-serif;
+background: var(--light);
+color: var(--dark);
+line-height: 1.6;
+min-height: 100vh;
+height: 100vh;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+overscroll-behavior: none;
+}
+/* --- ANIMAZIONI AVANZATE --- */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(199, 44, 65, 0.4); }
+70% { box-shadow: 0 0 0 15px rgba(199, 44, 65, 0); }
+100% { box-shadow: 0 0 0 0 rgba(199, 44, 65, 0); }
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+/* --- HEADER CON PARALLASSE AVANZATA --- */
+.header {
+height: var(--header-height);
+position: relative;
+overflow: hidden;
+z-index: 10;
+}
+.header-bg {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1600') center/cover no-repeat;
+transform: scale(1.05);
+transition: transform 0.5s ease-out;
+}
+.header-content {
+position: relative;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 20px;
+color: white;
+text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.logo {
+font-family: 'Playfair Display', serif;
+font-size: 2.2rem;
+font-weight: 700;
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.logo i {
+animation: rotate 20s linear infinite;
+}
+.tagline {
+font-size: 1.1rem;
+opacity: 0.9;
+margin-bottom: 12px;
+max-width: 90%;
+}
+.info-bar {
+display: flex;
+gap: 16px;
+font-size: 0.9rem;
+opacity: 0.9;
+margin-top: 8px;
+}
+.info-bar span {
+display: flex;
+align-items: center;
+gap: 4px;
+}
+/* --- BARRA DI RICERCA INTELLIGENTE --- */
+.search-container {
+height: var(--search-height);
+background: white;
+padding: 0 20px;
+display: flex;
+align-items: center;
+gap: 12px;
+position: relative;
+z-index: 15;
+box-shadow: var(--shadow-sm);
+}
+.search-box {
+flex: 1;
+background: #f8f9fa;
+border-radius: 30px;
+padding: 10px 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.search-icon {
+color: var(--primary);
+font-size: 1.1rem;
+}
+.search-input {
+flex: 1;
+border: none;
+background: transparent;
+font-size: 0.95rem;
+color: var(--dark);
+outline: none;
+padding: 4px 0;
+min-width: 0;
+}
+.search-input::placeholder {
+color: #888;
+}
+.voice-search {
+color: var(--primary);
+font-size: 1.2rem;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: var(--transition-fast);
+}
+.voice-search:hover {
+background: rgba(199, 44, 65, 0.1);
+}
+/* --- NAVIGAZIONE A SCORRIMENTO ORIZZONTALE --- */
+.categories-scroll {
+height: var(--tab-height);
+background: white;
+overflow-x: auto;
+scrollbar-width: none;
+position: sticky;
+top: var(--search-height);
+z-index: 14;
+padding: 0 10px;
+}
+.categories-scroll::-webkit-scrollbar {
+display: none;
+}
+.categories {
+display: flex;
+height: 100%;
+align-items: center;
+gap: 16px;
+padding: 0 10px;
+}
+.category {
+min-width: 120px;
+height: 45px;
+background: #f8f9fa;
+border-radius: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+font-weight: 500;
+color: #666;
+cursor: pointer;
+transition: var(--transition);
+flex-shrink: 0;
+position: relative;
+overflow: hidden;
+}
+.category.active {
+background: var(--primary);
+color: white;
+font-weight: 600;
+box-shadow: var(--shadow-sm);
+transform: translateY(-3px);
+}
+.category.active::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 50%;
+transform: translateX(-50%);
+width: 8px;
+height: 8px;
+background: var(--primary);
+border-radius: 50%;
+}
+.category i {
+font-size: 1.1rem;
+}
+/* --- CONTENUTO PRINCIPALE --- */
+.content {
+flex: 1;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+position: relative;
+}
+.menu-container {
+padding: 20px;
+max-width: 1200px;
+margin: 0 auto;
+width: 100%;
+}
+.category-title {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+color: var(--dark);
+margin: 25px 0 15px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.category-title i {
+color: var(--primary);
+}
+/* --- GRIGLIA PIATTI MODERNA --- */
+.dishes-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 24px;
+}
+.dish-card {
+background: white;
+border-radius: var(--radius-md);
+overflow: hidden;
+box-shadow: var(--shadow-sm);
+transition: var(--transition);
+cursor: pointer;
+position: relative;
+display: flex;
+flex-direction: column;
+height: 100%;
+transform: translateY(0);
+}
+.dish-card:hover {
+transform: translateY(-5px);
+box-shadow: var(--shadow-md);
+z-index: 2;
+}
+.dish-image-container {
+position: relative;
+height: 180px;
+overflow: hidden;
+}
+.dish-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: var(--transition);
+}
+.dish-card:hover .dish-image {
+transform: scale(1.05);
+}
+.dish-badge {
+position: absolute;
+top: 12px;
+right: 12px;
+background: var(--primary);
+color: white;
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 0.75rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+z-index: 2;
+}
+.dish-content {
+padding: 18px;
+flex: 1;
+display: flex;
+flex-direction: column;
+}
+.dish-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 8px;
+}
+.dish-name {
+font-family: 'Playfair Display', serif;
+font-size: 1.3rem;
+font-weight: 600;
+color: var(--dark);
+line-height: 1.3;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+.dish-price {
+font-family: 'Playfair Display', serif;
+font-size: 1.4rem;
+font-weight: 700;
+color: var(--primary);
+white-space: nowrap;
+margin-left: 10px;
+}
+.dish-desc {
+color: #666;
+font-size: 0.9rem;
+line-height: 1.5;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+margin: 8px 0;
+flex: 1;
+}
+.dish-tags {
+display: flex;
+gap: 6px;
+flex-wrap: wrap;
+margin-top: 8px;
+}
+.tag {
+font-size: 0.7rem;
+padding: 3px 10px;
+border-radius: 20px;
+font-weight: 500;
+text-transform: uppercase;
+letter-spacing: 0.3px;
+white-space: nowrap;
+}
+.tag.veg { background: #E6F7E6; color: #2E7D32; }
+.tag.spicy { background: #FFF3E0; color: #E65100; }
+.tag.best { background: #FFF8E1; color: #5D4037; }
+.tag.new { background: #E3F2FD; color: #1976D2; }
+/* --- MODAL DETTAGLIO PIATTO AVANZATO --- */
+.modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+z-index: 1000;
+display: none;
+flex-direction: column;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+}
+.modal.active {
+display: flex;
+opacity: 1;
+pointer-events: all;
+}
+.modal-close {
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 1.2rem;
+cursor: pointer;
+z-index: 10;
+transition: var(--transition-fast);
+}
+.modal-close:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: rotate(90deg);
+}
+.modal-content {
+flex: 1;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+padding: 20px;
+display: flex;
+flex-direction: column;
+max-width: 1200px;
+margin: 0 auto;
+width: 100%;
+}
+.modal-image-container {
+position: relative;
+height: 300px;
+border-radius: var(--radius-md);
+overflow: hidden;
+margin-bottom: 20px;
+box-shadow: var(--shadow-lg);
+}
+.modal-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.modal-title {
+font-family: 'Playfair Display', serif;
+font-size: 2.2rem;
+color: white;
+margin-bottom: 10px;
+line-height: 1.2;
+}
+.modal-price {
+font-family: 'Playfair Display', serif;
+font-size: 2rem;
+color: var(--primary-light);
+font-weight: 700;
+margin-bottom: 15px;
+}
+.modal-description {
+color: #e0e0e0;
+line-height: 1.7;
+font-size: 1.05rem;
+margin-bottom: 25px;
+flex: 1;
+}
+.info-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 15px;
+margin-bottom: 25px;
+}
+.info-card {
+background: rgba(255, 255, 255, 0.08);
+border-radius: var(--radius-sm);
+padding: 15px;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.info-icon {
+font-size: 1.8rem;
+color: var(--primary-light);
+margin-bottom: 10px;
+}
+.info-value {
+font-size: 1.4rem;
+font-weight: 700;
+color: white;
+margin-bottom: 5px;
+}
+.info-label {
+font-size: 0.85rem;
+color: #b0b0b0;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+/* --- CAROUSEL PER PROMOZIONI --- */
+.promo-carousel {
+padding: 20px 0;
+position: relative;
+overflow: hidden;
+margin: 20px 0;
+}
+.promo-track {
+display: flex;
+transition: transform 0.5s ease;
+}
+.promo-item {
+min-width: 90%;
+background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+border-radius: var(--radius-md);
+color: white;
+padding: 20px;
+margin-right: 20px;
+position: relative;
+overflow: hidden;
+}
+.promo-item::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon fill='rgba(255,255,255,0.1)' points='0,100 100,0 100,100'/%3E%3C/svg%3E");
+background-size: cover;
+}
+.promo-content {
+position: relative;
+z-index: 2;
+}
+.promo-badge {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+display: inline-block;
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 600;
+margin-bottom: 12px;
+}
+.promo-title {
+font-size: 1.4rem;
+margin-bottom: 8px;
+line-height: 1.2;
+}
+.promo-desc {
+opacity: 0.9;
+margin-bottom: 15px;
+line-height: 1.5;
+}
+.promo-price {
+font-size: 1.8rem;
+font-weight: 700;
+color: #FFD700;
+}
+.carousel-controls {
+display: flex;
+justify-content: center;
+gap: 10px;
+margin-top: 15px;
+}
+.carousel-dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #ddd;
+cursor: pointer;
+transition: var(--transition-fast);
+}
+.carousel-dot.active {
+background: white;
+transform: scale(1.3);
+}
+/* --- ELEMENTI TEMPORANEI --- */
+.no-results {
+grid-column: 1 / -1;
+text-align: center;
+padding: 60px 20px;
+color: #888;
+}
+.no-results i {
+font-size: 3.5rem;
+margin-bottom: 15px;
+color: #ddd;
+animation: float 3s ease-in-out infinite;
+}
+.no-results h3 {
+font-size: 1.4rem;
+margin-bottom: 10px;
+color: var(--dark);
+}
+.suggested-searches {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 20px;
+}
+.suggested-tag {
+background: #f0f0f0;
+padding: 6px 15px;
+border-radius: 20px;
+font-size: 0.85rem;
+cursor: pointer;
+transition: var(--transition-fast);
+}
+.suggested-tag:hover {
+background: var(--primary);
+color: white;
+}
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+:root {
+--header-height: 240px;
+}
+.dishes-grid {
+grid-template-columns: 1fr;
+}
+.modal-image-container {
+height: 220px;
+}
+.modal-title {
+font-size: 1.8rem;
+}
+.modal-price {
+font-size: 1.6rem;
+}
+.info-grid {
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 480px) {
+:root {
+--header-height: 200px;
+--search-height: 55px;
+--tab-height: 55px;
+}
+.logo {
+font-size: 1.8rem;
+}
+.tagline {
+font-size: 0.95rem;
+}
+.info-bar {
+gap: 10px;
+font-size: 0.8rem;
+}
+.category-title {
+font-size: 1.5rem;
+margin: 20px 0 12px;
+}
+.dish-name {
+font-size: 1.1rem;
+}
+.dish-price {
+font-size: 1.2rem;
+}
+.modal-title {
+font-size: 1.5rem;
+}
+.modal-price {
+font-size: 1.4rem;
+}
+.modal-description {
+font-size: 0.95rem;
+}
+.info-value {
+font-size: 1.2rem;
+}
+}
+</style>
+</head>
+<body>
+<div class="app-container">
+<!-- Header con effetto parallasse avanzato -->
+<div class="header">
+<div class="header-bg" id="parallaxBg"></div>
+<div class="header-content">
+<div class="logo">
+<i class="fas fa-utensils"></i> Gusto 360°
+</div>
+<p class="tagline">Esperienze culinarie che raccontano una storia</p>
+<div class="info-bar">
+<span><i class="fas fa-map-marker-alt"></i> Via del Gusto 42, Centro Storico</span>
+<span><i class="fas fa-clock"></i> 12:00 - 23:00</span>
+<span><i class="fas fa-star"></i> 4.9★ (1.2k recensioni)</span>
+</div>
+</div>
+</div>
+<!-- Barra di ricerca avanzata -->
+<div class="search-container">
+<div class="search-box">
+<i class="fas fa-search search-icon"></i>
+<input type="text" id="searchInput" class="search-input" placeholder="Cerca un piatto, ingrediente o categoria..." autocomplete="off">
+<i class="fas fa-microphone voice-search" id="voiceSearch"></i>
+</div>
+</div>
+<!-- Navigazione a scorrimento orizzontale -->
+<div class="categories-scroll">
+<div class="categories" id="categoriesNav">
+<div class="category active" data-category="all">
+<i class="fas fa-th"></i> Tutto
+</div>
+<div class="category" data-category="antipasti">
+<i class="fas fa-apple-alt"></i> Antipasti
+</div>
+<div class="category" data-category="primi">
+<i class="fas fa-utensils"></i> Primi
+</div>
+<div class="category" data-category="pizze">
+<i class="fas fa-pizza-slice"></i> Pizze
+</div>
+<div class="category" data-category="secondi">
+<i class="fas fa-drumstick-bite"></i> Secondi
+</div>
+<div class="category" data-category="dolci">
+<i class="fas fa-ice-cream"></i> Dolci
+</div>
+<div class="category" data-category="bevande">
+<i class="fas fa-wine-glass-alt"></i> Bevande
+</div>
+</div>
+</div>
+<!-- Contenuto principale -->
+<div class="content">
+<div class="menu-container">
+<!-- Carousel promozioni -->
+<div class="promo-carousel">
+<div class="promo-track" id="promoTrack">
+<div class="promo-item">
+<div class="promo-content">
+<span class="promo-badge">OFFERTA LIMITATA</span>
+<h2 class="promo-title">Menù Degustazione</h2>
+<p class="promo-desc">Scopri i nostri piatti più rappresentativi in un percorso di 5 portate selezionate dal nostro chef</p>
+<div class="promo-price">€45,00</div>
+</div>
+</div>
+<div class="promo-item">
+<div class="promo-content">
+<span class="promo-badge">NUOVO</span>
+<h2 class="promo-title">Menu Primavera</h2>
+<p class="promo-desc">Scopri le nuove proposte stagionali con ingredienti freschi e di qualità</p>
+<div class="promo-price">Da €18,00</div>
+</div>
+</div>
+<div class="promo-item">
+<div class="promo-content">
+<span class="promo-badge">TOP VENDUTO</span>
+<h2 class="promo-title">Pizza Tricolore</h2>
+<p class="promo-desc">Pomodoro San Marzano, mozzarella di bufala, pesto genovese e scaglie di parmigiano</p>
+<div class="promo-price">€14,00</div>
+</div>
+</div>
+</div>
+<div class="carousel-controls" id="carouselDots">
+<div class="carousel-dot active"></div>
+<div class="carousel-dot"></div>
+<div class="carousel-dot"></div>
+</div>
 </div>
 
-<div style="background:#1e293b; text-align:center; padding:1rem 0; margin-top:-4px; border-radius: 0 0 14px 14px; user-select:none;">
-  <a href="https://dsfabio.vercel.app/modelli.html" 
-     style="color:#fbbf24; font-weight:700; font-size:1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.3rem;">
-    ← Torna ai modelli
-  </a>
+<!-- Antipasti -->
+<h2 class="category-title" id="category-antipasti">
+<i class="fas fa-apple-alt"></i> Antipasti
+</h2>
+<div class="dishes-grid" id="antipasti-grid">
+<div class="dish-card" onclick="openDishModal({
+id: 'antipasto1',
+name: 'Caprese di Bufala',
+price: '€12,00',
+description: 'Pomodori Cuore di Bue, mozzarella di bufala DOP, basilico fresco, olio EVO. Un classico della tradizione italiana che celebra la semplicità e la qualità degli ingredienti.',
+image: 'https://images.unsplash.com/photo-1541544744-378ca6f009b5?w=1200',
+tags: ['veg', 'best'],
+calories: '320',
+time: '5\'',
+allergens: '🥛'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1541544744-378ca6f009b5?w=600" alt="Caprese" class="dish-image">
+<span class="dish-badge">TOP</span>
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Caprese di Bufala</h3>
+<span class="dish-price">€12</span>
+</div>
+<p class="dish-desc">Pomodori Cuore di Bue, mozzarella di bufala DOP, basilico fresco, olio EVO.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
 </div>
 
+<div class="dish-card" onclick="openDishModal({
+id: 'antipasto2',
+name: 'Carpaccio di Manzo',
+price: '€15,00',
+description: 'Taglio fine a mano, rucola, scaglie di parmigiano 24 mesi, salsa tartufata. Elegante e raffinato, perfetto per iniziare la cena con stile.',
+image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=1200',
+tags: ['best'],
+calories: '280',
+time: '10\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600" alt="Carpaccio" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Carpaccio di Manzo</h3>
+<span class="dish-price">€15</span>
+</div>
+<p class="dish-desc">Taglio fine a mano, rucola, scaglie di parmigiano 24 mesi, salsa tartufata.</p>
+<div class="dish-tags">
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'antipasto3',
+name: 'Bruschette Miste',
+price: '€9,00',
+description: '3 pezzi: pomodoro e basilico, crema di olive, funghi trifolati. La tradizione toscana reinterpretata con ingredienti freschi e di stagione.',
+image: 'https://images.unsplash.com/photo-1563240670-a7c7fac1b778?w=1200',
+tags: ['veg'],
+calories: '350',
+time: '8\'',
+allergens: '🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1563240670-a7c7fac1b778?w=600" alt="Bruschette" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Bruschette Miste</h3>
+<span class="dish-price">€9</span>
+</div>
+<p class="dish-desc">3 pezzi: pomodoro e basilico, crema di olive, funghi trifolati.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'antipasto4',
+name: 'Tagliere della Casa',
+price: '€19,00',
+description: 'Selezione di salumi artigianali, formaggi stagionati, mostarde e miele. Un viaggio attraverso i sapori del territorio.',
+image: 'https://images.unsplash.com/photo-1541138895495-3e5c9f8c6f2f?w=1200',
+tags: ['best'],
+calories: '550',
+time: '5\'',
+allergens: '🥛'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1541138895495-3e5c9f8c6f2f?w=600" alt="Tagliere" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Tagliere della Casa</h3>
+<span class="dish-price">€19</span>
+</div>
+<p class="dish-desc">Selezione di salumi artigianali, formaggi stagionati, mostarde e miele.</p>
+<div class="dish-tags">
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Primi -->
+<h2 class="category-title" id="category-primi">
+<i class="fas fa-utensils"></i> Primi Piatti
+</h2>
+<div class="dishes-grid" id="primi-grid">
+<div class="dish-card" onclick="openDishModal({
+id: 'primo1',
+name: 'Carbonara Originale',
+price: '€14,00',
+description: 'Guanciale croccante, pecorino romano DOP, tuorlo d\'uovo, pepe nero. La vera ricetta romana, senza panna, mantecata alla perfezione.',
+image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=1200',
+tags: ['best'],
+calories: '620',
+time: '12\'',
+allergens: '🥚🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600" alt="Carbonara" class="dish-image">
+<span class="dish-badge">CLASSICO</span>
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Carbonara Originale</h3>
+<span class="dish-price">€14</span>
+</div>
+<p class="dish-desc">Guanciale croccante, pecorino romano DOP, tuorlo d'uovo, pepe nero.</p>
+<div class="dish-tags">
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'primo2',
+name: 'Amatriciana',
+price: '€13,00',
+description: 'Guanciale, pomodoro San Marzano, pecorino, peperoncino. Un piatto semplice ma ricco di sapore, che racconta la tradizione italiana.',
+image: 'https://images.unsplash.com/photo-1563379926898-0c8a8c7e5c8e?w=1200',
+tags: ['spicy'],
+calories: '580',
+time: '10\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1563379926898-0c8a8c7e5c8e?w=600" alt="Amatriciana" class="dish-image">
+<span class="dish-badge">PICCANTE</span>
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Amatriciana</h3>
+<span class="dish-price">€13</span>
+</div>
+<p class="dish-desc">Guanciale, pomodoro San Marzano, pecorino, peperoncino.</p>
+<div class="dish-tags">
+<span class="tag spicy">🌶️ Piccante</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'primo3',
+name: 'Cacio e Pepe',
+price: '€12,00',
+description: 'Pecorino romano stagionato, pepe nero tostato, mantecatura perfetta. La semplicità diventa arte culinaria.',
+image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1200',
+tags: ['veg'],
+calories: '550',
+time: '8\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600" alt="Cacio e Pepe" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Cacio e Pepe</h3>
+<span class="dish-price">€12</span>
+</div>
+<p class="dish-desc">Pecorino romano stagionato, pepe nero tostato, mantecatura perfetta.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'primo4',
+name: 'Lasagna della Nonna',
+price: '€15,00',
+description: 'Pasta fresca, ragù cotto 6 ore, besciamella fatta in casa, parmigiano. La ricetta che ha fatto innamorare generazioni.',
+image: 'https://images.unsplash.com/photo-1574868233972-1d073248a8f3?w=1200',
+tags: ['best'],
+calories: '720',
+time: '20\'',
+allergens: '🥚🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1574868233972-1d073248a8f3?w=600" alt="Lasagna" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Lasagna della Nonna</h3>
+<span class="dish-price">€15</span>
+</div>
+<p class="dish-desc">Pasta fresca, ragù cotto 6 ore, besciamella fatta in casa, parmigiano.</p>
+<div class="dish-tags">
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Pizze -->
+<h2 class="category-title" id="category-pizze">
+<i class="fas fa-pizza-slice"></i> Le Nostre Pizze
+</h2>
+<div class="dishes-grid" id="pizze-grid">
+<div class="dish-card" onclick="openDishModal({
+id: 'pizza1',
+name: 'Margherita DOP',
+price: '€9,00',
+description: 'Pomodoro San Marzano, mozzarella fior di latte, basilico fresco, olio EVO. La pizza per eccellenza, semplice e perfetta.',
+image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200',
+tags: ['veg', 'best'],
+calories: '780',
+time: '3\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600" alt="Margherita" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Margherita DOP</h3>
+<span class="dish-price">€9</span>
+</div>
+<p class="dish-desc">Pomodoro San Marzano, mozzarella fior di latte, basilico fresco, olio EVO.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+<span class="tag best">⭐ Classica</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'pizza2',
+name: 'Diavola',
+price: '€11,00',
+description: 'Pomodoro, mozzarella, salame piccante, peperoncino fresco, origano. Per chi ama i sapori decisi e intensi.',
+image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=1200',
+tags: ['spicy'],
+calories: '850',
+time: '4\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600" alt="Diavola" class="dish-image">
+<span class="dish-badge">PICCANTE</span>
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Diavola</h3>
+<span class="dish-price">€11</span>
+</div>
+<p class="dish-desc">Pomodoro, mozzarella, salame piccante, peperoncino fresco, origano.</p>
+<div class="dish-tags">
+<span class="tag spicy">🌶️ Piccante</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'pizza3',
+name: 'Ortolana',
+price: '€12,00',
+description: 'Verdure grigliate di stagione, mozzarella, olive taggiasche, olio al tartufo. Freschezza e leggerezza in ogni morso.',
+image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200',
+tags: ['veg'],
+calories: '720',
+time: '4\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600" alt="Ortolana" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Ortolana</h3>
+<span class="dish-price">€12</span>
+</div>
+<p class="dish-desc">Verdure grigliate di stagione, mozzarella, olive taggiasche, olio al tartufo.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'pizza4',
+name: 'Quattro Formaggi',
+price: '€13,00',
+description: 'Mozzarella, gorgonzola, fontina, parmigiano, noci caramellate. L\'equilibrio perfetto tra sapori e consistenze.',
+image: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=1200',
+tags: ['veg', 'best'],
+calories: '920',
+time: '4\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600" alt="Quattro Formaggi" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Quattro Formaggi</h3>
+<span class="dish-price">€13</span>
+</div>
+<p class="dish-desc">Mozzarella, gorgonzola, fontina, parmigiano, noci caramellate.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Secondi -->
+<h2 class="category-title" id="category-secondi">
+<i class="fas fa-drumstick-bite"></i> Secondi Piatti
+</h2>
+<div class="dishes-grid" id="secondi-grid">
+<div class="dish-card" onclick="openDishModal({
+id: 'secondo1',
+name: 'Tagliata di Scottona',
+price: '€23,00',
+description: 'Carne alla griglia, rucola fresca, scaglie di grana, balsamico. Cottura perfetta, succosa e saporita.',
+image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1200',
+tags: ['best'],
+calories: '520',
+time: '15\'',
+allergens: '🥛'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600" alt="Tagliata" class="dish-image">
+<span class="dish-badge">TOP</span>
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Tagliata di Scottona</h3>
+<span class="dish-price">€23</span>
+</div>
+<p class="dish-desc">Carne alla griglia, rucola fresca, scaglie di grana, balsamico.</p>
+<div class="dish-tags">
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'secondo2',
+name: 'Ossobuco alla Milanese',
+price: '€21,00',
+description: 'Cotto lentamente con vino bianco, servito con gremolada. Un piatto che racchiude la tradizione milanese.',
+image: 'https://images.unsplash.com/photo-1546241072-48010ad2862c?w=1200',
+tags: [],
+calories: '680',
+time: '120\'',
+allergens: '🥛'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1546241072-48010ad2862c?w=600" alt="Ossobuco" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Ossobuco alla Milanese</h3>
+<span class="dish-price">€21</span>
+</div>
+<p class="dish-desc">Cotto lentamente con vino bianco, servito con gremolada.</p>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'secondo3',
+name: 'Pollo al Mattone',
+price: '€17,00',
+description: 'Pollo ruspante cotto sotto mattone, pelle croccante, erbe aromatiche. Un piatto semplice ma ricco di sapore.',
+image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=1200',
+tags: [],
+calories: '420',
+time: '45\'',
+allergens: ''
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600" alt="Pollo" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Pollo al Mattone</h3>
+<span class="dish-price">€17</span>
+</div>
+<p class="dish-desc">Pollo ruspante cotto sotto mattone, pelle croccante, erbe aromatiche.</p>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'secondo4',
+name: 'Arista al Latte',
+price: '€19,00',
+description: 'Maiale tenerissimo cotto nel latte con rosmarino e salvia. Un secondo delicato e saporito.',
+image: 'https://images.unsplash.com/photo-1544025162-d76690b67f61?w=1200',
+tags: [],
+calories: '560',
+time: '90\'',
+allergens: '🥛'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1544025162-d76690b67f61?w=600" alt="Arista" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Arista al Latte</h3>
+<span class="dish-price">€19</span>
+</div>
+<p class="dish-desc">Maiale tenerissimo cotto nel latte con rosmarino e salvia.</p>
+</div>
+</div>
+</div>
+
+<!-- Dolci -->
+<h2 class="category-title" id="category-dolci">
+<i class="fas fa-ice-cream"></i> Dolci
+</h2>
+<div class="dishes-grid" id="dolci-grid">
+<div class="dish-card" onclick="openDishModal({
+id: 'dolce1',
+name: 'Tiramisù Classico',
+price: '€7,00',
+description: 'La ricetta originale: mascarpone, savoiardi, caffè, cacao amaro. Il dolce italiano più amato nel mondo.',
+image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=1200',
+tags: ['best'],
+calories: '450',
+time: '5\'',
+allergens: '🥚🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600" alt="Tiramisu" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Tiramisù Classico</h3>
+<span class="dish-price">€7</span>
+</div>
+<p class="dish-desc">La ricetta originale: mascarpone, savoiardi, caffè, cacao amaro.</p>
+<div class="dish-tags">
+<span class="tag best">⭐ Top</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'dolce2',
+name: 'Cannolo Siciliano',
+price: '€6,00',
+description: 'Cialda croccante, ricotta fresca, gocce di cioccolato, pistacchio. Un dolce che rappresenta la Sicilia.',
+image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=1200',
+tags: [],
+calories: '380',
+time: '3\'',
+allergens: '🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600" alt="Cannolo" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Cannolo Siciliano</h3>
+<span class="dish-price">€6</span>
+</div>
+<p class="dish-desc">Cialda croccante, ricotta fresca, gocce di cioccolato, pistacchio.</p>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'dolce3',
+name: 'Panna Cotta',
+price: '€6,00',
+description: 'Crema di panna e vaniglia con coulis di frutti di bosco. Un dolce semplice ma raffinato.',
+image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1200',
+tags: ['veg'],
+calories: '320',
+time: '2\'',
+allergens: '🥛'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600" alt="Panna Cotta" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Panna Cotta</h3>
+<span class="dish-price">€6</span>
+</div>
+<p class="dish-desc">Crema di panna e vaniglia con coulis di frutti di bosco.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'dolce4',
+name: 'Cheesecake New York',
+price: '€8,00',
+description: 'Base di biscotti, crema di formaggio, topping a scelta. La versione americana del dolce italiano.',
+image: 'https://images.unsplash.com/photo-1578985545128-8f8f8c8c8f8f?w=1200',
+tags: [],
+calories: '520',
+time: '4\'',
+allergens: '🥚🥛🌾'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1578985545128-8f8f8c8c8f8f?w=600" alt="Cheesecake" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Cheesecake New York</h3>
+<span class="dish-price">€8</span>
+</div>
+<p class="dish-desc">Base di biscotti, crema di formaggio, topping a scelta.</p>
+</div>
+</div>
+</div>
+
+<!-- Bevande -->
+<h2 class="category-title" id="category-bevande">
+<i class="fas fa-wine-glass-alt"></i> Bevande
+</h2>
+<div class="dishes-grid" id="bevande-grid">
+<div class="dish-card" onclick="openDishModal({
+id: 'bevanda1',
+name: 'Acqua Naturale/Frizzante',
+price: '€2,50',
+description: 'Sorgente pura delle Alpi. Bottiglia da 50cl. Scelta tra naturale o frizzante.',
+image: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=1200',
+tags: ['veg'],
+calories: '0',
+time: '0\'',
+allergens: ''
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=600" alt="Acqua" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Acqua Naturale/Frizzante</h3>
+<span class="dish-price">€2,50</span>
+</div>
+<p class="dish-desc">Sorgente pura delle Alpi. Bottiglia da 50cl. Scelta tra naturale o frizzante.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'bevanda2',
+name: 'Vino della Casa',
+price: '€4,00',
+description: 'Vino rosso o bianco della casa. Servito al calice. Prodotto da vigneti selezionati.',
+image: 'https://images.unsplash.com/photo-1607879092252-956c1d368119?w=1200',
+tags: ['veg'],
+calories: '85',
+time: '0\'',
+allergens: '🍷'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1607879092252-956c1d368119?w=600" alt="Vino" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Vino della Casa</h3>
+<span class="dish-price">€4,00</span>
+</div>
+<p class="dish-desc">Vino rosso o bianco della casa. Servito al calice.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'bevanda3',
+name: 'Caffè Espresso',
+price: '€1,50',
+description: 'Caffè 100% Arabica. Servito bollente con la crema perfetta.',
+image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200',
+tags: ['veg'],
+calories: '2',
+time: '1\'',
+allergens: ''
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" alt="Caffè" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Caffè Espresso</h3>
+<span class="dish-price">€1,50</span>
+</div>
+<p class="dish-desc">Caffè 100% Arabica. Servito bollente con la crema perfetta.</p>
+<div class="dish-tags">
+<span class="tag veg">🥗 Veg</span>
+</div>
+</div>
+</div>
+
+<div class="dish-card" onclick="openDishModal({
+id: 'bevanda4',
+name: 'Spritz',
+price: '€7,00',
+description: 'Spritz a scelta tra Aperol, Campari o Select. Il cocktail italiano per eccellenza.',
+image: 'https://images.unsplash.com/photo-1606662472864-6f7794abb6d9?w=1200',
+tags: [],
+calories: '150',
+time: '1\'',
+allergens: '🍷'
+})">
+<div class="dish-image-container">
+<img src="https://images.unsplash.com/photo-1606662472864-6f7794abb6d9?w=600" alt="Spritz" class="dish-image">
+</div>
+<div class="dish-content">
+<div class="dish-header">
+<h3 class="dish-name">Spritz</h3>
+<span class="dish-price">€7,00</span>
+</div>
+<p class="dish-desc">Spritz a scelta tra Aperol, Campari o Select.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<!-- Modal dettaglio piatto -->
+<div class="modal" id="dishModal">
+<div class="modal-close" onclick="closeModal()">
+<i class="fas fa-times"></i>
+</div>
+<div class="modal-content">
+<div class="modal-image-container">
+<img src="" alt="" class="modal-image" id="modalImage">
+</div>
+<h2 class="modal-title" id="modalTitle">Dettagli Piatto</h2>
+<div class="modal-price" id="modalPrice">€0,00</div>
+<p class="modal-description" id="modalDescription">
+Seleziona un piatto per visualizzare i dettagli completi.
+</p>
+<div class="info-grid">
+<div class="info-card">
+<div class="info-icon">
+<i class="fas fa-fire"></i>
+</div>
+<div class="info-value" id="modalCalories">~450</div>
+<div class="info-label">Calorie</div>
+</div>
+<div class="info-card">
+<div class="info-icon">
+<i class="fas fa-clock"></i>
+</div>
+<div class="info-value" id="modalTime">15'</div>
+<div class="info-label">Tempo</div>
+</div>
+<div class="info-card">
+<div class="info-icon">
+<i class="fas fa-allergies"></i>
+</div>
+<div class="info-value" id="modalAllergens">🥛🌾</div>
+<div class="info-label">Allergeni</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <script>
-  (() => {
-    const wrapper = document.querySelector('.offerta-wrapper');
-    const modal = wrapper.querySelector('.offerta-modal');
-    const btnOpen = wrapper.querySelector('.open-modal');
-    const btnClose = wrapper.querySelector('.close-btn');
-    const codiceInput = wrapper.querySelector('#codice-menu');
-    const modelloInput = wrapper.querySelector('#nome-modello');
-    const titolo = wrapper.querySelector('#modello-titolo');
-    const form = wrapper.querySelector('#demo-form');
+// --- STATO DELL'APPLICAZIONE ---
+const appState = {
+activeCategory: 'all',
+searchQuery: '',
+currentPromoIndex: 0,
+touchStartY: 0,
+touchStartX: 0,
+lastTouchTime: 0
+};
 
-    btnOpen.addEventListener('click', () => {
-      const codice = btnOpen.dataset.codice;
-      const modello = btnOpen.dataset.nomeModello;
+// --- ELEMENTI DEL DOM ---
+const elements = {
+parallaxBg: document.getElementById('parallaxBg'),
+searchInput: document.getElementById('searchInput'),
+voiceSearch: document.getElementById('voiceSearch'),
+categoriesNav: document.getElementById('categoriesNav'),
+promoTrack: document.getElementById('promoTrack'),
+carouselDots: document.getElementById('carouselDots'),
+dishModal: document.getElementById('dishModal'),
+modalImage: document.getElementById('modalImage'),
+modalTitle: document.getElementById('modalTitle'),
+modalPrice: document.getElementById('modalPrice'),
+modalDescription: document.getElementById('modalDescription'),
+modalCalories: document.getElementById('modalCalories'),
+modalTime: document.getElementById('modalTime'),
+modalAllergens: document.getElementById('modalAllergens')
+};
 
-      codiceInput.value = codice;
-      modelloInput.value = modello;
-      titolo.innerText = `${modello} (${codice})`;
+// --- FUNZIONI PRINCIPALI ---
+// Inizializzazione dell'app
+function initApp() {
+// Assicurati che tutti gli elementi siano caricati
+setTimeout(() => {
+setupEventListeners();
+initParallaxEffect();
+initSearch();
+initVoiceSearch();
+initPromoCarousel();
+updateUI();
+}, 100);
+}
 
-      modal.setAttribute('aria-hidden', 'false');
-      wrapper.querySelector('.modal-content').focus();
-    });
+// Imposta tutti gli event listeners
+function setupEventListeners() {
+// Navigazione tra categorie
+const categories = document.querySelectorAll('.category');
+if (categories.length > 0) {
+categories.forEach(category => {
+category.addEventListener('click', () => {
+setActiveCategory(category.dataset.category);
+});
+});
+} else {
+console.error('Elementi categoria non trovati');
+}
 
-    btnClose.addEventListener('click', () => {
-      modal.setAttribute('aria-hidden', 'true');
-    });
+// Ricerca
+if (elements.searchInput) {
+elements.searchInput.addEventListener('input', handleSearch);
+} else {
+console.error('Elemento searchInput non trovato');
+}
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+// Voice search
+if (elements.voiceSearch) {
+elements.voiceSearch.addEventListener('click', startVoiceSearch);
+} else {
+console.error('Elemento voiceSearch non trovato');
+}
+}
 
-      const nome = wrapper.querySelector('#nome').value.trim();
-      const email = wrapper.querySelector('#email').value.trim();
-      const messaggio = wrapper.querySelector('#messaggio').value.trim();
-      const codice = codiceInput.value;
-      const modello = modelloInput.value;
+// Inizializza l'effetto parallasse avanzato
+function initParallaxEffect() {
+if (!elements.parallaxBg) return;
+  
+document.addEventListener('mousemove', (e) => {
+if (window.innerWidth < 768) return; // Disabilita su mobile
+  
+const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+  
+elements.parallaxBg.style.transform = `scale(1.05) translateX(${xAxis}px) translateY(${yAxis}px)`;
+});
+  
+document.addEventListener('mouseleave', () => {
+elements.parallaxBg.style.transform = 'scale(1.05)';
+});
+}
 
-      const testo = `👤Nome: ${nome}\n\n📧 Email: ${email}\n\n📃 Modello: ${codice}\nNome modello: ${modello}\n\n💬: ${messaggio}`;
+// Inizializza la ricerca avanzata
+function initSearch() {
+if (!elements.searchInput) return;
+  
+let debounceTimer;
+elements.searchInput.addEventListener('input', () => {
+clearTimeout(debounceTimer);
+debounceTimer = setTimeout(() => {
+appState.searchQuery = elements.searchInput.value.trim().toLowerCase();
+filterDishes();
+}, 300);
+});
+}
 
-      const numeroWA = '393440301412';
-      window.open(`https://wa.me/${numeroWA}?text=${encodeURIComponent(testo)}`, '_blank');
+// Inizializza la ricerca vocale (simulazione)
+function initVoiceSearch() {
+if (!elements.voiceSearch) return;
+  
+elements.voiceSearch.addEventListener('click', () => {
+elements.voiceSearch.style.color = '#4CAF50';
+elements.voiceSearch.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+  
+setTimeout(() => {
+elements.voiceSearch.style.color = '#C72C41';
+elements.voiceSearch.innerHTML = '<i class="fas fa-microphone"></i>';
+  
+// Simula il risultato della ricerca vocale
+elements.searchInput.value = "pomodoro";
+appState.searchQuery = "pomodoro";
+filterDishes();
+}, 2000);
+});
+}
 
-      modal.setAttribute('aria-hidden', 'true');
+// Inizializza il carousel promozioni
+function initPromoCarousel() {
+if (!elements.promoTrack || !elements.carouselDots) {
+console.error('Elementi del carousel non trovati');
+return;
+}
+  
+let startX, isDragging = false;
+  
+// Inizializza i punti del carousel
+const dots = document.querySelectorAll('.carousel-dot');
+if (dots.length > 0) {
+dots[0].classList.add('active');
+}
+  
+// Gestione touch per il carousel
+elements.promoTrack.addEventListener('touchstart', (e) => {
+startX = e.touches[0].clientX;
+isDragging = true;
+elements.promoTrack.style.transition = 'none';
+});
+  
+elements.promoTrack.addEventListener('touchmove', (e) => {
+if (!isDragging) return;
+e.preventDefault();
+  
+const currentX = e.touches[0].clientX;
+const diff = currentX - startX;
+  
+elements.promoTrack.style.transform = `translateX(${diff}px)`;
+});
+  
+elements.promoTrack.addEventListener('touchend', () => {
+if (!isDragging) return;
+isDragging = false;
+  
+const trackRect = elements.promoTrack.getBoundingClientRect();
+const containerWidth = elements.promoTrack.parentElement.clientWidth;
+const itemWidth = containerWidth * 0.9 + 20; // 90% + gap
+const totalItems = elements.promoTrack.children.length;
+const maxTranslate = -(itemWidth * (totalItems - 1));
+  
+let currentTranslate = 0;
+const style = window.getComputedStyle(elements.promoTrack);
+const transform = style.transform;
+  
+if (transform && transform !== 'none') {
+const matrix = transform.match(/matrix.*\((.+)\)/);
+if (matrix && matrix[1]) {
+const values = matrix[1].split(', ');
+currentTranslate = parseFloat(values[4]);
+}
+}
+  
+// Determina se andare avanti o indietro
+let newIndex = appState.currentPromoIndex;
+const threshold = itemWidth * 0.3; // 30% dell'ampiezza dell'item
+  
+if (startX - e.changedTouches[0].clientX > threshold) {
+// Swipe a sinistra - prossimo elemento
+newIndex = Math.min(newIndex + 1, totalItems - 1);
+} else if (startX - e.changedTouches[0].clientX < -threshold) {
+// Swipe a destra - elemento precedente
+newIndex = Math.max(newIndex - 1, 0);
+}
+  
+// Anima al nuovo indice
+animateToIndex(newIndex);
+});
+  
+// Click sui punti del carousel
+document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+dot.addEventListener('click', () => {
+animateToIndex(index);
+});
+});
+}
 
-      setTimeout(() => {
-        window.location.href = '/thankyou.html';
-      }, 1200);
-    });
-  })();
+// Anima al nuovo indice del carousel
+function animateToIndex(index) {
+const containerWidth = elements.promoTrack.parentElement.clientWidth;
+const itemWidth = containerWidth * 0.9;
+const gap = 20;
+const translateX = -((itemWidth + gap) * index);
+  
+elements.promoTrack.style.transition = 'transform 0.5s ease';
+elements.promoTrack.style.transform = `translateX(${translateX}px)`;
+  
+// Aggiorna i punti
+document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+dot.classList.toggle('active', i === index);
+});
+  
+appState.currentPromoIndex = index;
+}
+
+// Imposta la categoria attiva
+function setActiveCategory(category) {
+appState.activeCategory = category;
+updateUI();
+  
+// Scrolla in cima
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Aggiorna l'interfaccia utente
+function updateUI() {
+// Aggiorna le categorie attive
+document.querySelectorAll('.category').forEach(category => {
+category.classList.toggle('active', category.dataset.category === appState.activeCategory);
+});
+  
+// Mostra/nascondi categorie in base alla categoria attiva
+document.querySelectorAll('.dishes-grid').forEach(grid => {
+const categoryId = grid.id.replace('-grid', '');
+if (appState.activeCategory === 'all' || appState.activeCategory === categoryId) {
+grid.style.display = 'grid';
+} else {
+grid.style.display = 'none';
+}
+});
+}
+
+// Filtra i piatti in base alla ricerca
+function filterDishes() {
+const query = appState.searchQuery;
+  
+if (!query) {
+// Mostra tutte le categorie
+document.querySelectorAll('.category').forEach(category => {
+category.classList.toggle('active', category.dataset.category === 'all');
+});
+  
+appState.activeCategory = 'all';
+updateUI();
+return;
+}
+  
+// Cerca nei piatti
+let found = false;
+const categories = ['antipasti', 'primi', 'pizze', 'secondi', 'dolci', 'bevande'];
+  
+for (const category of categories) {
+const grid = document.getElementById(`${category}-grid`);
+if (!grid) continue;
+  
+const dishes = grid.querySelectorAll('.dish-card');
+let categoryFound = false;
+  
+dishes.forEach(dish => {
+const text = dish.textContent.toLowerCase();
+if (text.includes(query)) {
+dish.style.display = 'flex';
+categoryFound = true;
+found = true;
+} else {
+dish.style.display = 'none';
+}
+});
+  
+// Mostra/nascondi la categoria in base ai risultati
+if (categoryFound) {
+const categoryTitle = document.getElementById(`category-${category}`);
+if (categoryTitle) categoryTitle.style.display = 'flex';
+grid.style.display = 'grid';
+} else {
+const categoryTitle = document.getElementById(`category-${category}`);
+if (categoryTitle) categoryTitle.style.display = 'none';
+grid.style.display = 'none';
+}
+}
+  
+// Mostra messaggio se nessun risultato
+const noResults = document.getElementById('noResults');
+if (!found && query) {
+if (!noResults) {
+const container = document.querySelector('.menu-container');
+const noResultsDiv = document.createElement('div');
+noResultsDiv.id = 'noResults';
+noResultsDiv.className = 'no-results';
+noResultsDiv.innerHTML = `
+<i class="fas fa-search"></i>
+<h3>Nessun risultato per "${query}"</h3>
+<div>Prova con altri termini di ricerca</div>
+`;
+container.appendChild(noResultsDiv);
+}
+} else if (noResults) {
+noResults.remove();
+}
+}
+
+// Apre il modal con i dettagli del piatto
+function openDishModal(dish) {
+// Aggiorna il modal con i dati del piatto
+if (elements.modalImage) elements.modalImage.src = dish.image;
+if (elements.modalTitle) elements.modalTitle.textContent = dish.name;
+if (elements.modalPrice) elements.modalPrice.textContent = dish.price;
+if (elements.modalDescription) elements.modalDescription.textContent = dish.description;
+if (elements.modalCalories) elements.modalCalories.textContent = dish.calories;
+if (elements.modalTime) elements.modalTime.textContent = dish.time;
+if (elements.modalAllergens) elements.modalAllergens.textContent = dish.allergens;
+  
+// Mostra il modal
+if (elements.dishModal) {
+elements.dishModal.classList.add('active');
+}
+}
+
+// Chiude il modal
+function closeModal() {
+if (elements.dishModal) {
+elements.dishModal.classList.remove('active');
+}
+}
+
+// --- INIZIALIZZAZIONE ---
+document.addEventListener('DOMContentLoaded', () => {
+initApp();
+});
 </script>
-
-</body></html>
+</body>
+</html>
     

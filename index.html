@@ -1375,7 +1375,7 @@ input, textarea, select, button {
       <div class="logo">DSFabio <span>Digital</span></div>
       <h1>Soluzioni smart per bar, ristoranti e locali</h1>
       <p>Trasforma il tuo menu in uno strumento che semplifica gli ordini, <span class="highlight">aumenta le vendite</span> e migliora l'esperienza dei clienti.</p>
-      <a href="services" class="btn-cta" role="button"><i class="fas fa-arrow-down"></i> Scopri i servizi</a>
+      <a href="#services" class="btn-cta" role="button"><i class="fas fa-arrow-down"></i> Scopri i servizi</a>
     </div>
   </div>
 </section>
@@ -1718,12 +1718,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Open modal triggers
-  document.querySelectorAll('.btn-cta, #contactBtn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal();
-    });
-  });
+document.getElementById('contactBtn')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  openModal();
+});
   
   // Close with X button
   closeBtn?.addEventListener("click", closeModal);

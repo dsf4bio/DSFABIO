@@ -129,6 +129,17 @@ document.addEventListener('click', function (e) {
   if (d.showModal) d.showModal(); else location.href = 'https://wa.me/' + WA;
 });
 
+/* Arrivo da un modello: ?modello=Nome apre subito la richiesta con quel modello */
+try {
+  var pm = new URLSearchParams(location.search).get('modello');
+  if (pm) {
+    var fake = document.createElement('a');
+    fake.setAttribute('data-open', ''); fake.setAttribute('data-model', pm.slice(0, 60)); fake.hidden = true;
+    document.body.appendChild(fake);
+    setTimeout(function () { fake.click(); fake.remove(); }, 400);
+  }
+} catch (err) {}
+
 /* Link WhatsApp generici con messaggio pronto */
 $$('[data-wa]').forEach(function (a) {
   a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(a.getAttribute('data-wa') || 'Ciao! Vorrei informazioni sul menu digitale con QR code.');

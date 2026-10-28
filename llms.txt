@@ -11,13 +11,18 @@
 - Incluso: menu personalizzato con nome, logo e piatti; QR code; icone dei 14 allergeni UE con legenda; più lingue (es. italiano e inglese); fino a 4 modifiche al mese a piatti e prezzi; hosting, dominio e certificato SSL; pulsanti per chiamare, WhatsApp, Maps e social; assistenza su WhatsApp con risposta entro poche ore nei giorni lavorativi.
 - Condizioni: nessun vincolo, disdetta senza penali. Se il locale non continua dopo la prova, il menu va in pausa e riceve gratis il PDF del menu.
 - Allergeni: i dati li fornisce e li conferma il ristorante. Si consiglia di tenere una copia cartacea di riserva del menu.
-- Contatto: WhatsApp +39 344 030 1412.
+- Contatto: WhatsApp +39 344 030 1412 · email info@dsfabio.com.
 
 ## Pagine
 
 - [Home e offerta](https://dsfabio.vercel.app/): come funziona, cosa include, esempi, prezzo e domande frequenti.
-- [Modelli di menu](https://dsfabio.vercel.app/modelli.html): tutti gli esempi dimostrativi (classici, con effetti speciali, con ordine su WhatsApp).
+- [Modelli di menu](https://dsfabio.vercel.app/modelli.html): sei esempi dimostrativi per ristoranti, pizzerie, sushi, bistrot e bar.
 - [Chi sono](https://dsfabio.vercel.app/about.html): Fabio, valori e modo di lavorare, contatto diretto su WhatsApp.
+- [Esempio Gusto 360°](https://dsfabio.vercel.app/mdc-001.html): ristorante elegante con percorso degustazione.
+- [Esempio Bella Napoli](https://dsfabio.vercel.app/mdc-002.html): pizzeria con ricerca dei piatti.
+- [Esempio Verde & Arancio](https://dsfabio.vercel.app/mdc-003.html): bistrot con filtro per allergie e intolleranze.
+- [Esempio Bistrot Urbano](https://dsfabio.vercel.app/mdc-004.html): bar e caffetteria con sezioni in base all'orario.
 - [Esempio Sakura Neon](https://dsfabio.vercel.app/demo-sakura-neon.html): menu demo per sushi e cocktail bar, in italiano e inglese.
 - [Esempio Fuoco & Brace](https://dsfabio.vercel.app/demo-fuoco-brace.html): menu demo per pizzeria e griglia.
+- [Assistenza clienti](https://dsfabio.vercel.app/assistenaza.html): richieste di aggiornamento per chi è già cliente.
 - [Privacy, cookie e termini](https://dsfabio.vercel.app/privacy.html): informativa, cookie e condizioni del servizio.

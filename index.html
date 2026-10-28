@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it"> 
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -34,7 +34,8 @@
       "name": "DSFabio Digital",
       "url": "https://dsfabio.vercel.app/",
       "logo": "https://dsfabio.vercel.app/favicon.svg",
-      "contactPoint": {"@type": "ContactPoint", "telephone": "+39-344-030-1412", "contactType": "customer service", "availableLanguage": ["Italian"]}
+      "email": "info@dsfabio.com",
+      "contactPoint": {"@type": "ContactPoint", "telephone": "+39-344-030-1412", "email": "info@dsfabio.com", "contactType": "customer service", "availableLanguage": ["Italian"]}
     },
     {
       "@type": "WebSite",
@@ -152,17 +153,6 @@ h1 .w{display:inline-block}
 .mq span{padding:14px 0;font-family:Syne,sans-serif;font-weight:800;font-size:clamp(1rem,2.6vw,1.4rem);letter-spacing:.06em;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* ---------- Problema / soluzione ---------- */
-.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.vs .card h3{font-family:Syne,sans-serif;font-size:1.4rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.vs ul{list-style:none;display:grid;gap:12px}
-.vs li{display:flex;gap:12px;align-items:flex-start;color:var(--sub)}
-.vs li b{color:var(--txt)}
-.vs .old li::before{content:"✕";flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800;background:rgba(255,80,110,.15);color:#ff7d95}
-.vs .new{background:linear-gradient(160deg,rgba(255,60,172,.13),rgba(34,211,238,.08));border-color:rgba(255,255,255,.2)}
-.vs .new li::before{content:"✓";flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:800;background:rgba(180,255,57,.15);color:var(--lime)}
-@media (max-width:760px){.vs{grid-template-columns:1fr}}
-
 /* ---------- Come funziona ---------- */
 .steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;counter-reset:s}
 .steps::before{content:"";position:absolute;top:44px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,var(--line),var(--line),transparent)}
@@ -179,18 +169,26 @@ h1 .w{display:inline-block}
 
 /* ---------- Bento: cosa include ---------- */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.bento .card{grid-column:span 2;display:flex;flex-direction:column;gap:8px}
+.bento .card{grid-column:span 2;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left}
 .bento .wide{grid-column:span 3}
-.bento .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:6px;background:linear-gradient(140deg,hsl(var(--h) 90% 62%),hsl(calc(var(--h) + 60) 90% 55%));box-shadow:0 10px 26px hsl(var(--h) 90% 50% / .35)}
+.bento .ic{width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:6px;background:linear-gradient(140deg,hsl(var(--h) 90% 62%),hsl(calc(var(--h) + 60) 90% 55%));box-shadow:0 10px 26px hsl(var(--h) 90% 50% / .35)}
 .bento h3{font-family:Syne,sans-serif;font-size:1.2rem;line-height:1.2}
 .bento p{color:var(--sub);font-size:.95rem}
 .al-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .al-row span{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.07);font-size:1rem;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .al-row span:hover{transform:translateY(-4px) scale(1.12)}
-.lang-demo{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:Syne,sans-serif;font-weight:800;font-size:1.15rem}
-.lang-demo .sw{display:inline-block;min-width:150px;padding:6px 12px;border-radius:12px;background:rgba(255,255,255,.07);transition:opacity .3s}
+.lang-demo{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:Syne,sans-serif;font-weight:800;font-size:1.05rem;max-width:100%}
+.lang-demo .sw{display:inline-block;min-width:0;padding:6px 12px;border-radius:12px;background:rgba(255,255,255,.07);transition:opacity .3s}
 @media (max-width:960px){.bento .card,.bento .wide{grid-column:span 3}}
-@media (max-width:600px){.bento .card,.bento .wide{grid-column:span 6}}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr;gap:12px}
+  .bento .card,.bento .wide{grid-column:auto;display:grid;grid-template-columns:48px 1fr;column-gap:14px;row-gap:4px;align-items:start;padding:18px}
+  .bento .ic{grid-row:1 / span 2;width:48px;height:48px;font-size:1.4rem;margin:0}
+  .bento h3{font-size:1.08rem;align-self:center}
+  .bento p{font-size:.92rem;grid-column:2}
+  .bento .al-row,.bento .lang-demo{grid-column:1 / -1}
+  .al-row span{width:30px;height:30px;font-size:.9rem}
+}
 
 /* ---------- Esempi ---------- */
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -200,7 +198,7 @@ h1 .w{display:inline-block}
 .demo:hover .demo-prev .big{transform:scale(1.12) rotate(-8deg)}
 .p-fire{background:radial-gradient(70% 70% at 50% 100%,#5a240e,#120d0a)}
 .p-neon{background:radial-gradient(60% 60% at 20% 10%,rgba(255,60,172,.6),transparent 60%),radial-gradient(60% 60% at 90% 80%,rgba(34,211,238,.5),transparent 60%),#0d0a1f}
-.p-classic{background:linear-gradient(160deg,#3f5a22,#a34e2d)}
+.p-gold{background:linear-gradient(160deg,#efe4cf,#b08d57)}
 .demo-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
 .demo-body h3{font-family:Syne,sans-serif;font-size:1.25rem}
 .demo-body p{color:var(--sub);font-size:.92rem}
@@ -211,22 +209,28 @@ h1 .w{display:inline-block}
 @media (max-width:900px){.demos{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.demos{grid-template-columns:1fr}}
 
-/* ---------- Calcolatore ---------- */
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
-.calc label{display:block;font-weight:800;margin-bottom:8px}
-.calc .row{margin-bottom:22px}
-.calc .val{float:right;font-family:Syne,sans-serif;color:var(--cyan)}
-input[type=range]{width:100%;accent-color:var(--pink);height:28px}
-.res{display:flex;flex-direction:column;justify-content:center;gap:14px;background:linear-gradient(160deg,rgba(123,92,255,.18),rgba(34,211,238,.08))}
-.bar{display:grid;gap:6px}
-.bar-l{display:flex;justify-content:space-between;font-weight:700;font-size:.92rem}
-.bar-t{height:14px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}
-.bar-f{height:100%;border-radius:9px;transition:width .6s cubic-bezier(.2,.9,.2,1)}
-.bar-f.paper{background:linear-gradient(90deg,#ff7d95,#ff3cac)}
-.bar-f.digi{background:linear-gradient(90deg,var(--cyan),var(--lime))}
-.res-msg{font-family:Syne,sans-serif;font-size:clamp(1.2rem,2.6vw,1.6rem);line-height:1.2}
-.res small{color:var(--sub);font-size:.8rem}
-@media (max-width:760px){.calc{grid-template-columns:1fr}}
+/* ---------- Confronto ---------- */
+.cmp-head{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px;padding:0 18px 10px;font-family:Syne,sans-serif;font-weight:800}
+.cmp-head .h-old{color:#ff8fa3}.cmp-head .h-new{color:var(--lime)}
+.cmp{list-style:none;display:grid;gap:10px}
+.cmp li{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px;align-items:center;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.cmp .k{font-family:Syne,sans-serif;font-size:1.05rem}
+.cmp .old,.cmp .new{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;line-height:1.45}
+.cmp .old{color:var(--sub)}
+.cmp .old::before,.cmp .new::before{flex:0 0 24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:800;margin-top:1px}
+.cmp .old::before{content:"✕";background:rgba(255,80,110,.15);color:#ff8fa3}
+.cmp .new::before{content:"✓";background:rgba(180,255,57,.15);color:var(--lime)}
+.cmp .new{color:var(--txt);font-weight:600}
+.cmp-note{text-align:center;color:var(--sub);margin-top:20px;font-size:.92rem}
+@media (max-width:760px){
+  .cmp-head{display:none}
+  .cmp li{grid-template-columns:1fr;gap:10px}
+  .cmp .old,.cmp .new{display:block;position:relative;padding-left:34px}
+  .cmp .old::before,.cmp .new::before{position:absolute;left:0;top:0;display:grid;width:24px}
+  .cmp .old::after,.cmp .new::after{display:block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+  .cmp .old::after{content:"Menu cartaceo";color:rgba(255,143,163,.75)}
+  .cmp .new::after{content:"Menu digitale";color:rgba(180,255,57,.75)}
+}
 
 /* ---------- Offerta ---------- */
 .offer-wrap{position:relative;max-width:880px;margin:0 auto;border-radius:34px;padding:2px;background:conic-gradient(from var(--ang),var(--pink),var(--violet),var(--cyan),var(--lime),var(--pink));animation:rot 6s linear infinite;box-shadow:0 30px 80px rgba(123,92,255,.35)}
@@ -259,7 +263,6 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
 .w{opacity:0;transform:translateY(60%) rotate(4deg);animation:wordIn .9s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(var(--d) * 80ms + 100ms)}
 @keyframes wordIn{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.w{opacity:1!important;transform:none!important}}
-.bento .card{grid-column:span 2;display:flex;flex-direction:column;gap:8px}
 </style>
 </head>
 <body class="no-js">
@@ -275,6 +278,7 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
     <nav aria-label="Navigazione principale">
       <ul class="links" id="links">
         <li><a href="./#come-funziona">Come funziona</a></li>
+        <li><a href="./#perche">Perché il digitale</a></li>
         <li><a href="modelli.html">Modelli</a></li>
         <li><a href="./#offerta">Offerta</a></li>
         <li><a href="about.html">Chi sono</a></li>
@@ -335,37 +339,6 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
 <div class="mq-wrap" aria-hidden="true"><div class="marquee">
   <div class="mq"><span>RISTORANTI ✦ PIZZERIE ✦ SUSHI ✦ BAR ✦ PUB ✦ TRATTORIE ✦ HOTEL ✦ COCKTAIL BAR ✦ GELATERIE ✦&nbsp;</span><span>RISTORANTI ✦ PIZZERIE ✦ SUSHI ✦ BAR ✦ PUB ✦ TRATTORIE ✦ HOTEL ✦ COCKTAIL BAR ✦ GELATERIE ✦&nbsp;</span></div>
 </div></div>
-
-<!-- ======================= PROBLEMA / SOLUZIONE ======================= -->
-<section class="sec" aria-labelledby="perche-t">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Perché passare al digitale</span>
-      <h2 class="h2" id="perche-t">Il menu cartaceo ti costa più di quanto pensi</h2>
-      <p class="lead">Ogni volta che cambia un prezzo o finisce un piatto, il cartaceo va ristampato. Il menu digitale si aggiorna in pochi minuti, e i clienti lo vedono subito.</p>
-    </div>
-    <div class="vs">
-      <article class="card old rv">
-        <h3>📄 Menu cartaceo</h3>
-        <ul>
-          <li><span><b>Ristampe</b> ogni volta che cambia un prezzo</span></li>
-          <li><span><b>Allergeni</b> difficili da leggere o mancanti</span></li>
-          <li><span><b>Una sola lingua</b> per i turisti</span></li>
-          <li><span><b>Si sporca e si rovina</b> passando di mano in mano</span></li>
-        </ul>
-      </article>
-      <article class="card new rv" style="--d:1">
-        <h3>📱 Menu digitale DSFabio</h3>
-        <ul>
-          <li><span><b>Aggiornamenti inclusi</b>: fino a 4 modifiche al mese</span></li>
-          <li><span><b>Icone allergeni</b> per ogni piatto, con legenda</span></li>
-          <li><span><b>Più lingue</b> con un tocco, per esempio italiano e inglese</span></li>
-          <li><span><b>Foto e descrizioni</b> che fanno venire fame</span></li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
 
 <!-- ======================= COME FUNZIONA ======================= -->
 <section class="sec" id="come-funziona" aria-labelledby="cf-t">
@@ -445,7 +418,7 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
     <div class="sec-head center rv">
       <span class="eyebrow">Esempi dal vivo</span>
       <h2 class="h2" id="es-t">Toccali con mano, dal tuo telefono</h2>
-      <p class="lead">Sono menu dimostrativi con piatti di fantasia: il tuo sarà creato su misura.</p>
+      <p class="lead">Sei stili diversi, con piatti di fantasia: il tuo sarà creato su misura.</p>
     </div>
     <div class="demos">
       <a class="card demo rv" href="demo-sakura-neon.html">
@@ -457,35 +430,33 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
         <div class="demo-body"><div class="tagline"><span>Pizzeria</span><span>Griglia</span></div><h3>Fuoco &amp; Brace</h3><p>Atmosfera scura ed elegante, fumo che sale dal piatto e scorrimento fluido.</p><span class="go">Apri l'esempio →</span></div>
       </a>
       <a class="card demo rv" href="mdc-001.html" style="--d:2">
-        <div class="demo-prev p-classic"><span class="big" aria-hidden="true">🍝</span></div>
-        <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Classico</span></div><h3>Gusto 360°</h3><p>Elegante e senza tempo: il modello classico più scelto.</p><span class="go">Apri l'esempio →</span></div>
+        <div class="demo-prev p-gold"><span class="big" aria-hidden="true">🍷</span></div>
+        <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Fine dining</span></div><h3>Gusto 360°</h3><p>Raffinato come un menu su carta pregiata, con percorso degustazione e vini.</p><span class="go">Apri l'esempio →</span></div>
       </a>
     </div>
     <p class="all-demos rv"><a class="btn btn-ghost" href="modelli.html">Vedi tutti i modelli</a></p>
   </div>
 </section>
 
-<!-- ======================= CALCOLATORE ======================= -->
-<section class="sec" aria-labelledby="calc-t">
+<!-- ======================= CONFRONTO ======================= -->
+<section class="sec" id="perche" aria-labelledby="cmp-t">
   <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Fai due conti</span>
-      <h2 class="h2" id="calc-t">Quanto ti costa il menu cartaceo in un anno?</h2>
-      <p class="lead">Sposta i cursori con i tuoi numeri e confronta.</p>
+    <div class="sec-head center rv">
+      <span class="eyebrow">Digitale o cartaceo?</span>
+      <h2 class="h2" id="cmp-t">Perché i ristoranti passano al menu digitale</h2>
+      <p class="lead">Il menu cartaceo ha costi e limiti che non si vedono subito. Ecco il confronto, punto per punto.</p>
     </div>
-    <div class="calc">
-      <div class="card rv">
-        <div class="row"><label for="r1">Ristampe del menu in un anno <span class="val" id="v1">3</span></label><input id="r1" type="range" min="0" max="12" value="3"></div>
-        <div class="row"><label for="r2">Costo di una ristampa (grafica + stampa) <span class="val" id="v2">80 €</span></label><input id="r2" type="range" min="20" max="400" step="10" value="80"></div>
-        <p class="hint" style="text-align:left">Stima indicativa: inserisci i costi reali del tuo locale.</p>
-      </div>
-      <div class="card res rv" style="--d:1" aria-live="polite">
-        <div class="bar"><div class="bar-l"><span>📄 Cartaceo</span><span id="o1">240 €</span></div><div class="bar-t"><div class="bar-f paper" id="b1"></div></div></div>
-        <div class="bar"><div class="bar-l"><span>📱 Menu digitale</span><span>190 €</span></div><div class="bar-t"><div class="bar-f digi" id="b2"></div></div></div>
-        <p class="res-msg" id="msg"></p>
-        <small>Il menu digitale include aggiornamenti, allergeni, più lingue e hosting. I primi 30 giorni sono gratis.</small>
-      </div>
-    </div>
+    <div class="cmp-head rv" aria-hidden="true"><span></span><span class="h-old">📄 Menu cartaceo</span><span class="h-new">📱 Menu digitale</span></div>
+    <ul class="cmp">
+      <li class="rv"><b class="k">💶 Prezzi che cambiano</b><span class="old">Ristampa di tutte le copie a ogni modifica</span><span class="new">Aggiornato in pochi minuti, senza ristampe</span></li>
+      <li class="rv"><b class="k">🚫 Piatti finiti</b><span class="old">Cancellature a penna o “chieda al cameriere”</span><span class="new">Lo togli subito, il cliente vede solo ciò che c'è</span></li>
+      <li class="rv"><b class="k">🌾 Allergeni</b><span class="old">Spesso in un foglio a parte, difficile da consultare</span><span class="new">Icone chiare su ogni piatto, con legenda</span></li>
+      <li class="rv"><b class="k">🌍 Clienti stranieri</b><span class="old">Una sola lingua, traduzioni da spiegare a voce</span><span class="new">Più lingue con un tocco</span></li>
+      <li class="rv"><b class="k">🧼 Igiene e usura</b><span class="old">Passa di mano in mano, si macchia e si rovina</span><span class="new">Ognuno lo apre sul proprio telefono</span></li>
+      <li class="rv"><b class="k">📸 Foto e descrizioni</b><span class="old">Costose da stampare, spazio limitato</span><span class="new">Foto e descrizioni che fanno venire voglia</span></li>
+      <li class="rv"><b class="k">⭐ Recensioni e social</b><span class="old">Nessun collegamento</span><span class="new">Un tocco per recensioni, Instagram e Maps</span></li>
+    </ul>
+    <p class="cmp-note rv">💡 Consigliamo comunque di tenere una copia cartacea di riserva, per chi non usa lo smartphone.</p>
   </div>
 </section>
 
@@ -582,6 +553,7 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
         <h2>Supporto</h2>
         <ul>
           <li><a href="https://wa.me/393440301412" target="_blank" rel="noopener">💬 WhatsApp +39 344 030 1412</a></li>
+          <li><a href="mailto:info@dsfabio.com">✉️ info@dsfabio.com</a></li>
           <li><a href="assistenaza.html">Assistenza clienti</a></li>
           <li><a href="privacy.html#privacy">Privacy</a></li>
           <li><a href="privacy.html#cookies">Cookie</a></li>
@@ -590,8 +562,7 @@ input[type=range]{width:100%;accent-color:var(--pink);height:28px}
       </div>
     </div>
     <div class="legal">
-      <!-- DA COMPILARE: ragione sociale e P.IVA quando disponibili -->
-      <span>© <span data-year>2026</span> DSFabio Digital · [P.IVA da inserire]</span>
+      <span>© <span data-year>2026</span> DSFabio Digital · <a href="mailto:info@dsfabio.com">info@dsfabio.com</a></span>
       <span>Menu digitali con QR code · Italia</span>
     </div>
   </div>
@@ -640,20 +611,6 @@ function drawQR() {
   }
 }
 addEventListener('load', drawQR);
-
-/* ---------- Calcolatore ---------- */
-var r1 = $('#r1'), r2 = $('#r2'), DIG = 190;
-var eur = function (v) { return new Intl.NumberFormat('it-IT', {style: 'currency', currency: 'EUR', maximumFractionDigits: 0}).format(v); };
-function calc() {
-  var n = +r1.value, c = +r2.value, paper = n * c, max = Math.max(paper, DIG, 1);
-  $('#v1').textContent = n; $('#v2').textContent = eur(c); $('#o1').textContent = eur(paper);
-  $('#b1').style.width = (paper / max * 100) + '%'; $('#b2').style.width = (DIG / max * 100) + '%';
-  var d = paper - DIG;
-  $('#msg').innerHTML = d > 0
-    ? 'Con il digitale risparmi circa <span class="grad-text">' + eur(d) + '</span> all\'anno.'
-    : 'Costa circa ' + eur(-d) + ' in più all\'anno, ma hai aggiornamenti, allergeni e più lingue <span class="grad-text">inclusi</span>.';
-}
-r1.addEventListener('input', calc); r2.addEventListener('input', calc); calc();
 
 
 })();

@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;700&display=swap">
 <style>
-:root{--bg:#120d0a;--bg2:#1a130f;--card:#211812;--card2:#2a1f17;--txt:#f6ece2;--sub:#bba996;--fire:#ff6a2b;--ember:#ffb347;--wine:#d0324f;--leaf:#7bc96f;--line:rgba(255,236,220,.09)}
+:root{--bg:#120d0a;--bg2:#1a130f;--card:#211812;--card2:#2a1f17;--txt:#f6ece2;--sub:#bba996;--fire:#ff6a2b;--ember:#ffb347;--wine:#d0324f;--leaf:#7bc96f;--line:rgba(255,236,220,.09);--soc-bg:#2a1f17}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
@@ -155,6 +155,14 @@ footer{text-align:center;padding:36px 18px 30px;color:var(--sub);font-size:.85re
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   #smoke{display:none}
 }
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--soc-bg,#222);color:var(--soc-fg,#fff);transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s;text-decoration:none}
+.soc a:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+.soc a.fb{background:#1877F2;color:#fff}.soc a.wa{background:#25D366;color:#fff}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:#fff}
+.soc svg{width:23px;height:23px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a{text-decoration:underline;text-underline-offset:3px;color:inherit;opacity:.85}
 </style>
 </head>
 <body>
@@ -192,22 +200,9 @@ footer{text-align:center;padding:36px 18px 30px;color:var(--sub);font-size:.85re
 
 <footer>
   <p><strong>Fuoco &amp; Brace</strong><br>Via Roma 1 · Tel. 0123 456789<br><small>Dati di esempio</small></p>
-  <nav class="links" aria-label="Contatti e social">
-    <a href="tel:+390123456789">📞 Chiama</a>
-    <a href="https://wa.me/390123456789" target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a href="https://maps.google.com/?q=Via+Roma+1" target="_blank" rel="noopener">📍 Dove siamo</a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener">📷 Instagram</a>
-    <a href="https://www.google.com/maps" target="_blank" rel="noopener">⭐ Recensioni</a>
-  </nav>
+  <div class="soc"><a class="fb" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.1 23.7v-8H6.6V12h2.5v-1.6c0-4.1 1.8-6 5.9-6 .8 0 2.1.2 2.6.3v3.3l-1.4-.1c-1.9 0-2.6.7-2.6 2.6V12h3.9l-.7 3.7h-3.2V24C19.4 23.2 24 18.2 24 12 24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.4 9.1 11.7Z"/></svg></a><a class="ig" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a><a class="wa" href="https://wa.me/390123456789" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a></div><nav class="flinks" aria-label="Contatti"><a href="tel:+390123456789">📞 Chiama</a><a href="https://maps.google.com/?q=Via+Roma+1" target="_blank" rel="noopener">📍 Dove siamo</a><a href="https://www.google.com/maps" target="_blank" rel="noopener">⭐ Lascia una recensione</a></nav>
 </footer>
 
-<section class="cta" aria-labelledby="cta-t">
-  <p class="eyebrow">Per ristoratori</p>
-  <h2 class="h2" id="cta-t">Vuoi un menu così?</h2>
-  <p>Con i tuoi piatti, il tuo logo e i tuoi colori. 30 giorni gratis, poi 190 € all'anno tutto incluso.</p>
-  <a class="btn-fire" href="./?modello=Fuoco%20%26%20Brace#offerta">🚀 Prova gratis questo modello</a>
-  <a class="back" href="modelli.html">← Tutti i modelli</a>
-</section>
 
 <div class="overlay" id="overlay"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t" data-lenis-prevent>
@@ -231,28 +226,40 @@ footer{text-align:center;padding:36px 18px 30px;color:var(--sub);font-size:.85re
 const AL = {glutine:['🌾','Glutine'],crostacei:['🦐','Crostacei'],uova:['🥚','Uova'],pesce:['🐟','Pesce'],arachidi:['🥜','Arachidi'],soia:['🫘','Soia'],latte:['🥛','Latte'],frutta:['🌰','Frutta a guscio'],sedano:['🥬','Sedano'],senape:['🟡','Senape'],sesamo:['⚪','Sesamo'],solfiti:['🍷','Solfiti'],lupini:['🌼','Lupini'],molluschi:['🐚','Molluschi']};
 const TAGS = {veg:'🌱 Veg',hot:'🌶 Piccante',new:'✨ Novità'};
 const MENU = [
+  {id:'antipasti',label:'Antipasti',e:'🥖',items:[
+    {n:'Tagliere della Brace',d:'Salumi stagionati, formaggi, miele e focaccia calda',p:16,a:['glutine','latte'],e:'🧀',top:1},
+    {n:'Provola alla brace',d:'Con pomodorini confit e origano fresco',p:9,a:['latte'],e:'🔥',t:['veg']},
+    {n:'Bruschette miste',d:'Pomodoro, lardo e miele, funghi trifolati',p:8,a:['glutine'],e:'🍅'},
+    {n:'Polpette al sugo',d:'Manzo e maiale, pomodoro, basilico, pane per la scarpetta',p:10,a:['glutine','uova','latte'],e:'🍲'}]},
   {id:'pizze',label:'Pizze',e:'🍕',items:[
     {n:'Margherita DOP',d:'Pomodoro San Marzano, fiordilatte, basilico, olio EVO',p:7,a:['glutine','latte'],e:'🍕',t:['veg']},
     {n:'Diavola di Brace',d:'Pomodoro, fiordilatte, spianata piccante, miele al peperoncino',p:9,a:['glutine','latte'],e:'🌶️',t:['hot'],top:1},
     {n:'Tartufo & Funghi',d:'Fiordilatte, porcini, crema al tartufo, scaglie di grana',p:13,a:['glutine','latte'],e:'🍄',top:1},
-    {n:'Ortolana',d:'Verdure grigliate, provola affumicata, pesto',p:10,a:['glutine','latte','frutta'],e:'🥦',t:['veg']}]},
+    {n:'Ortolana',d:'Verdure grigliate, provola affumicata, pesto',p:10,a:['glutine','latte','frutta'],e:'🥦',t:['veg']},
+    {n:'Salsiccia e patate',d:'Fiordilatte, salsiccia, patate al rosmarino',p:10,a:['glutine','latte'],e:'🥔'},
+    {n:'Crudo e bufala',d:'Bufala a crudo, crudo di Parma 24 mesi, rucola',p:12,a:['glutine','latte'],e:'🥩',t:['new']}]},
   {id:'griglia',label:'Griglia',e:'🔥',items:[
     {n:'Tagliata di Manzo',d:'300 g, rucola, pomodorini, riduzione di balsamico',p:22,a:['solfiti'],e:'🥩',top:1},
-    {n:'Costine BBQ',d:'Cotte 12 ore, salsa barbecue della casa',p:16,a:['senape','sedano'],e:'🍖',t:['new']},
-    {n:'Spiedo di Pollo',d:'Marinatura agli agrumi, patate al rosmarino',p:14,a:[],e:'🍗'}]},
+    {n:'Fiorentina',d:'Frollata 30 giorni, al kg, per 2 persone',p:55,a:[],e:'🍖',t:['new']},
+    {n:'Costine BBQ',d:'Cotte 12 ore, salsa barbecue della casa',p:16,a:['senape','sedano'],e:'🍖'},
+    {n:'Spiedo di Pollo',d:'Marinatura agli agrumi, patate al rosmarino',p:14,a:[],e:'🍗'},
+    {n:'Grigliata mista',d:'Salsiccia, costine, pollo, verdure alla brace',p:20,a:[],e:'🔥',top:1}]},
   {id:'primi',label:'Primi',e:'🍝',items:[
     {n:'Carbonara',d:'Uova, guanciale croccante, pecorino romano',p:11,a:['glutine','uova','latte'],e:'🍝'},
     {n:'Paccheri al Ragù',d:'Ragù di manzo cotto 8 ore',p:12,a:['glutine','sedano'],e:'🍝'},
-    {n:'Risotto ai Gamberi',d:'Gamberi rossi, lime, burro affumicato',p:16,a:['crostacei','latte'],e:'🦐',t:['new'],top:1}]},
+    {n:'Risotto ai Gamberi',d:'Gamberi rossi, lime, burro affumicato',p:16,a:['crostacei','latte'],e:'🦐',t:['new'],top:1},
+    {n:'Gnocchi alla sorrentina',d:'Pomodoro, fiordilatte, basilico, gratinati',p:11,a:['glutine','latte','uova'],e:'🥟',t:['veg']}]},
   {id:'dolci',label:'Dolci',e:'🍰',items:[
     {n:'Tiramisù',d:'Savoiardi, mascarpone, caffè espresso',p:6,a:['glutine','uova','latte'],e:'🍰',t:['veg']},
-    {n:'Brace Brownie',d:'Cioccolato fondente, gelato alla vaniglia',p:7,a:['glutine','uova','latte','frutta'],e:'🍫'}]},
+    {n:'Brace Brownie',d:'Cioccolato fondente, gelato alla vaniglia',p:7,a:['glutine','uova','latte','frutta'],e:'🍫'},
+    {n:'Ananas alla brace',d:'Caramello al rum e gelato al cocco',p:6,a:['latte'],e:'🍍'}]},
   {id:'bevande',label:'Bevande',e:'🍷',items:[
     {n:'Acqua Naturale / Frizzante',d:'Bottiglia 0,75 L',p:2.5,a:[],e:'💧'},
     {n:'Calice di Rosso',d:'Primitivo di Manduria',p:6,a:['solfiti'],e:'🍷'},
-    {n:'Birra Artigianale',d:'Bionda 0,4 L',p:6,a:['glutine'],e:'🍺'}]}
+    {n:'Birra Artigianale',d:'Bionda 0,4 L',p:6,a:['glutine'],e:'🍺'},
+    {n:'Bibite',d:'Cola, aranciata, chinotto',p:3.5,a:[],e:'🥤'},
+    {n:'Caffè',d:'Espresso o decaffeinato',p:1.5,a:[],e:'☕'}]}
 ];
-
 /* ========================================================= */
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasG = !!(window.gsap && window.ScrollTrigger);
@@ -491,5 +498,6 @@ if (hasG && !reduced) {
 }
 })();
 </script>
+<script src="assets/trial.js" data-model="Fuoco & Brace" defer></script>
 </body>
 </html>

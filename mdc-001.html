@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;700&display=swap">
 <style>
-:root{--bg:#f6f1e7;--paper:#fffdf8;--ink:#1d1a16;--sub:#6d655a;--gold:#b08d57;--gold2:#8a6a3c;--line:#e4dccd}
+:root{--bg:#f6f1e7;--paper:#fffdf8;--ink:#1d1a16;--sub:#6d655a;--gold:#b08d57;--gold2:#8a6a3c;--line:#e4dccd;--soc-bg:#1d1a16}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
@@ -78,17 +78,19 @@ footer strong{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(
 .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
 .links a{text-decoration:none;padding:9px 14px;border:1px solid var(--line);border-radius:30px;background:var(--paper);font-weight:600;font-size:.82rem;color:var(--ink)}
 
-/* Box offerta DSFabio */
-.offer{background:#0d0a1f;color:#f4f1ff;text-align:center;padding:42px 22px 46px;font-family:Inter,sans-serif}
-.offer b{display:block;font-size:1.5rem;line-height:1.2;margin-bottom:8px}
-.offer p{color:#b9b2d8;max-width:440px;margin:0 auto 20px}
-.offer .go{display:inline-block;padding:14px 24px;border-radius:999px;font-weight:800;text-decoration:none;color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee)}
-.offer .back{display:block;margin-top:16px;color:#22d3ee;font-weight:700;text-decoration:none}
 
 /* Comparsa */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--soc-bg,#222);color:var(--soc-fg,#fff);transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s;text-decoration:none}
+.soc a:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+.soc a.fb{background:#1877F2;color:#fff}.soc a.wa{background:#25D366;color:#fff}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:#fff}
+.soc svg{width:23px;height:23px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a{text-decoration:underline;text-underline-offset:3px;color:inherit;opacity:.85}
 </style>
 </head>
 <body>
@@ -109,20 +111,9 @@ footer strong{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(
 <footer>
   <strong>Gusto 360°</strong>
   Via Garibaldi 12 · Tel. 0123 456789<br><small>Dati di esempio</small>
-  <nav class="links" aria-label="Contatti">
-    <a href="tel:+390123456789">📞 Prenota un tavolo</a>
-    <a href="https://maps.google.com/?q=Via+Garibaldi+12" target="_blank" rel="noopener">📍 Dove siamo</a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener">📷 Instagram</a>
-    <a href="https://www.google.com/maps" target="_blank" rel="noopener">⭐ Lascia una recensione</a>
-  </nav>
+  <div class="soc"><a class="fb" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.1 23.7v-8H6.6V12h2.5v-1.6c0-4.1 1.8-6 5.9-6 .8 0 2.1.2 2.6.3v3.3l-1.4-.1c-1.9 0-2.6.7-2.6 2.6V12h3.9l-.7 3.7h-3.2V24C19.4 23.2 24 18.2 24 12 24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.4 9.1 11.7Z"/></svg></a><a class="ig" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a><a class="wa" href="https://wa.me/390123456789" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a></div><nav class="flinks" aria-label="Contatti"><a href="tel:+390123456789">📞 Chiama</a><a href="https://maps.google.com/?q=Via+Garibaldi+12" target="_blank" rel="noopener">📍 Dove siamo</a><a href="https://www.google.com/maps" target="_blank" rel="noopener">⭐ Lascia una recensione</a></nav>
 </footer>
 
-<section class="offer" aria-label="Offerta DSFabio Digital">
-  <b>Vuoi un menu così per il tuo ristorante?</b>
-  <p>Lo personalizziamo con i tuoi piatti, il tuo logo e i tuoi colori. 30 giorni gratis, poi 190 € all'anno tutto incluso.</p>
-  <a class="go" href="./?modello=Gusto%20360%C2%B0#offerta">🚀 Prova gratis questo modello</a>
-  <a class="back" href="modelli.html">← Tutti i modelli</a>
-</section>
 
 <script>
 (function () {
@@ -133,22 +124,41 @@ var MENU = [
   {id:'antipasti', t:'Antipasti', s:'Per cominciare', items:[
     {n:'Battuta di Fassona',d:'Tuorlo marinato, nocciole tostate, senape antica',p:16,a:['uova','frutta','senape']},
     {n:'Carciofo croccante',d:'Crema di pecorino, menta e limone candito',p:13,a:['glutine','latte'],t:['Vegetariano']},
-    {n:'Polpo arrostito',d:'Patata affumicata, olive taggiasche, paprika dolce',p:17,a:['molluschi']}]},
+    {n:'Polpo arrostito',d:'Patata affumicata, olive taggiasche, paprika dolce',p:17,a:['molluschi']},
+    {n:'Vitello tonnato',d:'Girello rosa, salsa tonnata della casa, capperi di Pantelleria',p:15,a:['pesce','uova']},
+    {n:'Burrata e pomodori',d:'Pomodori dell\'orto, pane bruciato, basilico',p:14,a:['latte','glutine'],t:['Vegetariano']}]},
   {id:'primi', t:'Primi', s:'Pasta fresca fatta ogni mattina', items:[
     {n:'Tortelli del plin',d:'Ripieni di brasato, burro nocciola e salvia',p:18,a:['glutine','uova','latte','sedano']},
     {n:'Risotto allo zafferano',d:'Midollo, riduzione di vino rosso',p:19,a:['latte','solfiti','sedano'],t:['Signature']},
-    {n:'Spaghettone al pomodoro',d:'Tre pomodori, basilico, olio extravergine',p:14,a:['glutine'],t:['Vegano']}]},
+    {n:'Spaghettone al pomodoro',d:'Tre pomodori, basilico, olio extravergine',p:14,a:['glutine'],t:['Vegano']},
+    {n:'Tagliolini al tartufo',d:'Tuorlo, burro di malga, tartufo nero',p:24,a:['glutine','uova','latte']},
+    {n:'Paccheri allo scoglio',d:'Cozze, vongole, gamberi, pomodorino',p:22,a:['glutine','crostacei','molluschi','pesce']}]},
   {id:'secondi', t:'Secondi', s:'Dal mare e dalla terra', items:[
     {n:'Guancia di vitello',d:'Cotta 12 ore, purè di sedano rapa',p:24,a:['sedano','latte','solfiti']},
     {n:'Rombo in crosta di erbe',d:'Bieta, salsa al burro bianco',p:27,a:['pesce','latte','glutine']},
-    {n:'Piccione alle ciliegie',d:'Petto rosa, coscia croccante, fondo bruno',p:29,a:['solfiti','sedano']}]},
+    {n:'Piccione alle ciliegie',d:'Petto rosa, coscia croccante, fondo bruno',p:29,a:['solfiti','sedano']},
+    {n:'Filetto di manzo',d:'Salsa al Barolo, patate fondenti',p:30,a:['solfiti','latte']},
+    {n:'Melanzana alla brace',d:'Miso, sesamo, yogurt alle erbe',p:18,a:['soia','sesamo','latte'],t:['Vegetariano']}]},
+  {id:'contorni', t:'Contorni', s:'Per accompagnare', items:[
+    {n:'Patate al forno',d:'Rosmarino e sale di Cervia',p:6,a:[]},
+    {n:'Verdure di stagione',d:'Saltate in padella con aglio dolce',p:7,a:[],t:['Vegano']},
+    {n:'Insalata di campo',d:'Erbe spontanee, aceto di mele',p:6,a:['solfiti'],t:['Vegano']}]},
   {id:'dolci', t:'Dolci', s:'La pasticceria della casa', items:[
     {n:'Tiramisù scomposto',d:'Mascarpone montato, savoiardo croccante, caffè',p:9,a:['glutine','uova','latte']},
-    {n:'Bonet piemontese',d:'Amaretti, cacao, caramello',p:8,a:['uova','latte','frutta','glutine']}]},
+    {n:'Bonet piemontese',d:'Amaretti, cacao, caramello',p:8,a:['uova','latte','frutta','glutine']},
+    {n:'Crostata al limone',d:'Meringa all\'italiana, frolla al burro',p:8,a:['glutine','uova','latte']},
+    {n:'Selezione di formaggi',d:'Cinque stagionature, mostarda e miele',p:14,a:['latte','senape','solfiti']}]},
   {id:'vini', t:'Vini al calice', s:'Selezione del sommelier', items:[
     {n:'Barolo DOCG',d:'Langhe · rosso strutturato',p:12,a:['solfiti']},
     {n:'Franciacorta Brut',d:'Lombardia · bollicine metodo classico',p:9,a:['solfiti']},
-    {n:'Acqua minerale',d:'Naturale o frizzante · 0,75 l',p:3,a:[]}]}
+    {n:'Vermentino di Gallura',d:'Sardegna · bianco sapido',p:7,a:['solfiti']},
+    {n:'Chianti Classico',d:'Toscana · rosso elegante',p:8,a:['solfiti']},
+    {n:'Moscato d\'Asti',d:'Piemonte · dolce e aromatico, per il dessert',p:7,a:['solfiti']}]},
+  {id:'bevande', t:'Caffetteria e bevande', s:'Per chiudere in bellezza', items:[
+    {n:'Acqua minerale',d:'Naturale o frizzante · 0,75 l',p:3,a:[]},
+    {n:'Caffè espresso',d:'Miscela 100% arabica',p:2,a:[]},
+    {n:'Amari e distillati',d:'Chiedi la nostra carta',p:5,a:['solfiti']},
+    {n:'Coperto',d:'Pane fatto in casa e grissini',p:3,a:['glutine']}]}
 ];
 var TASTING = {after:'secondi', t:'Percorso degustazione', items:['Battuta di Fassona','Tortelli del plin','Risotto allo zafferano','Guancia di vitello','Tiramisù scomposto'], p:65, note:'Per tutto il tavolo · abbinamento vini +30 €'};
 /* ================================================================== */
@@ -188,5 +198,6 @@ if ('IntersectionObserver' in window) {
 setOn(MENU[0].id);
 })();
 </script>
+<script src="assets/trial.js" data-model="Gusto 360°" defer></script>
 </body>
 </html>

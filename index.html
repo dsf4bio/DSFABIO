@@ -177,8 +177,12 @@ h1 .w{display:inline-block}
 .al-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .al-row span{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.07);font-size:1rem;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .al-row span:hover{transform:translateY(-4px) scale(1.12)}
-.lang-demo{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:Syne,sans-serif;font-weight:800;font-size:1.05rem;max-width:100%}
-.lang-demo .sw{display:inline-block;min-width:0;padding:6px 12px;border-radius:12px;background:rgba(255,255,255,.07);transition:opacity .3s}
+.lang-demo{display:flex;align-items:stretch;gap:10px;margin-top:10px;width:100%;font-family:Syne,sans-serif;font-weight:800;font-size:1.02rem}
+.lang-demo .lg-dish{flex:0 0 auto;display:grid;place-items:center;width:46px;border-radius:12px;background:rgba(255,255,255,.07);font-size:1.3rem}
+.lang-demo .sw{flex:1;min-width:0;display:grid;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.07)}
+.lang-demo .sw>span{grid-area:1 / 1;display:flex;flex-direction:column;justify-content:center;line-height:1.25;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+.lang-demo .sw>span.on{opacity:1;transform:none}
+.lang-demo .sw b{font-family:Manrope,sans-serif;font-size:.68rem;letter-spacing:.12em;color:var(--cyan);margin-bottom:2px}
 @media (max-width:960px){.bento .card,.bento .wide{grid-column:span 3}}
 @media (max-width:640px){
   .bento{grid-template-columns:1fr;gap:12px}
@@ -376,7 +380,7 @@ h1 .w{display:inline-block}
         <div class="ic" style="--h:190" aria-hidden="true">🌍</div>
         <h3>Più lingue con un tocco</h3>
         <p>Perfetto per i locali con clienti stranieri: il cliente cambia lingua e legge il menu nella sua.</p>
-        <div class="lang-demo" aria-hidden="true">🍝 <span class="sw" id="sw">Spaghetti allo scoglio</span></div>
+        <div class="lang-demo" aria-hidden="true"><span class="lg-dish">🍝</span><span class="sw" id="sw"><span class="on"><b>🇮🇹 IT</b>Spaghetti allo scoglio</span><span><b>🇬🇧 EN</b>Seafood spaghetti</span><span><b>🇫🇷 FR</b>Spaghetti aux fruits de mer</span><span><b>🇩🇪 DE</b>Spaghetti mit Meeresfrüchten</span></span></div>
       </article>
       <article class="card rv">
         <div class="ic" style="--h:260" aria-hidden="true">✏️</div>
@@ -418,7 +422,7 @@ h1 .w{display:inline-block}
     <div class="sec-head center rv">
       <span class="eyebrow">Esempi dal vivo</span>
       <h2 class="h2" id="es-t">Toccali con mano, dal tuo telefono</h2>
-      <p class="lead">Sei stili diversi, con piatti di fantasia: il tuo sarà creato su misura.</p>
+      <p class="lead">Nove stili diversi, con menu completi e piatti di fantasia: il tuo sarà creato su misura.</p>
     </div>
     <div class="demos">
       <a class="card demo rv" href="demo-sakura-neon.html">
@@ -434,7 +438,7 @@ h1 .w{display:inline-block}
         <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Fine dining</span></div><h3>Gusto 360°</h3><p>Raffinato come un menu su carta pregiata, con percorso degustazione e vini.</p><span class="go">Apri l'esempio →</span></div>
       </a>
     </div>
-    <p class="all-demos rv"><a class="btn btn-ghost" href="modelli.html">Vedi tutti i modelli</a></p>
+    <p class="all-demos rv"><a class="btn btn-ghost" href="modelli.html">Vedi tutti i 9 modelli →</a></p>
   </div>
 </section>
 
@@ -597,8 +601,8 @@ showCat(0);
 if (!reduced) setInterval(function () { if (!document.hidden) { ci = (ci + 1) % CATS.length; showCat(ci); } }, 2600);
 
 /* ---------- Lingue (bento) ---------- */
-var words = ['Spaghetti allo scoglio', 'Seafood spaghetti', 'Spaghetti aux fruits de mer', 'Spaghetti mit Meeresfrüchten'], wi = 0, sw = $('#sw');
-if (!reduced) setInterval(function () { sw.style.opacity = 0; setTimeout(function () { wi = (wi + 1) % words.length; sw.textContent = words[wi]; sw.style.opacity = 1; }, 300); }, 2200);
+var sws = $$('#sw > span'), wi = 0;
+if (!reduced && sws.length) setInterval(function () { sws[wi].classList.remove('on'); wi = (wi + 1) % sws.length; sws[wi].classList.add('on'); }, 2400);
 
 /* ---------- QR scansionabile ---------- */
 function drawQR() {

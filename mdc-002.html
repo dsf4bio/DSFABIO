@@ -75,14 +75,17 @@ footer{text-align:center;padding:30px 18px;color:var(--sub);font-size:.9rem}
 footer strong{font-family:Fredoka,sans-serif;font-size:1.4rem;color:var(--ink);display:block}
 .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
 .links a{text-decoration:none;padding:9px 14px;border-radius:30px;background:#fff;border:2px solid var(--line);font-weight:800;font-size:.82rem;color:var(--ink)}
-.offer{background:#0d0a1f;color:#f4f1ff;text-align:center;padding:42px 22px 46px}
-.offer b{display:block;font-size:1.5rem;line-height:1.2;margin-bottom:8px}
-.offer p{color:#b9b2d8;max-width:440px;margin:0 auto 20px}
-.offer .go{display:inline-block;padding:14px 24px;border-radius:999px;font-weight:800;text-decoration:none;color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee)}
-.offer .back{display:block;margin-top:16px;color:#22d3ee;font-weight:700;text-decoration:none}
 .pop{animation:pop .4s ease both}
 @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--soc-bg,#222);color:var(--soc-fg,#fff);transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s;text-decoration:none}
+.soc a:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+.soc a.fb{background:#1877F2;color:#fff}.soc a.wa{background:#25D366;color:#fff}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:#fff}
+.soc svg{width:23px;height:23px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a{text-decoration:underline;text-underline-offset:3px;color:inherit;opacity:.85}
 </style>
 </head>
 <body>
@@ -97,7 +100,7 @@ footer strong{font-family:Fredoka,sans-serif;font-size:1.4rem;color:var(--ink);d
 
 <div class="tools">
   <div class="tools-in">
-    <label class="search"><span aria-hidden="true">🔎</span><span class="sr" style="position:absolute;left:-9999px">Cerca nel menu</span><input id="q" type="search" placeholder="Cerca una pizza o un ingrediente…" autocomplete="off"><button class="clr" id="clr" aria-label="Cancella la ricerca" hidden>✕</button></label>
+    <label class="search"><span aria-hidden="true">🔎</span><input id="q" type="search" aria-label="Cerca nel menu" placeholder="Cerca una pizza o un ingrediente…" autocomplete="off"><button class="clr" id="clr" aria-label="Cancella la ricerca" hidden>✕</button></label>
     <nav class="cats" id="cats" aria-label="Categorie"></nav>
   </div>
 </div>
@@ -107,20 +110,9 @@ footer strong{font-family:Fredoka,sans-serif;font-size:1.4rem;color:var(--ink);d
 <footer>
   <strong>Bella Napoli</strong>
   Piazza Dante 3 · Tel. 0123 456789<br><small>Dati di esempio</small>
-  <nav class="links" aria-label="Contatti">
-    <a href="tel:+390123456789">📞 Chiama</a>
-    <a href="https://maps.google.com/?q=Piazza+Dante+3" target="_blank" rel="noopener">📍 Dove siamo</a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener">📷 Instagram</a>
-    <a href="https://www.google.com/maps" target="_blank" rel="noopener">⭐ Recensioni</a>
-  </nav>
+  <div class="soc"><a class="fb" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.1 23.7v-8H6.6V12h2.5v-1.6c0-4.1 1.8-6 5.9-6 .8 0 2.1.2 2.6.3v3.3l-1.4-.1c-1.9 0-2.6.7-2.6 2.6V12h3.9l-.7 3.7h-3.2V24C19.4 23.2 24 18.2 24 12 24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.4 9.1 11.7Z"/></svg></a><a class="ig" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a><a class="wa" href="https://wa.me/390123456789" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a></div><nav class="flinks" aria-label="Contatti"><a href="tel:+390123456789">📞 Chiama</a><a href="https://maps.google.com/?q=Piazza+Dante+3" target="_blank" rel="noopener">📍 Dove siamo</a><a href="https://www.google.com/maps" target="_blank" rel="noopener">⭐ Lascia una recensione</a></nav>
 </footer>
 
-<section class="offer" aria-label="Offerta DSFabio Digital">
-  <b>Vuoi un menu così per la tua pizzeria?</b>
-  <p>Con i tuoi impasti, le tue pizze e i tuoi colori. 30 giorni gratis, poi 190 € all'anno tutto incluso.</p>
-  <a class="go" href="./?modello=Bella%20Napoli#offerta">🚀 Prova gratis questo modello</a>
-  <a class="back" href="modelli.html">← Tutti i modelli</a>
-</section>
 
 <script>
 (function () {
@@ -133,22 +125,39 @@ var MENU = [
     {n:'Margherita',d:'Pomodoro San Marzano, fiordilatte, basilico, olio EVO',p:6.5,a:['glutine','latte'],e:'🍕',t:['veg']},
     {n:'Marinara',d:'Pomodoro, aglio, origano, olio EVO',p:5.5,a:['glutine'],e:'🍅',t:['veg']},
     {n:'Diavola',d:'Pomodoro, fiordilatte, salame piccante',p:8,a:['glutine','latte'],e:'🌶️',t:['hot']},
-    {n:'Capricciosa',d:'Pomodoro, fiordilatte, prosciutto cotto, funghi, carciofi, olive',p:9,a:['glutine','latte'],e:'🍄'}]},
+    {n:'Capricciosa',d:'Pomodoro, fiordilatte, prosciutto cotto, funghi, carciofi, olive',p:9,a:['glutine','latte'],e:'🍄'},
+    {n:'Quattro formaggi',d:'Fiordilatte, gorgonzola, provola, parmigiano',p:9,a:['glutine','latte'],e:'🧀',t:['veg']},
+    {n:'Napoli',d:'Pomodoro, fiordilatte, alici, capperi, origano',p:8,a:['glutine','latte','pesce'],e:'🐟'},
+    {n:'Prosciutto e funghi',d:'Pomodoro, fiordilatte, prosciutto cotto, champignon',p:8.5,a:['glutine','latte'],e:'🍄'}]},
   {id:'speciali', t:'Le speciali', e:'⭐', items:[
     {n:'Bella Napoli',d:'Bufala DOP, pomodorini del piennolo, basilico, scaglie di parmigiano',p:11,a:['glutine','latte'],e:'⭐',t:['new']},
     {n:'Salsiccia e friarielli',d:'Fiordilatte affumicato, salsiccia, friarielli',p:10,a:['glutine','latte'],e:'🥬'},
-    {n:'Mortadella e pistacchio',d:'Fiordilatte, mortadella, granella e crema di pistacchio',p:11,a:['glutine','latte','frutta'],e:'🥜'}]},
+    {n:'Mortadella e pistacchio',d:'Fiordilatte, mortadella, granella e crema di pistacchio',p:11,a:['glutine','latte','frutta'],e:'🥜'},
+    {n:'Genovese',d:'Fiordilatte, ragù di cipolle alla genovese, pecorino',p:11,a:['glutine','latte','sedano'],e:'🧅'},
+    {n:'Nduja e burrata',d:'Pomodoro, nduja calabrese, burrata a crudo',p:12,a:['glutine','latte'],e:'🔥',t:['hot']},
+    {n:'Ortolana',d:'Fiordilatte, zucchine, melanzane, peperoni grigliati',p:9.5,a:['glutine','latte'],e:'🫑',t:['veg']}]},
+  {id:'bianche', t:'Le bianche', e:'🤍', items:[
+    {n:'Patate e provola',d:'Provola affumicata, patate al forno, rosmarino',p:9,a:['glutine','latte'],e:'🥔',t:['veg']},
+    {n:'Crudo e rucola',d:'Fiordilatte, crudo di Parma, rucola, grana',p:10,a:['glutine','latte'],e:'🥗'},
+    {n:'Tonno e cipolla',d:'Fiordilatte, tonno, cipolla rossa di Tropea',p:9,a:['glutine','latte','pesce'],e:'🧅'},
+    {n:'Zucca e salsiccia',d:'Crema di zucca, fiordilatte, salsiccia, salvia',p:10,a:['glutine','latte'],e:'🎃',t:['new']}]},
   {id:'fritti', t:'Fritti', e:'🍟', items:[
     {n:'Montanara',d:'Pizza fritta con pomodoro e parmigiano',p:5,a:['glutine','latte'],e:'🫓',t:['veg']},
     {n:'Frittatina di pasta',d:'Bucatini, besciamella, piselli, prosciutto',p:3.5,a:['glutine','latte','uova'],e:'🍝'},
-    {n:'Crocchè di patate',d:'Patate, provola, prezzemolo (3 pezzi)',p:4,a:['glutine','latte','uova'],e:'🥔',t:['veg']}]},
+    {n:'Crocchè di patate',d:'Patate, provola, prezzemolo (3 pezzi)',p:4,a:['glutine','latte','uova'],e:'🥔',t:['veg']},
+    {n:'Arancino al ragù',d:'Riso, ragù di carne, piselli, mozzarella',p:4,a:['glutine','latte','uova','sedano'],e:'🍙'},
+    {n:'Patatine fritte',d:'Porzione abbondante',p:4,a:[],e:'🍟',t:['veg']}]},
   {id:'dolci', t:'Dolci', e:'🍰', items:[
     {n:'Babà al rum',d:'Con crema pasticcera e amarene',p:5,a:['glutine','uova','latte'],e:'🧁'},
-    {n:'Pizza alla Nutella',d:'Da dividere in due',p:7,a:['glutine','latte','frutta'],e:'🍫'}]},
+    {n:'Pizza alla Nutella',d:'Da dividere in due',p:7,a:['glutine','latte','frutta'],e:'🍫'},
+    {n:'Sfogliatella riccia',d:'Calda, con ricotta e canditi',p:3,a:['glutine','uova','latte'],e:'🥐'}]},
   {id:'bevande', t:'Bevande', e:'🥤', items:[
     {n:'Birra artigianale',d:'Bionda 0,4 l',p:5,a:['glutine'],e:'🍺'},
+    {n:'Birra alla spina',d:'Media 0,4 l',p:4.5,a:['glutine'],e:'🍻'},
     {n:'Bibite in lattina',d:'Cola, aranciata, gassosa',p:3,a:[],e:'🥤'},
-    {n:'Acqua',d:'Naturale o frizzante 0,5 l',p:1.5,a:[],e:'💧'}]}
+    {n:'Vino della casa',d:'Rosso o bianco, 1/4 l',p:4,a:['solfiti'],e:'🍷'},
+    {n:'Acqua',d:'Naturale o frizzante 0,5 l',p:1.5,a:[],e:'💧'},
+    {n:'Caffè',d:'Espresso napoletano',p:1.3,a:[],e:'☕'}]}
 ];
 var NOTE = '<b>Impasto senza glutine?</b> Disponibile su richiesta (+2 €). Chiedi al personale.';
 /* ================================================================== */
@@ -190,5 +199,6 @@ clr.addEventListener('click', function () { q = ''; input.value = ''; clr.hidden
 render();
 })();
 </script>
+<script src="assets/trial.js" data-model="Bella Napoli" defer></script>
 </body>
 </html>

@@ -2,383 +2,182 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DS Digital - Richiesta aggiornamento</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- DOMINIO: quando compri il dominio sostituisci https://dsfabio.vercel.app in tutte le pagine, sitemap.xml, robots.txt e llms.txt -->
+<title>Richiesta aggiornamento menu | DSFabio Digital</title>
+<meta name="description" content="Dicci cosa cambiare: piatti, descrizioni o prezzi. Sono incluse fino a 4 modifiche al mese.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://dsfabio.vercel.app/assistenzamenu.html">
+<meta name="theme-color" content="#0d0a1f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="DSFabio Digital · Menu digitali">
+<meta property="og:title" content="Richiesta aggiornamento menu | DSFabio Digital">
+<meta property="og:description" content="Dicci cosa cambiare: piatti, descrizioni o prezzi. Sono incluse fino a 4 modifiche al mese.">
+<meta property="og:url" content="https://dsfabio.vercel.app/assistenzamenu.html">
+<meta property="og:image" content="https://dsfabio.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-
-  /* =========================
-     RESET BASE
-  ========================= */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  body {
-    background-color: #f0f0f5;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
-    min-height: 100vh;
-  }
-  
-  /* =========================
-   PULSANTE BACK
-========================= */
-.back-btn {
-  display: inline-block;
-  margin-bottom: 10px;
-  padding: 9px 18px;
-  border-radius: 12px;
-  border: 1.5px solid #212121;
-  background: transparent;
-  color: #212121;
-  font-size: 0.90em;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.back-btn:hover {
-  background: #212121;
-  color: #ffffff;
-}
-
-  
-  /* =========================
-     TOAST NOTIFICHE
-  ========================= */
-  .toast {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #43a047;
-    color: #ffffff;
-    padding: 14px 24px;
-    border-radius: 10px;
-    font-size: 1em;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 9999;
-  }
-  
-  .toast.error {
-    background: #e53935;
-  }
-  
-  
-  /* =========================
-     LOADER PULSANTE
-  ========================= */
-  .btn-loader {
-    display: none;
-    width: 20px;
-    height: 20px;
-    border: 3px solid #ffffff;
-    border-top: 3px solid #ff9800;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: auto;
-  }
-  
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  
-  
-  /* =========================
-     CONTENITORE FORM
-  ========================= */
-  .form-container {
-    background: #ffffff;
-    padding: 50px 40px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  }
-  
-  .form-container h1 {
-    text-align: center;
-    color: #212121;
-    font-size: 2.5em;
-    margin-bottom: 5px;
-  }
-  
-  .form-container h2 {
-    text-align: center;
-    color: #ff9800;
-    font-size: 1.3em;
-    font-weight: normal;
-    margin-bottom: 35px;
-  }
-  
-  
-  /* =========================
-     CAMPI INPUT
-  ========================= */
-  input,
-  textarea {
-    width: 100%;
-    padding: 16px 20px;
-    margin: 12px 0;
-    border-radius: 14px;
-    border: 1px solid #cccccc;
-    outline: none;
-    font-size: 1em;
-    transition: all 0.3s ease;
-  }
-  
-  input:focus,
-  textarea:focus {
-    border-color: #ff9800;
-    box-shadow: 0 0 12px rgba(255,152,0,0.3);
-  }
-  
-  textarea {
-    resize: none;
-    height: 140px;
-  }
-  
-  
-  /* =========================
-     GRUPPO PULSANTI OPZIONE
-  ========================= */
-  .button-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 20px 0;
-    justify-content: space-between;
-  }
-  
-  .option-btn { 
-  flex:1 1 calc(38% - 7px); 
-  padding:18px; 
-  border-radius:14px; 
-  border:1.3px solid #212121; 
-  background:#ff990032; 
-  color:#212121; 
-  font-weight:550; 
-  font-size:1.1em; 
-  cursor:pointer; 
-  text-align:center; 
-  transition: all 0.2s ease; 
-}
-  
-  .option-btn:hover {
-    background: #212121;
-    color: #ffffff;
-  }
-  
-  .option-btn.selected {
-    background: #ff9800;
-    border-color: #ff9800;
-    color: #ffffff;
-  }
-  
-  
-  /* =========================
-     PULSANTE INVIO
-  ========================= */
-  button.submit-btn {
-    width: 100%;
-    padding: 18px;
-    margin-top: 25px;
-    border: none;
-    border-radius: 14px;
-    background: #ff9800;
-    color: #ffffff;
-    font-size: 1.25em;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  
-  button.submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-  
-  
-  /* =========================
-     CHECKBOX PRIVACY
-  ========================= */
-  .checkbox-container {
-    margin-top: 10px;
-    font-size: 0.95em;
-  }
-  
-  .checkbox-container label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-  }
-  
-  .checkbox-container input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-  }
-  
-  
-  /* =========================
-     RESPONSIVE
-  ========================= */
-  @media (max-width: 480px) {
-  
-    .option-btn {
-      flex: 1 1 100%;
-    }
-  
-    .form-container {
-      padding: 40px 20px;
-    }
-  
-  }
-  
-  </style>
-  
+.as-wrap{max-width:720px;margin:0 auto}
+.svc{display:grid;gap:16px;margin-top:10px}
+.svc a{display:flex;gap:18px;align-items:center;text-decoration:none}
+.svc h2{font-family:Syne,sans-serif;font-size:1.3rem;line-height:1.2}
+.svc p{color:var(--sub);font-size:.95rem}
+.svc .arrow{margin-left:auto;font-size:1.6rem;color:var(--cyan);transition:transform .3s}
+.svc a:hover .arrow{transform:translateX(6px)}
+.svc .ic{flex:0 0 auto;margin:0}
+.back{display:inline-flex;gap:6px;align-items:center;color:var(--cyan);font-weight:800;text-decoration:none;margin-bottom:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:800;text-align:left;transition:all .25s}
+.opt:hover{border-color:rgba(255,255,255,.3)}
+.opt[aria-pressed="true"]{background:var(--grad);color:#0d0a1f;border-color:transparent;box-shadow:0 8px 22px rgba(255,60,172,.3)}
+.opt span{display:block;font-size:1.3rem;margin-bottom:2px}
+.lbl{display:block;font-size:.85rem;font-weight:700;margin-bottom:8px}
+.count{float:right;font-weight:600;color:var(--sub);font-size:.78rem}
+.submit{width:100%;padding:15px;border-radius:999px;font-weight:800;margin-top:6px}
+.submit:disabled{opacity:.7;cursor:wait}
+.loader{display:inline-block;width:18px;height:18px;border-radius:50%;border:3px solid rgba(13,10,31,.3);border-top-color:#0d0a1f;animation:spin .8s linear infinite;vertical-align:-3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:200;transform:translate(-50%,40px);opacity:0;padding:14px 20px;border-radius:16px;font-weight:800;background:#16112f;border:1px solid rgba(180,255,57,.5);color:var(--lime);box-shadow:0 16px 40px rgba(0,0,0,.5);transition:all .35s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.error{border-color:rgba(255,80,110,.6);color:#ff8fa3}
+@media (max-width:480px){.opts{grid-template-columns:1fr}}
+</style>
 </head>
-<body>
-
-<div id="toast" class="toast"></div>
-
-<div class="form-container">
-  <a href="index.html" class="back-btn">← Indietro </a>
-  <h1>DS Digital</h1>
-  <h2>Richiesta aggiornamento Menu </h2>
-  
-  <form id="requestForm">
-
-   
-
-    <input type="text" name="clientId" placeholder="Inserisci il tuo codice cliente" autocomplete="off" required>
-    <input type="text" name="companyName" placeholder="Nome della tua attività" autocomplete="off" required>
-    <input type="email" name="email" placeholder="La tua email" autocomplete="off" required>
-    <input type="text" name="phone" placeholder="Telefono (opzionale)" autocomplete="off">
-
-    <div class="button-group">
-      <button type="button" class="option-btn" data-value="aggiunta">Aggiunta piatto</button>
-      <button type="button" class="option-btn" data-value="modifica">Modifica piatto</button>
-      <button type="button" class="option-btn" data-value="rimozione">Rimozione piatto</button>
-      <button type="button" class="option-btn" data-value="prezzi">Aggiornamento prezzi</button>
+<body class="no-js">
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="glow-cursor" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="./" aria-label="DSFabio Digital, menu digitali con QR code - home">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio
+    </a>
+    <nav aria-label="Navigazione principale">
+      <ul class="links" id="links">
+        <li><a href="./#come-funziona">Come funziona</a></li>
+        <li><a href="modelli.html">Modelli</a></li>
+        <li><a href="./#offerta">Offerta</a></li>
+        <li><a href="about.html">Chi sono</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+        <li><a href="assistenaza.html" aria-current="page">Assistenza</a></li>
+        <li><a class="m-cta" href="./#offerta" data-open>Prova gratis 30 giorni</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-main nav-cta" href="./#offerta" data-open>Prova gratis</a>
+      <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
     </div>
-
-    <input type="hidden" name="type" id="typeField">
-    <textarea name="details" placeholder="Scrivi qui i dettagli della modifica (max 300 caratteri)" maxlength="300"></textarea>
-
-    <div class="checkbox-container">
-      <label>
-        <input type="checkbox" name="privacy" required>
-        Accetto il trattamento dei dati personali
-      </label>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="wrap as-wrap">
+    <a class="back" href="assistenaza.html">← Centro assistenza</a><br>
+    <span class="eyebrow">Area clienti</span>
+    <h1>Aggiorna il tuo <span class="grad-text">menu</span></h1>
+    <p class="lead">Dicci cosa cambiare: piatti, descrizioni o prezzi. Sono incluse fino a 4 modifiche al mese.</p>
+    <form id="requestForm" class="card fform" style="margin-top:26px" novalidate>
+      <div class="two">
+        <div class="f"><label for="clientId">Codice cliente *</label><input id="clientId" type="text" name="clientId" placeholder="Es. DS-0001" autocomplete="off" required></div>
+        <div class="f"><label for="companyName">Nome dell'attività *</label><input id="companyName" type="text" name="companyName" placeholder="Es. Trattoria Da Mario" autocomplete="organization" required></div>
+      </div>
+      <div class="two">
+        <div class="f"><label for="email">Email *</label><input id="email" type="email" name="email" placeholder="La tua email" autocomplete="email" required></div>
+        <div class="f"><label for="phone">Telefono</label><input id="phone" type="tel" name="phone" placeholder="Facoltativo" autocomplete="tel" inputmode="tel"></div>
+      </div>
+      <div><span class="lbl" id="type-l">Tipo di richiesta *</span><div class="opts" role="group" aria-labelledby="type-l"><button type="button" class="opt" data-value="aggiunta" aria-pressed="false"><span aria-hidden="true">➕</span>Aggiunta piatto</button><button type="button" class="opt" data-value="modifica" aria-pressed="false"><span aria-hidden="true">✏️</span>Modifica piatto</button><button type="button" class="opt" data-value="rimozione" aria-pressed="false"><span aria-hidden="true">🗑️</span>Rimozione piatto</button><button type="button" class="opt" data-value="prezzi" aria-pressed="false"><span aria-hidden="true">💶</span>Aggiornamento prezzi</button></div></div>
+      <input type="hidden" name="type" id="typeField">
+      <div class="f"><label for="details">Dettagli <span class="count" id="count">0 / 300</span></label><textarea id="details" name="details" placeholder="Scrivi qui i dettagli della modifica (max 300 caratteri)" maxlength="300"></textarea></div>
+      <label class="consent"><input type="checkbox" name="privacy" required><span>Accetto il trattamento dei dati personali come descritto nell'<a href="privacy.html#privacy" target="_blank" rel="noopener">informativa privacy</a>. *</span></label>
+      <button type="submit" class="btn btn-main submit"><span class="btn-text">Invia la richiesta</span><span class="loader" hidden></span></button>
+    </form>
+  </div>
+</section>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="./"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio</a>
+        <p>Menu digitali con QR code per ristoranti, pizzerie, bar e hotel in tutta Italia. 30 giorni di prova gratuita, poi 190 € all'anno tutto incluso.</p>
+      </div>
+      <div>
+        <h2>Esplora</h2>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="./#come-funziona">Come funziona</a></li>
+          <li><a href="modelli.html">Modelli di menu</a></li>
+          <li><a href="./#offerta">Offerta</a></li>
+          <li><a href="about.html">Chi sono</a></li>
+          <li><a href="./#faq">Domande frequenti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Supporto</h2>
+        <ul>
+          <li><a href="https://wa.me/393440301412" target="_blank" rel="noopener">💬 WhatsApp +39 344 030 1412</a></li>
+          <li><a href="assistenaza.html">Assistenza clienti</a></li>
+          <li><a href="privacy.html#privacy">Privacy</a></li>
+          <li><a href="privacy.html#cookies">Cookie</a></li>
+          <li><a href="privacy.html#terms">Termini e condizioni</a></li>
+        </ul>
+      </div>
     </div>
-
-    <button type="submit" class="submit-btn">
-      <span class="btn-text">Invia Richiesta</span>
-      <div class="btn-loader"></div>
-    </button>
-  </form>
-</div>
-
+    <div class="legal">
+      <!-- DA COMPILARE: ragione sociale e P.IVA quando disponibili -->
+      <span>© <span data-year>2026</span> DSFabio Digital · [P.IVA da inserire]</span>
+      <span>Menu digitali con QR code · Italia</span>
+    </div>
+  </div>
+</footer>
+<a class="wa-fab" id="wa-fab" href="https://wa.me/393440301412" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a>
+<script src="assets/site.js"></script>
 <script>
-  const form = document.getElementById('requestForm');
-  const optionBtns = document.querySelectorAll('.option-btn');
-  const typeField = document.getElementById('typeField');
-  const toast = document.getElementById('toast');
-  const submitBtn = form.querySelector('.submit-btn');
-  const btnText = submitBtn.querySelector('.btn-text');
-  const btnLoader = submitBtn.querySelector('.btn-loader');
-  
-  optionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      optionBtns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      typeField.value = btn.getAttribute('data-value');
+(function () {
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbwtjQrS0tAUBRROhhlYqNFBuMV-Xig3HR8lUWRkXRQS6nbv9Tl5nEUFF0Mvjazo5O3MOA/exec";
+  var form = document.getElementById('requestForm'), btns = form.querySelectorAll('.opt'), typeField = document.getElementById('typeField');
+  var toast = document.getElementById('toast'), submit = form.querySelector('.submit'), txt = submit.querySelector('.btn-text'), loader = submit.querySelector('.loader');
+  var details = document.getElementById('details'), count = document.getElementById('count');
+  details.addEventListener('input', function () { count.textContent = details.value.length + ' / 300'; });
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      btns.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true'); typeField.value = b.dataset.value;
     });
   });
-  
-  function showToast(message, isError = false) {
-    toast.textContent = message;
-    toast.className = isError ? 'toast error' : 'toast';
-    toast.style.opacity = '1';
-    setTimeout(() => {
-      toast.style.opacity = '0';
-    }, 2500);
-  }
-  
-  function isValidPhone(number) {
-    if (!number) return true;
-    return /^(\+39)?[0-9]{6,15}$/.test(number.trim());
-  }
-  
-  form.addEventListener('submit', async (e) => {
+  var tt;
+  function showToast(m, err) { toast.textContent = m; toast.className = 'toast show' + (err ? ' error' : ''); clearTimeout(tt); tt = setTimeout(function () { toast.className = 'toast'; }, 3000); }
+  function validPhone(n) { return !n || /^(\+39)?[0-9]{6,15}$/.test(n.replace(/\s+/g, '')); }
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-  
-    const phone = form.phone.value.trim();
-  
-    if (!typeField.value) {
-      showToast("Seleziona il tipo di richiesta", true);
-      return;
-    }
-  
-    if (!isValidPhone(phone)) {
-      showToast("Inserisci un numero valido (solo numeri o +39)", true);
-      return;
-    }
-  
-    const formData = new FormData(form);
-  
-    btnText.style.display = 'none';
-    btnLoader.style.display = 'block';
-    submitBtn.disabled = true;
-  
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (!typeField.value) { showToast('Seleziona il tipo di richiesta', true); return; }
+    if (!validPhone(form.phone.value.trim())) { showToast('Inserisci un numero valido (solo numeri o +39)', true); return; }
+    var fd = new FormData(form);
+    txt.hidden = true; loader.hidden = false; submit.disabled = true;
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-  
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwtjQrS0tAUBRROhhlYqNFBuMV-Xig3HR8lUWRkXRQS6nbv9Tl5nEUFF0Mvjazo5O3MOA/exec", {
-  method: "POST",
-  body: formData
-});
-
-const result = await response.json();
-
-if (result.status === "success") {
-  showToast("Richiesta inviata correttamente!");
-  form.reset();
-  optionBtns.forEach(b => b.classList.remove('selected'));
-  typeField.value = "";
-} else if (result.status === "error") {
-  showToast(result.message, true);
-} else {
-  showToast("Errore durante l'invio della richiesta", true);
-}
-
-  
-    } catch (error) {
-      console.error(error);
-      showToast("Errore di connessione. Riprova.", true);
-    } finally {
-      btnText.style.display = 'inline';
-      btnLoader.style.display = 'none';
-      submitBtn.disabled = false;
-    }
+      var res = await fetch(ENDPOINT, {method: 'POST', body: fd});
+      var r = await res.json();
+      if (r.status === 'success') {
+        showToast('✅ Richiesta inviata correttamente!');
+        form.reset(); typeField.value = ''; count.textContent = '0 / 300';
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      } else if (r.status === 'error') { showToast(r.message || "Errore durante l'invio della richiesta", true); }
+      else { showToast("Errore durante l'invio della richiesta", true); }
+    } catch (err) { console.error(err); showToast('Errore di connessione. Riprova.', true); }
+    finally { txt.hidden = false; loader.hidden = true; submit.disabled = false; }
   });
-  </script>
-  
-
+})();
+</script>
 </body>
 </html>

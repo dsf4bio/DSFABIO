@@ -1,0 +1,23 @@
+# DSFabio Digital · Menu digitali con QR code per ristoranti
+
+> DSFabio Digital (di Fabio) crea e gestisce menu digitali con QR code per ristoranti, pizzerie, bar, pub e hotel in Italia. Il cliente del locale inquadra il QR sul tavolo e sfoglia il menu nel browser, senza app. Offerta unica: 30 giorni di prova gratuita dalla consegna, poi 190 € all'anno tutto incluso.
+
+## Il servizio in breve
+
+- Cosa: menu digitale personalizzato con QR code da stampare per i tavoli.
+- Per chi: ristoranti, pizzerie, trattorie, sushi, bar, pub, cocktail bar, gelaterie e hotel.
+- Tempi: pronto in circa 48 ore da quando il locale invia il menu (anche in foto su WhatsApp).
+- Prezzo: 30 giorni gratis, poi 190 € all'anno (circa 0,52 € al giorno). Nessun costo di attivazione.
+- Incluso: menu personalizzato con nome, logo e piatti; QR code; icone dei 14 allergeni UE con legenda; più lingue (es. italiano e inglese); fino a 4 modifiche al mese a piatti e prezzi; hosting, dominio e certificato SSL; pulsanti per chiamare, WhatsApp, Maps e social; assistenza su WhatsApp con risposta entro poche ore nei giorni lavorativi.
+- Condizioni: nessun vincolo, disdetta senza penali. Se il locale non continua dopo la prova, il menu va in pausa e riceve gratis il PDF del menu.
+- Allergeni: i dati li fornisce e li conferma il ristorante. Si consiglia di tenere una copia cartacea di riserva del menu.
+- Contatto: WhatsApp +39 344 030 1412.
+
+## Pagine
+
+- [Home e offerta](https://dsfabio.vercel.app/): come funziona, cosa include, esempi, prezzo e domande frequenti.
+- [Modelli di menu](https://dsfabio.vercel.app/modelli.html): tutti gli esempi dimostrativi (classici, con effetti speciali, con ordine su WhatsApp).
+- [Chi sono](https://dsfabio.vercel.app/about.html): Fabio, valori e modo di lavorare, contatto diretto su WhatsApp.
+- [Esempio Sakura Neon](https://dsfabio.vercel.app/demo-sakura-neon.html): menu demo per sushi e cocktail bar, in italiano e inglese.
+- [Esempio Fuoco & Brace](https://dsfabio.vercel.app/demo-fuoco-brace.html): menu demo per pizzeria e griglia.
+- [Privacy, cookie e termini](https://dsfabio.vercel.app/privacy.html): informativa, cookie e condizioni del servizio.

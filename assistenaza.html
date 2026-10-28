@@ -2,161 +2,135 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DS Digital - Assistenza</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- DOMINIO: quando compri il dominio sostituisci https://dsfabio.vercel.app in tutte le pagine, sitemap.xml, robots.txt e llms.txt -->
+<title>Assistenza clienti | DSFabio Digital</title>
+<meta name="description" content="Area assistenza per i clienti DSFabio Digital: richiedi l'aggiornamento del tuo menu digitale o del gestionale ordini.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://dsfabio.vercel.app/assistenaza.html">
+<meta name="theme-color" content="#0d0a1f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="DSFabio Digital · Menu digitali">
+<meta property="og:title" content="Assistenza clienti | DSFabio Digital">
+<meta property="og:description" content="Area assistenza per i clienti DSFabio Digital: richiedi l'aggiornamento del tuo menu digitale o del gestionale ordini.">
+<meta property="og:url" content="https://dsfabio.vercel.app/assistenaza.html">
+<meta property="og:image" content="https://dsfabio.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI', sans-serif;
-}
-
-body{
-  background:#e6e8ef; /* più contrasto */
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  padding:20px;
-}
-
-.container{
-  background:#ffffff;
-  width:100%;
-  max-width:700px;
-  padding:60px 40px;
-  border-radius:24px;
-  box-shadow:0 30px 60px rgba(0,0,0,0.18);
-  text-align:center;
-}
-
-h1{
-  font-size:2.5em;
-  color:#212121;
-  margin-bottom:10px;
-}
-
-h2{
-  font-size:1.2em;
-  font-weight:normal;
-  color:#ff9800;
-  margin-bottom:40px;
-}
-
-.description{
-  font-size:1em;
-  color:#444;
-  margin-bottom:50px;
-  line-height:1.6;
-}
-
-.buttons{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
-
-/* BASE PULSANTI */
-.service-btn{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-decoration:none;
-  padding:30px;
-  border-radius:20px;
-  font-size:1.2em;
-  font-weight:600;
-  transition:all 0.25s ease;
-  box-shadow:0 12px 28px rgba(0,0,0,0.12);
-}
-
-/* MENU DIGITALE */
-.menu-btn{
-  background:#fff3e0;          /* arancio molto chiaro */
-  border:2px solid #ff9800;
-  color:#212121;
-}
-
-.menu-btn:hover{
-  background:#ff9800;
-  color:#ffffff;
-  transform:translateY(-4px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.18);
-}
-
-/* GESTIONALE */
-.gestionale-btn{
-  background:#e3f2fd;          /* blu molto chiaro */
-  border:2px solid #1976d2;
-  color:#212121;
-}
-
-.gestionale-btn:hover{
-  background:#1976d2;
-  color:#ffffff;
-  transform:translateY(-4px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.18);
-}
-
-.service-sub{
-  font-size:0.9em;
-  margin-top:8px;
-  font-weight:400;
-  opacity:0.85;
-}
-
-.footer{
-  margin-top:60px;
-  font-size:0.85em;
-  color:#777;
-}
-
-@media(max-width:480px){
-  .container{
-    padding:40px 25px;
-  }
-  h1{
-    font-size:2em;
-  }
-  .service-btn{
-    font-size:1.05em;
-    padding:24px;
-  }
-}
+.as-wrap{max-width:720px;margin:0 auto}
+.svc{display:grid;gap:16px;margin-top:10px}
+.svc a{display:flex;gap:18px;align-items:center;text-decoration:none}
+.svc h2{font-family:Syne,sans-serif;font-size:1.3rem;line-height:1.2}
+.svc p{color:var(--sub);font-size:.95rem}
+.svc .arrow{margin-left:auto;font-size:1.6rem;color:var(--cyan);transition:transform .3s}
+.svc a:hover .arrow{transform:translateX(6px)}
+.svc .ic{flex:0 0 auto;margin:0}
+.back{display:inline-flex;gap:6px;align-items:center;color:var(--cyan);font-weight:800;text-decoration:none;margin-bottom:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:800;text-align:left;transition:all .25s}
+.opt:hover{border-color:rgba(255,255,255,.3)}
+.opt[aria-pressed="true"]{background:var(--grad);color:#0d0a1f;border-color:transparent;box-shadow:0 8px 22px rgba(255,60,172,.3)}
+.opt span{display:block;font-size:1.3rem;margin-bottom:2px}
+.lbl{display:block;font-size:.85rem;font-weight:700;margin-bottom:8px}
+.count{float:right;font-weight:600;color:var(--sub);font-size:.78rem}
+.submit{width:100%;padding:15px;border-radius:999px;font-weight:800;margin-top:6px}
+.submit:disabled{opacity:.7;cursor:wait}
+.loader{display:inline-block;width:18px;height:18px;border-radius:50%;border:3px solid rgba(13,10,31,.3);border-top-color:#0d0a1f;animation:spin .8s linear infinite;vertical-align:-3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:200;transform:translate(-50%,40px);opacity:0;padding:14px 20px;border-radius:16px;font-weight:800;background:#16112f;border:1px solid rgba(180,255,57,.5);color:var(--lime);box-shadow:0 16px 40px rgba(0,0,0,.5);transition:all .35s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.error{border-color:rgba(255,80,110,.6);color:#ff8fa3}
+@media (max-width:480px){.opts{grid-template-columns:1fr}}
 </style>
 </head>
-
-<body>
-
-<div class="container">
-  <h1>DS Digital</h1>
-  <h2>Centro Assistenza</h2>
-
-  <p class="description">
-    Seleziona il servizio per cui desideri richiedere assistenza o un aggiornamento.
-  </p>
-
-  <div class="buttons">
-
-    <a href="assistenzamenu.html" class="service-btn menu-btn">
-      Aggiornamento Menu Digitale
-      <span class="service-sub">Modifica piatti, prezzi o contenuti del menu</span>
+<body class="no-js">
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="glow-cursor" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="./" aria-label="DSFabio Digital, menu digitali con QR code - home">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio
     </a>
-
-    <a href="assitenzagestionale.html" class="service-btn gestionale-btn">
-      Aggiornamento Gestionale Ordini
-      <span class="service-sub">Richieste tecniche o modifiche al sistema di ordinazioni</span>
-    </a>
-
+    <nav aria-label="Navigazione principale">
+      <ul class="links" id="links">
+        <li><a href="./#come-funziona">Come funziona</a></li>
+        <li><a href="modelli.html">Modelli</a></li>
+        <li><a href="./#offerta">Offerta</a></li>
+        <li><a href="about.html">Chi sono</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+        <li><a href="assistenaza.html" aria-current="page">Assistenza</a></li>
+        <li><a class="m-cta" href="./#offerta" data-open>Prova gratis 30 giorni</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-main nav-cta" href="./#offerta" data-open>Prova gratis</a>
+      <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+    </div>
   </div>
-
-  <div class="footer">
-    DS Digital © 2026
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="wrap as-wrap">
+    <span class="eyebrow rv">Area clienti</span>
+    <h1 class="rv">Centro <span class="grad-text">assistenza</span></h1>
+    <p class="lead rv">Sei già cliente? Scegli il servizio per cui vuoi chiedere un aggiornamento: ti rispondiamo entro poche ore nei giorni lavorativi.</p>
+    <div class="svc">
+      <a class="card rv" href="assistenzamenu.html"><div class="ic" style="--h:320" aria-hidden="true">🍽️</div><div><h2>Aggiornamento menu digitale</h2><p>Aggiungi, modifica o togli piatti e aggiorna i prezzi.</p></div><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="card rv" href="assitenzagestionale.html" style="--d:1"><div class="ic" style="--h:190" aria-hidden="true">⚙️</div><div><h2>Aggiornamento gestionale ordini</h2><p>Impostazioni, nuove funzioni, segnalazione errori o integrazioni.</p></div><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="card rv" href="https://wa.me/393440301412" data-wa="Ciao! Sono un cliente e ho bisogno di assistenza." target="_blank" rel="noopener" style="--d:2"><div class="ic" style="--h:130" aria-hidden="true">💬</div><div><h2>Scrivici su WhatsApp</h2><p>Per qualsiasi altra domanda o per un'urgenza.</p></div><span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <p class="hint rv" style="text-align:left;margin-top:22px">Non sei ancora cliente? <a href="./#offerta" data-open style="color:var(--cyan);font-weight:800">Richiedi la prova gratuita di 30 giorni</a>.</p>
   </div>
-</div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="./"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio</a>
+        <p>Menu digitali con QR code per ristoranti, pizzerie, bar e hotel in tutta Italia. 30 giorni di prova gratuita, poi 190 € all'anno tutto incluso.</p>
+      </div>
+      <div>
+        <h2>Esplora</h2>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="./#come-funziona">Come funziona</a></li>
+          <li><a href="modelli.html">Modelli di menu</a></li>
+          <li><a href="./#offerta">Offerta</a></li>
+          <li><a href="about.html">Chi sono</a></li>
+          <li><a href="./#faq">Domande frequenti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Supporto</h2>
+        <ul>
+          <li><a href="https://wa.me/393440301412" target="_blank" rel="noopener">💬 WhatsApp +39 344 030 1412</a></li>
+          <li><a href="assistenaza.html">Assistenza clienti</a></li>
+          <li><a href="privacy.html#privacy">Privacy</a></li>
+          <li><a href="privacy.html#cookies">Cookie</a></li>
+          <li><a href="privacy.html#terms">Termini e condizioni</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <!-- DA COMPILARE: ragione sociale e P.IVA quando disponibili -->
+      <span>© <span data-year>2026</span> DSFabio Digital · [P.IVA da inserire]</span>
+      <span>Menu digitali con QR code · Italia</span>
+    </div>
+  </div>
+</footer>
+<a class="wa-fab" id="wa-fab" href="https://wa.me/393440301412" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a>
+<script src="assets/site.js"></script>
 
 </body>
 </html>

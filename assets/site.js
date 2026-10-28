@@ -1,0 +1,136 @@
+/* =========================================================
+   DSFabio Digital · script comune a tutte le pagine
+   - menu mobile, barra di avanzamento, comparse, luce del mouse
+   - finestra "Richiedi la prova gratuita" (si apre con [data-open])
+     Un pulsante può indicare il modello scelto: data-model="MDC-001 · Gusto 360°"
+   ========================================================= */
+(function () {
+'use strict';
+var WA = '393440301412';
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $ = function (s, c) { return (c || document).querySelector(s); };
+var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+document.body.classList.remove('no-js');
+$$('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });
+
+/* ---------- Navigazione ---------- */
+var nav = $('#nav'), burger = $('#burger'), waFab = $('#wa-fab');
+function onScroll() {
+  if (nav) nav.classList.toggle('scrolled', scrollY > 10);
+  if (waFab) waFab.classList.toggle('show', scrollY > 500);
+}
+addEventListener('scroll', onScroll, {passive: true}); onScroll();
+function closeNav() { if (!nav) return; nav.classList.remove('open'); if (burger) { burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Apri il menu'); } }
+if (burger) burger.addEventListener('click', function () {
+  var o = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', o); burger.setAttribute('aria-label', o ? 'Chiudi il menu' : 'Apri il menu');
+});
+$$('.links a').forEach(function (a) { a.addEventListener('click', closeNav); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+
+/* Barra di avanzamento per i browser senza animazioni legate allo scroll */
+if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
+  var pr = $('.progress');
+  if (pr) addEventListener('scroll', function () { var h = document.documentElement.scrollHeight - innerHeight; pr.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')'; }, {passive: true});
+}
+
+/* ---------- Comparse ---------- */
+if (reduced || !('IntersectionObserver' in window)) { $$('.rv').forEach(function (e) { e.classList.add('in'); }); }
+else {
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+  $$('.rv').forEach(function (e) { io.observe(e); });
+}
+
+/* ---------- Luce che segue il mouse ---------- */
+if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced) {
+  var gc = $('.glow-cursor'), raf = 0, mx = 0, my = 0;
+  if (gc) addEventListener('pointermove', function (e) {
+    mx = e.clientX; my = e.clientY; gc.style.opacity = 1;
+    if (!raf) raf = requestAnimationFrame(function () { gc.style.transform = 'translate(' + mx + 'px,' + my + 'px)'; raf = 0; });
+  }, {passive: true});
+  document.addEventListener('pointermove', function (e) {
+    var c = e.target.closest && e.target.closest('.card'); if (!c) return;
+    var r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, {passive: true});
+}
+
+/* ---------- Onda sui pulsanti ---------- */
+document.addEventListener('pointerdown', function (e) {
+  var b = e.target.closest && e.target.closest('.btn-main'); if (!b || reduced) return;
+  var r = b.getBoundingClientRect(), s = document.createElement('span');
+  s.className = 'ripple'; s.style.left = (e.clientX - r.left) + 'px'; s.style.top = (e.clientY - r.top) + 'px';
+  b.appendChild(s); setTimeout(function () { s.remove(); }, 650);
+});
+
+/* ---------- Finestra richiesta prova gratuita ---------- */
+var DLG_HTML =
+'<dialog id="req-dlg" aria-labelledby="req-t"><div class="dc">' +
+'<button type="button" class="x" data-close aria-label="Chiudi">×</button>' +
+'<div id="req-body">' +
+'<h2 id="req-t">Richiedi la prova gratuita</h2>' +
+'<p class="sub">30 giorni gratis dalla consegna, poi 190 €/anno tutto incluso. Nessun impegno.</p>' +
+'<span class="model-tag" id="req-model" hidden></span>' +
+'<form id="req" class="fform" novalidate>' +
+'<div class="f"><label for="r-locale">Nome del locale *</label><input id="r-locale" name="locale" type="text" required autocomplete="organization" placeholder="Es. Trattoria Da Mario"></div>' +
+'<div class="two"><div class="f"><label for="r-nome">Nome e cognome *</label><input id="r-nome" name="nome" type="text" required autocomplete="name" placeholder="Il tuo nome"></div>' +
+'<div class="f"><label for="r-citta">Città *</label><input id="r-citta" name="citta" type="text" required autocomplete="address-level2" placeholder="Es. Bologna"></div></div>' +
+'<div class="two"><div class="f"><label for="r-tel">WhatsApp / telefono *</label><input id="r-tel" name="telefono" type="tel" required autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{8,16}" placeholder="333 1234567"></div>' +
+'<div class="f"><label for="r-email">Email</label><input id="r-email" name="email" type="email" autocomplete="email" placeholder="Facoltativa"></div></div>' +
+'<div class="f"><label for="r-msg">Messaggio</label><textarea id="r-msg" name="messaggio" maxlength="500" placeholder="Facoltativo. Es. che tipo di locale hai, quale modello ti piace…"></textarea></div>' +
+'<label class="consent"><input type="checkbox" name="consenso" required><span>Ho letto l\'<a href="privacy.html#privacy" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato/a. *</span></label>' +
+'<button type="submit" class="send">📲 Invia la richiesta su WhatsApp</button>' +
+'<p class="hint">Si aprirà WhatsApp con il messaggio già pronto: premi <strong>Invia</strong> per completare.</p>' +
+'</form></div>' +
+'<div id="req-ok" class="ok" hidden><div class="big" aria-hidden="true">🎉</div><h2>Ci siamo quasi!</h2>' +
+'<p class="sub" style="margin-top:8px">Si è aperta la chat WhatsApp con la tua richiesta: premi <strong>Invia</strong> per mandarcela. Poi mandaci anche una foto del tuo menu.</p>' +
+'<p class="hint">WhatsApp non si è aperto? <a id="wa-link" href="#" target="_blank" rel="noopener">Clicca qui</a>.</p></div>' +
+'</div></dialog>';
+
+var dlg = null, model = '';
+function ensureDialog() {
+  if (dlg) return dlg;
+  document.body.insertAdjacentHTML('beforeend', DLG_HTML);
+  dlg = $('#req-dlg');
+  $$('[data-close]', dlg).forEach(function (b) { b.addEventListener('click', function () { dlg.close(); }); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  var form = $('#req', dlg);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    var v = function (n) { return form.elements[n].value.trim(); };
+    var txt = [
+      '🚀 Richiesta prova gratuita (30 giorni)',
+      model ? '🎨 Modello: ' + model : '',
+      '🏠 Locale: ' + v('locale'),
+      '👤 Nome: ' + v('nome'),
+      '📍 Città: ' + v('citta'),
+      '📱 WhatsApp: ' + v('telefono'),
+      '📧 Email: ' + (v('email') || '—'),
+      '💬 Messaggio: ' + (v('messaggio') || '—'),
+      '✅ Consenso privacy: sì',
+      '(dal sito: ' + (document.title.split('|')[0].trim()) + ')'
+    ].filter(Boolean).join('\n');
+    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(txt);
+    $('#wa-link', dlg).href = url;
+    $('#req-body', dlg).hidden = true; $('#req-ok', dlg).hidden = false;
+    window.open(url, '_blank', 'noopener');
+    form.reset();
+  });
+  return dlg;
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('[data-open]'); if (!b) return;
+  e.preventDefault(); closeNav();
+  var d = ensureDialog();
+  model = b.getAttribute('data-model') || '';
+  var tag = $('#req-model', d); tag.hidden = !model; tag.textContent = model ? '🎨 Modello scelto: ' + model : '';
+  $('#req-body', d).hidden = false; $('#req-ok', d).hidden = true;
+  if (d.showModal) d.showModal(); else location.href = 'https://wa.me/' + WA;
+});
+
+/* Link WhatsApp generici con messaggio pronto */
+$$('[data-wa]').forEach(function (a) {
+  a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(a.getAttribute('data-wa') || 'Ciao! Vorrei informazioni sul menu digitale con QR code.');
+});
+})();

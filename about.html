@@ -1,1365 +1,168 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>Chi Sono – DSFabio Digital</title>
-<meta name="description" content="Scopri chi c'è dietro DSFabio Digital: un approccio umano prima che tecnico per soluzioni digitali semplici ed efficaci" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- DOMINIO: quando compri il dominio sostituisci https://dsfabio.vercel.app in tutte le pagine, sitemap.xml, robots.txt e llms.txt -->
+<title>Chi sono · Fabio, menu digitali per ristoranti | DSFabio Digital</title>
+<meta name="description" content="Sono Fabio e creo menu digitali con QR code per ristoranti, pizzerie e bar. Contatto diretto su WhatsApp, menu pronto in 48 ore e 30 giorni di prova gratuita.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://dsfabio.vercel.app/about.html">
+<meta name="theme-color" content="#0d0a1f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="DSFabio Digital · Menu digitali">
+<meta property="og:title" content="Chi sono · Fabio, menu digitali per ristoranti | DSFabio Digital">
+<meta property="og:description" content="Sono Fabio e creo menu digitali con QR code per ristoranti, pizzerie e bar. Contatto diretto su WhatsApp, menu pronto in 48 ore e 30 giorni di prova gratuita.">
+<meta property="og:url" content="https://dsfabio.vercel.app/about.html">
+<meta property="og:image" content="https://dsfabio.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "AboutPage", "name": "Chi sono · DSFabio Digital", "url": "https://dsfabio.vercel.app/about.html", "inLanguage": "it-IT", "isPartOf": {"@id": "https://dsfabio.vercel.app/#site"}, "mainEntity": {"@type": "Person", "name": "Fabio", "jobTitle": "Sviluppatore web, menu digitali per la ristorazione", "worksFor": {"@id": "https://dsfabio.vercel.app/#org"}}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dsfabio.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "Chi sono", "item": "https://dsfabio.vercel.app/about.html"}]}}</script>
 <style>
-:root {
-  --bg-dark: #0c1222;
-  --bg-card: #111827;
-  --bg-section: #161f38;
-  --card: #1e293b;
-  --text: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --yellow: #facc15;
-  --yellow-light: #fde68a;
-  --blue: #3b82f6;
-  --blue-light: #93c5fd;
-  --green: #22c55e;
-  --green-light: #86efac;
-  --purple: #8b5cf6;
-  --gray: #94a3b8;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  color-scheme: dark;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
-  color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  padding-bottom: 80px;
-  background-color: var(--bg-dark) !important;
-  color: var(--text) !important;
-  transition: overflow 0.3s ease;
-}
-
-/* === FIX: Blocca scroll body quando modale aperta === */
-body.modal-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-/* Background pattern */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.03) 0%, transparent 30%);
-  z-index: -2;
-}
-
-/* Noise texture - CORRETTO */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='a'%3E%3CfeTurbulence baseFrequency='0.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23ccc' filter='url(%23a)' d='M0 0h300v300H0z'/%3E%3C/svg%3E");
-  opacity: 0.03;
-  z-index: -1;
-}
-
-/* Scrollbar styling - globale */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--blue), var(--purple));
-  border-radius: 5px;
-}
-
-/* Container - CENTRATO E ADATTIVO */
-.container {
-  width: 100%;
-  max-width: 1200px; /* Ridotto per migliore centratura */
-  margin: 0 auto;
-  padding: 0 5%;
-}
-
-/* Header & Navigation */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(12, 18, 34, 0.85);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 0;
-}
-
-.logo-nav {
-  font-size: 1.8rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-.logo-nav span {
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  letter-spacing: 1px;
-}
-
-.logo-icon { font-size: 2.2rem; }
-
-.nav-links {
-  display: flex;
-  gap: 1.8rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li a {
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  padding: 0.6rem 0;
-  position: relative;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.nav-links li a:hover,
-.nav-links li a.active { color: var(--yellow); }
-
-.nav-links li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--yellow), var(--blue));
-  border-radius: 1px;
-  transition: var(--transition);
-  opacity: 0;
-}
-
-.nav-links li a:hover::after,
-.nav-links li a.active::after {
-  width: 100%;
-  opacity: 1;
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 32px;
-  height: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1100;
-  transition: var(--transition);
-}
-
-.nav-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: var(--yellow);
-  border-radius: 3px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-.nav-toggle.active span:nth-child(2) { opacity: 0; }
-.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-
-/* Back Button */
-.back-button {
-  position: fixed;
-  top: calc(20px + env(safe-area-inset-top));
-  left: calc(20px + env(safe-area-inset-left));
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(10px);
-  color: var(--yellow);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.9rem 1.5rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  z-index: 999;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  min-width: 140px;
-  justify-content: center;
-}
-
-.back-button:hover {
-  background: rgba(59, 130, 246, 0.2);
-  color: var(--yellow-light);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.back-button i { transition: transform 0.3s ease; font-size: 1.1rem; }
-.back-button:hover i { transform: translateX(-5px); }
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(135deg, rgba(12, 18, 34, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%),
-              url('https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
-  background-size: cover;
-  position: relative;
-  overflow: hidden;
-  padding: 7rem 0 5rem;
-  margin-bottom: 3rem;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-  z-index: -1;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(12, 18, 34, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
-  z-index: -1;
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0 1.5rem;
-  z-index: 2;
-  position: relative;
-}
-
-.hero-content h1 {
-  font-size: 2.9rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  background: linear-gradient(90deg, var(--text) 0%, var(--yellow-light) 50%, var(--blue-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.hero-content p {
-  font-size: 1.4rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Section Title - CENTRATO */
-.section-title {
-  text-align: center;
-  margin: 6rem 0 3rem;
-  position: relative;
-}
-
-.section-title h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  display: inline-block;
-  margin-bottom: 1.2rem;
-}
-
-.section-title h2 span {
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 5px;
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-  border-radius: 2px;
-}
-
-/* Content Sections */
-.content-section {
-  background: rgba(22, 31, 56, 0.3);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg);
-  padding: 3.2rem;
-  margin: 2.5rem auto 4.5rem; /* Centrato con margin auto */
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  max-width: 1000px; /* Limita larghezza per leggibilità */
-}
-
-.content-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 4px;
-  background: linear-gradient(90deg, var(--yellow), var(--blue));
-  opacity: 0.3;
-}
-
-.content-section:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.35);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.content-section h2 {
-  color: var(--yellow);
-  font-size: 1.9rem;
-  margin-bottom: 1.5rem;
-  display: inline-block;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.content-section h2::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 50px; height: 3px;
-  background: linear-gradient(90deg, var(--yellow), var(--blue));
-  border-radius: 2px;
-}
-
-.content-section p {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-/* Values Section */
-.values-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 1.8rem;
-}
-
-.value-item {
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-}
-
-.value-item::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 4px;
-  background: linear-gradient(90deg, var(--yellow), var(--blue));
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.value-item:hover {
-  transform: translateY(-8px);
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.2);
-}
-
-.value-item:hover::before { opacity: 1; }
-.value-item h3 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 0; line-height: 1.4; }
-
-/* Testimonials Section */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  margin-top: 1.8rem;
-}
-
-.testimonial-card {
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: var(--transition);
-  position: relative;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.testimonial-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 4px;
-  background: linear-gradient(90deg, var(--yellow), var(--blue));
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.testimonial-card:hover {
-  transform: translateY(-12px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-.testimonial-card:hover::before { opacity: 1; }
-
-.testimonial-content {
-  padding: 2.2rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.testimonial-avatar {
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1.5rem;
-  border: 2px solid var(--yellow);
-  box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
-  transition: var(--transition);
-  background: var(--bg-dark);
-}
-
-.testimonial-card:hover .testimonial-avatar {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(250, 204, 21, 0.4);
-}
-
-.testimonial-name { font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-.testimonial-card:hover .testimonial-name { color: var(--yellow); }
-.testimonial-role { font-size: 1rem; font-style: italic; margin-bottom: 1.2rem; color: var(--gray); }
-
-.testimonial-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0.5rem;
-}
-
-.testimonial-text::before,
-.testimonial-text::after {
-  content: "❝";
-  font-size: 2.8rem;
-  color: var(--yellow);
-  opacity: 0.2;
-  line-height: 1;
-  position: relative;
-  top: -0.5rem;
-}
-
-.testimonial-text::before { margin-right: 0.5rem; }
-.testimonial-text::after { margin-left: 0.5rem; }
-
-/* CTA Section - CENTRATO */
-.cta-section {
-  text-align: center;
-  padding: 5rem 0;
-  background: linear-gradient(135deg, var(--bg-section) 0%, #1e293b 100%);
-  border-radius: var(--radius-lg);
-  margin: 5rem auto; /* Centrato */
-  position: relative;
-  overflow: hidden;
-  width: 95%;
-  max-width: 1000px;
-}
-
-.cta-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, rgba(250, 204, 21, 0.07) 0%, transparent 70%);
-  z-index: 0;
-}
-
-.cta-content {
-  position: relative;
-  z-index: 1;
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.cta-content h2 {
-  font-size: 2.7rem;
-  margin-bottom: 1.8rem;
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--blue) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.cta-content p {
-  font-size: 1.4rem;
-  color: var(--text-secondary);
-  margin-bottom: 2.8rem;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.7;
-}
-
-.cta-content .highlight {
-  color: var(--yellow);
-  font-weight: 600;
-  background: rgba(250, 204, 21, 0.15);
-  padding: 0 6px;
-  border-radius: 4px;
-}
-
-.btn-cta {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--yellow) 0%, #fde047 100%);
-  color: #0f172a;
-  padding: 1.4rem 3rem;
-  border-radius: 16px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 12px 30px -5px rgba(250, 204, 21, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.btn-cta:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px -5px rgba(250, 204, 21, 0.5);
-  background: linear-gradient(90deg, #fde047 0%, #fef3c7 100%);
-}
-
-/* Back to top button */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem; left: 2rem;
-  width: 50px; height: 50px;
-  background: var(--bg-card);
-  color: var(--yellow);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: var(--transition);
-  z-index: 999;
-  text-decoration: none;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.back-to-top.visible { opacity: 1; pointer-events: auto; }
-.back-to-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  background: var(--bg-section);
-  color: var(--yellow-light);
-}
-
-/* Footer - CENTRATO */
-footer {
-  text-align: center;
-  padding: 2.5rem 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 2rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 1.2rem 0;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: var(--text-secondary);
-  transition: var(--transition);
-  font-weight: 500;
-}
-
-.footer-links a:hover { color: var(--yellow); }
-.copyright { color: var(--gray); font-size: 0.9rem; margin-top: 1rem; }
-
-/* WhatsApp Floating Button */
-.whatsapp-float {
-  position: fixed;
-  bottom: 2rem; right: 2rem;
-  width: 65px; height: 65px;
-  background: var(--green);
-  color: white;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 6px 25px rgba(34, 197, 94, 0.5);
-  transition: var(--transition);
-  z-index: 999;
-  text-decoration: none;
-  animation: pulse 2.5s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.8); }
-  70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.2) rotate(10deg);
-  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.7);
-}
-
-/* === CONTACT MODAL - CORRETTO 95% MOBILE, NO SCROLLBAR === */
-.contact-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 9999;
-  visibility: hidden;
-  padding: 1rem;
-}
-
-.contact-modal.active {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-}
-
-.modal-content {
-  background: var(--bg-dark);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  /* 95% dello schermo su mobile come richiesto */
-  width: 95%;
-  max-width: 520px;
-  /* Altezza massima con scroll interno */
-  max-height: 85vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.contact-modal.active .modal-content {
-  transform: translateY(0);
-}
-
-/* === NASCONDI SCROLLBAR MODALE (funziona su tutti i browser) === */
-.modal-content {
-  -ms-overflow-style: none;  /* IE e Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-.modal-content::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari, Opera */
-}
-
-.close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--yellow);
-  cursor: pointer;
-  transition: var(--transition);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  z-index: 10;
-  flex-shrink: 0;
-}
-
-.close-modal:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(90deg);
-}
-
-.modal-content h2 {
-  margin: 0.5rem 0 0.5rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text);
-  text-align: center;
-  padding-right: 2rem;
-}
-
-.modal-content p {
-  font-size: 1rem;
-  color: var(--yellow-light);
-  margin: 0 0 1.5rem;
-  text-align: center;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.contact-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.form-group { position: relative; }
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.9rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  font-size: 1rem;
-  background: rgba(15, 23, 42, 0.6);
-  color: var(--text);
-  transition: var(--transition);
-  box-sizing: border-box;
-  font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
-}
-
-.form-group textarea {
-  min-height: 120px;
-  max-height: 200px;
-  resize: vertical;
-}
-
-.char-count {
-  font-size: 0.85rem;
-  color: var(--gray);
-  text-align: right;
-  margin-top: 4px;
-}
-
-.submit-btn {
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, var(--green) 0%, #16a34a 100%);
-  color: white;
-  border: none;
-  padding: 1rem;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  width: 100%;
-  box-shadow: 0 7px 20px rgba(34, 197, 94, 0.4);
-  transition: var(--transition);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.submit-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(34, 197, 94, 0.6);
-  background: linear-gradient(90deg, #22c55e 0%, #15803d 100%);
-}
-
-.submit-btn:active { transform: translateY(0); }
-
-/* Animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-.float { animation: float 6s ease-in-out infinite; }
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-/* Dark mode prevention */
-@media (prefers-color-scheme: dark) {
-  body { filter: none !important; background-color: var(--bg-dark) !important; }
-  img { filter: none !important; }
-  a, a:visited, a:hover, a:active { color: var(--text) !important; }
-}
-@media screen and (-webkit-min-device-pixel-ratio:0) { body { filter: none !important; } }
-@-moz-document url-prefix() { body { filter: none !important; } }
-
-input, textarea, select, button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: var(--bg-card) !important;
-  color: var(--text) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* === RESPONSIVE - CENTRATURA PERFETTA === */
-@media (max-width: 1200px) {
-  .container { max-width: 1000px; }
-}
-
-@media (max-width: 900px) {
-  .nav-links {
-    position: fixed;
-    top: 80px;
-    right: -100%;
-    flex-direction: column;
-    background: rgba(12, 18, 34, 0.95);
-    backdrop-filter: blur(10px);
-    width: 80%;
-    max-width: 320px;
-    height: calc(100vh - 80px);
-    padding: 2.8rem 2.2rem;
-    transition: right 0.4s ease;
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .nav-links.open { right: 0; }
-  .nav-toggle { display: flex; }
-  
-  .hero-content h1 { font-size: 2.3rem; }
-  .hero-content p { font-size: 1.1rem; }
-  .section-title h2 { font-size: 1.9rem; }
-  
-  .content-section {
-    padding: 2.5rem 2rem;
-    margin: 2rem auto 4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .container { padding: 0 4%; }
-  
-  .hero { padding: 5rem 0 4rem; }
-  .hero-content h1 { font-size: 2rem; }
-  
-  .section-title { margin: 4.5rem 0 2.5rem; }
-  .section-title h2 { font-size: 1.7rem; }
-  
-  .content-section {
-    padding: 2rem 1.8rem;
-    margin: 1.8rem auto 3.5rem;
-  }
-  
-  .values-list,
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .cta-section {
-    width: 95%;
-    margin: 4rem auto;
-    padding: 4rem 0;
-  }
-  
-  .cta-content h2 { font-size: 2.2rem; }
-  .cta-content p { font-size: 1.2rem; }
-}
-
-@media (max-width: 480px) {
-  .container { padding: 0 3%; }
-  
-  .hero-content h1 { font-size: 1.7rem; }
-  .hero-content p { font-size: 1.05rem; }
-  
-  .section-title h2 { font-size: 1.5rem; }
-  
-  .content-section {
-    padding: 1.8rem 1.5rem;
-    margin: 1.5rem auto 3rem;
-  }
-  
-  .content-section h2 { font-size: 1.5rem; }
-  .content-section p { font-size: 1rem; }
-  
-  .value-item h3 { font-size: 1.2rem; }
-  
-  .testimonial-avatar { width: 80px; height: 80px; }
-  .testimonial-name { font-size: 1.2rem; }
-  .testimonial-text { font-size: 1rem; }
-  
-  .cta-section {
-    width: 95%;
-    padding: 3.5rem 0;
-    margin: 3.5rem auto;
-  }
-  
-  .cta-content h2 { font-size: 1.9rem; }
-  .cta-content p { font-size: 1.1rem; }
-  
-  .btn-cta {
-    padding: 1.1rem 2rem;
-    font-size: 1.05rem;
-  }
-  
-  .whatsapp-float {
-    width: 55px; height: 55px;
-    font-size: 1.7rem;
-    bottom: 1.5rem; right: 1.5rem;
-  }
-  
-  .back-button {
-    padding: 0.7rem 1.2rem;
-    font-size: 1rem;
-    min-width: 120px;
-    top: 12px; left: 12px;
-  }
-  
-  /* === MODALE MOBILE 95% === */
-  .modal-content {
-    width: 95%;
-    padding: 1.5rem;
-    max-height: 80vh;
-  }
-  
-  .modal-content h2 { font-size: 1.5rem; padding-right: 1.8rem; }
-  .modal-content p { font-size: 0.95rem; }
-  
-  .close-modal {
-    top: 0.8rem; right: 0.8rem;
-    font-size: 1.8rem;
-    width: 36px; height: 36px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-  }
-  
-  .submit-btn {
-    padding: 0.9rem;
-    font-size: 1rem;
-  }
-}
+.intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,60px);align-items:center}
+.avatar{position:relative;aspect-ratio:1;max-width:380px;width:100%;margin:0 auto;border-radius:40px;display:grid;place-items:center;background:var(--grad);box-shadow:0 30px 80px rgba(123,92,255,.4)}
+.avatar::after{content:"";position:absolute;inset:10px;border-radius:32px;background:linear-gradient(160deg,#1a1240,#0f0b25)}
+.avatar span{position:relative;z-index:1;font-family:Syne,sans-serif;font-size:clamp(5rem,16vw,9rem);font-weight:800;line-height:1}
+.avatar small{position:absolute;z-index:1;bottom:24px;left:0;right:0;text-align:center;font-weight:800;color:var(--sub);font-size:.85rem}
+.intro p{color:var(--sub);font-size:1.08rem;margin-bottom:14px}
+.intro p strong{color:var(--txt)}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vals .card h3,.promise .card h3{font-family:Syne,sans-serif;font-size:1.18rem;margin:6px 0 6px;line-height:1.2}
+.vals .card p,.promise .card p{color:var(--sub);font-size:.95rem}
+.vals .wide{grid-column:span 2}
+.promise{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.promise .big{font-family:Syne,sans-serif;font-size:2.4rem;line-height:1}
+@media (max-width:900px){.intro{grid-template-columns:1fr}.vals{grid-template-columns:1fr 1fr}.vals .wide{grid-column:span 2}.promise{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.vals{grid-template-columns:1fr}.vals .wide{grid-column:auto}.promise{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-<!-- Header & Navigation -->
-<header>
-  <div class="container">
-    <nav class="navbar" role="navigation" aria-label="Menu principale">
-      <a href="index.html" class="logo-nav" aria-label="DSFabio Digital - Home">
-        <i class="fas fa-utensils logo-icon"></i>
-        DSFabio<span>Digital</span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks" aria-hidden="true">
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="modelli.html"><i class="fas fa-th-large"></i> Demo gratis</a></li>
-        <li><a href="prezzi.html"><i class="fas fa-tag"></i> Prezzi</a></li>
-        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-        <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
+<body class="no-js">
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="glow-cursor" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="./" aria-label="DSFabio Digital, menu digitali con QR code - home">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio
+    </a>
+    <nav aria-label="Navigazione principale">
+      <ul class="links" id="links">
+        <li><a href="./#come-funziona">Come funziona</a></li>
+        <li><a href="modelli.html">Modelli</a></li>
+        <li><a href="./#offerta">Offerta</a></li>
+        <li><a href="about.html" aria-current="page">Chi sono</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+        <li><a href="assistenaza.html">Assistenza</a></li>
+        <li><a class="m-cta" href="./#offerta" data-open>Prova gratis 30 giorni</a></li>
       </ul>
     </nav>
+    <div class="nav-right">
+      <a class="btn btn-main nav-cta" href="./#offerta" data-open>Prova gratis</a>
+      <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-
-<!-- Back Button -->
-<a href="index.html" class="back-button" aria-label="Torna alla home">
-  <i class="fas fa-arrow-left"></i> Indietro
-</a>
-
-<!-- Hero Section -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content fade-in">
-      <h1>Chi c'è dietro DSFabio Digital?</h1>
-      <p>Soluzioni semplici e intelligenti per migliorare la tua vita quotidiana, con passione, empatia e attenzione ai dettagli.</p>
+<main id="main">
+<section class="page-hero">
+  <div class="wrap intro">
+    <div class="avatar rv" aria-hidden="true"><span class="grad-text">F</span><small>Fabio · DSFabio Digital</small></div>
+    <div>
+      <span class="eyebrow rv">Chi sono</span>
+      <h1 class="rv">Un approccio <span class="grad-text">umano</span>, prima che tecnico</h1>
+      <p class="rv">Mi chiamo <strong>Fabio</strong>, sono uno sviluppatore curioso e appassionato. Credo che la tecnologia debba servire le persone e semplificare il lavoro di tutti i giorni, non complicarlo.</p>
+      <p class="rv">Con <strong>DSFabio Digital</strong> creo menu digitali con QR code per ristoranti, pizzerie e bar. Non avrai a che fare con un call center o un sistema impersonale: parli sempre con me, direttamente su WhatsApp, dalla prima bozza agli aggiornamenti.</p>
+      <div class="rv" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">
+        <a class="btn btn-main" href="./#offerta" data-open>🚀 Prova gratis 30 giorni</a>
+        <a class="btn btn-ghost" href="modelli.html">Guarda i modelli</a>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="container">
-  <section class="content-section fade-in">
-    <h2>Un approccio umano prima che tecnico</h2>
-    <p>Mi chiamo Fabio, sono uno sviluppatore curioso e appassionato, convinto che la tecnologia debba servire le persone e migliorare la vita di tutti i giorni.</p>
-    <p>Il mio obiettivo non è solo fornire strumenti digitali, ma creare esperienze semplici, efficaci e costruite su misura per chi le utilizza.</p>
-  </section>
+<section class="sec" aria-labelledby="val-t">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">I miei valori</span><h2 class="h2" id="val-t">Come lavoro</h2><p class="lead">Ogni menu nasce dall'ascolto del tuo locale: come lavori, chi sono i tuoi clienti, cosa vuoi comunicare.</p></div>
+    <div class="vals">
+      <article class="card wide rv"><div class="ic" style="--h:330" aria-hidden="true">🤝</div><h3>Onestà e trasparenza</h3><p>Un solo prezzo, chiaro fin dall'inizio: 30 giorni di prova gratuita, poi 190 € all'anno. Niente costi nascosti, niente vincoli.</p></article>
+      <article class="card rv" style="--d:1"><div class="ic" style="--h:190" aria-hidden="true">👂</div><h3>Ascolto</h3><p>Prima di proporti uno stile, capisco le tue esigenze e i tuoi obiettivi.</p></article>
+      <article class="card rv"><div class="ic" style="--h:90" aria-hidden="true">✨</div><h3>Semplicità</h3><p>Il menu lo prepariamo noi: tu non devi installare nulla né imparare programmi.</p></article>
+      <article class="card rv" style="--d:1"><div class="ic" style="--h:260" aria-hidden="true">🔍</div><h3>Cura dei dettagli</h3><p>Ogni menu viene provato su più telefoni prima della consegna.</p></article>
+      <article class="card rv" style="--d:2"><div class="ic" style="--h:30" aria-hidden="true">🎯</div><h3>Tecnologia con uno scopo</h3><p>Effetti e animazioni solo quando aiutano a leggere il menu, mai a scapito della velocità.</p></article>
+    </div>
+  </div>
+</section>
 
-  <section class="content-section fade-in">
-    <h2>I miei <span>valori</span></h2>
-    <div class="values-list">
-      <div class="value-item fade-in">
-        <h3>Onestà e Trasparenza</h3>
-        <p>Non credo nelle promesse vuote. Ogni soluzione è chiara, onesta e senza costi nascosti.</p>
-      </div>
-      <div class="value-item fade-in">
-        <h3>Empatia e Ascolto Attivo</h3>
-        <p>Prima di proporre una soluzione, ascolto attentamente le tue esigenze e i tuoi obiettivi.</p>
-      </div>
-      <div class="value-item fade-in">
-        <h3>Semplicità e Chiarezza</h3>
-        <p>Creo strumenti intuitivi che non richiedono competenze tecniche per essere utilizzati.</p>
-      </div>
-      <div class="value-item fade-in">
-        <h3>Qualità e Cura dei Dettagli</h3>
-        <p>Ogni progetto è realizzato con attenzione ai dettagli e testato per garantire il massimo della qualità.</p>
-      </div>
-      <div class="value-item fade-in">
-        <h3>Innovazione con Scopo</h3>
-        <p>Non uso la tecnologia per la tecnologia, ma per risolvere problemi reali e migliorare l'esperienza.</p>
+<section class="sec" aria-labelledby="pro-t" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center rv"><span class="eyebrow">I miei impegni</span><h2 class="h2" id="pro-t">Cosa puoi aspettarti</h2></div>
+    <div class="promise">
+      <article class="card rv"><div class="big grad-text">48h</div><h3>Menu online</h3><p>Da quando mi mandi il menu, anche solo in foto.</p></article>
+      <article class="card rv" style="--d:1"><div class="big grad-text">30</div><h3>Giorni gratis</h3><p>Lo provi con i tuoi clienti prima di decidere.</p></article>
+      <article class="card rv" style="--d:2"><div class="big grad-text">4</div><h3>Modifiche al mese</h3><p>Piatti e prezzi aggiornati da me, incluse nel prezzo.</p></article>
+      <article class="card rv" style="--d:3"><div class="big grad-text">1:1</div><h3>Contatto diretto</h3><p>Su WhatsApp, con risposta entro poche ore nei giorni lavorativi.</p></article>
+    </div>
+  </div>
+</section>
+<section class="sec" aria-labelledby="fin-t" style="padding-top:0">
+  <div class="wrap">
+    <div class="final rv">
+      <span class="eyebrow">Pronto a partire?</span>
+      <h2 class="h2" id="fin-t">Parliamo del <span class="grad-text">tuo menu</span></h2>
+      <p class="lead">Scrivimi su WhatsApp o richiedi la prova gratuita: ti rispondo io, personalmente.</p>
+      <div class="final-cta">
+        <a class="btn btn-main" href="./#offerta" data-open>🚀 Richiedi la prova gratuita</a>
+        <a class="btn btn-ghost" href="https://wa.me/393440301412" data-wa="Ciao! Vorrei informazioni sul menu digitale con QR code e la prova gratuita di 30 giorni." target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
       </div>
     </div>
-  </section>
-
-  <section class="content-section fade-in">
-    <h2>Perché scegliere <span>DSFabio Digital?</span></h2>
-    <p>Ogni progetto nasce dall'ascolto delle tue reali esigenze. Con metodi agili e un dialogo costante, costruisco soluzioni che fanno davvero la differenza.</p>
-    <p>La tua soddisfazione è la mia priorità assoluta, perché credo che un lavoro fatto bene sia il miglior biglietto da visita.</p>
-    <p>Con DSFabio Digital non avrai mai a che fare con un sistema complesso o con un servizio impersonale. Avrai sempre un interlocutore diretto, disponibile e competente che segue il tuo progetto passo dopo passo.</p>
-  </section>
-
-  <section class="content-section fade-in">
-    <h2>Testimonianze</h2>
-    <div class="testimonials-grid">
-      <article class="testimonial-card fade-in">
-        <div class="testimonial-content">
-          <img src="https://i.pravatar.cc/100?img=12" alt="Avatar di Marco Rossi" class="testimonial-avatar" />
-          <div class="testimonial-name">Marco Rossi</div>
-          <div class="testimonial-role">Ristoratore, Milano</div>
-          <p class="testimonial-text">Grazie a Fabio ho digitalizzato il mio menù in modo semplice e veloce. Il supporto è sempre stato rapido e professionale. Il menù digitale ha aumentato le vendite del 20% e i clienti lo adorano.</p>
-        </div>
-      </article>
-      <article class="testimonial-card fade-in">
-        <div class="testimonial-content">
-          <img src="https://i.pravatar.cc/100?img=45" alt="Avatar di Lucia Bianchi" class="testimonial-avatar" />
-          <div class="testimonial-name">Lucia Bianchi</div>
-          <div class="testimonial-role">Manager Pizzeria, Roma</div>
-          <p class="testimonial-text">Il menù digitale ha rivoluzionato il nostro servizio al tavolo. Consiglio DSFabio Digital a chiunque voglia innovare senza complicazioni. La possibilità di ordinare via WhatsApp ha ridotto i tempi di attesa del 30%.</p>
-        </div>
-      </article>
-      <article class="testimonial-card fade-in">
-        <div class="testimonial-content">
-          <img src="https://i.pravatar.cc/100?img=33" alt="Avatar di Paolo Conti" class="testimonial-avatar" />
-          <div class="testimonial-name">Paolo Conti</div>
-          <div class="testimonial-role">Chef, Torino</div>
-          <p class="testimonial-text">Finalmente un servizio su misura che ascolta davvero le esigenze del cliente e propone soluzioni efficaci. L'upsell integrato ha aumentato il valore medio dello scontrino del 25% senza sforzo.</p>
-        </div>
-      </article>
-      <article class="testimonial-card fade-in">
-        <div class="testimonial-content">
-          <img src="https://i.pravatar.cc/100?img=5" alt="Avatar di Francesca Esposito" class="testimonial-avatar" />
-          <div class="testimonial-name">Francesca Esposito</div>
-          <div class="testimonial-role">Proprietaria Bar, Napoli</div>
-          <p class="testimonial-text">Fabio è sempre disponibile e attento. Il menù digitale funziona alla perfezione e ha migliorato molto l'esperienza dei miei clienti. La modifica dei prezzi in tempo reale è stata una vera rivoluzione per la mia attività.</p>
-        </div>
-      </article>
-      <article class="testimonial-card fade-in">
-        <div class="testimonial-content">
-          <img src="https://i.pravatar.cc/100?img=64" alt="Avatar di Alessandro Greco" class="testimonial-avatar" />
-          <div class="testimonial-name">Alessandro Greco</div>
-          <div class="testimonial-role">Consulente Marketing, Firenze</div>
-          <p class="testimonial-text">Un servizio professionale, innovativo e umano. Fabio sa davvero come aiutarti a far crescere il tuo business. Il menù digitale è stato il primo passo per la digitalizzazione completa del ristorante.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-content">
-      <h2>Pronto a Trasformare il Tuo Menù?</h2>
-      <p>Vuoi un menu moderno, elegante e pronto a farti <span class="highlight">vendere di più</span>? Chiedi una <strong>prova gratuita di 15 giorni</strong> di uno dei nostri modelli e scopri come possiamo aiutarti ad aumentare le vendite e migliorare l'esperienza dei tuoi clienti. <span class="highlight">Nessun impegno.</span></p>
-      <a href="#contactModal" class="btn-cta">RICHIEDI LA TUA PROVA GRATUITA <i class="fas fa-arrow-right"></i></a>
-    </div>
-  </section>
-</div>
-
-<!-- Footer -->
+  </div>
+</section>
+</main>
 <footer>
-  <div class="container">
-    <button id="contactBtn" class="btn-service" aria-label="Contattaci"></button>
-    <div class="footer-links">
-      <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="privacy.html#privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
-      <a href="privacy.html#terms"><i class="fas fa-file-contract"></i> Termini e Condizioni</a>
-      <a href="privacy.html#cookies"><i class="fas fa-cookie"></i>Cookies</a>
-      <a href="assistenaza.html"><i class="fas fa-headset"></i> Assistenza</a>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="./"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio</a>
+        <p>Menu digitali con QR code per ristoranti, pizzerie, bar e hotel in tutta Italia. 30 giorni di prova gratuita, poi 190 € all'anno tutto incluso.</p>
+      </div>
+      <div>
+        <h2>Esplora</h2>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="./#come-funziona">Come funziona</a></li>
+          <li><a href="modelli.html">Modelli di menu</a></li>
+          <li><a href="./#offerta">Offerta</a></li>
+          <li><a href="about.html">Chi sono</a></li>
+          <li><a href="./#faq">Domande frequenti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Supporto</h2>
+        <ul>
+          <li><a href="https://wa.me/393440301412" target="_blank" rel="noopener">💬 WhatsApp +39 344 030 1412</a></li>
+          <li><a href="assistenaza.html">Assistenza clienti</a></li>
+          <li><a href="privacy.html#privacy">Privacy</a></li>
+          <li><a href="privacy.html#cookies">Cookie</a></li>
+          <li><a href="privacy.html#terms">Termini e condizioni</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="copyright">&copy; 2026 DSFabio Digital. Tutti i diritti riservati.</div>
+    <div class="legal">
+      <!-- DA COMPILARE: ragione sociale e P.IVA quando disponibili -->
+      <span>© <span data-year>2026</span> DSFabio Digital · [P.IVA da inserire]</span>
+      <span>Menu digitali con QR code · Italia</span>
+    </div>
   </div>
 </footer>
+<a class="wa-fab" id="wa-fab" href="https://wa.me/393440301412" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a>
+<script src="assets/site.js"></script>
 
-<!-- Back to top button -->
-<a href="#" class="back-to-top" id="backToTop" aria-label="Torna su">
-  <i class="fas fa-arrow-up"></i>
-</a>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/393440301412" class="whatsapp-float" aria-label="Contattaci su WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
-<!-- Contact Modal -->
-<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-content">
-    <button class="close-modal" id="closeModal" aria-label="Chiudi modale">&times;</button>
-    <h2 id="modalTitle">Richiedi la tua prova gratuita</h2>
-    <p>Eleva l'esperienza dei tuoi clienti e aumenta il valore di ogni ordine.</p>
-    <form id="contactForm" class="contact-form">
-      <div class="form-group">
-        <input type="text" id="name" required placeholder="Il tuo nome" autocomplete="name">
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" required placeholder="La tua email" autocomplete="email">
-      </div>
-      <div class="form-group">
-        <textarea id="userMsg" maxlength="700" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
-        <div id="charCount" class="char-count">0 / 700</div>
-      </div>
-      <button type="submit" class="submit-btn">Richiedi Prova Gratuita</button>
-    </form>
-  </div>
-</div>
-
-<script>
-// Mobile Navigation Toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-if (navToggle && navLinks) {
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    navToggle.classList.toggle('active');
-    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
-    navLinks.setAttribute('aria-hidden', !navLinks.classList.contains('open'));
-  });
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (navLinks.classList.contains('open')) {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navLinks.setAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-}
-
-// Scroll animations & utilities
-document.addEventListener('DOMContentLoaded', function() {
-  // Fade-in observer
-  const fadeElements = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  fadeElements.forEach(element => observer.observe(element));
-  setTimeout(() => {
-    fadeElements.forEach(element => {
-      if (isElementInViewport(element)) element.classList.add('visible');
-    });
-  }, 300);
-
-  // Back to top
-  const backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.pageYOffset > 300);
-    });
-    backToTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // === CONTACT MODAL - LOGICA CORRETTA ===
-  const modal = document.getElementById("contactModal");
-  const closeBtn = document.getElementById("closeModal");
-  const form = document.getElementById("contactForm");
-  const msgField = document.getElementById("userMsg");
-  const charCount = document.getElementById("charCount");
-  
-  function openModal() {
-    if (!modal) return;
-    modal.classList.add('active');
-    document.body.classList.add('modal-open'); // Blocca scroll background
-    setTimeout(() => document.getElementById("name")?.focus(), 200);
-  }
-  
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove('active');
-    document.body.classList.remove('modal-open'); // Riabilita scroll
-  }
-  
-  // Apri modale da tutti i trigger
-  document.querySelectorAll('.btn-cta, #contactBtn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal();
-    });
-  });
-  
-  // Chiudi con pulsante X
-  closeBtn?.addEventListener("click", closeModal);
-  
-  // Chiudi cliccando sullo sfondo
-  modal?.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-  
-  // Chiudi con tasto ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal?.classList.contains('active')) {
-      closeModal();
-    }
-  });
-  
-  // Character counter
-  if (msgField && charCount) {
-    msgField.addEventListener("input", () => {
-      charCount.textContent = `${msgField.value.length} / 700`;
-    });
-  }
-  
-  // Form submit
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("name")?.value.trim() || '';
-      const email = document.getElementById("email")?.value.trim() || '';
-      const message = msgField?.value.trim() || '';
-      
-      const header = "*Richiesta prova gratuita*";
-      const body = `${header}
-*👤 Nome:* ${name}
-*📧 Email:* ${email}
-*💬 Richiesta:* Prova gratuita di un menu digitale
-*📱 Pagina:* Chi Sono
-*💬 Messaggio:*
-${message}`;
-      
-      const url = `https://wa.me/393440301412?text=${encodeURIComponent(body)}`;
-      window.location.href = url;
-      
-      form.reset();
-      if (charCount) charCount.textContent = "0 / 700";
-      closeModal();
-    });
-  }
-});
-
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
-    rect.bottom >= 0
-  );
-}
-</script>
 </body>
 </html>

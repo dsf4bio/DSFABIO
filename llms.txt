@@ -18,23 +18,23 @@
 
 ## Pagine
 
-- [Home e offerta](https://dsfabio.vercel.app/): come funziona, cosa include, esempi, prezzo e domande frequenti.
-- [Modelli di menu](https://dsfabio.vercel.app/modelli.html): quindici esempi dimostrativi per ristoranti, pizzerie, hamburgerie, piadinerie, kebab, sushi, bistrot e bar.
-- [Chi sono](https://dsfabio.vercel.app/about.html): Fabio, valori e modo di lavorare, contatto diretto su WhatsApp.
-- [Esempio Gusto 360°](https://dsfabio.vercel.app/mdc-001.html): ristorante elegante con percorso degustazione.
-- [Esempio Bella Napoli](https://dsfabio.vercel.app/mdc-002.html): pizzeria con ricerca dei piatti.
-- [Esempio Verde & Arancio](https://dsfabio.vercel.app/mdc-003.html): bistrot con filtro per allergie e intolleranze.
-- [Esempio Bistrot Urbano](https://dsfabio.vercel.app/mdc-004.html): bar e caffetteria con sezioni in base all'orario.
-- [Esempio Osteria del Borgo](https://dsfabio.vercel.app/mdc-005.html): trattoria con la lavagna dei piatti del giorno.
-- [Esempio Onda Blu](https://dsfabio.vercel.app/mdc-006.html): ristorante di pesce con pescato del giorno al peso.
-- [Esempio Hop House](https://dsfabio.vercel.app/mdc-007.html): pub con birre filtrabili per stile e prezzi per misura.
-- [Esempio Forno Rosso](https://dsfabio.vercel.app/mdc-008.html): ristorante-pizzeria con il forno a legna animato.
-- [Esempio Ice Lounge](https://dsfabio.vercel.app/mdc-009.html): cocktail bar con cocktail animato nel bicchiere e filtro per gusto.
-- [Esempio Smash Lab](https://dsfabio.vercel.app/mdc-010.html): hamburgeria con burger che si costruisce scorrendo.
-- [Esempio Smoke & Steel](https://dsfabio.vercel.app/mdc-011.html): hamburgeria BBQ con fumo animato e filtro per livello di piccante.
-- [Esempio Al Testo](https://dsfabio.vercel.app/mdc-012.html): piadineria romagnola con piadine, crescioni, rotoli e “Componi la tua”.
-- [Esempio Bosforo Kebab](https://dsfabio.vercel.app/mdc-013.html): kebab con prezzi per formato (panino, piadina, box, piatto).
-- [Esempio Sakura Neon](https://dsfabio.vercel.app/demo-sakura-neon.html): menu demo per sushi e cocktail bar, in italiano e inglese.
-- [Esempio Fuoco & Brace](https://dsfabio.vercel.app/demo-fuoco-brace.html): menu demo per pizzeria e griglia.
-- [Assistenza clienti](https://dsfabio.vercel.app/assistenaza.html): richieste di aggiornamento per chi è già cliente.
-- [Privacy, cookie e termini](https://dsfabio.vercel.app/privacy.html): informativa, cookie e condizioni del servizio.
+- [Home e offerta](https://dsfabio.com/): come funziona, cosa include, esempi, prezzo e domande frequenti.
+- [Modelli di menu](https://dsfabio.com/modelli.html): quindici esempi dimostrativi per ristoranti, pizzerie, hamburgerie, piadinerie, kebab, sushi, bistrot e bar.
+- [Chi sono](https://dsfabio.com/about.html): Fabio, valori e modo di lavorare, contatto diretto su WhatsApp.
+- [Esempio Gusto 360°](https://dsfabio.com/mdc-001.html): ristorante elegante con percorso degustazione.
+- [Esempio Bella Napoli](https://dsfabio.com/mdc-002.html): pizzeria con ricerca dei piatti.
+- [Esempio Verde & Arancio](https://dsfabio.com/mdc-003.html): bistrot con filtro per allergie e intolleranze.
+- [Esempio Bistrot Urbano](https://dsfabio.com/mdc-004.html): bar e caffetteria con sezioni in base all'orario.
+- [Esempio Osteria del Borgo](https://dsfabio.com/mdc-005.html): trattoria con la lavagna dei piatti del giorno.
+- [Esempio Onda Blu](https://dsfabio.com/mdc-006.html): ristorante di pesce con pescato del giorno al peso.
+- [Esempio Hop House](https://dsfabio.com/mdc-007.html): pub con birre filtrabili per stile e prezzi per misura.
+- [Esempio Forno Rosso](https://dsfabio.com/mdc-008.html): ristorante-pizzeria con il forno a legna animato.
+- [Esempio Ice Lounge](https://dsfabio.com/mdc-009.html): cocktail bar con cocktail animato nel bicchiere e filtro per gusto.
+- [Esempio Smash Lab](https://dsfabio.com/mdc-010.html): hamburgeria con burger che si costruisce scorrendo.
+- [Esempio Smoke & Steel](https://dsfabio.com/mdc-011.html): hamburgeria BBQ con fumo animato e filtro per livello di piccante.
+- [Esempio Al Testo](https://dsfabio.com/mdc-012.html): piadineria romagnola con piadine, crescioni, rotoli e “Componi la tua”.
+- [Esempio Bosforo Kebab](https://dsfabio.com/mdc-013.html): kebab con prezzi per formato (panino, piadina, box, piatto).
+- [Esempio Sakura Neon](https://dsfabio.com/demo-sakura-neon.html): menu demo per sushi e cocktail bar, in italiano e inglese.
+- [Esempio Fuoco & Brace](https://dsfabio.com/demo-fuoco-brace.html): menu demo per pizzeria e griglia.
+- [Assistenza clienti](https://dsfabio.com/assistenaza.html): richieste di aggiornamento per chi è già cliente.
+- [Privacy, cookie e termini](https://dsfabio.com/privacy.html): informativa, cookie e condizioni del servizio.

@@ -5,4 +5,4 @@ Allow: /
 # I menu di esempio non devono comparire nei risultati come locali veri
 # (hanno anche il tag noindex nella pagina)
 
-Sitemap: https://dsfabio.vercel.app/sitemap.xml
+Sitemap: https://dsfabio.com/sitemap.xml

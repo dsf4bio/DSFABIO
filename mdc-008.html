@@ -21,22 +21,29 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .demo{position:relative;z-index:5;background:#000;color:var(--gold);text-align:center;font-size:.74rem;font-weight:800;padding:7px 12px}
 .blk{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;letter-spacing:.01em}
 
-/* HERO con fuoco WebGL */
-.hero{position:relative;height:min(92svh,760px);min-height:520px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(70% 50% at 50% 100%,#3a0d05,transparent 70%),var(--bg)}
-#fire,#embers{position:absolute;left:0;bottom:0;width:100%;height:100%;pointer-events:none}
-#fire{height:58%;opacity:.95;-webkit-mask-image:linear-gradient(to top,#000 70%,transparent);mask-image:linear-gradient(to top,#000 70%,transparent)}
-.fallback-fire{position:absolute;left:-10%;right:-10%;bottom:-10%;height:55%;background:radial-gradient(40% 60% at 30% 100%,rgba(255,138,31,.85),transparent 70%),radial-gradient(35% 70% at 65% 100%,rgba(232,52,28,.85),transparent 70%),radial-gradient(60% 40% at 50% 100%,rgba(255,201,74,.9),transparent 70%);filter:blur(18px);animation:flick 1.6s ease-in-out infinite alternate;display:none}
-.nogl .fallback-fire{display:block}
-@keyframes flick{to{transform:scaleY(1.08) translateY(-2%);opacity:.85}}
-.hero-in{position:relative;z-index:3;text-align:center;padding:0 20px 60px;margin-top:-12vh}
-.temp{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:30px;background:rgba(0,0,0,.45);border:1px solid rgba(255,201,74,.35);color:var(--gold);font-weight:800;font-size:.82rem;backdrop-filter:blur(6px)}
+/* HERO: bocca del forno a legna */
+.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:clamp(40px,8vh,90px) 16px 0;background:radial-gradient(70% 45% at 50% 100%,rgba(255,110,30,.22),transparent 70%),radial-gradient(120% 70% at 50% 0%,#1a0d09,transparent 70%),var(--bg)}
+.hero::before{content:"";position:absolute;left:50%;bottom:0;width:120%;height:60%;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 100%,rgba(255,130,40,.28),transparent 70%);animation:flicker 3.2s infinite;pointer-events:none}
+@keyframes flicker{0%,100%{opacity:1}12%{opacity:.82}20%{opacity:.95}33%{opacity:.75}47%{opacity:1}61%{opacity:.86}78%{opacity:.97}88%{opacity:.8}}
+.hero-in{position:relative;z-index:2;text-align:center;margin-bottom:clamp(14px,3vh,26px)}
+.temp{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:30px;background:rgba(0,0,0,.45);border:1px solid rgba(255,201,74,.35);color:var(--gold);font-weight:800;font-size:.82rem}
 .temp b{font-variant-numeric:tabular-nums}
-.hero h1{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:clamp(3.4rem,17vw,8rem);line-height:.85;margin:18px 0 10px;text-transform:uppercase;letter-spacing:-.01em;color:#fff;text-shadow:0 0 30px rgba(255,120,30,.55),0 0 80px rgba(232,52,28,.45)}
-.hero h1 span{display:block;color:transparent;-webkit-text-stroke:2px var(--orange);text-shadow:none}
+.hero h1{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:clamp(3rem,13vw,6.2rem);line-height:.86;margin:16px 0 10px;text-transform:uppercase;color:#fff;text-shadow:0 0 24px rgba(255,120,30,.35)}
+.hero h1 span{display:block;color:transparent;-webkit-text-stroke:2px var(--orange)}
 .hero p{color:var(--sub);font-weight:600;max-width:420px;margin:0 auto}
-.scroll{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);display:flex;flex-direction:column;align-items:center;gap:6px}
-.scroll i{width:2px;height:28px;background:linear-gradient(var(--orange),transparent);animation:drop 1.6s ease-in-out infinite}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.kiln{position:relative;z-index:1;width:min(560px,100%);margin:0 auto}
+.kiln svg{display:block;width:100%;height:auto;overflow:visible}
+.flick{animation:flicker 2.4s infinite}
+.fl{fill:url(#flame);transform-box:fill-box;transform-origin:50% 100%;animation:lick 1.8s ease-in-out infinite}
+.fl.in{fill:url(#flameIn);opacity:.85}
+@keyframes lick{0%,100%{transform:scale(1,1) skewX(0)}25%{transform:scale(.9,1.14) skewX(-5deg)}50%{transform:scale(1.06,.9) skewX(4deg)}75%{transform:scale(.95,1.08) skewX(-2deg)}}
+.coal{animation:coal 1.6s ease-in-out infinite alternate}
+@keyframes coal{to{opacity:.35}}
+.pizza{transform-box:fill-box;transform-origin:50% 50%;animation:cook 6s ease-in-out infinite}
+@keyframes cook{0%,100%{filter:brightness(.9)}50%{filter:brightness(1.12)}}
+.embers{position:absolute;left:0;right:0;bottom:12%;height:70%;pointer-events:none}
+.embers i{position:absolute;bottom:0;width:4px;height:4px;border-radius:50%;background:#ffcf6b;box-shadow:0 0 8px 2px rgba(255,140,40,.8);opacity:0;animation:ember 4s linear infinite}
+@keyframes ember{0%{transform:translate(0,0);opacity:0}10%{opacity:1}100%{transform:translate(var(--dx),-260px);opacity:0}}
 
 /* Barra calore legata allo scroll */
 .heat{position:fixed;top:0;left:0;right:0;height:4px;z-index:60;background:linear-gradient(90deg,var(--red),var(--orange),var(--gold));transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 12px var(--orange)}
@@ -86,7 +93,7 @@ footer strong{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:1
 .rv{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .7s cubic-bezier(.2,.9,.2,1),transform .7s cubic-bezier(.2,.9,.2,1);transition-delay:calc(var(--d,0) * 70ms)}
 .rv.in{opacity:1;transform:none}
 @media (max-width:640px){.grid{grid-template-columns:1fr}.sec-h{flex-direction:column;align-items:flex-start}.sec-h p{text-align:left;max-width:none}.oven{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}#embers{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.embers{display:none}}
 .soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
 .soc a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--soc-bg,#222);color:var(--soc-fg,#fff);transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s;text-decoration:none}
 .soc a:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 10px 22px rgba(0,0,0,.25)}
@@ -102,15 +109,48 @@ footer strong{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:1
 <div class="demo">MODELLO DIMOSTRATIVO · piatti, prezzi e dati sono di fantasia</div>
 
 <header class="hero">
-  <div class="fallback-fire" aria-hidden="true"></div>
-  <canvas id="fire" aria-hidden="true"></canvas>
-  <canvas id="embers" aria-hidden="true"></canvas>
   <div class="hero-in">
     <span class="temp">🔥 Forno a <b id="deg">0</b>°C</span>
     <h1>Forno<span>Rosso</span></h1>
     <p>Ristorante e pizzeria · cottura a legna in 90 secondi</p>
   </div>
-  <div class="scroll" aria-hidden="true">Scorri<i></i></div>
+  <div class="kiln">
+    <svg viewBox="0 0 400 270" role="img" aria-label="Forno a legna acceso">
+      <defs>
+        <radialGradient id="inside" cx="42%" cy="100%" r="95%"><stop offset="0" stop-color="#ffb347"/><stop offset=".28" stop-color="#e2541c"/><stop offset=".62" stop-color="#4a1708"/><stop offset="1" stop-color="#140604"/></radialGradient>
+        <radialGradient id="glow" cx="42%" cy="100%" r="80%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset=".5" stop-color="#ff7a1f" stop-opacity=".35"/><stop offset="1" stop-color="#ff5a00" stop-opacity="0"/></radialGradient>
+        <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff1b8"/><stop offset=".25" stop-color="#ffc23d"/><stop offset=".6" stop-color="#ff6a14"/><stop offset="1" stop-color="#d9230f" stop-opacity="0"/></linearGradient>
+        <linearGradient id="flameIn" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#fff0a0"/><stop offset="1" stop-color="#ffd23f" stop-opacity="0"/></linearGradient>
+        <linearGradient id="brick" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9c4428"/><stop offset="1" stop-color="#6b2a17"/></linearGradient>
+        <radialGradient id="lit" cx="50%" cy="100%" r="70%"><stop offset="0" stop-color="#ff8a2a" stop-opacity=".55"/><stop offset="1" stop-color="#ff8a2a" stop-opacity="0"/></radialGradient>
+        <clipPath id="mouth"><path d="M80,250 A120,120 0 0 1 320,250Z"/></clipPath>
+        <filter id="wob" x="-40%" y="-40%" width="180%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="2" seed="4"><animate attributeName="baseFrequency" dur="2.6s" values="0.035 0.09;0.04 0.12;0.035 0.09" repeatCount="indefinite"/></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" scale="10"/><feGaussianBlur stdDeviation=".7"/>
+        </filter>
+      </defs>
+      <path d="M0,250 C0,40 400,40 400,250Z" fill="#241410"/>
+      <path d="M8,250 C10,52 390,52 392,250" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="2"/>
+      <path d="M14,250 A186,186 0 0 1 386,250 L320,250 A120,120 0 0 0 80,250Z" fill="url(#brick)"/>
+      <path d="M14,250 A186,186 0 0 1 386,250 L320,250 A120,120 0 0 0 80,250Z" fill="url(#lit)" class="flick"/>
+      <path d="M80.0,250.0L47.0,250.0M81.8,229.2L49.3,223.4M87.2,209.0L56.2,197.7M96.1,190.0L67.5,173.5M108.1,172.9L82.8,151.7M122.9,158.1L101.7,132.8M140.0,146.1L123.5,117.5M159.0,137.2L147.7,106.2M179.2,131.8L173.4,99.3M200.0,130.0L200.0,97.0M220.8,131.8L226.6,99.3M241.0,137.2L252.3,106.2M260.0,146.1L276.5,117.5M277.1,158.1L298.3,132.8M291.9,172.9L317.2,151.7M303.9,190.0L332.5,173.5M312.8,209.0L343.8,197.7M318.2,229.2L350.7,223.4M320.0,250.0L353.0,250.0M47.6,236.7L14.7,233.8M52.2,210.4L20.3,201.9M61.3,185.3L31.4,171.4M74.7,162.2L47.6,143.3M91.8,141.8L68.5,118.5M112.2,124.7L93.3,97.6M135.3,111.3L121.4,81.4M160.4,102.2L151.9,70.3M186.7,97.6L183.8,64.7M213.3,97.6L216.2,64.7M239.6,102.2L248.1,70.3M264.7,111.3L278.6,81.4M287.8,124.7L306.7,97.6M308.2,141.8L331.5,118.5M325.3,162.2L352.4,143.3M338.7,185.3L368.6,171.4M347.8,210.4L379.7,201.9M352.4,236.7L385.3,233.8" stroke="#2a110a" stroke-width="2.2" fill="none"/>
+      <path d="M47.0,250 A153.0,153.0 0 0 1 353.0,250" stroke="#2a110a" stroke-width="2.2" fill="none"/>
+      <path d="M14,250 A186,186 0 0 1 386,250" stroke="#b55a34" stroke-width="2" fill="none" opacity=".6"/>
+      <g clip-path="url(#mouth)">
+        <rect x="80" y="130" width="240" height="120" fill="url(#inside)"/>
+        <rect x="80" y="130" width="240" height="120" fill="url(#glow)" class="flick"/>
+        <g filter="url(#wob)" class="flames"><g transform="translate(150,242) scale(1.0)"><path class="fl" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.9s;animation-delay:-0s"/></g><g transform="translate(170,242) scale(1.25)"><path class="fl" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.6s;animation-delay:-0.3s"/></g><g transform="translate(188,242) scale(0.95)"><path class="fl" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:2.2s;animation-delay:-0.15s"/></g><g transform="translate(160,242) scale(0.75)"><path class="fl" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.4s;animation-delay:-0.5s"/></g><g transform="translate(205,242) scale(0.7)"><path class="fl" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.8s;animation-delay:-0.25s"/></g><g transform="translate(178,242) scale(0.55)"><path class="fl" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.2s;animation-delay:-0.7s"/></g><g transform="translate(150,242) scale(0.55)"><path class="fl in" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.52s;animation-delay:-0s"/></g><g transform="translate(170,242) scale(0.6875)"><path class="fl in" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.28s;animation-delay:-0.3s"/></g><g transform="translate(188,242) scale(0.5225)"><path class="fl in" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.76s;animation-delay:-0.15s"/></g><g transform="translate(160,242) scale(0.41250000000000003)"><path class="fl in" d="M0,0 C-20,-6 -24,-44 0,-92 C6,-60 22,-46 14,-24 C12,-10 8,-2 0,0Z" style="animation-duration:1.12s;animation-delay:-0.5s"/></g></g>
+        <rect x="135" y="236" width="80" height="11" rx="5" fill="#3a1d0f" transform="rotate(-6 175 241)"/>
+        <rect x="140" y="239" width="74" height="10" rx="5" fill="#4d2612" transform="rotate(5 177 244)"/>
+        <circle cx="150" cy="241" r="3" fill="#ff8a2a" class="coal"/><circle cx="196" cy="243" r="2.5" fill="#ffb347" class="coal" style="animation-delay:-.6s"/>
+        <g class="pizza"><ellipse cx="262" cy="244" rx="40" ry="9" fill="#c98a3c"/><ellipse cx="262" cy="243" rx="33" ry="6.5" fill="#d8402a"/>
+          <ellipse cx="250" cy="242" rx="6" ry="2" fill="#fff6e0"/><ellipse cx="270" cy="244" rx="7" ry="2.2" fill="#fff6e0"/><ellipse cx="282" cy="241.5" rx="4" ry="1.5" fill="#fff6e0"/><ellipse cx="259" cy="245" rx="3" ry="1.2" fill="#3f8a2e"/></g>
+      </g>
+      <rect x="0" y="250" width="400" height="20" fill="#2f201b"/>
+      <rect x="0" y="250" width="400" height="3" fill="#4a332b"/>
+    </svg>
+    <div class="embers" aria-hidden="true"><i style="left:36%;animation-delay:-0s;animation-duration:4.2s;--dx:-18px"></i><i style="left:44%;animation-delay:-1.3s;animation-duration:3.6s;--dx:12px"></i><i style="left:49%;animation-delay:-2.6s;animation-duration:4.8s;--dx:-8px"></i><i style="left:41%;animation-delay:-0.7s;animation-duration:5.2s;--dx:22px"></i><i style="left:53%;animation-delay:-3.1s;animation-duration:3.9s;--dx:-14px"></i><i style="left:38%;animation-delay:-2s;animation-duration:4.5s;--dx:8px"></i><i style="left:47%;animation-delay:-3.8s;animation-duration:5s;--dx:-20px"></i><i style="left:43%;animation-delay:-1.9s;animation-duration:3.4s;--dx:16px"></i></div>
+  </div>
 </header>
 
 <nav class="nav" aria-label="Sezioni del menu"><div class="nav-in" id="nav"><span class="flame-line" id="fl" aria-hidden="true"></span></div></nav>
@@ -210,60 +250,8 @@ if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()')
   (function tick(t) { var k = Math.min((t - t0) / 1800, 1); el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); })(t0);
 })();
 
-/* ---------- Fuoco in WebGL (shader con rumore frattale) ---------- */
-var hero = $('.hero'), visible = true;
-new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(hero);
-function startFire() {
-  var c = $('#fire'), gl = c.getContext('webgl', {premultipliedAlpha: false, antialias: false, alpha: true});
-  if (!gl || reduced) { document.documentElement.classList.add('nogl'); c.remove(); return; }
-  var vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-  var fs = [
-    'precision mediump float;uniform vec2 r;uniform float t;',
-    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
-    'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}',
-    'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}',
-    'void main(){vec2 uv=gl_FragCoord.xy/r;float ar=r.x/r.y;vec2 q=vec2(uv.x*ar,uv.y);',
-    'float f1=fbm(vec2(q.x*2.6,q.y*1.4-t*1.1));float f2=fbm(vec2(q.x*5.+f1*1.6,q.y*2.6-t*2.3));',
-    'float tongues=.55+.45*sin(q.x*9.+f1*4.+t*.8);',
-    'float base=pow(1.-uv.y,1.3);float fl=base*(.55+.6*tongues)+f2*1.05-.78;fl=clamp(fl*1.35,0.,1.);fl*=smoothstep(0.,.1,uv.x)*smoothstep(1.,.9,uv.x);',
-    'vec3 c=mix(vec3(.18,.01,0.),vec3(.85,.12,.02),smoothstep(.02,.3,fl));c=mix(c,vec3(1.,.42,.05),smoothstep(.3,.6,fl));c=mix(c,vec3(1.,.66,.18),smoothstep(.55,.85,fl));c=mix(c,vec3(1.,.85,.45),smoothstep(.9,1.,fl));',
-    'gl_FragColor=vec4(c,smoothstep(.0,.3,fl));}'
-  ].join('\n');
-  function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
-  var pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
-  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) { document.documentElement.classList.add('nogl'); c.remove(); return; }
-  gl.useProgram(pr);
-  var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
-  var lp = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
-  var ur = gl.getUniformLocation(pr, 'r'), ut = gl.getUniformLocation(pr, 't');
-  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-  var scale = innerWidth < 700 ? .45 : .6; /* risoluzione ridotta: leggero anche sui telefoni */
-  function size() { c.width = Math.max(2, c.clientWidth * scale | 0); c.height = Math.max(2, c.clientHeight * scale | 0); gl.viewport(0, 0, c.width, c.height); }
-  size(); addEventListener('resize', size);
-  var t0 = performance.now();
-  (function loop(t) { requestAnimationFrame(loop); if (!visible || document.hidden) return; gl.uniform2f(ur, c.width, c.height); gl.uniform1f(ut, (t - t0) / 1000); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); })(t0);
-}
-/* ---------- Braci che salgono (canvas 2D) ---------- */
-function startEmbers() {
-  if (reduced) return;
-  var c = $('#embers'), x = c.getContext('2d'), P = [], N = innerWidth < 700 ? 40 : 70, w, h, dpr = Math.min(devicePixelRatio || 1, 1.5);
-  function size() { w = c.clientWidth; h = c.clientHeight; c.width = w * dpr; c.height = h * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0); }
-  function sp(p) { p = p || {}; p.x = Math.random() * w; p.y = h + Math.random() * 40; p.vy = .6 + Math.random() * 1.6; p.vx = (Math.random() - .5) * .5; p.r = .8 + Math.random() * 2.2; p.l = 0; p.m = 140 + Math.random() * 160; p.s = Math.random() * 10; return p; }
-  size(); addEventListener('resize', size);
-  for (var i = 0; i < N; i++) { var p = sp(); p.y = Math.random() * h; p.l = Math.random() * p.m; P.push(p); }
-  (function loop() {
-    requestAnimationFrame(loop); if (!visible || document.hidden) return;
-    x.clearRect(0, 0, w, h); x.globalCompositeOperation = 'lighter';
-    P.forEach(function (p) {
-      p.l++; p.y -= p.vy; p.x += p.vx + Math.sin((p.l + p.s * 30) * .04) * .6;
-      if (p.l > p.m || p.y < -10) sp(p);
-      var a = Math.max(0, 1 - p.l / p.m), g = x.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-      g.addColorStop(0, 'rgba(255,220,140,' + a + ')'); g.addColorStop(.4, 'rgba(255,120,30,' + a * .6 + ')'); g.addColorStop(1, 'rgba(255,60,0,0)');
-      x.fillStyle = g; x.beginPath(); x.arc(p.x, p.y, p.r * 4, 0, 6.283); x.fill();
-    });
-  })();
-}
-startFire(); startEmbers();
+/* Con "riduci movimento" si ferma anche l'animazione SVG delle fiamme */
+if (reduced) { var sv = document.querySelector('.kiln svg'); if (sv && sv.pauseAnimations) sv.pauseAnimations(); }
 })();
 </script>
 <script src="assets/trial.js" data-model="Forno Rosso" defer></script>

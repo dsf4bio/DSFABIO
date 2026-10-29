@@ -86,18 +86,18 @@ var DLG_HTML =
 '<button type="button" class="x" data-close aria-label="Chiudi">×</button>' +
 '<div id="req-body">' +
 '<h2 id="req-t">Richiedi la prova gratuita</h2>' +
-'<p class="sub">30 giorni gratis dalla consegna, poi 190 €/anno tutto incluso. Nessun impegno.</p>' +
+'<p class="sub">30 giorni gratis dalla consegna, poi 190 €/anno tutto incluso. <strong>Oggi non paghi nulla.</strong></p>' +
 '<span class="model-tag" id="req-model" hidden></span>' +
 '<form id="req" class="fform" novalidate>' +
 '<div class="f"><label for="r-locale">Nome del locale *</label><input id="r-locale" name="locale" type="text" required autocomplete="organization" placeholder="Es. Trattoria Da Mario"></div>' +
-'<div class="two"><div class="f"><label for="r-nome">Nome e cognome *</label><input id="r-nome" name="nome" type="text" required autocomplete="name" placeholder="Il tuo nome"></div>' +
+'<div class="two"><div class="f"><label for="r-nome">Il tuo nome *</label><input id="r-nome" name="nome" type="text" required autocomplete="name" placeholder="Il tuo nome"></div>' +
 '<div class="f"><label for="r-citta">Città *</label><input id="r-citta" name="citta" type="text" required autocomplete="address-level2" placeholder="Es. Bologna"></div></div>' +
 '<div class="two"><div class="f"><label for="r-tel">WhatsApp / telefono *</label><input id="r-tel" name="telefono" type="tel" required autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{8,16}" placeholder="333 1234567"></div>' +
 '<div class="f"><label for="r-email">Email</label><input id="r-email" name="email" type="email" autocomplete="email" placeholder="Facoltativa"></div></div>' +
 '<div class="f"><label for="r-msg">Messaggio</label><textarea id="r-msg" name="messaggio" maxlength="500" placeholder="Facoltativo. Es. che tipo di locale hai, quale modello ti piace…"></textarea></div>' +
 '<label class="consent"><input type="checkbox" name="consenso" required><span>Ho letto l\'<a href="privacy.html#privacy" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato/a. *</span></label>' +
 '<button type="submit" class="send">📲 Invia la richiesta su WhatsApp</button>' +
-'<p class="hint">Si aprirà WhatsApp con il messaggio già pronto: premi <strong>Invia</strong> per completare.</p>' +
+'<p class="hint">Si aprirà WhatsApp con il messaggio già pronto: premi <strong>Invia</strong> per completare. Ti rispondo io, Fabio, entro poche ore nei giorni lavorativi.</p>' +
 '</form></div>' +
 '<div id="req-ok" class="ok" hidden><div class="big" aria-hidden="true">🎉</div><h2>Ci siamo quasi!</h2>' +
 '<p class="sub" style="margin-top:8px">Si è aperta la chat WhatsApp con la tua richiesta: premi <strong>Invia</strong> per mandarcela. Poi mandaci anche una foto del tuo menu.</p>' +
@@ -157,6 +157,31 @@ try {
     setTimeout(function () { fake.click(); fake.remove(); }, 400);
   }
 } catch (err) {}
+
+/* ---------- Barra fissa "Prova gratis" su telefono ---------- */
+/* Compare solo nelle pagine con un invito finale (.final), dopo la prima schermata,
+   e sparisce quando è già visibile un altro pulsante di richiesta. */
+(function () {
+  if (!$('.final')) return;
+  var bar = document.createElement('div');
+  bar.className = 'm-bar'; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Prova gratuita');
+  bar.innerHTML = '<a class="btn btn-main" href="./#offerta" data-open>🚀 Prova gratis 30 giorni</a>' +
+    '<a class="m-wa" href="https://wa.me/' + WA + '" data-wa="Ciao! Vorrei informazioni sul menu digitale con QR code e la prova gratuita di 30 giorni." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">' +
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a>';
+  document.body.appendChild(bar);
+  document.body.classList.add('has-mbar');
+  var seen = 0, blockers = $$('.hero-cta, .offer, .final, footer, .page-hero .btn-main');
+  function upd() { bar.classList.toggle('show', scrollY > innerHeight * 0.8 && !seen); }
+  if ('IntersectionObserver' in window) {
+    var vis = new Set();
+    var ob = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) vis.add(e.target); else vis.delete(e.target); });
+      seen = vis.size; upd();
+    });
+    blockers.forEach(function (b) { ob.observe(b); });
+  }
+  addEventListener('scroll', upd, {passive: true}); upd();
+})();
 
 /* Link WhatsApp generici con messaggio pronto */
 $$('[data-wa]').forEach(function (a) {

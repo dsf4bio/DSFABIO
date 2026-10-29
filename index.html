@@ -19,10 +19,12 @@
 <meta property="og:image" content="https://dsfabio.vercel.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DSFabio Digital: menu digitale con QR code per ristoranti, 30 giorni gratis">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700;800&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
 {
@@ -35,7 +37,12 @@
       "url": "https://dsfabio.vercel.app/",
       "logo": "https://dsfabio.vercel.app/favicon.svg",
       "email": "info@dsfabio.com",
-      "contactPoint": {"@type": "ContactPoint", "telephone": "+39-344-030-1412", "email": "info@dsfabio.com", "contactType": "customer service", "availableLanguage": ["Italian"]}
+      "image": "https://dsfabio.vercel.app/og-image.png",
+      "description": "Menu digitali con QR code per ristoranti, pizzerie, bar e hotel in tutta Italia: 30 giorni di prova gratuita, poi 190 € all'anno tutto incluso.",
+      "founder": {"@type": "Person", "name": "Fabio", "url": "https://dsfabio.vercel.app/about.html"},
+      "areaServed": {"@type": "Country", "name": "Italia"},
+      "knowsAbout": ["Menu digitale", "QR code per ristoranti", "Allergeni nel menu", "Menu multilingua"],
+      "contactPoint": {"@type": "ContactPoint", "telephone": "+39-344-030-1412", "email": "info@dsfabio.com", "contactType": "customer service", "areaServed": "IT", "availableLanguage": ["Italian"]}
     },
     {
       "@type": "WebSite",
@@ -69,13 +76,18 @@
       "@type": "FAQPage",
       "@id": "https://dsfabio.vercel.app/#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "Quanto costa il menu digitale con QR code?", "acceptedAnswer": {"@type": "Answer", "text": "I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso: menu personalizzato, QR code, hosting, dominio, certificato SSL e fino a 4 modifiche al mese."}},
+        {"@type": "Question", "name": "Quanto costa il menu digitale con QR code?", "acceptedAnswer": {"@type": "Answer", "text": "I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso (meno di 16 € al mese): menu personalizzato, QR code, hosting, dominio, certificato SSL e fino a 4 modifiche al mese."}},
+        {"@type": "Question", "name": "Devo pagare qualcosa per iniziare la prova?", "acceptedAnswer": {"@type": "Answer", "text": "No. La prova di 30 giorni parte dalla consegna del menu e non chiediamo nessun pagamento anticipato. Alla fine decidi tu se continuare a 190 € all'anno."}},
+        {"@type": "Question", "name": "Cosa devo mandarvi per iniziare?", "acceptedAnswer": {"@type": "Answer", "text": "Basta una foto del menu cartaceo su WhatsApp, il logo se ce l'hai e gli allergeni dei piatti. Se vuoi, aggiungi qualche foto dei piatti: al resto pensiamo noi."}},
         {"@type": "Question", "name": "In quanto tempo è pronto il menu?", "acceptedAnswer": {"@type": "Answer", "text": "Circa 48 ore da quando ci mandi il tuo menu, anche solo come foto su WhatsApp."}},
         {"@type": "Question", "name": "I clienti devono scaricare un'app?", "acceptedAnswer": {"@type": "Answer", "text": "No. Basta inquadrare il QR code con la fotocamera del telefono: il menu si apre nel browser, su qualsiasi smartphone o tablet."}},
         {"@type": "Question", "name": "Gli allergeni sono indicati?", "acceptedAnswer": {"@type": "Answer", "text": "Sì: ogni piatto mostra le icone dei 14 allergeni previsti dalla normativa europea, con legenda. I dati sugli allergeni li fornisce e li conferma il ristorante."}},
+        {"@type": "Question", "name": "Posso cambiare piatti e prezzi?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, fino a 4 modifiche al mese sono incluse: ci scrivi su WhatsApp cosa cambiare e lo aggiorniamo noi. Il QR sui tavoli resta sempre lo stesso."}},
+        {"@type": "Question", "name": "Posso avere il menu in più lingue?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, il menu può avere più lingue, per esempio italiano e inglese, con il cambio lingua in un tocco: utile per i locali con clienti stranieri."}},
+        {"@type": "Question", "name": "Posso mettere il menu anche su Google e Instagram?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Oltre al QR code, il menu ha un suo indirizzo web: puoi inserirlo nella scheda Google del locale, nella bio di Instagram, su Facebook o mandarlo su WhatsApp ai clienti."}},
+        {"@type": "Question", "name": "Va bene anche per bar, pub, piadinerie e hotel?", "acceptedAnswer": {"@type": "Answer", "text": "Sì: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub, cocktail bar, gelaterie e hotel. Nella pagina dei modelli trovi esempi per ogni tipo di locale."}},
         {"@type": "Question", "name": "Cosa succede se dopo la prova non voglio continuare?", "acceptedAnswer": {"@type": "Answer", "text": "Nessun costo e nessuna penale: il menu viene messo in pausa e ricevi gratuitamente il PDF del tuo menu."}},
-        {"@type": "Question", "name": "Il menu digitale sostituisce del tutto quello cartaceo?", "acceptedAnswer": {"@type": "Answer", "text": "Consigliamo di tenere sempre una copia cartacea di riserva, così i prezzi restano consultabili anche da chi non usa lo smartphone."}},
-        {"@type": "Question", "name": "Posso avere il menu in più lingue?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, il menu può avere più lingue, per esempio italiano e inglese, con il cambio lingua in un tocco: utile per i locali con clienti stranieri."}}
+        {"@type": "Question", "name": "Il menu digitale sostituisce del tutto quello cartaceo?", "acceptedAnswer": {"@type": "Answer", "text": "Consigliamo di tenere sempre una copia cartacea di riserva, così i prezzi restano consultabili anche da chi non usa lo smartphone."}}
       ]
     }
   ]
@@ -213,6 +225,30 @@ h1 .w{display:inline-block}
 @media (max-width:900px){.demos{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.demos{grid-template-columns:1fr}}
 
+.types-t{font-family:Syne,sans-serif;font-size:1.3rem;text-align:center;margin:44px 0 18px}
+.types{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.types a{display:flex;align-items:center;gap:14px;height:100%;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);text-decoration:none;transition:border-color .3s,background .3s,transform .3s}
+.types a:hover{border-color:rgba(255,255,255,.3);background:var(--card-h);transform:translateY(-3px)}
+.types span{flex:0 0 auto;font-size:1.7rem;line-height:1}
+.types b{display:block;font-size:.98rem;line-height:1.25}
+.types small{display:block;margin-top:3px;font-weight:800;font-size:.8rem;color:var(--cyan)}
+.types a>b{flex:1}
+@media (max-width:900px){.types{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.types{grid-template-columns:1fr}}
+
+/* ---------- Chi c'è dietro ---------- */
+.me{display:grid;grid-template-columns:220px 1fr;gap:clamp(22px,4vw,44px);align-items:center;max-width:920px;margin:0 auto;padding:clamp(22px,4vw,36px)}
+.me-ph{position:relative;width:100%;aspect-ratio:4/5;border-radius:28px;padding:4px;background:conic-gradient(from var(--ang),var(--pink),var(--violet),var(--cyan),var(--lime),var(--pink));animation:rot 8s linear infinite}
+.me-ph img{display:block;width:100%;height:100%;object-fit:cover;border-radius:24px;background:#1a1240}
+.me-ph.noimg{display:grid;place-items:center;font-family:Syne,sans-serif;font-size:5rem;font-weight:800;color:#0d0a1f}
+.me blockquote{font-family:Syne,sans-serif;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.25;margin:10px 0 14px}
+.me p{color:var(--sub)}
+.me ul{list-style:none;display:grid;gap:8px;margin:16px 0 22px}
+.me li{display:flex;gap:10px;align-items:flex-start;font-weight:600}
+.me li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:800;background:rgba(180,255,57,.15);color:var(--lime);margin-top:2px}
+.me .row{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:700px){.me{grid-template-columns:1fr;text-align:left}.me-ph{max-width:200px}}
+
 /* ---------- Confronto ---------- */
 .cmp-head{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px;padding:0 18px 10px;font-family:Syne,sans-serif;font-weight:800}
 .cmp-head .h-old{color:#ff8fa3}.cmp-head .h-new{color:var(--lime)}
@@ -246,6 +282,9 @@ h1 .w{display:inline-block}
 .price-big .num{font-size:clamp(2.8rem,8vw,4.4rem)}
 .price-big .per{font-size:1.1rem;color:var(--sub)}
 .offer .note{color:var(--sub);font-size:.9rem;margin:10px 0 22px}
+.offer .note strong{color:var(--txt)}
+.offer .risk{margin-top:14px;padding:12px 14px;border-radius:16px;background:rgba(180,255,57,.08);border:1px solid rgba(180,255,57,.25);font-size:.88rem;color:var(--sub);line-height:1.45}
+.offer .risk strong{color:var(--lime)}
 .inc{list-style:none;display:grid;gap:12px}
 .inc li{display:flex;gap:12px;align-items:flex-start}
 .inc li::before{content:"✓";flex:0 0 24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800;background:var(--grad);color:#0d0a1f;margin-top:2px}
@@ -263,6 +302,7 @@ h1 .w{display:inline-block}
 .faq summary::after{content:"+";flex:0 0 32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;background:rgba(255,255,255,.08);transition:transform .35s,background .35s}
 .faq details[open] summary::after{transform:rotate(45deg);background:var(--grad);color:#0d0a1f}
 .faq .ans{padding:0 22px 20px;color:var(--sub)}
+.faq .ans a{color:var(--cyan);font-weight:700}
 
 .w{opacity:0;transform:translateY(60%) rotate(4deg);animation:wordIn .9s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(var(--d) * 80ms + 100ms)}
 @keyframes wordIn{to{opacity:1;transform:none}}
@@ -304,17 +344,18 @@ h1 .w{display:inline-block}
 <section class="hero" aria-labelledby="h1">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill"><b>NUOVO</b> 30 giorni gratis, senza impegno</span>
+      <span class="pill"><b>🎁 GRATIS</b> 30 giorni, nessun pagamento anticipato</span>
       <h1 id="h1"><span class="w" style="--d:0">Menu</span> <span class="w" style="--d:1">digitale</span> <span class="w" style="--d:2">con</span> <span class="w grad-text" style="--d:3">QR&nbsp;code</span> <span class="w" style="--d:4">per</span> <span class="w" style="--d:5">il</span> <span class="w" style="--d:6">tuo</span> <span class="w" style="--d:7">ristorante</span></h1>
-      <p class="lead">I clienti inquadrano il QR sul tavolo e sfogliano il tuo menu: foto, allergeni, più lingue e prezzi sempre aggiornati. Lo prepariamo noi in <strong>48 ore</strong>, tu non devi fare nulla.</p>
+      <p class="lead">I clienti inquadrano il QR sul tavolo e sfogliano il tuo menu: foto, allergeni, più lingue e prezzi sempre aggiornati. <strong>Lo prepariamo noi in 48 ore</strong>: ci mandi una foto del menu cartaceo e al resto pensiamo noi.</p>
       <div class="hero-cta">
         <a class="btn btn-main" href="#offerta" data-open>🚀 Prova gratis 30 giorni</a>
         <a class="btn btn-ghost" href="#esempi">Guarda gli esempi</a>
       </div>
       <ul class="chips" aria-label="In breve">
-        <li>Nessuna app da scaricare</li>
+        <li>Pronto in 48 ore</li>
+        <li>Nessuna app per i clienti</li>
         <li>14 allergeni UE</li>
-        <li>190 €/anno tutto incluso</li>
+        <li>Poi 190 €/anno, tutto incluso</li>
       </ul>
     </div>
 
@@ -358,6 +399,41 @@ h1 .w{display:inline-block}
       <li class="step rv" style="--d:2"><div class="step-n" aria-hidden="true">🖨️</div><h3>Stampi il QR</h3><p>Ti mandiamo il QR code pronto da mettere sui tavoli.</p></li>
       <li class="step rv" style="--d:3"><div class="step-n" aria-hidden="true">🎉</div><h3>30 giorni gratis</h3><p>Lo provi con i tuoi clienti. Poi decidi tu se continuare.</p></li>
     </ol>
+  </div>
+</section>
+
+<!-- ======================= ESEMPI ======================= -->
+<section class="sec" id="esempi" aria-labelledby="es-t">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Esempi dal vivo</span>
+      <h2 class="h2" id="es-t">Toccali con mano, dal tuo telefono</h2>
+      <p class="lead">Quindici stili diversi, con menu completi e piatti di fantasia: il tuo sarà creato su misura.</p>
+    </div>
+    <div class="demos">
+      <a class="card demo rv" href="demo-sakura-neon.html">
+        <div class="demo-prev p-neon"><span class="big" aria-hidden="true">🍣</span></div>
+        <div class="demo-body"><div class="tagline"><span>Sushi</span><span>Cocktail bar</span><span>IT / EN</span></div><h3>Sakura Neon</h3><p>Colori neon, cambio categoria animato e menu in due lingue.</p><span class="go">Apri l'esempio →</span></div>
+      </a>
+      <a class="card demo rv" href="mdc-008.html" style="--d:1">
+        <div class="demo-prev p-fire"><span class="big" aria-hidden="true">🔥</span></div>
+        <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Pizzeria</span></div><h3>Forno Rosso</h3><p>La bocca del forno a legna con le fiamme che danzano: impossibile non notarlo.</p><span class="go">Apri l'esempio →</span></div>
+      </a>
+      <a class="card demo rv" href="mdc-001.html" style="--d:2">
+        <div class="demo-prev p-gold"><span class="big" aria-hidden="true">🍷</span></div>
+        <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Fine dining</span></div><h3>Gusto 360°</h3><p>Raffinato come un menu su carta pregiata, con percorso degustazione e vini.</p><span class="go">Apri l'esempio →</span></div>
+      </a>
+    </div>
+    <h3 class="types-t rv">Scegli il modello per il tuo tipo di locale</h3>
+    <ul class="types rv">
+      <li><a href="modelli.html?tipo=ristorante"><span aria-hidden="true">🍷</span><b>Menu digitale per ristoranti e trattorie</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli.html?tipo=pizzeria"><span aria-hidden="true">🍕</span><b>Menu digitale per pizzerie</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli.html?tipo=sushi"><span aria-hidden="true">🍣</span><b>Menu digitale per sushi e pesce</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli.html?tipo=burger"><span aria-hidden="true">🍔</span><b>Menu digitale per hamburgerie</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli.html?tipo=street"><span aria-hidden="true">🥙</span><b>Menu digitale per piadinerie e kebab</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli.html?tipo=bar"><span aria-hidden="true">🍸</span><b>Menu digitale per bar, pub e cocktail bar</b><small>Vedi i modelli →</small></a></li>
+    </ul>
+    <p class="all-demos rv"><a class="btn btn-ghost" href="modelli.html">Vedi tutti i 15 modelli →</a></p>
   </div>
 </section>
 
@@ -416,32 +492,6 @@ h1 .w{display:inline-block}
   </div>
 </section>
 
-<!-- ======================= ESEMPI ======================= -->
-<section class="sec" id="esempi" aria-labelledby="es-t">
-  <div class="wrap">
-    <div class="sec-head center rv">
-      <span class="eyebrow">Esempi dal vivo</span>
-      <h2 class="h2" id="es-t">Toccali con mano, dal tuo telefono</h2>
-      <p class="lead">Quindici stili diversi, con menu completi e piatti di fantasia: il tuo sarà creato su misura.</p>
-    </div>
-    <div class="demos">
-      <a class="card demo rv" href="demo-sakura-neon.html">
-        <div class="demo-prev p-neon"><span class="big" aria-hidden="true">🍣</span></div>
-        <div class="demo-body"><div class="tagline"><span>Sushi</span><span>Cocktail bar</span><span>IT / EN</span></div><h3>Sakura Neon</h3><p>Colori neon, cambio categoria animato e menu in due lingue.</p><span class="go">Apri l'esempio →</span></div>
-      </a>
-      <a class="card demo rv" href="mdc-008.html" style="--d:1">
-        <div class="demo-prev p-fire"><span class="big" aria-hidden="true">🔥</span></div>
-        <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Pizzeria</span></div><h3>Forno Rosso</h3><p>La bocca del forno a legna con le fiamme che danzano: impossibile non notarlo.</p><span class="go">Apri l'esempio →</span></div>
-      </a>
-      <a class="card demo rv" href="mdc-001.html" style="--d:2">
-        <div class="demo-prev p-gold"><span class="big" aria-hidden="true">🍷</span></div>
-        <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Fine dining</span></div><h3>Gusto 360°</h3><p>Raffinato come un menu su carta pregiata, con percorso degustazione e vini.</p><span class="go">Apri l'esempio →</span></div>
-      </a>
-    </div>
-    <p class="all-demos rv"><a class="btn btn-ghost" href="modelli.html">Vedi tutti i 15 modelli →</a></p>
-  </div>
-</section>
-
 <!-- ======================= CONFRONTO ======================= -->
 <section class="sec" id="perche" aria-labelledby="cmp-t">
   <div class="wrap">
@@ -477,8 +527,9 @@ h1 .w{display:inline-block}
         <div>
           <span class="badge">🎁 Prova gratuita</span>
           <p class="price-big"><span class="free grad-text">30 giorni gratis</span><span class="then">poi, solo se vuoi continuare</span><span class="num">190 €</span> <span class="per">/ anno</span></p>
-          <p class="note">Circa 0,52 € al giorno. Nessun costo di attivazione.</p>
-          <a class="btn btn-main" href="#offerta" data-open style="width:100%">🚀 Richiedi la prova gratuita</a>
+          <p class="note">Meno di 16 € al mese, circa 0,52 € al giorno. <strong>Nessun costo di attivazione.</strong></p>
+          <a class="btn btn-main" href="#offerta" data-open style="width:100%">🚀 Inizia la prova gratuita</a>
+          <p class="risk">🛡️ <strong>Rischio zero:</strong> oggi non paghi nulla. Decidi solo dopo 30 giorni, quando il menu l'hai già visto all'opera con i tuoi clienti.</p>
         </div>
         <ul class="inc" aria-label="Cosa include">
           <li>Menu personalizzato con il tuo nome, logo e piatti</li>
@@ -499,6 +550,30 @@ h1 .w{display:inline-block}
   </div>
 </section>
 
+<!-- ======================= CHI C'È DIETRO ======================= -->
+<section class="sec" id="chi-sono" aria-labelledby="me-t" style="padding-top:0">
+  <div class="wrap">
+    <div class="card me rv">
+      <div class="me-ph"><img src="https://i.postimg.cc/wjyXTx2S/IMG-6469.jpg" alt="Fabio, fondatore di DSFabio Digital" width="400" height="500" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.parentNode.textContent='F'"></div>
+      <div>
+        <span class="eyebrow">Chi c'è dietro</span>
+        <h2 class="h2" id="me-t" style="font-size:clamp(1.7rem,4.4vw,2.4rem)">Niente call center: parli con me</h2>
+        <blockquote>«Il tuo menu lo preparo io, a mano, e lo provo su più telefoni prima di consegnartelo.»</blockquote>
+        <p>Sono <strong>Fabio</strong>, fondatore di DSFabio Digital. Seguo personalmente ogni locale, dalla prima bozza agli aggiornamenti di tutti i giorni.</p>
+        <ul>
+          <li>Un unico contatto diretto su WhatsApp</li>
+          <li>Risposta entro poche ore nei giorni lavorativi</li>
+          <li>Prezzo chiaro, senza vincoli né penali</li>
+        </ul>
+        <div class="row">
+          <a class="btn btn-ghost" href="https://wa.me/393440301412" data-wa="Ciao Fabio! Ho visto il sito e vorrei capire se il menu digitale fa per il mio locale." target="_blank" rel="noopener">💬 Scrivimi su WhatsApp</a>
+          <a class="btn btn-ghost" href="about.html">Chi sono →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= FAQ ======================= -->
 <section class="sec" id="faq" aria-labelledby="faq-t">
   <div class="wrap">
@@ -507,12 +582,16 @@ h1 .w{display:inline-block}
       <h2 class="h2" id="faq-t">Hai qualche dubbio?</h2>
     </div>
     <div class="faq">
-      <details class="rv"><summary>Quanto costa il menu digitale con QR code?</summary><div class="ans">I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso: menu personalizzato, QR code, hosting, dominio, certificato SSL e fino a 4 modifiche al mese.</div></details>
+      <details class="rv"><summary>Quanto costa il menu digitale con QR code?</summary><div class="ans">I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso (meno di 16 € al mese): menu personalizzato, QR code, hosting, dominio, certificato SSL e fino a 4 modifiche al mese.</div></details>
+      <details class="rv"><summary>Devo pagare qualcosa per iniziare la prova?</summary><div class="ans">No. La prova di 30 giorni parte dalla consegna del menu e non chiediamo nessun pagamento anticipato. Alla fine decidi tu se continuare a 190 € all'anno.</div></details>
+      <details class="rv"><summary>Cosa devo mandarvi per iniziare?</summary><div class="ans">Basta una foto del menu cartaceo su WhatsApp, il logo se ce l'hai e gli allergeni dei piatti. Se vuoi, aggiungi qualche foto dei piatti: al resto pensiamo noi.</div></details>
       <details class="rv"><summary>In quanto tempo è pronto il menu?</summary><div class="ans">Circa 48 ore da quando ci mandi il tuo menu, anche solo come foto su WhatsApp.</div></details>
       <details class="rv"><summary>I clienti devono scaricare un'app?</summary><div class="ans">No. Basta inquadrare il QR code con la fotocamera del telefono: il menu si apre nel browser, su qualsiasi smartphone o tablet.</div></details>
       <details class="rv"><summary>Gli allergeni sono indicati?</summary><div class="ans">Sì: ogni piatto mostra le icone dei 14 allergeni previsti dalla normativa europea, con legenda. I dati sugli allergeni li fornisce e li conferma il ristorante.</div></details>
       <details class="rv"><summary>Posso cambiare piatti e prezzi?</summary><div class="ans">Sì, fino a 4 modifiche al mese sono incluse: ci scrivi su WhatsApp cosa cambiare e lo aggiorniamo noi. Il QR sui tavoli resta sempre lo stesso.</div></details>
-      <details class="rv"><summary>Posso avere il menu in più lingue?</summary><div class="ans">Sì, il menu può avere più lingue, per esempio italiano e inglese, con il cambio lingua in un tocco.</div></details>
+      <details class="rv"><summary>Posso avere il menu in più lingue?</summary><div class="ans">Sì, il menu può avere più lingue, per esempio italiano e inglese, con il cambio lingua in un tocco: utile per i locali con clienti stranieri.</div></details>
+      <details class="rv"><summary>Posso mettere il menu anche su Google e Instagram?</summary><div class="ans">Sì. Oltre al QR code, il menu ha un suo indirizzo web: puoi inserirlo nella scheda Google del locale, nella bio di Instagram, su Facebook o mandarlo su WhatsApp ai clienti.</div></details>
+      <details class="rv"><summary>Va bene anche per bar, pub, piadinerie e hotel?</summary><div class="ans">Sì: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub, cocktail bar, gelaterie e hotel. Nella <a href="modelli.html">pagina dei modelli</a> trovi esempi per ogni tipo di locale.</div></details>
       <details class="rv"><summary>Cosa succede se dopo la prova non voglio continuare?</summary><div class="ans">Nessun costo e nessuna penale: il menu viene messo in pausa e ricevi gratuitamente il PDF del tuo menu.</div></details>
       <details class="rv"><summary>Il menu digitale sostituisce del tutto quello cartaceo?</summary><div class="ans">Consigliamo di tenere sempre una copia cartacea di riserva, così i prezzi restano consultabili anche da chi non usa lo smartphone.</div></details>
     </div>
@@ -529,6 +608,7 @@ h1 .w{display:inline-block}
         <a class="btn btn-main" href="./#offerta" data-open>🚀 Richiedi la prova gratuita</a>
         <a class="btn btn-ghost" href="https://wa.me/393440301412" data-wa="Ciao! Vorrei informazioni sul menu digitale con QR code e la prova gratuita di 30 giorni." target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
       </div>
+      <ul class="reassure"><li>Nessun pagamento anticipato</li><li>Nessun vincolo</li><li>Pronto in 48 ore</li></ul>
     </div>
   </div>
 </section>

@@ -37,7 +37,7 @@ var CSS = [
 '@media (max-width:560px){.dsf-pts{grid-template-columns:1fr}.dsf-btn{width:100%}.dsf-pill{display:flex;width:max-content;margin:6px auto 0}}',
 /* Finestra */
 'dialog.dsf-dlg{margin:auto;border:1px solid var(--dsf-line);border-radius:28px;background:#16112f;color:var(--dsf-txt);width:calc(100% - 24px);max-width:500px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0}',
-'dialog.dsf-dlg::backdrop{background:rgba(5,3,15,.8);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}',
+'dialog.dsf-dlg::backdrop{background:rgba(5,3,15,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}',
 'dialog.dsf-dlg[open]{animation:dsfpop .45s cubic-bezier(.2,.9,.2,1)}',
 '@keyframes dsfpop{from{opacity:0;transform:translateY(30px) scale(.96)}}',
 '.dsf-dc{position:relative;padding:28px 20px 22px}',
@@ -61,6 +61,22 @@ var CSS = [
 '.dsf-ok .big{font-size:3.2rem;line-height:1;margin-bottom:8px}',
 '.dsf-ok a{color:#22d3ee;font-weight:800}',
 '.dsf [hidden]{display:none!important}',
+'dialog.dsf-dlg{background:#f7f5ff!important;color:#1b1638!important;border-color:rgba(123,92,255,.28)!important;color-scheme:light;box-shadow:0 30px 80px rgba(0,0,0,.45)}',
+'.dsf-dlg h2{color:#1b1638}',
+'.dsf-dlg .sub{color:#4a4470!important}',
+'.dsf-dlg .sub strong{color:#1b1638}',
+'.dsf-x{background:#e9e4fb!important;color:#1b1638!important}',
+'.dsf-tag{background:#dff6f9!important;color:#0b6f7d!important}',
+'.dsf-f label{color:#2a2450}',
+'.dsf-f input,.dsf-f textarea{background:#fff!important;color:#1b1638!important;border:1.5px solid #cdc5ec!important}',
+'.dsf-f input::placeholder,.dsf-f textarea::placeholder{color:#8d87ad;opacity:1}',
+'.dsf-f input:focus,.dsf-f textarea:focus{border-color:#7b5cff!important;box-shadow:0 0 0 4px rgba(123,92,255,.18)}',
+'.dsf-consent{color:#4a4470!important}',
+'.dsf-consent a,.dsf-ok a{color:#5b3fd9!important;font-weight:700}',
+'.dsf-consent input{accent-color:#7b5cff!important}',
+'.dsf-hint{color:#625c88!important}',
+'.dsf-hint strong{color:#1b1638}',
+'.dsf-send{color:#053d1a!important}',
 '@media (prefers-reduced-motion:reduce){.dsf *{animation:none!important;transition:none!important}}'
 ].join('\n');
 

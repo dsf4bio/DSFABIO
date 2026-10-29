@@ -123,7 +123,7 @@ footer{padding:60px 0 calc(40px + env(safe-area-inset-bottom));color:var(--sub);
 .wa-fab svg{width:30px;height:30px;fill:#fff}
 
 /* ---------- Finestra richiesta (creata da site.js) ---------- */
-dialog{margin:auto;border:1px solid var(--line);border-radius:28px;background:#16112f;color:var(--txt);width:calc(100% - 24px);max-width:520px;max-height:92svh;overflow:auto;padding:0}
+dialog{margin:auto;border:1px solid var(--line);border-radius:28px;background:#16112f;color:var(--txt);width:calc(100% - 24px);max-width:520px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0}
 dialog::backdrop{background:rgba(5,3,15,.78);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
 dialog[open]{animation:pop .45s cubic-bezier(.2,.9,.2,1)}
 @keyframes pop{from{opacity:0;transform:translateY(30px) scale(.96)}}
@@ -134,7 +134,7 @@ dialog .sub{color:var(--sub);font-size:.92rem;margin-bottom:16px}
 .model-tag{display:inline-block;margin-bottom:12px;padding:5px 12px;border-radius:999px;font-size:.78rem;font-weight:800;background:rgba(34,211,238,.14);color:var(--cyan)}
 .fform{display:grid;gap:12px}
 .f label{display:block;font-size:.85rem;font-weight:700;margin-bottom:5px}
-.f input,.f textarea,.f select{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.05);transition:border-color .2s,background .2s}
+.f input,.f textarea,.f select{width:100%;font-size:16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.05);transition:border-color .2s,background .2s}
 .f select option{background:#16112f}
 .f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--cyan);background:rgba(255,255,255,.08)}
 .f textarea{min-height:84px;resize:vertical}

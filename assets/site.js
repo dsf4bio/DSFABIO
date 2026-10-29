@@ -64,6 +64,23 @@ document.addEventListener('pointerdown', function (e) {
 });
 
 /* ---------- Finestra richiesta prova gratuita ---------- */
+/* Blocca lo sfondo mentre la finestra è aperta (funziona anche su iPhone) */
+var __lockY = 0;
+function lockPage() {
+  __lockY = window.scrollY || window.pageYOffset;
+  var b = document.body, h = document.documentElement;
+  h.style.scrollBehavior = 'auto';
+  b.style.position = 'fixed'; b.style.top = -__lockY + 'px'; b.style.left = '0'; b.style.right = '0'; b.style.width = '100%';
+  h.style.overflow = 'hidden';
+}
+function unlockPage() {
+  var b = document.body, h = document.documentElement;
+  b.style.position = ''; b.style.top = ''; b.style.left = ''; b.style.right = ''; b.style.width = '';
+  h.style.overflow = '';
+  window.scrollTo(0, __lockY);
+  setTimeout(function () { h.style.scrollBehavior = ''; }, 50);
+}
+
 var DLG_HTML =
 '<dialog id="req-dlg" aria-labelledby="req-t"><div class="dc">' +
 '<button type="button" class="x" data-close aria-label="Chiudi">×</button>' +
@@ -94,6 +111,7 @@ function ensureDialog() {
   dlg = $('#req-dlg');
   $$('[data-close]', dlg).forEach(function (b) { b.addEventListener('click', function () { dlg.close(); }); });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', unlockPage);
   var form = $('#req', dlg);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -126,7 +144,7 @@ document.addEventListener('click', function (e) {
   model = b.getAttribute('data-model') || '';
   var tag = $('#req-model', d); tag.hidden = !model; tag.textContent = model ? '🎨 Modello scelto: ' + model : '';
   $('#req-body', d).hidden = false; $('#req-ok', d).hidden = true;
-  if (d.showModal) d.showModal(); else location.href = 'https://wa.me/' + WA;
+  if (d.showModal) { if (!d.open) { d.showModal(); lockPage(); d.scrollTop = 0; } } else location.href = 'https://wa.me/' + WA;
 });
 
 /* Arrivo da un modello: ?modello=Nome apre subito la richiesta con quel modello */

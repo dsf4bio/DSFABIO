@@ -36,7 +36,7 @@ var CSS = [
 '.dsf-pill{display:inline-flex;align-items:center;gap:6px;margin-left:8px;padding:3px 11px;border-radius:999px;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:.72rem;color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee);vertical-align:middle}',
 '@media (max-width:560px){.dsf-pts{grid-template-columns:1fr}.dsf-btn{width:100%}.dsf-pill{display:flex;width:max-content;margin:6px auto 0}}',
 /* Finestra */
-'dialog.dsf-dlg{margin:auto;border:1px solid var(--dsf-line);border-radius:28px;background:#16112f;color:var(--dsf-txt);width:calc(100% - 24px);max-width:500px;max-height:92svh;max-height:92vh;overflow:auto;padding:0}',
+'dialog.dsf-dlg{margin:auto;border:1px solid var(--dsf-line);border-radius:28px;background:#16112f;color:var(--dsf-txt);width:calc(100% - 24px);max-width:500px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0}',
 'dialog.dsf-dlg::backdrop{background:rgba(5,3,15,.8);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}',
 'dialog.dsf-dlg[open]{animation:dsfpop .45s cubic-bezier(.2,.9,.2,1)}',
 '@keyframes dsfpop{from{opacity:0;transform:translateY(30px) scale(.96)}}',
@@ -64,6 +64,22 @@ var CSS = [
 '@media (prefers-reduced-motion:reduce){.dsf *{animation:none!important;transition:none!important}}'
 ].join('\n');
 
+/* Blocca lo sfondo mentre la finestra è aperta (funziona anche su iPhone) */
+var __lockY = 0;
+function lockPage() {
+  __lockY = window.scrollY || window.pageYOffset;
+  var b = document.body, h = document.documentElement;
+  h.style.scrollBehavior = 'auto';
+  b.style.position = 'fixed'; b.style.top = -__lockY + 'px'; b.style.left = '0'; b.style.right = '0'; b.style.width = '100%';
+  h.style.overflow = 'hidden';
+}
+function unlockPage() {
+  var b = document.body, h = document.documentElement;
+  b.style.position = ''; b.style.top = ''; b.style.left = ''; b.style.right = ''; b.style.width = '';
+  h.style.overflow = '';
+  window.scrollTo(0, __lockY);
+  setTimeout(function () { h.style.scrollBehavior = ''; }, 50);
+}
 function el(html) { var d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
 function waLink(t) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t); }
 
@@ -118,7 +134,7 @@ function init() {
 
   function open() {
     body.hidden = false; ok.hidden = true;
-    if (dlg.showModal) dlg.showModal();
+    if (dlg.showModal) { if (!dlg.open) { dlg.showModal(); lockPage(); dlg.scrollTop = 0; } }
     else location.href = waLink('Ciao! Vorrei la prova gratuita del menu digitale, modello ' + MODEL + '.');
   }
   document.addEventListener('click', function (e) {
@@ -127,6 +143,7 @@ function init() {
   });
   dlg.querySelector('[data-dsf-close]').addEventListener('click', function () { dlg.close(); });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', unlockPage);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }

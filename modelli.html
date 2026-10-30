@@ -383,20 +383,37 @@
 })();
 
 /* ---------- Anteprime animate: il menu vero dentro un telefono ----------
-   Carica l'iframe quando la card si avvicina, poi, finché è visibile,
-   scorre il menu e passa da una categoria all'altra da solo. */
+   Carica l'iframe quando la card si avvicina; finché è visibile ripete in loop:
+   scorrimento lento, pausa, due cambi di categoria, uno scatto veloce, pausa,
+   torna su. Ogni modello ha un suo ritmo e parte sfasato, così non vanno in coro. */
 (function () {
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var CTRL = 'nav:not(.flinks) a[href^="#"], nav:not(.flinks) button, .tabs button, .tab, .cat, .chips button, .chip, .seg button, .pill';
-  function setup(fr) {
-    var w = fr.contentWindow, d = fr.contentDocument;
-    if (!w || !d) return;
-    /* tutto scorre solo dentro l'iframe: mai la pagina che lo contiene */
-    w.Element.prototype.scrollIntoView = function () { var r = this.getBoundingClientRect(); w.scrollTo({top: w.scrollY + r.top - 70, behavior: 'smooth'}); };
-    var foc = w.HTMLElement.prototype.focus;
-    w.HTMLElement.prototype.focus = function () { foc.call(this, {preventScroll: true}); };
-    fr.classList.add('ready');
-    fr._step = 0;
+  var live = new Set();
+  var inOut = function (p) { return .5 - Math.cos(Math.PI * p) / 2; };
+  var flick = function (p) { return 1 - Math.pow(1 - p, 4); };
+  var rnd = function (a, b) { return a + Math.random() * (b - a); };
+  function alive(fr, run) { return fr._run === run && fr.classList.contains('ready'); }
+  /* avanza solo mentre la card è visibile: fuori schermo il tempo si ferma */
+  function animate(fr, run, ms, step) {
+    return new Promise(function (done) {
+      var t = 0, last = performance.now();
+      (function f(now) {
+        if (!alive(fr, run)) return done(false);
+        if (live.has(fr) && !document.hidden) t += Math.min(now - last, 50);
+        last = now;
+        if (step) step(Math.min(t / ms, 1));
+        if (t >= ms) return done(true);
+        requestAnimationFrame(f);
+      })(last);
+    });
+  }
+  function hold(fr, run, ms) { return animate(fr, run, ms); }
+  function glide(fr, run, to, ms, ease) {
+    var w = fr.contentWindow, from = w.scrollY;
+    var max = w.document.documentElement.scrollHeight - w.innerHeight;
+    to = Math.max(0, Math.min(to, max));
+    return animate(fr, run, ms, function (p) { w.scrollTo({top: from + (to - from) * ease(p), behavior: 'instant'}); });
   }
   function controls(d) {
     var groups = new Map();
@@ -408,19 +425,43 @@
     groups.forEach(function (l) { if (l.length > best.length) best = l; });
     return best.length > 1 ? best : [];
   }
-  function tick(fr) {
+  /* passa alla categoria successiva: le ancore scorrono fin lì, i tab si cliccano */
+  function nextCategory(fr, run, k) {
+    var w = fr.contentWindow, cs = controls(fr.contentDocument);
+    if (!cs.length) return glide(fr, run, w.scrollY + 320, 2600 * k, inOut);
+    var c = cs[fr._ci++ % cs.length], h = c.getAttribute('href');
+    if (h && h.charAt(0) === '#') {
+      var t = h.length > 1 && fr.contentDocument.getElementById(h.slice(1));
+      if (t) return glide(fr, run, w.scrollY + t.getBoundingClientRect().top - 70, 900 * k, inOut);
+    } else c.click();
+    return Promise.resolve(true);
+  }
+  async function play(fr, run) {
+    var w = fr.contentWindow, k = rnd(.8, 1.3);
+    if (!await hold(fr, run, rnd(300, 3200))) return;
+    while (true) {
+      if (!await glide(fr, run, w.scrollY + rnd(420, 620), rnd(3800, 5000) * k, inOut)) return;
+      if (!await hold(fr, run, rnd(900, 1500) * k)) return;
+      for (var n = 0; n < 2; n++) {
+        if (!await nextCategory(fr, run, k)) return;
+        if (!await hold(fr, run, rnd(1700, 2600) * k)) return;
+      }
+      if (!await glide(fr, run, w.scrollY + rnd(800, 1100), rnd(520, 700), flick)) return;
+      if (!await hold(fr, run, rnd(1600, 2600) * k)) return;
+      if (!await glide(fr, run, 0, 1200 * k, inOut)) return;
+      if (!await hold(fr, run, rnd(700, 1400) * k)) return;
+    }
+  }
+  function setup(fr) {
     var w = fr.contentWindow, d = fr.contentDocument;
-    if (!w || !d || !fr.classList.contains('ready')) return;
-    var cs = controls(d), i = fr._step++;
-    var bottom = w.scrollY + w.innerHeight >= d.documentElement.scrollHeight - 4;
-    if (cs.length && i % 2 === 0) {
-      var c = cs[(i / 2) % cs.length], h = c.getAttribute('href');
-      if (h && h.charAt(0) === '#') {
-        var t = h.length > 1 && d.getElementById(h.slice(1));
-        if (t) w.scrollTo({top: w.scrollY + t.getBoundingClientRect().top - 70, behavior: 'smooth'});
-      } else c.click();
-    } else if (bottom) w.scrollTo({top: 0, behavior: 'smooth'});
-    else w.scrollBy({top: 240, behavior: 'smooth'});
+    if (!w || !d) return;
+    /* tutto scorre solo dentro l'iframe: mai la pagina che lo contiene */
+    w.Element.prototype.scrollIntoView = function () { var r = this.getBoundingClientRect(); w.scrollTo({top: w.scrollY + r.top - 70, behavior: 'smooth'}); };
+    var foc = w.HTMLElement.prototype.focus;
+    w.HTMLElement.prototype.focus = function () { foc.call(this, {preventScroll: true}); };
+    fr.classList.add('ready');
+    fr._ci = 1; fr._run = (fr._run || 0) + 1;
+    if (!reduced) play(fr, fr._run);
   }
   var frames = Array.prototype.slice.call(document.querySelectorAll('.phone iframe'));
   if (!('IntersectionObserver' in window)) { frames.forEach(function (fr) { fr.onload = function () { setup(fr); }; fr.src = fr.dataset.src; }); return; }
@@ -432,12 +473,10 @@
       else if (fr.getAttribute('src')) { fr.classList.remove('ready'); fr.removeAttribute('src'); }
     });
   }, {rootMargin: '700px 0px'});
-  var live = new Set();
   var seen = new IntersectionObserver(function (es) {
     es.forEach(function (e) { var fr = e.target.querySelector('iframe'); if (e.isIntersecting) live.add(fr); else live.delete(fr); });
   }, {threshold: .5});
   frames.forEach(function (fr) { var p = fr.closest('.m-prev'); near.observe(p); seen.observe(p); });
-  if (!reduced) setInterval(function () { if (!document.hidden) live.forEach(tick); }, 2200);
 })();
 </script>
 </body>

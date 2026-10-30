@@ -4,11 +4,13 @@
    - aggiunge in fondo alla pagina una call to action
    - aggiunge un pulsante "Provalo gratis" nella fascia in alto (.demo)
    - i pulsanti di prova aprono WhatsApp con il messaggio già pronto
+   - dentro un iframe (anteprima in modelli) mostra solo il menu
    ========================================================= */
 (function () {
 'use strict';
 var WA = '393440301412';
 var me = document.querySelector('script[data-model]');
+var PREVIEW = window.self !== window.top || /[?&]anteprima\b/.test(location.search);
 var MODEL = (me && me.getAttribute('data-model')) || document.title.split('·')[0].trim();
 
 var CSS = [
@@ -42,6 +44,13 @@ var TRIAL = waLink('Ciao Fabio! Vorrei attivare la prova gratuita di 30 giorni d
 var ESC = function (t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
 
 function init() {
+  /* Dentro l'anteprima della pagina Modelli (iframe): solo il menu, senza fascia demo né invito */
+  if (PREVIEW) {
+    var ps = document.createElement('style');
+    ps.textContent = '.demo,.demo-bar{display:none!important}html{scrollbar-width:none}html::-webkit-scrollbar{display:none}';
+    document.head.appendChild(ps);
+    return;
+  }
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
   /* Call to action in fondo */
@@ -54,7 +63,7 @@ function init() {
     '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '" target="_blank" rel="noopener">🚀 Prova gratis il modello ' + ESC(MODEL) + '</a>' +
     '<a class="dsf-btn dsf-wa" href="' + waLink('Ciao! Ho visto il modello ' + MODEL + ' e vorrei qualche informazione sul menu digitale.') + '" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a></div>' +
     '<span class="dsf-small">Nessun impegno · nessun dato di pagamento · disdici quando vuoi</span>' +
-    '<a class="dsf-link" href="modelli.html">← Guarda gli altri modelli</a>' +
+    '<a class="dsf-link" href="modelli">← Guarda gli altri modelli</a>' +
   '</div></section>');
   document.body.appendChild(cta);
 

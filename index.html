@@ -38,7 +38,7 @@
       "email": "info@dsfabio.com",
       "image": "https://dsfabio.com/og-image.png",
       "description": "Menu digitali con QR code per ristoranti, pizzerie, bar e pub in tutta Italia: 30 giorni di prova gratuita, poi 190 € all'anno tutto incluso.",
-      "founder": {"@type": "Person", "name": "Fabio", "url": "https://dsfabio.com/about.html"},
+      "founder": {"@type": "Person", "name": "Fabio", "url": "https://dsfabio.com/about"},
       "areaServed": {"@type": "Country", "name": "Italia"},
       "knowsAbout": ["Menu digitale", "QR code per ristoranti", "Allergeni nel menu", "Menu multilingua"],
       "contactPoint": {"@type": "ContactPoint", "telephone": "+39-344-030-1412", "email": "info@dsfabio.com", "contactType": "customer service", "areaServed": "IT", "availableLanguage": ["Italian"]}
@@ -56,7 +56,7 @@
       "@id": "https://dsfabio.com/#service",
       "name": "Menu digitale con QR code per ristoranti",
       "serviceType": "Menu digitale con QR code",
-      "description": "Creazione e gestione di menu digitali con QR code per ristoranti, pizzerie, bar e pub: allergeni, foto, più lingue, hosting, dominio .it a nome del locale gratis per sempre e fino a 4 aggiornamenti al mese inclusi.",
+      "description": "Creazione e gestione di menu digitali con QR code per ristoranti, pizzerie, bar e pub: allergeni, foto, più lingue, hosting, indirizzo web dedicato (dsmenu.it/nomelocale) e fino a 4 aggiornamenti al mese inclusi.",
       "provider": {"@id": "https://dsfabio.com/#org"},
       "areaServed": {"@type": "Country", "name": "Italia"},
       "audience": {"@type": "BusinessAudience", "audienceType": "Ristoranti, pizzerie, bar, pub"},
@@ -75,7 +75,7 @@
       "@type": "FAQPage",
       "@id": "https://dsfabio.com/#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "Quanto costa il menu digitale con QR code?", "acceptedAnswer": {"@type": "Answer", "text": "I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso (meno di 16 € al mese): menu personalizzato, QR code, hosting, un dominio tutto tuo a nome del locale (es. tuolocale.it, gratis per sempre), certificato SSL e fino a 4 modifiche al mese."}},
+        {"@type": "Question", "name": "Quanto costa il menu digitale con QR code?", "acceptedAnswer": {"@type": "Answer", "text": "I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso (meno di 16 € al mese): menu personalizzato, QR code, hosting, un indirizzo web dedicato al tuo locale (es. dsmenu.it/nomelocale), certificato SSL e fino a 4 modifiche al mese."}},
         {"@type": "Question", "name": "Devo pagare qualcosa per iniziare la prova?", "acceptedAnswer": {"@type": "Answer", "text": "No. La prova di 30 giorni parte dalla consegna del menu e non chiediamo nessun pagamento anticipato. Alla fine decidi tu se continuare a 190 € all'anno."}},
         {"@type": "Question", "name": "Cosa devo mandarvi per iniziare?", "acceptedAnswer": {"@type": "Answer", "text": "Basta una foto del menu cartaceo su WhatsApp, il logo se ce l'hai e gli allergeni dei piatti. Se vuoi, aggiungi qualche foto dei piatti: al resto pensiamo noi."}},
         {"@type": "Question", "name": "In quanto tempo è pronto il menu?", "acceptedAnswer": {"@type": "Answer", "text": "Circa 48 ore da quando ci mandi il tuo menu, anche solo come foto su WhatsApp."}},
@@ -83,7 +83,7 @@
         {"@type": "Question", "name": "Gli allergeni sono indicati?", "acceptedAnswer": {"@type": "Answer", "text": "Sì: ogni piatto mostra le icone dei 14 allergeni previsti dalla normativa europea, con legenda. I dati sugli allergeni li fornisce e li conferma il ristorante."}},
         {"@type": "Question", "name": "Posso cambiare piatti e prezzi?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, fino a 4 modifiche al mese sono incluse: ci scrivi su WhatsApp cosa cambiare e lo aggiorniamo noi. Il QR sui tavoli resta sempre lo stesso."}},
         {"@type": "Question", "name": "Posso avere il menu in più lingue?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, il menu può avere più lingue, per esempio italiano e inglese, con il cambio lingua in un tocco: utile per i locali con clienti stranieri."}},
-        {"@type": "Question", "name": "Il dominio è mio?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Il menu non sta su un nostro indirizzo: ricevi un dominio di secondo livello tutto tuo, a nome del locale (es. tuolocale.it), incluso gratis per sempre. Lo scegliamo insieme in base alla disponibilità."}},
+        {"@type": "Question", "name": "Che indirizzo avrà il mio menu?", "acceptedAnswer": {"@type": "Answer", "text": "Il tuo menu avrà un indirizzo web dedicato con il nome del locale, del tipo dsmenu.it/nomelocale, incluso gratis: non devi comprare né gestire un dominio. È l'indirizzo dietro al QR code e puoi metterlo su Google, Instagram e WhatsApp."}},
         {"@type": "Question", "name": "Posso mettere il menu anche su Google e Instagram?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Oltre al QR code, il menu ha un suo indirizzo web: puoi inserirlo nella scheda Google del locale, nella bio di Instagram, su Facebook o mandarlo su WhatsApp ai clienti."}},
         {"@type": "Question", "name": "Va bene anche per bar, pub, piadinerie e kebab?", "acceptedAnswer": {"@type": "Answer", "text": "Sì: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub e cocktail bar. Nella pagina dei modelli trovi esempi per ogni tipo di locale."}},
         {"@type": "Question", "name": "Cosa succede se dopo la prova non voglio continuare?", "acceptedAnswer": {"@type": "Answer", "text": "Nessun costo e nessuna penale: il menu viene messo in pausa e ricevi gratuitamente il PDF del tuo menu."}},
@@ -323,11 +323,11 @@ h1 .w{display:inline-block}
       <ul class="links" id="links">
         <li><a href="./#come-funziona">Come funziona</a></li>
         <li><a href="./#perche">Perché il digitale</a></li>
-        <li><a href="modelli.html">Modelli</a></li>
+        <li><a href="modelli">Modelli</a></li>
         <li><a href="./#offerta">Offerta</a></li>
-        <li><a href="about.html">Chi sono</a></li>
+        <li><a href="about">Chi sono</a></li>
         <li><a href="./#faq">FAQ</a></li>
-        <li><a href="assistenza.html">Assistenza</a></li>
+        <li><a href="assistenza">Assistenza</a></li>
         <li><a class="m-cta" href="https://wa.me/393440301412?text=Ciao%20Fabio%21%20Vorrei%20attivare%20la%20prova%20gratuita%20di%2030%20giorni%20del%20menu%20digitale." data-open target="_blank" rel="noopener">Prova gratis 30 giorni</a></li>
       </ul>
     </nav>
@@ -411,29 +411,29 @@ h1 .w{display:inline-block}
       <p class="lead">Quindici stili diversi, con menu completi e piatti di fantasia: il tuo sarà creato su misura.</p>
     </div>
     <div class="demos">
-      <a class="card demo rv" href="demo-sakura-neon.html">
+      <a class="card demo rv" href="demo-sakura-neon">
         <div class="demo-prev p-neon"><span class="big" aria-hidden="true">🍣</span></div>
         <div class="demo-body"><div class="tagline"><span>Sushi</span><span>Cocktail bar</span><span>IT / EN</span></div><h3>Sakura Neon</h3><p>Colori neon, cambio categoria animato e menu in due lingue.</p><span class="go">Apri l'esempio →</span></div>
       </a>
-      <a class="card demo rv" href="mdc-008.html" style="--d:1">
+      <a class="card demo rv" href="mdc-008" style="--d:1">
         <div class="demo-prev p-fire"><span class="big" aria-hidden="true">🔥</span></div>
         <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Pizzeria</span></div><h3>Forno Rosso</h3><p>La bocca del forno a legna con le fiamme che danzano: impossibile non notarlo.</p><span class="go">Apri l'esempio →</span></div>
       </a>
-      <a class="card demo rv" href="mdc-001.html" style="--d:2">
+      <a class="card demo rv" href="mdc-001" style="--d:2">
         <div class="demo-prev p-gold"><span class="big" aria-hidden="true">🍷</span></div>
         <div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Fine dining</span></div><h3>Gusto 360°</h3><p>Raffinato come un menu su carta pregiata, con percorso degustazione e vini.</p><span class="go">Apri l'esempio →</span></div>
       </a>
     </div>
     <h3 class="types-t rv">Scegli il modello per il tuo tipo di locale</h3>
     <ul class="types rv">
-      <li><a href="modelli.html?tipo=ristorante"><span aria-hidden="true">🍷</span><b>Menu digitale per ristoranti e trattorie</b><small>Vedi i modelli →</small></a></li>
-      <li><a href="modelli.html?tipo=pizzeria"><span aria-hidden="true">🍕</span><b>Menu digitale per pizzerie</b><small>Vedi i modelli →</small></a></li>
-      <li><a href="modelli.html?tipo=sushi"><span aria-hidden="true">🍣</span><b>Menu digitale per sushi e pesce</b><small>Vedi i modelli →</small></a></li>
-      <li><a href="modelli.html?tipo=burger"><span aria-hidden="true">🍔</span><b>Menu digitale per hamburgerie</b><small>Vedi i modelli →</small></a></li>
-      <li><a href="modelli.html?tipo=street"><span aria-hidden="true">🥙</span><b>Menu digitale per piadinerie e kebab</b><small>Vedi i modelli →</small></a></li>
-      <li><a href="modelli.html?tipo=bar"><span aria-hidden="true">🍸</span><b>Menu digitale per bar, pub e cocktail bar</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli?tipo=ristorante"><span aria-hidden="true">🍷</span><b>Menu digitale per ristoranti e trattorie</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli?tipo=pizzeria"><span aria-hidden="true">🍕</span><b>Menu digitale per pizzerie</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli?tipo=sushi"><span aria-hidden="true">🍣</span><b>Menu digitale per sushi e pesce</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli?tipo=burger"><span aria-hidden="true">🍔</span><b>Menu digitale per hamburgerie</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli?tipo=street"><span aria-hidden="true">🥙</span><b>Menu digitale per piadinerie e kebab</b><small>Vedi i modelli →</small></a></li>
+      <li><a href="modelli?tipo=bar"><span aria-hidden="true">🍸</span><b>Menu digitale per bar, pub e cocktail bar</b><small>Vedi i modelli →</small></a></li>
     </ul>
-    <p class="all-demos rv"><a class="btn btn-ghost" href="modelli.html">Vedi tutti i 15 modelli →</a></p>
+    <p class="all-demos rv"><a class="btn btn-ghost" href="modelli">Vedi tutti i 15 modelli →</a></p>
   </div>
 </section>
 
@@ -470,8 +470,8 @@ h1 .w{display:inline-block}
       </article>
       <article class="card rv" style="--d:2">
         <div class="ic" style="--h:120" aria-hidden="true">🔒</div>
-        <h3>Il tuo dominio, gratis per sempre</h3>
-        <p>Il menu ha un indirizzo tutto tuo, a nome del locale (es. <strong>tuolocale.it</strong>): dominio di secondo livello incluso gratis per sempre, con hosting e SSL (https). Non devi gestire nulla.</p>
+        <h3>Il tuo indirizzo web, incluso</h3>
+        <p>Il menu ha un indirizzo dedicato con il nome del locale (es. <strong>dsmenu.it/nomelocale</strong>), incluso gratis con hosting e SSL (https). Non devi gestire nulla.</p>
       </article>
       <article class="card rv">
         <div class="ic" style="--h:300" aria-hidden="true">🎨</div>
@@ -536,7 +536,7 @@ h1 .w{display:inline-block}
           <li>QR code pronto da stampare per i tavoli</li>
           <li>Icone dei 14 allergeni con legenda</li>
           <li>Fino a 4 modifiche al mese a piatti e prezzi</li>
-          <li>Dominio tuo (es. tuolocale.it) gratis per sempre, hosting e SSL</li>
+          <li>Indirizzo web dedicato (es. dsmenu.it/nomelocale), hosting e SSL</li>
           <li>Pulsanti per chiamare, WhatsApp, Maps e social</li>
           <li>Assistenza su WhatsApp: risposta entro poche ore nei giorni lavorativi</li>
         </ul>
@@ -567,7 +567,7 @@ h1 .w{display:inline-block}
         </ul>
         <div class="row">
           <a class="btn btn-ghost" href="https://wa.me/393440301412" data-wa="Ciao Fabio! Ho visto il sito e vorrei capire se il menu digitale fa per il mio locale." target="_blank" rel="noopener">💬 Scrivimi su WhatsApp</a>
-          <a class="btn btn-ghost" href="about.html">Chi sono →</a>
+          <a class="btn btn-ghost" href="about">Chi sono →</a>
         </div>
       </div>
     </div>
@@ -582,7 +582,7 @@ h1 .w{display:inline-block}
       <h2 class="h2" id="faq-t">Hai qualche dubbio?</h2>
     </div>
     <div class="faq">
-      <details class="rv"><summary>Quanto costa il menu digitale con QR code?</summary><div class="ans">I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso (meno di 16 € al mese): menu personalizzato, QR code, hosting, un dominio tutto tuo a nome del locale (es. tuolocale.it, gratis per sempre), certificato SSL e fino a 4 modifiche al mese.</div></details>
+      <details class="rv"><summary>Quanto costa il menu digitale con QR code?</summary><div class="ans">I primi 30 giorni dalla consegna sono gratuiti. Poi il servizio costa 190 € all'anno tutto incluso (meno di 16 € al mese): menu personalizzato, QR code, hosting, un indirizzo web dedicato al tuo locale (es. dsmenu.it/nomelocale), certificato SSL e fino a 4 modifiche al mese.</div></details>
       <details class="rv"><summary>Devo pagare qualcosa per iniziare la prova?</summary><div class="ans">No. La prova di 30 giorni parte dalla consegna del menu e non chiediamo nessun pagamento anticipato. Alla fine decidi tu se continuare a 190 € all'anno.</div></details>
       <details class="rv"><summary>Cosa devo mandarvi per iniziare?</summary><div class="ans">Basta una foto del menu cartaceo su WhatsApp, il logo se ce l'hai e gli allergeni dei piatti. Se vuoi, aggiungi qualche foto dei piatti: al resto pensiamo noi.</div></details>
       <details class="rv"><summary>In quanto tempo è pronto il menu?</summary><div class="ans">Circa 48 ore da quando ci mandi il tuo menu, anche solo come foto su WhatsApp.</div></details>
@@ -590,9 +590,9 @@ h1 .w{display:inline-block}
       <details class="rv"><summary>Gli allergeni sono indicati?</summary><div class="ans">Sì: ogni piatto mostra le icone dei 14 allergeni previsti dalla normativa europea, con legenda. I dati sugli allergeni li fornisce e li conferma il ristorante.</div></details>
       <details class="rv"><summary>Posso cambiare piatti e prezzi?</summary><div class="ans">Sì, fino a 4 modifiche al mese sono incluse: ci scrivi su WhatsApp cosa cambiare e lo aggiorniamo noi. Il QR sui tavoli resta sempre lo stesso.</div></details>
       <details class="rv"><summary>Posso avere il menu in più lingue?</summary><div class="ans">Sì, il menu può avere più lingue, per esempio italiano e inglese, con il cambio lingua in un tocco: utile per i locali con clienti stranieri.</div></details>
-      <details class="rv"><summary>Il dominio è mio?</summary><div class="ans">Sì. Il menu non sta su un nostro indirizzo: ricevi un dominio di secondo livello tutto tuo, a nome del locale (es. tuolocale.it), incluso gratis per sempre. Lo scegliamo insieme in base alla disponibilità.</div></details>
+      <details class="rv"><summary>Che indirizzo avrà il mio menu?</summary><div class="ans">Il tuo menu avrà un indirizzo web dedicato con il nome del locale, del tipo dsmenu.it/nomelocale, incluso gratis: non devi comprare né gestire un dominio. È l'indirizzo dietro al QR code e puoi metterlo su Google, Instagram e WhatsApp.</div></details>
       <details class="rv"><summary>Posso mettere il menu anche su Google e Instagram?</summary><div class="ans">Sì. Oltre al QR code, il menu ha un suo indirizzo web: puoi inserirlo nella scheda Google del locale, nella bio di Instagram, su Facebook o mandarlo su WhatsApp ai clienti.</div></details>
-      <details class="rv"><summary>Va bene anche per bar, pub, piadinerie e kebab?</summary><div class="ans">Sì: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub e cocktail bar. Nella <a href="modelli.html">pagina dei modelli</a> trovi esempi per ogni tipo di locale.</div></details>
+      <details class="rv"><summary>Va bene anche per bar, pub, piadinerie e kebab?</summary><div class="ans">Sì: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub e cocktail bar. Nella <a href="modelli">pagina dei modelli</a> trovi esempi per ogni tipo di locale.</div></details>
       <details class="rv"><summary>Cosa succede se dopo la prova non voglio continuare?</summary><div class="ans">Nessun costo e nessuna penale: il menu viene messo in pausa e ricevi gratuitamente il PDF del tuo menu.</div></details>
       <details class="rv"><summary>Il menu digitale sostituisce del tutto quello cartaceo?</summary><div class="ans">Consigliamo di tenere sempre una copia cartacea di riserva, così i prezzi restano consultabili anche da chi non usa lo smartphone.</div></details>
     </div>
@@ -628,9 +628,9 @@ h1 .w{display:inline-block}
         <ul>
           <li><a href="./">Home</a></li>
           <li><a href="./#come-funziona">Come funziona</a></li>
-          <li><a href="modelli.html">Modelli di menu</a></li>
+          <li><a href="modelli">Modelli di menu</a></li>
           <li><a href="./#offerta">Offerta</a></li>
-          <li><a href="about.html">Chi sono</a></li>
+          <li><a href="about">Chi sono</a></li>
           <li><a href="./#faq">Domande frequenti</a></li>
         </ul>
       </div>
@@ -639,10 +639,10 @@ h1 .w{display:inline-block}
         <ul>
           <li><a href="https://wa.me/393440301412" target="_blank" rel="noopener">💬 WhatsApp +39 344 030 1412</a></li>
           <li><a href="mailto:info@dsfabio.com">✉️ info@dsfabio.com</a></li>
-          <li><a href="assistenza.html">Assistenza clienti</a></li>
-          <li><a href="privacy.html#privacy">Privacy</a></li>
-          <li><a href="privacy.html#cookies">Cookie</a></li>
-          <li><a href="privacy.html#terms">Termini e condizioni</a></li>
+          <li><a href="assistenza">Assistenza clienti</a></li>
+          <li><a href="privacy#privacy">Privacy</a></li>
+          <li><a href="privacy#cookies">Cookie</a></li>
+          <li><a href="privacy#terms">Termini e condizioni</a></li>
         </ul>
       </div>
     </div>
@@ -689,7 +689,7 @@ if (!reduced && sws.length) setInterval(function () { sws[wi].classList.remove('
 function drawQR() {
   var box = $('#qr'); if (!box) return;
   if (window.qrcode) {
-    var q = qrcode(0, 'M'); q.addData(SITE + '/demo-sakura-neon.html'); q.make();
+    var q = qrcode(0, 'M'); q.addData(SITE + '/demo-sakura-neon'); q.make();
     box.innerHTML = q.createSvgTag({cellSize: 4, margin: 0, scalable: true});
   } else {
     box.innerHTML = '<div style="aspect-ratio:1;display:grid;place-items:center;font-size:2.4rem">🔳</div>';

@@ -1,6 +1,8 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
-    { "source": "/assistenaza.html", "destination": "/assistenza.html", "permanent": true },
-    { "source": "/assistenaza", "destination": "/assistenza.html", "permanent": true }
+    { "source": "/assistenaza.html", "destination": "/assistenza", "permanent": true },
+    { "source": "/assistenaza", "destination": "/assistenza", "permanent": true }
   ]
 }

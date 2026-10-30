@@ -46,6 +46,7 @@ var ESC = function (t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').r
 function init() {
   /* Dentro l'anteprima della pagina Modelli (iframe): solo il menu, senza fascia demo né invito */
   if (PREVIEW) {
+    document.documentElement.classList.add('dsf-preview');
     var ps = document.createElement('style');
     ps.textContent = '.demo,.demo-bar{display:none!important}html{scrollbar-width:none}html::-webkit-scrollbar{display:none}';
     document.head.appendChild(ps);

@@ -31,6 +31,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .bowl{font-family:"Bowlby One",Impact,sans-serif;font-weight:400}
 
 /* ---------- Burger che si costruisce con lo scroll ---------- */
+.dsf-preview .build{height:100vh}
 .build{position:relative;height:260vh;background:var(--yel);background-image:radial-gradient(rgba(0,0,0,.09) 2px,transparent 2.5px);background-size:22px 22px}
 .stick{position:sticky;top:0;height:100svh;height:100vh;display:grid;grid-template-rows:auto 1fr auto;align-items:center;justify-items:center;overflow:hidden;padding:18px 16px 22px}
 .logo{font-family:"Bowlby One",Impact,sans-serif;font-size:clamp(2.6rem,13vw,5.4rem);line-height:.9;text-align:center;color:var(--blk);text-shadow:4px 4px 0 var(--red);transform:rotate(-3deg)}
@@ -198,10 +199,12 @@ var NAMES = ['Pane brioche tostato','Insalata croccante','Smash di manzo 100%','
 if (reduced) { build.classList.add('no-anim'); steps.forEach(function (s) { s.classList.add('on'); }); cap.textContent = 'Il Classic Smash 🔥'; return; }
 var ease = function (k) { var c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(k - 1, 3) + c1 * Math.pow(k - 1, 2); }; /* rimbalzo */
 var ticking = false;
+/* Dentro l'anteprima della pagina Modelli il burger si monta da solo, in fretta */
+var autoP = window.self !== window.top ? 0 : null;
 function update() {
   ticking = false;
   var r = build.getBoundingClientRect(), total = build.offsetHeight - innerHeight;
-  var prog = Math.min(Math.max(-r.top / (total * .82), 0), 1); /* 0 → 1 lungo la sezione */
+  var prog = autoP !== null ? autoP : Math.min(Math.max(-r.top / (total * .82), 0), 1); /* 0 → 1 lungo la sezione */
   var n = layers.length;
   layers.forEach(function (l, i) {
     var start = i / (n + 1), k = Math.min(Math.max((prog - start) / (1 / (n + 1)), 0), 1);
@@ -218,6 +221,14 @@ function update() {
 addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, {passive: true});
 addEventListener('resize', update);
 update();
+if (autoP !== null) {
+  var t0 = performance.now();
+  requestAnimationFrame(function step(now) {
+    autoP = Math.min((now - t0) / 1600, 1); update();
+    if (autoP < 1) requestAnimationFrame(step);
+  });
+  setTimeout(function () { if (autoP < 1) { autoP = 1; update(); } }, 1800);
+}
 })();
 </script>
 <script src="assets/trial.js" data-model="Smash Lab" defer></script>

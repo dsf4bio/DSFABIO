@@ -35,6 +35,11 @@ var CSS = [
 '.dsf-small{display:block;margin-top:14px;font-size:.8rem;color:var(--dsf-sub)}',
 '.dsf-pill{text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-left:8px;padding:3px 11px;border-radius:999px;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:.72rem;color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee);vertical-align:middle}',
 '@media (max-width:560px){.dsf-pts{grid-template-columns:1fr}.dsf-btn{width:100%}.dsf-pill{display:flex;width:max-content;margin:6px auto 0}}',
+'.dsf-ck{position:fixed;z-index:9999;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto;display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:20px;background:rgba(13,10,31,.95);border:1px solid var(--dsf-line);box-shadow:0 18px 50px rgba(0,0,0,.55)}',
+'.dsf-ck p{margin:0;font-size:.85rem;line-height:1.45;color:var(--dsf-sub)}',
+'.dsf-ck a{color:#22d3ee;font-weight:700}',
+'.dsf-ck button{flex:0 0 auto;border:0;cursor:pointer;padding:11px 18px;border-radius:999px;font:inherit;font-weight:800;font-size:.88rem;color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee)}',
+'@media (max-width:560px){.dsf-ck{flex-direction:column;align-items:stretch}}',
 '@media (prefers-reduced-motion:reduce){.dsf *{animation:none!important;transition:none!important}}'
 ].join('\n');
 
@@ -73,6 +78,18 @@ function init() {
   if (bar && !bar.querySelector('.dsf-pill')) {
     var pill = el('<a class="dsf-pill" href="' + ESC(TRIAL) + '" target="_blank" rel="noopener">✨ Provalo gratis</a>');
     bar.appendChild(pill);
+  }
+
+  /* Avviso cookie (stessa scelta salvata del resto del sito) */
+  var seen = false;
+  try { seen = !!localStorage.getItem('dsf-cookie-ok'); } catch (err) {}
+  if (!seen) {
+    var ck = el('<div class="dsf dsf-ck" role="region" aria-label="Avviso sui cookie"><p>🍪 Questo sito usa solo cookie tecnici, necessari a farlo funzionare: niente profilazione, statistiche o pubblicità. <a href="privacy#cookies">Informativa</a></p><button type="button">Ok, ho capito</button></div>');
+    ck.querySelector('button').addEventListener('click', function () {
+      try { localStorage.setItem('dsf-cookie-ok', '1'); } catch (err) {}
+      ck.remove();
+    });
+    document.body.appendChild(ck);
   }
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

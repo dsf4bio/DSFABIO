@@ -6,10 +6,19 @@
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#0b1730">
 <title>Bosforo Kebab · Modello di menu digitale (esempio) | DSFabio Digital</title>
+<meta name="description" content="Insegna al neon, spiedo che gira e prezzi che cambiano scegliendo panino, piadina, box o piatto. Modello di menu digitale con QR code: provalo dal telefono, 30 giorni gratis.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="DSFabio Digital · Menu digitali">
+<meta property="og:title" content="Bosforo Kebab · Modello di menu digitale (esempio) | DSFabio Digital">
+<meta property="og:description" content="Insegna al neon, spiedo che gira e prezzi che cambiano scegliendo panino, piadina, box o piatto. Modello di menu digitale con QR code: provalo dal telefono, 30 giorni gratis.">
+<meta property="og:url" content="https://dsfabio.com/mdc-013">
+<meta property="og:image" content="https://dsfabio.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monoton&family=Rubik:wght@400;600;800;900&display=swap">
+<link rel="stylesheet" href="assets/fonts/monoton-rubik.css">
 <style>
 :root{--night:#0b1730;--night2:#12224a;--tile:#1e6fb8;--turq:#2ec4c4;--red:#e63946;--saffron:#f4b400;--cream:#fff4dc;--txt:#f3f5ff;--sub:#a9b4d6;--line:rgba(255,255,255,.12);--soc-bg:#12224a}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -27,7 +36,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero{position:relative;overflow:hidden;padding:clamp(30px,6vh,70px) 18px 0;background:radial-gradient(60% 60% at 70% 70%,rgba(244,120,20,.25),transparent 70%),linear-gradient(180deg,#0b1730,#0b1730)}
 .hero::before{content:"";position:absolute;inset:0;opacity:.13}
 .hero-grid{position:relative;max-width:980px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:end}
-.sign{display:inline-block;font-family:Monoton,cursive;font-size:clamp(3.2rem,15vw,6.4rem);line-height:1;color:#fff4f4;text-shadow:0 0 6px #fff,0 0 14px var(--red),0 0 28px var(--red),0 0 52px var(--red);animation:neon 6s infinite}
+.sign{display:inline-block;margin:0;font-weight:400;font-family:Monoton,cursive;font-size:clamp(3.2rem,15vw,6.4rem);line-height:1;color:#fff4f4;text-shadow:0 0 6px #fff,0 0 14px var(--red),0 0 28px var(--red),0 0 52px var(--red);animation:neon 6s infinite}
 @keyframes neon{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.35;text-shadow:none}}
 .sub-sign{font-weight:900;font-size:clamp(1.1rem,4vw,1.5rem);letter-spacing:.3em;text-transform:uppercase;color:var(--turq);text-shadow:0 0 10px rgba(46,196,196,.7);margin-top:4px}
 .hero p{color:var(--sub);font-weight:500;max-width:420px;margin:14px 0 22px}
@@ -122,7 +131,7 @@ footer strong{font-family:Monoton,cursive;font-weight:400;font-size:1.8rem;color
   <div class="tiles" style="position:absolute;inset:0;opacity:.1" aria-hidden="true"></div>
   <div class="hero-grid">
     <div>
-      <div class="sign">Bosforo</div>
+      <h1 class="sign">Bosforo</h1>
       <div class="sub-sign">Kebab · Dürüm · Falafel</div>
       <p>Carne marinata 24 ore, pane cotto nel forno a pietra e salse fatte in casa ogni mattina.</p>
       <span class="hours" id="hours"><i></i>Aperto fino alle 2:00</span>

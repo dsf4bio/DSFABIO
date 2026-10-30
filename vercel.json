@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/assistenaza.html", "destination": "/assistenza.html", "permanent": true },
+    { "source": "/assistenaza", "destination": "/assistenza.html", "permanent": true }
+  ]
+}

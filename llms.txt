@@ -1,14 +1,14 @@
 # DSFabio Digital · Menu digitali con QR code per ristoranti
 
-> DSFabio Digital (di Fabio) crea e gestisce menu digitali con QR code per ristoranti, pizzerie, bar, pub e hotel in Italia. Il cliente del locale inquadra il QR sul tavolo e sfoglia il menu nel browser, senza app. Offerta unica: 30 giorni di prova gratuita dalla consegna, poi 190 € all'anno tutto incluso.
+> DSFabio Digital (di Fabio) crea e gestisce menu digitali con QR code per ristoranti, pizzerie, bar e pub in Italia. Il cliente del locale inquadra il QR sul tavolo e sfoglia il menu nel browser, senza app. Offerta unica: 30 giorni di prova gratuita dalla consegna, poi 190 € all'anno tutto incluso.
 
 ## Il servizio in breve
 
 - Cosa: menu digitale personalizzato con QR code da stampare per i tavoli.
-- Per chi: ristoranti, pizzerie, trattorie, sushi, bar, pub, cocktail bar, gelaterie e hotel.
+- Per chi: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub e cocktail bar.
 - Tempi: pronto in circa 48 ore da quando il locale invia il menu (anche in foto su WhatsApp).
 - Prezzo: 30 giorni gratis, poi 190 € all'anno (meno di 16 € al mese, circa 0,52 € al giorno). Nessun costo di attivazione.
-- Incluso: menu personalizzato con nome, logo e piatti; QR code; icone dei 14 allergeni UE con legenda; più lingue (es. italiano e inglese); fino a 4 modifiche al mese a piatti e prezzi; hosting, dominio e certificato SSL; pulsanti per chiamare, WhatsApp, Maps e social; assistenza su WhatsApp con risposta entro poche ore nei giorni lavorativi.
+- Incluso: menu personalizzato con nome, logo e piatti; QR code; icone dei 14 allergeni UE con legenda; più lingue (es. italiano e inglese); fino a 4 modifiche al mese a piatti e prezzi; hosting, dominio di secondo livello a nome del locale (es. tuolocale.it) gratis per sempre e certificato SSL; pulsanti per chiamare, WhatsApp, Maps e social; assistenza su WhatsApp con risposta entro poche ore nei giorni lavorativi.
 - Per iniziare: basta mandare su WhatsApp una foto del menu cartaceo, il logo (se c'è) e gli allergeni dei piatti. Nessun pagamento anticipato per la prova.
 - Uso del link: oltre al QR code il menu ha un suo indirizzo web, da inserire nella scheda Google del locale, nella bio di Instagram, su Facebook o da inviare su WhatsApp.
 - Referente: Fabio, fondatore, segue personalmente ogni locale.
@@ -36,5 +36,5 @@
 - [Esempio Bosforo Kebab](https://dsfabio.com/mdc-013.html): kebab con prezzi per formato (panino, piadina, box, piatto).
 - [Esempio Sakura Neon](https://dsfabio.com/demo-sakura-neon.html): menu demo per sushi e cocktail bar, in italiano e inglese.
 - [Esempio Fuoco & Brace](https://dsfabio.com/demo-fuoco-brace.html): menu demo per pizzeria e griglia.
-- [Assistenza clienti](https://dsfabio.com/assistenaza.html): richieste di aggiornamento per chi è già cliente.
+- [Assistenza clienti](https://dsfabio.com/assistenza.html): richieste di aggiornamento per chi è già cliente.
 - [Privacy, cookie e termini](https://dsfabio.com/privacy.html): informativa, cookie e condizioni del servizio.

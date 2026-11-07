@@ -1,452 +1,96 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Scheda cliente – Gestione Clienti DS Fabio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="dashboard.html">DS FABIO <small>Gestione clienti</small></a>
-    <div class="topbar-right">
-      <span class="user-email" id="user-email"></span>
-      <button class="btn btn-ghost btn-sm" id="logout-btn" type="button">Esci</button>
+<!-- MODULO RICHIESTA ASSISTENZA – DS Fabio -->
+<div id="dsf-assistenza">
+  <style>
+    #dsf-assistenza {
+      /* ---- colori: cambiali qui per uniformarli al sito ---- */
+      --dsf-accent: #7c5cff;        /* pulsanti, bordi attivi */
+      --dsf-accent-text: #ffffff;   /* testo sui pulsanti */
+      --dsf-field-bg: rgba(127, 127, 127, 0.08);
+      --dsf-border: rgba(127, 127, 127, 0.35);
+      --dsf-error: #e5484d;
+      --dsf-ok: #2fb66d;
+      /* ----------------------------------------------------- */
+      font: inherit;
+      color: inherit;
+      max-width: 640px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    #dsf-assistenza *, #dsf-assistenza *::before, #dsf-assistenza *::after { box-sizing: border-box; }
+    #dsf-assistenza label, #dsf-assistenza legend, #dsf-assistenza .dsf-label, #dsf-assistenza .dsf-choice,
+    #dsf-assistenza .dsf-drop, #dsf-assistenza .dsf-consent, #dsf-assistenza .dsf-file {
+      color: inherit; text-transform: none; letter-spacing: normal;
+    }
+    #dsf-assistenza ul, #dsf-assistenza li { list-style: none; }
+    #dsf-assistenza .dsf-field { margin: 0 0 18px; }
+    #dsf-assistenza .dsf-label { display: block; font-weight: 600; margin: 0 0 6px; font-size: 0.95em; }
+    #dsf-assistenza .dsf-hint { font-size: 0.82em; opacity: 0.7; margin-top: 4px; }
+    #dsf-assistenza .dsf-input,
+    #dsf-assistenza .dsf-textarea {
+      display: block; width: 100%; margin: 0; padding: 12px 14px;
+      font: inherit; color: inherit; background: var(--dsf-field-bg);
+      border: 1px solid var(--dsf-border); border-radius: 10px; outline: none;
+      -webkit-appearance: none; appearance: none;
+    }
+    #dsf-assistenza .dsf-textarea { min-height: 120px; resize: vertical; }
+    #dsf-assistenza .dsf-input:focus,
+    #dsf-assistenza .dsf-textarea:focus { border-color: var(--dsf-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--dsf-accent) 25%, transparent); }
+    #dsf-assistenza .dsf-code { max-width: 260px; font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: 700; font-size: 1.15em; letter-spacing: 0.12em; text-transform: uppercase; }
+    #dsf-assistenza .dsf-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border: 0; padding: 0; margin: 0; }
+    #dsf-assistenza .dsf-choice {
+      display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 14px; margin: 0;
+      border: 1px solid var(--dsf-border); border-radius: 10px; cursor: pointer; background: var(--dsf-field-bg);
+      font-weight: 500;
+    }
+    #dsf-assistenza .dsf-choice input { width: 18px; height: 18px; margin: 0; accent-color: var(--dsf-accent); flex: none; }
+    #dsf-assistenza .dsf-choice.is-on { border-color: var(--dsf-accent); box-shadow: inset 0 0 0 1px var(--dsf-accent); }
+    #dsf-assistenza .dsf-drop {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 18px; text-align: center;
+      border: 1.5px dashed var(--dsf-border); border-radius: 12px; cursor: pointer; background: var(--dsf-field-bg);
+    }
+    #dsf-assistenza .dsf-drop:hover, #dsf-assistenza .dsf-drop.is-over { border-color: var(--dsf-accent); }
+    #dsf-assistenza .dsf-drop strong { font-weight: 600; }
+    #dsf-assistenza .dsf-drop span { font-size: 0.82em; opacity: 0.7; }
+    #dsf-assistenza .dsf-hidden-input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
+    #dsf-assistenza .dsf-files { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+    #dsf-assistenza .dsf-file { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--dsf-border); border-radius: 8px; font-size: 0.9em; }
+    #dsf-assistenza .dsf-file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #dsf-assistenza .dsf-file button { background: none; border: 0; color: inherit; font-size: 1.3em; line-height: 1; cursor: pointer; padding: 0 4px; opacity: 0.7; }
+    #dsf-assistenza .dsf-consent { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 20px; cursor: pointer; font-size: 0.92em; }
+    #dsf-assistenza .dsf-consent input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--dsf-accent); flex: none; }
+    #dsf-assistenza .dsf-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px;
+      padding: 0 20px; border: 0; border-radius: 12px; cursor: pointer;
+      background: var(--dsf-accent); color: var(--dsf-accent-text); font: inherit; font-weight: 700; font-size: 1.05em;
+    }
+    #dsf-assistenza .dsf-btn:disabled { opacity: 0.6; cursor: wait; }
+    #dsf-assistenza .dsf-btn-ghost { background: transparent; color: inherit; border: 1px solid var(--dsf-border); width: auto; min-height: 44px; font-size: 1em; }
+    #dsf-assistenza .dsf-spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: dsf-spin .7s linear infinite; }
+    @keyframes dsf-spin { to { transform: rotate(360deg); } }
+    #dsf-assistenza .dsf-error { background: color-mix(in srgb, var(--dsf-error) 14%, transparent); border: 1px solid color-mix(in srgb, var(--dsf-error) 45%, transparent); border-radius: 10px; padding: 12px 14px; margin: 0 0 18px; }
+    #dsf-assistenza .dsf-success { text-align: center; padding: 32px 12px; }
+    #dsf-assistenza .dsf-success-icon { width: 60px; height: 60px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 30px; font-weight: 700; color: var(--dsf-ok); background: color-mix(in srgb, var(--dsf-ok) 15%, transparent); }
+    #dsf-assistenza .dsf-success h3 { margin: 0 0 8px; font-size: 1.3em; }
+    #dsf-assistenza .dsf-success p { margin: 0 0 20px; opacity: 0.85; }
+    #dsf-assistenza .dsf-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    #dsf-assistenza [hidden] { display: none !important; }
+    @media (max-width: 560px) { #dsf-assistenza .dsf-choices { grid-template-columns: 1fr; } }
+  </style>
+
+  <form id="dsf-form" novalidate>
+    <div id="dsf-error" role="alert"></div>
+
+    <div class="dsf-field">
+      <label class="dsf-label" for="dsf-code">Codice cliente *</label>
+      <input class="dsf-input dsf-code" id="dsf-code" name="client_code" maxlength="10" placeholder="DS0000"
+             autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+      <div class="dsf-hint">Lo trovi sulla scheda cliente che ti abbiamo consegnato (es. DS4827).</div>
     </div>
-  </header>
 
-  <main class="container">
-    <a class="back-link" href="dashboard.html" id="back-link">← Dashboard</a>
-    <div id="page"><div class="loading">Caricamento…</div></div>
-  </main>
-
-  <script type="module">
-    import { requireStaff, logout } from './assets/js/auth.js';
-    import {
-      el, clear, toast, openModal, confirmDialog, withBusy, friendlyError, statusBadge, safeLink,
-      formatDate, formatDateTime, timeAgo, REQUEST_STATUS, REQUEST_TYPE, clientBadge, trialInfo, whatsappNumber, paymentMessage,
-    } from './assets/js/ui.js';
-    import { getClient, buildClientForm, updateClient } from './assets/js/clients.js';
-    import { listRequestsForClient, markRead, markUnread, updateRequest, subscribeToRequests } from './assets/js/requests.js';
-    import { listActivity, listNotes, addNote, deleteNote, describeActivity } from './assets/js/activity.js';
-    import { generateClientPdf } from './assets/js/pdf.js';
-    import { attachmentUrl, formatSize } from './assets/js/attachments.js';
-
-    // allegati: anteprime delle foto e apertura in una nuova scheda
-    function attachmentsBlock(list) {
-      if (!list?.length) return null;
-      const box = el('div', { class: 'attachments' });
-      for (const a of list) {
-        const isImage = a.type?.startsWith('image/');
-        const thumb = el('span', { class: 'thumb' }, isImage ? '' : 'PDF');
-        const item = el('button', {
-          class: 'attachment', type: 'button', title: `${a.name} (${formatSize(a.size)})`,
-          onclick: async () => {
-            // la scheda va aperta subito (prima dell'attesa) o il browser la blocca
-            const win = window.open('', '_blank');
-            try {
-              const url = await attachmentUrl(a.path);
-              if (win) win.location.href = url; else location.href = url;
-            } catch (err) { win?.close(); toast(friendlyError(err), 'error'); }
-          },
-        }, thumb, el('span', { class: 'name' }, a.name), el('span', { class: 'muted' }, formatSize(a.size)));
-        if (isImage) attachmentUrl(a.path).then((url) => { thumb.style.backgroundImage = `url("${url}")`; }).catch(() => {});
-        box.append(item);
-      }
-      return el('div', {}, el('label', {}, `Allegati (${list.length})`), box);
-    }
-
-    const user = await requireStaff();
-    document.getElementById('user-email').textContent = user.email;
-    document.getElementById('logout-btn').addEventListener('click', logout);
-    if (document.referrer.includes('dashboard.html')) {
-      document.getElementById('back-link').addEventListener('click', (e) => { e.preventDefault(); history.back(); });
-    }
-
-    const params = new URLSearchParams(location.search);
-    const clientId = params.get('id');
-    const focusRequestId = params.get('richiesta');
-    const page = document.getElementById('page');
-
-    let client = null;
-    let requests = [];
-    let activeTab = focusRequestId ? 'richieste' : 'info';
-    const expanded = new Set(focusRequestId ? [focusRequestId] : []);
-
-    const fail = (msg) => clear(page).append(el('div', { class: 'empty' }, msg));
-    if (!clientId) { fail('Cliente non specificato.'); throw new Error('no id'); }
-
-    // ---------- intestazione ----------
-    function renderHero() {
-      const copyBtn = el('button', {
-        class: 'btn btn-ghost btn-sm', type: 'button',
-        onclick: async () => {
-          try { await navigator.clipboard.writeText(client.client_code); toast('Codice copiato', 'success'); }
-          catch { toast('Copia non riuscita', 'error'); }
-        },
-      }, 'Copia');
-      const pdfBtn = el('button', { class: 'btn btn-ghost', type: 'button' }, 'Genera PDF');
-      pdfBtn.addEventListener('click', () => withBusy(pdfBtn, async () => {
-        if (!window.PDFLib) return toast('Libreria PDF non caricata: controlla la connessione e riprova.', 'error');
-        try { await generateClientPdf(client); toast('PDF scaricato', 'success'); }
-        catch (err) { console.error(err); toast('Errore nella creazione del PDF', 'error'); }
-      }));
-
-      return el('section', { class: 'client-hero' },
-        el('div', {},
-          el('h1', {}, client.business_name),
-          el('div', { class: 'subtitle' }, [client.owner_name, client.city].filter(Boolean).join(' · ') || ' '),
-          el('div', { class: 'hero-code' },
-            el('span', { class: 'muted' }, 'Codice cliente'),
-            el('span', { class: 'code' }, client.client_code),
-            copyBtn,
-            clientBadge(client))),
-        el('div', { class: 'hero-actions' },
-          pdfBtn,
-          el('button', { class: 'btn btn-primary', type: 'button', onclick: openEdit }, 'Modifica dati')));
-    }
-
-    // ---------- periodo di prova e link di pagamento ----------
-    async function markLinkSent() {
-      try {
-        await updateClient(client.id, { payment_link_sent_at: new Date().toISOString() });
-        client.payment_link_sent_at = new Date().toISOString();
-      } catch (err) { console.warn(err); }
-    }
-
-    function paymentButtons({ primary = false } = {}) {
-      if (!client.payment_url) {
-        return [el('span', { class: 'payment-missing' }, 'Link di pagamento non inserito'),
-          el('button', { class: 'btn btn-ghost btn-sm', type: 'button', onclick: openEdit }, 'Aggiungi link')];
-      }
-      const text = paymentMessage(client);
-      const buttons = [];
-      if (client.mobile) {
-        buttons.push(el('button', {
-          class: `btn ${primary ? 'btn-wa' : 'btn-ghost'} btn-sm`, type: 'button',
-          onclick: async () => {
-            window.open(`https://wa.me/${whatsappNumber(client.mobile)}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-            await markLinkSent();
-            toast('WhatsApp aperto con il messaggio pronto', 'success');
-            render();
-          },
-        }, 'Invia su WhatsApp'));
-      }
-      if (client.email) {
-        buttons.push(el('button', {
-          class: 'btn btn-ghost btn-sm', type: 'button',
-          onclick: async () => {
-            const subject = `Menu digitale ${client.business_name} – link di pagamento`;
-            location.href = `mailto:${client.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
-            await markLinkSent();
-            render();
-          },
-        }, 'Invia email'));
-      }
-      buttons.push(el('button', {
-        class: 'btn btn-ghost btn-sm', type: 'button',
-        onclick: async () => {
-          try { await navigator.clipboard.writeText(text); toast('Messaggio copiato', 'success'); }
-          catch { toast('Copia non riuscita', 'error'); }
-        },
-      }, 'Copia messaggio'));
-      return buttons;
-    }
-
-    function renderTrial() {
-      const t = trialInfo(client);
-      if (!t) return null;
-      const used = Math.min(t.total, Math.max(0, t.total - t.daysLeft));
-      const pct = Math.round((used / t.total) * 100);
-      const soon = !t.expired && t.daysLeft <= 5;
-      const markPaid = el('button', {
-        class: 'btn btn-primary btn-sm', type: 'button',
-        onclick: async () => {
-          if (!(await confirmDialog(`Confermi il pagamento di ${client.business_name}? Il cliente passerà allo stato "Attivo".`, { okText: 'Segna pagato' }))) return;
-          try {
-            const now = new Date();
-            const paid = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-            await updateClient(client.id, { status: 'attivo', paid_at: paid });
-            toast('Pagamento registrato: cliente attivo', 'success');
-            await loadAll();
-          } catch (err) { toast(friendlyError(err), 'error'); }
-        },
-      }, '✓ Segna come pagato');
-
-      const title = t.expired
-        ? el('div', { class: 'trial-title' }, `Prova scaduta il ${formatDate(t.ends)} – invia il link di pagamento`)
-        : el('div', { class: 'trial-title' }, 'Periodo di prova: ',
-            el('span', { class: 'days' }, t.daysLeft === 1 ? '1 giorno rimanente' : `${t.daysLeft} giorni rimanenti`));
-      return el('section', { class: `panel trial-panel${t.expired ? ' expired' : ''}${soon ? ' soon' : ''}`, 'aria-label': 'Periodo di prova' },
-        el('div', {},
-          title,
-          el('div', { class: 'trial-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(t.total), 'aria-valuenow': String(used) },
-            el('span', { style: `width:${t.expired ? 100 : pct}%` })),
-          el('div', { class: 'muted', style: 'font-size:13px' },
-            `Dal ${formatDate(client.registered_at)} al ${formatDate(t.ends)} (${t.total} giorni)`,
-            client.payment_link_sent_at ? ` · link inviato il ${formatDateTime(client.payment_link_sent_at)}` : '')),
-        el('div', { class: 'trial-actions' }, ...paymentButtons({ primary: t.expired }), markPaid));
-    }
-
-    // ---------- schede (tab) ----------
-    function renderTabs() {
-      const unread = requests.filter((r) => !r.read_at).length;
-      const tabs = [
-        ['info', 'Informazioni'],
-        ['richieste', 'Richieste', requests.length, unread],
-        ['storico', 'Storico'],
-        ['note', 'Note interne'],
-      ];
-      return el('div', { class: 'tabs', role: 'tablist' }, tabs.map(([key, label, total, news]) =>
-        el('button', {
-          class: 'tab', type: 'button', role: 'tab', 'aria-selected': String(activeTab === key),
-          onclick: () => { activeTab = key; render(); },
-        }, label,
-          total ? el('span', { class: 'muted' }, `(${total})`) : null,
-          news ? el('span', { class: 'pill-new', title: 'Non lette' }, String(news)) : null)));
-    }
-
-    // ---------- Informazioni ----------
-    function infoItem(label, value) {
-      return el('div', { class: 'info-item' }, el('dt', {}, label), el('dd', {}, value ?? '—'));
-    }
-    const orDash = (v) => (v ? v : '—');
-    const mobileLinks = (v) => (v
-      ? el('span', {}, el('a', { href: `tel:${v.replace(/[^\d+]/g, '')}` }, v), ' · ',
-          safeLink(`https://wa.me/${whatsappNumber(v)}`, 'WhatsApp ↗'))
-      : '—');
-    const mailLink = (v) => (v ? el('a', { href: `mailto:${v}` }, v) : '—');
-    const urlOrDash = (v) => (v ? safeLink(v, v.replace(/^https?:\/\//, '').replace(/\/$/, '')) : '—');
-
-    function renderInfo() {
-      const address = [client.address, [client.postal_code, client.city].filter(Boolean).join(' '),
-        client.province ? `(${client.province})` : ''].filter(Boolean).join(', ').replace(', (', ' (');
-      return el('div', {},
-        el('section', { class: 'panel' }, el('h2', {}, 'Attività'),
-          el('dl', { class: 'info-grid' },
-            infoItem('Nome attività', client.business_name),
-            infoItem('Proprietario / referente', orDash(client.owner_name)),
-            infoItem('Indirizzo', orDash(address)),
-            infoItem('Registrato il', formatDate(client.registered_at)))),
-        el('section', { class: 'panel' }, el('h2', {}, 'Pagamento'),
-          el('dl', { class: 'info-grid' },
-            infoItem('Link di pagamento', client.payment_url ? urlOrDash(client.payment_url) : el('span', { class: 'payment-missing' }, 'Non inserito')),
-            infoItem('Fine periodo di prova', formatDate(client.trial_ends_at)),
-            infoItem('Link inviato il', client.payment_link_sent_at ? formatDateTime(client.payment_link_sent_at) : '—'),
-            infoItem('Pagato il', formatDate(client.paid_at)))),
-        el('section', { class: 'panel' }, el('h2', {}, 'Contatti'),
-          el('dl', { class: 'info-grid' },
-            infoItem('Cellulare', mobileLinks(client.mobile)),
-            infoItem('Email', mailLink(client.email)),
-            ...(client.extra_contacts || []).map((c) => infoItem(c.label || 'Altro contatto', c.value)))),
-        el('section', { class: 'panel' }, el('h2', {}, 'Collegamenti'),
-          el('dl', { class: 'info-grid' },
-            infoItem('Menu digitale', urlOrDash(client.menu_url)),
-            infoItem('Sito web', urlOrDash(client.website_url)),
-            infoItem('Instagram', urlOrDash(client.instagram_url)),
-            infoItem('Facebook', urlOrDash(client.facebook_url)),
-            infoItem('TikTok', urlOrDash(client.tiktok_url)),
-            ...(client.other_links || []).map((l) => infoItem(l.label || 'Link', urlOrDash(l.url))))),
-        client.extra_info ? el('section', { class: 'panel' }, el('h2', {}, 'Informazioni aggiuntive'),
-          el('p', { class: 'note-body' }, client.extra_info)) : null);
-    }
-
-    function openEdit() {
-      const { form, read } = buildClientForm(client);
-      const save = el('button', { class: 'btn btn-primary', type: 'button' }, 'Salva modifiche');
-      const modal = openModal({
-        title: 'Modifica dati cliente', wide: true, body: form,
-        actions: [el('button', { class: 'btn btn-ghost', type: 'button', onclick: () => modal.close() }, 'Annulla'), save],
-      });
-      save.addEventListener('click', () => withBusy(save, async () => {
-        let input;
-        try { input = read(); } catch (err) { return toast(err.message, 'error'); }
-        try {
-          await updateClient(client.id, input.values);
-          modal.close();
-          toast('Dati aggiornati', 'success');
-          await loadAll();
-        } catch (err) { toast(friendlyError(err), 'error'); }
-      }));
-    }
-
-    // ---------- Richieste ----------
-    function requestItem(r) {
-      const isOpen = expanded.has(r.id);
-      const wrap = el('article', { class: `request${r.read_at ? '' : ' unread'}`, id: `req-${r.id}` });
-
-      const head = el('button', {
-        class: 'request-head', type: 'button', 'aria-expanded': String(isOpen),
-        onclick: async () => {
-          if (expanded.has(r.id)) expanded.delete(r.id); else expanded.add(r.id);
-          if (expanded.has(r.id) && !r.read_at) await open(r); else render();
-        },
-      },
-        el('span', { class: 'unread-dot', title: r.read_at ? 'Letta' : 'Non letta' }),
-        el('span', { class: 'request-title' }, `#${r.request_number} · ${r.subject}`,
-          el('small', {}, [timeAgo(r.received_at), r.attachments?.length ? `${r.attachments.length} allegat${r.attachments.length === 1 ? 'o' : 'i'}` : null]
-            .filter(Boolean).join(' · '))),
-        el('span', { class: 'request-date' }, formatDateTime(r.received_at)),
-        statusBadge('request', r.status));
-      wrap.append(head);
-      if (!isOpen) return wrap;
-
-      const statusSel = el('select', { 'aria-label': 'Stato della richiesta' },
-        Object.entries(REQUEST_STATUS).map(([k, label]) => el('option', { value: k, selected: r.status === k }, label)));
-      statusSel.addEventListener('change', async () => {
-        try {
-          await updateRequest(r.id, { status: statusSel.value });
-          toast(`Stato: ${REQUEST_STATUS[statusSel.value]}`, 'success');
-          await loadRequests();
-        } catch (err) { toast(friendlyError(err), 'error'); statusSel.value = r.status; }
-      });
-
-      const notes = el('textarea', { 'aria-label': 'Note interne sulla richiesta', maxlength: 5000, placeholder: 'Note interne (non visibili al cliente)' }, r.internal_notes || '');
-      const saveNotes = el('button', { class: 'btn btn-ghost btn-sm', type: 'button' }, 'Salva note');
-      saveNotes.addEventListener('click', () => withBusy(saveNotes, async () => {
-        try { await updateRequest(r.id, { internal_notes: notes.value.trim() || null }); r.internal_notes = notes.value.trim(); toast('Note salvate', 'success'); }
-        catch (err) { toast(friendlyError(err), 'error'); }
-      }));
-
-      const doneBtn = r.status === 'nuova'
-        ? el('button', {
-            class: 'btn btn-primary btn-sm', type: 'button',
-            onclick: async () => {
-              try { await updateRequest(r.id, { status: 'completata' }); toast('Richiesta completata', 'success'); await loadRequests(); }
-              catch (err) { toast(friendlyError(err), 'error'); }
-            },
-          }, '✓ Segna completata')
-        : null;
-      const unreadBtn = el('button', { class: 'btn btn-ghost btn-sm', type: 'button' }, 'Segna come non letta');
-      unreadBtn.addEventListener('click', async () => {
-        try { await markUnread(r.id); expanded.delete(r.id); await loadRequests(); }
-        catch (err) { toast(friendlyError(err), 'error'); }
-      });
-
-      wrap.append(el('div', { class: 'request-body' },
-        el('div', { class: 'muted' },
-          `Ricevuta il ${formatDateTime(r.received_at)}`,
-          r.read_at ? ` · letta il ${formatDateTime(r.read_at)}` : '',
-          r.completed_at ? ` · completata il ${formatDateTime(r.completed_at)}` : '',
-          null),
-        el('div', { class: 'type-tags' }, (r.request_types || []).map((t) => el('span', { class: 'type-tag' }, REQUEST_TYPE[t] || t))),
-        el('div', { class: 'request-desc' }, r.description || '(nessuna descrizione)'),
-        attachmentsBlock(r.attachments),
-        el('div', { class: 'request-controls' },
-          el('div', {}, el('label', {}, 'Stato'), statusSel, el('div', { class: 'request-quick' }, doneBtn, unreadBtn)),
-          el('div', {}, el('label', {}, 'Note interne'), notes, el('div', { style: 'margin-top:8px' }, saveNotes)))));
-      return wrap;
-    }
-
-    async function open(r) {
-      try { await markRead(r.id); r.read_at = new Date().toISOString(); }
-      catch (err) { toast(friendlyError(err), 'error'); }
-      render();
-    }
-
-    function renderRequests() {
-      if (!requests.length) {
-        return el('div', { class: 'empty' }, 'Nessuna richiesta di assistenza per questo cliente.');
-      }
-      return el('div', {}, requests.map(requestItem));
-    }
-
-    // ---------- Storico ----------
-    async function renderHistory(container) {
-      container.append(el('div', { class: 'loading' }, 'Caricamento…'));
-      try {
-        const items = await listActivity(client.id);
-        clear(container).append(el('section', { class: 'panel' }, el('h2', {}, 'Storico attività'),
-          items.length
-            ? el('ul', { class: 'timeline' }, items.map((a) => el('li', {},
-                el('div', {}, describeActivity(a)),
-                el('div', { class: 'when' }, formatDateTime(a.created_at)))))
-            : el('p', { class: 'muted' }, 'Nessun evento.')));
-      } catch (err) { clear(container).append(el('div', { class: 'empty' }, friendlyError(err))); }
-    }
-
-    // ---------- Note ----------
-    async function renderNotes(container) {
-      const box = el('textarea', { 'aria-label': 'Nuova nota', maxlength: 5000, placeholder: 'Scrivi una nota interna, un promemoria…' });
-      const add = el('button', { class: 'btn btn-primary btn-sm', type: 'button' }, 'Aggiungi nota');
-      const list = el('div', {}, el('div', { class: 'loading' }, 'Caricamento…'));
-      add.addEventListener('click', () => withBusy(add, async () => {
-        const body = box.value.trim();
-        if (!body) return toast('Scrivi qualcosa prima di salvare', 'error');
-        try { await addNote(client.id, body); box.value = ''; await refresh(); }
-        catch (err) { toast(friendlyError(err), 'error'); }
-      }));
-      async function refresh() {
-        try {
-          const notes = await listNotes(client.id);
-          clear(list).append(...(notes.length ? notes.map((n) => el('div', { class: 'note' },
-            el('div', { class: 'note-body' }, n.body),
-            el('div', { class: 'note-foot' },
-              el('span', {}, formatDateTime(n.created_at)),
-              el('button', {
-                class: 'btn btn-ghost btn-sm', type: 'button',
-                onclick: async () => {
-                  if (!(await confirmDialog('Eliminare questa nota?', { okText: 'Elimina', danger: true }))) return;
-                  try { await deleteNote(n.id); await refresh(); } catch (err) { toast(friendlyError(err), 'error'); }
-                },
-              }, 'Elimina')))) : [el('p', { class: 'muted' }, 'Nessuna nota.')]));
-        } catch (err) { clear(list).append(el('div', { class: 'empty' }, friendlyError(err))); }
-      }
-      container.append(el('section', { class: 'panel' }, el('h2', {}, 'Note interne'),
-        el('div', { class: 'field' }, box), add), list);
-      await refresh();
-    }
-
-    // ---------- render ----------
-    function render() {
-      const body = el('div', {});
-      clear(page).append(renderHero(), renderTrial() || '', renderTabs(), body);
-      if (activeTab === 'info') body.append(renderInfo());
-      if (activeTab === 'richieste') body.append(renderRequests());
-      if (activeTab === 'storico') renderHistory(body);
-      if (activeTab === 'note') renderNotes(body);
-    }
-
-    async function loadRequests() {
-      requests = await listRequestsForClient(clientId);
-      render();
-    }
-
-    async function loadAll() {
-      try {
-        client = await getClient(clientId);
-        if (!client) return fail('Cliente non trovato.');
-        document.title = `${client.business_name} – Gestione Clienti DS Fabio`;
-        requests = await listRequestsForClient(clientId);
-        render();
-      } catch (err) { fail(`Impossibile caricare il cliente: ${friendlyError(err)}`); }
-    }
-
-    await loadAll();
-
-    // arrivo da una notifica: apri e segna come letta quella richiesta
-    if (focusRequestId && client) {
-      const target = requests.find((r) => r.id === focusRequestId);
-      if (target && !target.read_at) await open(target);
-      document.getElementById(`req-${focusRequestId}`)?.scrollIntoView({ block: 'center' });
-    }
-    if (params.has('nuovo') && client) {
-      toast(`Cliente creato. Codice: ${client.client_code} – genera il PDF da consegnargli.`, 'success');
-      history.replaceState(null, '', `?id=${encodeURIComponent(clientId)}`);
-    }
-
-    // aggiornamento live delle richieste di questo cliente
-    subscribeToRequests((payload) => {
-      const row = payload.new || payload.old;
-      if (row?.client_id !== clientId) return;
-      if (payload.eventType === 'INSERT') toast('Nuova richiesta da questo cliente', 'success');
-      loadRequests();
-    });
-  </script>
-</body>
-</html>
+    <fieldset class="dsf-field" style="border:0;padding:0;margin:0 0 18px">
+      <legend class="dsf-label">Cosa vuoi fare? * <span style="font-weight:400;opacity:.7">(puoi sceglierne più di uno)</span></legend>
+      <div class="dsf-choices">
+        <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiunta_piatto"> ➕ Aggiunta piatto</label>
+        <label class="dsf-choice"><input type="checkbox" name="request_types" value="modifica_piatto"> ✏️ Modifica
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagamento completato – DSFabio</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --ink: #14161c; --sub: #4a5160; --line: #e3e6ec; --accent: #0e7c86; --bg: #f6f7f9; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 20px;
+    background: var(--bg); color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .card {
+    max-width: 520px; width: 100%; background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    padding: 36px 30px; text-align: center; box-shadow: 0 1px 2px rgba(20,22,28,.04), 0 12px 32px rgba(20,22,28,.08);
+  }
+  .check {
+    width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center;
+    background: #e6f4f5; color: var(--accent);
+  }
+  .check svg { width: 32px; height: 32px; }
+  h1 { font-size: 1.6rem; margin: 0 0 10px; line-height: 1.25; }
+  p { color: var(--sub); margin: 0 0 14px; }
+  ul { text-align: left; color: var(--sub); padding-left: 1.2em; margin: 18px 0 24px; }
+  li { margin: 6px 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: .95rem;
+    padding: 11px 20px; border-radius: 999px; border: 1px solid var(--ink);
+  }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-light:hover { border-color: var(--accent); color: var(--accent); }
+  small { display: block; margin-top: 22px; color: var(--sub); font-size: .82rem; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h1>Grazie! Pagamento completato</h1>
+    <p>Il tuo abbonamento al menu digitale è attivo: il menu resta online senza interruzioni.</p>
+    <ul>
+      <li>Riceverai la <strong>ricevuta via email</strong> da Stripe.</li>
+      <li>L'abbonamento si <strong>rinnova automaticamente ogni anno</strong>: ti avvisiamo prima del rinnovo.</li>
+      <li>Puoi <strong>disdire quando vuoi</strong>: il servizio resta attivo fino alla fine dell'anno pagato.</li>
+    </ul>
+    <div class="actions">
+      <a class="btn btn-dark" href="/">Torna alla home</a>
+      <a class="btn btn-light" href="https://wa.me/393440301412">Scrivici su WhatsApp</a>
+    </div>
+    <small>Hai domande sul pagamento? Scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a></small>
+  </main>
+</body>
+</html>

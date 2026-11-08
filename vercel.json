@@ -7,6 +7,9 @@
     { "source": "/assitenzagestionale.html", "destination": "/assistenzagestionale", "permanent": true },
     { "source": "/assitenzagestionale", "destination": "/assistenzagestionale", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/paga", "destination": "https://xzhbyxvlrxemujrqatbl.supabase.co/functions/v1/paga" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

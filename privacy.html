@@ -1,93 +1,544 @@
-<!--
-  =====================================================================
-  DS Fabio — Sezione "Assistenza clienti" per la pagina privacy
-  Incolla questo blocco nella pagina https://dsfabio.com/privacy,
-  per esempio subito dopo la sezione #privacy.
-  Il modulo /assistenza porta a https://dsfabio.com/privacy#assistenza
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy, cookie e termini – DS Service</title>
+<meta name="description" content="Informativa privacy, cookie policy, termini e condizioni e note legali di DS Service di Fabio Dos Santos Souza, Meldola (FC).">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --paper: #ffffff;
+    --ink: #14161c;
+    --sub: #4a5160;
+    --line: #e3e6ec;
+    --accent: #0e7c86;
+    --accent-soft: #e6f4f5;
+    --warn-soft: #fff7e6;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(20,22,28,.04), 0 8px 24px rgba(20,22,28,.06);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
 
-  Prima di pubblicare sostituisci i campi tra [PARENTESI QUADRE].
-  Lo stile è chiuso dentro #assistenza: usa il carattere e i colori della
-  pagina e non modifica il resto del sito.
-  =====================================================================
--->
-<section id="assistenza" class="dsf-privacy-assistenza">
-  <style>
-    #assistenza.dsf-privacy-assistenza { scroll-margin-top: 90px; line-height: 1.6; color: inherit; font: inherit; max-width: 860px; }
-    #assistenza.dsf-privacy-assistenza h2 { font-size: 1.5em; margin: 1.6em 0 0.4em; line-height: 1.25; color: inherit; }
-    #assistenza.dsf-privacy-assistenza h3 { font-size: 1.1em; margin: 1.6em 0 0.4em; color: inherit; }
-    #assistenza.dsf-privacy-assistenza p,
-    #assistenza.dsf-privacy-assistenza li { margin: 0 0 0.6em; color: inherit; }
-    #assistenza.dsf-privacy-assistenza ul { padding-left: 1.3em; margin: 0 0 0.8em; }
-    #assistenza.dsf-privacy-assistenza a { color: inherit; text-decoration: underline; }
-    #assistenza.dsf-privacy-assistenza .dsf-pa-updated { opacity: 0.7; font-size: 0.9em; }
-    #assistenza.dsf-privacy-assistenza .dsf-pa-table { width: 100%; border-collapse: collapse; margin: 0.4em 0 1em; font-size: 0.95em; }
-    #assistenza.dsf-privacy-assistenza .dsf-pa-table th,
-    #assistenza.dsf-privacy-assistenza .dsf-pa-table td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid rgba(127, 127, 127, 0.3); color: inherit; background: none; }
-    #assistenza.dsf-privacy-assistenza .dsf-pa-table th { font-weight: 600; }
-    @media (max-width: 600px) {
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table,
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table tbody,
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table tr,
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table td { display: block; width: 100%; }
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table thead { display: none; }
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table tr { border-bottom: 1px solid rgba(127, 127, 127, 0.3); padding: 8px 0; }
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table td { border: 0; padding: 2px 0; }
-      #assistenza.dsf-privacy-assistenza .dsf-pa-table td:first-child { font-weight: 600; }
-    }
-  </style>
+  /* Barra in alto */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-in {
+    max-width: 1120px; margin: 0 auto; padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-weight: 800; letter-spacing: .04em; color: var(--ink); text-decoration: none; font-size: 1.05rem; }
+  .brand span { color: var(--accent); }
+  .home-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    padding: 9px 16px; border-radius: 999px; font-weight: 600; font-size: .92rem;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .home-btn:hover { background: var(--accent); transform: translateY(-1px); }
+  .home-btn svg { width: 16px; height: 16px; }
 
-  <h2>Assistenza clienti e gestione dei menu digitali</h2>
-  <p class="dsf-pa-updated">Informativa ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) · aggiornata il [GG/MM/AAAA]</p>
+  /* Intestazione */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 48px 20px 24px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; color: var(--accent); margin: 0 0 8px; }
+  .hero h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.01em; }
+  .hero p { color: var(--sub); margin: 0; max-width: 760px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .85rem; color: var(--sub); }
 
-  <p>Questa sezione spiega come trattiamo i dati delle attività che usano i nostri menu digitali (ristoranti, bar, pizzerie…) e dei loro referenti, compresi i dati inviati con il modulo <a href="https://dsfabio.com/assistenza">Assistenza</a>.</p>
+  /* Layout */
+  .layout { max-width: 1120px; margin: 0 auto; padding: 8px 20px 64px; display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+  .toc { position: sticky; top: 76px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .toc p { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--sub); font-weight: 700; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .toc a { display: block; padding: 7px 10px; border-radius: 8px; text-decoration: none; color: var(--ink); font-size: .93rem; }
+  .toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  .toc .part { margin-top: 10px; font-weight: 700; color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; padding: 0 10px; }
 
-  <h3>1. Titolare del trattamento</h3>
-  <p>[NOME E COGNOME o RAGIONE SOCIALE] – [INDIRIZZO COMPLETO] – P. IVA [NUMERO]<br>
-     Email: <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> · WhatsApp: +39 344 030 1412</p>
+  .doc { display: grid; gap: 24px; min-width: 0; }
+  .block { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); scroll-margin-top: 84px; }
+  .block > h2 { font-size: 1.45rem; margin: 0 0 4px; line-height: 1.3; }
+  .block > .lead { color: var(--sub); margin: 0 0 18px; font-size: .95rem; }
+  .part-title { display: flex; align-items: center; gap: 12px; margin: 16px 0 -8px; }
+  .part-title span { background: var(--accent); color: #fff; font-weight: 800; border-radius: 8px; padding: 2px 10px; font-size: .85rem; }
+  .part-title h2 { margin: 0; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .1em; color: var(--sub); }
+  h3 { font-size: 1.05rem; margin: 24px 0 6px; scroll-margin-top: 84px; }
+  p, li { color: var(--sub); }
+  strong { color: var(--ink); }
+  ul, ol.list { padding-left: 1.25em; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
 
-  <h3>2. Quali dati trattiamo</h3>
-  <ul>
-    <li><strong>Dati dell'attività e del referente</strong>: nome dell'attività, nome del referente, indirizzo, numero di cellulare, email, link al menu, al sito e ai social, codice cliente, date di inizio della prova gratuita e di pagamento.</li>
-    <li><strong>Contenuto delle richieste di assistenza</strong>: tipo di modifica richiesta, note scritte da te, foto e PDF allegati (per esempio foto dei piatti o listini).</li>
-    <li><strong>Dati tecnici del modulo</strong>: un'impronta cifrata dell'indirizzo IP (l'indirizzo IP vero non viene salvato) e il tipo di browser usato, per bloccare invii automatici e abusi.</li>
-  </ul>
-  <p>Ti chiediamo di non inserire nelle note o negli allegati dati personali di altre persone (per esempio foto in cui sono riconoscibili clienti o dipendenti) o dati non necessari alla richiesta.</p>
+  .card-id { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 8px 0 4px; }
+  .card-id div { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .card-id small { display: block; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; color: var(--sub); font-weight: 700; }
+  .card-id b { display: block; color: var(--ink); font-weight: 600; word-break: break-word; }
 
-  <h3>3. Perché li trattiamo e su quale base</h3>
-  <ul>
-    <li><strong>Fornire il servizio di menu digitale e l'assistenza</strong>, comprese la prova gratuita, le modifiche al menu e le comunicazioni di servizio (per esempio l'invio del link di pagamento): esecuzione del contratto o di misure precontrattuali richieste da te (art. 6.1.b GDPR).</li>
-    <li><strong>Proteggere il modulo da abusi e invii automatici</strong>: legittimo interesse del titolare alla sicurezza del servizio (art. 6.1.f GDPR).</li>
-    <li><strong>Adempiere agli obblighi fiscali e contabili</strong> legati ai pagamenti: obbligo di legge (art. 6.1.c GDPR).</li>
-  </ul>
-  <p>Fornire i dati è necessario per gestire il servizio: senza il codice cliente e le informazioni della richiesta non possiamo eseguire le modifiche. Non usiamo questi dati per pubblicità e non prendiamo decisioni automatizzate.</p>
+  .note { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 14px 0; color: var(--ink); }
+  .note.warn { background: var(--warn-soft); border-left-color: #c98a00; }
+  .note p { margin: 0; color: inherit; }
 
-  <h3>4. Come li proteggiamo e chi li vede</h3>
-  <p>I dati sono conservati in un'area riservata accessibile solo con credenziali personali. Possono consultarli il titolare e i collaboratori commerciali autorizzati, ciascuno solo per le attività che segue. Le regole di accesso sono applicate direttamente dal database; foto e PDF sono in un archivio privato, non accessibile pubblicamente.</p>
-  <p>Per far funzionare il servizio ci avvaliamo di fornitori che trattano i dati per nostro conto, come responsabili del trattamento (art. 28 GDPR):</p>
-  <ul>
-    <li><strong>Supabase</strong> – database e archiviazione dei file (server in [REGIONE, es. Unione Europea – Francoforte]);</li>
-    <li><strong>Vercel</strong> – hosting dell'area riservata;</li>
-    <li>[SOLO SE ATTIVI] <strong>Telegram</strong> e/o <strong>Resend</strong> – invio degli avvisi interni di nuova richiesta, che contengono solo nome dell'attività, codice cliente e tipo di richiesta;</li>
-    <li><strong>WhatsApp (Meta)</strong> ed email – quando ti contattiamo, per esempio per inviarti il link di pagamento.</li>
-  </ul>
-  <p>Alcuni di questi fornitori hanno sede negli Stati Uniti: l'eventuale trasferimento avviene con le garanzie previste dagli artt. 45–46 GDPR (EU-U.S. Data Privacy Framework o clausole contrattuali standard). Non vendiamo né cediamo i tuoi dati a terzi.</p>
+  .table-wrap { overflow-x: auto; margin: 10px 0 14px; border: 1px solid var(--line); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--sub); }
+  th { background: var(--bg); color: var(--ink); font-weight: 700; font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { color: var(--ink); font-weight: 600; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .86em; color: var(--ink); }
 
-  <h3>5. Per quanto tempo li conserviamo</h3>
-  <table class="dsf-pa-table">
-    <thead><tr><th>Dato</th><th>Conservazione</th></tr></thead>
-    <tbody>
-      <tr><td>Foto e PDF allegati alle richieste</td><td>90 giorni dalla chiusura della richiesta (completata o archiviata), poi cancellati automaticamente. Puoi chiederne la cancellazione prima.</td></tr>
-      <tr><td>Testo delle richieste e storico delle modifiche</td><td>Per tutta la durata del servizio e fino a 24 mesi dalla sua cessazione.</td></tr>
-      <tr><td>Dati dell'attività e del referente</td><td>Per tutta la durata del servizio e fino a 24 mesi dalla sua cessazione (o dalla fine della prova gratuita, se il servizio non viene attivato).</td></tr>
-      <tr><td>Dati relativi ai pagamenti</td><td>10 anni, come previsto dalla normativa fiscale (art. 2220 c.c.).</td></tr>
-      <tr><td>Impronta cifrata dell'IP del modulo</td><td>24 ore.</td></tr>
-    </tbody>
-  </table>
+  .footer { border-top: 1px solid var(--line); background: var(--paper); }
+  .footer-in { max-width: 1120px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; color: var(--sub); font-size: .9rem; }
+  .to-top { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; text-decoration: none; box-shadow: var(--shadow); font-size: 1.1rem; }
+  .to-top:hover { background: var(--accent); }
 
-  <h3>6. I tuoi diritti</h3>
-  <p>Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, opporti al trattamento basato sul legittimo interesse e riceverli in un formato leggibile (artt. 15–22 GDPR). Scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> indicando il tuo codice cliente: rispondiamo entro 30 giorni.</p>
-  <p>Se ritieni che il trattamento non sia corretto puoi presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</p>
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .block { padding: 22px 18px; }
+  }
+  @media (max-width: 380px) {
+    .home-btn { padding: 8px 12px; font-size: .85rem; }
+  }
+  @media print {
+    .topbar, .toc, .to-top { display: none !important; }
+    body { background: #fff; }
+    .layout { display: block; padding: 0; }
+    .block { box-shadow: none; border: 0; padding: 0 0 16px; page-break-inside: auto; }
+    a { color: inherit; }
+  }
+</style>
+</head>
+<body>
 
-  <h3>7. Cookie del modulo</h3>
-  <p>Il modulo di assistenza non usa cookie di profilazione né strumenti di tracciamento: i dati vengono inviati solo quando premi "Invia la richiesta". Per il resto del sito vale la sezione <a href="#cookies">Cookie</a>.</p>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">DS <span>SERVICE</span></a>
+    <a class="home-btn" href="/" aria-label="Torna alla home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Torna alla home</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <p class="eyebrow">Note legali</p>
+  <h1>Privacy, cookie e termini del servizio</h1>
+  <p>Questa pagina raccoglie in un unico documento l'informativa sul trattamento dei dati personali, la cookie policy, i termini e condizioni del servizio di menu digitali e le note legali di DS Service. È scritta in modo chiaro e, dove serve, indica le norme di riferimento.</p>
+  <div class="meta">
+    <span class="chip">Ultimo aggiornamento: 8 novembre 2026</span>
+    <span class="chip">In vigore dall'8 novembre 2026</span>
+    <span class="chip">Versione 2.0</span>
+  </div>
 </section>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Indice">
+    <p>Indice</p>
+    <ol>
+      <li><a href="#titolare">Chi siamo</a></li>
+      <li class="part">A · Privacy</li>
+      <li><a href="#privacy">Informativa privacy</a></li>
+      <li><a href="#dati">Dati, finalità e tempi</a></li>
+      <li><a href="#assistenza">Modulo di assistenza</a></li>
+      <li><a href="#fornitori">Fornitori e trasferimenti</a></li>
+      <li><a href="#sicurezza">Sicurezza</a></li>
+      <li><a href="#diritti">I tuoi diritti</a></li>
+      <li class="part">B · Cookie</li>
+      <li><a href="#cookies">Cookie policy</a></li>
+      <li class="part">C · Termini</li>
+      <li><a href="#terms">Termini e condizioni</a></li>
+      <li><a href="#contenuti">Contenuti e segnalazioni</a></li>
+      <li><a href="#dpa">Dati per conto del cliente</a></li>
+      <li><a href="#foro">Legge e controversie</a></li>
+      <li class="part">D · Varie</li>
+      <li><a href="#normativa">Normativa di riferimento</a></li>
+      <li><a href="#modifiche">Modifiche a questa pagina</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <!-- ===================== CHI SIAMO ===================== -->
+    <section class="block" id="titolare">
+      <h2>Chi siamo</h2>
+      <p class="lead">Dati identificativi del fornitore del servizio e titolare del trattamento (art. 7 D.Lgs. 70/2003; art. 13 Reg. UE 2016/679).</p>
+      <div class="card-id">
+        <div><small>Denominazione</small><b>DS Service di Fabio Dos Santos Souza</b></div>
+        <div><small>Titolare</small><b>Fabio Dos Santos Souza</b></div>
+        <div><small>Sede</small><b>Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italia</b></div>
+        <div><small>Codice fiscale</small><b>DSSFBA84A03Z602O</b></div>
+        <div><small>Partita IVA</small><b>In corso di attribuzione</b></div>
+        <div><small>Email</small><b><a href="mailto:info@dsfabio.com">info@dsfabio.com</a></b></div>
+        <div><small>WhatsApp e telefono</small><b><a href="https://wa.me/393440301412">+39 344 030 1412</a></b></div>
+        <div><small>Sito</small><b><a href="https://dsfabio.com">dsfabio.com</a></b></div>
+      </div>
+      <p>DS Service opera con il marchio <strong>DSFabio</strong> e realizza menu digitali con QR code per attività della ristorazione. La partita IVA sarà indicata in questa pagina non appena attribuita.</p>
+      <p><strong>Responsabile della protezione dei dati (DPO):</strong> non nominato, perché non obbligatorio per la nostra attività (art. 37 GDPR). Per ogni questione sui dati personali scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+    </section>
+
+    <!-- ===================== PARTE A: PRIVACY ===================== -->
+    <div class="part-title"><span>A</span><h2>Informativa privacy</h2></div>
+
+    <section class="block" id="privacy">
+      <h2>Informativa sul trattamento dei dati personali</h2>
+      <p class="lead">Resa ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 (GDPR) e del D.Lgs. 196/2003 (Codice in materia di protezione dei dati personali), come modificato dal D.Lgs. 101/2018.</p>
+      <p>Questa informativa riguarda le persone i cui dati trattiamo attraverso il sito <strong>dsfabio.com</strong>, i menu digitali che pubblichiamo per i nostri clienti, il modulo di assistenza e l'area riservata di gestione clienti. In particolare:</p>
+      <ul>
+        <li><strong>visitatori</strong> del sito e dei menu digitali;</li>
+        <li><strong>potenziali clienti</strong> che ci contattano per informazioni o per la prova gratuita;</li>
+        <li><strong>clienti</strong> (attività della ristorazione) e i loro titolari, referenti e incaricati;</li>
+        <li><strong>collaboratori commerciali</strong> autorizzati a usare l'area riservata.</li>
+      </ul>
+      <p>Il titolare del trattamento è <strong>DS Service di Fabio Dos Santos Souza</strong>, con i recapiti indicati nella sezione <a href="#titolare">Chi siamo</a>.</p>
+      <div class="note"><p><strong>In breve:</strong> raccogliamo solo i dati che servono per fornire il servizio, non facciamo pubblicità né profilazione, non vendiamo dati, non prendiamo decisioni automatizzate e cancelliamo i dati alle scadenze indicate qui sotto.</p></div>
+    </section>
+
+    <section class="block" id="dati">
+      <h2>Quali dati trattiamo, perché e per quanto tempo</h2>
+      <p class="lead">Per ogni finalità indichiamo la base giuridica (art. 6 GDPR) e il periodo di conservazione (art. 5.1.e GDPR).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Attività</th><th>Dati trattati</th><th>Finalità e base giuridica</th><th>Conservazione</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Navigazione del sito e dei menu digitali</td>
+              <td>Dati tecnici registrati dal server: indirizzo IP, data e ora, pagina richiesta, tipo di browser e dispositivo</td>
+              <td>Funzionamento e sicurezza del sito, prevenzione di abusi. Legittimo interesse (art. 6.1.f)</td>
+              <td>Al massimo 30 giorni, salvo necessità di accertare reati</td>
+            </tr>
+            <tr>
+              <td>Richiesta di informazioni o di prova gratuita (WhatsApp o email)</td>
+              <td>Ciò che scegli di inviarci: di solito nome e cognome, nome del locale, città, telefono, email, foto o file del menu</td>
+              <td>Rispondere e preparare la prova gratuita. Misure precontrattuali richieste da te (art. 6.1.b)</td>
+              <td>12 mesi dall'ultimo contatto se non diventi cliente</td>
+            </tr>
+            <tr>
+              <td>Gestione del cliente</td>
+              <td>Nome dell'attività, titolare o referente, indirizzo, cellulare, email, link a menu, sito e social, codice cliente, date di prova, rinnovo e pagamento, note interne di servizio</td>
+              <td>Fornire il servizio, la prova gratuita, l'assistenza e le comunicazioni di servizio. Esecuzione del contratto (art. 6.1.b)</td>
+              <td>Per tutta la durata del rapporto e per 24 mesi dalla sua cessazione</td>
+            </tr>
+            <tr>
+              <td>Contenuti del menu</td>
+              <td>Piatti, prezzi, allergeni, descrizioni, logo, foto e altri contenuti forniti dal cliente</td>
+              <td>Realizzare, pubblicare e aggiornare il menu digitale. Esecuzione del contratto (art. 6.1.b)</td>
+              <td>Per la durata del rapporto; alla cessazione consegniamo il PDF del menu e cancelliamo i contenuti entro 90 giorni</td>
+            </tr>
+            <tr>
+              <td>Richieste di assistenza</td>
+              <td>Codice cliente, tipo di modifica, note scritte dal cliente, foto e PDF allegati</td>
+              <td>Eseguire le modifiche richieste. Esecuzione del contratto (art. 6.1.b)</td>
+              <td>Richiesta: per la durata del rapporto. Foto e PDF: eliminati 90 giorni dopo la chiusura della richiesta</td>
+            </tr>
+            <tr>
+              <td>Protezione del modulo di assistenza</td>
+              <td>Impronta cifrata dell'indirizzo IP (l'IP in chiaro non viene salvato) e tipo di browser</td>
+              <td>Bloccare invii automatici, tentativi di indovinare i codici cliente e spam. Legittimo interesse (art. 6.1.f)</td>
+              <td>Impronta IP: 24 ore. Tipo di browser: insieme alla richiesta</td>
+            </tr>
+            <tr>
+              <td>Pagamenti</td>
+              <td>Importo, data, esito e dati necessari ai documenti fiscali. I dati della carta sono gestiti solo dal fornitore di pagamento: noi non li vediamo</td>
+              <td>Incasso del corrispettivo. Esecuzione del contratto (art. 6.1.b) e obblighi fiscali (art. 6.1.c)</td>
+              <td>10 anni (art. 2220 Codice civile; art. 22 D.P.R. 600/1973)</td>
+            </tr>
+            <tr>
+              <td>Area riservata di gestione clienti</td>
+              <td>Email, password (conservata solo in forma cifrata), dati della verifica in due passaggi, registro tecnico degli accessi</td>
+              <td>Consentire l'accesso ai soli autorizzati e proteggere i dati. Esecuzione del rapporto di collaborazione (art. 6.1.b) e legittimo interesse alla sicurezza (art. 6.1.f)</td>
+              <td>Per la durata della collaborazione; registri tecnici secondo i tempi del fornitore, comunque non oltre 12 mesi</td>
+            </tr>
+            <tr>
+              <td>Tutela dei diritti</td>
+              <td>Dati strettamente necessari tra quelli sopra indicati</td>
+              <td>Accertare, esercitare o difendere un diritto in sede giudiziaria. Legittimo interesse (art. 6.1.f)</td>
+              <td>Per la durata del contenzioso e fino alla scadenza dei termini di impugnazione</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Conferimento dei dati</h3>
+      <p>Fornire i dati necessari per il contratto e per l'assistenza è indispensabile: senza di essi non possiamo erogare il servizio né eseguire le modifiche. Gli altri dati, come le note libere, sono facoltativi.</p>
+      <h3>Cosa non facciamo</h3>
+      <ul>
+        <li>Non usiamo i dati per pubblicità, newsletter o marketing e non li cediamo né vendiamo a terzi.</li>
+        <li>Non facciamo profilazione e non prendiamo decisioni basate unicamente su trattamenti automatizzati (art. 22 GDPR).</li>
+        <li>Non trattiamo categorie particolari di dati (art. 9 GDPR) né dati relativi a condanne penali (art. 10 GDPR).</li>
+      </ul>
+      <h3>Minori</h3>
+      <p>Il servizio è rivolto a imprese e professionisti. Non raccogliamo consapevolmente dati di minori di 14 anni (art. 2-quinquies D.Lgs. 196/2003).</p>
+    </section>
+
+    <section class="block" id="assistenza">
+      <h2>Modulo di assistenza clienti</h2>
+      <p class="lead">Informazioni specifiche per i clienti che usano il modulo di richiesta di modifica del menu.</p>
+      <ul>
+        <li>Il modulo chiede il <strong>codice cliente</strong> che trovi sulla scheda consegnata: senza un codice valido la richiesta non viene salvata. Il codice è personale: non comunicarlo a terzi.</li>
+        <li>Puoi allegare fino a 5 file (foto JPG, PNG, WebP o PDF fino a 10 MB). Le foto vengono ridotte automaticamente prima dell'invio.</li>
+        <li>Per sicurezza applichiamo limiti agli invii: 5 codici errati all'ora per dispositivo, un limite complessivo di tentativi errati e un massimo di richieste giornaliere per cliente. Superati i limiti, il modulo si blocca temporaneamente.</li>
+        <li>Le richieste sono visibili solo al titolare e al collaboratore commerciale che segue il tuo locale.</li>
+        <li>Ti chiediamo di non inserire nelle note o negli allegati dati di altre persone (per esempio foto in cui sono riconoscibili clienti o dipendenti) o informazioni non necessarie alla richiesta.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="fornitori">
+      <h2>Chi vede i dati: fornitori e trasferimenti</h2>
+      <p class="lead">Destinatari dei dati (art. 13.1.e GDPR) e trasferimenti verso Paesi terzi (artt. 44–49 GDPR).</p>
+      <h3>Persone autorizzate</h3>
+      <p>Accedono ai dati il titolare e i collaboratori commerciali autorizzati e istruiti (art. 29 GDPR e art. 2-quaterdecies D.Lgs. 196/2003). Ogni collaboratore vede solo i clienti che segue.</p>
+      <h3>Fornitori che trattano i dati per nostro conto</h3>
+      <p>Sono nominati responsabili del trattamento (art. 28 GDPR) con contratti che ne garantiscono la riservatezza e la sicurezza.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fornitore</th><th>Servizio</th><th>Dove sono i dati</th><th>Garanzie</th></tr></thead>
+          <tbody>
+            <tr><td>Vercel Inc. (USA)</td><td>Hosting del sito, dei menu digitali e dell'area riservata</td><td>Rete globale, incluse sedi negli USA</td><td>EU-US Data Privacy Framework e Clausole contrattuali standard</td></tr>
+            <tr><td>Supabase Inc. (USA)</td><td>Database clienti, ricezione delle richieste dal modulo di assistenza e archivio privato degli allegati</td><td>Unione europea (Francoforte, Germania)</td><td>Dati conservati nell'UE; Clausole contrattuali standard per gli eventuali accessi di assistenza</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Titolari autonomi</h3>
+      <ul>
+        <li><strong>WhatsApp Ireland Ltd.</strong> (gruppo Meta), se scegli di contattarci su WhatsApp: si applica l'informativa di WhatsApp.</li>
+        <li><strong>Fornitori dei pagamenti</strong> (Stripe, PayPal o SumUp, secondo il link di pagamento che ricevi), che trattano i dati di pagamento secondo le proprie informative.</li>
+        <li><strong>Consulenti fiscali e professionisti</strong> che ci assistono negli adempimenti di legge, tenuti al segreto professionale.</li>
+        <li><strong>Autorità pubbliche</strong>, quando la legge lo impone.</li>
+      </ul>
+      <h3>Trasferimenti fuori dall'Unione europea</h3>
+      <p>Quando un fornitore tratta dati fuori dallo Spazio economico europeo, il trasferimento avviene sulla base della decisione di adeguatezza della Commissione europea del 10 luglio 2023 sull'EU-US Data Privacy Framework (art. 45 GDPR), per le società certificate, oppure delle Clausole contrattuali standard approvate dalla Commissione (art. 46 GDPR). Puoi chiederci copia delle garanzie scrivendo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+    </section>
+
+    <section class="block" id="sicurezza">
+      <h2>Come proteggiamo i dati</h2>
+      <p class="lead">Misure tecniche e organizzative adeguate al rischio (art. 32 GDPR).</p>
+      <ul>
+        <li>Connessioni sempre cifrate (HTTPS) e certificato SSL su sito e menu.</li>
+        <li>Area riservata accessibile solo con credenziali personali; per l'amministratore è obbligatoria la verifica in due passaggi.</li>
+        <li>Regole di accesso applicate direttamente dal database: ogni collaboratore vede e modifica solo i propri clienti.</li>
+        <li>Allegati in un archivio privato, consultabili solo con link temporanei.</li>
+        <li>Registrazione pubblica di nuovi account disattivata: gli accessi vengono creati solo dal titolare.</li>
+        <li>Limiti contro gli abusi sul modulo pubblico e cancellazione automatica dei dati alle scadenze indicate.</li>
+      </ul>
+      <p>In caso di violazione dei dati personali, informiamo il Garante entro 72 ore e, se il rischio è elevato, anche le persone interessate (artt. 33 e 34 GDPR).</p>
+    </section>
+
+    <section class="block" id="diritti">
+      <h2>I tuoi diritti</h2>
+      <p class="lead">Artt. 15–22 e 77 GDPR.</p>
+      <p>In qualsiasi momento puoi chiedere:</p>
+      <ul>
+        <li><strong>accesso</strong> ai tuoi dati e una copia (art. 15);</li>
+        <li><strong>rettifica</strong> dei dati inesatti o incompleti (art. 16);</li>
+        <li><strong>cancellazione</strong> (art. 17), salvo i dati che dobbiamo conservare per legge;</li>
+        <li><strong>limitazione</strong> del trattamento (art. 18);</li>
+        <li><strong>portabilità</strong>, cioè ricevere i dati in un formato strutturato e leggibile (art. 20);</li>
+        <li><strong>opposizione</strong> ai trattamenti basati sul legittimo interesse (art. 21).</li>
+      </ul>
+      <p>Scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> o su WhatsApp al <a href="https://wa.me/393440301412">+39 344 030 1412</a>. La richiesta è gratuita. Rispondiamo entro un mese, prorogabile di due mesi nei casi complessi (art. 12.3 GDPR); potremmo chiederti di confermare la tua identità.</p>
+      <h3>Reclamo al Garante</h3>
+      <p>Se ritieni che il trattamento violi la normativa, puoi proporre reclamo al <strong>Garante per la protezione dei dati personali</strong>, Piazza Venezia 11, 00187 Roma, <a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>, <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a> (art. 77 GDPR), oppure rivolgerti all'autorità giudiziaria (art. 79 GDPR).</p>
+    </section>
+
+    <!-- ===================== PARTE B: COOKIE ===================== -->
+    <div class="part-title"><span>B</span><h2>Cookie policy</h2></div>
+
+    <section class="block" id="cookies">
+      <h2>Cookie e memoria del browser</h2>
+      <p class="lead">Informativa ai sensi dell'art. 122 D.Lgs. 196/2003, della Direttiva 2002/58/CE e delle Linee guida del Garante sui cookie e altri strumenti di tracciamento del 10 giugno 2021.</p>
+      <div class="note"><p><strong>Non usiamo cookie di profilazione, pubblicitari o statistici</strong> e non usiamo strumenti di analisi come Google Analytics. Per questo non ti chiediamo alcun consenso: gli unici strumenti presenti sono tecnici e necessari.</p></div>
+      <h3>Cosa usiamo</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nome</th><th>Dove</th><th>Tipo</th><th>A cosa serve</th><th>Durata</th></tr></thead>
+          <tbody>
+            <tr><td><code>dsf-cookie-ok</code></td><td>Sito dsfabio.com</td><td>Memoria locale del browser, tecnica</td><td>Ricorda che hai chiuso l'avviso informativo, per non mostrartelo di nuovo</td><td>Finché non cancelli i dati del browser</td></tr>
+            <tr><td><code>sb-xzhbyxvlrxemujrqatbl-auth-token</code></td><td>Solo area riservata di gestione clienti</td><td>Memoria locale del browser, tecnica</td><td>Mantiene attivo l'accesso dell'utente autorizzato</td><td>Fino all'uscita (logout) o alla scadenza della sessione</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Questi dati restano sul tuo dispositivo, non servono a riconoscerti su altri siti e non vengono usati per statistiche. Rientrano tra gli strumenti strettamente necessari per i quali non è richiesto il consenso (art. 122, comma 1, D.Lgs. 196/2003).</p>
+      <h3>Servizi di terze parti</h3>
+      <ul>
+        <li>Caratteri tipografici, immagini e librerie sono caricati direttamente dal nostro sito: navigando non contatti Google Fonts o altri servizi esterni.</li>
+        <li>Il modulo di assistenza, quando premi «Invia», trasmette la richiesta al nostro database su Supabase (server nell'Unione europea), senza usare cookie.</li>
+        <li>I pulsanti WhatsApp sono semplici link: solo se li tocchi si apre WhatsApp, che applica la propria cookie policy.</li>
+        <li>I link di pagamento aprono la pagina del fornitore scelto (Stripe, PayPal o SumUp), che applica le proprie regole sui cookie.</li>
+      </ul>
+      <h3>Come cancellarli</h3>
+      <p>Puoi eliminare in qualsiasi momento la memoria locale e i cookie dalle impostazioni del browser, alla voce Privacy o Dati dei siti. Il sito continuerà a funzionare: ti verrà solo mostrato di nuovo l'avviso.</p>
+      <p>Se in futuro introdurremo strumenti che richiedono il consenso, li attiveremo solo dopo averlo chiesto con un banner conforme alle Linee guida del Garante, con la possibilità di rifiutare con la stessa facilità con cui si accetta.</p>
+    </section>
+
+    <!-- ===================== PARTE C: TERMINI ===================== -->
+    <div class="part-title"><span>C</span><h2>Termini e condizioni</h2></div>
+
+    <section class="block" id="terms">
+      <h2>Termini e condizioni del servizio</h2>
+      <p class="lead">Condizioni generali per la fornitura dei menu digitali. Gli accordi presi per iscritto con il singolo cliente prevalgono su questa pagina.</p>
+
+      <h3>1. Fornitore e destinatari</h3>
+      <p>Il servizio è fornito da DS Service di Fabio Dos Santos Souza (dati in <a href="#titolare">Chi siamo</a>) ed è rivolto a imprese e professionisti della ristorazione. Le norme a tutela dei consumatori del D.Lgs. 206/2005 (Codice del consumo) non si applicano, salvo che il cliente sia un consumatore: in quel caso restano ferme tutte le tutele inderogabili, compreso il diritto di recesso entro 14 giorni (art. 52 Codice del consumo).</p>
+
+      <h3>2. Il servizio</h3>
+      <p>Realizziamo e gestiamo menu digitali consultabili tramite QR code. Il servizio comprende:</p>
+      <ul>
+        <li>menu digitale personalizzato e QR code da esporre nel locale;</li>
+        <li>icone dei 14 allergeni previsti dal Regolamento (UE) 1169/2011;</li>
+        <li>hosting, indirizzo web dedicato e certificato SSL;</li>
+        <li>fino a 4 modifiche al mese a piatti e prezzi, richieste con il modulo di assistenza o su WhatsApp;</li>
+        <li>assistenza su WhatsApp con risposta, di norma, entro poche ore nei giorni lavorativi.</li>
+      </ul>
+
+      <h3>3. Prova gratuita</h3>
+      <ul>
+        <li>Dura 30 giorni dalla consegna del menu e non richiede dati di pagamento.</li>
+        <li>Alla fine della prova, se non prosegui, non paghi nulla: il menu viene messo in pausa (chi inquadra il QR vede una pagina con i tuoi contatti) e ricevi gratuitamente il PDF del tuo menu.</li>
+      </ul>
+
+      <h3>4. Prezzo e pagamento</h3>
+      <ul>
+        <li>Dopo la prova il servizio costa <strong>190 € all'anno</strong>, tutto incluso, da pagare in anticipo per ogni annualità.</li>
+        <li>Il pagamento avviene tramite il link che ti inviamo (Stripe, PayPal o SumUp). Non conserviamo i dati della tua carta.</li>
+        <li>Il contratto si intende concluso con il pagamento della prima annualità; il documento fiscale viene emesso a seguito del pagamento.</li>
+      </ul>
+
+      <h3>5. Durata, rinnovo e disdetta</h3>
+      <ul>
+        <li>Il servizio dura un anno dalla data di pagamento.</li>
+        <li>Non ci sono addebiti automatici: prima della scadenza ti inviamo il link per rinnovare, e il servizio prosegue solo se paghi la nuova annualità.</li>
+        <li>Puoi disdire quando vuoi, senza penali, anche semplicemente non rinnovando. Il servizio resta attivo fino alla fine del periodo già pagato; non sono previsti rimborsi per i periodi parziali, salvo i casi previsti dalla legge.</li>
+      </ul>
+
+      <h3>6. Impegni del cliente</h3>
+      <ul>
+        <li>Fornire contenuti corretti e aggiornati: piatti, prezzi e soprattutto informazioni sugli allergeni, di cui resta responsabile come operatore del settore alimentare (Reg. UE 1169/2011).</li>
+        <li>Avere i diritti su logo, foto e testi che ci invia e non fornire contenuti illeciti o che violino diritti di terzi.</li>
+        <li>Custodire il codice cliente e comunicarci subito un eventuale uso non autorizzato.</li>
+        <li>Tenere sempre disponibile una copia cartacea del menu, come riserva in caso di problemi tecnici.</li>
+      </ul>
+
+      <h3>7. Proprietà dei contenuti</h3>
+      <p>I contenuti del menu (testi, foto, logo) restano di proprietà del cliente, che ci concede la licenza a usarli al solo scopo di fornire il servizio. Grafiche, modelli e software del servizio restano di proprietà di DS Service. Mostriamo il menu di un cliente come esempio del nostro lavoro solo con il suo consenso.</p>
+
+      <h3>8. Disponibilità e responsabilità</h3>
+      <ul>
+        <li>Facciamo il possibile per tenere il menu sempre online, ma non possiamo garantire un servizio privo di interruzioni né il funzionamento di servizi di terzi (hosting, WhatsApp, connessione del locale o dei suoi clienti).</li>
+        <li>Gli interventi di manutenzione programmata, quando possibile, vengono svolti in orari di minore utilizzo.</li>
+        <li>L'assistenza riguarda il menu digitale, non i dispositivi o le reti del locale.</li>
+        <li>Salvo dolo o colpa grave (art. 1229 Codice civile), la nostra responsabilità è limitata all'importo pagato dal cliente negli ultimi 12 mesi.</li>
+      </ul>
+
+      <h3>9. Sospensione e cessazione</h3>
+      <p>Possiamo sospendere il menu in caso di mancato pagamento dopo la scadenza, di contenuti manifestamente illeciti o di uso del servizio contrario alla legge, informando il cliente e indicandone il motivo.</p>
+
+      <h3>10. Portabilità alla fine del rapporto</h3>
+      <p>Alla cessazione del servizio, per qualsiasi motivo, ti consegniamo gratuitamente il PDF del menu e, su richiesta, i tuoi contenuti e dati in un formato strutturato e di uso comune, entro 30 giorni, così da poterli usare con un altro fornitore (in linea con il Regolamento (UE) 2023/2854, Data Act). Trascorsi 90 giorni dalla cessazione cancelliamo i contenuti, salvo i dati da conservare per legge.</p>
+    </section>
+
+    <section class="block" id="contenuti">
+      <h2>Contenuti pubblicati e segnalazioni</h2>
+      <p class="lead">Obblighi dei servizi di memorizzazione di informazioni ai sensi del Regolamento (UE) 2022/2065 (Digital Services Act).</p>
+      <h3>Punto di contatto</h3>
+      <p>Per autorità, clienti e utenti il punto di contatto unico è <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>, in lingua italiana o inglese (artt. 11 e 12 DSA).</p>
+      <h3>Segnalare un contenuto illecito</h3>
+      <p>Chiunque ritenga che un menu da noi pubblicato contenga informazioni illecite può segnalarlo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> indicando (art. 16 DSA):</p>
+      <ul>
+        <li>le ragioni per cui ritiene il contenuto illecito;</li>
+        <li>l'indirizzo web esatto del contenuto;</li>
+        <li>nome e indirizzo email, salvo che la segnalazione riguardi reati per cui la legge consente l'anonimato;</li>
+        <li>una dichiarazione di buona fede sulla correttezza delle informazioni fornite.</li>
+      </ul>
+      <p>Esaminiamo le segnalazioni con tempestività e in modo imparziale, comunichiamo la decisione al segnalante e, se rimuoviamo o limitiamo un contenuto, ne spieghiamo le ragioni al cliente interessato (art. 17 DSA), che può contestare la decisione rispondendo allo stesso indirizzo.</p>
+    </section>
+
+    <section class="block" id="dpa">
+      <h2>Dati trattati per conto del cliente</h2>
+      <p class="lead">Accordo sul trattamento dei dati ai sensi dell'art. 28 GDPR, parte integrante del contratto.</p>
+      <p>Se il cliente inserisce nel menu dati personali (per esempio nomi o foto dello staff), il cliente è titolare di quei dati e DS Service li tratta come responsabile per suo conto. A tal fine DS Service:</p>
+      <ul>
+        <li>tratta i dati solo per pubblicare e aggiornare il menu, secondo le istruzioni del cliente;</li>
+        <li>vincola alla riservatezza le persone autorizzate;</li>
+        <li>adotta le misure di sicurezza descritte nella sezione <a href="#sicurezza">Sicurezza</a>;</li>
+        <li>si avvale dei sub-responsabili indicati nella sezione <a href="#fornitori">Fornitori</a> e informa il cliente di eventuali modifiche, consentendogli di opporsi;</li>
+        <li>assiste il cliente nel rispondere alle richieste degli interessati e lo informa senza ingiustificato ritardo di eventuali violazioni dei dati;</li>
+        <li>alla fine del servizio restituisce o cancella i dati, come indicato al punto 10 dei Termini;</li>
+        <li>mette a disposizione le informazioni necessarie a dimostrare il rispetto di questi obblighi.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="foro">
+      <h2>Legge applicabile e controversie</h2>
+      <ul>
+        <li>Questi termini sono regolati dalla <strong>legge italiana</strong>.</li>
+        <li>Per le controversie con imprese e professionisti è competente in via esclusiva il <strong>Foro di Forlì</strong>. Se il cliente è un consumatore, è competente il giudice del luogo in cui il consumatore risiede (art. 66-bis Codice del consumo).</li>
+        <li>Prima di ogni azione ti invitiamo a scriverci a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>: cerchiamo sempre una soluzione amichevole. Resta salva la mediazione prevista dal D.Lgs. 28/2010.</li>
+        <li>La piattaforma europea ODR per la risoluzione online delle controversie non è più attiva dal 20 luglio 2025 (Regolamento (UE) 2024/3228).</li>
+      </ul>
+      <h3>Accessibilità</h3>
+      <p>DS Service è una microimpresa e, come tale, è esclusa dagli obblighi del D.Lgs. 82/2022 di recepimento dell'European Accessibility Act (Direttiva (UE) 2019/882). Ci impegniamo comunque a rendere sito e menu leggibili e utilizzabili da tutti: se incontri difficoltà, scrivici e ti aiuteremo.</p>
+    </section>
+
+    <!-- ===================== PARTE D ===================== -->
+    <div class="part-title"><span>D</span><h2>Riferimenti e aggiornamenti</h2></div>
+
+    <section class="block" id="normativa">
+      <h2>Normativa di riferimento</h2>
+      <ul>
+        <li>Regolamento (UE) 2016/679 – Regolamento generale sulla protezione dei dati (GDPR).</li>
+        <li>D.Lgs. 30 giugno 2003, n. 196 – Codice in materia di protezione dei dati personali, come modificato dal D.Lgs. 10 agosto 2018, n. 101.</li>
+        <li>Direttiva 2002/58/CE (ePrivacy) e art. 122 D.Lgs. 196/2003 sui cookie.</li>
+        <li>Garante per la protezione dei dati personali, Linee guida cookie e altri strumenti di tracciamento, 10 giugno 2021.</li>
+        <li>Decisione di esecuzione (UE) 2023/1795 della Commissione del 10 luglio 2023 – EU-US Data Privacy Framework.</li>
+        <li>Regolamento (UE) 2022/2065 – Digital Services Act.</li>
+        <li>Regolamento (UE) 2023/2854 – Data Act.</li>
+        <li>D.Lgs. 9 aprile 2003, n. 70 – Commercio elettronico.</li>
+        <li>D.Lgs. 6 settembre 2005, n. 206 – Codice del consumo, ove applicabile.</li>
+        <li>Regolamento (UE) 1169/2011 – Informazioni sugli alimenti ai consumatori.</li>
+        <li>Direttiva (UE) 2019/882 e D.Lgs. 27 maggio 2022, n. 82 – Accessibilità.</li>
+        <li>Regolamento (UE) 2024/3228 – Abrogazione della piattaforma ODR.</li>
+        <li>Codice civile, in particolare artt. 1229 e 2220; D.P.R. 29 settembre 1973, n. 600, art. 22.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="modifiche">
+      <h2>Modifiche a questa pagina</h2>
+      <p>Possiamo aggiornare questa pagina per adeguarla a nuove norme o a cambiamenti del servizio. La data di aggiornamento è sempre indicata in alto.</p>
+      <p>Per i clienti, le modifiche ai Termini che incidono sul servizio vengono comunicate almeno 30 giorni prima dell'entrata in vigore, via email o WhatsApp. Chi non le accetta può disdire senza penali prima di tale data. Le modifiche non peggiorano mai i servizi già pagati.</p>
+      <div class="note"><p>Hai domande su questa pagina? Scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> o su WhatsApp al <a href="https://wa.me/393440301412">+39 344 030 1412</a>.</p></div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <span>© 2026 DS Service di Fabio Dos Santos Souza · Via Antonio Maria Valsalva 31, 47014 Meldola (FC) · C.F. DSSFBA84A03Z602O · P.IVA in corso di attribuzione</span>
+    <a class="home-btn" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Torna alla home</span>
+    </a>
+  </div>
+</footer>
+
+<a class="to-top" href="#top" aria-label="Torna all'inizio della pagina">↑</a>
+
+</body>
+</html>

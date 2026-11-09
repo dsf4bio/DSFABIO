@@ -1,5 +1,5 @@
 /* =========================================================
-   DSFabio Digital · componente per le ANTEPRIME dei modelli
+   DS Service · componente per le ANTEPRIME dei modelli
    Uso: <script src="assets/trial.js" data-model="Nome modello" defer></script>
    - aggiunge in fondo alla pagina una call to action
    - aggiunge un pulsante "Provalo gratis" nella fascia in alto (.demo)

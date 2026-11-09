@@ -15,6 +15,8 @@ from html.parser import HTMLParser
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'i18n')
 PAGES = ['index', 'modelli', 'about', 'privacy']
+# Pagine solo in italiano (testo legale): le altre lingue rimandano qui (vercel.json)
+IT_ONLY = {'privacy'}
 LANGS = {
     'it': ('it_IT', 'Italiano'), 'en': ('en_GB', 'English'), 'es': ('es_ES', 'Español'),
     'pt': ('pt_BR', 'Português'), 'de': ('de_DE', 'Deutsch'), 'fr': ('fr_FR', 'Français'),
@@ -278,7 +280,7 @@ def collect(src):
 
 def extract():
     seen, order = set(), []
-    for page in PAGES:
+    for page in [p for p in PAGES if p not in IT_ONLY]:
         src = open(os.path.join(ROOT, page + '.html'), encoding='utf-8').read()
         for t in collect(src):
             if t not in seen and LETTER.search(t):
@@ -298,7 +300,7 @@ def extract():
 
 # ---------------------------------------------------------------- build
 
-LOCAL_PAGES = set(PAGES)
+LOCAL_PAGES = set(PAGES) - IT_ONLY
 
 
 def absolutize(src, lang):
@@ -332,6 +334,8 @@ def page_url(page, lang):
 
 
 def alternates(page):
+    if page in IT_ONLY:
+        return '<link rel="alternate" hreflang="it" href="%s">' % page_url(page, 'it')
     out = ['<link rel="alternate" hreflang="%s" href="%s">' % (l, page_url(page, l)) for l in LANGS]
     out.append('<link rel="alternate" hreflang="x-default" href="%s">' % page_url(page, 'it'))
     return '\n'.join(out)
@@ -339,7 +343,7 @@ def alternates(page):
 
 def switcher(page, lang):
     items = ''.join('<a href="%s" hreflang="%s" lang="%s"%s>%s</a>' % (
-        page_url(page, l).replace(SITE, ''), l, l, ' aria-current="true"' if l == lang else '', LANGS[l][1]) for l in LANGS)
+        page_url('index' if (page in IT_ONLY and l != 'it') else page, l).replace(SITE, ''), l, l, ' aria-current="true"' if l == lang else '', LANGS[l][1]) for l in LANGS)
     return ('<details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> %s</summary>'
             '<div class="lang-list">%s</div></details>') % (lang.upper(), items)
 
@@ -402,7 +406,7 @@ def build():
         src = strip_lang(open(it_path, encoding='utf-8').read())
         open(it_path, 'w', encoding='utf-8').write(localize_common(src, page, 'it'))
         for lang in LANGS:
-            if lang == 'it':
+            if lang == 'it' or page in IT_ONLY:
                 continue
             d = json.load(open(os.path.join(DIR, lang + '.json'), encoding='utf-8'))
             res, miss = translate_page(src, page, lang, d)
@@ -422,7 +426,9 @@ def sitemap():
     rows = []
     for page in PAGES:
         alts = ''.join('\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, page_url(page, l)) for l in LANGS)
-        for lang in LANGS:
+        for lang in (['it'] if page in IT_ONLY else LANGS):
+            if page in IT_ONLY:
+                alts = ''
             rows.append('  <url><loc>%s</loc><priority>%s</priority>%s\n  </url>' % (page_url(page, lang), pri[page], alts))
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(rows) + '\n</urlset>\n')

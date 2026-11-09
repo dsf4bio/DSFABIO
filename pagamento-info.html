@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pagamento – DSFabio</title>
+<title>Pagamento – DS Service</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
@@ -70,7 +70,7 @@
       var s = stati[q.get('stato')] || stati['link-non-valido'];
       document.getElementById('title').textContent = s[1];
       document.getElementById('text').textContent = s[2];
-      document.title = s[1] + ' – DSFabio';
+      document.title = s[1] + ' – DS Service';
       if (!s[0]) {
         document.getElementById('icon').classList.add('warn');
         document.getElementById('ok').hidden = true;

@@ -142,7 +142,7 @@
   <div class="meta">
     <span class="chip">Ultimo aggiornamento: 9 novembre 2026</span>
     <span class="chip">In vigore dal 9 novembre 2026</span>
-    <span class="chip">Versione 2.1</span>
+    <span class="chip">Versione 2.2</span>
   </div>
 </section>
 
@@ -233,7 +233,7 @@
             <tr>
               <td>Gestione del cliente</td>
               <td>Nome dell'attività, titolare o referente, indirizzo, cellulare, email, link a menu, sito e social, codice cliente, date di prova, rinnovo e pagamento, note interne di servizio</td>
-              <td>Fornire il servizio, la prova gratuita, l'assistenza e le comunicazioni di servizio. Esecuzione del contratto (art. 6.1.b)</td>
+              <td>Fornire il servizio, la prova gratuita, l'assistenza e le comunicazioni di servizio via email (promemoria di scadenza, conferme di pagamento e di rinnovo, conferma delle modifiche completate). Esecuzione del contratto (art. 6.1.b)</td>
               <td>Per tutta la durata del rapporto e per 24 mesi dalla sua cessazione</td>
             </tr>
             <tr>
@@ -295,6 +295,7 @@
         <li>Puoi allegare fino a 5 file (foto JPG, PNG, WebP o PDF fino a 10 MB). Le foto vengono ridotte automaticamente prima dell'invio.</li>
         <li>Per sicurezza applichiamo limiti agli invii: 5 codici errati all'ora per dispositivo, un limite complessivo di tentativi errati e un massimo di richieste giornaliere per cliente. Superati i limiti, il modulo si blocca temporaneamente.</li>
         <li>Le richieste sono visibili solo al titolare e al collaboratore commerciale che segue il tuo locale.</li>
+        <li>Quando la richiesta è completata ti mandiamo un'email di conferma all'indirizzo registrato per il tuo locale.</li>
         <li>Ti chiediamo di non inserire nelle note o negli allegati dati di altre persone (per esempio foto in cui sono riconoscibili clienti o dipendenti) o informazioni non necessarie alla richiesta.</li>
       </ul>
     </section>
@@ -312,6 +313,8 @@
           <tbody>
             <tr><td>Vercel Inc. (USA)</td><td>Hosting del sito, dei menu digitali, dei siti e delle applicazioni dei clienti e dell'area riservata</td><td>Rete globale, incluse sedi negli USA</td><td>EU-US Data Privacy Framework e Clausole contrattuali standard</td></tr>
             <tr><td>Supabase Inc. (USA)</td><td>Database clienti, ricezione delle richieste dal modulo di assistenza e archivio privato degli allegati</td><td>Unione europea (Francoforte, Germania)</td><td>Dati conservati nell'UE; Clausole contrattuali standard per gli eventuali accessi di assistenza</td></tr>
+            <tr><td>Resend (Plus Five Five Inc., USA)</td><td>Invio delle email di servizio ai clienti: promemoria di scadenza, conferme di pagamento, rinnovo e modifiche completate</td><td>Unione europea (Irlanda) per l'invio; società con sede negli USA</td><td>EU-US Data Privacy Framework e accordo sul trattamento dei dati del fornitore</td></tr>
+            <tr><td>Telegram (Telegram FZ-LLC, Emirati Arabi Uniti)</td><td>Avvisi interni al titolare e ai collaboratori sulle attività dei clienti (nuove richieste, scadenze, pagamenti). Gli avvisi contengono solo nome dell'attività, codice cliente e tipo di avviso: nessun recapito e nessuna nota del cliente</td><td>Server del fornitore, anche fuori dall'Unione europea</td><td>Dati ridotti al minimo indispensabile; il dettaglio resta nell'area riservata, accessibile solo con credenziali</td></tr>
           </tbody>
         </table>
       </div>
@@ -324,6 +327,7 @@
       </ul>
       <h3>Trasferimenti fuori dall'Unione europea</h3>
       <p>Quando un fornitore tratta dati fuori dallo Spazio economico europeo, il trasferimento avviene sulla base della decisione di adeguatezza della Commissione europea del 10 luglio 2023 sull'EU-US Data Privacy Framework (art. 45 GDPR), per le società certificate, oppure delle Clausole contrattuali standard approvate dalla Commissione (art. 46 GDPR). Puoi chiederci copia delle garanzie scrivendo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+      <p>Gli avvisi interni inviati tramite Telegram contengono solo dati dell'attività del cliente (nome del locale, codice cliente, tipo di avviso) e nessun recapito: li limitiamo al minimo proprio perché il fornitore opera anche fuori dallo Spazio economico europeo.</p>
     </section>
 
     <section class="block" id="sicurezza">
@@ -410,8 +414,9 @@
         <li>menu digitale personalizzato e QR code pronti da stampare per tavoli, bancone e vetrina;</li>
         <li>icone dei 14 allergeni previsti dal Regolamento (UE) 1169/2011;</li>
         <li>hosting, indirizzo web dedicato e certificato SSL;</li>
-        <li>fino a 4 modifiche al mese a piatti e prezzi, richieste con il modulo di assistenza o su WhatsApp;</li>
-        <li>assistenza su WhatsApp con risposta, di norma, entro poche ore nei giorni lavorativi.</li>
+        <li>fino a 4 modifiche al mese a piatti e prezzi, richieste dalla pagina <a href="assistenza">Assistenza</a> con il codice cliente o inquadrando il QR della scheda cliente consegnata;</li>
+        <li>un'email di conferma quando la modifica richiesta è online;</li>
+        <li>per domande sull'abbonamento, risposta via email a info@dsfabio.com, di norma entro poche ore nei giorni lavorativi.</li>
       </ul>
 
       <h3>4. Menu digitali: prova gratuita, prezzo e pagamento</h3>
@@ -462,11 +467,11 @@
         <li>Salvo dolo o colpa grave (art. 1229 Codice civile), la nostra responsabilità è limitata all'importo pagato dal cliente per il servizio interessato negli ultimi 12 mesi.</li>
       </ul>
 
-      <h3>10. Sospensione e disattivazione</h3>
+      <h3>10. Sospensione</h3>
       <ul>
-        <li><strong>Scadenza senza pagamento:</strong> se alla scadenza (fine della prova gratuita o dell'anno) il pagamento non arriva, oppure l'addebito automatico sulla carta non va a buon fine, il menu viene <strong>sospeso</strong>: chi inquadra il QR vede una pagina con i tuoi contatti. Te lo comunichiamo via email.</li>
-        <li><strong>Riattivazione:</strong> durante la sospensione puoi riattivare il servizio in qualsiasi momento pagando l'annualità; il menu torna online subito, con tutti i contenuti, e il nuovo anno parte dalla data del pagamento. 15 giorni dopo la scadenza ti ricordiamo questa possibilità.</li>
-        <li><strong>Disattivazione:</strong> trascorsi <strong>30 giorni dalla scadenza</strong> senza pagamento, il servizio viene disattivato. Conserviamo i contenuti per altri 90 giorni (vedi punto 11): in questo periodo puoi riattivare il menu con un nuovo abbonamento.</li>
+        <li><strong>Scadenza senza pagamento:</strong> se alla scadenza (fine della prova gratuita o dell'anno) il pagamento non arriva, oppure l'addebito automatico sulla carta non va a buon fine, il menu viene <strong>sospeso</strong>: chi inquadra il QR vede una pagina con i tuoi contatti. Te lo comunichiamo via email. La sospensione non ha costi e non comporta penali.</li>
+        <li><strong>Riattivazione:</strong> il servizio resta sospeso finché non paghi. Puoi riattivarlo in qualsiasi momento pagando l'annualità: il menu torna online subito e in automatico, con tutti i contenuti e lo stesso QR code, e il nuovo anno parte dalla data del pagamento.</li>
+        <li><strong>Sospensione prolungata:</strong> se il servizio resta sospeso per oltre <strong>12 mesi</strong>, il rapporto si considera concluso e si applica il punto 11 (consegna dei contenuti e cancellazione dopo 90 giorni).</li>
         <li>Possiamo inoltre sospendere un servizio in caso di contenuti manifestamente illeciti o di uso contrario alla legge, informando il cliente e indicandone il motivo.</li>
       </ul>
 

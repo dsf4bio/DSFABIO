@@ -1,5 +1,5 @@
 /* =========================================================
-   DSFabio Digital · script comune a tutte le pagine
+   DS Service · script comune a tutte le pagine
    - menu mobile, barra di avanzamento, comparse, luce del mouse
    - pulsanti "Prova gratis" [data-open]: aprono WhatsApp con messaggio pronto
      Un pulsante può indicare il modello scelto: data-model="MDC-001 · Gusto 360°"

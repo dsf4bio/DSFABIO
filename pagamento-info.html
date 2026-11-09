@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagamento – DSFabio</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --ink: #14161c; --sub: #4a5160; --line: #e3e6ec; --accent: #0e7c86; --bg: #f6f7f9; --warn: #b4542b; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 20px;
+    background: var(--bg); color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .card {
+    max-width: 520px; width: 100%; background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    padding: 36px 30px; text-align: center; box-shadow: 0 1px 2px rgba(20,22,28,.04), 0 12px 32px rgba(20,22,28,.08);
+  }
+  .icon {
+    width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center;
+    background: #e6f4f5; color: var(--accent);
+  }
+  .icon.warn { background: #fbece5; color: var(--warn); }
+  .icon svg { width: 32px; height: 32px; }
+  h1 { font-size: 1.6rem; margin: 0 0 10px; line-height: 1.25; }
+  p { color: var(--sub); margin: 0 0 24px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: .95rem;
+    padding: 11px 20px; border-radius: 999px; border: 1px solid var(--ink);
+  }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-light:hover { border-color: var(--accent); color: var(--accent); }
+  small { display: block; margin-top: 22px; color: var(--sub); font-size: .82rem; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="icon" id="icon" aria-hidden="true">
+      <svg id="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      <svg id="ko" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg>
+    </div>
+    <h1 id="title">Link non valido</h1>
+    <p id="text">Questo link non è più attivo. Scrivici a info@dsfabio.com e ti mandiamo quello giusto.</p>
+    <div class="actions">
+      <a class="btn btn-dark" href="/">Torna alla home</a>
+      <a class="btn btn-light" href="https://wa.me/393440301412">Scrivici su WhatsApp</a>
+    </div>
+    <small>Hai domande sul pagamento? Scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a></small>
+  </main>
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var nome = (q.get('nome') || '').slice(0, 80);
+      var di = nome ? ' di ' + nome : '';
+      var stati = {
+        'gia-attivo': [true, 'Abbonamento già attivo',
+          "L'abbonamento" + di + " è già attivo con rinnovo automatico: non devi fare nulla."],
+        'link-non-valido': [false, 'Link non valido',
+          "Questo link non è più attivo, oppure non è stato copiato per intero. Scrivici e ti mandiamo quello giusto."],
+        'non-disponibile': [false, 'Pagamento non disponibile',
+          "Il pagamento online non è attivo in questo momento. Scrivici e ti aiutiamo a completarlo."],
+        'errore': [false, 'Pagamento non disponibile',
+          "Non siamo riusciti ad aprire la pagina di pagamento. Riprova tra qualche minuto oppure scrivici."]
+      };
+      var s = stati[q.get('stato')] || stati['link-non-valido'];
+      document.getElementById('title').textContent = s[1];
+      document.getElementById('text').textContent = s[2];
+      document.title = s[1] + ' – DSFabio';
+      if (!s[0]) {
+        document.getElementById('icon').classList.add('warn');
+        document.getElementById('ok').hidden = true;
+        document.getElementById('ko').hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

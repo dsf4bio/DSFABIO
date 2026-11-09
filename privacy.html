@@ -72,7 +72,7 @@
   .toc .part { margin-top: 10px; font-weight: 700; color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; padding: 0 10px; }
 
   .doc { display: grid; gap: 24px; min-width: 0; }
-  .block { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); scroll-margin-top: 84px; }
+  .block { min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); scroll-margin-top: 84px; }
   .block > h2 { font-size: 1.45rem; margin: 0 0 4px; line-height: 1.3; }
   .block > .lead { color: var(--sub); margin: 0 0 18px; font-size: .95rem; }
   .part-title { display: flex; align-items: center; gap: 12px; margin: 16px 0 -8px; }
@@ -140,9 +140,9 @@
   <h1>Privacy, cookie e termini del servizio</h1>
   <p>Questa pagina raccoglie in un unico documento l'informativa sul trattamento dei dati personali, la cookie policy, i termini e condizioni dei servizi e le note legali di DS Service. È scritta in modo chiaro e, dove serve, indica le norme di riferimento.</p>
   <div class="meta">
-    <span class="chip">Ultimo aggiornamento: 8 novembre 2026</span>
-    <span class="chip">In vigore dall'8 novembre 2026</span>
-    <span class="chip">Versione 2.0</span>
+    <span class="chip">Ultimo aggiornamento: 9 novembre 2026</span>
+    <span class="chip">In vigore dal 9 novembre 2026</span>
+    <span class="chip">Versione 2.1</span>
   </div>
 </section>
 
@@ -318,7 +318,7 @@
       <h3>Titolari autonomi</h3>
       <ul>
         <li><strong>WhatsApp Ireland Ltd.</strong> (gruppo Meta), se scegli di contattarci su WhatsApp: si applica l'informativa di WhatsApp.</li>
-        <li><strong>Fornitori dei pagamenti</strong> (Stripe, PayPal o SumUp, secondo il link di pagamento che ricevi), che trattano i dati di pagamento secondo le proprie informative.</li>
+        <li><strong>Stripe Payments Europe Ltd.</strong> (Irlanda), che gestisce i pagamenti con carta fatti tramite il nostro link di pagamento e i relativi rinnovi, secondo la propria informativa.</li>
         <li><strong>Consulenti fiscali e professionisti</strong> che ci assistono negli adempimenti di legge, tenuti al segreto professionale.</li>
         <li><strong>Autorità pubbliche</strong>, quando la legge lo impone.</li>
       </ul>
@@ -379,7 +379,7 @@
         <li>Caratteri tipografici, immagini e librerie sono caricati direttamente dal nostro sito: navigando non contatti Google Fonts o altri servizi esterni.</li>
         <li>Il modulo di assistenza, quando premi «Invia», trasmette la richiesta al nostro database su Supabase (server nell'Unione europea), senza usare cookie.</li>
         <li>I pulsanti WhatsApp sono semplici link: solo se li tocchi si apre WhatsApp, che applica la propria cookie policy.</li>
-        <li>I link di pagamento aprono la pagina del fornitore scelto (Stripe, PayPal o SumUp), che applica le proprie regole sui cookie.</li>
+        <li>Il link di pagamento apre la pagina sicura di Stripe, che applica le proprie regole sui cookie.</li>
       </ul>
       <h3>Come cancellarli</h3>
       <p>Puoi eliminare in qualsiasi momento la memoria locale e i cookie dalle impostazioni del browser, alla voce Privacy o Dati dei siti. Il sito continuerà a funzionare: ti verrà solo mostrato di nuovo l'avviso.</p>
@@ -407,7 +407,7 @@
 
       <h3>3. Menu digitali: cosa comprende il servizio</h3>
       <ul>
-        <li>menu digitale personalizzato e QR code da esporre nel locale;</li>
+        <li>menu digitale personalizzato e QR code pronti da stampare per tavoli, bancone e vetrina;</li>
         <li>icone dei 14 allergeni previsti dal Regolamento (UE) 1169/2011;</li>
         <li>hosting, indirizzo web dedicato e certificato SSL;</li>
         <li>fino a 4 modifiche al mese a piatti e prezzi, richieste con il modulo di assistenza o su WhatsApp;</li>
@@ -418,16 +418,18 @@
       <ul>
         <li>La prova gratuita dura 30 giorni dalla consegna del menu e non richiede dati di pagamento.</li>
         <li>Alla fine della prova, se non prosegui, non paghi nulla: il menu viene messo in pausa (chi inquadra il QR vede una pagina con i tuoi contatti) e ricevi gratuitamente il PDF del tuo menu.</li>
-        <li>Dopo la prova il servizio costa <strong>190 € all'anno</strong>, tutto incluso, da pagare in anticipo per ogni annualità.</li>
-        <li>Il pagamento avviene tramite il link che ti inviamo (Stripe, PayPal o SumUp). Non conserviamo i dati della tua carta.</li>
+        <li>Dopo la prova il servizio costa <strong>189 € all'anno</strong> (prezzo promozionale; prezzo di listino 229 €), tutto incluso, da pagare in anticipo per ogni annualità. Il prezzo indicato nel tuo link di pagamento resta lo stesso anche ai rinnovi: eventuali variazioni ti vengono comunicate almeno 60 giorni prima della scadenza e, se non le accetti, puoi disdire senza costi.</li>
+        <li>Puoi pagare con carta tramite il link di pagamento sicuro che ti inviamo, gestito da Stripe (non vediamo né conserviamo i dati della tua carta), oppure con bonifico o in contanti, previo accordo.</li>
         <li>Il contratto si intende concluso con il pagamento della prima annualità; il documento fiscale viene emesso a seguito del pagamento.</li>
       </ul>
 
       <h3>5. Menu digitali: durata, rinnovo e disdetta</h3>
       <ul>
-        <li>Il servizio dura un anno dalla data di pagamento.</li>
-        <li>Non ci sono addebiti automatici: prima della scadenza ti inviamo il link per rinnovare, e il servizio prosegue solo se paghi la nuova annualità.</li>
-        <li>Puoi disdire quando vuoi, senza penali, anche semplicemente non rinnovando. Il servizio resta attivo fino alla fine del periodo già pagato; non sono previsti rimborsi per i periodi parziali, salvo i casi previsti dalla legge.</li>
+        <li>Il servizio dura un anno dalla data di pagamento (anche se paghi prima della fine della prova gratuita).</li>
+        <li><strong>Pagamento con carta:</strong> l'abbonamento si rinnova automaticamente ogni anno alla scadenza, allo stesso prezzo, con addebito sulla carta usata per il primo pagamento. A ogni rinnovo ricevi la conferma via email.</li>
+        <li><strong>Disdetta del rinnovo:</strong> puoi disdire in qualsiasi momento fino a <strong>30 giorni prima della scadenza annuale</strong>, scrivendo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> o su WhatsApp; ti confermiamo la disdetta per iscritto. Il servizio resta attivo fino alla fine dell'anno già pagato e non ci saranno altri addebiti. Una disdetta comunicata dopo questo termine vale dal rinnovo successivo.</li>
+        <li><strong>Pagamento con bonifico o contanti:</strong> non ci sono addebiti automatici. Ti ricordiamo la scadenza via email 5 e 2 giorni prima, e il servizio prosegue con il pagamento della nuova annualità; per non continuare basta non rinnovare.</li>
+        <li>Non sono previsti rimborsi per i periodi parziali, salvo i casi previsti dalla legge.</li>
       </ul>
 
       <h3>6. Siti web, applicazioni, software e gestionali</h3>
@@ -460,8 +462,13 @@
         <li>Salvo dolo o colpa grave (art. 1229 Codice civile), la nostra responsabilità è limitata all'importo pagato dal cliente per il servizio interessato negli ultimi 12 mesi.</li>
       </ul>
 
-      <h3>10. Sospensione e cessazione</h3>
-      <p>Possiamo sospendere un servizio in caso di mancato pagamento dopo la scadenza, di contenuti manifestamente illeciti o di uso contrario alla legge, informando il cliente e indicandone il motivo.</p>
+      <h3>10. Sospensione e disattivazione</h3>
+      <ul>
+        <li><strong>Scadenza senza pagamento:</strong> se alla scadenza (fine della prova gratuita o dell'anno) il pagamento non arriva, oppure l'addebito automatico sulla carta non va a buon fine, il menu viene <strong>sospeso</strong>: chi inquadra il QR vede una pagina con i tuoi contatti. Te lo comunichiamo via email.</li>
+        <li><strong>Riattivazione:</strong> durante la sospensione puoi riattivare il servizio in qualsiasi momento pagando l'annualità; il menu torna online subito, con tutti i contenuti, e il nuovo anno parte dalla data del pagamento. 15 giorni dopo la scadenza ti ricordiamo questa possibilità.</li>
+        <li><strong>Disattivazione:</strong> trascorsi <strong>30 giorni dalla scadenza</strong> senza pagamento, il servizio viene disattivato. Conserviamo i contenuti per altri 90 giorni (vedi punto 11): in questo periodo puoi riattivare il menu con un nuovo abbonamento.</li>
+        <li>Possiamo inoltre sospendere un servizio in caso di contenuti manifestamente illeciti o di uso contrario alla legge, informando il cliente e indicandone il motivo.</li>
+      </ul>
 
       <h3>11. Portabilità alla fine del rapporto</h3>
       <p>Alla cessazione di un servizio, per qualsiasi motivo, ti consegniamo gratuitamente i tuoi contenuti e dati in un formato strutturato e di uso comune (per i menu anche il PDF), entro 30 giorni dalla richiesta, così da poterli usare con un altro fornitore (in linea con il Regolamento (UE) 2023/2854, Data Act). Trascorsi 90 giorni dalla cessazione cancelliamo i contenuti, salvo i dati da conservare per legge.</p>

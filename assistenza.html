@@ -785,6 +785,8 @@
                     ? 'Abbiamo ricevuto la tua richiesta n. ' + result.request_number + '. '
                     : 'Abbiamo ricevuto la tua richiesta. ') + (result.published
                       ? 'Fatto: le modifiche sono già online! Riceverai anche un\'email di conferma.'
+                      : result.scheduled
+                      ? 'Fatto! Le modifiche vanno online entro pochi minuti: ti arriverà un\'email di conferma.'
                       : result.draft
                       ? 'Le modifiche sono già pronte: dopo un rapido controllo vanno online e ti avvisiamo via email.'
                       : 'Ti avviseremo via email appena la modifica sarà online.') + (result.warning ? ' ' + result.warning : '');

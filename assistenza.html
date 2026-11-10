@@ -747,10 +747,19 @@
                 submit.innerHTML = '<span class="dsf-spin"></span> Invio in corso';
                 var result;
                 (ops.length
-                  ? rpc('submit_menu_request', {
-                      p_code: code, p_ops: ops, p_details: details.value.trim() || null,
-                      p_privacy: true, p_website: $('dsf-website').value || null,
-                    })
+                  ? (function () {
+                      var args = {
+                        p_code: code, p_ops: ops, p_details: details.value.trim() || null,
+                        p_privacy: true, p_website: $('dsf-website').value || null,
+                      };
+                      // con allegati la modifica aspetta sempre il controllo di una persona
+                      if (files.length) args.p_with_files = true;
+                      return rpc('submit_menu_request', args).catch(function (err) {
+                        // database senza la migrazione 029: riprova senza il campo nuovo
+                        if (err && err.status === 404 && args.p_with_files) { delete args.p_with_files; return rpc('submit_menu_request', args); }
+                        throw err;
+                      });
+                    })()
                   : rpc('submit_support_request', {
                       p_code: code, p_types: M ? ['modifica_piatto'] : types, p_details: details.value.trim() || null,
                       p_privacy: true, p_website: $('dsf-website').value || null,
@@ -776,7 +785,9 @@
                   if (!result.ok) return showError(result.message || 'Invio non riuscito. Riprova.');
                   $('dsf-success-text').textContent = (result.request_number
                     ? 'Abbiamo ricevuto la tua richiesta n. ' + result.request_number + '. '
-                    : 'Abbiamo ricevuto la tua richiesta. ') + (result.draft
+                    : 'Abbiamo ricevuto la tua richiesta. ') + (result.published
+                      ? 'Fatto: le modifiche sono già online! Riceverai anche un\'email di conferma.'
+                      : result.draft
                       ? 'Le modifiche sono già pronte: dopo un rapido controllo vanno online e ti avvisiamo via email.'
                       : 'Ti avviseremo via email appena la modifica sarà online.') + (result.warning ? ' ' + result.warning : '');
                   form.hidden = true;

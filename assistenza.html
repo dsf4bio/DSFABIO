@@ -246,11 +246,11 @@
               <div class="dsf-field">
                 <label class="dsf-label" for="dsf-code">Codice cliente *</label>
                 <div class="dsf-row">
-                  <input class="dsf-input dsf-code" id="dsf-code" name="client_code" maxlength="10" placeholder="ABC12345"
+                  <input class="dsf-input dsf-code" id="dsf-code" name="client_code" maxlength="12"
                          autocomplete="off" autocapitalize="characters" spellcheck="false" required>
                   <button class="dsf-btn dsf-btn-sm" type="button" id="dsf-load">Continua</button>
                 </div>
-                <div class="dsf-hint" id="dsf-code-hint">Lo trovi sulla scheda cliente che ti abbiamo consegnato (es. HGJ59874).</div>
+                <div class="dsf-hint" id="dsf-code-hint">Lo trovi sulla scheda cliente che ti abbiamo consegnato.</div>
               </div>
 
               <div id="dsf-menu-step" hidden>
@@ -347,24 +347,22 @@
               function size(b) { return b >= 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
               function safeName(n) { return (n.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w.\-]+/g, '_').slice(-80)) || 'file'; }
 
-              // codice: maiuscolo, solo lettere e numeri
-              // maiuscolo, solo lettere e numeri; nella parte numerica O→0 e I/L→1
+              // codice: maiuscolo, solo lettere e numeri; O→0 e I→1 (nei codici non ci sono O e I)
               function cleanCode(v) {
-                var s = String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
-                return s.slice(0, 3) + s.slice(3).replace(/O/g, '0').replace(/[IL]/g, '1');
+                return String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/O/g, '0').replace(/I/g, '1').slice(0, 8);
               }
-              var CODE_PATTERN = /^[A-HJ-NP-Z]{3}[0-9]{5}$/;
+              var CODE_PATTERN = /^[A-Z0-9]{8}$/;
               codeInput.addEventListener('input', function () {
                 var p = codeInput.selectionStart;
                 codeInput.value = cleanCode(codeInput.value);
                 try { codeInput.setSelectionRange(p, p); } catch (e) {}
               });
-              // codice già compilato dal QR della scheda cliente (?codice=HGJ59874)
+              // codice già compilato dai link nelle email (?codice=…); il QR della scheda apre la pagina vuota
               var qs = new URLSearchParams(location.search);
               var fromQr = cleanCode(qs.get('codice') || qs.get('code'));
               if (fromQr) {
                 codeInput.value = fromQr;
-                if (CODE_PATTERN.test(fromQr)) $('dsf-code-hint').textContent = 'Codice inserito automaticamente dal QR.';
+                if (CODE_PATTERN.test(fromQr)) $('dsf-code-hint').textContent = 'Codice già inserito: premi Continua.';
               }
               details.addEventListener('input', function () { $('dsf-count').textContent = details.value.length; });
               root.querySelectorAll('.dsf-choice input').forEach(function (cb) {
@@ -693,7 +691,7 @@
               function loadMenu() {
                 showError('');
                 var code = codeInput.value.trim();
-                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Il codice cliente è formato da tre lettere e cinque numeri (es. HGJ59874).'); }
+                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Codice cliente non valido: controlla la scheda cliente che ti abbiamo consegnato.'); }
                 var btn = $('dsf-load'); btn.disabled = true; btn.innerHTML = '<span class="dsf-spin"></span>';
                 rpc('menu_request_load', { p_code: code }).then(function (r) {
                   resetMenu();
@@ -735,7 +733,7 @@
                 var code = codeInput.value.trim();
                 var types = Array.prototype.map.call(root.querySelectorAll('input[name=request_types]:checked'), function (x) { return x.value; });
                 if (!code) { codeInput.focus(); return showError('Inserisci il codice cliente.'); }
-                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Il codice cliente è formato da tre lettere e cinque numeri (es. HGJ59874).'); }
+                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Codice cliente non valido: controlla la scheda cliente che ti abbiamo consegnato.'); }
                 var ops = M ? buildOps() : [];
                 if (M && openKey) return showError('Hai una modifica aperta: premi "Conferma modifica" (o "Annulla") prima di inviare.');
                 if (M && !ops.length && !details.value.trim() && !files.length) return showError('Indica almeno una modifica al menu, oppure scrivi cosa ti serve.');

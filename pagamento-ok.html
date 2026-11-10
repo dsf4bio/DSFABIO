@@ -32,6 +32,7 @@
     display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: .95rem;
     padding: 11px 20px; border-radius: 999px; border: 1px solid var(--ink);
   }
+  [hidden] { display: none !important; }
   .btn-dark { background: var(--ink); color: #fff; }
   .btn-dark:hover { background: var(--accent); border-color: var(--accent); }
   .btn-light { background: #fff; color: var(--ink); }
@@ -51,11 +52,25 @@
       <li>L'abbonamento si <strong>rinnova automaticamente ogni anno</strong>, allo stesso prezzo: a ogni rinnovo ricevi la conferma via email.</li>
       <li>Puoi <strong>disdire il rinnovo fino a 30 giorni prima della scadenza</strong> scrivendoci su WhatsApp o via email: il servizio resta attivo fino alla fine dell'anno pagato.</li>
     </ul>
+    <p id="menu-back-note" hidden><strong>Il tuo menu torna online entro un paio di minuti.</strong></p>
     <div class="actions">
-      <a class="btn btn-dark" href="/">Torna alla home</a>
+      <a class="btn btn-dark" id="menu-back" href="https://www.dsmenu.it" hidden>Torna al tuo menu</a>
+      <a class="btn btn-dark" id="home" href="/">Torna alla home</a>
       <a class="btn btn-light" href="https://wa.me/393440301412">Scrivici su WhatsApp</a>
     </div>
     <small>Hai domande sul pagamento? Scrivi a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a></small>
   </main>
+  <script>
+    // arrivo dal pagamento di un menu: pulsante per tornare al menu del locale
+    (function () {
+      var slug = new URLSearchParams(location.search).get('menu') || '';
+      if (!/^[a-z0-9](?:[a-z0-9-]{0,58}[a-z0-9])?$/.test(slug)) return;
+      var back = document.getElementById('menu-back');
+      back.href = 'https://www.dsmenu.it/' + slug;
+      back.hidden = false;
+      document.getElementById('menu-back-note').hidden = false;
+      document.getElementById('home').className = 'btn btn-light';
+    })();
+  </script>
 </body>
 </html>

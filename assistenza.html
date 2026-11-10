@@ -203,6 +203,41 @@
               #dsf-assistenza [hidden] { display: none !important; }
               #dsf-assistenza .dsf-consent a { color: var(--dsf-accent); }
               @media (max-width: 560px) { #dsf-assistenza .dsf-choices { grid-template-columns: 1fr; } }
+              /* ---- menu del cliente (modifica guidata) ---- */
+              #dsf-assistenza .dsf-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+              #dsf-assistenza .dsf-row .dsf-code { flex: 1 1 200px; }
+              #dsf-assistenza .dsf-btn-sm { width: auto; min-height: 48px; padding: 0 22px; font-size: 1em; }
+              #dsf-assistenza .dsf-menu-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin: 6px 0 12px; }
+              #dsf-assistenza .dsf-menu-head h3 { margin: 0; font-size: 1.15em; }
+              #dsf-assistenza .dsf-sec { border: 1px solid var(--dsf-border); border-radius: 12px; margin: 0 0 12px; overflow: hidden; }
+              #dsf-assistenza .dsf-sec > h4 { margin: 0; padding: 10px 14px; font-size: 1em; background: var(--dsf-field-bg); border-bottom: 1px solid var(--dsf-border); }
+              #dsf-assistenza .dsf-item { padding: 10px 14px; border-bottom: 1px solid var(--dsf-border); }
+              #dsf-assistenza .dsf-item:last-of-type { border-bottom: 0; }
+              #dsf-assistenza .dsf-item-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+              #dsf-assistenza .dsf-item-name { flex: 1 1 160px; min-width: 0; font-weight: 600; }
+              #dsf-assistenza .dsf-item-desc { font-size: 0.85em; opacity: 0.7; margin-top: 2px; }
+              #dsf-assistenza .dsf-price { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+              #dsf-assistenza .dsf-old { text-decoration: line-through; opacity: 0.55; font-weight: 400; margin-right: 6px; }
+              #dsf-assistenza .dsf-link { background: none; border: 0; padding: 6px 8px; color: var(--dsf-accent); font: inherit; font-size: 0.88em; font-weight: 600; cursor: pointer; border-radius: 8px; }
+              #dsf-assistenza .dsf-link:hover { background: var(--dsf-field-bg); }
+              #dsf-assistenza .dsf-tag { display: inline-block; font-size: 0.72em; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--dsf-accent) 22%, transparent); }
+              #dsf-assistenza .dsf-item.is-removed .dsf-item-name, #dsf-assistenza .dsf-item.is-removed .dsf-price { text-decoration: line-through; opacity: 0.5; }
+              #dsf-assistenza .dsf-item.is-changed { background: color-mix(in srgb, var(--dsf-accent) 8%, transparent); }
+              #dsf-assistenza .dsf-edit { margin-top: 10px; padding: 12px; border-radius: 10px; background: var(--dsf-field-bg); border: 1px solid var(--dsf-border); }
+              #dsf-assistenza .dsf-edit .dsf-field { margin-bottom: 12px; }
+              #dsf-assistenza .dsf-grid2 { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 10px; }
+              #dsf-assistenza .dsf-al { display: flex; flex-wrap: wrap; gap: 6px; }
+              #dsf-assistenza .dsf-al label { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--dsf-border); border-radius: 999px; font-size: 0.85em; cursor: pointer; }
+              #dsf-assistenza .dsf-al input { width: 16px; height: 16px; margin: 0; accent-color: var(--dsf-accent); }
+              #dsf-assistenza .dsf-al label:has(input:checked) { border-color: var(--dsf-accent); box-shadow: inset 0 0 0 1px var(--dsf-accent); }
+              #dsf-assistenza .dsf-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+              #dsf-assistenza .dsf-price-input { width: 96px; padding: 8px 10px; text-align: right; }
+              #dsf-assistenza .dsf-add { display: block; width: 100%; text-align: left; padding: 10px 14px; border-top: 1px dashed var(--dsf-border); border-radius: 0; }
+              #dsf-assistenza .dsf-summary { border: 1px solid var(--dsf-accent); border-radius: 12px; padding: 12px 14px; margin: 0 0 18px; }
+              #dsf-assistenza .dsf-summary h4 { margin: 0 0 8px; font-size: 1em; }
+              #dsf-assistenza .dsf-summary li { display: flex; gap: 8px; align-items: center; justify-content: space-between; padding: 4px 0; font-size: 0.9em; }
+              #dsf-assistenza .dsf-invalid { border-color: var(--dsf-error) !important; }
+              @media (max-width: 560px) { #dsf-assistenza .dsf-grid2 { grid-template-columns: 1fr; } }
             </style>
 
             <form id="dsf-form" novalidate>
@@ -210,13 +245,28 @@
 
               <div class="dsf-field">
                 <label class="dsf-label" for="dsf-code">Codice cliente *</label>
-                <input class="dsf-input dsf-code" id="dsf-code" name="client_code" maxlength="10" placeholder="ABC12345"
-                       autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+                <div class="dsf-row">
+                  <input class="dsf-input dsf-code" id="dsf-code" name="client_code" maxlength="10" placeholder="ABC12345"
+                         autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+                  <button class="dsf-btn dsf-btn-sm" type="button" id="dsf-load">Continua</button>
+                </div>
                 <div class="dsf-hint" id="dsf-code-hint">Lo trovi sulla scheda cliente che ti abbiamo consegnato (es. HGJ59874).</div>
               </div>
 
+              <div id="dsf-menu-step" hidden>
+                <div class="dsf-menu-head">
+                  <h3 id="dsf-menu-title"></h3>
+                  <button class="dsf-btn dsf-btn-ghost" type="button" id="dsf-price-mode">💶 Cambia più prezzi insieme</button>
+                </div>
+                <p class="dsf-summary" id="dsf-pending" hidden style="font-size:.9em">⏳ Alcune modifiche che hai già chiesto sono in attesa di pubblicazione: le vedi già qui sotto.</p>
+                <p class="dsf-hint" style="margin:0 0 12px">Tocca ✏️ per cambiare un piatto, 🗑 per toglierlo, ＋ per aggiungerne uno. Le modifiche vanno online dopo il nostro controllo.</p>
+                <div id="dsf-menu"></div>
+                <div class="dsf-summary" id="dsf-summary" hidden></div>
+              </div>
+
+              <div id="dsf-classic" hidden>
               <fieldset class="dsf-field" style="border:0;padding:0;margin:0 0 18px">
-                <legend class="dsf-label">Cosa vuoi fare? * <span style="font-weight:400;opacity:.7">(puoi sceglierne più di uno)</span></legend>
+                <legend class="dsf-label"><span id="dsf-classic-title">Cosa vuoi fare?</span> * <span style="font-weight:400;opacity:.7">(puoi sceglierne più di uno)</span></legend>
                 <div class="dsf-choices">
                   <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiunta_piatto"> ➕ Aggiunta piatto</label>
                   <label class="dsf-choice"><input type="checkbox" name="request_types" value="modifica_piatto"> ✏️ Modifica piatto</label>
@@ -224,9 +274,13 @@
                   <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiornamento_prezzi"> 💶 Aggiornamento prezzi</label>
                 </div>
               </fieldset>
+              </div>
+
+              <div id="dsf-rest" hidden>
+
 
               <div class="dsf-field">
-                <label class="dsf-label" for="dsf-details">Note</label>
+                <label class="dsf-label" for="dsf-details" id="dsf-details-label">Note</label>
                 <textarea class="dsf-textarea" id="dsf-details" name="details" maxlength="1000"
                           placeholder="Scrivi tutto quello che serve: nome dei piatti, ingredienti, nuovi prezzi, categoria…"></textarea>
                 <div class="dsf-hint"><span id="dsf-count">0</span> / 1000</div>
@@ -255,6 +309,7 @@
               <p class="dsf-hint dsf-privacy-note">Usiamo i dati solo per gestire la richiesta. Foto e PDF vengono eliminati 90 giorni dopo la chiusura della richiesta.</p>
 
               <button class="dsf-btn" id="dsf-submit" type="submit">Invia la richiesta</button>
+              </div>
             </form>
 
             <div class="dsf-success" id="dsf-success" hidden aria-live="polite">
@@ -395,6 +450,284 @@
                 }).then(function (r) { return r.ok; }, function () { return false; });
               }
 
+              // ---- menu del cliente: modifica guidata ----
+              var ALLERGENS = [['glutine', '🌾 Glutine'], ['crostacei', '🦐 Crostacei'], ['uova', '🥚 Uova'], ['pesce', '🐟 Pesce'],
+                ['arachidi', '🥜 Arachidi'], ['soia', '🫘 Soia'], ['latte', '🥛 Latte'], ['frutta', '🌰 Frutta a guscio'],
+                ['sedano', '🥬 Sedano'], ['senape', '🟡 Senape'], ['sesamo', '⚪ Sesamo'], ['solfiti', '🍷 Solfiti'],
+                ['lupini', '🌼 Lupini'], ['molluschi', '🐚 Molluschi']];
+              var menuBox = $('dsf-menu'), menuStep = $('dsf-menu-step'), classic = $('dsf-classic'), summaryBox = $('dsf-summary');
+              var M = null;            // menu caricato: { code, business, sections }
+              var edits = {};          // id piatto → { name, description, price, allergens }
+              var removed = {};        // id piatto → true
+              var adds = [];           // nuovi piatti: { key, section_id, name, description, price, allergens }
+              var openKey = null;      // riquadro di modifica aperto
+              var priceMode = false;   // "cambia più prezzi insieme"
+
+              function h(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+              function euro(p) { return typeof p === 'number' ? p.toFixed(2).replace('.', ',') + ' €' : '—'; }
+              function parsePrice(v) {
+                var t = String(v || '').replace('€', '').replace(/\s/g, '').replace(',', '.');
+                if (!t) return null;
+                var n = Number(t);
+                return isFinite(n) && n >= 0 && n <= 10000 ? Math.round(n * 100) / 100 : NaN;
+              }
+              function findItem(id) {
+                for (var i = 0; i < M.sections.length; i++) for (var j = 0; j < M.sections[i].items.length; j++) {
+                  if (M.sections[i].items[j].id === id) return M.sections[i].items[j];
+                }
+                return null;
+              }
+              function current(it) {
+                var e = edits[it.id] || {};
+                return {
+                  name: 'name' in e ? e.name : it.name, description: 'description' in e ? e.description : (it.description || ''),
+                  price: 'price' in e ? e.price : it.price, allergens: 'allergens' in e ? e.allergens : (it.allergens || [])
+                };
+              }
+              function sameList(a, b) { return (a || []).slice().sort().join() === (b || []).slice().sort().join(); }
+              function cleanEdit(it) {
+                var e = edits[it.id]; if (!e) return;
+                if ('name' in e && e.name === it.name) delete e.name;
+                if ('description' in e && e.description === (it.description || '')) delete e.description;
+                if ('price' in e && e.price === it.price) delete e.price;
+                if ('allergens' in e && sameList(e.allergens, it.allergens)) delete e.allergens;
+                if (!Object.keys(e).length) delete edits[it.id];
+              }
+
+              function allergenPicker(selected, withNone) {
+                var box = h('div', 'dsf-al'), none = null;
+                ALLERGENS.forEach(function (a) {
+                  var l = h('label'), cb = h('input'); cb.type = 'checkbox'; cb.value = a[0];
+                  cb.checked = selected.indexOf(a[0]) >= 0;
+                  cb.addEventListener('change', function () { if (cb.checked && none) none.checked = false; });
+                  l.append(cb, document.createTextNode(a[1])); box.appendChild(l);
+                });
+                if (withNone) {
+                  var l = h('label'); none = h('input'); none.type = 'checkbox'; none.value = '';
+                  none.addEventListener('change', function () {
+                    if (none.checked) box.querySelectorAll('input[value]:not([value=""])').forEach(function (x) { x.checked = false; });
+                  });
+                  l.append(none, document.createTextNode('Nessuno di questi allergeni')); box.appendChild(l);
+                }
+                box.read = function () {
+                  var v = Array.prototype.filter.call(box.querySelectorAll('input'), function (x) { return x.checked && x.value; }).map(function (x) { return x.value; });
+                  if (withNone && !v.length && !none.checked) return null; // non ha indicato nulla
+                  return v;
+                };
+                return box;
+              }
+              function field(label, input, hint) {
+                var f = h('div', 'dsf-field'), l = h('span', 'dsf-label', label); f.append(l, input);
+                if (hint) f.appendChild(h('div', 'dsf-hint', hint));
+                return f;
+              }
+              function input(value, ph, max) {
+                var i = h('input', 'dsf-input'); i.value = value == null ? '' : value; if (ph) i.placeholder = ph; if (max) i.maxLength = max; return i;
+              }
+
+              // riquadro di modifica: piatto esistente (it) oppure nuovo (add)
+              function editor(it, add, sectionId) {
+                var c = it ? current(it) : (add || { name: '', description: '', price: null, allergens: [] });
+                var box = h('div', 'dsf-edit');
+                var name = input(c.name, 'Nome del piatto', 80);
+                var price = input(typeof c.price === 'number' ? String(c.price).replace('.', ',') : '', 'es. 12,50', 10);
+                price.inputMode = 'decimal';
+                var desc = h('textarea', 'dsf-textarea'); desc.value = c.description || ''; desc.maxLength = 300; desc.style.minHeight = '64px';
+                desc.placeholder = 'Ingredienti o descrizione (facoltativa)';
+                var al = allergenPicker(c.allergens || [], !it);
+                var grid = h('div', 'dsf-grid2'); grid.append(field('Nome *', name), field('Prezzo (€)', price));
+                var err = h('div', 'dsf-hint'); err.style.color = 'var(--dsf-error)';
+                var ok = h('button', 'dsf-btn dsf-btn-sm', it ? 'Conferma modifica' : 'Aggiungi al menu'); ok.type = 'button';
+                var no = h('button', 'dsf-btn dsf-btn-ghost', 'Annulla'); no.type = 'button';
+                no.onclick = function () { openKey = null; renderMenu(); };
+                ok.onclick = function () {
+                  var p = parsePrice(price.value), n = name.value.trim(), allergens = al.read();
+                  name.classList.toggle('dsf-invalid', !n); price.classList.toggle('dsf-invalid', p !== p || (!it && p === null));
+                  if (!n) { err.textContent = 'Scrivi il nome del piatto.'; return; }
+                  if (p !== p) { err.textContent = 'Prezzo non valido: scrivi solo il numero, es. 12,50.'; return; }
+                  if (!it && p === null) { err.textContent = 'Indica il prezzo del nuovo piatto.'; return; }
+                  if (!it && allergens === null) { err.textContent = 'Indica gli allergeni, oppure spunta "Nessuno di questi allergeni".'; return; }
+                  if (it) {
+                    edits[it.id] = { name: n, description: desc.value.trim(), price: p, allergens: allergens };
+                    cleanEdit(it);
+                  } else if (add) {
+                    add.name = n; add.description = desc.value.trim(); add.price = p; add.allergens = allergens;
+                  } else {
+                    adds.push({ key: 'n' + Date.now(), section_id: sectionId, name: n, description: desc.value.trim(), price: p, allergens: allergens });
+                  }
+                  openKey = null; renderMenu();
+                };
+                var actions = h('div', 'dsf-actions'); actions.append(no, ok);
+                box.append(grid, field('Descrizione', desc),
+                  field(it ? 'Allergeni' : 'Allergeni *', al, 'Indica tutti gli allergeni presenti (Reg. UE 1169/2011): la dichiarazione è sotto la tua responsabilità.'),
+                  err, actions);
+                setTimeout(function () { name.focus(); }, 30);
+                return box;
+              }
+
+              function renderMenu() {
+                menuBox.textContent = '';
+                M.sections.forEach(function (s) {
+                  var sec = h('div', 'dsf-sec'); sec.appendChild(h('h4', null, s.title));
+                  s.items.forEach(function (it) {
+                    var c = current(it), row = h('div', 'dsf-item'), line = h('div', 'dsf-item-line');
+                    if (removed[it.id]) row.classList.add('is-removed'); else if (edits[it.id]) row.classList.add('is-changed');
+                    var nm = h('span', 'dsf-item-name', c.name);
+                    if (edits[it.id] && !removed[it.id]) { nm.appendChild(document.createTextNode(' ')); nm.appendChild(h('span', 'dsf-tag', 'modificato')); }
+                    line.appendChild(nm);
+                    if (priceMode && !removed[it.id]) {
+                      var pi = input(typeof c.price === 'number' ? String(c.price).replace('.', ',') : '', '—', 10);
+                      pi.className = 'dsf-input dsf-price-input'; pi.inputMode = 'decimal'; pi.setAttribute('aria-label', 'Prezzo di ' + c.name);
+                      pi.addEventListener('change', function () {
+                        var p = parsePrice(pi.value);
+                        pi.classList.toggle('dsf-invalid', p !== p);
+                        if (p !== p) return;
+                        edits[it.id] = edits[it.id] || {}; edits[it.id].price = p; cleanEdit(it); renderSummary();
+                        row.classList.toggle('is-changed', !!edits[it.id]);
+                      });
+                      line.appendChild(pi);
+                    } else {
+                      var pr = h('span', 'dsf-price');
+                      if (edits[it.id] && 'price' in edits[it.id]) pr.appendChild(h('span', 'dsf-old', euro(it.price)));
+                      pr.appendChild(document.createTextNode(euro(c.price)));
+                      line.appendChild(pr);
+                    }
+                    if (!priceMode) {
+                      if (removed[it.id]) {
+                        var undo = h('button', 'dsf-link', 'Annulla rimozione'); undo.type = 'button';
+                        undo.onclick = function () { delete removed[it.id]; renderMenu(); };
+                        line.appendChild(undo);
+                      } else {
+                        var ed = h('button', 'dsf-link', '✏️ Modifica'); ed.type = 'button';
+                        ed.onclick = function () { openKey = it.id; renderMenu(); };
+                        var rm = h('button', 'dsf-link', '🗑 Rimuovi'); rm.type = 'button';
+                        rm.onclick = function () { removed[it.id] = true; delete edits[it.id]; if (openKey === it.id) openKey = null; renderMenu(); };
+                        line.append(ed, rm);
+                      }
+                    }
+                    row.appendChild(line);
+                    if (c.description) row.appendChild(h('div', 'dsf-item-desc', c.description));
+                    if (openKey === it.id && !priceMode) row.appendChild(editor(it));
+                    sec.appendChild(row);
+                  });
+                  adds.filter(function (a) { return a.section_id === s.id; }).forEach(function (a) {
+                    var row = h('div', 'dsf-item is-changed'), line = h('div', 'dsf-item-line');
+                    var nm = h('span', 'dsf-item-name', a.name + ' '); nm.appendChild(h('span', 'dsf-tag', 'nuovo'));
+                    var ed = h('button', 'dsf-link', '✏️ Modifica'); ed.type = 'button'; ed.onclick = function () { openKey = a.key; renderMenu(); };
+                    var rm = h('button', 'dsf-link', '🗑 Togli'); rm.type = 'button';
+                    rm.onclick = function () { adds = adds.filter(function (x) { return x !== a; }); renderMenu(); };
+                    line.append(nm, h('span', 'dsf-price', euro(a.price)), ed, rm); row.appendChild(line);
+                    if (openKey === a.key) row.appendChild(editor(null, a));
+                    sec.appendChild(row);
+                  });
+                  if (!priceMode) {
+                    if (openKey === 'add:' + s.id) {
+                      var row = h('div', 'dsf-item'); row.appendChild(h('strong', null, 'Nuovo piatto in ' + s.title));
+                      row.appendChild(editor(null, null, s.id)); sec.appendChild(row);
+                    } else {
+                      var add = h('button', 'dsf-link dsf-add', '＋ Aggiungi un piatto in ' + s.title); add.type = 'button';
+                      add.onclick = function () { openKey = 'add:' + s.id; renderMenu(); };
+                      sec.appendChild(add);
+                    }
+                  }
+                  menuBox.appendChild(sec);
+                });
+                renderSummary();
+              }
+
+              function buildOps() {
+                var ops = [];
+                Object.keys(edits).forEach(function (id) {
+                  if (removed[id] || !findItem(id)) return;
+                  var e = edits[id], op = { op: 'update', item_id: id };
+                  ['name', 'description', 'price', 'allergens'].forEach(function (k) { if (k in e) op[k] = e[k]; });
+                  ops.push(op);
+                });
+                Object.keys(removed).forEach(function (id) { ops.push({ op: 'remove', item_id: id }); });
+                adds.forEach(function (a) {
+                  ops.push({ op: 'add', section_id: a.section_id, name: a.name, description: a.description, price: a.price, allergens: a.allergens });
+                });
+                return ops;
+              }
+
+              function renderSummary() {
+                var lines = [];
+                Object.keys(edits).forEach(function (id) {
+                  var it = findItem(id); if (!it || removed[id]) return;
+                  var e = edits[id], parts = [];
+                  if ('name' in e) parts.push('nome → ' + e.name);
+                  if ('price' in e) parts.push(euro(it.price) + ' → ' + euro(e.price));
+                  if ('description' in e) parts.push('descrizione');
+                  if ('allergens' in e) parts.push('allergeni');
+                  lines.push(['✏️ ' + it.name + ': ' + parts.join(' · '), function () { delete edits[id]; renderMenu(); }]);
+                });
+                Object.keys(removed).forEach(function (id) {
+                  var it = findItem(id); if (it) lines.push(['🗑 Rimuovi ' + it.name, function () { delete removed[id]; renderMenu(); }]);
+                });
+                adds.forEach(function (a) {
+                  lines.push(['➕ Nuovo: ' + a.name + ' ' + euro(a.price), function () { adds = adds.filter(function (x) { return x !== a; }); renderMenu(); }]);
+                });
+                summaryBox.textContent = '';
+                summaryBox.hidden = !lines.length;
+                if (!lines.length) return;
+                summaryBox.appendChild(h('h4', null, 'Le tue modifiche (' + lines.length + ')'));
+                var ul = h('ul'); ul.style.margin = '0'; ul.style.padding = '0';
+                lines.forEach(function (l) {
+                  var li = h('li'), b = h('button', 'dsf-link', 'Annulla'); b.type = 'button'; b.onclick = l[1];
+                  li.append(h('span', null, l[0]), b); ul.appendChild(li);
+                });
+                summaryBox.appendChild(ul);
+              }
+
+              $('dsf-price-mode').addEventListener('click', function () {
+                priceMode = !priceMode; openKey = null;
+                this.textContent = priceMode ? '✓ Fine prezzi' : '💶 Cambia più prezzi insieme';
+                renderMenu();
+              });
+
+              function resetMenu() {
+                M = null; edits = {}; removed = {}; adds = []; openKey = null; priceMode = false;
+                menuStep.hidden = true; classic.hidden = true; $('dsf-rest').hidden = true;
+                $('dsf-price-mode').textContent = '💶 Cambia più prezzi insieme';
+              }
+              function loadMenu() {
+                showError('');
+                var code = codeInput.value.trim();
+                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Il codice cliente è formato da tre lettere e cinque numeri (es. HGJ59874).'); }
+                var btn = $('dsf-load'); btn.disabled = true; btn.innerHTML = '<span class="dsf-spin"></span>';
+                rpc('menu_request_load', { p_code: code }).then(function (r) {
+                  resetMenu();
+                  if (!r || !r.ok) return showError((r && r.message) || 'Codice non valido.');
+                  $('dsf-rest').hidden = false;
+                  if (r.has_menu) {
+                    M = r; menuStep.hidden = false;
+                    $('dsf-menu-title').textContent = 'Il menu di ' + r.business;
+                    $('dsf-pending').hidden = !r.pending;
+                    $('dsf-details-label').textContent = 'Altro da chiederci (facoltativo)';
+                    details.placeholder = 'Altre richieste che non trovi qui sopra: nuove sezioni, foto, orari, testi…';
+                    renderMenu();
+                  } else {
+                    classic.hidden = false;
+                    $('dsf-details-label').textContent = 'Note';
+                    $('dsf-classic-title').textContent = 'Menu di ' + r.business + ': cosa vuoi fare?';
+                  }
+                  menuStep.scrollIntoView && setTimeout(function () { (r.has_menu ? menuStep : classic).scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+                }).catch(function (err) {
+                  // funzione non ancora disponibile o errore del server: modulo classico, l'assistenza non si blocca
+                  if (err && err.status && err.status !== 429) {
+                    resetMenu(); $('dsf-rest').hidden = false; classic.hidden = false;
+                    $('dsf-classic-title').textContent = 'Cosa vuoi fare?';
+                  } else showError('Connessione non riuscita. Riprova.');
+                }).then(function () {
+                  btn.disabled = false; btn.textContent = 'Continua';
+                });
+              }
+              $('dsf-load').addEventListener('click', loadMenu);
+              codeInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); loadMenu(); } });
+              codeInput.addEventListener('input', function () { if (M || !classic.hidden) resetMenu(); });
+
+              if (CODE_PATTERN.test(codeInput.value)) loadMenu();
+
               // ---- invio ----
               form.addEventListener('submit', function (e) {
                 e.preventDefault();
@@ -403,17 +736,26 @@
                 var types = Array.prototype.map.call(root.querySelectorAll('input[name=request_types]:checked'), function (x) { return x.value; });
                 if (!code) { codeInput.focus(); return showError('Inserisci il codice cliente.'); }
                 if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Il codice cliente è formato da tre lettere e cinque numeri (es. HGJ59874).'); }
-                if (!types.length) return showError('Scegli almeno una voce in "Cosa vuoi fare?".');
+                var ops = M ? buildOps() : [];
+                if (M && openKey) return showError('Hai una modifica aperta: premi "Conferma modifica" (o "Annulla") prima di inviare.');
+                if (M && !ops.length && !details.value.trim() && !files.length) return showError('Indica almeno una modifica al menu, oppure scrivi cosa ti serve.');
+                if (!M && !types.length) return showError('Scegli almeno una voce in "Cosa vuoi fare?".');
                 if (!$('dsf-privacy').checked) return showError('Per inviare la richiesta conferma di aver letto l\'informativa privacy.');
                 if (files.some(function (f) { return f.working; })) return showError('Attendi che gli allegati siano pronti.');
 
                 submit.disabled = true;
                 submit.innerHTML = '<span class="dsf-spin"></span> Invio in corso';
                 var result;
-                rpc('submit_support_request', {
-                  p_code: code, p_types: types, p_details: details.value.trim() || null,
-                  p_privacy: true, p_website: $('dsf-website').value || null,
-                }).then(function (data) {
+                (ops.length
+                  ? rpc('submit_menu_request', {
+                      p_code: code, p_ops: ops, p_details: details.value.trim() || null,
+                      p_privacy: true, p_website: $('dsf-website').value || null,
+                    })
+                  : rpc('submit_support_request', {
+                      p_code: code, p_types: M ? ['modifica_piatto'] : types, p_details: details.value.trim() || null,
+                      p_privacy: true, p_website: $('dsf-website').value || null,
+                    })
+                ).then(function (data) {
                   result = data || {};
                   if (!result.ok || !result.request_id || !files.length) return;
                   // allegati nella cartella della richiesta appena creata, poi collegati
@@ -434,7 +776,9 @@
                   if (!result.ok) return showError(result.message || 'Invio non riuscito. Riprova.');
                   $('dsf-success-text').textContent = (result.request_number
                     ? 'Abbiamo ricevuto la tua richiesta n. ' + result.request_number + '. '
-                    : 'Abbiamo ricevuto la tua richiesta. ') + 'Ti avviseremo appena la modifica sarà online.' + (result.warning ? ' ' + result.warning : '');
+                    : 'Abbiamo ricevuto la tua richiesta. ') + (result.draft
+                      ? 'Le modifiche sono già pronte: dopo un rapido controllo vanno online e ti avvisiamo via email.'
+                      : 'Ti avviseremo via email appena la modifica sarà online.') + (result.warning ? ' ' + result.warning : '');
                   form.hidden = true;
                   $('dsf-success').hidden = false;
                   root.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -453,6 +797,8 @@
                 root.querySelectorAll('.dsf-choice').forEach(function (l) { l.classList.remove('is-on'); });
                 files = []; renderFiles(); $('dsf-count').textContent = '0';
                 $('dsf-success').hidden = true; form.hidden = false;
+                resetMenu();
+                if (CODE_PATTERN.test(codeInput.value)) loadMenu();
               });
             })();
             </script>

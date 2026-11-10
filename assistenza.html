@@ -290,7 +290,7 @@
                 <span class="dsf-label">Foto o PDF (facoltativi)</span>
                 <label class="dsf-drop" id="dsf-drop" for="dsf-file">
                   <strong>Aggiungi foto o PDF</strong>
-                  <span>JPG, PNG, WebP o PDF · max 5 file · le foto vengono ridotte in automatico · PDF fino a 10 MB</span>
+                  <span>JPG, PNG, WebP o PDF · max 5 file · le foto vengono alleggerite prima dell'invio · PDF fino a 10 MB</span>
                 </label>
                 <input class="dsf-hidden-input" id="dsf-file" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple>
                 <ul class="dsf-files" id="dsf-files"></ul>
@@ -783,13 +783,8 @@
                   if (!result.ok) return showError(result.message || 'Invio non riuscito. Riprova.');
                   $('dsf-success-text').textContent = (result.request_number
                     ? 'Abbiamo ricevuto la tua richiesta n. ' + result.request_number + '. '
-                    : 'Abbiamo ricevuto la tua richiesta. ') + (result.published
-                      ? 'Fatto: le modifiche sono già online! Riceverai anche un\'email di conferma.'
-                      : result.scheduled
-                      ? 'Fatto! Le modifiche vanno online entro pochi minuti: ti arriverà un\'email di conferma.'
-                      : result.draft
-                      ? 'Le modifiche sono già pronte: dopo un rapido controllo vanno online e ti avvisiamo via email.'
-                      : 'Ti avviseremo via email appena la modifica sarà online.') + (result.warning ? ' ' + result.warning : '');
+                    : 'Abbiamo ricevuto la tua richiesta. ') + // stesso messaggio per tutte le richieste: il cliente non vede chi la gestisce
+                    'Ci pensiamo noi: ti avvisiamo via email appena le modifiche sono online.' + (result.warning ? ' ' + result.warning : '');
                   form.hidden = true;
                   $('dsf-success').hidden = false;
                   root.scrollIntoView({ behavior: 'smooth', block: 'start' });

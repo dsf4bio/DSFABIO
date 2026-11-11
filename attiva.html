@@ -186,6 +186,33 @@
               #dsf-assistenza .dsf-success p { margin: 0 0 12px; opacity: 0.85; }
               #dsf-assistenza .dsf-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
               #dsf-assistenza [hidden] { display: none !important; }
+              /* scelta del modello */
+              #dsf-assistenza .dsf-themes { display: flex; gap: 10px; width: 0; min-width: calc(100% + 4px); overflow-x: auto; scroll-snap-type: x proximity; padding: 2px 2px 10px; margin: 0 -2px; overscroll-behavior-x: contain; scrollbar-width: thin; }
+              #dsf-assistenza .dsf-theme { position: relative; flex: 0 0 138px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 6px; }
+              #dsf-assistenza .dsf-theme label { display: flex; flex-direction: column; gap: 4px; cursor: pointer; border: 2px solid var(--dsf-border); border-radius: 14px; padding: 6px; background: var(--dsf-field-bg); transition: border-color .15s, box-shadow .15s; height: 100%; }
+              #dsf-assistenza .dsf-theme input { position: absolute; opacity: 0; pointer-events: none; }
+              #dsf-assistenza .dsf-theme input:checked + label { border-color: var(--dsf-accent); box-shadow: 0 0 0 3px rgba(124, 92, 255, .3); }
+              #dsf-assistenza .dsf-theme input:focus-visible + label { outline: 2px solid #22d3ee; outline-offset: 2px; }
+              #dsf-assistenza .dsf-theme-img { display: block; aspect-ratio: 3 / 4; border-radius: 9px; overflow: hidden; background: rgba(255, 255, 255, .06); position: relative; }
+              #dsf-assistenza .dsf-theme-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+              #dsf-assistenza .dsf-theme-img.dsf-any { display: grid; place-items: center; font-size: 34px; background: linear-gradient(135deg, rgba(124, 92, 255, .35), rgba(34, 211, 238, .25)); }
+              #dsf-assistenza .dsf-theme input:checked + label .dsf-theme-img::after { content: '✓'; position: absolute; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--dsf-accent); color: #fff; font-weight: 800; font-size: 14px; }
+              #dsf-assistenza .dsf-theme b { font-size: .9em; line-height: 1.2; padding: 0 2px; }
+              #dsf-assistenza .dsf-theme small { font-size: .75em; opacity: .7; line-height: 1.3; padding: 0 2px 2px; }
+              #dsf-assistenza .dsf-theme-prev { border: 1px solid var(--dsf-border); background: transparent; color: inherit; font: inherit; font-size: .82em; font-weight: 600; border-radius: 999px; padding: 6px 8px; cursor: pointer; }
+              #dsf-assistenza .dsf-theme-prev:hover { border-color: var(--dsf-accent); }
+              #dsf-assistenza .dsf-theme-chosen { font-size: .9em; margin: 4px 0 0; }
+              #dsf-assistenza .dsf-theme-chosen b { color: #cbbcff; }
+              .dsf-pv { position: fixed; inset: 0; z-index: 1000; background: rgba(5, 3, 15, .82); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 12px; }
+              .dsf-pv-box { width: min(420px, 100%); max-height: 100%; display: flex; flex-direction: column; gap: 10px; color: #f2f0ff; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+              .dsf-pv-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+              .dsf-pv-head b { font-size: 1.05em; }
+              .dsf-pv-head button { background: rgba(255, 255, 255, .1); border: 0; color: inherit; width: 40px; height: 40px; border-radius: 50%; font-size: 22px; cursor: pointer; flex: 0 0 auto; }
+              .dsf-pv iframe { width: 100%; height: min(720px, calc(100vh - 170px)); height: min(720px, calc(100dvh - 170px)); border: 0; border-radius: 22px; background: #fff; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+              .dsf-pv-foot { display: flex; gap: 8px; }
+              .dsf-pv-foot button { flex: 1; min-height: 48px; border-radius: 12px; font: inherit; font-weight: 700; cursor: pointer; border: 1px solid rgba(255, 255, 255, .2); background: transparent; color: inherit; }
+              .dsf-pv-foot .dsf-pv-pick { background: #7c5cff; border-color: #7c5cff; color: #fff; }
+              body.dsf-pv-open { overflow: hidden; }
               @media (max-width: 560px) {
                 #dsf-assistenza .dsf-cols { grid-template-columns: 1fr; }
                 #dsf-assistenza .dsf-cols-addr { grid-template-columns: 100px minmax(0, 1fr); }
@@ -222,6 +249,15 @@
                     <datalist id="dsf-province"></datalist>
                   </div>
                 </div>
+              </fieldset>
+
+              <hr class="dsf-sep">
+
+              <fieldset>
+                <legend>Scegli il modello del menu</legend>
+                <p class="dsf-hint" style="margin:-6px 0 12px">Tocca un modello per sceglierlo o premi «Anteprima» per provarlo. Non sei sicuro? Lascia «Consigliatemi voi»: potrai cambiarlo anche dopo.</p>
+                <div class="dsf-themes" id="dsf-themes" role="radiogroup" aria-label="Modello del menu"></div>
+                <p class="dsf-theme-chosen" id="dsf-theme-chosen" aria-live="polite"></p>
               </fieldset>
 
               <hr class="dsf-sep">
@@ -391,9 +427,92 @@
                 });
               }
 
-              // ---- arrivo da un modello: lo scriviamo nelle note ----
-              var model = (new URLSearchParams(location.search).get('modello') || '').replace(/[<>]/g, '').trim().slice(0, 60);
-              if (model && !token && !$('f-notes').value) $('f-notes').value = 'Modello scelto: ' + model;
+              // ---- modello del menu: stessi modelli e stessi nomi del gestionale (assets/js/menu.js → THEMES) ----
+              var THEMES = [
+                ['mdc-001', 'Gusto 360°', 'elegante, ristorante', 'mdc-001'],
+                ['mdc-002', 'Bella Napoli', 'pizzeria, colorato', 'mdc-002'],
+                ['mdc-003', 'Verde & Arancio', 'bistrot, filtri per esigenze', 'mdc-003'],
+                ['mdc-004', 'Bistrot Urbano', 'bar/caffè, sezioni con orari', 'mdc-004'],
+                ['mdc-005', 'Osteria del Borgo', 'trattoria, rustico', 'mdc-005'],
+                ['mdc-006', 'Onda Blu', 'pesce, schede da scorrere', 'mdc-006'],
+                ['mdc-007', 'Hop House', 'pub, una scheda per sezione', 'mdc-007'],
+                ['mdc-008', 'Forno Rosso', 'pizzeria, forno a legna', 'mdc-008'],
+                ['mdc-009', 'Ice Lounge', 'cocktail bar', 'mdc-009'],
+                ['mdc-010', 'Smash Lab', 'hamburgeria, colorato', 'mdc-010'],
+                ['mdc-011', 'Smoke & Steel', 'BBQ, filtro piccante', 'mdc-011'],
+                ['mdc-012', 'Al Testo', 'piadineria', 'mdc-012'],
+                ['mdc-013', 'Bosforo', 'kebab e street food', 'mdc-013'],
+                ['mdc-014', 'Fuoco & Brace', 'pizzeria/griglia, animato', 'demo-fuoco-brace'],
+                ['mdc-015', 'Sakura Neon', 'sushi, neon', 'demo-sakura-neon']
+              ];
+              var themesBox = $('dsf-themes'), chosen = $('dsf-theme-chosen');
+              function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
+              function themeCard(t) {
+                var wrap = el('div', 'dsf-theme');
+                var input = document.createElement('input');
+                input.type = 'radio'; input.name = 'theme'; input.value = t ? t[0] : ''; input.id = 'th-' + (t ? t[0] : 'any');
+                var label = document.createElement('label'); label.htmlFor = input.id;
+                var pic = el('span', 'dsf-theme-img' + (t ? '' : ' dsf-any'));
+                if (t) { var img = document.createElement('img'); img.src = '/assets/anteprime/' + t[3] + '.jpg'; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.width = 390; img.height = 520; pic.appendChild(img); }
+                else pic.textContent = '✨';
+                label.appendChild(pic);
+                label.appendChild(el('b', '', t ? t[1] : 'Consigliatemi voi'));
+                label.appendChild(el('small', '', t ? t[2] : 'scegliamo noi lo stile adatto al tuo locale'));
+                wrap.appendChild(input); wrap.appendChild(label);
+                if (t) {
+                  var pv = el('button', 'dsf-theme-prev', '👁 Anteprima');
+                  pv.type = 'button'; pv.setAttribute('aria-label', 'Anteprima del modello ' + t[1]);
+                  pv.addEventListener('click', function () { openPreview(t, pv); });
+                  wrap.appendChild(pv);
+                }
+                input.addEventListener('change', showChosen);
+                return wrap;
+              }
+              themesBox.appendChild(themeCard(null));
+              THEMES.forEach(function (t) { themesBox.appendChild(themeCard(t)); });
+              function selectedTheme() { var c = form.querySelector('input[name=theme]:checked'); return c && c.value ? c.value : null; }
+              function showChosen() {
+                var id = selectedTheme(), t = THEMES.filter(function (x) { return x[0] === id; })[0];
+                chosen.textContent = '';
+                if (!t) { chosen.textContent = 'Nessun modello scelto: ti consigliamo noi.'; return; }
+                chosen.appendChild(document.createTextNode('Hai scelto: '));
+                chosen.appendChild(el('b', '', t[1] + ' – ' + t[2]));
+              }
+              function pickTheme(id, scroll) {
+                var input = $('th-' + (id || 'any')); if (!input) return;
+                input.checked = true; showChosen();
+                if (scroll) { var card = input.parentNode; themesBox.scrollLeft = card.offsetLeft - themesBox.offsetLeft - 8; }
+              }
+              // arrivo da un modello del sito: ?modello=Onda%20Blu (o ?tema=mdc-006)
+              var fold = function (x) { return String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); };
+              var qs = new URLSearchParams(location.search), want = fold(qs.get('modello')), wantId = qs.get('tema');
+              var pre = THEMES.filter(function (t) { return t[0] === wantId || (want && (want.indexOf(fold(t[1])) === 0 || fold(t[1]).indexOf(want) === 0)); })[0];
+              pickTheme(pre ? pre[0] : '', !!pre);
+
+              // anteprima del modello in una finestra a misura di telefono
+              var lastFocus = null;
+              function openPreview(t, from) {
+                lastFocus = from;
+                var ov = el('div', 'dsf-pv'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Anteprima del modello ' + t[1]);
+                var box = el('div', 'dsf-pv-box'), head = el('div', 'dsf-pv-head'), title = el('div');
+                title.appendChild(el('b', '', t[1])); title.appendChild(document.createElement('br')); title.appendChild(el('small', '', t[2]));
+                var x = el('button', '', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Chiudi');
+                head.appendChild(title); head.appendChild(x);
+                var frame = document.createElement('iframe');
+                frame.src = '/' + t[3] + '?anteprima'; frame.title = 'Anteprima del modello ' + t[1]; frame.loading = 'eager';
+                var foot = el('div', 'dsf-pv-foot'), close = el('button', '', 'Chiudi'), pick = el('button', 'dsf-pv-pick', 'Scelgo questo');
+                close.type = pick.type = 'button';
+                foot.appendChild(close); foot.appendChild(pick);
+                box.appendChild(head); box.appendChild(frame); box.appendChild(foot); ov.appendChild(box);
+                function done() { document.removeEventListener('keydown', onKey); ov.remove(); document.body.classList.remove('dsf-pv-open'); if (lastFocus) lastFocus.focus(); }
+                function onKey(e) { if (e.key === 'Escape') done(); }
+                x.addEventListener('click', done); close.addEventListener('click', done);
+                pick.addEventListener('click', function () { pickTheme(t[0], false); done(); });
+                ov.addEventListener('click', function (e) { if (e.target === ov) done(); });
+                document.addEventListener('keydown', onKey);
+                document.body.appendChild(ov); document.body.classList.add('dsf-pv-open');
+                pick.focus();
+              }
 
               // ---- allegati ----
               function renderFiles() {
@@ -474,7 +593,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: $('f-notes').value.trim() || null, privacy: true,
+                  notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
               }

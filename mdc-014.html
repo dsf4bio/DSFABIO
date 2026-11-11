@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0f1412">
+<title>Aura · Modello di menu digitale (esempio) | DS Service</title>
+<meta name="description" content="Ristorante moderno: piatti illustrati e animati, categorie su card che si girano in 3D e scheda del piatto con allergeni. Modello di menu digitale con QR code: provalo dal telefono, 30 giorni gratis.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="DS Service · Menu digitali">
+<meta property="og:title" content="Aura · Modello di menu digitale (esempio) | DS Service">
+<meta property="og:description" content="Ristorante moderno con piatti animati e categorie su card 3D. Provalo dal telefono, 30 giorni gratis.">
+<meta property="og:url" content="https://dsfabio.com/mdc-014">
+<meta property="og:image" content="https://dsfabio.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fraunces-inter.css">
+<style>
+:root{--bg:#0f1412;--bg2:#161d1a;--ink:#f1ead8;--sub:#a9b3a8;--gold:#e2c48f;--cop:#c98a5a;--line:rgba(241,234,216,.14);
+--pm-bg:#141b18;--pm-ink:#f1ead8;--pm-sub:#a9b3a8;--pm-accent:#e2c48f;--pm-accent-ink:#0f1412;--pm-head:Fraunces,Georgia,serif;--pm-line:rgba(241,234,216,.2);--pm-art:radial-gradient(60% 60% at 50% 45%,#2b3a33,#0f1412)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:clip}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:10px}
+.demo{background:var(--gold);color:#0f1412;text-align:center;font-size:.74rem;font-weight:800;padding:7px 12px}
+.serif{font-family:Fraunces,Georgia,serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:40px 0 30px;background:radial-gradient(60% 70% at 80% 30%,rgba(201,138,90,.18),transparent 70%),radial-gradient(50% 60% at 10% 90%,rgba(226,196,143,.1),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+.kick{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hero h1{font-size:clamp(3.6rem,13vw,7.4rem);line-height:.86;font-weight:400;letter-spacing:-.02em;margin:12px 0 14px}
+.hero h1 i{font-style:italic;color:var(--gold)}
+.hero p{color:var(--sub);max-width:420px}
+.info{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.info span{font-size:.78rem;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line)}
+.info .open::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#7bd389;margin-right:7px;box-shadow:0 0 0 0 rgba(123,211,137,.7);animation:ping 2s infinite}
+@keyframes ping{70%,100%{box-shadow:0 0 0 9px rgba(123,211,137,0)}}
+.orbit{position:relative;width:min(380px,82vw);aspect-ratio:1;margin:0 auto}
+.orbit .ring{position:absolute;inset:0;animation:spin 26s linear infinite}
+.orbit .ring text{fill:var(--gold);font-size:11.5px;letter-spacing:6px;font-family:Inter,sans-serif;font-weight:600}
+.orbit .dish{position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle at 50% 40%,#25302b,#121816 70%);box-shadow:0 40px 80px rgba(0,0,0,.6),inset 0 0 0 1px var(--line);display:grid;place-items:center;animation:float 6s ease-in-out infinite}
+.orbit .dish .pa{width:92%}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-12px)}}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr}.orbit{margin-top:6px}}
+
+/* CATEGORIE: card che si girano */
+.cats-wrap{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 78%,transparent);padding:16px 0 18px}
+.cats{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 18px 8px;margin:0 -18px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.flip{flex:0 0 150px;height:110px;perspective:800px;scroll-snap-align:start}
+.flip-in{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
+.flip[aria-pressed="true"] .flip-in{transform:rotateY(180deg)}
+.flip:not([aria-pressed="true"]):hover .flip-in{transform:rotateY(18deg)}
+.face{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:14px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;border:1px solid var(--line)}
+.front{background:var(--bg2)}
+.front small{font-size:.7rem;letter-spacing:.2em;color:var(--sub)}
+.front b{font-family:Fraunces,serif;font-weight:500;font-size:1.25rem;line-height:1.1}
+.back{transform:rotateY(180deg);background:linear-gradient(140deg,var(--gold),var(--cop));color:#0f1412;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:2px;padding:10px 14px}
+.back .pa{width:46px;height:46px;flex:0 0 46px}
+.back>span{min-width:0}
+.back b{font-family:Fraunces,serif;font-size:1.1rem;line-height:1.05;display:block}
+.back small{font-size:.72rem;font-weight:700}
+
+/* PIATTI */
+.cat-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:8px 0 18px}
+.cat-title h2{font-family:Fraunces,serif;font-weight:400;font-size:clamp(2rem,6vw,3rem);line-height:1}
+.cat-title p{color:var(--sub);font-size:.88rem;max-width:300px;text-align:right}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}.cat-title{flex-direction:column}.cat-title p{text-align:left}}
+.card{position:relative;text-align:left;border-radius:24px;background:var(--bg2);border:1px solid var(--line);overflow:hidden;transition:transform .5s cubic-bezier(.2,.9,.2,1),border-color .4s;transform-style:preserve-3d;opacity:0;transform:translateY(30px)}
+.card.in{opacity:1;transform:none;transition:opacity .6s,transform .7s cubic-bezier(.2,.9,.2,1),border-color .4s}
+.card:hover{border-color:rgba(226,196,143,.5)}
+.card .pic{position:relative;height:190px;display:grid;place-items:center;background:radial-gradient(55% 60% at 50% 55%,#26332d,transparent 72%)}
+.card .pic .pa{height:86%;width:auto;max-width:86%;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+.card:hover .pic .pa{transform:scale(1.08) rotate(-4deg)}
+.card .body{position:relative;z-index:2;padding:4px 18px 18px}
+.card h3{font-family:Fraunces,serif;font-weight:500;font-size:1.25rem;line-height:1.15}
+.card p{color:var(--sub);font-size:.88rem;margin:6px 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .row{display:flex;justify-content:space-between;align-items:center}
+.card .al{display:flex;gap:3px;font-size:.9rem}
+.card .price{font-family:Fraunces,serif;font-size:1.2rem;color:var(--gold)}
+.card .tag{position:absolute;top:12px;left:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(15,20,18,.75);border:1px solid var(--line);color:var(--gold)}
+.card .plus{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#0f1412;font-weight:800;transition:transform .4s}
+.card:hover .plus{transform:rotate(90deg)}
+.foot{border-top:1px solid var(--line);padding:26px 0 34px;color:var(--sub);font-size:.84rem;text-align:center}
+.foot b{color:var(--ink);font-family:Fraunces,serif;font-weight:500}
+@media (prefers-reduced-motion:reduce){.orbit .ring,.orbit .dish{animation:none}.card{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="demo">MODELLO DIMOSTRATIVO · piatti, prezzi e dati sono di fantasia</div>
+<header class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="kick">Cucina contemporanea · Milano</span>
+<h1 class="serif">Au<i>ra</i></h1>
+<p>Stagione, territorio e tecnica. Tocca un piatto per scoprire ingredienti e allergeni.</p>
+<div class="info"><span class="open">Aperto ora · fino alle 23:30</span><span>Via Tortona 12</span><span>🇮🇹 · 🇬🇧</span></div>
+</div>
+<div class="orbit" aria-hidden="true">
+<svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150 150m-132 0a132 132 0 1 1 264 0a132 132 0 1 1-264 0"/></defs><text><textPath href="#circ">STAGIONE · TERRITORIO · TECNICA · STAGIONE · TERRITORIO · TECNICA ·</textPath></text></svg>
+<div class="dish" id="hero-dish"></div>
+</div>
+</div>
+</header>
+
+<div class="cats-wrap"><div class="wrap"><nav class="cats" id="cats" aria-label="Categorie del menu"></nav></div></div>
+
+<main class="wrap">
+<div class="cat-title"><h2 id="cat-name"></h2><p id="cat-desc"></p></div>
+<div class="grid" id="grid"></div>
+</main>
+<footer class="foot"><div class="wrap"><b>Aura</b> · Via Tortona 12, Milano · Il coperto è incluso. Per allergie e intolleranze chiedi al personale.</div></footer>
+
+<script src="assets/piatti.js"></script>
+<script>
+(function () {
+'use strict';
+var M = [
+  {n:'Antipasti', d:'Per aprire la serata, leggeri e di stagione.', ic:['insalata',{}], items:[
+    {n:'Burrata e pomodori', d:'Burrata pugliese, pomodori confit, basilico e olio al limone.', p:'14 €', art:'insalata', al:['latte'], tags:['Vegetariano']},
+    {n:'Tagliere del territorio', d:'Salumi lombardi, formaggi a latte crudo, mostarda di frutta.', p:'18 €', art:'tagliere', al:['latte','senape','solfiti'], tags:['Da condividere']},
+    {n:'Vellutata di zucca', d:'Zucca mantovana, amaretto croccante, olio alla salvia.', p:'12 €', art:'zuppa', o:{c:'#e08a2c',top:'crostini'}, al:['glutine','frutta','latte']}
+  ]},
+  {n:'Primi', d:'Pasta fresca tirata ogni mattina.', ic:['pasta',{}], items:[
+    {n:'Spaghetto al pomodoro', d:'Spaghetto di Gragnano, tre pomodori, basilico fresco. Semplice, perfetto.', p:'16 €', art:'pasta', al:['glutine'], tags:['Il nostro classico']},
+    {n:'Risotto allo zafferano', d:'Carnaroli mantecato, zafferano in pistilli, midollo arrostito.', p:'19 €', art:'risotto', al:['latte','sedano']},
+    {n:'Linguine alle cozze', d:'Linguine, cozze, pomodorino e prezzemolo.', p:'18 €', art:'pasta', o:{extra:'cozze'}, al:['glutine','molluschi']},
+    {n:'Tagliolini al pesto', d:'Pesto di basilico genovese, pinoli tostati, fagiolini croccanti.', p:'17 €', art:'pasta', o:{s:'#4f9a3a'}, al:['glutine','latte','frutta'], tags:['Vegetariano']}
+  ]},
+  {n:'Secondi', d:'Brace, forno e pescato del giorno.', ic:['tagliata',{}], items:[
+    {n:'Tagliata di manzo', d:'Controfiletto frollato 30 giorni, rucola, sale Maldon.', p:'26 €', art:'tagliata', al:[], tags:['Cottura a scelta']},
+    {n:'Branzino al forno', d:'Branzino intero, limone di Amalfi, finocchio al sale.', p:'24 €', art:'pesce', al:['pesce']}
+  ]},
+  {n:'Dolci', d:'Fatti in casa, ogni giorno.', ic:['pannacotta',{}], items:[
+    {n:'Panna cotta ai frutti rossi', d:'Panna cotta alla vaniglia Bourbon, coulis di lamponi.', p:'8 €', art:'pannacotta', al:['latte']},
+    {n:'Tiramisù Aura', d:'Savoiardi, mascarpone montato, caffè espresso, cacao amaro.', p:'9 €', art:'tiramisu', al:['glutine','uova','latte'], tags:['Più amato']},
+    {n:'Millefoglie alle fragole', d:'Sfoglia caramellata, crema diplomatica, fragole.', p:'10 €', art:'torta', al:['glutine','uova','latte']}
+  ]}
+];
+var $ = function (s) { return document.querySelector(s); };
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+$('#hero-dish').innerHTML = Piatti.svg('pasta');
+
+var cats = $('#cats'), grid = $('#grid'), cur = -1;
+cats.innerHTML = M.map(function (c, i) {
+  return '<button class="flip" type="button" aria-pressed="false" data-i="' + i + '"><span class="flip-in">' +
+    '<span class="face front"><small>0' + (i + 1) + '</small><b>' + c.n + '</b></span>' +
+    '<span class="face back">' + Piatti.svg(c.ic[0], c.ic[1]) + '<span><b>' + c.n + '</b><small>' + c.items.length + ' piatti</small></span></span>' +
+    '</span></button>';
+}).join('');
+
+function show(i) {
+  if (i === cur) return; cur = i;
+  var c = M[i];
+  Array.prototype.forEach.call(cats.children, function (b, k) { b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+  $('#cat-name').textContent = c.n; $('#cat-desc').textContent = c.d;
+  var list = c.items.map(function (it) { it.cat = c.n; return it; });
+  grid.innerHTML = list.map(function (it, k) {
+    return '<button class="card" type="button" data-k="' + k + '" aria-label="' + it.n + ', ' + it.p + '">' +
+      '<div class="pic">' + Piatti.svg(it.art, it.o) + '</div>' +
+      (it.tags && it.tags[0] ? '<span class="tag">' + it.tags[0] + '</span>' : '') + '<span class="plus" aria-hidden="true">+</span>' +
+      '<div class="body"><h3>' + it.n + '</h3><p>' + it.d + '</p><div class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="price">' + it.p + '</span></div></div></button>';
+  }).join('');
+  Array.prototype.forEach.call(grid.children, function (card, k) {
+    card.addEventListener('click', function () { Piatti.modal(list, k, card); });
+    setTimeout(function () { card.classList.add('in'); }, reduced ? 0 : 90 * k + 60);
+  });
+}
+cats.addEventListener('click', function (e) { var b = e.target.closest('.flip'); if (b) { show(+b.getAttribute('data-i')); b.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', inline: 'center', block: 'nearest'}); } });
+show(0);
+})();
+</script>
+<script src="assets/trial.js" data-model="Aura" defer></script>
+</body>
+</html>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prova gratis il menu digitale con QR code · 30 giorni | DS Service</title>
+<meta name="description" content="Il tuo menu digitale con QR code pronto in 24 ore, gratis per 30 giorni: foto, 14 allergeni, più lingue. Nessuna carta richiesta, poi 189 € all'anno tutto incluso.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://dsfabio.com/prova-gratis">
+<meta name="theme-color" content="#0d0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="DS Service · Menu digitali">
+<meta property="og:title" content="Il tuo menu digitale pronto in 24 ore · 30 giorni gratis">
+<meta property="og:description" content="Mandaci una foto del menu: lo trasformiamo in un menu con QR code, allergeni e più lingue. Gratis per 30 giorni, nessuna carta.">
+<meta property="og:image" content="https://dsfabio.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="style" href="/assets/fonts/syne-manrope.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/fonts/syne-manrope.css"></noscript>
+<style>
+/* =========================================================
+   DSFabio Digital · stile comune a tutte le pagine
+   ========================================================= */
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+:root{
+  --bg:#0d0a1f;--bg2:#120e2a;--card:rgba(255,255,255,.055);--card-h:rgba(255,255,255,.09);--line:rgba(255,255,255,.12);
+  --txt:#f4f1ff;--sub:#b9b2d8;--pink:#ff3cac;--violet:#7b5cff;--cyan:#22d3ee;--lime:#b4ff39;--amber:#ffcf3f;
+  --grad:linear-gradient(120deg,var(--pink),var(--violet),var(--cyan));
+  --grad-loop:linear-gradient(120deg,var(--pink),var(--violet),var(--cyan),var(--pink));
+  --r:26px;--wrap:1160px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{background:var(--bg);color:var(--txt);font-family:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+img,svg{display:block;max-width:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:10px}
+[hidden]{display:none!important}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:#fff;color:#000;padding:10px 14px;border-radius:10px;font-weight:800}
+.skip:focus{top:12px}
+
+/* ---------- Sfondo aurora ---------- */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(80% 50% at 50% 0%,#24155c,transparent 70%),var(--bg)}
+.bg i{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(80px);opacity:.38;will-change:transform;animation:drift 24s ease-in-out infinite alternate}
+.bg .b1{background:var(--pink);top:-24vmax;left:-24vmax}
+.bg .b2{background:var(--violet);top:28vh;right:-30vmax;animation-duration:30s;animation-delay:-8s}
+.bg .b3{background:var(--cyan);bottom:-32vmax;left:8vw;animation-duration:34s;animation-delay:-14s;opacity:.24}
+@keyframes drift{to{transform:translate(12vw,10vh) scale(1.15)}}
+.bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:24px 24px;-webkit-mask-image:linear-gradient(#000,transparent 60%);mask-image:linear-gradient(#000,transparent 60%)}
+.glow-cursor{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(123,92,255,.18),transparent 65%);opacity:0;transition:opacity .4s}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+@supports (animation-timeline: scroll()){
+  .progress{animation:prog linear both;animation-timeline:scroll(root)}
+  @keyframes prog{to{transform:scaleX(1)}}
+}
+
+/* ---------- Testi ---------- */
+.grad-text{background:linear-gradient(90deg,var(--pink),var(--violet),var(--cyan),var(--pink));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 8s linear infinite}
+@keyframes sheen{to{background-position:300% 0}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+.eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--grad)}
+.h2{font-family:Syne,sans-serif;font-size:clamp(2rem,6vw,3.6rem);line-height:1.02;letter-spacing:-.01em;margin:12px 0 14px}
+.lead{color:var(--sub);font-size:clamp(1rem,2.2vw,1.15rem);max-width:640px}
+.sec{padding:clamp(70px,11vw,130px) 0}
+.sec-head{max-width:760px;margin-bottom:clamp(28px,5vw,52px)}
+.center{text-align:center;margin-inline:auto}
+.center .lead{margin-inline:auto}
+.page-hero{padding:clamp(40px,8vw,90px) 0 clamp(20px,4vw,40px)}
+.page-hero h1{font-family:Syne,sans-serif;font-size:clamp(2.4rem,7vw,4.8rem);line-height:1;letter-spacing:-.02em;margin:16px 0 18px}
+
+/* ---------- Pulsanti ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:800;text-decoration:none;white-space:nowrap;transition:transform .2s,box-shadow .3s}
+.btn:active{transform:scale(.96)}
+.btn-main{color:#0d0a1f;background:var(--grad-loop);background-size:300% 100%;animation:sheen 6s linear infinite;box-shadow:0 12px 34px rgba(255,60,172,.38);overflow:hidden}
+.btn-main::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:shine 4s ease-in-out infinite;pointer-events:none}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+.btn-main:hover{box-shadow:0 16px 44px rgba(255,60,172,.55)}
+.btn-ghost{border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,conic-gradient(from var(--ang),var(--pink),var(--violet),var(--cyan),var(--lime),var(--pink)) border-box;animation:rot 4s linear infinite}
+@keyframes rot{to{--ang:360deg}}
+.ripple{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:rgba(255,255,255,.65);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(12);opacity:0}}
+
+/* ---------- Navigazione ---------- */
+.nav{position:sticky;top:0;z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(13,10,31,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Syne,sans-serif;font-weight:800;font-size:1.2rem;white-space:nowrap}
+.logo small{font-family:Manrope,sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.logo-mark{width:38px;height:38px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;background:var(--grad);box-shadow:0 6px 20px rgba(255,60,172,.35)}
+.logo-mark svg{width:22px;height:22px}
+.links{display:flex;align-items:center;gap:2px;list-style:none}
+.links a{display:block;text-decoration:none;padding:8px 13px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--sub);transition:color .2s,background .2s}
+.links a:hover,.links a[aria-current="page"]{color:#fff;background:var(--card)}
+.nav-right{display:flex;gap:10px;align-items:center}
+.nav .btn{padding:11px 18px;font-size:.9rem}
+.lang{position:relative;flex:0 0 auto;margin-left:auto}
+.nav-cta+.lang,.lang+.burger{margin-left:0}
+.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-weight:800;font-size:.8rem;color:var(--txt);user-select:none}
+.lang summary::-webkit-details-marker{display:none}
+.lang[open] summary{border-color:var(--cyan)}
+.lang-list{position:absolute;right:0;top:calc(100% + 8px);z-index:130;min-width:170px;display:grid;padding:6px;border-radius:16px;background:rgba(16,12,36,.97);border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.lang-list a{padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--sub);font-weight:700;font-size:.92rem}
+.lang-list a:hover{background:var(--card);color:#fff}
+.lang-list a[aria-current]{color:#fff;background:var(--card)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--line);position:relative}
+.burger span{position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:#fff;transition:transform .3s,opacity .3s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.nav.open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0}
+.nav.open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.links .m-cta{display:none}
+@media (max-width:980px){
+  .burger{display:block}
+  .nav .nav-cta{display:none}
+  .links{position:fixed;left:12px;right:12px;top:80px;flex-direction:column;align-items:stretch;padding:12px;border-radius:22px;background:rgba(20,15,45,.97);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateY(-12px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility 0s .3s}
+  .nav.open .links{transform:none;opacity:1;visibility:visible;transition:transform .3s,opacity .3s}
+  .links a{padding:14px 16px;font-size:1.05rem}
+  .links .m-cta{display:block;margin-top:6px;text-align:center;color:#0d0a1f;background:var(--grad)}
+}
+
+/* ---------- Card ---------- */
+.card{position:relative;border-radius:var(--r);background:var(--card);border:1px solid var(--line);padding:clamp(20px,3vw,28px);overflow:hidden;transition:border-color .3s,background .3s,transform .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--mx,50%) var(--my,-20%),rgba(255,255,255,.12),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{border-color:rgba(255,255,255,.24)}
+.ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:6px;background:linear-gradient(140deg,hsl(var(--h,300) 90% 62%),hsl(calc(var(--h,300) + 60) 90% 55%));box-shadow:0 10px 26px hsl(var(--h,300) 90% 50% / .35)}
+
+/* ---------- CTA finale ---------- */
+.final{position:relative;text-align:center;border-radius:36px;padding:clamp(40px,8vw,80px) 22px;overflow:hidden;background:linear-gradient(160deg,rgba(255,60,172,.2),rgba(123,92,255,.18),rgba(34,211,238,.12));border:1px solid var(--line)}
+.final .h2{max-width:780px;margin-inline:auto}
+.final .lead{margin:0 auto 28px}
+.final-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+
+/* ---------- Footer ---------- */
+footer{padding:60px 0 calc(40px + env(safe-area-inset-bottom));color:var(--sub);font-size:.92rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.foot h2{font-family:Syne,sans-serif;font-size:1rem;color:var(--txt);margin-bottom:12px}
+.foot ul{list-style:none;display:grid;gap:2px}
+.foot a{text-decoration:none;display:inline-block;padding:6px 0}
+.foot a:hover{color:#fff}
+.foot .logo{margin-bottom:12px;color:var(--txt)}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:22px;font-size:.82rem}
+.legal a{text-decoration:none}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+
+/* Barra fissa "Prova gratis" (solo telefono) */
+.m-bar{display:none}
+@media (max-width:760px){
+  .m-bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:95;display:flex;gap:10px;align-items:center;padding:8px;border-radius:999px;background:rgba(16,12,36,.88);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 40px rgba(0,0,0,.5);transform:translateY(140%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.2,1),opacity .3s;pointer-events:none}
+  .m-bar.show{transform:none;opacity:1;pointer-events:auto}
+  .m-bar .btn{flex:1;padding:13px 16px;font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){.m-bar{transition:none}}
+
+/* Rassicurazioni sotto i pulsanti finali */
+.reassure{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;list-style:none;margin-top:20px;font-size:.85rem;font-weight:700;color:var(--sub)}
+.reassure li::before{content:"✓ ";color:var(--lime);font-weight:800}
+
+/* ---------- Finestra richiesta (creata da site.js) ---------- */
+dialog{margin:auto;border:1px solid var(--line);border-radius:28px;background:#16112f;color:var(--txt);width:calc(100% - 24px);max-width:520px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0}
+dialog::backdrop{background:rgba(5,3,15,.78);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+dialog[open]{animation:pop .45s cubic-bezier(.2,.9,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.96)}}
+.dc{position:relative;padding:28px 22px 24px}
+.x{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);font-size:1.5rem;line-height:1}
+dialog h2{font-family:Syne,sans-serif;font-size:1.6rem;line-height:1.1;margin:0 40px 6px 0}
+dialog .sub{color:var(--sub);font-size:.92rem;margin-bottom:16px}
+.model-tag{display:inline-block;margin-bottom:12px;padding:5px 12px;border-radius:999px;font-size:.78rem;font-weight:800;background:rgba(34,211,238,.14);color:var(--cyan)}
+.fform{display:grid;gap:12px}
+.f label{display:block;font-size:.85rem;font-weight:700;margin-bottom:5px}
+.f input,.f textarea,.f select{width:100%;font-size:16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.05);transition:border-color .2s,background .2s}
+.f select option{background:#16112f}
+.f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--cyan);background:rgba(255,255,255,.08)}
+.f textarea{min-height:84px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:440px){.two{grid-template-columns:1fr}}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:var(--sub);line-height:1.45}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--pink);flex:0 0 auto}
+.consent a{color:var(--cyan)}
+.send{margin-top:4px;width:100%;padding:15px;border-radius:999px;font-weight:800;background:#25D366;color:#06260f;box-shadow:0 10px 26px rgba(37,211,102,.35)}
+.hint{font-size:.78rem;color:var(--sub);text-align:center}
+.ok{text-align:center;padding:16px 0 6px}
+.ok .big{font-size:3.4rem;line-height:1;margin-bottom:10px}
+.ok a{color:var(--cyan);font-weight:800}
+
+/* ---------- Moduli: versione chiara ad alto contrasto ---------- */
+dialog{background:#f7f5ff;color:#1b1638;border:1px solid rgba(123,92,255,.28);color-scheme:light;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(5,3,15,.7)}
+dialog h2{color:#1b1638}
+dialog .sub{color:#4a4470}
+dialog .sub strong{color:#1b1638}
+dialog .x{background:#e9e4fb;color:#1b1638}
+dialog .x:hover{background:#ddd5fa}
+dialog .model-tag{background:#dff6f9;color:#0b6f7d}
+.f label{color:inherit}
+dialog .f label{color:#2a2450}
+.f input,.f textarea,.f select{background:#fff;color:#1b1638;border:1.5px solid #cdc5ec}
+.f input::placeholder,.f textarea::placeholder{color:#8d87ad;opacity:1}
+.f input:focus,.f textarea:focus,.f select:focus{outline:none;background:#fff;border-color:#7b5cff;box-shadow:0 0 0 4px rgba(123,92,255,.18)}
+.f input:user-invalid,.f textarea:user-invalid{border-color:#e0446a;box-shadow:0 0 0 4px rgba(224,68,106,.12)}
+dialog .consent{color:#4a4470}
+dialog .consent a,dialog .ok a{color:#5b3fd9;font-weight:700}
+dialog .consent input{accent-color:#7b5cff}
+dialog .hint{color:#625c88}
+dialog .hint strong{color:#1b1638}
+dialog .send{color:#053d1a;box-shadow:0 10px 24px rgba(37,211,102,.35)}
+
+form.card.fform{background:#f7f5ff;color:#1b1638;border:1px solid rgba(123,92,255,.28);color-scheme:light;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+form.card.fform:hover{border-color:rgba(123,92,255,.45)}
+form.card.fform .lbl,form.card.fform label{color:#2a2450}
+form.card.fform .count{color:#625c88}
+form.card.fform .opt{background:#fff;color:#1b1638;border:1.5px solid #cdc5ec}
+form.card.fform .opt:hover{border-color:#7b5cff}
+form.card.fform .opt[aria-pressed="true"]{background:var(--grad);color:#0d0a1f;border-color:transparent}
+form.card.fform .consent,form.card.fform .hint{color:#4a4470}
+form.card.fform a{color:#5b3fd9;font-weight:700}
+
+/* ---------- Comparse allo scroll ---------- */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.9,.2,1),transform .8s cubic-bezier(.2,.9,.2,1);transition-delay:calc(var(--d,0) * 90ms)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+
+/* Avviso cookie */
+.ck{position:fixed;z-index:120;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto;display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:20px;background:rgba(16,12,36,.94);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.55);transform:translateY(140%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.2,1),opacity .3s}
+.ck.show{transform:none;opacity:1}
+.ck p{font-size:.86rem;line-height:1.45;color:var(--sub);margin:0}
+.ck a{color:var(--cyan);font-weight:700}
+.ck .btn{flex:0 0 auto;padding:11px 18px;font-size:.88rem}
+@media (max-width:560px){.ck{flex-direction:column;align-items:stretch}.ck .btn{width:100%}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1!important;transform:none!important}
+}
+
+/* =========================================================
+   LANDING "Prova gratuita" · stili aggiuntivi
+   (stessi token, stessi componenti di site.css)
+   ========================================================= */
+body{padding-bottom:0}
+@media (max-width:760px){body{padding-bottom:84px}}
+
+/* Barra superiore minimale: nessuna uscita, solo la CTA */
+.nav-in{height:68px}
+.nav .logo{cursor:default}
+.nav-live{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;color:var(--sub)}
+.nav-live i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(180,255,57,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(180,255,57,0)}100%{box-shadow:0 0 0 0 rgba(180,255,57,0)}}
+@media (max-width:620px){.nav-live{display:none}}
+.nav .nav-cta{display:inline-flex!important}
+@media (max-width:420px){.nav .btn{padding:10px 14px;font-size:.84rem}.logo{font-size:1.05rem}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:clamp(26px,5vw,60px) 0 clamp(50px,8vw,90px)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,70px);align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.85rem;font-weight:700;color:var(--sub);text-decoration:none;transition:border-color .3s,transform .3s}
+.pill:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.pill b{background:var(--grad);color:#0d0a1f;padding:3px 10px;border-radius:999px;font-size:.75rem}
+h1{font-family:Syne,sans-serif;font-size:clamp(2.5rem,7vw,5.1rem);line-height:.98;letter-spacing:-.02em;margin:22px 0 20px}
+h1 .w{display:inline-block}
+.w{opacity:0;transform:translateY(60%) rotate(4deg);animation:wordIn .9s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(var(--d) * 80ms + 100ms)}
+@keyframes wordIn{to{opacity:1;transform:none}}
+.hero p.lead{font-size:clamp(1.05rem,2.4vw,1.22rem)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 14px}
+.micro{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--sub);font-weight:600;margin-bottom:22px}
+.micro .av{display:flex}
+.micro .av span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:.95rem;border:2px solid var(--bg);margin-left:-8px;background:linear-gradient(140deg,hsl(var(--h) 90% 62%),hsl(calc(var(--h) + 60) 90% 55%))}
+.micro .av span:first-child{margin-left:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.chips li{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:.85rem;font-weight:700}
+.chips li::before{content:"✓";color:var(--lime);font-weight:800}
+
+/* CTA "magnetica" e freccia che scorre */
+.btn-xl{padding:19px 32px;font-size:1.08rem}
+.btn .arr{display:inline-block;transition:transform .3s}
+.btn:hover .arr{transform:translateX(5px)}
+.mag{transition:transform .25s cubic-bezier(.2,.9,.2,1),box-shadow .3s}
+
+/* Telefono animato con inclinazione 3D */
+.stage{position:relative;display:grid;place-items:center;min-height:600px;perspective:1100px}
+.halo{position:absolute;width:115%;aspect-ratio:1;border-radius:50%;background:conic-gradient(from var(--ang),var(--pink),var(--violet),var(--cyan),var(--lime),var(--pink));filter:blur(70px);opacity:.38;animation:rot 12s linear infinite}
+.tilt{position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.9,.2,1);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.phone{position:relative;width:290px;height:590px;border-radius:46px;padding:12px;background:linear-gradient(145deg,#2b2450,#100c24);box-shadow:0 40px 90px rgba(0,0,0,.6),inset 0 0 0 2px rgba(255,255,255,.12);transform:rotate(-4deg);animation:bob 6s ease-in-out infinite;text-decoration:none;display:block}
+@keyframes bob{50%{transform:rotate(-2deg) translateY(-12px)}}
+.phone::after{content:"";position:absolute;inset:12px;border-radius:36px;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.10) 48%,transparent 56%);background-size:250% 100%;animation:glare 5s ease-in-out infinite;pointer-events:none;z-index:5}
+@keyframes glare{0%,40%{background-position:120% 0}70%,100%{background-position:-60% 0}}
+.screen{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#0d0a1f}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:92px;height:24px;border-radius:14px;background:#000;z-index:3}
+.scr-bg{position:absolute;inset:0;background:radial-gradient(90% 50% at 20% 0%,rgba(255,60,172,.45),transparent 60%),radial-gradient(80% 50% at 100% 40%,rgba(34,211,238,.3),transparent 60%),#0d0a1f}
+.scr{position:relative;z-index:2;padding:46px 16px 16px;height:100%;display:flex;flex-direction:column}
+.scr-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.scr-logo{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;font-weight:800;font-size:.95rem}
+.scr-top strong{font-family:Syne,sans-serif;font-size:1.05rem;line-height:1}
+.scr-top small{display:block;color:var(--sub);font-size:.66rem}
+.scr-lang{margin-left:auto;font-size:.62rem;font-weight:800;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.3)}
+.scr-tabs{display:flex;gap:6px;margin-bottom:12px}
+.scr-tab{flex:1;text-align:center;font-size:.62rem;font-weight:800;padding:7px 0;border-radius:12px;background:rgba(255,255,255,.07);color:var(--sub);transition:background .4s,color .4s}
+.scr-tab.on{background:var(--grad);color:#0d0a1f}
+.scr-title{font-family:Syne,sans-serif;font-size:1.6rem;line-height:1;margin:2px 0 10px;text-transform:uppercase}
+.scr-list{display:flex;flex-direction:column;gap:8px}
+.scr-item{display:flex;align-items:center;gap:10px;padding:9px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);animation:slideIn .55s cubic-bezier(.2,.9,.2,1) both}
+.scr-item:nth-child(2){animation-delay:.08s}.scr-item:nth-child(3){animation-delay:.16s}
+@keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.scr-orb{width:42px;height:42px;flex:0 0 auto;border-radius:13px;display:grid;place-items:center;font-size:1.35rem;background:linear-gradient(140deg,hsl(var(--h) 90% 62%),hsl(calc(var(--h) + 60) 90% 55%))}
+.scr-item b{display:block;font-size:.74rem;line-height:1.2}
+.scr-item i{font-style:normal;font-size:.6rem;color:var(--sub)}
+.scr-item em{margin-left:auto;font-style:normal;font-family:Syne,sans-serif;font-weight:800;font-size:.8rem}
+.scr-al{display:flex;gap:3px;margin-top:3px;font-size:.55rem}
+.scr-fab{margin-top:auto;align-self:stretch;text-align:center;font-size:.72rem;font-weight:800;padding:10px 12px;border-radius:999px;background:var(--grad);color:#0d0a1f;box-shadow:0 8px 20px rgba(255,60,172,.4)}
+.float{position:absolute;z-index:6;border-radius:20px;background:rgba(20,15,45,.82);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px rgba(0,0,0,.45);transform:translateZ(60px)}
+.qr-card{left:-26px;bottom:70px;padding:14px;width:164px;text-align:center;animation:bob2 7s ease-in-out infinite}
+.qr-box{background:#fff;border-radius:12px;padding:10px;color:#0d0a1f}
+.qr-box svg,.qr-box canvas{width:100%;height:auto}
+.qr-card span{display:block;font-size:.72rem;font-weight:800;margin-top:8px;line-height:1.3}
+.qr-card small{display:block;font-size:.64rem;color:var(--sub);font-weight:600}
+.al-card{right:-30px;top:90px;padding:12px 14px;font-size:.72rem;font-weight:800;animation:bob2 8s ease-in-out infinite reverse}
+.al-card div{display:flex;gap:4px;margin-top:6px;font-size:1rem}
+.price-card{right:-16px;bottom:24px;padding:12px 16px;animation:bob2 6s ease-in-out infinite}
+.price-card b{display:block;font-family:Syne,sans-serif;font-size:1.3rem;line-height:1}
+.price-card small{color:var(--sub);font-size:.68rem;font-weight:700}
+.time-card{left:-20px;top:120px;padding:10px 14px;display:flex;gap:10px;align-items:center;animation:bob2 9s ease-in-out infinite}
+.time-card b{font-family:Syne,sans-serif;font-size:1.2rem;line-height:1;display:block}
+.time-card small{font-size:.64rem;color:var(--sub);font-weight:700}
+@keyframes bob2{50%{translate:0 -14px}}
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .stage{min-height:560px;margin-top:10px}
+  .qr-card{left:-6px}.al-card{right:-8px}.price-card{right:4px}.time-card{left:0}
+}
+@media (max-width:420px){
+  .phone{width:250px;height:510px}
+  .qr-card{width:132px;left:-4px;padding:10px}
+  .al-card{right:-4px}
+  .time-card{display:none}
+  .stage{min-height:520px}
+}
+
+/* ---------- Striscia ---------- */
+.mq-wrap{overflow:hidden;padding:14px 0}
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(255,255,255,.03);transform:rotate(-2deg) scale(1.05);margin:10px 0}
+.mq{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq span{padding:14px 0;font-family:Syne,sans-serif;font-weight:800;font-size:clamp(1rem,2.6vw,1.4rem);letter-spacing:.06em;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Numeri ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{text-align:center;padding:22px 14px}
+.stat b{display:block;font-family:Syne,sans-serif;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1}
+.stat span{display:block;margin-top:8px;color:var(--sub);font-size:.9rem;font-weight:700}
+@media (max-width:760px){.stats{grid-template-columns:1fr 1fr}}
+
+/* ---------- Calcolatore carta vs digitale ---------- */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,44px);align-items:center;padding:clamp(22px,4vw,40px)}
+.calc h3{font-family:Syne,sans-serif;font-size:1.25rem;margin-bottom:18px}
+.rng{margin-bottom:22px}
+.rng label{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:.95rem;margin-bottom:10px}
+.rng label output{font-family:Syne,sans-serif;font-weight:800;color:var(--cyan)}
+.rng input{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--violet) var(--p,50%),rgba(255,255,255,.1) var(--p,50%));outline:none}
+.rng input::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid var(--violet);box-shadow:0 4px 14px rgba(123,92,255,.6);cursor:grab}
+.rng input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--violet);box-shadow:0 4px 14px rgba(123,92,255,.6);cursor:grab}
+.rng small{display:block;margin-top:6px;color:var(--sub);font-size:.78rem}
+.bars{display:grid;gap:16px}
+.bar-row{display:grid;gap:6px}
+.bar-row .lbl{display:flex;justify-content:space-between;font-weight:800;font-size:.92rem}
+.bar-row .lbl b{font-family:Syne,sans-serif;font-size:1.15rem}
+.bar{height:16px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;width:0;transition:width .7s cubic-bezier(.2,.9,.2,1)}
+.bar.paper i{background:linear-gradient(90deg,#ff8fa3,#ff3c6a)}
+.bar.dig i{background:linear-gradient(90deg,var(--lime),var(--cyan))}
+.save{margin-top:6px;padding:16px 18px;border-radius:18px;background:rgba(180,255,57,.08);border:1px solid rgba(180,255,57,.25)}
+.save span{display:block;color:var(--sub);font-size:.85rem;font-weight:700}
+.save b{display:block;font-family:Syne,sans-serif;font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.1;color:var(--lime)}
+.save .btn{margin-top:14px;width:100%}
+@media (max-width:820px){.calc{grid-template-columns:1fr}}
+
+/* ---------- Come funziona ---------- */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;counter-reset:s}
+.steps::before{content:"";position:absolute;top:44px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,var(--line),var(--line),transparent)}
+.steps::after{content:"";position:absolute;top:44px;left:8%;right:8%;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.6s cubic-bezier(.2,.9,.2,1) .3s}
+.steps.in::after{transform:scaleX(1)}
+.step{position:relative;text-align:center;padding:0 8px}
+.step-n{position:relative;z-index:1;width:88px;height:88px;margin:0 auto 18px;border-radius:28px;display:grid;place-items:center;font-size:2.1rem;background:var(--bg2);border:1px solid var(--line);box-shadow:0 14px 34px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.step:hover .step-n{transform:translateY(-6px) rotate(-6deg)}
+.step-n::after{counter-increment:s;content:counter(s);position:absolute;top:-8px;right:-8px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:Syne,sans-serif;font-size:.85rem;font-weight:800;background:var(--grad);color:#0d0a1f}
+.step h3{font-family:Syne,sans-serif;font-size:1.15rem;margin-bottom:6px}
+.step p{color:var(--sub);font-size:.93rem}
+.steps-cta{text-align:center;margin-top:clamp(30px,5vw,50px)}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:34px}.steps::before,.steps::after{display:none}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* ---------- Stili (modelli) ---------- */
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.demo{display:flex;flex-direction:column;text-decoration:none;padding:0;transform-style:preserve-3d}
+.demo:hover{transform:translateY(-6px)}
+.demo-prev{position:relative;height:230px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.demo-prev .big{font-size:5.5rem;line-height:1;filter:drop-shadow(0 16px 26px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.demo:hover .demo-prev .big{transform:scale(1.12) rotate(-8deg)}
+.demo-prev .pick{position:absolute;top:14px;right:14px;padding:6px 12px;border-radius:999px;font-size:.72rem;font-weight:800;background:rgba(13,10,31,.75);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.p-fire{background:radial-gradient(70% 70% at 50% 100%,#5a240e,#120d0a)}
+.p-neon{background:radial-gradient(60% 60% at 20% 10%,rgba(255,60,172,.6),transparent 60%),radial-gradient(60% 60% at 90% 80%,rgba(34,211,238,.5),transparent 60%),#0d0a1f}
+.p-gold{background:linear-gradient(160deg,#efe4cf,#b08d57)}
+.demo-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.demo-body h3{font-family:Syne,sans-serif;font-size:1.25rem}
+.demo-body p{color:var(--sub);font-size:.92rem}
+.demo-body .go{margin-top:auto;padding-top:10px;font-weight:800;color:var(--cyan)}
+.tagline{display:flex;flex-wrap:wrap;gap:6px}
+.tagline span{font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.07);color:var(--sub)}
+.types{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.types a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--card);border:1px solid var(--line);text-decoration:none;font-weight:700;font-size:.92rem;transition:border-color .3s,background .3s,transform .3s}
+.types a:hover{border-color:rgba(255,255,255,.3);background:var(--card-h);transform:translateY(-3px)}
+@media (max-width:900px){.demos{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.demos{grid-template-columns:1fr}}
+
+/* ---------- Bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.bento .card{grid-column:span 2;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left}
+.bento .wide{grid-column:span 3}
+.bento .ic{width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:6px;background:linear-gradient(140deg,hsl(var(--h) 90% 62%),hsl(calc(var(--h) + 60) 90% 55%));box-shadow:0 10px 26px hsl(var(--h) 90% 50% / .35)}
+.bento h3{font-family:Syne,sans-serif;font-size:1.2rem;line-height:1.2}
+.bento p{color:var(--sub);font-size:.95rem}
+.al-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.al-row span{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.07);font-size:1rem;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.al-row span:hover{transform:translateY(-4px) scale(1.12)}
+.lang-demo{display:flex;align-items:stretch;gap:10px;margin-top:10px;width:100%;font-family:Syne,sans-serif;font-weight:800;font-size:1.02rem}
+.lang-demo .lg-dish{flex:0 0 auto;display:grid;place-items:center;width:46px;border-radius:12px;background:rgba(255,255,255,.07);font-size:1.3rem}
+.lang-demo .sw{flex:1;min-width:0;display:grid;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.07)}
+.lang-demo .sw>span{grid-area:1 / 1;display:flex;flex-direction:column;justify-content:center;line-height:1.25;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+.lang-demo .sw>span.on{opacity:1;transform:none}
+.lang-demo .sw b{font-family:Manrope,sans-serif;font-size:.68rem;letter-spacing:.12em;color:var(--cyan);margin-bottom:2px}
+@media (max-width:960px){.bento .card,.bento .wide{grid-column:span 3}}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr;gap:12px}
+  .bento .card,.bento .wide{grid-column:auto;display:grid;grid-template-columns:48px 1fr;column-gap:14px;row-gap:4px;align-items:start;padding:18px}
+  .bento .ic{grid-row:1 / span 2;width:48px;height:48px;font-size:1.4rem;margin:0}
+  .bento h3{font-size:1.08rem;align-self:center}
+  .bento p{font-size:.92rem;grid-column:2}
+  .bento .al-row,.bento .lang-demo{grid-column:1 / -1}
+  .al-row span{width:30px;height:30px;font-size:.9rem}
+}
+
+/* ---------- Offerta ---------- */
+.offer-wrap{position:relative;max-width:880px;margin:0 auto;border-radius:34px;padding:2px;background:conic-gradient(from var(--ang),var(--pink),var(--violet),var(--cyan),var(--lime),var(--pink));animation:rot 6s linear infinite;box-shadow:0 30px 80px rgba(123,92,255,.35)}
+.offer{border-radius:32px;background:linear-gradient(170deg,#1a1240,#0f0b25);padding:clamp(26px,5vw,52px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,44px)}
+.badge{display:inline-block;padding:6px 14px;border-radius:999px;font-weight:800;font-size:.8rem;background:rgba(180,255,57,.14);color:var(--lime);border:1px solid rgba(180,255,57,.3)}
+.price-big{font-family:Syne,sans-serif;line-height:.9;margin:18px 0 6px}
+.price-big .free{display:block;font-size:clamp(2.6rem,7vw,4rem)}
+.price-big .then{display:block;font-size:1rem;font-weight:700;color:var(--sub);font-family:Manrope,sans-serif;margin:16px 0 4px}
+.price-big .num{font-size:clamp(2.8rem,8vw,4.4rem)}
+.price-big .per{font-size:1.1rem;color:var(--sub)}
+.price-big .was{font-size:clamp(1.5rem,4.5vw,2.2rem);color:var(--sub);text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:var(--pink);display:block;width:max-content;margin:0 0 2px;opacity:.85}
+.offer .note{color:var(--sub);font-size:.9rem;margin:10px 0 22px}
+.offer .note strong{color:var(--txt)}
+.offer .risk{margin-top:14px;padding:12px 14px;border-radius:16px;background:rgba(180,255,57,.08);border:1px solid rgba(180,255,57,.25);font-size:.88rem;color:var(--sub);line-height:1.45}
+.offer .risk strong{color:var(--lime)}
+.inc{list-style:none;display:grid;gap:12px}
+.inc li{display:flex;gap:12px;align-items:flex-start}
+.inc li::before{content:"✓";flex:0 0 24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800;background:var(--grad);color:#0d0a1f;margin-top:2px}
+.terms{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:22px;border-top:1px solid var(--line)}
+.terms div{font-size:.85rem;color:var(--sub)}
+.terms b{display:block;color:var(--txt);font-size:.95rem}
+@media (max-width:760px){.offer{grid-template-columns:1fr}.terms{grid-template-columns:1fr}}
+
+/* ---------- Fabio ---------- */
+.me{display:grid;grid-template-columns:220px 1fr;gap:clamp(22px,4vw,44px);align-items:center;max-width:920px;margin:0 auto;padding:clamp(22px,4vw,36px)}
+.me-ph{position:relative;width:100%;aspect-ratio:4/5;border-radius:28px;padding:4px;background:conic-gradient(from var(--ang),var(--pink),var(--violet),var(--cyan),var(--lime),var(--pink));animation:rot 8s linear infinite}
+.me-ph img{display:block;width:100%;height:100%;object-fit:cover;border-radius:24px;background:#1a1240}
+.me-ph.noimg{display:grid;place-items:center;font-family:Syne,sans-serif;font-size:5rem;font-weight:800;color:#0d0a1f}
+.me blockquote{font-family:Syne,sans-serif;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.25;margin:10px 0 14px}
+.me p{color:var(--sub)}
+.me ul{list-style:none;display:grid;gap:8px;margin:16px 0 22px}
+.me li{display:flex;gap:10px;align-items:flex-start;font-weight:600}
+.me li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:800;background:rgba(180,255,57,.15);color:var(--lime);margin-top:2px}
+@media (max-width:700px){.me{grid-template-columns:1fr;text-align:left}.me-ph{max-width:200px}}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.faq details{border-radius:20px;background:var(--card);border:1px solid var(--line);transition:border-color .3s,background .3s}
+.faq details[open]{background:var(--card-h);border-color:rgba(255,255,255,.22)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 22px;font-weight:800;font-size:1.03rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:0 0 32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;background:rgba(255,255,255,.08);transition:transform .35s,background .35s}
+.faq details[open] summary::after{transform:rotate(45deg);background:var(--grad);color:#0d0a1f}
+.faq .ans{padding:0 22px 20px;color:var(--sub)}
+.faq .ans a{color:var(--cyan);font-weight:700}
+.faq-cta{text-align:center;margin-top:28px}
+
+/* ---------- CTA finale ---------- */
+.final .emoji-rain{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.final .emoji-rain span{position:absolute;top:-40px;font-size:1.6rem;opacity:.5;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(560px) rotate(360deg)}}
+.final>*:not(.emoji-rain){position:relative}
+
+/* Footer minimale */
+.mini-foot{padding:34px 0 calc(30px + env(safe-area-inset-bottom));color:var(--sub);font-size:.82rem;border-top:1px solid var(--line)}
+.mini-foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.mini-foot a{text-decoration:none}
+.mini-foot a:hover{color:#fff}
+
+/* Coriandoli al clic sulle CTA */
+.cf{position:fixed;z-index:300;width:9px;height:14px;border-radius:2px;pointer-events:none;will-change:transform,opacity}
+
+/* Finestra "prima di andare" (desktop) */
+.exit .dc{text-align:center;padding:34px 26px 28px}
+.exit .big{font-size:3.2rem;line-height:1;margin-bottom:8px}
+.exit .btn{width:100%;margin-top:6px}
+.exit .later{display:block;margin:14px auto 0;font-size:.85rem;font-weight:700;color:#625c88;text-decoration:underline}
+
+@media (prefers-reduced-motion:reduce){.w{opacity:1!important;transform:none!important}.final .emoji-rain{display:none}}
+
+/* Correzioni telefono */
+.calc>*{min-width:0}
+.rng input{display:block;max-width:100%}
+.final .emoji-rain{z-index:0}
+.final>*:not(.emoji-rain){z-index:1}
+@media (max-width:560px){
+  .btn-xl{white-space:normal;text-align:center;width:100%;padding:17px 22px;font-size:1rem;line-height:1.25}
+  .hero-cta .btn{width:100%}
+}
+</style>
+</head>
+<body class="no-js">
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="glow-cursor" aria-hidden="true"></div>
+
+<!-- Barra superiore: niente menu di navigazione, solo la richiesta -->
+<header class="nav" id="nav">
+<div class="wrap nav-in">
+<span class="logo" aria-label="DS Service, menu digitali con QR code">
+<span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0a1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg></span>DSFabio
+</span>
+<span class="nav-live"><i aria-hidden="true"></i>Prova gratuita attiva · menu pronto in 24 ore</span>
+<a class="btn btn-main nav-cta" href="/attiva" data-open data-cta="nav">Prova gratis</a>
+</div>
+</header>
+
+<main id="main">
+<!-- ======================= HERO ======================= -->
+<section class="hero" aria-labelledby="h1">
+<div class="wrap hero-grid">
+<div>
+<a class="pill" href="/attiva" data-open data-cta="pill"><b>🎁 GRATIS</b> 30 giorni · nessuna carta richiesta</a>
+<h1 id="h1"><span class="w" style="--d:0">Il</span> <span class="w" style="--d:1">tuo</span> <span class="w" style="--d:2">menu</span> <span class="w grad-text" style="--d:3">digitale</span> <span class="w" style="--d:4">pronto</span> <span class="w" style="--d:5">in</span> <span class="w grad-text" style="--d:6">24&nbsp;ore</span></h1>
+<p class="lead">Mandaci anche solo <strong>una foto del menu cartaceo</strong>: lo trasformiamo noi in un menu con QR code, foto, 14 allergeni e più lingue. <strong>Lo provi gratis per 30 giorni</strong> con i tuoi clienti, poi decidi tu.</p>
+<div class="hero-cta">
+<a class="btn btn-main btn-xl mag" href="/attiva" data-open data-cta="hero">🚀 Attiva la prova gratuita <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<div class="micro">
+<span class="av" aria-hidden="true"><span style="--h:340">🍕</span><span style="--h:200">🍣</span><span style="--h:40">🍔</span><span style="--h:120">🍸</span></span>
+<span>Bastano <strong style="color:var(--txt)">2 minuti</strong> · nessun pagamento oggi</span>
+</div>
+<ul class="chips" aria-label="In breve">
+<li>Lo creiamo noi</li>
+<li>Nessuna app per i clienti</li>
+<li>14 allergeni UE</li>
+<li>Disdici quando vuoi</li>
+</ul>
+</div>
+
+<div class="stage" aria-hidden="true">
+<div class="halo"></div>
+<div class="tilt" id="tilt">
+<a class="phone" href="/attiva" data-open data-cta="phone" tabindex="-1">
+<div class="screen">
+<div class="notch"></div>
+<div class="scr-bg"></div>
+<div class="scr">
+<div class="scr-top"><div class="scr-logo">桜</div><div><strong>Sakura Neon</strong><small>Sushi · Ramen · Cocktail</small></div><span class="scr-lang" id="scr-lang">IT</span></div>
+<div class="scr-tabs" id="scr-tabs"></div>
+<div class="scr-title" id="scr-title"></div>
+<div class="scr-list" id="scr-list"></div>
+<div class="scr-fab">✨ Voglio un menu così</div>
+</div>
+</div>
+</a>
+<div class="float qr-card"><div class="qr-box" id="qr"></div><span>Inquadra e attiva</span><small>dal tuo telefono</small></div>
+<div class="float al-card">Allergeni chiari<div>🌾🥛🐟🥚</div></div>
+<div class="float time-card"><span style="font-size:1.5rem">⏱️</span><div><b class="grad-text">24 ore</b><small>ed è online</small></div></div>
+<div class="float price-card"><b class="grad-text">0 €</b><small>per i primi 30 giorni</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="mq-wrap" aria-hidden="true"><div class="marquee">
+<div class="mq"><span>RISTORANTI ✦ PIZZERIE ✦ SUSHI ✦ BAR ✦ PUB ✦ TRATTORIE ✦ KEBAB ✦ COCKTAIL BAR ✦ HAMBURGERIE ✦&nbsp;</span><span>RISTORANTI ✦ PIZZERIE ✦ SUSHI ✦ BAR ✦ PUB ✦ TRATTORIE ✦ KEBAB ✦ COCKTAIL BAR ✦ HAMBURGERIE ✦&nbsp;</span></div>
+</div></div>
+
+<!-- ======================= NUMERI ======================= -->
+<section class="sec" aria-label="In numeri" style="padding-bottom:0">
+<div class="wrap">
+<div class="stats">
+<div class="card stat rv"><b class="grad-text" data-count="24">0</b><span>ore e il menu è online</span></div>
+<div class="card stat rv" style="--d:1"><b class="grad-text" data-count="30">0</b><span>giorni di prova gratis</span></div>
+<div class="card stat rv" style="--d:2"><b class="grad-text" data-count="14">0</b><span>allergeni UE su ogni piatto</span></div>
+<div class="card stat rv" style="--d:3"><b class="grad-text" data-count="15">0</b><span>stili tra cui scegliere</span></div>
+</div>
+</div>
+</section>
+
+<!-- ======================= CALCOLATORE ======================= -->
+<section class="sec" id="calcola" aria-labelledby="calc-t">
+<div class="wrap">
+<div class="sec-head center rv">
+<span class="eyebrow">Fai due conti</span>
+<h2 class="h2" id="calc-t">Quanto ti costa davvero <span class="grad-text">il menu di carta?</span></h2>
+<p class="lead">Ogni prezzo che cambia, ogni piatto finito, ogni macchia di sugo: una ristampa. Sposta i cursori con i numeri del tuo locale.</p>
+</div>
+<div class="card calc rv">
+<div>
+<h3>📄 Il tuo menu cartaceo</h3>
+<div class="rng"><label for="r-copie">Copie del menu <output id="o-copie">20</output></label><input type="range" id="r-copie" min="5" max="80" step="1" value="20"></div>
+<div class="rng"><label for="r-volte">Ristampe all'anno <output id="o-volte">4</output></label><input type="range" id="r-volte" min="1" max="12" step="1" value="4"></div>
+<div class="rng"><label for="r-costo">Costo per copia <output id="o-costo">5 €</output></label><input type="range" id="r-costo" min="2" max="15" step="1" value="5"><small>Stima indicativa: stampa, plastificazione e cartelline.</small></div>
+</div>
+<div class="bars" aria-live="polite">
+<div class="bar-row"><div class="lbl"><span>📄 Carta, all'anno</span><b id="v-paper">400 €</b></div><div class="bar paper"><i id="b-paper"></i></div></div>
+<div class="bar-row"><div class="lbl"><span>📱 Menu digitale, all'anno</span><b>189 €</b></div><div class="bar dig"><i id="b-dig"></i></div></div>
+<div class="save"><span id="s-lbl">Con il digitale risparmi circa</span><b id="v-save">211 € l'anno</b>
+<a class="btn btn-main mag" href="/attiva" data-open data-cta="calcolatore">🚀 Inizia gratis, risparmia dopo</a></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======================= COME FUNZIONA ======================= -->
+<section class="sec" id="come-funziona" aria-labelledby="cf-t" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head center rv">
+<span class="eyebrow">Come funziona</span>
+<h2 class="h2" id="cf-t">Tu compili 2 minuti. <span class="grad-text">Al resto pensiamo noi.</span></h2>
+</div>
+<ol class="steps rv" id="steps">
+<li class="step"><div class="step-n" aria-hidden="true">📝</div><h3>Compili il modulo</h3><p>Dati del locale e, se vuoi, una foto del menu e il logo.</p></li>
+<li class="step"><div class="step-n" aria-hidden="true">✉️</div><h3>Confermi l'email</h3><p>Un clic sul link che ti mandiamo e la richiesta è attiva.</p></li>
+<li class="step"><div class="step-n" aria-hidden="true">✨</div><h3>Lo creiamo noi</h3><p>Di solito in 24 ore il tuo menu è online, con il QR pronto da stampare.</p></li>
+<li class="step"><div class="step-n" aria-hidden="true">🎉</div><h3>30 giorni gratis</h3><p>Lo usi con i tuoi clienti. Poi decidi tu se continuare.</p></li>
+</ol>
+<div class="steps-cta rv"><a class="btn btn-main btn-xl mag" href="/attiva" data-open data-cta="passi">📝 Compila il modulo, bastano 2 minuti <span class="arr" aria-hidden="true">→</span></a></div>
+</div>
+</section>
+
+<!-- ======================= STILI ======================= -->
+<section class="sec" id="stili" aria-labelledby="es-t" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head center rv">
+<span class="eyebrow">Scegli il tuo stile</span>
+<h2 class="h2" id="es-t">Quale si addice al tuo locale?</h2>
+<p class="lead">Tocca lo stile che preferisci: lo trovi già selezionato nel modulo. Il tuo menu sarà poi su misura, con logo, colori e piatti tuoi.</p>
+</div>
+<div class="demos">
+<a class="card demo rv" href="/attiva" data-open data-model="Sakura Neon" data-cta="stile-sakura">
+<div class="demo-prev p-neon"><span class="pick">Scegli</span><span class="big" aria-hidden="true">🍣</span></div>
+<div class="demo-body"><div class="tagline"><span>Sushi</span><span>Cocktail bar</span><span>IT / EN</span></div><h3>Sakura Neon</h3><p>Colori neon, cambio categoria animato e menu in due lingue.</p><span class="go">Voglio questo stile →</span></div>
+</a>
+<a class="card demo rv" href="/attiva" data-open data-model="MDC-008 · Forno Rosso" data-cta="stile-forno" style="--d:1">
+<div class="demo-prev p-fire"><span class="pick">Scegli</span><span class="big" aria-hidden="true">🔥</span></div>
+<div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Pizzeria</span></div><h3>Forno Rosso</h3><p>La bocca del forno a legna con le fiamme che danzano: impossibile non notarlo.</p><span class="go">Voglio questo stile →</span></div>
+</a>
+<a class="card demo rv" href="/attiva" data-open data-model="MDC-001 · Gusto 360°" data-cta="stile-gusto" style="--d:2">
+<div class="demo-prev p-gold"><span class="pick">Scegli</span><span class="big" aria-hidden="true">🍷</span></div>
+<div class="demo-body"><div class="tagline"><span>Ristorante</span><span>Fine dining</span></div><h3>Gusto 360°</h3><p>Raffinato come un menu su carta pregiata, con percorso degustazione e vini.</p><span class="go">Voglio questo stile →</span></div>
+</a>
+</div>
+<ul class="types rv" aria-label="Per ogni tipo di locale">
+<li><a href="/attiva" data-open data-cta="tipo-ristorante">🍷 Ristorante</a></li>
+<li><a href="/attiva" data-open data-cta="tipo-pizzeria">🍕 Pizzeria</a></li>
+<li><a href="/attiva" data-open data-cta="tipo-sushi">🍣 Sushi</a></li>
+<li><a href="/attiva" data-open data-cta="tipo-burger">🍔 Hamburgeria</a></li>
+<li><a href="/attiva" data-open data-cta="tipo-kebab">🥙 Piadineria e kebab</a></li>
+<li><a href="/attiva" data-open data-cta="tipo-bar">🍸 Bar e pub</a></li>
+<li><a href="/attiva" data-open data-cta="tipo-consiglio">🤔 Consigliatemi voi</a></li>
+</ul>
+</div>
+</section>
+
+<!-- ======================= COSA INCLUDE ======================= -->
+<section class="sec" id="cosa-include" aria-labelledby="ci-t" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="eyebrow">Cosa include</span>
+<h2 class="h2" id="ci-t">Tutto quello che serve a un menu moderno</h2>
+<p class="lead">Un solo prezzo, nessuna sorpresa: dal design all'hosting, fino agli aggiornamenti.</p>
+</div>
+<div class="bento">
+<article class="card wide rv">
+<div class="ic" style="--h:340" aria-hidden="true">🌾</div>
+<h3>Allergeni a norma, piatto per piatto</h3>
+<p>Icone per i 14 allergeni previsti dalla normativa europea e una legenda chiara, leggibili a colpo d'occhio.</p>
+<div class="al-row" aria-label="Le 14 icone degli allergeni"><span title="Glutine">🌾</span><span title="Crostacei">🦐</span><span title="Uova">🥚</span><span title="Pesce">🐟</span><span title="Arachidi">🥜</span><span title="Soia">🫘</span><span title="Latte">🥛</span><span title="Frutta a guscio">🌰</span><span title="Sedano">🥬</span><span title="Senape">🟡</span><span title="Sesamo">⚪</span><span title="Solfiti">🍷</span><span title="Lupini">🌼</span><span title="Molluschi">🐚</span></div>
+</article>
+<article class="card wide rv" style="--d:1">
+<div class="ic" style="--h:190" aria-hidden="true">🌍</div>
+<h3>Più lingue con un tocco</h3>
+<p>Il cliente straniero cambia lingua e legge il menu nella sua. Meno spiegazioni al tavolo, più ordini.</p>
+<div class="lang-demo" aria-hidden="true"><span class="lg-dish">🍝</span><span class="sw" id="sw"><span class="on"><b>🇮🇹 IT</b>Spaghetti allo scoglio</span><span><b>🇬🇧 EN</b>Seafood spaghetti</span><span><b>🇫🇷 FR</b>Spaghetti aux fruits de mer</span><span><b>🇩🇪 DE</b>Spaghetti mit Meeresfrüchten</span></span></div>
+</article>
+<article class="card rv"><div class="ic" style="--h:260" aria-hidden="true">✏️</div><h3>Aggiornamenti inclusi</h3><p>Cambi un prezzo o un piatto? Ce lo chiedi e lo aggiorniamo noi.</p></article>
+<article class="card rv" style="--d:1"><div class="ic" style="--h:170" aria-hidden="true">🔳</div><h3>Il QR non cambia mai</h3><p>Aggiorni il menu e quello sui tavoli continua a funzionare.</p></article>
+<article class="card rv" style="--d:2"><div class="ic" style="--h:10" aria-hidden="true">⭐</div><h3>Più recensioni</h3><p>Pulsanti per chiamarti, WhatsApp, Maps, Instagram e lasciare una recensione.</p></article>
+</div>
+</div>
+</section>
+
+<!-- ======================= OFFERTA ======================= -->
+<section class="sec" id="offerta" aria-labelledby="of-t" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head center rv">
+<span class="eyebrow">L'offerta</span>
+<h2 class="h2" id="of-t">Un solo piano. Tutto incluso.</h2>
+<p class="lead">Oggi non paghi nulla. Se dopo 30 giorni ti piace, continui.</p>
+</div>
+<div class="offer-wrap rv">
+<div class="offer">
+<div>
+<span class="badge">🎁 Prova gratuita</span>
+<p class="price-big"><span class="free grad-text">30 giorni gratis</span><span class="then">poi, solo se vuoi continuare</span><span class="was">229 €</span> <span class="num">189 €</span> <span class="per">/ anno</span></p>
+<p class="note">Meno di 16 € al mese, circa 0,52 € al giorno. <strong>Nessun costo di attivazione.</strong></p>
+<a class="btn btn-main btn-xl mag" href="/attiva" data-open data-cta="offerta" style="width:100%">🚀 Inizia la prova gratuita</a>
+<p class="risk">🛡️ <strong>Rischio zero:</strong> nessuna carta richiesta. Decidi solo dopo 30 giorni, quando il menu l'hai già visto all'opera con i tuoi clienti.</p>
+</div>
+<ul class="inc" aria-label="Cosa include">
+<li>Menu personalizzato con il tuo nome, logo e piatti</li>
+<li>QR code pronti da stampare per tavoli, bancone e vetrina</li>
+<li>Icone dei 14 allergeni con legenda</li>
+<li>Fino a 10 modifiche al mese a piatti e prezzi</li>
+<li>Indirizzo web dedicato (es. dsmenu.it/nomelocale), hosting e SSL</li>
+<li>Pulsanti per chiamare, WhatsApp, Maps e social</li>
+<li>Assistenza diretta, con un'email quando la modifica è online</li>
+</ul>
+<div class="terms">
+<div><b>⏱️ Pronto in 24 ore</b>da quando ci mandi il menu</div>
+<div><b>💳 Nessuna carta</b>per attivare la prova</div>
+<div><b>⏸️ Se non continui</b>il menu va in pausa, senza costi né penali</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======================= FABIO ======================= -->
+<section class="sec" id="chi-sono" aria-labelledby="me-t" style="padding-top:0">
+<div class="wrap">
+<div class="card me rv">
+<div class="me-ph"><img src="/assets/img/fabio.jpg" alt="Fabio, fondatore di DS Service" width="400" height="537" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.parentNode.textContent='F'"></div>
+<div>
+<span class="eyebrow">Chi c'è dietro</span>
+<h2 class="h2" id="me-t" style="font-size:clamp(1.7rem,4.4vw,2.4rem)">Niente call center: parli con me</h2>
+<blockquote>«Il tuo menu lo preparo io, a mano, e lo provo su più telefoni prima di consegnartelo.»</blockquote>
+<p>Sono <strong>Fabio</strong>, fondatore di DS Service. Seguo personalmente ogni locale, dalla prima bozza agli aggiornamenti di tutti i giorni.</p>
+<ul>
+<li>Un unico referente, sempre lo stesso</li>
+<li>Risposta entro poche ore nei giorni lavorativi</li>
+<li>Prezzo chiaro, senza costi nascosti</li>
+</ul>
+<a class="btn btn-main mag" href="/attiva" data-open data-cta="fabio">👋 Fabio, preparami il menu</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section class="sec" id="faq" aria-labelledby="faq-t" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head center rv">
+<span class="eyebrow">Ultimi dubbi</span>
+<h2 class="h2" id="faq-t">Prima di iniziare</h2>
+</div>
+<div class="faq">
+<details class="rv"><summary>Devo pagare qualcosa per iniziare la prova?</summary><div class="ans">No. La prova di 30 giorni parte dalla consegna del menu e non chiediamo nessun pagamento anticipato né la carta. Alla fine decidi tu se continuare a 189 € all'anno.</div></details>
+<details class="rv"><summary>Cosa devo mandarvi?</summary><div class="ans">Basta il modulo con i dati del locale. Se li hai, allega una foto del menu cartaceo, il logo e gli allergeni dei piatti. Se non li hai a portata di mano, nessun problema: te li chiediamo noi.</div></details>
+<details class="rv"><summary>In quanto tempo è pronto?</summary><div class="ans">Di solito in circa 24 ore da quando ci mandi il menu.</div></details>
+<details class="rv"><summary>I clienti devono scaricare un'app?</summary><div class="ans">No. Inquadrano il QR code con la fotocamera e il menu si apre nel browser, su qualsiasi smartphone o tablet.</div></details>
+<details class="rv"><summary>Posso cambiare piatti e prezzi?</summary><div class="ans">Sì, fino a 10 modifiche al mese sono incluse: ce le chiedi, le facciamo noi e ti avvisiamo via email appena sono online. Il QR sui tavoli resta sempre lo stesso.</div></details>
+<details class="rv"><summary>E se dopo la prova non voglio continuare?</summary><div class="ans">Nessun costo e nessuna penale: il menu viene messo in pausa e puoi riattivarlo quando vuoi, con gli stessi contenuti e lo stesso QR.</div></details>
+</div>
+<div class="faq-cta rv"><a class="btn btn-ghost mag" href="/attiva" data-open data-cta="faq">Tutto chiaro, voglio provarlo →</a></div>
+</div>
+</section>
+
+<!-- ======================= CTA FINALE ======================= -->
+<section class="sec" aria-labelledby="fin-t" style="padding-top:0">
+<div class="wrap">
+<div class="final rv">
+<div class="emoji-rain" aria-hidden="true" id="rain"></div>
+<span class="eyebrow">Pronto a partire?</span>
+<h2 class="h2" id="fin-t">Domani i tuoi clienti potrebbero già <span class="grad-text">sfogliare il tuo menu</span></h2>
+<p class="lead">Compila il modulo oggi: entro 24 ore il menu è online, e per 30 giorni non paghi nulla.</p>
+<div class="final-cta">
+<a class="btn btn-main btn-xl mag" href="/attiva" data-open data-cta="finale">🚀 Richiedi la prova gratuita <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<ul class="reassure"><li>Nessuna carta richiesta</li><li>Prova senza impegno</li><li>Pronto in 24 ore</li></ul>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="mini-foot">
+<div class="wrap">
+<span>© <span data-year>2026</span> DS Service di Fabio Dos Santos Souza · Meldola (FC)</span>
+<span><a href="/privacy#privacy">Privacy</a> · <a href="/privacy#cookies">Cookie</a> · <a href="/privacy#terms">Termini</a></span>
+</div>
+</footer>
+
+<!-- Barra fissa su telefono -->
+<div class="m-bar" id="mbar" role="region" aria-label="Prova gratuita"><a class="btn btn-main" href="/attiva" data-open data-cta="barra-mobile">🚀 Prova gratis 30 giorni</a></div>
+
+<!-- Finestra "prima di andare" (solo desktop, una volta) -->
+<dialog class="exit" id="exit" aria-labelledby="exit-t">
+<div class="dc">
+<button class="x" type="button" data-close aria-label="Chiudi">×</button>
+<div class="big" aria-hidden="true">🎁</div>
+<h2 id="exit-t" style="margin:0 0 8px">Aspetta: il tuo menu è gratis per 30 giorni</h2>
+<p class="sub">Nessuna carta, nessun impegno. Compili in 2 minuti e domani il tuo menu digitale può essere già online.</p>
+<a class="btn btn-main" href="/attiva" data-open data-cta="exit">🚀 Sì, voglio provarlo gratis</a>
+<button class="later" type="button" data-close>Continua a guardare la pagina</button>
+</div>
+</dialog>
+<script src="/assets/vendor/qrcode-1.4.4.min.js" defer></script>
+<script>
+(function () {
+'use strict';
+var SITE = location.origin && location.origin.indexOf('http') === 0 ? location.origin : 'https://dsfabio.com';
+var ATTIVA = SITE + '/attiva';
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+var $ = function (s, c) { return (c || document).querySelector(s); };
+var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+document.body.classList.remove('no-js');
+$$('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });
+
+/* ---------- Ogni pulsante porta a /attiva ----------
+   Conserva i parametri della campagna (utm_*, gclid, fbclid...) e il modello scelto. */
+var pass = new URLSearchParams();
+try {
+  new URLSearchParams(location.search).forEach(function (v, k) {
+    if (/^(utm_|gclid|fbclid|ttclid|msclkid|ref|modello)/i.test(k)) pass.set(k, v.slice(0, 120));
+  });
+} catch (err) {}
+function trialLink(a) {
+  var p = new URLSearchParams(pass.toString());
+  var m = a.getAttribute('data-model'); if (m) p.set('modello', m);
+  var c = a.getAttribute('data-cta'); if (c && !p.has('utm_content')) p.set('utm_content', 'landing-' + c);
+  if (!p.has('utm_source')) p.set('utm_source', 'landing-prova-gratis');
+  var q = p.toString();
+  return ATTIVA + (q ? '?' + q : '');
+}
+$$('[data-open]').forEach(function (a) { a.href = trialLink(a); a.removeAttribute('target'); });
+
+/* Coriandoli al clic, poi si va alla pagina di attivazione */
+var COLORS = ['#ff3cac', '#7b5cff', '#22d3ee', '#b4ff39', '#ffcf3f'];
+function burst(x, y) {
+  for (var i = 0; i < 34; i++) {
+    var s = document.createElement('i'); s.className = 'cf';
+    s.style.background = COLORS[i % COLORS.length]; s.style.left = x + 'px'; s.style.top = y + 'px';
+    document.body.appendChild(s);
+    var ang = Math.random() * Math.PI * 2, d = 80 + Math.random() * 160;
+    s.animate([
+      {transform: 'translate(-50%,-50%) rotate(0)', opacity: 1},
+      {transform: 'translate(' + (Math.cos(ang) * d) + 'px,' + (Math.sin(ang) * d + 60) + 'px) rotate(' + (Math.random() * 720) + 'deg)', opacity: 0}
+    ], {duration: 700 + Math.random() * 300, easing: 'cubic-bezier(.2,.9,.2,1)', fill: 'forwards'});
+    setTimeout(s.remove.bind(s), 1100);
+  }
+}
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[data-open]'); if (!a) return;
+  if (reduced || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault();
+  var r = a.getBoundingClientRect();
+  burst(e.clientX || r.left + r.width / 2, e.clientY || r.top + r.height / 2);
+  setTimeout(function () { location.href = a.href; }, 420);
+});
+
+/* ---------- Barra in alto e di avanzamento ---------- */
+var nav = $('#nav');
+function onScroll() { nav.classList.toggle('scrolled', scrollY > 10); }
+addEventListener('scroll', onScroll, {passive: true}); onScroll();
+if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
+  var pr = $('.progress');
+  addEventListener('scroll', function () { var h = document.documentElement.scrollHeight - innerHeight; pr.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')'; }, {passive: true});
+}
+
+/* ---------- Comparse + contatori ---------- */
+function countUp(el) {
+  var to = +el.getAttribute('data-count'), t0 = 0;
+  if (reduced) { el.textContent = to; return; }
+  function step(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }
+  requestAnimationFrame(step);
+}
+if (reduced || !('IntersectionObserver' in window)) {
+  $$('.rv').forEach(function (e) { e.classList.add('in'); });
+  $$('[data-count]').forEach(function (e) { e.textContent = e.getAttribute('data-count'); });
+} else {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in'); io.unobserve(e.target);
+      $$('[data-count]', e.target).forEach(countUp);
+    });
+  }, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+  $$('.rv').forEach(function (e) { io.observe(e); });
+}
+
+/* ---------- Luce del mouse, riflesso sulle card, pulsanti magnetici, telefono 3D ---------- */
+if (fine && !reduced) {
+  var gc = $('.glow-cursor'), raf = 0, mx = 0, my = 0;
+  addEventListener('pointermove', function (e) {
+    mx = e.clientX; my = e.clientY; gc.style.opacity = 1;
+    if (!raf) raf = requestAnimationFrame(function () { gc.style.transform = 'translate(' + mx + 'px,' + my + 'px)'; raf = 0; });
+  }, {passive: true});
+  document.addEventListener('pointermove', function (e) {
+    var c = e.target.closest && e.target.closest('.card'); if (!c) return;
+    var r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, {passive: true});
+  $$('.mag').forEach(function (b) {
+    b.addEventListener('pointermove', function (e) {
+      var r = b.getBoundingClientRect();
+      b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .18) + 'px,' + ((e.clientY - r.top - r.height / 2) * .3) + 'px)';
+    });
+    b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+  });
+  var tilt = $('#tilt'), stage = $('.stage');
+  addEventListener('pointermove', function (e) {
+    var r = stage.getBoundingClientRect();
+    var x = (e.clientX - (r.left + r.width / 2)) / innerWidth, y = (e.clientY - (r.top + r.height / 2)) / innerHeight;
+    tilt.style.setProperty('--ry', (x * 22).toFixed(2) + 'deg');
+    tilt.style.setProperty('--rx', (-y * 16).toFixed(2) + 'deg');
+  }, {passive: true});
+}
+
+/* Onda sui pulsanti */
+document.addEventListener('pointerdown', function (e) {
+  var b = e.target.closest && e.target.closest('.btn-main'); if (!b || reduced) return;
+  var r = b.getBoundingClientRect(), s = document.createElement('span');
+  s.className = 'ripple'; s.style.left = (e.clientX - r.left) + 'px'; s.style.top = (e.clientY - r.top) + 'px';
+  b.appendChild(s); setTimeout(function () { s.remove(); }, 650);
+});
+
+/* ---------- Telefono animato ---------- */
+var CATS = [
+  {t:'Sushi', l:'IT', items:[['🍣',340,'Nigiri Salmone','2 pezzi','5 €','🐟🫘'],['🍤',20,'Uramaki Ebiten','8 pezzi, tempura','12 €','🦐🌾🥚'],['🐟',200,'Sashimi Misto','12 fette','18 €','🐟']]},
+  {t:'Ramen', l:'EN', items:[['🍜',35,'Tonkotsu','Chashu, egg, nori','15 €','🌾🥚🫘'],['🌶️',0,'Spicy Miso','Chili oil','14 €','🌾🫘'],['🥬',120,'Shoyu Veg','Tofu, pak choi','13 €','🌾🫘']]},
+  {t:'Cocktail', l:'IT', items:[['🍸',290,'Sakura Spritz','Sake, prosecco','10 €','🍷'],['🍹',170,'Yuzu Sour','Whisky, yuzu','11 €','🥚'],['🍵',100,'Matcha Tonic','Analcolico','7 €','']]},
+  {t:'Dolci', l:'FR', items:[['🍡',320,'Mochi','Matcha, mangue','7 €','🥛⚪'],['🥞',40,'Dorayaki','Crème d\'azuki','6 €','🌾🥚🥛']]}
+];
+var tabs = $('#scr-tabs'), list = $('#scr-list'), ttl = $('#scr-title'), lng = $('#scr-lang'), ci = 0;
+tabs.innerHTML = CATS.map(function (c) { return '<span class="scr-tab">' + c.t + '</span>'; }).join('');
+function showCat(i) {
+  $$('.scr-tab', tabs).forEach(function (t, k) { t.classList.toggle('on', k === i); });
+  ttl.textContent = CATS[i].t; lng.textContent = CATS[i].l;
+  list.innerHTML = CATS[i].items.map(function (it) {
+    return '<div class="scr-item"><div class="scr-orb" style="--h:' + it[1] + '">' + it[0] + '</div><div><b>' + it[2] + '</b><i>' + it[3] + '</i><div class="scr-al">' + it[5] + '</div></div><em>' + it[4] + '</em></div>';
+  }).join('');
+}
+showCat(0);
+if (!reduced) setInterval(function () { if (!document.hidden) { ci = (ci + 1) % CATS.length; showCat(ci); } }, 2600);
+
+/* Lingue nel riquadro */
+var sws = $$('#sw > span'), wi = 0;
+if (!reduced && sws.length) setInterval(function () { sws[wi].classList.remove('on'); wi = (wi + 1) % sws.length; sws[wi].classList.add('on'); }, 2400);
+
+/* QR che porta alla pagina di attivazione (da aprire col telefono) */
+function drawQR() {
+  var box = $('#qr'); if (!box) return;
+  if (window.qrcode) {
+    var q = qrcode(0, 'M'); q.addData(ATTIVA + '?utm_source=landing-prova-gratis&utm_content=landing-qr'); q.make();
+    box.innerHTML = q.createSvgTag({cellSize: 4, margin: 0, scalable: true});
+  } else {
+    box.innerHTML = '<div style="aspect-ratio:1;display:grid;place-items:center;font-size:2.4rem">🔳</div>';
+  }
+}
+addEventListener('load', drawQR);
+
+/* ---------- Calcolatore carta vs digitale ---------- */
+var DIG = 189;
+var rc = $('#r-copie'), rv = $('#r-volte'), rk = $('#r-costo');
+function eur(n) { return Math.round(n).toLocaleString('it-IT') + ' €'; }
+function fill(r) { r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min) * 100) + '%'); }
+function calc() {
+  [rc, rv, rk].forEach(fill);
+  $('#o-copie').textContent = rc.value; $('#o-volte').textContent = rv.value; $('#o-costo').textContent = rk.value + ' €';
+  var paper = rc.value * rv.value * rk.value, max = Math.max(paper, DIG);
+  $('#v-paper').textContent = eur(paper);
+  $('#b-paper').style.width = (paper / max * 100) + '%';
+  $('#b-dig').style.width = (DIG / max * 100) + '%';
+  if (paper > DIG) { $('#s-lbl').textContent = 'Con il digitale risparmi circa'; $('#v-save').textContent = eur(paper - DIG) + " l'anno"; }
+  else { $('#s-lbl').textContent = 'Spendi quasi uguale, ma in più hai'; $('#v-save').textContent = 'foto, allergeni e lingue'; }
+}
+[rc, rv, rk].forEach(function (r) { r.addEventListener('input', calc); });
+calc();
+
+/* ---------- Pioggia di emoji nell'invito finale ---------- */
+var rain = $('#rain');
+if (rain && !reduced) {
+  var EM = ['🍕', '🍣', '🍔', '🍝', '🍸', '🥗', '🍷', '🥙', '🍰', '📱'];
+  for (var i = 0; i < 14; i++) {
+    var s = document.createElement('span'); s.textContent = EM[i % EM.length];
+    s.style.left = (Math.random() * 96) + '%'; s.style.animationDuration = (7 + Math.random() * 7) + 's'; s.style.animationDelay = (-Math.random() * 12) + 's';
+    rain.appendChild(s);
+  }
+}
+
+/* ---------- Barra fissa su telefono ---------- */
+(function () {
+  var bar = $('#mbar'), seen = 0, vis = new Set();
+  var blockers = $$('.hero-cta, .offer, .final, .steps-cta, .save');
+  function upd() { bar.classList.toggle('show', scrollY > innerHeight * 0.6 && !seen); }
+  if ('IntersectionObserver' in window) {
+    var ob = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) vis.add(e.target); else vis.delete(e.target); });
+      seen = vis.size; upd();
+    });
+    blockers.forEach(function (b) { ob.observe(b); });
+  }
+  addEventListener('scroll', upd, {passive: true}); upd();
+})();
+
+/* ---------- Finestra "prima di andare": desktop, dopo 10 s, una sola volta ---------- */
+(function () {
+  var dlg = $('#exit'); if (!dlg || !dlg.showModal || !fine) return;
+  var KEY = 'dsf-lp-exit', armed = false;
+  try { if (sessionStorage.getItem(KEY)) return; } catch (err) {}
+  setTimeout(function () { armed = true; }, 10000);
+  document.addEventListener('mouseout', function (e) {
+    if (!armed || e.relatedTarget || e.clientY > 8 || dlg.open) return;
+    armed = false;
+    try { sessionStorage.setItem(KEY, '1'); } catch (err) {}
+    dlg.showModal();
+  });
+  $$('[data-close]', dlg).forEach(function (b) { b.addEventListener('click', function () { dlg.close(); }); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+})();
+})();
+</script>
+</body>
+</html>

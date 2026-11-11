@@ -64,7 +64,7 @@ function init() {
     '<p class="lead">Compila il modulo e allega il tuo menu, anche solo in foto: lo prepariamo noi con i tuoi piatti, il tuo logo e i tuoi colori. Tu stampi il QR e lo metti sui tavoli.</p>' +
     '<ul class="dsf-pts"><li><b>24 ore</b>e il menu è online</li><li><b>30 giorni</b>di prova gratis</li><li><b>189 €/anno</b>tutto incluso</li></ul>' +
     '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '">🚀 Prova gratis il modello ' + ESC(MODEL) + '</a></div>' +
-    '<span class="dsf-small">Prova senza impegno · nessun dato di pagamento</span>' +
+    '<span class="dsf-small">Nessun pagamento anticipato · Prova senza impegno · Pronto in 24 ore</span>' +
     '<a class="dsf-link" href="modelli">← Guarda gli altri modelli</a>' +
   '</div></section>');
   document.body.appendChild(cta);

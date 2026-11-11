@@ -396,6 +396,7 @@
                 }).then(function (r) { return r.ok; }, function () { return false; });
               }
               function done(icon, title, text, hint, bad) {
+                if (!bad) { try { sessionStorage.removeItem('dsf-attiva-tema'); } catch (e) {} }
                 form.hidden = true;
                 $('dsf-success').hidden = false;
                 $('dsf-success').classList.toggle('is-bad', !!bad);
@@ -465,7 +466,7 @@
                   pv.addEventListener('click', function () { openPreview(t, pv); });
                   wrap.appendChild(pv);
                 }
-                input.addEventListener('change', showChosen);
+                input.addEventListener('change', function () { showChosen(); rememberTheme(); });
                 return wrap;
               }
               themesBox.appendChild(themeCard(null));
@@ -487,7 +488,23 @@
               var fold = function (x) { return String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); };
               var qs = new URLSearchParams(location.search), want = fold(qs.get('modello')), wantId = qs.get('tema');
               var pre = THEMES.filter(function (t) { return t[0] === wantId || (want && (want.indexOf(fold(t[1])) === 0 || fold(t[1]).indexOf(want) === 0)); })[0];
+              // la scelta resta anche se la pagina si ricarica (es. passando a un'altra app sul telefono)
+              function rememberTheme() {
+                var id = selectedTheme() || '';
+                try { sessionStorage.setItem('dsf-attiva-tema', id || 'none'); } catch (e) {}
+                try {
+                  var q = new URLSearchParams(location.search);
+                  q.delete('modello'); if (id) q.set('tema', id); else q.delete('tema');
+                  history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash);
+                } catch (e) {}
+              }
+              if (!pre && !wantId && !want) {
+                var saved = null;
+                try { saved = sessionStorage.getItem('dsf-attiva-tema'); } catch (e) {}
+                pre = THEMES.filter(function (t) { return t[0] === saved; })[0];
+              }
               pickTheme(pre ? pre[0] : '', !!pre);
+              if (pre && !token) rememberTheme();
 
               // anteprima del modello in una finestra a misura di telefono
               var lastFocus = null;
@@ -650,7 +667,7 @@
             <ol class="steps">
               <li>Compila il modulo con i dati del locale (bastano 2 minuti).</li>
               <li>Conferma la tua email dal link che ti mandiamo.</li>
-              <li>Ti contattiamo e prepariamo il menu con il tuo QR code, di solito in 48 ore.</li>
+              <li>Ti contattiamo e prepariamo il menu con il tuo QR code, di solito in 24 ore.</li>
               <li>Lo provi gratis per 30 giorni: nessuna carta, nessun impegno.</li>
             </ol>
           </div>

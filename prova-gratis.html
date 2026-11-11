@@ -725,8 +725,8 @@ document.addEventListener('pointerdown', function (e) {
   $$('[data-open]', wall).forEach(wire);
   var sec = wall.parentNode;
   if (reduced) return;
-  /* Parte appena la sezione arriva verso il centro dello schermo */
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { sec.classList.toggle('go', es[0].isIntersecting); }, {rootMargin: '0px 0px -30% 0px'}).observe(sec);
+  /* Parte poco prima che la sezione entri nello schermo: appena la si intravede, i menu scorrono già */
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { sec.classList.toggle('go', es[0].isIntersecting); }, {rootMargin: '0px 0px 25% 0px'}).observe(sec);
   else sec.classList.add('go');
   /* Intanto le colonne seguono lo scroll, così si muovono subito */
   var rq = 0;

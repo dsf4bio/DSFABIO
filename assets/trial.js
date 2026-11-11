@@ -60,9 +60,9 @@ function init() {
   var cta = el(
   '<section class="dsf dsf-cta" aria-labelledby="dsf-cta-t"><div class="in">' +
     '<span class="dsf-eye">Ti piace questo menu?</span>' +
-    '<h2 id="dsf-cta-t">Questo menu può essere <span class="dsf-gt">il tuo</span>, già da dopodomani</h2>' +
+    '<h2 id="dsf-cta-t">Questo menu può essere <span class="dsf-gt">il tuo</span>, già da domani</h2>' +
     '<p class="lead">Compila il modulo e allega il tuo menu, anche solo in foto: lo prepariamo noi con i tuoi piatti, il tuo logo e i tuoi colori. Tu stampi il QR e lo metti sui tavoli.</p>' +
-    '<ul class="dsf-pts"><li><b>48 ore</b>e il menu è online</li><li><b>30 giorni</b>di prova gratis</li><li><b>189 €/anno</b>tutto incluso</li></ul>' +
+    '<ul class="dsf-pts"><li><b>24 ore</b>e il menu è online</li><li><b>30 giorni</b>di prova gratis</li><li><b>189 €/anno</b>tutto incluso</li></ul>' +
     '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '">🚀 Prova gratis il modello ' + ESC(MODEL) + '</a></div>' +
     '<span class="dsf-small">Prova senza impegno · nessun dato di pagamento</span>' +
     '<a class="dsf-link" href="modelli">← Guarda gli altri modelli</a>' +

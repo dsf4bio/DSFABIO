@@ -20,7 +20,7 @@
 ## Pagine
 
 - [Home e offerta](https://dsfabio.com/): come funziona, cosa include, esempi, prezzo e domande frequenti.
-- [Modelli di menu](https://dsfabio.com/modelli): quindici esempi dimostrativi per ristoranti, pizzerie, hamburgerie, piadinerie, kebab, sushi, bistrot e bar.
+- [Modelli di menu](https://dsfabio.com/modelli): ventuno esempi dimostrativi per ristoranti, trattorie, pizzerie, hamburgerie, piadinerie, kebab, sushi, bistrot, bar, pasticcerie e pub.
 - [Chi sono](https://dsfabio.com/about): Fabio, valori e modo di lavorare, un unico referente.
 - [Esempio Gusto 360°](https://dsfabio.com/mdc-001): ristorante elegante con percorso degustazione.
 - [Esempio Bella Napoli](https://dsfabio.com/mdc-002): pizzeria con ricerca dei piatti.
@@ -37,6 +37,12 @@
 - [Esempio Bosforo Kebab](https://dsfabio.com/mdc-013): kebab con prezzi per formato (panino, piadina, box, piatto).
 - [Esempio Sakura Neon](https://dsfabio.com/demo-sakura-neon): menu demo per sushi e cocktail bar, in italiano e inglese.
 - [Esempio Fuoco & Brace](https://dsfabio.com/demo-fuoco-brace): menu demo per pizzeria e griglia.
+- [Esempio Aura](https://dsfabio.com/mdc-014): ristorante moderno con piatti animati e categorie su card 3D.
+- [Esempio Il Focolare](https://dsfabio.com/mdc-015): trattoria rustica con lavagnette appese e menu che si sfoglia.
+- [Esempio Vesuvio](https://dsfabio.com/mdc-016): pizzeria con la pizza-ruota per scegliere la categoria.
+- [Esempio La Piadaia](https://dsfabio.com/mdc-017): piadineria con le categorie su un mazzo di carte.
+- [Esempio Zucchero Velo](https://dsfabio.com/mdc-018): bar pasticceria con le campane di vetro.
+- [Esempio The Copper Fox](https://dsfabio.com/mdc-019): pub con le spine della birra e insegna al neon.
 - [Attiva la prova gratuita](https://dsfabio.com/attiva): modulo per richiedere la prova di 30 giorni, con conferma via email.
 - [Assistenza clienti](https://dsfabio.com/assistenza): richieste di aggiornamento per chi è già cliente.
 - [Privacy, cookie e termini](https://dsfabio.com/privacy): informativa, cookie e condizioni del servizio.

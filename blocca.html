@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blocca una richiesta · DS Service</title>
+  <meta name="description" content="Blocca la richiesta e proteggi il tuo menu.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0d0a1f">
+  <link rel="stylesheet" href="/assets/fonts/inter.css">
+  <style>
+    /* =================================================================
+       Pagina Assistenza – DS Service
+       Tutti gli stili valgono solo dentro .dsf-page: non toccano altro.
+       ================================================================= */
+    html { -webkit-text-size-adjust: 100%; }
+    body.dsf-body { margin: 0; background: #0d0a1f; }
+    .dsf-page {
+      --bg: #0d0a1f;
+      --bg-2: #15112e;
+      --card: rgba(255, 255, 255, 0.04);
+      --line: rgba(255, 255, 255, 0.10);
+      --text: #f2f0ff;
+      --muted: #a9a3c9;
+      --neon: #7c5cff;
+      --neon-2: #22d3ee;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px; line-height: 1.55;
+      background:
+        radial-gradient(900px 500px at 15% -10%, rgba(124, 92, 255, 0.22), transparent 60%),
+        radial-gradient(700px 400px at 100% 10%, rgba(34, 211, 238, 0.12), transparent 60%),
+        var(--bg);
+    }
+    .dsf-page *, .dsf-page *::before, .dsf-page *::after { box-sizing: border-box; }
+    .dsf-page a { color: inherit; text-decoration: none; }
+    .dsf-page .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* intestazione */
+    .dsf-page .top { position: sticky; top: 0; z-index: 10; background: rgba(13, 10, 31, 0.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .dsf-page .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+    .dsf-page .logo { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+    .dsf-page .logo span { background: linear-gradient(90deg, var(--neon), var(--neon-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .dsf-page .nav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); }
+    .dsf-page .nav a:hover { color: var(--text); }
+    .dsf-page .nav .is-active { color: var(--text); font-weight: 600; }
+    .dsf-page .cta { padding: 9px 16px; border-radius: 999px; background: linear-gradient(90deg, var(--neon), #9b6bff); color: #fff !important; font-weight: 600; white-space: nowrap; }
+    .dsf-page .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 7px 11px; font: inherit; font-size: 14px; cursor: pointer; }
+
+    /* testata */
+    .dsf-page .hero { text-align: center; padding: 56px 0 28px; }
+    .dsf-page .badge { display: inline-block; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(124, 92, 255, 0.45); background: rgba(124, 92, 255, 0.12); color: #cbbcff; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+    .dsf-page h1 { margin: 0 0 12px; font-size: clamp(30px, 5vw, 46px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
+    .dsf-page .hero p { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: 17px; }
+
+    /* contenuto */
+    .dsf-page main { flex: 1; padding-bottom: 56px; }
+    .dsf-page .grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
+    .dsf-page .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+    .dsf-page .side { display: grid; gap: 16px; }
+    .dsf-page .side h2 { margin: 0 0 10px; font-size: 16px; }
+    .dsf-page .side p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .dsf-page .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 12px; font-size: 14px; color: var(--muted); }
+    .dsf-page .steps li { counter-increment: s; display: flex; gap: 10px; }
+    .dsf-page .steps li::before { content: counter(s); flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--neon), var(--neon-2)); }
+    .dsf-page .contact { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); margin-top: 8px; font-size: 14px; font-weight: 500; }
+    .dsf-page .contact:hover { border-color: rgba(124, 92, 255, 0.6); }
+
+    /* footer */
+    .dsf-page footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+    .dsf-page footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+    .dsf-page footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+    .dsf-page footer a:hover { color: var(--text); }
+
+    
+
+    @media (max-width: 900px) {
+      .dsf-page .grid { grid-template-columns: 1fr; }
+      .dsf-page .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 20px 16px; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+      .dsf-page .nav.open { display: flex; }
+      .dsf-page .nav a { padding: 10px 0; width: 100%; }
+      .dsf-page .nav .cta { margin-top: 8px; text-align: center; }
+      .dsf-page .menu-btn { display: block; }
+    }
+    @media (max-width: 560px) {
+      .dsf-page .card { padding: 20px 16px; border-radius: 16px; }
+      .dsf-page .hero { padding: 40px 0 20px; }
+    }
+  </style>
+<style>
+  .sec-card { max-width: 560px; margin: 0 auto; }
+  .sec-card p { line-height: 1.6; }
+  .sec-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px; margin: 8px 0 0;
+    border: 0; border-radius: 12px; background: #7c5cff; color: #fff; font: inherit; font-weight: 700; font-size: 1.05em; cursor: pointer; padding: 10px 14px; }
+  .sec-btn.danger { background: #e5484d; }
+  .sec-btn[disabled] { opacity: .6; cursor: wait; }
+  .sec-msg { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.06); line-height: 1.5; }
+  .sec-msg.ok { background: rgba(47, 182, 109, .16); }
+  .sec-msg.err { background: rgba(229, 72, 77, .16); }
+  .sec-list { margin: 12px 0 0; padding-left: 20px; line-height: 1.7; }
+  .sec-box { margin: 12px 0; padding: 12px 14px; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; }
+  [hidden] { display: none !important; }
+  </style>
+</head>
+<body class="dsf-body">
+<div class="dsf-page">
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="https://dsfabio.com/">DS<span>Fabio</span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="dsf-nav">Menu</button>
+      <nav class="nav" id="dsf-nav" aria-label="Navigazione">
+        <a href="https://dsfabio.com/#come-funziona">Come funziona</a>
+        <a href="https://dsfabio.com/modelli">Modelli</a>
+        <a href="https://dsfabio.com/#offerta">Offerta</a>
+        <a href="https://dsfabio.com/about">Chi sono</a>
+        <a href="https://dsfabio.com/#faq">FAQ</a>
+        <a href="https://dsfabio.com/assistenza">Assistenza</a>
+        <a class="cta" href="https://dsfabio.com/attiva">Prova gratis 30 giorni</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Non sei stato tu?</h1>
+        <p>Blocca la richiesta e proteggi il tuo menu.</p>
+      </div>
+    </section>
+    <div class="wrap">
+        <section class="card sec-card" aria-label="Blocca la richiesta">
+          <h2 id="sec-title">Controllo la richiesta…</h2>
+          <div id="sec-info" hidden>
+            <div class="sec-box" id="sec-req"></div>
+            <p>Se <strong>non</strong> hai inviato tu questa richiesta, premi il pulsante:</p>
+            <ul class="sec-list">
+              <li>la modifica <strong>non va online</strong> (se lo fosse già, rimettiamo il menu com'era);</li>
+              <li>il tuo codice cliente viene <strong>disattivato per sempre</strong> e ne creiamo uno nuovo;</li>
+              <li>ti inviamo la nuova scheda cliente per email.</li>
+            </ul>
+            <button class="sec-btn danger" id="sec-go" type="button">🛑 Non sono stato io – blocca la modifica</button>
+            <p style="margin-top:12px;opacity:.75;font-size:.92em">Se invece l'hai inviata tu, chiudi pure questa pagina: non devi fare nulla.</p>
+          </div>
+          <p class="sec-msg" id="sec-msg" hidden role="status" aria-live="polite"></p>
+        </section>
+    </div>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 DS Service di Fabio Dos Santos Souza · Meldola (FC)</span>
+      <nav aria-label="Link legali">
+        <a href="https://dsfabio.com/">Home</a>
+        <a href="https://dsfabio.com/privacy#privacy">Privacy</a>
+        <a href="https://dsfabio.com/privacy#cookies">Cookie</a>
+        <a href="https://dsfabio.com/privacy#terms">Termini e condizioni</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+<script>
+  (function () {
+    var btn = document.querySelector('.dsf-page .menu-btn'), nav = document.getElementById('dsf-nav');
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  })();
+</script>
+<script>
+(function () {
+  var SUPABASE_URL = 'https://xzhbyxvlrxemujrqatbl.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_sfam2xLCQig0550kvfkUdg_yGaU0IA_';
+  function rpc(name, body) {
+    return fetch(SUPABASE_URL + '/rest/v1/rpc/' + name, {
+      method: 'POST', headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (r) { return r.json().catch(function () { return null; }).then(function (j) {
+      if (!r.ok) throw new Error((j && j.message) || 'Servizio non disponibile, riprova tra poco.'); return j; }); });
+  }
+  // il codice del link resta solo in memoria: lo togliamo subito dall'indirizzo (cronologia, schermate)
+  var token = '';
+  try { var qs = new URLSearchParams(location.search); token = (qs.get('t') || '').toLowerCase();
+        if (qs.has('t')) history.replaceState(null, '', location.pathname); } catch (e) {}
+  if (!/^[0-9a-f]{64}$/.test(token)) token = '';
+  function $(id) { return document.getElementById(id); }
+  function msg(text, kind) { var m = $('sec-msg'); m.textContent = text; m.className = 'sec-msg ' + (kind || ''); m.hidden = false; }
+
+  var go = $('sec-go');
+  function done(name) {
+    $('sec-title').textContent = 'Fatto, il tuo menu è protetto';
+    $('sec-info').hidden = true;
+    msg('✅ Abbiamo bloccato la richiesta' + (name ? ' per ' + name : '') + ' e cambiato il tuo codice cliente: quello vecchio non funziona più. Ti invieremo a breve la nuova scheda per email. Per qualsiasi dubbio scrivici a info@dsfabio.com.', 'ok');
+  }
+  if (!token) { $('sec-title').textContent = 'Link non valido'; msg('Apri il pulsante dall\'email che ti abbiamo inviato. Se qualcosa non va scrivici subito a info@dsfabio.com.', 'err'); }
+  else rpc('request_block_info', { p_token: token }).then(function (r) {
+    if (!r || !r.ok) { $('sec-title').textContent = 'Link non valido'; return msg((r && r.message) || 'Link non valido.', 'err'); }
+    if (r.done) return done(r.business);
+    $('sec-title').textContent = 'Richiesta per il menu di ' + r.business;
+    var box = $('sec-req'); box.textContent = '';
+    var b = document.createElement('strong'); b.textContent = r.subject; box.appendChild(b);
+    box.appendChild(document.createElement('br'));
+    box.appendChild(document.createTextNode('Ricevuta il ' + r.when));
+    $('sec-info').hidden = false;
+  }).catch(function (e) { $('sec-title').textContent = 'Servizio non disponibile'; msg(e.message, 'err'); });
+  go.addEventListener('click', function () {
+    go.disabled = true; go.textContent = 'Blocco in corso…';
+    rpc('request_block', { p_token: token }).then(function (r) {
+      if (!r || !r.ok) throw new Error((r && r.message) || 'Blocco non riuscito.');
+      done(r.business);
+    }).catch(function (e) { go.disabled = false; go.textContent = '🛑 Non sono stato io – blocca la modifica'; msg(e.message + ' Se non riesci, scrivici subito a info@dsfabio.com.', 'err'); });
+  });
+})();
+</script>
+</body>
+</html>

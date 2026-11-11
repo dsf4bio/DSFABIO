@@ -357,13 +357,15 @@
                 codeInput.value = cleanCode(codeInput.value);
                 try { codeInput.setSelectionRange(p, p); } catch (e) {}
               });
-              // codice già compilato dai link nelle email (?codice=…); il QR della scheda apre la pagina vuota
-              var qs = new URLSearchParams(location.search);
-              var fromQr = cleanCode(qs.get('codice') || qs.get('code'));
-              if (fromQr) {
-                codeInput.value = fromQr;
-                if (CODE_PATTERN.test(fromQr)) $('dsf-code-hint').textContent = 'Codice già inserito: premi Continua.';
-              }
+              // sicurezza: il codice cliente si scrive SEMPRE a mano. Un eventuale ?codice=… nei vecchi
+              // link viene ignorato e tolto dall'indirizzo (non resta nella cronologia del browser).
+              try {
+                var qs = new URLSearchParams(location.search);
+                if (qs.has('codice') || qs.has('code')) {
+                  qs.delete('codice'); qs.delete('code');
+                  history.replaceState(null, '', location.pathname + (qs.toString() ? '?' + qs : '') + location.hash);
+                }
+              } catch (e) {}
               details.addEventListener('input', function () { $('dsf-count').textContent = details.value.length; });
               root.querySelectorAll('.dsf-choice input').forEach(function (cb) {
                 cb.addEventListener('change', function () { cb.parentNode.classList.toggle('is-on', cb.checked); });

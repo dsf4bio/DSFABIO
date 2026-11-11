@@ -89,9 +89,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card .tag{position:absolute;top:12px;left:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(15,20,18,.75);border:1px solid var(--line);color:var(--gold)}
 .card .plus{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#0f1412;font-weight:800;transition:transform .4s}
 .card:hover .plus{transform:rotate(90deg)}
-.foot{border-top:1px solid var(--line);padding:26px 0 34px;color:var(--sub);font-size:.84rem;text-align:center}
-.foot b{color:var(--ink);font-family:Fraunces,serif;font-weight:500}
 @media (prefers-reduced-motion:reduce){.orbit .ring,.orbit .dish{animation:none}.card{opacity:1;transform:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px}
+footer .finfo{opacity:.85}
+footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{border-top:1px solid var(--line);color:var(--sub)}
+footer strong{font-family:Fraunces,Georgia,serif;font-weight:500;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -102,10 +116,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <span class="kick">Cucina contemporanea · Milano</span>
 <h1 class="serif">Au<i>ra</i></h1>
 <p>Stagione, territorio e tecnica. Tocca un piatto per scoprire ingredienti e allergeni.</p>
-<div class="info"><span class="open">Aperto ora · fino alle 23:30</span><span>Via Tortona 12</span><span>🇮🇹 · 🇬🇧</span></div>
+<div class="info dsm-fake"><span class="open">Aperto ora · fino alle 23:30</span><span>Via Tortona 12</span><span>🇮🇹 · 🇬🇧</span></div>
 </div>
 <div class="orbit" aria-hidden="true">
-<svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150 150m-132 0a132 132 0 1 1 264 0a132 132 0 1 1-264 0"/></defs><text><textPath href="#circ">STAGIONE · TERRITORIO · TECNICA · STAGIONE · TERRITORIO · TECNICA ·</textPath></text></svg>
+<svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150 150m-132 0a132 132 0 1 1 264 0a132 132 0 1 1-264 0"/></defs><text><textPath href="#circ" id="ring-t">STAGIONE · TERRITORIO · TECNICA · STAGIONE · TERRITORIO · TECNICA ·</textPath></text></svg>
 <div class="dish" id="hero-dish"></div>
 </div>
 </div>
@@ -117,12 +131,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="cat-title"><h2 id="cat-name"></h2><p id="cat-desc"></p></div>
 <div class="grid" id="grid"></div>
 </main>
-<footer class="foot"><div class="wrap"><b>Aura</b> · Via Tortona 12, Milano · Il coperto è incluso. Per allergie e intolleranze chiedi al personale.</div></footer>
+<footer>
+  <strong>Aura</strong>
+  <div class="finfo">Via Tortona 12, Milano · Tel. 02 1234567</div><small>Dati di esempio</small>
+</footer>
 
 <script src="assets/piatti.js"></script>
 <script>
 (function () {
 'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
   {n:'Antipasti', d:'Per aprire la serata, leggeri e di stagione.', ic:['insalata',{}], items:[
     {n:'Burrata e pomodori', d:'Burrata pugliese, pomodori confit, basilico e olio al limone.', p:'14 €', art:'insalata', al:['latte'], tags:['Vegetariano']},
@@ -145,15 +163,20 @@ var M = [
     {n:'Millefoglie alle fragole', d:'Sfoglia caramellata, crema diplomatica, fragole.', p:'10 €', art:'torta', al:['glutine','uova','latte']}
   ]}
 ];
+/* ============ */
 var $ = function (s) { return document.querySelector(s); };
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-$('#hero-dish').innerHTML = Piatti.svg('pasta');
+/* Piatto in testata: il primo primo piatto (pasta, risotto, pizza…), altrimenti il primo del menu */
+var all = [];
+M.forEach(function (c) { (c.items || []).forEach(function (it) { all.push([it, c]); }); });
+var star = all.filter(function (x) { var k = x[0].art || Piatti.guess(x[0].n); return /pasta|risotto|pizza|tagliata|pesce|lasagna/.test(k || ''); })[0] || all[0];
+if (star) $('#hero-dish').innerHTML = Piatti.art(star[0], star[1]);
 
 var cats = $('#cats'), grid = $('#grid'), cur = -1;
 cats.innerHTML = M.map(function (c, i) {
   return '<button class="flip" type="button" aria-pressed="false" data-i="' + i + '"><span class="flip-in">' +
     '<span class="face front"><small>0' + (i + 1) + '</small><b>' + c.n + '</b></span>' +
-    '<span class="face back">' + Piatti.svg(c.ic[0], c.ic[1]) + '<span><b>' + c.n + '</b><small>' + c.items.length + ' piatti</small></span></span>' +
+    '<span class="face back">' + Piatti.catArt(c) + '<span><b>' + c.n + '</b><small>' + c.items.length + (c.items.length === 1 ? ' piatto' : ' piatti') + '</small></span></span>' +
     '</span></button>';
 }).join('');
 
@@ -161,13 +184,14 @@ function show(i) {
   if (i === cur) return; cur = i;
   var c = M[i];
   Array.prototype.forEach.call(cats.children, function (b, k) { b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-  $('#cat-name').textContent = c.n; $('#cat-desc').textContent = c.d;
-  var list = c.items.map(function (it) { it.cat = c.n; return it; });
+  $('#cat-name').innerHTML = c.n; $('#cat-desc').innerHTML = c.s || c.d || '';
+  var list = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
   grid.innerHTML = list.map(function (it, k) {
-    return '<button class="card" type="button" data-k="' + k + '" aria-label="' + it.n + ', ' + it.p + '">' +
-      '<div class="pic">' + Piatti.svg(it.art, it.o) + '</div>' +
-      (it.tags && it.tags[0] ? '<span class="tag">' + it.tags[0] + '</span>' : '') + '<span class="plus" aria-hidden="true">+</span>' +
-      '<div class="body"><h3>' + it.n + '</h3><p>' + it.d + '</p><div class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="price">' + it.p + '</span></div></div></button>';
+    var tag = (it.tags && it.tags[0]) || Piatti.label(it);
+    return '<button class="card" type="button" data-k="' + k + '" aria-label="' + it.n + ', ' + Piatti.price(it.p) + '">' +
+      '<div class="pic">' + Piatti.art(it, c) + '</div>' +
+      (tag ? '<span class="tag">' + tag + '</span>' : '') + '<span class="plus" aria-hidden="true">+</span>' +
+      '<div class="body"><h3>' + it.n + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '') + '<div class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="price">' + Piatti.price(it.p) + '</span></div></div></button>';
   }).join('');
   Array.prototype.forEach.call(grid.children, function (card, k) {
     card.addEventListener('click', function () { Piatti.modal(list, k, card); });

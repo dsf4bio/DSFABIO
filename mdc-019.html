@@ -46,7 +46,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Spine della birra */
 .bar{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 82%,rgba(20,16,12,0));padding:14px 0 18px}
-.rail{position:relative;max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0 10px}
+.rail{position:relative;max-width:640px;margin:0 auto;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(78px,1fr);gap:6px;padding:0 10px;overflow-x:auto;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
 .rail::before{content:"";position:absolute;left:4%;right:4%;top:68px;height:16px;border-radius:8px;background:linear-gradient(#e2a26b,var(--cop) 40%,#7a4320);box-shadow:0 6px 14px rgba(0,0,0,.5)}
 .tap{position:relative;display:flex;flex-direction:column;align-items:center}
 .handle{position:relative;width:24px;height:64px;border-radius:12px 12px 6px 6px;background:var(--hc,#3a2a1c);box-shadow:inset -4px 0 0 rgba(0,0,0,.25),0 6px 10px rgba(0,0,0,.4);transform-origin:50% 100%;transition:transform .5s cubic-bezier(.3,1.6,.5,1);display:grid;place-items:center}
@@ -86,10 +87,26 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes fillB{from{width:0}}
 .row .pr{flex:0 0 auto;font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;font-size:1.6rem;color:var(--amber)}
 .tagx{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:6px;border:1px solid var(--neon);color:var(--neon);margin-left:6px;vertical-align:middle}
-.foot{text-align:center;padding:26px 16px 34px;border-top:1px solid var(--line);color:var(--sub);font-size:.85rem}
-.foot b{font-family:"Big Shoulders Display",Impact,sans-serif;font-size:1.4rem;color:var(--ink);letter-spacing:.06em}
 @media (max-width:520px){.row .art{flex-basis:70px;height:70px}.row .art .pa{height:70px}.cat-h{flex-direction:column;align-items:start}.cat-h p{text-align:left}.rail::before{top:68px}}
 @media (prefers-reduced-motion:reduce){.neon,.neon h1 .f,.fox{animation:none}.list.go .row{animation:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px}
+footer .finfo{opacity:.85}
+footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{border-top:1px solid var(--line);color:var(--sub)}
+footer strong{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.row .art img.pa-photo{height:84px;width:84px}
+@media (max-width:520px){.row .art img.pa-photo{height:70px;width:70px}}
 </style>
 </head>
 <body>
@@ -97,7 +114,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <header class="wall">
 <div class="neon"><small>Pub · craft beer · kitchen</small><h1>THE <span>C<span class="f">O</span>PPER</span> F<span class="f" style="animation-delay:-2s">O</span>X</h1></div>
 <span class="fox" aria-hidden="true">🦊</span>
-<div class="live">🎸 Stasera musica dal vivo · <b>happy hour 18–20</b></div>
+<div class="live dsm-fake">🎸 Stasera musica dal vivo · <b>happy hour 18–20</b></div>
 </header>
 
 <nav class="bar" aria-label="Categorie del menu"><div class="rail" id="rail"></div></nav>
@@ -106,12 +123,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="cat-h"><h2 id="cat-name"></h2><p id="cat-desc"></p></div>
 <div class="list" id="list" aria-live="polite"></div>
 </main>
-<footer class="foot"><b>THE COPPER FOX</b><br>Via dei Mille 18, Bologna · Cucina aperta fino alle 00:30</footer>
+<footer>
+  <strong>The Copper Fox</strong>
+  <div class="finfo">Via dei Mille 18, Bologna · Tel. 051 123456</div><small>Dati di esempio</small>
+</footer>
 
 <script src="assets/piatti.js"></script>
 <script>
 (function () {
 'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
   {n:'Alla spina', ic:'BEER', hc:'#7a2a1a', lc:'#f2a516', lc2:'#c97a0a', d:'8 spine che ruotano ogni settimana. Piccola 0,2 · Media 0,4', items:[
     {n:'Copper Lager', d:'Bionda limpida, maltata e beverina. La birra della casa.', p:'5,50 €', art:'birra', al:['glutine'], abv:4.8, tag:'Della casa'},
@@ -135,19 +156,27 @@ var M = [
     {n:'Spritz', d:'L\'aperitivo di sempre, con una fetta d\'arancia.', p:'7 €', art:'spritz', al:['solfiti']}
   ]}
 ];
+/* ============ */
 var $ = function (s) { return document.querySelector(s); };
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var rail = $('#rail'), list = $('#list'), cur = -1;
+/* Colori delle spine a rotazione e scritta sulla leva, se la categoria non li ha */
+var TAPS = [['#7a2a1a', '#f2a516', '#c97a0a'], ['#2f4f2a', '#c8532a', '#8a3a1a'], ['#8a6a1a', '#ffd24a', '#e0a020'], ['#1a4a6a', '#ff5c8a', '#c22a5a'], ['#4a2a6a', '#b48cff', '#7a4ad0'], ['#1a5a4a', '#5ce0b0', '#1a9a7a']];
+M.forEach(function (c, k) {
+  var t = TAPS[k % TAPS.length];
+  c.hc = c.hc || t[0]; c.lc = c.lc || t[1]; c.lc2 = c.lc2 || t[2];
+  if (!c.ic) { var w = String(c.n).replace(/&[a-z#0-9]+;/gi, ' ').split(/\s+/).filter(function (x) { return x.length > 2; })[0] || String(c.n); c.ic = c.e || w.slice(0, 7).toUpperCase(); }
+});
 rail.innerHTML = M.map(function (c, k) {
   return '<button class="tap" type="button" aria-pressed="false" data-i="' + k + '" style="--hc:' + c.hc + ';--lc:' + c.lc + ';--lc2:' + c.lc2 + '"><span class="handle" aria-hidden="true"><i>' + c.ic + '</i></span><span class="spout" aria-hidden="true"></span><span class="stream" aria-hidden="true"></span><span class="glass" aria-hidden="true"><span class="liq"></span><span class="foam"></span></span><b>' + c.n + '</b></button>';
 }).join('');
 
 function render(i) {
-  var c = M[i], items = c.items.map(function (it) { it.cat = c.n; return it; });
-  $('#cat-name').textContent = c.n; $('#cat-desc').textContent = c.d;
+  var c = M[i], items = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
+  $('#cat-name').innerHTML = c.n; $('#cat-desc').innerHTML = c.s || c.d || '';
   list.innerHTML = items.map(function (it, k) {
-    return '<button class="row" type="button" style="--k:' + k + '" data-k="' + k + '"><span class="art">' + Piatti.svg(it.art, it.o) + '</span><span class="tx"><h3>' + it.n + (it.tag ? '<span class="tagx">' + it.tag + '</span>' : '') + '</h3><p>' + it.d + '</p><span class="meta">' +
-      (it.abv ? '<span class="abv" title="Gradazione alcolica"><i style="--abv:' + Math.min(100, it.abv / 10 * 100) + '%"></i>' + it.abv.toFixed(1).replace('.', ',') + '% vol</span>' : '') + '<span class="al">' + Piatti.alIcons(it.al) + '</span></span></span><span class="pr">' + it.p + '</span></button>';
+    return '<button class="row" type="button" style="--k:' + k + '" data-k="' + k + '"><span class="art">' + Piatti.art(it, c) + '</span><span class="tx"><h3>' + it.n + ((it.tag || Piatti.label(it)) ? '<span class="tagx">' + (it.tag || Piatti.label(it)) + '</span>' : '') + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '') + '<span class="meta">' +
+      (it.abv ? '<span class="abv" title="Gradazione alcolica"><i style="--abv:' + Math.min(100, it.abv / 10 * 100) + '%"></i>' + it.abv.toFixed(1).replace('.', ',') + '% vol</span>' : '') + '<span class="al">' + Piatti.alIcons(it.al) + '</span></span></span><span class="pr">' + Piatti.price(it.p) + '</span></button>';
   }).join('');
   list.classList.remove('go'); void list.offsetWidth; list.classList.add('go');
   Array.prototype.forEach.call(list.children, function (b) { b.addEventListener('click', function () { Piatti.modal(items, +b.getAttribute('data-k'), b); }); });

@@ -83,9 +83,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .badge.hot{background:#ff8a00}
 .back{position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;background:var(--red);box-shadow:0 10px 24px rgba(120,40,10,.4);transform:scale(0);transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
 .back.show{transform:scale(1)}
-.foot{background:var(--ink);color:#ffd9a8;text-align:center;font-size:.85rem;padding:26px 16px 34px}
-.foot b{font-family:"Bowlby One",Impact,sans-serif;font-weight:400;color:#fff}
 @media (prefers-reduced-motion:reduce){.puff,.lava{animation:none}.wheel,.lbl{transition:none}.pz{animation:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px}
+footer .finfo{opacity:.85}
+footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{background:var(--ink);color:#ffd9a8}
+footer strong{font-family:"Bowlby One",Impact,sans-serif;font-weight:400;color:#fff}
+.pz .art img.pa-photo{width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -96,7 +111,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <small>Pizzeria napoletana · forno a legna</small>
 <h1 class="bowl">Vesuvio</h1>
 <p>Impasto a 48 ore, pomodoro San Marzano e fior di latte di Agerola. Cotta in 90 secondi a 450 °C.</p>
-<div class="oven"><span>🔥 Forno acceso</span><span>⏱️ Asporto in 15 min</span></div>
+<div class="oven dsm-fake"><span>🔥 Forno acceso</span><span>⏱️ Asporto in 15 min</span></div>
 </div>
 <div class="volcano" aria-hidden="true">
 <span class="puff" style="--x:-30px"></span><span class="puff" style="--x:24px"></span><span class="puff" style="--x:-6px"></span>
@@ -117,12 +132,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="grid" id="grid"></div>
 </main>
 <button class="back" id="back" type="button" aria-label="Torna alla pizza delle categorie">🍕</button>
-<footer class="foot"><b>Vesuvio</b><br>Via Toledo 210, Napoli · Tutte le pizze anche senza glutine (+3 €)</footer>
+<footer>
+  <strong>Vesuvio</strong>
+  <div class="finfo">Via Toledo 210, Napoli · Tel. 081 123456</div><small>Dati di esempio</small>
+</footer>
 
 <script src="assets/piatti.js"></script>
 <script>
 (function () {
 'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
   {n:'Rosse', em:'🍅', top:'basil', items:[
     {n:'Margherita', d:'San Marzano DOP, fior di latte di Agerola, basilico, olio EVO.', p:'7 €', art:'pizza', al:['glutine','latte'], b:'La più amata'},
@@ -146,6 +165,7 @@ var M = [
     {n:'Calice di Aglianico', d:'Rosso campano, pieno e speziato.', p:'5 €', art:'vino', al:['solfiti']}
   ]}
 ];
+/* ============ */
 var $ = function (s) { return document.querySelector(s); };
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var wheel = $('#wheel'), grid = $('#grid'), cur = -1, rot = 0;
@@ -153,7 +173,17 @@ var wheel = $('#wheel'), grid = $('#grid'), cur = -1, rot = 0;
 /* Disegna gli spicchi */
 var R = 150, Ri = 128, n = M.length, step = 360 / n, h = '';
 function pt(a, r) { var t = (a - 90) * Math.PI / 180; return [Math.cos(t) * r, Math.sin(t) * r]; }
+/* Stile dello spicchio dal nome della categoria (rosse, bianche, fritti, bevande) */
+function look(c) {
+  if (c.top) return c.top;
+  var t = String(c.n).toLowerCase();
+  if (/bianc/.test(t)) return 'white';
+  if (/fritt|antipast|stuzzich|snack/.test(t)) return 'fritti';
+  if (/bevand|bere|bibit|birr|vin|drink|cocktail|caff|dolc|dessert/.test(t)) return 'drink';
+  return 'basil';
+}
 M.forEach(function (c, i) {
+  c.top = look(c); c.em = c.em || c.e || '🍕';
   var a0 = i * step - step / 2, a1 = i * step + step / 2, mid = i * step;
   var p0 = pt(a0, R), p1 = pt(a1, R), q0 = pt(a0, Ri), q1 = pt(a1, Ri), m = pt(mid, 92), off = pt(mid, 14);
   var sauce = c.top === 'white' ? '#f7ecd2' : c.top === 'fritti' ? '#e7a43a' : c.top === 'drink' ? '#f2b630' : '#cf3a26';
@@ -166,7 +196,7 @@ M.forEach(function (c, i) {
   h += '<g class="slice" data-i="' + i + '" tabindex="0" role="button" aria-label="' + c.n + '" style="--tx:' + off[0].toFixed(1) + 'px;--ty:' + off[1].toFixed(1) + 'px">' +
     '<path class="crust" d="M0 0L' + p0[0].toFixed(1) + ' ' + p0[1].toFixed(1) + 'A' + R + ' ' + R + ' 0 0 1 ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1) + 'Z" fill="#d9954a" stroke="#fff4e0" stroke-width="3"/>' +
     '<path d="M0 0L' + q0[0].toFixed(1) + ' ' + q0[1].toFixed(1) + 'A' + Ri + ' ' + Ri + ' 0 0 1 ' + q1[0].toFixed(1) + ' ' + q1[1].toFixed(1) + 'Z" fill="' + sauce + '"/>' + tops +
-    '<g transform="translate(' + m[0].toFixed(1) + ' ' + m[1].toFixed(1) + ')"><g class="lbl"><text class="em" text-anchor="middle" y="-6">' + c.em + '</text><text text-anchor="middle" y="16">' + c.n.toUpperCase() + '</text></g></g></g>';
+    '<g transform="translate(' + m[0].toFixed(1) + ' ' + m[1].toFixed(1) + ')"><g class="lbl"><text class="em" text-anchor="middle" y="-6">' + c.em + '</text><text text-anchor="middle" y="16" style="font-size:' + (c.n.length > 16 ? 10 : c.n.length > 11 ? 12 : 15) + 'px">' + c.n.toUpperCase() + '</text></g></g></g>';
 });
 wheel.innerHTML = h;
 
@@ -176,12 +206,12 @@ function show(i, scroll) {
   var target = -i * step, d = ((target - rot) % 360 + 540) % 360 - 180; rot += d;
   wheel.style.setProperty('--r', rot + 'deg');
   Array.prototype.forEach.call(wheel.querySelectorAll('.slice'), function (s, k) { s.classList.toggle('on', k === i); s.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-  var c = M[i], list = c.items.map(function (it) { it.cat = c.n; return it; });
-  $('#cat-name').textContent = c.em + ' ' + c.n;
-  $('#hint').textContent = list.length + ' proposte · tocca una pizza per i dettagli';
+  var c = M[i], list = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
+  $('#cat-name').innerHTML = c.em + ' ' + c.n;
+  $('#hint').textContent = list.length + (list.length === 1 ? ' proposta' : ' proposte') + ' · tocca un piatto per i dettagli';
   grid.innerHTML = list.map(function (it, k) {
-    return '<button class="pz" type="button" style="--k:' + k + '" data-k="' + k + '">' + (it.b ? '<span class="badge' + (it.hot ? ' hot' : '') + '">' + it.b + '</span>' : '') +
-      '<span class="art">' + Piatti.svg(it.art, it.o) + '</span><span><h3>' + it.n + '</h3><p>' + it.d + '</p><span class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="pr">' + it.p + '</span></span></span></button>';
+    return '<button class="pz" type="button" style="--k:' + k + '" data-k="' + k + '">' + ((it.b || Piatti.label(it)) ? '<span class="badge' + (it.hot ? ' hot' : '') + '">' + (it.b || Piatti.label(it)) + '</span>' : '') +
+      '<span class="art">' + Piatti.art(it, c) + '</span><span><h3>' + it.n + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '') + '<span class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="pr">' + Piatti.price(it.p) + '</span></span></span></button>';
   }).join('');
   Array.prototype.forEach.call(grid.children, function (b) { b.addEventListener('click', function () { Piatti.modal(list, +b.getAttribute('data-k'), b); }); });
   if (scroll) setTimeout(function () { $('#list-head').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block: 'start'}); }, reduced ? 0 : 700);

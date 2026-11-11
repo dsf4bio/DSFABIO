@@ -89,9 +89,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes beat{50%{transform:scale(1.08)}}
 @media (max-width:720px){.bento{grid-template-columns:repeat(2,1fr)}.tile.big{grid-column:span 2}}
 @media (max-width:420px){.tile{padding:12px;border-radius:22px}.tile .art{height:100px}.tile.big .art{height:130px}.tile .art .pa{height:100px}.tile.big .art .pa{height:130px}.tile h3{font-size:1.08rem}.tile p{display:none}}
-.foot{text-align:center;padding:26px 16px 34px;background:var(--blush);color:var(--sub);font-size:.85rem}
-.foot b{font-family:"DM Serif Display",serif;font-weight:400;font-size:1.3rem;color:var(--cocoa)}
 @media (prefers-reduced-motion:reduce){.floaty,.sugar,.fresh .bar,.tile .new{animation:none}.bento.swap .tile{animation:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px}
+footer .finfo{opacity:.85}
+footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{background:var(--blush);color:var(--sub)}
+footer strong{font-family:"DM Serif Display",Georgia,serif;font-weight:400;color:var(--cocoa)}
+.tile .art img.pa-photo{height:130px;width:130px}.tile.big .art img.pa-photo{height:170px;width:170px}
+@media (max-width:420px){.tile .art img.pa-photo{height:100px;width:100px}.tile.big .art img.pa-photo{height:130px;width:130px}}
 </style>
 </head>
 <body>
@@ -101,7 +117,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <small>Bar · pasticceria · dal 1987</small>
 <h1 class="serif">Zucchero <em>Velo</em></h1>
 <p>Lievitati, pasticceria fresca e caffè tostato in piccoli lotti. Dalla colazione all'aperitivo.</p>
-<div class="fresh"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14" fill="none" stroke="#ffe3e8" stroke-width="5"/><circle class="bar" cx="18" cy="18" r="14" fill="none" stroke="#e85d7a" stroke-width="5" stroke-linecap="round"/></svg>Cornetti appena sfornati · nuova infornata ogni 30 min</div>
+<div class="fresh dsm-fake"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14" fill="none" stroke="#ffe3e8" stroke-width="5"/><circle class="bar" cx="18" cy="18" r="14" fill="none" stroke="#e85d7a" stroke-width="5" stroke-linecap="round"/></svg>Cornetti appena sfornati · nuova infornata ogni 30 min</div>
 </header>
 
 <nav class="domes wrap" id="domes" aria-label="Categorie del menu"></nav>
@@ -110,12 +126,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="sec-h"><h2 class="serif" id="cat-name"></h2><p id="cat-desc"></p></div>
 <div class="bento" id="bento"></div>
 </main>
-<footer class="foot"><b>Zucchero Velo</b><br>Piazza Garibaldi 3, Parma · Torte su ordinazione con 48 ore di anticipo</footer>
+<footer>
+  <strong>Zucchero Velo</strong>
+  <div class="finfo">Piazza Garibaldi 3, Parma · Tel. 0521 123456</div><small>Dati di esempio</small>
+</footer>
 
 <script src="assets/piatti.js"></script>
 <script>
 (function () {
 'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
   {n:'Colazione', d:'Lievitati sfornati tutta la mattina', ic:['cornetto',{sugar:false}], items:[
     {n:'Cornetto vuoto', d:'Sfoglia al burro francese, 27 strati, glassa all\'albicocca.', p:'1,40 €', art:'cornetto', al:['glutine','uova','latte'], new:1, big:1},
@@ -140,6 +160,7 @@ var M = [
     {n:'Tagliere dolce-salato', d:'Salumi, Parmigiano 30 mesi, mostarda e focaccine.', p:'10 €', art:'tagliere', al:['glutine','latte','senape']}
   ]}
 ];
+/* ============ */
 var BG = ['var(--blush)', 'var(--pist)', 'var(--butter)', 'var(--lav)', '#ffe9d6'];
 var $ = function (s) { return document.querySelector(s); };
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -149,16 +170,19 @@ if (!reduced) { var hero = $('#hero'); for (var i = 0; i < 22; i++) { var s = do
 
 var domes = $('#domes'), bento = $('#bento'), cur = -1;
 domes.innerHTML = M.map(function (c, k) {
-  return '<button class="dome" type="button" aria-pressed="false" data-i="' + k + '"><span class="stage" aria-hidden="true"><span class="plate"></span><span class="cake">' + Piatti.svg(c.ic[0], c.ic[1]) + '</span><span class="glass"></span></span><b>' + c.n + '</b></button>';
+  return '<button class="dome" type="button" aria-pressed="false" data-i="' + k + '"><span class="stage" aria-hidden="true"><span class="plate"></span><span class="cake">' + Piatti.catArt(c) + '</span><span class="glass"></span></span><b>' + c.n + '</b></button>';
 }).join('');
 function show(i) {
   if (i === cur) return; cur = i;
   Array.prototype.forEach.call(domes.children, function (b, k) { b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-  var c = M[i], list = c.items.map(function (it) { it.cat = c.n; return it; });
-  $('#cat-name').textContent = c.n; $('#cat-desc').textContent = c.d;
+  var c = M[i], list = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
+  var anyBig = list.some(function (x) { return x.big; });
+  $('#cat-name').innerHTML = c.n; $('#cat-desc').innerHTML = c.s || c.d || '';
   bento.innerHTML = list.map(function (it, k) {
-    return '<button class="tile' + (it.big ? ' big' : '') + '" type="button" style="--k:' + k + ';--bg:' + BG[(k + i) % BG.length] + '" data-k="' + k + '">' + (it.new ? '<span class="new">Appena sfornato</span>' : '') +
-      '<span class="art">' + Piatti.svg(it.art, it.o) + '</span><span style="display:flex;flex-direction:column;flex:1"><h3>' + it.n + '</h3><p>' + it.d + '</p><span class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="pr">' + it.p + '</span></span></span></button>';
+    /* il primo piatto delle categorie più ricche occupa due caselle */
+    var big = it.big || (!anyBig && k === 0 && list.length >= 3), badge = it.new ? 'Appena sfornato' : Piatti.label(it);
+    return '<button class="tile' + (big ? ' big' : '') + '" type="button" style="--k:' + k + ';--bg:' + BG[(k + i) % BG.length] + '" data-k="' + k + '">' + (badge ? '<span class="new">' + badge + '</span>' : '') +
+      '<span class="art">' + Piatti.art(it, c) + '</span><span style="display:flex;flex-direction:column;flex:1"><h3>' + it.n + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '') + '<span class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="pr">' + Piatti.price(it.p) + '</span></span></span></button>';
   }).join('');
   bento.classList.remove('swap'); void bento.offsetWidth; bento.classList.add('swap');
   Array.prototype.forEach.call(bento.children, function (b) { b.addEventListener('click', function () { Piatti.modal(list, +b.getAttribute('data-k'), b); }); });

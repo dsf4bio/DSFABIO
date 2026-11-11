@@ -89,9 +89,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .it .al{font-size:.85rem;letter-spacing:2px}
 .it .tg{font-size:.7rem;font-weight:900;color:var(--teal);margin-right:6px}
 .it .pr{flex:0 0 auto;font-family:Fredoka,sans-serif;font-weight:700;font-size:1.15rem;color:#fff;background:var(--rust);padding:2px 12px;border-radius:10px;transform:rotate(-3deg);box-shadow:2px 2px 0 var(--rust2)}
-.foot{background:var(--rust);color:#fff;text-align:center;font-size:.85rem;padding:24px 16px 32px}
-.foot b{font-family:Fredoka,sans-serif;font-size:1.2rem}
 @media (prefers-reduced-motion:reduce){.disc,.steam,.glow,.swipe-hint{animation:none}.items.slide{animation:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px}
+footer .finfo{opacity:.85}
+footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{background:var(--rust);color:#fff}
+footer strong{font-family:Fredoka,sans-serif;font-weight:700}
+.it .art img.pa-photo{width:100%;height:100%;border-radius:0}
 </style>
 </head>
 <body>
@@ -102,7 +117,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <small>Piadineria romagnola</small>
 <h1>La Piadaia</h1>
 <p>Impasto a mano ogni mattina, cotta al momento sul testo di terracotta.</p>
-<div class="pills"><span>🔥 Calda in 3 minuti</span><span>🌱 Anche vegana</span></div>
+<div class="pills dsm-fake"><span>🔥 Calda in 3 minuti</span><span>🌱 Anche vegana</span></div>
 </div>
 <div class="testo" aria-hidden="true"><span class="stone"></span><span class="glow"></span><span class="disc" id="disc"></span><span class="steam" style="left:40%"></span><span class="steam" style="left:52%;animation-delay:.9s"></span><span class="steam" style="left:62%;animation-delay:1.7s"></span></div>
 </header>
@@ -124,12 +139,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="items" id="items" aria-live="polite"></div>
 </main>
 <div class="band" aria-hidden="true"></div>
-<footer class="foot"><b>La Piadaia</b><br>Viale Ceccarini 8, Riccione · Impasto con strutto o con olio, a scelta</footer>
+<footer>
+  <strong>La Piadaia</strong>
+  <div class="finfo">Viale Ceccarini 8, Riccione · Tel. 0541 123456</div><small>Dati di esempio</small>
+</footer>
 
 <script src="assets/piatti.js"></script>
 <script>
 (function () {
 'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
   {n:'Piadine', c:'#c4532d', ic:['piadina',{}], items:[
     {n:'La Classica', d:'Prosciutto crudo, squacquerone e rucola. La regina della Riviera.', p:'7,50 €', art:'piadina', o:{f:['#e6918a','#fbf3df','#4fb043']}, al:['glutine','latte'], tg:'⭐ La più chiesta'},
@@ -152,6 +171,7 @@ var M = [
     {n:'Sangiovese', d:'Calice di rosso di Romagna.', p:'4,50 €', art:'vino', al:['solfiti']}
   ]}
 ];
+/* ============ */
 var $ = function (s) { return document.querySelector(s); };
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var deck = $('#deck'), items = $('#items'), dots = $('#dots'), cur = 0;
@@ -161,9 +181,11 @@ var disc = $('#disc'), dh = '';
 for (var i = 0; i < 12; i++) dh += '<i style="left:' + (12 + Math.random() * 72) + '%;top:' + (20 + Math.random() * 56) + '%;width:' + (5 + Math.random() * 8) + 'px;height:' + (3 + Math.random() * 5) + 'px"></i>';
 disc.innerHTML = dh;
 
-/* Carte */
+/* Carte: colori a rotazione se la categoria non ne ha uno */
+var PAL = ['#c4532d', '#1f6f6a', '#e7a83a', '#7a3b8c', '#3b6fb6', '#b8325a'];
+var plural = function (n) { return n + (n === 1 ? ' proposta' : ' proposte'); };
 deck.innerHTML = M.map(function (c, k) {
-  return '<div class="cardc" data-k="' + k + '" style="background:' + c.c + '"><span class="pat"></span><span class="corner">' + (k + 1) + '</span><span class="corner r">' + (k + 1) + '</span><div class="ill">' + Piatti.svg(c.ic[0], c.ic[1]) + '</div><b>' + c.n + '</b><small>' + c.items.length + ' proposte</small></div>';
+  return '<div class="cardc" data-k="' + k + '" style="background:' + (c.c || PAL[k % PAL.length]) + '"><span class="pat"></span><span class="corner">' + (k + 1) + '</span><span class="corner r">' + (k + 1) + '</span><div class="ill">' + Piatti.catArt(c) + '</div><b>' + c.n + '</b><small>' + plural(c.items.length) + '</small></div>';
 }).join('');
 dots.innerHTML = M.map(function (c, k) { return '<button type="button" aria-label="' + c.n + '"></button>'; }).join('');
 var cards = Array.prototype.slice.call(deck.children);
@@ -184,10 +206,10 @@ function layout(dx) {
   Array.prototype.forEach.call(dots.children, function (d, k) { d.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
 }
 function render(dir) {
-  var c = M[cur], list = c.items.map(function (it) { it.cat = c.n; return it; });
-  $('#cat-name').textContent = c.n; $('#cat-count').textContent = list.length + ' proposte';
+  var c = M[cur], list = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
+  $('#cat-name').innerHTML = c.n; $('#cat-count').textContent = plural(list.length);
   items.innerHTML = list.map(function (it, k) {
-    return '<button class="it" type="button" data-k="' + k + '"><span class="art">' + Piatti.svg(it.art, it.o) + '</span><span class="tx"><h3>' + it.n + '</h3><p>' + it.d + '</p><span class="row"><span>' + (it.tg ? '<span class="tg">' + it.tg + '</span>' : '') + '<span class="al">' + Piatti.alIcons(it.al) + '</span></span><span class="pr">' + it.p + '</span></span></span></button>';
+    return '<button class="it" type="button" data-k="' + k + '"><span class="art">' + Piatti.art(it, c) + '</span><span class="tx"><h3>' + it.n + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '') + '<span class="row"><span>' + ((it.tg || Piatti.label(it)) ? '<span class="tg">' + (it.tg || Piatti.label(it)) + '</span>' : '') + '<span class="al">' + Piatti.alIcons(it.al) + '</span></span><span class="pr">' + Piatti.price(it.p) + '</span></span></span></button>';
   }).join('');
   Array.prototype.forEach.call(items.children, function (b) { b.addEventListener('click', function () { Piatti.modal(list, +b.getAttribute('data-k'), b); }); });
   items.style.setProperty('--from', (dir < 0 ? -40 : 40) + 'px');

@@ -3,6 +3,9 @@
    Uso:
      Piatti.svg('pasta', {s:'#d8432f'})  → stringa <svg> animata
      Piatti.modal(lista, indice, elementoDiOrigine)  → apre la scheda
+     Piatti.art(piatto, categoria)  → foto del locale, disegno scelto o indovinato dal nome, oppure emoji
+   I testi dei piatti sono già sicuri per l'HTML (su dsmenu.it li rende sicuri il server):
+   qui non vengono trasformati di nuovo.
    Il popup prende i colori dalle variabili CSS della pagina:
      --pm-bg --pm-ink --pm-sub --pm-accent --pm-accent-ink --pm-art --pm-head --pm-line
    ========================================================= */
@@ -22,6 +25,8 @@ var AL = {
 /* ---------- Animazioni condivise ---------- */
 var CSS = [
 '.pa{display:block;width:100%;height:auto;overflow:visible}',
+'img.pa-photo{aspect-ratio:1;object-fit:cover;border-radius:22%;box-shadow:0 10px 24px rgba(0,0,0,.25)}',
+'.pm-art img.pa-photo{border-radius:20px}',
 '.pa [class*="pa-"]{transform-box:fill-box}',
 '.pa-steam{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;opacity:0;transform-origin:50% 100%;animation:pa-steam 3.2s ease-in-out infinite}',
 '@keyframes pa-steam{0%{opacity:0;transform:translateY(8px) scaleY(.7)}30%{opacity:.6}100%{opacity:0;transform:translateY(-30px) scaleY(1.2)}}',
@@ -475,6 +480,153 @@ D.tagliere = function () {
   return h;
 };
 
+D.emoji = function (o) {
+  var h = plate(132);
+  h += '<g class="pa-bob"><text x="100" y="128" text-anchor="middle" font-size="72" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">' + (o.e || '🍽️') + '</text></g>';
+  if (o.steam !== false) h += steam([82, 118], 70);
+  return h;
+};
+
+/* ---------- Disegno indovinato dal nome del piatto ---------- */
+var GUESS = [
+  [/tiramis|zuppa inglese/, 'tiramisu'],
+  [/panna ?cotta|budino|cr[eè]me caramel|bavarese|mousse|gelat|sorbett|semifredd|affogato/, 'pannacotta'],
+  [/cannol|sfogliatell|bomba|bombolon|krapfen/, 'cannolo'],
+  [/macaron|pasticcin|biscott|cookie|amaretti/, 'macaron'],
+  [/cornett|brioche|croissant|sfoglia(?!t)/, 'cornetto'],
+  [/torta|crostata|cheesecake|millefoglie|sacher|strudel|cake|dolce del giorno/, 'torta'],
+  [/cappuccin|caffe? ?latte|caffellatte|latte macchiato|marocchino/, 'cappuccino'],
+  [/caff[eè]|espresso|ginseng|orzo|macchiato|americano(?! ?cocktail)|decaf/, 'caffe'],
+  [/spritz|aperol|hugo/, 'spritz'],
+  [/cocktail|negroni|mojito|\bgin\b|martini|margarita|daiquiri|mule|sour|tonic|drink|analcolic|moscow|bellini|old fashioned/, 'cocktail'],
+  [/birr|beer|\bipa\b|lager|stout|weiss|pils|\bale\b|porter|alla spina|bionda|ambrata/, 'birra'],
+  [/\bvin[oi]\b|calice|prosecco|champagne|franciacorta|bollicin|sangiovese|chianti|barolo|lambrusco|albana|aglianico|primitivo|montepulciano|vermentino|pinot|chardonnay|cabernet|merlot/, 'vino'],
+  [/spremut|succo|centrifug|smoothie|frullat|aranciata|limonata|estratto|acqua|coca|bibit|t[eè] freddo|soft drink/, 'spremuta'],
+  [/piadin|piada/, 'piadina'],
+  [/crescion|cassone|calzone/, 'crescione'],
+  [/rotol|girell|wrap|kebab|d[uü]r[uü]m|falafel/, 'rotolo'],
+  [/burger|hamburger|panin|sandwich|toast|club/, 'burger'],
+  [/patatin|chips|fries|patate fritte/, 'patatine'],
+  [/suppl|arancin|frittatin|crocchet|polpett|olive ascolane|in carrozza|panzerott|montanar|fritt|tempura|nugget|anell/, 'fritti'],
+  [/pizza|margherita|diavola|capricciosa|marinara|quattro formaggi|4 formaggi|ortolana|boscaiola|napoli|focaccia/, 'pizza'],
+  [/lasagn|parmigiana|cannellon|pasticcio/, 'lasagna'],
+  [/risott|\briso\b|paella/, 'risotto'],
+  [/zupp|minestr|vellutat|ribollita|crema di|brodo|pasta e fagioli|ramen|passatelli in brodo/, 'zuppa'],
+  [/spaghett|linguin|tagliatell|tagliolin|fettuccin|pappardell|penne|rigaton|paccher|bucatin|orecchiett|trofie|strozzapret|garganell|pasta|ravioli|tortell|cappellett|agnolott|gnocch|carbonara|amatriciana|gricia|cacio e pepe|bolognese|pesto/, 'pasta'],
+  [/tagliata|bistecc|fiorentina|filetto|manzo|steak|entrecote|controfiletto|arrost|brasat|ossobuc|cotolett|scaloppin|vitell|agnell|maial|carne/, 'tagliata'],
+  [/costin|ribs|alett|wings|pollo|spiedin|salsicc|grigliat|arrosticin|brace|bbq|pulled/, 'alette'],
+  [/pesce|branzin|orat|salmon|tonn|spigol|baccal|gamber|polp[oi]\b|calamar|seppi|sushi|sashimi|nigiri|uramaki|crudo di mare|tartare di|cozze|vongol|frutti di mare|scoglio|astice|scampi/, 'pesce'],
+  [/tagliere|salumi|formaggi|affettat|antipasto|bruschett|crostin|prosciutto e|culatello|mortadell/, 'tagliere'],
+  [/insalat|burrata|caprese|bowl|pok[eè]|verdur|contorn|grigliata di verdure|carpaccio/, 'insalata']
+];
+function guess(text) {
+  var t = String(text || '').toLowerCase();
+  for (var i = 0; i < GUESS.length; i++) if (GUESS[i][0].test(t)) return GUESS[i][1];
+  return null;
+}
+/* Varianti del disegno in base agli ingredienti scritti nel nome */
+function variant(key, t) {
+  t = String(t || '').toLowerCase();
+  var o = {};
+  if (key === 'pizza') {
+    if (/bianc|quattro formaggi|4 formaggi|focaccia|patate/.test(t)) { o.white = true; o.basil = false; }
+    if (/diavola|salam|piccant|spianata|nduja/.test(t)) { o.top = 'salame'; o.basil = false; }
+    else if (/fungh|porcin|boscaiola/.test(t)) { o.top = 'funghi'; o.basil = false; }
+    else if (/ortolana|verdur|vegetarian/.test(t)) o.top = 'verdure';
+    else if (/crudo|prosciutto|parma|bresaola|speck/.test(t)) { o.top = 'crudo'; o.basil = false; }
+    else if (/capricciosa|olive|napoli|romana|acciugh/.test(t)) o.top = 'olive';
+  }
+  if (key === 'pasta') {
+    if (/carbonara|gricia|cacio|panna|alfredo|burro/.test(t)) { o.white = true; o.extra = /carbonara|gricia|guancial|pancett/.test(t) ? 'pancetta' : ''; }
+    else if (/pesto|basilico|zucchin|asparag|spinac/.test(t)) o.s = '#4f9a3a';
+    else if (/cozz|vongol|scoglio|frutti di mare|mare/.test(t)) o.extra = 'cozze';
+    else if (/rag[uù]|bolognese|cinghial|salsicc/.test(t)) { o.s = '#9c3a1f'; o.n = '#f0c862'; }
+    if (/nero di seppia/.test(t)) { o.s = '#2a2a2a'; o.n = '#3a3a3a'; o.n2 = '#1f1f1f'; }
+  }
+  if (key === 'risotto' && /fungh|porcin/.test(t)) { o.c = '#e3cfa2'; o.top = 'funghi'; }
+  if (key === 'risotto' && /zucca/.test(t)) o.c = '#f0a040';
+  if (key === 'zuppa' && /fagiol|legum|ceci|lentic|ribollita/.test(t)) { o.c = '#8a5a2c'; o.top = 'fagioli'; }
+  if (key === 'zuppa' && /zucca|carot/.test(t)) { o.c = '#e08a2c'; o.top = 'crostini'; }
+  if (key === 'fritti' && /arancin|crocchet|polpett|olive/.test(t)) o.round = true;
+  if (key === 'cornetto') {
+    if (/cioccolat|nutella|nocciol|gianduia/.test(t)) o.fill = '#5a2e14';
+    else if (/crema|pasticcera/.test(t)) o.fill = '#f6d66b';
+    else if (/marmellat|confettur|albicocc|frutti di bosco|lampon/.test(t)) o.fill = '#d9183b';
+    else if (/integral|vegan/.test(t)) o.c = '#c98a4a';
+  }
+  if (key === 'torta' && /cioccolat|sacher|cacao/.test(t)) o.c = '#5a2e14';
+  if (key === 'torta' && /limon|lemon/.test(t)) o.c = '#f6d33c';
+  if (key === 'torta' && /pistacch|menta/.test(t)) o.c = '#8fc46a';
+  if (key === 'torta' && /visciol|amaren|ciliegi|frutti di bosco|mirtill/.test(t)) o.c = '#8e1b3a';
+  if (key === 'pannacotta' && /caramel/.test(t)) o.c = '#c8782a';
+  if (key === 'pannacotta' && /cioccolat/.test(t)) o.c = '#4a2410';
+  if (key === 'birra') {
+    if (/stout|porter|scura|nera|dark|bock/.test(t)) { o.c = '#2a0f05'; o.c2 = '#4a1f0c'; o.foam = '#e9d7b5'; }
+    else if (/weiss|weizen|blanche|bianca|frumento/.test(t)) { o.c = '#f2c14e'; o.c2 = '#ffe08a'; }
+    else if (/ipa|rossa|ambrat|red|amber|apa/.test(t)) { o.c = '#d9821a'; o.c2 = '#f0a83a'; }
+  }
+  if (key === 'vino' && /bianc|prosecco|champagne|franciacorta|bollicin|albana|vermentino|chardonnay|pinot grigio|moscato|passito/.test(t)) o.c = '#e8c35a';
+  if (key === 'vino' && /ros[eé]|rosato/.test(t)) o.c = '#f08aa0';
+  if (key === 'cocktail') {
+    if (/negroni|campari|americano|boulevardier/.test(t)) { o.c = '#c8102e'; o.g1 = '#ff9f1a'; o.g2 = '#ffc768'; }
+    else if (/mojito|menta|basil|matcha/.test(t)) { o.c = '#cdeeb0'; o.g1 = '#7fae4a'; o.g2 = '#b8e08a'; }
+    else if (/gin|tonic|martini|vodka/.test(t)) { o.c = '#d6f0ff'; if (/martini/.test(t)) o.garnish = 'olive'; }
+    else if (/mule|ginger/.test(t)) { o.c = '#e8d2a0'; o.g1 = '#7fae4a'; o.g2 = '#b8e08a'; }
+    else if (/blu|curacao/.test(t)) o.c = '#3aa0ff';
+  }
+  if (key === 'spremuta') {
+    if (/limon/.test(t)) { o.c = '#f6e27a'; o.slice = '#f6d33c'; o.slice2 = '#fbe98a'; }
+    else if (/acqua|tonic/.test(t)) { o.c = '#d9f1ff'; o.slice = '#7fd3ff'; o.slice2 = '#cfefff'; }
+    else if (/coca|cola|chinotto|t[eè]/.test(t)) { o.c = '#5a2410'; }
+    else if (/fragol|frutti rossi|anguria|pomodoro/.test(t)) { o.c = '#e5394a'; o.slice = '#e5392b'; o.slice2 = '#ff8a8a'; }
+    else if (/kiwi|mela verde|centrifug|green|detox|sedano/.test(t)) { o.c = '#9bd13a'; o.slice = '#5aa13b'; o.slice2 = '#c8ee8a'; }
+  }
+  if (key === 'piadina' || key === 'rotolo' || key === 'crescione') {
+    var f = [];
+    if (/crudo|prosciutto|mortadell|cotto|speck|bresaola/.test(t)) f.push('#e6918a');
+    if (/salsicc|porchett|kebab|carne|pollo|hamburger/.test(t)) f.push('#8a4a2b');
+    if (/squacquer|stracchin|mozzarell|formagg|fontina|ricotta|tzatziki/.test(t)) f.push('#fbf3df');
+    if (/rucol|verdur|insalat|spinac|erbe|biet|zucchin|falafel/.test(t)) f.push('#4fb043');
+    if (/pomodor|peperon/.test(t)) f.push('#e5392b');
+    if (/nutella|cioccolat|nocciol/.test(t)) f.push('#5a2e14');
+    if (/salmon/.test(t)) f.push('#ff8a5c');
+    if (f.length) { if (key === 'piadina') o.f = f.slice(0, 3); else { o.c = f[0]; o.c2 = f[1] || f[0]; } }
+  }
+  return o;
+}
+
+/* Disegno da mostrare per un piatto: foto del locale, disegno scelto, indovinato o emoji */
+var PHOTO_OK = /^https:\/\/[A-Za-z0-9.-]+\/storage\/v1\/object\/public\/menu-photos\/[0-9a-f-]{36}\/[A-Za-z0-9_-]{6,40}\.(webp|jpg|jpeg|png)$/;
+function art(it, cat) {
+  if (it.ph && PHOTO_OK.test(it.ph)) return '<img class="pa pa-photo" src="' + it.ph + '" alt="" loading="lazy" decoding="async">';
+  if (it.art) return svg(it.art, it.o);
+  var text = [it.n, it.d].join(' '), key = guess(it.n) || guess(text) || (cat ? guess(cat.n || cat.title) : null);
+  if (key) return svg(key, variant(key, text));
+  return svg('emoji', {e: it.e || (cat && cat.e) || '🍽️'});
+}
+/* Disegno per una categoria: quello scelto, oppure quello del primo piatto */
+function catArt(c) {
+  if (c.ic) return svg(c.ic[0], c.ic[1]);
+  var k = guess(c.n), first = (c.items || [])[0];
+  if (k) return svg(k, variant(k, c.n));
+  if (first) return art(first, c);
+  return svg('emoji', {e: c.e || '🍽️', steam: false});
+}
+/* Prezzo: dal gestionale arriva un numero, nei modelli un testo già pronto */
+function price(p) {
+  if (typeof p === 'number') return p.toFixed(2).replace('.', ',').replace(',00', '') + ' €';
+  return p == null ? '' : String(p);
+}
+/* Etichetta del piatto (consigliato, piccante, veg, novità…) */
+function label(it) {
+  if (it.lb) return it.lb;
+  if (it.top) return 'Consigliato';
+  if (it.hot) return 'Piccante';
+  if (it.veg) return 'Veg';
+  if (it.isNew) return 'Novità';
+  return '';
+}
+
 /* ---------- Generatore SVG ---------- */
 function svg(key, opts) {
   var o = {}; for (var k in (opts || {})) o[k] = opts[k];
@@ -485,7 +637,12 @@ function svg(key, opts) {
 
 /* ---------- Popup scheda piatto ---------- */
 var dlg = null, list = [], idx = 0, sx = null;
-function esc(t) { return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+function tags(it) {
+  var t = (it.tags || []).slice();
+  if (!t.length && label(it)) t.push(label(it));
+  [[it.hot, '🌶 Piccante'], [it.veg, '🌱 Veg'], [it.isNew, '✨ Novità']].forEach(function (x) { if (x[0] && t.indexOf(x[1]) < 0 && t.indexOf(x[1].slice(3)) < 0) t.push(x[1]); });
+  return t;
+}
 function build() {
   dlg = document.createElement('dialog');
   dlg.className = 'pm';
@@ -502,13 +659,13 @@ function build() {
 }
 function fill() {
   var it = list[idx];
-  dlg.querySelector('.pm-pic').innerHTML = svg(it.art, it.o);
+  dlg.querySelector('.pm-pic').innerHTML = art(it, it.catObj);
   var al = (it.al || []).map(function (a) { var x = AL[a]; return x ? '<li><span aria-hidden="true">' + x[0] + '</span>' + x[1] + '</li>' : ''; }).join('');
   dlg.querySelector('.pm-body').innerHTML =
-    (it.cat ? '<div class="pm-cat">' + esc(it.cat) + '</div>' : '') +
-    '<div class="pm-head"><h2 id="pm-t">' + esc(it.n) + '</h2><span class="pm-price">' + esc(it.p) + '</span></div>' +
-    '<p class="pm-desc">' + esc(it.d) + '</p>' +
-    (it.tags && it.tags.length ? '<div class="pm-tags">' + it.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' : '') +
+    (it.cat ? '<div class="pm-cat">' + it.cat + '</div>' : '') +
+    '<div class="pm-head"><h2 id="pm-t">' + it.n + '</h2><span class="pm-price">' + price(it.p) + '</span></div>' +
+    (it.d ? '<p class="pm-desc">' + it.d + '</p>' : '') +
+    (tags(it).length ? '<div class="pm-tags">' + tags(it).map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' : '') +
     '<div class="pm-al"><h3>Allergeni</h3>' + (al ? '<ul>' + al + '</ul>' : '<p class="none">Nessuno dei 14 allergeni principali</p>') + '</div>' +
     '<p class="pm-note">Per intolleranze o allergie chiedi sempre conferma al personale.</p>';
   var many = list.length > 1;
@@ -550,5 +707,5 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dl
 /* Etichette allergeni brevi per le card */
 function alIcons(arr) { return (arr || []).map(function (a) { var x = AL[a]; return x ? '<span title="' + x[1] + '">' + x[0] + '</span>' : ''; }).join(''); }
 
-window.Piatti = {svg: svg, modal: open, close: close, al: AL, alIcons: alIcons, keys: Object.keys(D)};
+window.Piatti = {svg: svg, art: art, catArt: catArt, guess: guess, price: price, label: label, modal: open, close: close, al: AL, alIcons: alIcons, keys: Object.keys(D)};
 })();

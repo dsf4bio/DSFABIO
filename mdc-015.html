@@ -84,10 +84,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .dish .al{font-size:.82rem;margin-top:3px;letter-spacing:2px}
 .nonna{display:inline-block;margin-left:6px;font-family:Caveat,cursive;font-size:1rem;color:#fff;background:var(--green);padding:0 8px;border-radius:6px;transform:rotate(-3deg)}
 .stamp{position:absolute;right:16px;top:16px;width:84px;height:84px;border-radius:50%;border:3px solid rgba(168,50,42,.6);color:rgba(168,50,42,.7);display:grid;place-items:center;text-align:center;font-family:Caveat,cursive;font-weight:700;font-size:1rem;line-height:1;transform:rotate(14deg)}
-.foot{text-align:center;color:#e7d4b0;font-size:.85rem;padding:0 16px 34px}
-.foot b{font-family:Caveat,cursive;font-size:1.3rem;color:#f2c14e}
 @media (max-width:520px){.dish .plate{flex-basis:64px;width:64px;height:64px}.stamp{width:58px;height:58px;font-size:.78rem;right:8px;top:8px;opacity:.7}.page .sub{padding-right:56px}.page{padding:24px 14px 24px 30px}}
 @media (prefers-reduced-motion:reduce){.sign,.flame,.spark{animation:none}.page.turn{animation:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px}
+footer .finfo{opacity:.85}
+footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{color:#e7d4b0;padding-top:4px}
+footer strong{font-family:Caveat,cursive;font-size:2rem;color:#f2c14e}
+.dish .plate img.pa-photo{width:100%;height:100%;border-radius:50%}
 </style>
 </head>
 <body>
@@ -95,18 +110,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <header class="top">
 <div class="plank"><small>Trattoria · cucina di casa</small><h1>Il Focolare</h1></div>
 <div class="fire" aria-hidden="true"><span class="log"></span><span class="log b"></span><span class="log c"></span><span class="flame f2"></span><span class="flame"></span><span class="flame f3"></span><span class="spark" style="--x:-20px"></span><span class="spark" style="--x:16px;animation-delay:.7s"></span><span class="spark" style="--x:-6px;animation-delay:1.4s"></span></div>
-<p class="since">dal 1962 · brace accesa tutti i giorni</p>
+<p class="since dsm-fake">dal 1962 · brace accesa tutti i giorni</p>
 </header>
 
 <nav class="rope" aria-label="Categorie del menu"><div class="rope-line"></div><div class="signs" id="signs"></div></nav>
 
 <main class="wrap book"><article class="page" id="page" aria-live="polite"></article></main>
-<p class="foot"><b>Il Focolare</b><br>Via del Borgo 4 · Brisighella (RA) · Pane e coperto 2,50 €</p>
+<footer>
+  <strong>Il Focolare</strong>
+  <div class="finfo">Via del Borgo 4, Brisighella (RA) · Tel. 0546 123456</div><small>Dati di esempio</small>
+</footer>
 
 <script src="assets/piatti.js"></script>
 <script>
 (function () {
 'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
   {n:'Antipasti', ic:'🧀', s:'Per cominciare, da dividere al centro del tavolo', items:[
     {n:'Tagliere del contadino', d:'Salumi di mora romagnola, squacquerone, piadina calda e confettura di fichi.', p:'15 €', art:'tagliere', al:['glutine','latte'], tags:['Per 2 persone']},
@@ -131,16 +150,18 @@ var M = [
     {n:'Albana secco', d:'Bianco minerale e agrumato. Al calice.', p:'5 €', art:'vino', o:{c:'#e8c35a'}, al:['solfiti']}
   ]}
 ];
+/* ============ */
 var $ = function (s) { return document.querySelector(s); };
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var signs = $('#signs'), page = $('#page'), cur = -1;
-signs.innerHTML = M.map(function (c, i) { return '<button class="sign" type="button" aria-pressed="false" data-i="' + i + '"><span><i aria-hidden="true">' + c.ic + '</i>' + c.n + '</span></button>'; }).join('');
+signs.innerHTML = M.map(function (c, i) { return '<button class="sign" type="button" aria-pressed="false" data-i="' + i + '"><span><i aria-hidden="true">' + (c.ic || c.e || '🍽️') + '</i>' + c.n + '</span></button>'; }).join('');
 
 function render(c) {
-  var list = c.items.map(function (it) { it.cat = c.n; return it; });
-  page.innerHTML = '<div class="stamp" aria-hidden="true">fatto<br>in casa</div><h2>' + c.n + '</h2><p class="sub">' + c.s + '</p>' +
+  var list = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
+  page.innerHTML = '<div class="stamp dsm-fake" aria-hidden="true">fatto<br>in casa</div><h2>' + c.n + '</h2>' + (c.s ? '<p class="sub">' + c.s + '</p>' : '<p class="sub"></p>') +
     list.map(function (it, k) {
-      return '<button class="dish" type="button" data-k="' + k + '"><span class="plate">' + Piatti.svg(it.art, it.o) + '</span><span class="tx"><span class="line"><b>' + it.n + '</b><span class="dots"></span><span class="pr">' + it.p + '</span></span><p>' + it.d + (it.nonna ? '<span class="nonna">ricetta della nonna</span>' : '') + '</p><span class="al" aria-label="Allergeni">' + Piatti.alIcons(it.al) + '</span></span></button>';
+      var tag = it.nonna ? 'ricetta della nonna' : Piatti.label(it);
+      return '<button class="dish" type="button" data-k="' + k + '"><span class="plate">' + Piatti.art(it, c) + '</span><span class="tx"><span class="line"><b>' + it.n + '</b><span class="dots"></span><span class="pr">' + Piatti.price(it.p) + '</span></span><p>' + (it.d || '') + (tag ? '<span class="nonna">' + tag + '</span>' : '') + '</p><span class="al" aria-label="Allergeni">' + Piatti.alIcons(it.al) + '</span></span></button>';
     }).join('');
   Array.prototype.forEach.call(page.querySelectorAll('.dish'), function (b) { b.addEventListener('click', function () { Piatti.modal(list, +b.getAttribute('data-k'), b); }); });
 }

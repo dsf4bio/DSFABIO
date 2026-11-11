@@ -643,15 +643,20 @@ document.addEventListener('pointerdown', function (e) {
     frame.style.height = Math.ceil(screen.clientHeight / sc) + 'px';
   }
   addEventListener('resize', fit);
-  function autoScroll(win) {
-    var doc = win.document.scrollingElement || win.document.documentElement;
-    var max = Math.min(doc.scrollHeight - win.innerHeight, 2400), t0 = 0, dur = 6200;
-    if (max < 50) return;
+  function autoScroll(win, done) {
+    var doc, max;
+    try {
+      doc = win.document.scrollingElement || win.document.documentElement;
+      doc.style.scrollBehavior = 'auto';
+      max = Math.min(doc.scrollHeight - win.innerHeight, 2200);
+    } catch (err) { return done(); }
+    if (max < 50) return done();
+    var t0 = 0, dur = 6500;
     function step(t) {
       if (!t0) t0 = t;
       var k = Math.min(1, (t - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-      try { win.scrollTo(0, max * e); } catch (err) { return; }
-      if (k < 1) scrollRaf = requestAnimationFrame(step);
+      try { win.scrollTo({top: max * e, behavior: 'instant'}); } catch (err) { return done(); }
+      if (k < 1) scrollRaf = requestAnimationFrame(step); else done();
     }
     scrollRaf = requestAnimationFrame(step);
   }
@@ -664,16 +669,26 @@ document.addEventListener('pointerdown', function (e) {
     frame.title = 'Menu digitale ' + t.n + ' in azione'; frame.tabIndex = -1; frame.setAttribute('aria-hidden', 'true');
     frame.setAttribute('scrolling', 'no');
     frame.src = '/' + t.s;
-    frame.addEventListener('load', function () {
-      var f = this; fit();
-      setTimeout(function () {
-        f.classList.add('ok');
-        try { setTimeout(function () { autoScroll(f.contentWindow); }, 900); } catch (err) {}
-      }, 450);
-    });
-    live.appendChild(frame); fit();
+    var f = frame, went = false;
+    /* Se il menu non risponde entro 9 s si passa al successivo */
+    clearTimeout(timer); timer = setTimeout(go, 9000);
+    function go() { if (went || f !== frame) return; went = true; clearTimeout(timer); timer = setTimeout(next, 1600); }
+    function begin() {
+      if (f.dataset.on || f !== frame) return; f.dataset.on = '1'; fit();
+      f.classList.add('ok');
+      clearTimeout(timer);
+      setTimeout(function () { autoScroll(f.contentWindow, go); }, 700);
+    }
+    f.addEventListener('load', begin);
+    live.appendChild(f); fit();
+    /* Si parte appena il menu è pronto, senza aspettare tutte le foto */
+    (function wait(n) {
+      try { var d = f.contentDocument; if (d && d.readyState !== 'loading' && d.body && d.body.children.length && d.URL !== 'about:blank') return setTimeout(begin, 400); } catch (err) {}
+      if (n < 60 && f === frame) setTimeout(function () { wait(n + 1); }, 150);
+    })(0);
   }
   function next() {
+    if (document.hidden) { timer = setTimeout(next, 1000); return; }
     idx = (idx + 1) % ROT.length; var t = ROT[idx];
     curN.textContent = t.n; cur.classList.add('on');
     setTimeout(function () { load(t); setMeta(t); }, 560);
@@ -682,7 +697,7 @@ document.addEventListener('pointerdown', function (e) {
   setMeta(ROT[0]);
   /* Il menu dal vivo parte solo quando il telefono è visibile */
   var started = false;
-  function start() { if (started) return; started = true; load(ROT[0]); if (!reduced) timer = setInterval(function () { if (!document.hidden) next(); }, 9500); }
+  function start() { if (started) return; started = true; load(ROT[0]); }
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { if (es[0].isIntersecting) start(); }).observe(screen);
   else start();
 })();

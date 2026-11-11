@@ -6,22 +6,22 @@
 
 - Cosa: menu digitale personalizzato con QR code da stampare per i tavoli.
 - Per chi: ristoranti, pizzerie, trattorie, sushi, hamburgerie, piadinerie, kebab, bar, pub e cocktail bar.
-- Tempi: pronto in circa 48 ore da quando il locale invia il menu (anche in foto su WhatsApp).
+- Tempi: pronto in circa 48 ore da quando il locale invia il menu (anche in foto, allegato al modulo di attivazione).
 - Prezzo: 30 giorni gratis, poi 189 € all'anno in promozione invece di 229 € (meno di 16 € al mese, circa 0,52 € al giorno). Nessun costo di attivazione. Il prezzo resta lo stesso ai rinnovi.
 - Incluso: menu personalizzato con nome, logo e piatti; QR code pronti da stampare per tavoli, bancone e vetrina; icone dei 14 allergeni UE con legenda; più lingue (es. italiano e inglese); fino a 4 modifiche al mese a piatti e prezzi; hosting, indirizzo web dedicato del tipo dsmenu.it/nomelocale (nessun dominio da comprare) e certificato SSL; pulsanti per chiamare, WhatsApp, Maps e social; modifiche richieste dalla pagina Assistenza (dsfabio.com/assistenza) con il codice cliente o inquadrando il QR della scheda cliente, con email di conferma quando sono online.
-- Per iniziare: basta mandare su WhatsApp una foto del menu cartaceo, il logo (se c'è) e gli allergeni dei piatti. Nessun pagamento anticipato per la prova.
+- Per iniziare: si compila il modulo di attivazione (dsfabio.com/attiva) e si allega una foto del menu cartaceo, il logo (se c'è) e gli allergeni dei piatti. Si conferma la richiesta dal link ricevuto via email; poi Fabio la verifica e ricontatta il locale. Nessun pagamento anticipato per la prova.
 - Uso del link: oltre al QR code il menu ha un suo indirizzo web, da inserire nella scheda Google del locale, nella bio di Instagram, su Facebook o da inviare su WhatsApp.
 - Referente: Fabio, fondatore, segue personalmente ogni locale.
 - Condizioni: prova senza impegno e senza dati di pagamento. Con pagamento a carta l'abbonamento annuale si rinnova in automatico; si può disdire il rinnovo fino a 30 giorni prima della scadenza. Con bonifico o contanti nessun addebito automatico. Se il locale non paga alla scadenza il menu viene sospeso (senza costi né penali) e resta in pausa finché non paga: il pagamento lo riattiva subito, con gli stessi contenuti e lo stesso QR. Dopo 12 mesi di sospensione il rapporto si considera concluso. Se il locale non continua dopo la prova riceve gratis il PDF del menu.
 - Allergeni: i dati li fornisce e li conferma il ristorante. Si consiglia di tenere una copia cartacea di riserva del menu.
-- Contatto: per iniziare WhatsApp +39 344 030 1412 o email info@dsfabio.com; per chi è già cliente, la pagina Assistenza.
+- Contatto: per iniziare il modulo dsfabio.com/attiva o l'email info@dsfabio.com; per chi è già cliente, la pagina Assistenza.
 - Azienda: DS Service di Fabio Dos Santos Souza, Meldola (FC), marchio DSFabio.
 
 ## Pagine
 
 - [Home e offerta](https://dsfabio.com/): come funziona, cosa include, esempi, prezzo e domande frequenti.
 - [Modelli di menu](https://dsfabio.com/modelli): quindici esempi dimostrativi per ristoranti, pizzerie, hamburgerie, piadinerie, kebab, sushi, bistrot e bar.
-- [Chi sono](https://dsfabio.com/about): Fabio, valori e modo di lavorare, contatto diretto su WhatsApp.
+- [Chi sono](https://dsfabio.com/about): Fabio, valori e modo di lavorare, un unico referente.
 - [Esempio Gusto 360°](https://dsfabio.com/mdc-001): ristorante elegante con percorso degustazione.
 - [Esempio Bella Napoli](https://dsfabio.com/mdc-002): pizzeria con ricerca dei piatti.
 - [Esempio Verde & Arancio](https://dsfabio.com/mdc-003): bistrot con filtro per allergie e intolleranze.
@@ -37,5 +37,6 @@
 - [Esempio Bosforo Kebab](https://dsfabio.com/mdc-013): kebab con prezzi per formato (panino, piadina, box, piatto).
 - [Esempio Sakura Neon](https://dsfabio.com/demo-sakura-neon): menu demo per sushi e cocktail bar, in italiano e inglese.
 - [Esempio Fuoco & Brace](https://dsfabio.com/demo-fuoco-brace): menu demo per pizzeria e griglia.
+- [Attiva la prova gratuita](https://dsfabio.com/attiva): modulo per richiedere la prova di 30 giorni, con conferma via email.
 - [Assistenza clienti](https://dsfabio.com/assistenza): richieste di aggiornamento per chi è già cliente.
 - [Privacy, cookie e termini](https://dsfabio.com/privacy): informativa, cookie e condizioni del servizio.

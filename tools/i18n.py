@@ -430,6 +430,9 @@ def sitemap():
             if page in IT_ONLY:
                 alts = ''
             rows.append('  <url><loc>%s</loc><priority>%s</priority>%s\n  </url>' % (page_url(page, lang), pri[page], alts))
+    # pagine solo in italiano che non passano dalle traduzioni
+    for page, p in (('attiva', '0.9'), ('assistenza', '0.3')):
+        rows.append('  <url><loc>%s</loc><priority>%s</priority>\n  </url>' % (SITE + '/' + page, p))
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(rows) + '\n</urlset>\n')
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(xml)

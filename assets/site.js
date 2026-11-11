@@ -1,12 +1,11 @@
 /* =========================================================
    DS Service · script comune a tutte le pagine
    - menu mobile, barra di avanzamento, comparse, luce del mouse
-   - pulsanti "Prova gratis" [data-open]: aprono WhatsApp con messaggio pronto
+   - pulsanti "Prova gratis" [data-open]: aprono il modulo di attivazione /attiva
      Un pulsante può indicare il modello scelto: data-model="MDC-001 · Gusto 360°"
    ========================================================= */
 (function () {
 'use strict';
-var WA = '393440301412';
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var $ = function (s, c) { return (c || document).querySelector(s); };
 var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
@@ -14,17 +13,17 @@ document.body.classList.remove('no-js');
 
 /* ---------- Testi degli script nelle 6 lingue del sito (<html lang>) ---------- */
 var I18N = {
-  it: {open: 'Apri il menu', close: 'Chiudi il menu', trial: 'Ciao Fabio! Vorrei attivare la prova gratuita di 30 giorni del menu digitale{m}.', model: ' con il modello {n}', bar: 'Prova gratuita', barBtn: '🚀 Prova gratis 30 giorni', waAria: 'Scrivici su WhatsApp', info: 'Ciao! Vorrei informazioni sul menu digitale con QR code e la prova gratuita di 30 giorni.', infoShort: 'Ciao! Vorrei informazioni sul menu digitale con QR code.',
+  it: {open: 'Apri il menu', close: 'Chiudi il menu',  bar: 'Prova gratuita', barBtn: '🚀 Prova gratis 30 giorni',
     ck: 'Questo sito usa solo cookie tecnici, necessari a farlo funzionare: niente profilazione, statistiche o pubblicità.', ckMore: 'Informativa', ckOk: 'Ok, ho capito', ckAria: 'Avviso sui cookie'},
-  en: {open: 'Open menu', close: 'Close menu', trial: 'Hi Fabio! I would like to start the free 30-day trial of the digital menu{m}.', model: ' with the template {n}', bar: 'Free trial', barBtn: '🚀 Try it free for 30 days', waAria: 'Message us on WhatsApp', info: 'Hi! I would like some information about the QR code digital menu and the free 30-day trial.', infoShort: 'Hi! I would like some information about the QR code digital menu.',
+  en: {open: 'Open menu', close: 'Close menu',  bar: 'Free trial', barBtn: '🚀 Try it free for 30 days',
     ck: 'This site only uses technical cookies needed to make it work: no profiling, analytics or advertising.', ckMore: 'Learn more', ckOk: 'Ok, got it', ckAria: 'Cookie notice'},
-  es: {open: 'Abrir el menú', close: 'Cerrar el menú', trial: '¡Hola Fabio! Me gustaría activar la prueba gratuita de 30 días del menú digital{m}.', model: ' con el modelo {n}', bar: 'Prueba gratuita', barBtn: '🚀 Prueba gratis 30 días', waAria: 'Escríbenos por WhatsApp', info: '¡Hola! Me gustaría información sobre el menú digital con código QR y la prueba gratuita de 30 días.', infoShort: '¡Hola! Me gustaría información sobre el menú digital con código QR.',
+  es: {open: 'Abrir el menú', close: 'Cerrar el menú',  bar: 'Prueba gratuita', barBtn: '🚀 Prueba gratis 30 días',
     ck: 'Este sitio solo usa cookies técnicas, necesarias para su funcionamiento: sin perfiles, estadísticas ni publicidad.', ckMore: 'Más información', ckOk: 'Vale, entendido', ckAria: 'Aviso de cookies'},
-  pt: {open: 'Abrir o menu', close: 'Fechar o menu', trial: 'Olá Fabio! Gostaria de ativar o teste gratuito de 30 dias do cardápio digital{m}.', model: ' com o modelo {n}', bar: 'Teste gratuito', barBtn: '🚀 Teste grátis por 30 dias', waAria: 'Fale conosco no WhatsApp', info: 'Olá! Gostaria de informações sobre o cardápio digital com QR code e o teste gratuito de 30 dias.', infoShort: 'Olá! Gostaria de informações sobre o cardápio digital com QR code.',
+  pt: {open: 'Abrir o menu', close: 'Fechar o menu',  bar: 'Teste gratuito', barBtn: '🚀 Teste grátis por 30 dias',
     ck: 'Este site usa apenas cookies técnicos, necessários para o seu funcionamento: sem criação de perfis, estatísticas ou publicidade.', ckMore: 'Saiba mais', ckOk: 'Ok, entendi', ckAria: 'Aviso sobre cookies'},
-  de: {open: 'Menü öffnen', close: 'Menü schließen', trial: 'Hallo Fabio! Ich möchte die kostenlose 30-Tage-Testphase der digitalen Speisekarte{m} starten.', model: ' mit der Vorlage {n}', bar: 'Kostenloser Test', barBtn: '🚀 30 Tage kostenlos testen', waAria: 'Schreib uns auf WhatsApp', info: 'Hallo! Ich hätte gerne Informationen zur digitalen Speisekarte mit QR-Code und zum kostenlosen 30-Tage-Test.', infoShort: 'Hallo! Ich hätte gerne Informationen zur digitalen Speisekarte mit QR-Code.',
+  de: {open: 'Menü öffnen', close: 'Menü schließen',  bar: 'Kostenloser Test', barBtn: '🚀 30 Tage kostenlos testen',
     ck: 'Diese Website verwendet nur technische Cookies, die für den Betrieb nötig sind: kein Profiling, keine Statistiken, keine Werbung.', ckMore: 'Mehr erfahren', ckOk: 'Ok, verstanden', ckAria: 'Cookie-Hinweis'},
-  fr: {open: 'Ouvrir le menu', close: 'Fermer le menu', trial: 'Bonjour Fabio ! Je voudrais activer l\u2019essai gratuit de 30 jours du menu digital{m}.', model: ' avec le modèle {n}', bar: 'Essai gratuit', barBtn: '🚀 Essai gratuit 30 jours', waAria: 'Écrivez-nous sur WhatsApp', info: 'Bonjour ! Je voudrais des informations sur le menu digital avec QR code et l\u2019essai gratuit de 30 jours.', infoShort: 'Bonjour ! Je voudrais des informations sur le menu digital avec QR code.',
+  fr: {open: 'Ouvrir le menu', close: 'Fermer le menu',  bar: 'Essai gratuit', barBtn: '🚀 Essai gratuit 30 jours',
     ck: 'Ce site utilise uniquement des cookies techniques, nécessaires à son fonctionnement : ni profilage, ni statistiques, ni publicité.', ckMore: 'En savoir plus', ckOk: 'Ok, compris', ckAria: 'Avis sur les cookies'}
 };
 var LANG = (document.documentElement.lang || 'it').slice(0, 2);
@@ -33,10 +32,9 @@ var ROOT = LANG === 'it' ? '/' : '/' + LANG + '/';
 $$('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });
 
 /* ---------- Navigazione ---------- */
-var nav = $('#nav'), burger = $('#burger'), waFab = $('#wa-fab');
+var nav = $('#nav'), burger = $('#burger');
 function onScroll() {
   if (nav) nav.classList.toggle('scrolled', scrollY > 10);
-  if (waFab) waFab.classList.toggle('show', scrollY > 500);
 }
 addEventListener('scroll', onScroll, {passive: true}); onScroll();
 function closeNav() { if (!nav) return; nav.classList.remove('open'); if (burger) { burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', T.open); } }
@@ -85,17 +83,17 @@ document.addEventListener('pointerdown', function (e) {
   b.appendChild(s); setTimeout(function () { s.remove(); }, 650);
 });
 
-/* ---------- Pulsanti "Prova gratis" → WhatsApp con messaggio pronto ---------- */
-/* Ogni [data-open] apre la chat WhatsApp; data-model="Nome" aggiunge il modello scelto. */
+/* ---------- Pulsanti "Prova gratis" → modulo di attivazione ---------- */
+/* Ogni [data-open] apre /attiva; data-model="Nome" porta con sé il modello scelto. */
 function trialLink(model) {
-  return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(T.trial.replace('{m}', model ? T.model.replace('{n}', model) : ''));
+  return '/attiva' + (model ? '?modello=' + encodeURIComponent(model) : '');
 }
-/* Arrivo da un modello: ?modello=Nome lo aggiunge al messaggio */
+/* Arrivo da un modello: ?modello=Nome lo passa al modulo */
 var urlModel = '';
 try { urlModel = (new URLSearchParams(location.search).get('modello') || '').slice(0, 60); } catch (err) {}
 function wireTrial(a) {
   a.href = trialLink(a.getAttribute('data-model') || urlModel);
-  a.target = '_blank'; a.rel = 'noopener';
+  a.removeAttribute('target'); a.removeAttribute('rel');
 }
 $$('[data-open]').forEach(wireTrial);
 document.addEventListener('click', function (e) {
@@ -109,9 +107,7 @@ document.addEventListener('click', function (e) {
   if (!$('.final')) return;
   var bar = document.createElement('div');
   bar.className = 'm-bar'; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', T.bar);
-  bar.innerHTML = '<a class="btn btn-main" href="' + trialLink(urlModel) + '" data-open target="_blank" rel="noopener">' + T.barBtn + '</a>' +
-    '<a class="m-wa" href="https://wa.me/' + WA + '" data-wa="' + T.info + '" target="_blank" rel="noopener" aria-label="' + T.waAria + '">' +
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.3 4.8 4.9-1.3A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.24-3.47-.72-2.93-1.16-4.8-4.15-4.95-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.58.83 2.01.9 2.16.08.14.12.31.03.5-.1.2-.14.31-.29.48l-.43.5c-.14.15-.3.31-.13.6.17.3.75 1.24 1.6 2 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.08.17-.19.73-.85.92-1.14.2-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.18 1.38Z"/></svg></a>';
+  bar.innerHTML = '<a class="btn btn-main" href="' + trialLink(urlModel) + '" data-open>' + T.barBtn + '</a>';
   document.body.appendChild(bar);
   document.body.classList.add('has-mbar');
   var seen = 0, blockers = $$('.hero-cta, .offer, .final, footer, .page-hero .btn-main');
@@ -144,8 +140,4 @@ document.addEventListener('click', function (e) {
   requestAnimationFrame(function () { ck.classList.add('show'); });
 })();
 
-/* Link WhatsApp generici con messaggio pronto */
-$$('[data-wa]').forEach(function (a) {
-  a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(a.getAttribute('data-wa') || T.infoShort);
-});
 })();

@@ -3,12 +3,11 @@
    Uso: <script src="assets/trial.js" data-model="Nome modello" defer></script>
    - aggiunge in fondo alla pagina una call to action
    - aggiunge un pulsante "Provalo gratis" nella fascia in alto (.demo)
-   - i pulsanti di prova aprono WhatsApp con il messaggio già pronto
+   - i pulsanti di prova aprono il modulo di attivazione /attiva con il modello scelto
    - dentro un iframe (anteprima in modelli) mostra solo il menu
    ========================================================= */
 (function () {
 'use strict';
-var WA = '393440301412';
 var me = document.querySelector('script[data-model]');
 var PREVIEW = window.self !== window.top || /[?&]anteprima\b/.test(location.search);
 var MODEL = (me && me.getAttribute('data-model')) || document.title.split('·')[0].trim();
@@ -30,7 +29,6 @@ var CSS = [
 '.dsf-btn:active{transform:scale(.96)}',
 '.dsf-main{color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee,#ff3cac);background-size:300% 100%;animation:dsfsheen 6s linear infinite;box-shadow:0 14px 36px rgba(255,60,172,.42)}',
 '@keyframes dsfsheen{to{background-position:300% 0}}',
-'.dsf-wa{background:#25D366;color:#06260f}',
 '.dsf-link{display:inline-block;margin-top:18px;color:#22d3ee;font-weight:800;text-decoration:none}',
 '.dsf-small{display:block;margin-top:14px;font-size:.8rem;color:var(--dsf-sub)}',
 '.dsf-pill{text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-left:8px;padding:3px 11px;border-radius:999px;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:.72rem;color:#0d0a1f;background:linear-gradient(120deg,#ff3cac,#7b5cff,#22d3ee);vertical-align:middle}',
@@ -44,8 +42,7 @@ var CSS = [
 ].join('\n');
 
 function el(html) { var d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
-function waLink(t) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t); }
-var TRIAL = waLink('Ciao Fabio! Vorrei attivare la prova gratuita di 30 giorni del menu digitale con il modello ' + MODEL + '.');
+var TRIAL = '/attiva?modello=' + encodeURIComponent(MODEL);
 var ESC = function (t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
 
 function init() {
@@ -64,10 +61,9 @@ function init() {
   '<section class="dsf dsf-cta" aria-labelledby="dsf-cta-t"><div class="in">' +
     '<span class="dsf-eye">Ti piace questo menu?</span>' +
     '<h2 id="dsf-cta-t">Questo menu può essere <span class="dsf-gt">il tuo</span>, già da dopodomani</h2>' +
-    '<p class="lead">Mandaci il tuo menu, anche solo in foto: lo prepariamo noi con i tuoi piatti, il tuo logo e i tuoi colori. Tu stampi il QR e lo metti sui tavoli.</p>' +
+    '<p class="lead">Compila il modulo e allega il tuo menu, anche solo in foto: lo prepariamo noi con i tuoi piatti, il tuo logo e i tuoi colori. Tu stampi il QR e lo metti sui tavoli.</p>' +
     '<ul class="dsf-pts"><li><b>48 ore</b>e il menu è online</li><li><b>30 giorni</b>di prova gratis</li><li><b>189 €/anno</b>tutto incluso</li></ul>' +
-    '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '" target="_blank" rel="noopener">🚀 Prova gratis il modello ' + ESC(MODEL) + '</a>' +
-    '<a class="dsf-btn dsf-wa" href="' + waLink('Ciao! Ho visto il modello ' + MODEL + ' e vorrei qualche informazione sul menu digitale.') + '" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a></div>' +
+    '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '">🚀 Prova gratis il modello ' + ESC(MODEL) + '</a></div>' +
     '<span class="dsf-small">Prova senza impegno · nessun dato di pagamento</span>' +
     '<a class="dsf-link" href="modelli">← Guarda gli altri modelli</a>' +
   '</div></section>');
@@ -76,7 +72,7 @@ function init() {
   /* Pulsante nella fascia "modello dimostrativo" */
   var bar = document.querySelector('.demo, .demo-bar');
   if (bar && !bar.querySelector('.dsf-pill')) {
-    var pill = el('<a class="dsf-pill" href="' + ESC(TRIAL) + '" target="_blank" rel="noopener">✨ Provalo gratis</a>');
+    var pill = el('<a class="dsf-pill" href="' + ESC(TRIAL) + '" target="_top">✨ Provalo gratis</a>');
     bar.appendChild(pill);
   }
 

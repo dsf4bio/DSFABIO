@@ -53,13 +53,14 @@ body{overflow-x:clip}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px);align-items:center}
 .pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.85rem;font-weight:700;color:var(--sub);text-decoration:none}
 .pill b{background:var(--grad);color:#0d0a1f;padding:3px 10px;border-radius:999px;font-size:.75rem}
-h1{font-family:Syne,sans-serif;font-size:clamp(2.5rem,6.6vw,5rem);line-height:.98;letter-spacing:-.02em;margin:20px 0 18px}
+h1{font-family:Syne,sans-serif;font-size:clamp(2.2rem,6vw,4.6rem);line-height:.98;letter-spacing:-.02em;margin:20px 0 18px}
 h1 .w{display:inline-block;opacity:0;transform:translateY(60%) rotate(4deg);animation:wordIn .9s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(var(--d) * 80ms + 100ms)}
 @keyframes wordIn{to{opacity:1;transform:none}}
-.rot{display:inline-grid;vertical-align:bottom}
-.rot>span{grid-area:1/1;opacity:0;transform:translateY(40%) rotateX(-60deg);transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.2,1)}
-.rot>span.on{opacity:1;transform:none;transition-delay:.3s}
-.rot>span.out{opacity:0;transform:translateY(-40%) rotateX(60deg);transition-duration:.3s}
+.rot-w{display:block!important;font-size:.86em;margin-top:.06em}
+.rot{display:inline-grid;vertical-align:bottom;white-space:nowrap}
+.rot>span{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(40%) rotateX(-60deg);transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.2,1),visibility 0s .6s}
+.rot>span.on{opacity:1;visibility:visible;transform:none;transition-delay:.3s,.3s,0s}
+.rot>span.out{opacity:0;visibility:visible;transform:translateY(-40%) rotateX(60deg);transition:opacity .3s,transform .3s,visibility 0s .3s}
 .hero .lead{font-size:clamp(1.05rem,2.3vw,1.2rem)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:28px 0 18px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
@@ -121,11 +122,13 @@ h1 .w{display:inline-block;opacity:0;transform:translateY(60%) rotate(4deg);anim
 /* ---------- MURO 3D DEI MODELLI ---------- */
 .wall-sec{position:relative;height:clamp(620px,92vh,900px);overflow:hidden;margin-top:20px}
 .wall{position:absolute;left:50%;top:50%;width:1700px;display:flex;gap:22px;justify-content:center;transform:translate(-50%,-50%) perspective(1600px) rotateX(28deg) rotateZ(-14deg) scale(1.05);transform-style:preserve-3d}
-.col{display:flex;flex-direction:column;gap:22px;animation:colUp var(--t,38s) linear infinite;will-change:transform}
+.col{display:flex;flex-direction:column;gap:22px;animation:colUp var(--t,38s) linear infinite;animation-play-state:paused;will-change:transform;translate:0 calc(var(--sy,0px) * -1);transition:translate .25s ease-out}
+.col.dn{translate:0 var(--sy,0px)}
+.wall-sec.go .col{animation-play-state:running}
 .col.dn{animation-name:colDn}
 @keyframes colUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @keyframes colDn{from{transform:translateY(-50%)}to{transform:translateY(0)}}
-.wall-sec:hover .col{animation-play-state:paused}
+.wall-sec.go:hover .col{animation-play-state:paused}
 .shot{position:relative;display:block;width:210px;aspect-ratio:390/808;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 60px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.2,.9,.2,1),box-shadow .45s;background:#1a1240}
 .shot img{width:100%;height:100%;object-fit:cover;display:block}
 .shot span{position:absolute;left:10px;right:10px;bottom:10px;padding:8px 10px;border-radius:12px;background:rgba(13,10,31,.82);backdrop-filter:blur(8px);font-size:.78rem;font-weight:800;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s}
@@ -328,7 +331,7 @@ h1 .w{display:inline-block;opacity:0;transform:translateY(60%) rotate(4deg);anim
 <div class="wrap hero-grid">
 <div>
 <a class="pill" href="/attiva" data-open data-cta="pill"><b>🎁 GRATIS</b> 30 giorni · nessuna carta richiesta</a>
-<h1 id="h1"><span class="w" style="--d:0">Il</span> <span class="w" style="--d:1">menu</span> <span class="w" style="--d:2">che</span> <span class="w" style="--d:3">fa</span> <span class="w" style="--d:4">venire</span> <span class="w" style="--d:5">fame</span> <span class="w" style="--d:6">alla</span> <span class="w grad-text" style="--d:7"><span class="rot" id="rot"><span class="on">tua&nbsp;pizzeria</span><span>tuo&nbsp;sushi</span><span>tuo&nbsp;pub</span><span>tua&nbsp;hamburgeria</span><span>tua&nbsp;trattoria</span></span></span></h1>
+<h1 id="h1"><span class="w" style="--d:0">Il</span> <span class="w" style="--d:1">menu</span> <span class="w" style="--d:2">che</span> <span class="w" style="--d:3">fa</span> <span class="w" style="--d:4">venire</span> <span class="w" style="--d:5">fame</span> <span class="w" style="--d:6">alla</span> <span class="w rot-w" style="--d:7"><span class="rot" id="rot"><span class="on grad-text">tua&nbsp;pizzeria</span><span class="grad-text">tuo&nbsp;sushi</span><span class="grad-text">tuo&nbsp;pub</span><span class="grad-text">tua&nbsp;hamburgeria</span><span class="grad-text">tua&nbsp;trattoria</span></span></span></h1>
 <p class="lead">Quello che vedi nel telefono non è un video: è <strong>un vero menu digitale</strong>, che scorre da solo. Foto, allergeni, più lingue e QR code. <strong>Lo creiamo noi in 24 ore</strong> e lo provi gratis per 30 giorni.</p>
 <div class="hero-cta">
 <a class="btn btn-main btn-xl mag" href="/attiva" data-open data-cta="hero">🚀 Voglio il mio menu gratis <span class="arr" aria-hidden="true">→</span></a>
@@ -709,12 +712,27 @@ document.addEventListener('pointerdown', function (e) {
     var list = [];
     for (var k = 0; k < 5; k++) list.push(T[(c * 2 + k * 3) % T.length]);
     var cards = list.concat(list).map(function (t) {
-      return '<a class="shot" href="/attiva" data-open data-model="' + ESC(t.n) + '" data-cta="muro-modello" tabindex="-1"><img src="' + IMG(t) + '" alt="" loading="lazy" decoding="async" width="390" height="808"><span>✨ Voglio ' + ESC(t.n) + '</span></a>';
+      return '<a class="shot" href="/attiva" data-open data-model="' + ESC(t.n) + '" data-cta="muro-modello" tabindex="-1"><img src="' + IMG(t) + '" alt="" decoding="async" width="390" height="808"><span>✨ Voglio ' + ESC(t.n) + '</span></a>';
     }).join('');
-    html += '<div class="col' + (c % 2 ? ' dn' : '') + '" style="--t:' + (34 + (c % 3) * 8) + 's">' + cards + '</div>';
+    html += '<div class="col' + (c % 2 ? ' dn' : '') + '" style="--t:' + (26 + (c % 3) * 6) + 's">' + cards + '</div>';
   }
   wall.innerHTML = html;
   $$('[data-open]', wall).forEach(wire);
+  var sec = wall.parentNode;
+  if (reduced) return;
+  /* Parte appena la sezione arriva verso il centro dello schermo */
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { sec.classList.toggle('go', es[0].isIntersecting); }, {rootMargin: '0px 0px -30% 0px'}).observe(sec);
+  else sec.classList.add('go');
+  /* Intanto le colonne seguono lo scroll, così si muovono subito */
+  var rq = 0;
+  function par() {
+    rq = 0;
+    var r = sec.getBoundingClientRect();
+    if (r.bottom < -200 || r.top > innerHeight + 200) return;
+    wall.style.setProperty('--sy', ((innerHeight / 2 - (r.top + r.height / 2)) * .45).toFixed(1) + 'px');
+  }
+  addEventListener('scroll', function () { if (!rq) rq = requestAnimationFrame(par); }, {passive: true});
+  par();
 })();
 
 /* ---------- DAL TAVOLO AL MENU: scena guidata dallo scroll ---------- */

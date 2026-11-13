@@ -772,11 +772,18 @@
                         throw err;
                       });
                     })()
-                  : rpc('submit_support_request', {
-                      p_code: code, p_types: M ? ['modifica_piatto'] : PREP ? ['aggiunta_piatto'] : types,
-                      p_details: PREP ? ('📎 Materiale per il menu in preparazione' + (details.value.trim() ? ': ' + details.value.trim() : '')).slice(0, 1000) : (details.value.trim() || null),
-                      p_privacy: true, p_website: $('dsf-website').value || null,
-                    })
+                  : (function () {
+                      var args = {
+                        p_code: code, p_types: M ? ['modifica_piatto'] : PREP ? ['materiale_aggiuntivo'] : types,
+                        p_details: PREP ? ('📎 Materiale per il menu in preparazione' + (details.value.trim() ? ': ' + details.value.trim() : '')).slice(0, 1000) : (details.value.trim() || null),
+                        p_privacy: true, p_website: $('dsf-website').value || null,
+                      };
+                      return rpc('submit_support_request', args).then(function (r) {
+                        // database senza la migrazione 050: il tipo "materiale aggiuntivo" non esiste ancora
+                        if (PREP && r && r.code === 'invalid_type') { args.p_types = ['aggiunta_piatto']; return rpc('submit_support_request', args); }
+                        return r;
+                      });
+                    })()
                 ).then(function (data) {
                   result = data || {};
                   if (!result.ok || !result.request_id || !files.length) return;

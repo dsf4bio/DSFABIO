@@ -219,12 +219,11 @@
     if (!r || !r.ok) { $('sec-title').textContent = 'Link non valido'; return msg((r && r.message) || 'Link non valido.', 'err'); }
     info = r; until(r.until);
     $('sec-title').textContent = 'Menu digitale di ' + r.business;
+    if (r.trial && !r.cancelled) return msg('Sei ancora nella prova gratuita: non c\'è niente da disdire. Se non attivi l\'abbonamento, alla fine della prova (' + r.until + ') il menu si mette in pausa da solo. Per qualsiasi dubbio scrivici a ' + (r.contact || 'info@dsfabio.com') + '.', '');
     if (!r.live) return msg('Il servizio al momento non è attivo: non c\'è niente da disdire. Per qualsiasi dubbio scrivici a ' + (r.contact || 'info@dsfabio.com') + '.', '');
     if (r.cancelled) return cancelled(r);
     if (r.card) return showCard(r);
-    $('sec-lead').textContent = r.trial
-      ? 'Non vuoi continuare dopo la prova gratuita? Confermalo qui:'
-      : 'Non vuoi rinnovare l\'abbonamento? Confermalo qui:';
+    $('sec-lead').textContent = 'Non vuoi rinnovare l\'abbonamento? Confermalo qui:';
     $('sec-ask').hidden = false;
   }).catch(function (e) { $('sec-title').textContent = 'Servizio non disponibile'; msg(e.message, 'err'); });
 
@@ -233,6 +232,7 @@
     go.disabled = true; go.textContent = 'Invio in corso…';
     rpc('billing_cancel_request', { p_token: token, p_reason: $('sec-reason').value || null }).then(function (r) {
       if (r && r.card) { info.portal = r.portal; return showCard(info); }
+      if (r && r.trial) { hideAll(); return msg(r.message, ''); }
       if (!r || !r.ok) throw new Error((r && r.message) || 'Disdetta non riuscita.');
       info.until = r.until || info.until; info.source = 'cliente'; cancelled(info);
     }).catch(function (e) { go.disabled = false; go.textContent = 'Confermo la disdetta'; msg(e.message + ' Se non riesci, scrivici a info@dsfabio.com.', 'err'); });

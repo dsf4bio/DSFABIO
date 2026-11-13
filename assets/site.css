@@ -1,5 +1,5 @@
 /* =========================================================
-   DSFabio Digital · stile comune a tutte le pagine
+   DS Service · stile comune a tutte le pagine
    ========================================================= */
 @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
 :root{
@@ -216,3 +216,7 @@ form.card.fform a{color:#5b3fd9;font-weight:700}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .rv{opacity:1!important;transform:none!important}
 }
+/* marchio "DS Service" più lungo: sui telefoni piccoli il logo si stringe per lasciare posto a lingua e menu */
+@media (max-width:420px){.nav .logo,header .logo{font-size:1rem;gap:8px}.nav .logo .logo-mark,header .logo .logo-mark{width:32px;height:32px;border-radius:10px}.nav .logo .logo-mark svg,header .logo .logo-mark svg{width:18px;height:18px}}
+@media (max-width:360px){.nav-in{gap:8px}.nav .wrap{padding:0 14px}}
+@media (max-width:340px){.nav .logo,header .logo{font-size:.88rem;gap:6px}.nav .logo .logo-mark{width:28px;height:28px}}

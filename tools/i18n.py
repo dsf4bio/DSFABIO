@@ -1,4 +1,4 @@
-"""Traduzioni del sito DSFabio.
+"""Traduzioni del sito DS Service.
 
 Uso:
   python3 tools/i18n.py extract   -> scrive tools/i18n/segments.json (testi italiani da tradurre)

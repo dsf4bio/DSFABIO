@@ -88,5 +88,23 @@ function init() {
     document.body.appendChild(ck);
   }
 }
+// Anteprima dentro la home di dsmenu.it (altro sito): la pagina che contiene il menu
+// non può farlo scorrere da fuori, quindi lo chiede con un messaggio.
+var SCROLL_FROM = ['https://dsmenu.it', 'https://www.dsmenu.it', 'https://dsfabio.com', 'https://www.dsfabio.com'];
+if (PREVIEW) window.addEventListener('message', function (e) {
+  var d = e.data || {};
+  if (d.dsf !== 'scroll' || SCROLL_FROM.indexOf(e.origin) < 0 || !e.source) return;
+  var doc = document.scrollingElement || document.documentElement;
+  doc.style.scrollBehavior = 'auto';
+  var max = Math.min(doc.scrollHeight - window.innerHeight, d.max || 2200), dur = d.dur || 6500, t0 = 0;
+  var reply = function () { try { e.source.postMessage({ dsf: 'scrolled' }, e.origin); } catch (err) {} };
+  if (max < 50) return reply();
+  (function step(t) {
+    if (!t0) t0 = t;
+    var k = Math.min(1, (t - t0) / dur), q = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+    window.scrollTo(0, max * q);
+    if (k < 1) requestAnimationFrame(step); else reply();
+  })(performance.now());
+});
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

@@ -26,6 +26,16 @@
       "source": "/:lang(en|de|es|fr|pt)/privacy",
       "destination": "/privacy",
       "permanent": true
+    },
+    {
+      "source": "/prova-gratis",
+      "destination": "https://dsmenu.it/",
+      "permanent": true
+    },
+    {
+      "source": "/prova-gratis.html",
+      "destination": "https://dsmenu.it/",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -36,7 +46,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!mdc-)(?!demo-).*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -53,6 +63,27 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        }
+      ]
+    },
+    {
+      "source": "/(mdc-|demo-)(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://dsmenu.it https://www.dsmenu.it"
         }
       ]
     },

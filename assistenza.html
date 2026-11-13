@@ -265,7 +265,13 @@
               </div>
 
               <div id="dsf-classic" hidden>
-              <fieldset class="dsf-field" style="border:0;padding:0;margin:0 0 18px">
+              <!-- menu non ancora pubblicato: il modulo serve solo per il materiale -->
+              <div class="dsf-summary" id="dsf-prep" hidden>
+                <strong>🛠️ Il menu di <span id="dsf-prep-name"></span> è in preparazione.</strong>
+                Appena è online ti mandiamo il link e il QR code. Intanto, se hai altro materiale da mandarci, come foto o PDF del tuo menu, puoi caricarlo qui sotto e premere Invia.
+                <div style="margin-top:6px;opacity:.75;font-size:.9em">Al momento il modulo serve solo per inviare materiale aggiuntivo.</div>
+              </div>
+              <fieldset class="dsf-field" id="dsf-types" style="border:0;padding:0;margin:0 0 18px">
                 <legend class="dsf-label"><span id="dsf-classic-title">Cosa vuoi fare?</span> * <span style="font-weight:400;opacity:.7">(puoi sceglierne più di uno)</span></legend>
                 <div class="dsf-choices">
                   <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiunta_piatto"> ➕ Aggiunta piatto</label>
@@ -457,6 +463,7 @@
                 ['lupini', '🌼 Lupini'], ['molluschi', '🐚 Molluschi']];
               var menuBox = $('dsf-menu'), menuStep = $('dsf-menu-step'), classic = $('dsf-classic'), summaryBox = $('dsf-summary');
               var M = null;            // menu caricato: { code, business, sections }
+              var PREP = false;        // menu non ancora pubblicato: solo materiale aggiuntivo
               var edits = {};          // id piatto → { name, description, price, allergens }
               var removed = {};        // id piatto → true
               var adds = [];           // nuovi piatti: { key, section_id, name, description, price, allergens }
@@ -687,6 +694,7 @@
 
               function resetMenu() {
                 M = null; edits = {}; removed = {}; adds = []; openKey = null; priceMode = false;
+                PREP = false; $('dsf-prep').hidden = true; $('dsf-types').hidden = false;
                 menuStep.hidden = true; classic.hidden = true; $('dsf-rest').hidden = true;
                 $('dsf-price-mode').textContent = '💶 Cambia più prezzi insieme';
               }
@@ -707,9 +715,12 @@
                     details.placeholder = 'Altre richieste che non trovi qui sopra: nuove sezioni, foto, orari, testi…';
                     renderMenu();
                   } else {
-                    classic.hidden = false;
-                    $('dsf-details-label').textContent = 'Note';
-                    $('dsf-classic-title').textContent = 'Menu di ' + r.business + ': cosa vuoi fare?';
+                    // menu non ancora pubblicato: niente modifiche, solo materiale per prepararlo
+                    PREP = true; classic.hidden = false;
+                    $('dsf-prep-name').textContent = r.business;
+                    $('dsf-prep').hidden = false; $('dsf-types').hidden = true;
+                    $('dsf-details-label').textContent = 'Note sul materiale (facoltative)';
+                    details.placeholder = 'Es. "il menu aggiornato è quello del PDF", "questo è il nostro logo"…';
                   }
                   menuStep.scrollIntoView && setTimeout(function () { (r.has_menu ? menuStep : classic).scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
                 }).catch(function (err) {
@@ -739,7 +750,8 @@
                 var ops = M ? buildOps() : [];
                 if (M && openKey) return showError('Hai una modifica aperta: premi "Conferma modifica" (o "Annulla") prima di inviare.');
                 if (M && !ops.length && !details.value.trim() && !files.length) return showError('Indica almeno una modifica al menu, oppure scrivi cosa ti serve.');
-                if (!M && !types.length) return showError('Scegli almeno una voce in "Cosa vuoi fare?".');
+                if (PREP && !files.length && !details.value.trim()) return showError('Aggiungi le foto o i PDF del tuo menu (oppure scrivi una nota), poi premi Invia.');
+                if (!M && !PREP && !types.length) return showError('Scegli almeno una voce in "Cosa vuoi fare?".');
                 if (!$('dsf-privacy').checked) return showError('Per inviare la richiesta conferma di aver letto l\'informativa privacy.');
                 if (files.some(function (f) { return f.working; })) return showError('Attendi che gli allegati siano pronti.');
 
@@ -761,7 +773,8 @@
                       });
                     })()
                   : rpc('submit_support_request', {
-                      p_code: code, p_types: M ? ['modifica_piatto'] : types, p_details: details.value.trim() || null,
+                      p_code: code, p_types: M ? ['modifica_piatto'] : PREP ? ['aggiunta_piatto'] : types,
+                      p_details: PREP ? ('📎 Materiale per il menu in preparazione' + (details.value.trim() ? ': ' + details.value.trim() : '')).slice(0, 1000) : (details.value.trim() || null),
                       p_privacy: true, p_website: $('dsf-website').value || null,
                     })
                 ).then(function (data) {
@@ -786,7 +799,8 @@
                   $('dsf-success-text').textContent = (result.request_number
                     ? 'Abbiamo ricevuto la tua richiesta n. ' + result.request_number + '. '
                     : 'Abbiamo ricevuto la tua richiesta. ') + // stesso messaggio per tutte le richieste: il cliente non vede chi la gestisce
-                    'Ci pensiamo noi: ti avvisiamo via email appena le modifiche sono online.' + (result.warning ? ' ' + result.warning : '');
+                    (PREP ? 'Grazie: useremo il materiale per preparare il tuo menu. Appena è online ti mandiamo il link e il QR code.'
+                      : 'Ci pensiamo noi: ti avvisiamo via email appena le modifiche sono online.') + (result.warning ? ' ' + result.warning : '');
                   form.hidden = true;
                   $('dsf-success').hidden = false;
                   root.scrollIntoView({ behavior: 'smooth', block: 'start' });

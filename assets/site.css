@@ -220,3 +220,10 @@ form.card.fform a{color:#5b3fd9;font-weight:700}
 @media (max-width:420px){.nav .logo,header .logo{font-size:1rem;gap:8px}.nav .logo .logo-mark,header .logo .logo-mark{width:32px;height:32px;border-radius:10px}.nav .logo .logo-mark svg,header .logo .logo-mark svg{width:18px;height:18px}}
 @media (max-width:360px){.nav-in{gap:8px}.nav .wrap{padding:0 14px}}
 @media (max-width:340px){.nav .logo,header .logo{font-size:.88rem;gap:6px}.nav .logo .logo-mark{width:28px;height:28px}}
+
+/* benvenuto per chi arriva dal menu di un cliente (site.js) */
+.from-menu { position: relative; display: flex; gap: 12px; align-items: flex-start; max-width: 1100px; margin: 0 auto 18px; padding: 14px 44px 14px 16px;
+  width: calc(100% - 32px); border-radius: 16px; background: rgba(45, 212, 191, .1); border: 1px solid rgba(45, 212, 191, .35); color: inherit; font-size: .98rem; line-height: 1.5; }
+.from-menu > span { font-size: 1.4rem; line-height: 1; }
+.from-menu p { margin: 0; }
+.from-menu button { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: inherit; font-size: 1.4rem; line-height: 1; cursor: pointer; opacity: .7; }

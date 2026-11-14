@@ -85,9 +85,32 @@ document.addEventListener('pointerdown', function (e) {
 
 /* ---------- Pulsanti "Prova gratis" → modulo di attivazione ---------- */
 /* Ogni [data-open] apre /attiva; data-model="Nome" porta con sé il modello scelto. */
+/* Da dove arriva la visita (es. dal link in fondo a un menu dei clienti): resta per tutta
+   la visita e passa al modulo di attivazione, così nelle metriche sappiamo cosa funziona. */
+var utm = '';
+try {
+  var uq = new URLSearchParams(location.search), keep = new URLSearchParams();
+  ['utm_source', 'utm_medium', 'utm_campaign', 'ref'].forEach(function (k) { if (uq.get(k)) keep.set(k, uq.get(k).slice(0, 60)); });
+  if (keep.toString()) sessionStorage.setItem('dsf-utm', keep.toString());
+  utm = sessionStorage.getItem('dsf-utm') || '';
+} catch (err) {}
 function trialLink(model) {
-  return '/attiva' + (model ? '?modello=' + encodeURIComponent(model) : '');
+  var q = [];
+  if (model) q.push('modello=' + encodeURIComponent(model));
+  if (utm) q.push(utm);
+  return '/attiva' + (q.length ? '?' + q.join('&') : '');
 }
+/* Benvenuto per chi arriva dal menu di un nostro cliente */
+(function () {
+  if (!/(^|&)utm_source=dsmenu(&|$)/.test(utm) || document.documentElement.lang !== 'it') return;
+  var hero = document.querySelector('.hero .wrap');
+  if (!hero || sessionStorage.getItem('dsf-hi-menu') === '1') return;
+  var box = document.createElement('div');
+  box.className = 'from-menu';
+  box.innerHTML = '<span aria-hidden="true">👋</span><p><strong>Hai appena sfogliato il menu digitale di un locale?</strong> Lo facciamo anche per il tuo: pronto in 24 ore, con i tuoi piatti e il tuo stile. I primi 30 giorni sono gratis.</p><button type="button" aria-label="Chiudi">×</button>';
+  box.querySelector('button').addEventListener('click', function () { box.remove(); try { sessionStorage.setItem('dsf-hi-menu', '1'); } catch (err) {} });
+  hero.parentNode.insertBefore(box, hero);
+})();
 /* Arrivo da un modello: ?modello=Nome lo passa al modulo */
 var urlModel = '';
 try { urlModel = (new URLSearchParams(location.search).get('modello') || '').slice(0, 60); } catch (err) {}

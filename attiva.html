@@ -639,7 +639,10 @@
               var arrivedFrom = (function () {
                 try {
                   var q = new URLSearchParams(location.search);
+                  if (!q.get('utm_source') && !q.get('ref')) q = new URLSearchParams(sessionStorage.getItem('dsf-utm') || '');
                   var utm = q.get('utm_source') || q.get('ref');
+                  // arriva dal menu di un nostro cliente: la risposta a "Come ci hai conosciuto?" è già quella
+                  if (utm === 'dsmenu' && $('f-source') && !$('f-source').value) $('f-source').value = 'menu_visto';
                   if (utm) return ('utm:' + utm + (q.get('utm_campaign') ? '/' + q.get('utm_campaign') : '')).slice(0, 120);
                   var r = document.referrer ? new URL(document.referrer) : null;
                   if (r && r.hostname !== location.hostname) return ('ref:' + r.hostname + (/dsmenu\.it$/.test(r.hostname) ? r.pathname : '')).slice(0, 120);

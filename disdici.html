@@ -96,6 +96,14 @@
   .sec-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px; margin: 8px 0 0;
     border: 0; border-radius: 12px; background: #7c5cff; color: #fff; font: inherit; font-weight: 700; font-size: 1.05em; cursor: pointer; padding: 10px 14px; }
   .sec-btn.danger { background: #e5484d; }
+  .why-title { margin: 16px 0 8px; font-weight: 600; font-size: .95em; }
+  .why-title span { font-weight: 400; opacity: .7; }
+  .why-list { display: grid; gap: 6px; }
+  .why { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.14); cursor: pointer; font-size: .95em; }
+  .why:has(input:checked) { border-color: #2dd4bf; background: rgba(45,212,191,.08); }
+  .why input { accent-color: #2dd4bf; width: 17px; height: 17px; margin: 0; flex: none; }
+  .why-more { display: block; margin: 12px 0 6px; font-size: .9em; opacity: .85; }
+  #sec-reason { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); color: inherit; font: inherit; padding: 10px 12px; }
   .sec-btn[disabled] { opacity: .6; cursor: wait; }
   .sec-msg { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.06); line-height: 1.5; }
   .sec-msg.ok { background: rgba(47, 182, 109, .16); }
@@ -142,8 +150,19 @@
               <li><strong>non riceverai più promemoria</strong> di pagamento;</li>
               <li>conserviamo piatti, foto e QR code: se un giorno vuoi ripartire, basta pagare dal link che trovi nelle nostre email.</li>
             </ul>
-            <label for="sec-reason" style="display:block;margin:14px 0 6px;font-weight:600;font-size:.95em">Vuoi dirci perché? (facoltativo)</label>
-            <textarea id="sec-reason" maxlength="500" rows="3" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:inherit;font:inherit;padding:10px 12px"></textarea>
+            <div id="sec-why">
+              <p class="why-title">Ci aiuti a migliorare? Perché non vuoi rinnovare? <span>(facoltativo)</span></p>
+              <div class="why-list" role="radiogroup" aria-label="Motivo">
+                <label class="why"><input type="radio" name="why" value="poco_usato"><span>I miei clienti lo usano poco</span></label>
+                <label class="why"><input type="radio" name="why" value="prezzo"><span>Costa troppo</span></label>
+                <label class="why"><input type="radio" name="why" value="chiuso"><span>Chiudo o vendo il locale</span></label>
+                <label class="why"><input type="radio" name="why" value="altro_servizio"><span>Passo a un altro servizio</span></label>
+                <label class="why"><input type="radio" name="why" value="problemi"><span>Ho avuto problemi con il servizio</span></label>
+                <label class="why"><input type="radio" name="why" value="altro"><span>Altro</span></label>
+              </div>
+              <label for="sec-reason" class="why-more">Vuoi aggiungere qualcosa?</label>
+              <textarea id="sec-reason" maxlength="500" rows="2"></textarea>
+            </div>
             <button class="sec-btn danger" id="sec-go" type="button">Confermo la disdetta</button>
             <p style="margin-top:12px;opacity:.75;font-size:.92em">Hai cambiato idea? Chiudi pure questa pagina: non cambia nulla.</p>
           </div>
@@ -209,9 +228,26 @@
     var a = document.createElement('a'); a.href = 'https://dsfabio.com/assistenza'; a.textContent = 'Assistenza'; a.style.textDecoration = 'underline'; a.style.fontWeight = '700';
     m.appendChild(a); m.appendChild(document.createTextNode('.'));
   }
+  // motivo scelto: si salva sempre (anche per chi disdice dal portale Stripe)
+  function whyCode() { var r = document.querySelector('input[name="why"]:checked'); return r ? r.value : ''; }
+  function whyText() {
+    var r = document.querySelector('input[name="why"]:checked');
+    var t = r ? r.parentNode.textContent.trim() : '';
+    var note = ($('sec-reason').value || '').trim();
+    return [t, note].filter(Boolean).join(' · ') || null;
+  }
+  function saveWhy() {
+    if (!whyCode()) return Promise.resolve();
+    return Promise.race([
+      rpc('billing_cancel_reason', { p_token: token, p_code: whyCode(), p_note: ($('sec-reason').value || '').trim() || null }).catch(function () {}),
+      new Promise(function (ok) { setTimeout(ok, 2500); })]);
+  }
   function hideAll() { $('sec-ask').hidden = true; $('sec-card').hidden = true; $('sec-undo').hidden = true; }
   function showCard(info) {
     hideAll(); $('sec-card').hidden = false;
+    // il riquadro del motivo va sopra il pulsante del portale
+    var why = $('sec-why'); var anchor = $('sec-portal');
+    if (why && anchor && why.parentNode !== $('sec-card')) $('sec-card').insertBefore(why, anchor);
     if (info.portal && /^https:\/\//.test(info.portal)) { var a = $('sec-portal'); a.href = info.portal; a.hidden = false; $('sec-portal-txt').hidden = false; }
     else { $('sec-noportal').hidden = false; if (info.contact) { $('sec-mail').textContent = info.contact; $('sec-mail').href = 'mailto:' + info.contact; } }
   }
@@ -238,12 +274,18 @@
   var go = $('sec-go');
   go.addEventListener('click', function () {
     go.disabled = true; go.textContent = 'Invio in corso…';
-    rpc('billing_cancel_request', { p_token: token, p_reason: $('sec-reason').value || null }).then(function (r) {
+    saveWhy().then(function () { return rpc('billing_cancel_request', { p_token: token, p_reason: whyText() }); }).then(function (r) {
       if (r && r.card) { info.portal = r.portal; return showCard(info); }
       if (r && r.trial) return trialInfo();
       if (!r || !r.ok) throw new Error((r && r.message) || 'Disdetta non riuscita.');
       info.until = r.until || info.until; info.source = 'cliente'; cancelled(info);
     }).catch(function (e) { go.disabled = false; go.textContent = 'Confermo la disdetta'; msg(e.message + ' Se non riesci, scrivici a info@dsfabio.com.', 'err'); });
+  });
+  $('sec-portal').addEventListener('click', function (e) {
+    if (!whyCode()) return;
+    e.preventDefault();
+    var href = this.href;
+    saveWhy().then(function () { location.href = href; });
   });
   var undo = $('sec-undo-go');
   undo.addEventListener('click', function () {

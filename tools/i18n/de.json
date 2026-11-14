@@ -496,5 +496,7 @@
  "Bar pasticceria in pastello: campane di vetro che si alzano sui dolci e zucchero a velo che cade.": "Café-Konditorei in Pastell: Glasglocken, die sich über den Kuchen heben, und rieselnder Puderzucker.",
  "<1>Pasticceria</1><2>Colazioni</2><3>Aperitivo</3>": "<1>Konditorei</1><2>Frühstück</2><3>Aperitivo</3>",
  "Pub con insegna al neon: tiri la spina della birra, il bicchiere si riempie e cambia la categoria.": "Pub mit Neonschild: Zieh am Zapfhahn, das Glas füllt sich und die Kategorie wechselt.",
- "<1>Pub</1><2>Birre alla spina</2><3>Neon</3>": "<1>Pub</1><2>Fassbier</2><3>Neon</3>"
+ "<1>Pub</1><2>Birre alla spina</2><3>Neon</3>": "<1>Pub</1><2>Fassbier</2><3>Neon</3>",
+ "Resoconto mensile gratuito: quante persone aprono il tuo menu, i giorni più forti e un consiglio per farlo vedere di più": "Kostenloser Monatsbericht: wie viele Personen Ihre Speisekarte öffnen, die stärksten Tage und ein Tipp für mehr Aufrufe",
+ "<1>🔁 Rinnovo automatico</1>il tuo menu resta sempre online, senza pensieri": "<1>🔁 Automatische Verlängerung</1>Ihre Speisekarte bleibt immer online, ganz ohne Sorgen"
 }

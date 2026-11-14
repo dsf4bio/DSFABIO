@@ -496,5 +496,7 @@
  "Bar pasticceria in pastello: campane di vetro che si alzano sui dolci e zucchero a velo che cade.": "Pastel café and pâtisserie: glass domes that lift over the cakes and falling icing sugar.",
  "<1>Pasticceria</1><2>Colazioni</2><3>Aperitivo</3>": "<1>Pâtisserie</1><2>Breakfast</2><3>Aperitivo</3>",
  "Pub con insegna al neon: tiri la spina della birra, il bicchiere si riempie e cambia la categoria.": "Pub with a neon sign: pull the beer tap, the glass fills up and the category changes.",
- "<1>Pub</1><2>Birre alla spina</2><3>Neon</3>": "<1>Pub</1><2>Draught beers</2><3>Neon</3>"
+ "<1>Pub</1><2>Birre alla spina</2><3>Neon</3>": "<1>Pub</1><2>Draught beers</2><3>Neon</3>",
+ "Resoconto mensile gratuito: quante persone aprono il tuo menu, i giorni più forti e un consiglio per farlo vedere di più": "Free monthly report: how many people open your menu, your busiest days and a tip to get it seen more",
+ "<1>🔁 Rinnovo automatico</1>il tuo menu resta sempre online, senza pensieri": "<1>🔁 Automatic renewal</1>your menu always stays online, worry-free"
 }

@@ -314,6 +314,19 @@
               </div>
 
               <div class="dsf-field">
+                <label class="dsf-label" for="f-source">Come ci hai conosciuto? (facoltativo)</label>
+                <select class="dsf-select" id="f-source" name="source">
+                  <option value="">Scegli…</option>
+                  <option value="menu_visto">Ho visto un vostro menu in un altro locale</option>
+                  <option value="passaparola">Me ne ha parlato qualcuno</option>
+                  <option value="google">Cercando su Google</option>
+                  <option value="social">Instagram o Facebook</option>
+                  <option value="agente">Un vostro incaricato</option>
+                  <option value="altro">Altro</option>
+                </select>
+              </div>
+
+              <div class="dsf-field">
                 <label class="dsf-label" for="f-notes">Note (facoltative)</label>
                 <textarea class="dsf-textarea" id="f-notes" name="notes" maxlength="1000" placeholder="Tipo di locale, orari in cui preferisci essere contattato, domande…"></textarea>
               </div>
@@ -617,9 +630,22 @@
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
                   notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true,
+                  source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
               }
+
+              // da dove arriva la visita (campagna o sito di provenienza), per capire cosa funziona
+              var arrivedFrom = (function () {
+                try {
+                  var q = new URLSearchParams(location.search);
+                  var utm = q.get('utm_source') || q.get('ref');
+                  if (utm) return ('utm:' + utm + (q.get('utm_campaign') ? '/' + q.get('utm_campaign') : '')).slice(0, 120);
+                  var r = document.referrer ? new URL(document.referrer) : null;
+                  if (r && r.hostname !== location.hostname) return ('ref:' + r.hostname + (/dsmenu\.it$/.test(r.hostname) ? r.pathname : '')).slice(0, 120);
+                } catch (e) { /* niente */ }
+                return null;
+              })();
 
               form.addEventListener('submit', function (e) {
                 e.preventDefault();

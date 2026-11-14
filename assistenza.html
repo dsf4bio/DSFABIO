@@ -237,6 +237,10 @@
               #dsf-assistenza .dsf-summary h4 { margin: 0 0 8px; font-size: 1em; }
               #dsf-assistenza .dsf-summary li { display: flex; gap: 8px; align-items: center; justify-content: space-between; padding: 4px 0; font-size: 0.9em; }
               #dsf-assistenza .dsf-invalid { border-color: var(--dsf-error) !important; }
+              #dsf-assistenza .dsf-flags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+              #dsf-assistenza .dsf-flag { --fc: #6b7280; border: 1px solid color-mix(in srgb, var(--fc) 55%, transparent); background: transparent; color: inherit; font: inherit; font-size: 0.76em; font-weight: 600; padding: 4px 9px; border-radius: 999px; cursor: pointer; opacity: 0.7; }
+              #dsf-assistenza .dsf-flag:hover { opacity: 1; }
+              #dsf-assistenza .dsf-flag.is-on { background: var(--fc); border-color: var(--fc); color: #fff; opacity: 1; }
               @media (max-width: 560px) { #dsf-assistenza .dsf-grid2 { grid-template-columns: 1fr; } }
             </style>
 
@@ -259,7 +263,7 @@
                   <button class="dsf-btn dsf-btn-ghost" type="button" id="dsf-price-mode">💶 Cambia più prezzi insieme</button>
                 </div>
                 <p class="dsf-summary" id="dsf-pending" hidden style="font-size:.9em">⏳ Alcune modifiche che hai già chiesto sono in attesa di pubblicazione: le vedi già qui sotto.</p>
-                <p class="dsf-hint" style="margin:0 0 12px">Tocca ✏️ per cambiare un piatto, 🗑 per toglierlo, ＋ per aggiungerne uno. Le modifiche vanno online dopo il nostro controllo.</p>
+                <p class="dsf-hint" style="margin:0 0 12px">Tocca ✏️ per cambiare un piatto, 🗑 per toglierlo, ＋ per aggiungerne uno. Sotto ogni piatto puoi accendere un'etichetta: <strong>Esaurito</strong> (se un piatto finisce per qualche giorno è meglio di toglierlo), Novità, In offerta… Le modifiche vanno online dopo il nostro controllo.</p>
                 <div id="dsf-menu"></div>
                 <div class="dsf-summary" id="dsf-summary" hidden></div>
               </div>
@@ -461,6 +465,9 @@
                 ['arachidi', '🥜 Arachidi'], ['soia', '🫘 Soia'], ['latte', '🥛 Latte'], ['frutta', '🌰 Frutta a guscio'],
                 ['sedano', '🥬 Sedano'], ['senape', '🟡 Senape'], ['sesamo', '⚪ Sesamo'], ['solfiti', '🍷 Solfiti'],
                 ['lupini', '🌼 Lupini'], ['molluschi', '🐚 Molluschi']];
+              // etichette del piatto (migrazione 060 del gestionale), colorate come nel menu online
+              var FLAGS = [['esaurito', '🚫 Esaurito', '#6b7280'], ['novita', '✨ Novità', '#16a34a'], ['offerta', '🏷️ In offerta', '#dc2626'],
+                ['consigliato', '⭐ Consigliato', '#d97706'], ['stagione', '🍂 Di stagione', '#0d9488'], ['ultimi', '⏳ Ultimi pezzi', '#ea580c']];
               var menuBox = $('dsf-menu'), menuStep = $('dsf-menu-step'), classic = $('dsf-classic'), summaryBox = $('dsf-summary');
               var M = null;            // menu caricato: { code, business, sections }
               var PREP = false;        // menu non ancora pubblicato: solo materiale aggiuntivo
@@ -488,7 +495,8 @@
                 var e = edits[it.id] || {};
                 return {
                   name: 'name' in e ? e.name : it.name, description: 'description' in e ? e.description : (it.description || ''),
-                  price: 'price' in e ? e.price : it.price, allergens: 'allergens' in e ? e.allergens : (it.allergens || [])
+                  price: 'price' in e ? e.price : it.price, allergens: 'allergens' in e ? e.allergens : (it.allergens || []),
+                  flags: 'flags' in e ? e.flags : (it.flags || [])
                 };
               }
               function sameList(a, b) { return (a || []).slice().sort().join() === (b || []).slice().sort().join(); }
@@ -498,6 +506,7 @@
                 if ('description' in e && e.description === (it.description || '')) delete e.description;
                 if ('price' in e && e.price === it.price) delete e.price;
                 if ('allergens' in e && sameList(e.allergens, it.allergens)) delete e.allergens;
+                if ('flags' in e && sameList(e.flags, it.flags)) delete e.flags;
                 if (!Object.keys(e).length) delete edits[it.id];
               }
 
@@ -555,7 +564,9 @@
                   if (!it && p === null) { err.textContent = 'Indica il prezzo del nuovo piatto.'; return; }
                   if (!it && allergens === null) { err.textContent = 'Indica gli allergeni, oppure spunta "Nessuno di questi allergeni".'; return; }
                   if (it) {
+                    var keepFlags = edits[it.id] && 'flags' in edits[it.id] ? edits[it.id].flags : undefined;
                     edits[it.id] = { name: n, description: desc.value.trim(), price: p, allergens: allergens };
+                    if (keepFlags !== undefined) edits[it.id].flags = keepFlags;
                     cleanEdit(it);
                   } else if (add) {
                     add.name = n; add.description = desc.value.trim(); add.price = p; add.allergens = allergens;
@@ -570,6 +581,32 @@
                   err, actions);
                 setTimeout(function () { name.focus(); }, 30);
                 return box;
+              }
+
+              // etichette sotto il piatto: un tocco le accende o le spegne
+              function flagPicker(it, c) {
+                var box = h('div', 'dsf-flags');
+                FLAGS.forEach(function (f) {
+                  var on = (c.flags || []).indexOf(f[0]) >= 0;
+                  var b = h('button', 'dsf-flag' + (on ? ' is-on' : ''), f[1]); b.type = 'button';
+                  b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                  b.style.setProperty('--fc', f[2]);
+                  b.onclick = function () {
+                    var cur = current(it).flags.slice(), i = cur.indexOf(f[0]);
+                    if (i >= 0) cur.splice(i, 1); else {
+                      if (cur.length >= 4) return;
+                      cur.push(f[0]);
+                    }
+                    edits[it.id] = edits[it.id] || {};
+                    edits[it.id].flags = FLAGS.map(function (x) { return x[0]; }).filter(function (k) { return cur.indexOf(k) >= 0; });
+                    cleanEdit(it); renderMenu();
+                  };
+                  box.appendChild(b);
+                });
+                return box;
+              }
+              function flagNames(list) {
+                return (list || []).map(function (k) { var f = FLAGS.filter(function (x) { return x[0] === k; })[0]; return f ? f[1] : k; }).join(', ') || 'nessuna';
               }
 
               function renderMenu() {
@@ -614,6 +651,7 @@
                     }
                     row.appendChild(line);
                     if (c.description) row.appendChild(h('div', 'dsf-item-desc', c.description));
+                    if (!priceMode && !removed[it.id]) row.appendChild(flagPicker(it, c));
                     if (openKey === it.id && !priceMode) row.appendChild(editor(it));
                     sec.appendChild(row);
                   });
@@ -647,7 +685,7 @@
                 Object.keys(edits).forEach(function (id) {
                   if (removed[id] || !findItem(id)) return;
                   var e = edits[id], op = { op: 'update', item_id: id };
-                  ['name', 'description', 'price', 'allergens'].forEach(function (k) { if (k in e) op[k] = e[k]; });
+                  ['name', 'description', 'price', 'allergens', 'flags'].forEach(function (k) { if (k in e) op[k] = e[k]; });
                   ops.push(op);
                 });
                 Object.keys(removed).forEach(function (id) { ops.push({ op: 'remove', item_id: id }); });
@@ -666,6 +704,7 @@
                   if ('price' in e) parts.push(euro(it.price) + ' → ' + euro(e.price));
                   if ('description' in e) parts.push('descrizione');
                   if ('allergens' in e) parts.push('allergeni');
+                  if ('flags' in e) parts.push('etichette → ' + flagNames(e.flags));
                   lines.push(['✏️ ' + it.name + ': ' + parts.join(' · '), function () { delete edits[id]; renderMenu(); }]);
                 });
                 Object.keys(removed).forEach(function (id) {

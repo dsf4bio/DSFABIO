@@ -275,6 +275,8 @@
               #dsf-assistenza .dsf-bt-round i, #dsf-assistenza .dsf-bt-round img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: #fff; display: grid; place-items: center; box-sizing: border-box; }
               #dsf-assistenza .dsf-bt-land { width: 100%; max-width: 220px; height: 72px; border-radius: 12px; }
               #dsf-assistenza .dsf-bt.has .dsf-bt-pick { border-style: solid; border-color: #9be3b6; }
+              #dsf-assistenza .dsf-bt-see { display: block; width: 100%; margin-top: 12px; padding: 12px 14px; border-radius: 999px; border: 1.5px solid #c9b8ff; background: #f6f2ff; color: #4b2fd6; font: inherit; font-weight: 700; cursor: pointer; }
+              #dsf-assistenza .dsf-bt-see:hover { background: #ede6ff; }
               #dsf-assistenza .dsf-bt-x { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 50%; border: 0; background: rgba(29, 22, 48, .75); color: #fff; font-size: 16px; line-height: 1; cursor: pointer; }
               /* privacy, pulsanti, errori */
               #dsf-assistenza .dsf-consent { display: flex; gap: 10px; align-items: flex-start; margin: 6px 0 18px; padding: 12px 14px; border-radius: 14px; background: #f8f6fc; cursor: pointer; font-size: .92em; }
@@ -419,6 +421,7 @@
                       <button type="button" class="dsf-bt-x" id="bt-cover-x" aria-label="Togli la copertina" hidden>×</button>
                     </div>
                   </div>
+                  <button type="button" class="dsf-bt-see" id="bt-see" hidden>👁 Guarda il tuo menu con logo e copertina</button>
                   <input class="dsf-hidden-input" id="dsf-logo" type="file" accept="image/jpeg,image/png,image/webp">
                   <input class="dsf-hidden-input" id="dsf-cover" type="file" accept="image/jpeg,image/png,image/webp">
                 </div>
@@ -804,10 +807,37 @@
 
               // anteprima del modello in una finestra a misura di telefono
               var lastFocus = null;
+              // nell'anteprima del modello Aura mette il logo, la copertina e il nome caricati dal ristoratore
+              function personalize(doc, t) {
+                if (!doc || t[0] !== 'mdc-016') return;
+                var logo = brand.logo && brand.logo.url, cover = brand.cover && brand.cover.url, name = $('f-business').value.trim();
+                var slot = doc.querySelector('.hero-logo .dsm-logo');
+                if (logo && slot) {
+                  slot.textContent = '';
+                  var im = doc.createElement('img'); im.src = logo; im.alt = 'Logo';
+                  im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#fff';
+                  slot.appendChild(im);
+                }
+                if (cover) {
+                  var st = doc.createElement('style');
+                  st.textContent = '.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(165deg,rgba(70,82,31,.72),rgba(38,46,15,.5)),url("' + cover + '") center center/cover no-repeat}'
+                    + '.hero>*{position:relative;z-index:1}'
+                    + '@media (max-width:760px){.hero::before{bottom:auto;height:min(60%,560px);-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}}';
+                  doc.head.appendChild(st);
+                }
+                var h1 = doc.querySelector('.hero h1');
+                if (name && h1) {
+                  var w = name.split(/\s+/), last = w.length > 1 ? w.pop() : '';
+                  h1.textContent = w.join(' ') + (last ? ' ' : '');
+                  if (last) { var i = doc.createElement('i'); i.textContent = last; h1.appendChild(i); }
+                }
+              }
+
               function openPreview(t, from) {
                 lastFocus = from;
                 var ov = el('div', 'dsf-pv'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Anteprima del modello ' + t[1]);
                 var frame = document.createElement('iframe');
+                frame.addEventListener('load', function () { try { personalize(frame.contentDocument, t); } catch (e) {} });
                 frame.src = '/' + t[3] + '?anteprima'; frame.title = 'Anteprima del modello ' + t[1]; frame.loading = 'eager';
                 var x = el('button', 'dsf-pv-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Chiudi l\'anteprima e torna al modulo');
                 var pick = el('button', 'dsf-pv-pick', '✓ Scelgo ' + t[1]); pick.type = 'button';
@@ -965,10 +995,15 @@
                   box.closest('.dsf-bt').classList.toggle('has', !!(it && it.url));
                   $('bt-' + kind + '-x').hidden = !it;
                 });
+                $('bt-see').hidden = !((brand.logo && brand.logo.url) || (brand.cover && brand.cover.url));
                 livePhone(THEMES.filter(function (x) { return x[0] === selectedTheme(); })[0]);
               }
               $('dsf-logo').addEventListener('change', function (e) { setBrand('logo', e.target.files[0]); e.target.value = ''; });
               $('dsf-cover').addEventListener('change', function (e) { setBrand('cover', e.target.files[0]); e.target.value = ''; });
+              $('bt-see').addEventListener('click', function () {
+                // logo e copertina si vedono nel modello Aura: se ne hai scelto un altro te lo mostriamo lo stesso, poi scegli tu
+                openPreview(THEMES.filter(function (x) { return x[0] === 'mdc-016'; })[0], this);
+              });
               $('bt-logo-x').addEventListener('click', function () { setBrand('logo', null); });
               $('bt-cover-x').addEventListener('click', function () { setBrand('cover', null); });
 

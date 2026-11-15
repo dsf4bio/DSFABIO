@@ -67,10 +67,10 @@
     @keyframes dsf-bump { 40% { transform: scale(1.04) rotate(-1deg); } }
     .dsf-page .phone-screen { position: relative; border-radius: 26px; overflow: hidden; height: 346px; background: #f3eefc; }
     .dsf-page [hidden] { display: none !important; }
-    .dsf-page .phone-url { position: absolute; z-index: 2; top: 8px; left: 8px; right: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94);
-      font-size: 10.5px; font-weight: 700; color: #1d1630; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
+    .dsf-page .phone-url { position: absolute; z-index: 2; top: 3px; left: 14px; right: 14px; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .94);
+      font-size: 9px; line-height: 1.35; font-weight: 700; color: #1d1630; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
     .dsf-page .phone-url::before { content: '🔒 '; }
-    .dsf-page .phone-img { position: absolute; inset: 34px 0 0; width: 100%; height: calc(100% - 34px); object-fit: cover; object-position: top; transition: opacity .35s; }
+    .dsf-page .phone-img { position: absolute; inset: 20px 0 0; width: 100%; height: calc(100% - 20px); object-fit: cover; object-position: top; transition: opacity .35s; }
     .dsf-page .phone-logo { position: absolute; z-index: 1; left: 2.4%; top: 11.4%; width: 20.3%; aspect-ratio: 1; height: auto; border-radius: 50%; padding: 1.5%;
       background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); box-sizing: border-box; animation: dsf-pop .35s both; }
     .dsf-page .phone-logo img { position: static; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 9%; background: #fff; border: 2px solid #fff; box-sizing: border-box; }
@@ -813,41 +813,38 @@
               // anteprima con logo, copertina e nome del ristoratore, su tutti i modelli.
               // Stessa tabella di dsmenu/api/menu.js (BRAND_LOOK): at = intestazione dietro cui va la copertina,
               // tint = velo del colore del modello, logo 'h1' = tondo sopra al nome, mono = tondo già presente nel modello
-              // stessa tabella di dsmenu/api/menu.js (FADE, BRAND_LOOK, BRAND_CSS): copiata da lì, tenerle uguali
-              var FADE = 'linear-gradient(180deg,#000 0,#000 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.15) 80%,transparent 88%)';
+              // stessa tabella di dsmenu/api/menu.js (BRAND_LOOK, BRAND_CSS): copiata da lì, tenerle uguali
               var BRAND_LOOK = {
-                'mdc-001': { at: 'header.hero', rgb: '250,246,238', a: 0.62, tx: 'lt' },
-                'mdc-002': { at: 'header.top', rgb: '20,14,12', a: 0.42, tx: 'dk',
-                  // con la copertina: niente rosso a quadri, la foto scurita in basso sfuma nel colore della pagina
-                  css: '.top.dsm-cov{background:var(--cream)}.top.dsm-cov::before{display:none}'
-                    + `.top.dsm-cov>.dsm-cov-bg{-webkit-mask-image:${FADE};mask-image:${FADE}}.top.dsm-cov .dsm-hd{padding-bottom:120px}` },
-                'mdc-003': { at: 'header.top', rgb: '255,250,242', a: 0.62, tx: 'lt' },
-                'mdc-004': { at: 'header.top', rgb: '18,18,20', a: 0.5, tx: 'dk' },
-                'mdc-005': { at: 'header.top', rgb: '52,32,20', a: 0.5, tx: 'dk' },
-                'mdc-006': { at: 'header.top', rgb: '12,52,104', a: 0.46, tx: 'dk' },
-                'mdc-007': { at: 'header.top', rgb: '18,16,14', a: 0.5, tx: 'dk' },
-                'mdc-008': { at: 'header.hero', rgb: '18,10,8', a: 0.5, tx: 'dk' },
-                'mdc-009': { at: 'header.hero', rgb: '6,18,34', a: 0.5, tx: 'dk', h1: false },
-                'mdc-010': { at: 'header.dsm-hdr10', rgb: '255,210,60', a: 0.5, tx: 'lt' },
-                'mdc-011': { at: 'header.hero', rgb: '14,14,14', a: 0.5, tx: 'dk' },
-                'mdc-012': { at: 'header.hero', rgb: '250,240,222', a: 0.62, tx: 'lt' },
-                'mdc-013': { at: 'header.hero', rgb: '12,26,62', a: 0.5, tx: 'dk' },
-                'mdc-014': { at: 'header.hero', rgb: '16,34,26', a: 0.48, tx: 'dk' },
-                'mdc-015': { at: 'header.top', rgb: '30,12,54', a: 0.5, tx: 'dk', h1: false },
-                'mdc-016': { at: 'header.hero', rgb: '52,62,22', a: 0.5, tx: 'dk' },
-                'mdc-017': { at: 'header.top', rgb: '40,22,12', a: 0.46, tx: 'dk' },
-                'mdc-018': { at: 'header.hero', rgb: '20,14,12', a: 0.42, tx: 'dk',
-                  css: '.hero.dsm-cov{background:var(--cream)}'
-                    + `.hero.dsm-cov>.dsm-cov-bg{-webkit-mask-image:${FADE};mask-image:${FADE}}.hero.dsm-cov .dsm-hd{padding-bottom:120px}` },
-                'mdc-019': { at: 'header.hero', rgb: '250,243,228', a: 0.6, tx: 'lt' },
-                'mdc-020': { at: 'header.hero', rgb: '253,238,242', a: 0.58, tx: 'lt' },
-                'mdc-021': { at: 'header.wall', rgb: '16,10,8', a: 0.5, tx: 'dk' },
+                'mdc-001': { at: 'header.hero', rgb: '250,246,238', a: 0.52, tx: 'lt' },
+                'mdc-002': { at: 'header.top', rgb: '20,14,12', a: 0.32, tx: 'dk' },
+                'mdc-003': { at: 'header.top', rgb: '255,250,242', a: 0.52, tx: 'lt' },
+                'mdc-004': { at: 'header.top', rgb: '18,18,20', a: 0.4, tx: 'dk' },
+                'mdc-005': { at: 'header.top', rgb: '52,32,20', a: 0.4, tx: 'dk' },
+                'mdc-006': { at: 'header.top', rgb: '12,52,104', a: 0.36, tx: 'dk' },
+                'mdc-007': { at: 'header.top', rgb: '18,16,14', a: 0.4, tx: 'dk' },
+                'mdc-008': { at: 'header.hero', rgb: '18,10,8', a: 0.4, tx: 'dk' },
+                'mdc-009': { at: 'header.hero', rgb: '6,18,34', a: 0.4, tx: 'dk', h1: false },
+                'mdc-010': { at: 'header.dsm-hdr10', rgb: '255,210,60', a: 0.4, tx: 'lt' },
+                'mdc-011': { at: 'header.hero', rgb: '14,14,14', a: 0.4, tx: 'dk' },
+                'mdc-012': { at: 'header.hero', rgb: '250,240,222', a: 0.52, tx: 'lt' },
+                'mdc-013': { at: 'header.hero', rgb: '12,26,62', a: 0.4, tx: 'dk' },
+                'mdc-014': { at: 'header.hero', rgb: '16,34,26', a: 0.38, tx: 'dk' },
+                'mdc-015': { at: 'header.top', rgb: '30,12,54', a: 0.4, tx: 'dk', h1: false },
+                'mdc-016': { at: 'header.hero', rgb: '52,62,22', a: 0.4, tx: 'dk' },
+                'mdc-017': { at: 'header.top', rgb: '40,22,12', a: 0.36, tx: 'dk' },
+                'mdc-018': { at: 'header.hero', rgb: '20,14,12', a: 0.32, tx: 'dk' },
+                'mdc-019': { at: 'header.hero', rgb: '250,243,228', a: 0.5, tx: 'lt' },
+                'mdc-020': { at: 'header.hero', rgb: '253,238,242', a: 0.48, tx: 'lt' },
+                'mdc-021': { at: 'header.wall', rgb: '16,10,8', a: 0.4, tx: 'dk' },
               };
               var BRAND_CSS = ':where(.dsm-cov){position:relative}.dsm-cov{isolation:isolate}'
                 // foto + velo; in basso sfuma nello sfondo del modello, così non c'è uno stacco netto
                 + '.dsm-cov>.dsm-cov-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;'
                 + 'background:linear-gradient(var(--dsm-tint),var(--dsm-tint)),var(--dsm-cover) center center/cover no-repeat;'
-                + '-webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.12) 82%,transparent 92%);mask-image:linear-gradient(180deg,#000 0,#000 45%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.12) 82%,transparent 92%)}'
+                + '-webkit-mask-image:linear-gradient(180deg,#000 0,#000 60%,rgba(0,0,0,.55) 80%,rgba(0,0,0,.15) 92%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 60%,rgba(0,0,0,.55) 80%,rgba(0,0,0,.15) 92%,transparent 100%)}'
+                // con la copertina la testata non ha più un suo sfondo: la foto sfuma direttamente nello sfondo della pagina del modello
+                + '.dsm-cov{background:transparent!important;background-image:none!important;box-shadow:none!important}.dsm-cov::before,.dsm-cov::after{display:none!important}'
+                + '.dsm-cov .dsm-hd{padding-bottom:130px!important}@media (max-width:600px){.dsm-cov .dsm-hd{padding-bottom:112px!important}}'
                 // testi sempre leggibili sulla foto
                 + '.dsm-cov-dk p,.dsm-cov-dk small,.dsm-cov-dk .kick,.dsm-cov-dk .kicker,.dsm-cov-dk .est{text-shadow:0 1px 3px rgba(0,0,0,.6),0 2px 16px rgba(0,0,0,.45)}'
                 + ':where(.dsm-cov-dk:not(.dsm-cov-noh1)) h1{text-shadow:0 2px 4px rgba(0,0,0,.35),0 4px 24px rgba(0,0,0,.45)}'
@@ -947,7 +944,7 @@
                 clearTimeout(lfTimer);
                 lfTimer = setTimeout(function () {
                   var t = THEMES.filter(function (x) { return x[0] === selectedTheme(); })[0];
-                  liveFrame(document.querySelector('.phone-screen'), t, 34);
+                  liveFrame(document.querySelector('.phone-screen'), t, 20);
                   liveFrame(document.querySelector('.mini-screen'), t, 0);
                 }, 250);
               }

@@ -70,7 +70,7 @@
     .dsf-page .phone-url { position: absolute; z-index: 2; top: 8px; left: 8px; right: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94);
       font-size: 10.5px; font-weight: 700; color: #1d1630; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
     .dsf-page .phone-url::before { content: '🔒 '; }
-    .dsf-page .phone-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: opacity .35s; }
+    .dsf-page .phone-img { position: absolute; inset: 34px 0 0; width: 100%; height: calc(100% - 34px); object-fit: cover; object-position: top; transition: opacity .35s; }
     .dsf-page .phone-logo { position: absolute; z-index: 1; left: 2.4%; top: 11.4%; width: 20.3%; aspect-ratio: 1; height: auto; border-radius: 50%; padding: 1.5%;
       background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); box-sizing: border-box; animation: dsf-pop .35s both; }
     .dsf-page .phone-logo img { position: static; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 9%; background: #fff; border: 2px solid #fff; box-sizing: border-box; }
@@ -411,7 +411,7 @@
 
                 <div class="dsf-block">
                   <div class="dsf-q"><span class="dsf-ico">🖼️</span> Logo e copertina <em class="dsf-opt">facoltativi</em></div>
-                  <p class="dsf-sub">Se li hai, caricali qui: li mettiamo noi nel menu. Il logo va in alto vicino al nome e in fondo al menu; la copertina dietro al nome del locale. Vanno bene con tutti i modelli.</p>
+                  <p class="dsf-sub">Se li hai, caricali qui: li mettiamo noi nel menu. Il logo va nel tondo in alto al centro e in fondo al menu; la copertina dietro al nome del locale. Vanno bene con tutti i modelli.</p>
                   <div class="dsf-brand">
                     <div class="dsf-bt">
                       <label class="dsf-bt-pick" for="dsf-logo"><span class="dsf-bt-img dsf-bt-round" id="bt-logo"><i>＋</i></span><b>Logo</b><small>meglio quadrato</small></label>
@@ -753,7 +753,7 @@
                 input.type = 'radio'; input.name = 'theme'; input.value = t ? t[0] : ''; input.id = 'th-' + (t ? t[0] : 'any');
                 var label = document.createElement('label'); label.htmlFor = input.id;
                 var pic = el('span', 'dsf-theme-img' + (t ? '' : ' dsf-any'));
-                if (t) { var img = document.createElement('img'); img.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115'; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.width = 390; img.height = 520; pic.appendChild(img); }
+                if (t) { var img = document.createElement('img'); img.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115b'; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.width = 390; img.height = 520; pic.appendChild(img); }
                 else pic.textContent = '✨';
                 label.appendChild(pic);
                 label.appendChild(el('b', '', t ? t[1] : 'Consigliatemi voi'));
@@ -811,67 +811,54 @@
               // anteprima con logo, copertina e nome del ristoratore, su tutti i modelli.
               // Stessa tabella di dsmenu/api/menu.js (BRAND_LOOK): at = intestazione dietro cui va la copertina,
               // tint = velo del colore del modello, logo 'h1' = tondo sopra al nome, mono = tondo già presente nel modello
-              // stessa tabella di dsmenu/api/menu.js (BRAND_LOOK, BRAND_CSS): copiata da lì, tenerle uguali
+              // stessa tabella di dsmenu/api/menu.js (FADE, BRAND_LOOK, BRAND_CSS): copiata da lì, tenerle uguali
+              var FADE = 'linear-gradient(180deg,#000 0,#000 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.15) 80%,transparent 88%)';
               var BRAND_LOOK = {
-                'mdc-001': { at: 'header.hero', rgb: '250,246,238', a: 0.62, tx: 'lt', logo: false },
-                'mdc-002': { at: 'header.top', rgb: '20,14,12', a: 0.42, tx: 'dk', logo: 'span.badge',
-                  // con la copertina: niente rosso, foto scurita che in basso sfuma nel colore della pagina
-                  css: '.top.dsm-cov{background:var(--cream);padding-bottom:150px}.top.dsm-cov::before,.top.dsm-cov .pizza{display:none}'
-                    + '.top.dsm-cov>.dsm-cov-bg{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.15) 80%,transparent 88%);mask-image:linear-gradient(180deg,#000 0,#000 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.15) 80%,transparent 88%)}'
-                    + '.top.dsm-cov h1{text-shadow:0 3px 22px rgba(0,0,0,.55)}.top.dsm-cov .dsm-hlogo{margin-top:16px}' },
-                'mdc-003': { at: 'header.top', rgb: '255,250,242', a: 0.62, tx: 'lt', logo: false },
-                'mdc-004': { at: 'header.top', rgb: '18,18,20', a: 0.5, tx: 'dk', logo: 'div.brand',
-                  css: '.top.dsm-cov{max-width:none;padding-left:max(20px,calc(50% - 360px));padding-right:max(20px,calc(50% - 360px))}' },
-                'mdc-005': { at: 'header.top', rgb: '52,32,20', a: 0.5, tx: 'dk', logo: 'p.est' },
-                'mdc-006': { at: 'header.top', rgb: '12,52,104', a: 0.46, tx: 'dk', logo: 'p.kick' },
-                'mdc-007': { at: 'header.top', rgb: '18,16,14', a: 0.5, tx: 'dk', logo: 'span.badge' },
-                'mdc-008': { at: 'header.hero', rgb: '18,10,8', a: 0.5, tx: 'dk', logo: 'span.temp' },
-                'mdc-009': { at: 'header.hero', rgb: '6,18,34', a: 0.5, tx: 'dk', logo: 'div.hero-grid', h1: false,
-                  css: '.hero>.dsm-hlogo{position:relative;max-width:960px;margin:0 auto 16px}@media (max-width:720px){.hero>.dsm-hlogo{text-align:center}}' },
-                'mdc-010': { at: 'section.build', rgb: '255,210,60', a: 0.6, tx: 'lt', logo: 'h1' },
-                'mdc-011': { at: 'header.hero', rgb: '14,14,14', a: 0.5, tx: 'dk', logo: 'span.est' },
-                'mdc-012': { at: 'header.hero', rgb: '250,240,222', a: 0.62, tx: 'lt', logo: 'div.hero-grid',
-                  css: '.hero>.dsm-hlogo{max-width:960px;margin:0 auto 16px}@media (max-width:760px){.hero>.dsm-hlogo{text-align:center}}' },
-                'mdc-013': { at: 'header.hero', rgb: '12,26,62', a: 0.5, tx: 'dk', logo: 'h1' },
-                'mdc-014': { at: 'header.hero', rgb: '16,34,26', a: 0.48, tx: 'dk', logo: 'p.kicker' },
-                'mdc-015': { at: 'header.top', rgb: '30,12,54', a: 0.5, tx: 'dk', logo: false, h1: false,
-                  // con la copertina la barra in alto diventa una testata con la foto: logo grande, nome sotto, lingua in alto a destra
-                  css: '.top.dsm-cov{max-width:none;min-height:250px;align-items:flex-end;padding:20px max(18px,calc(50% - 432px)) 22px;margin-bottom:6px}'
-                    + '.top.dsm-cov .brand{flex-direction:column;align-items:flex-start;gap:12px}.top.dsm-cov .logo{width:72px;height:72px}'
-                    + '.top.dsm-cov #lang{align-self:flex-start}.top.dsm-cov .tagline{text-shadow:0 1px 3px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.5)}' },
-                'mdc-016': { at: 'header.hero', rgb: '52,62,22', a: 0.5, tx: 'dk', logo: false, top: true },
-                'mdc-017': { at: 'header.top', rgb: '40,22,12', a: 0.46, tx: 'dk', logo: 'div.plank' },
-                'mdc-018': { at: 'header.hero', rgb: '20,14,12', a: 0.42, tx: 'dk', logo: 'small',
-                  css: '.hero.dsm-cov{background:var(--cream);padding-top:34px}.hero.dsm-cov .volcano{display:none}.hero.dsm-cov .hero-in{grid-template-columns:1fr;padding-bottom:100px}.hero.dsm-cov .oven span{background:rgba(28,20,17,.82)}'
-                    + '.hero.dsm-cov>.dsm-cov-bg{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.15) 80%,transparent 88%);mask-image:linear-gradient(180deg,#000 0,#000 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.15) 80%,transparent 88%)}'
-                    + '.hero.dsm-cov h1{text-shadow:0 3px 22px rgba(0,0,0,.55)}.hero.dsm-cov p{padding-bottom:22px}' },
-                'mdc-019': { at: 'header.hero', rgb: '250,243,228', a: 0.6, tx: 'lt', logo: 'small' },
-                'mdc-020': { at: 'header.hero', rgb: '253,238,242', a: 0.58, tx: 'lt', logo: 'small' },
-                'mdc-021': { at: 'header.wall', rgb: '16,10,8', a: 0.5, tx: 'dk', logo: 'div.neon', css: '.wall>.dsm-hlogo{margin-bottom:26px}' },
+                'mdc-001': { at: 'header.hero', rgb: '250,246,238', a: 0.62, tx: 'lt' },
+                'mdc-002': { at: 'header.top', rgb: '20,14,12', a: 0.42, tx: 'dk',
+                  // con la copertina: niente rosso a quadri, la foto scurita in basso sfuma nel colore della pagina
+                  css: '.top.dsm-cov{background:var(--cream)}.top.dsm-cov::before{display:none}'
+                    + `.top.dsm-cov>.dsm-cov-bg{-webkit-mask-image:${FADE};mask-image:${FADE}}.top.dsm-cov .dsm-hd{padding-bottom:120px}` },
+                'mdc-003': { at: 'header.top', rgb: '255,250,242', a: 0.62, tx: 'lt' },
+                'mdc-004': { at: 'header.top', rgb: '18,18,20', a: 0.5, tx: 'dk' },
+                'mdc-005': { at: 'header.top', rgb: '52,32,20', a: 0.5, tx: 'dk' },
+                'mdc-006': { at: 'header.top', rgb: '12,52,104', a: 0.46, tx: 'dk' },
+                'mdc-007': { at: 'header.top', rgb: '18,16,14', a: 0.5, tx: 'dk' },
+                'mdc-008': { at: 'header.hero', rgb: '18,10,8', a: 0.5, tx: 'dk' },
+                'mdc-009': { at: 'header.hero', rgb: '6,18,34', a: 0.5, tx: 'dk', h1: false },
+                'mdc-010': { at: 'header.dsm-hdr10', rgb: '255,210,60', a: 0.5, tx: 'lt' },
+                'mdc-011': { at: 'header.hero', rgb: '14,14,14', a: 0.5, tx: 'dk' },
+                'mdc-012': { at: 'header.hero', rgb: '250,240,222', a: 0.62, tx: 'lt' },
+                'mdc-013': { at: 'header.hero', rgb: '12,26,62', a: 0.5, tx: 'dk' },
+                'mdc-014': { at: 'header.hero', rgb: '16,34,26', a: 0.48, tx: 'dk' },
+                'mdc-015': { at: 'header.top', rgb: '30,12,54', a: 0.5, tx: 'dk', h1: false },
+                'mdc-016': { at: 'header.hero', rgb: '52,62,22', a: 0.5, tx: 'dk' },
+                'mdc-017': { at: 'header.top', rgb: '40,22,12', a: 0.46, tx: 'dk' },
+                'mdc-018': { at: 'header.hero', rgb: '20,14,12', a: 0.42, tx: 'dk',
+                  css: '.hero.dsm-cov{background:var(--cream)}'
+                    + `.hero.dsm-cov>.dsm-cov-bg{-webkit-mask-image:${FADE};mask-image:${FADE}}.hero.dsm-cov .dsm-hd{padding-bottom:120px}` },
+                'mdc-019': { at: 'header.hero', rgb: '250,243,228', a: 0.6, tx: 'lt' },
+                'mdc-020': { at: 'header.hero', rgb: '253,238,242', a: 0.58, tx: 'lt' },
+                'mdc-021': { at: 'header.wall', rgb: '16,10,8', a: 0.5, tx: 'dk' },
               };
               var BRAND_CSS = ':where(.dsm-cov){position:relative}.dsm-cov{isolation:isolate}'
                 // foto + velo; in basso sfuma nello sfondo del modello, così non c'è uno stacco netto
                 + '.dsm-cov>.dsm-cov-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;'
                 + 'background:linear-gradient(var(--dsm-tint),var(--dsm-tint)),var(--dsm-cover) center center/cover no-repeat;'
                 + '-webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.12) 82%,transparent 92%);mask-image:linear-gradient(180deg,#000 0,#000 45%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.12) 82%,transparent 92%)}'
-                + '@media (max-width:760px){.dsm-cov-top>.dsm-cov-bg{bottom:auto;height:min(62%,580px)}}'
                 // testi sempre leggibili sulla foto
                 + '.dsm-cov-dk p,.dsm-cov-dk small,.dsm-cov-dk .kick,.dsm-cov-dk .kicker,.dsm-cov-dk .est{text-shadow:0 1px 3px rgba(0,0,0,.6),0 2px 16px rgba(0,0,0,.45)}'
                 + ':where(.dsm-cov-dk:not(.dsm-cov-noh1)) h1{text-shadow:0 2px 4px rgba(0,0,0,.35),0 4px 24px rgba(0,0,0,.45)}'
                 + '.dsm-cov-lt p,.dsm-cov-lt small,.dsm-cov-lt .kick,.dsm-cov-lt .kicker{text-shadow:0 0 2px rgba(255,255,255,.9),0 0 14px rgba(255,255,255,.85)}'
                 + ':where(.dsm-cov-lt:not(.dsm-cov-noh1)) h1{text-shadow:0 0 18px rgba(255,255,255,.85)}'
-                // tondo col logo: allineato come il testo del modello (a sinistra o al centro), sopra alla riga del nome
-                + '.dsm-hlogo{margin:0 0 14px;line-height:0}.dsm-hlogo .dsm-logo{width:64px!important;height:64px!important}'
-                + '@media (max-width:600px){.dsm-hlogo .dsm-logo{width:56px!important;height:56px!important}}';
-              // solo per l'anteprima: dove sta il tondo già presente nel modello e come è scritto il nome
-              var PREVIEW_LOOK = {
-                'mdc-001': { mono: '.mono' }, 'mdc-003': { mono: '.blob' }, 'mdc-015': { mono: '.logo' }, 'mdc-016': { mono: '.hero-logo .dsm-logo', name: 'i' },
-                'mdc-004': { name: 'br' }, 'mdc-008': { name: 'span' }, 'mdc-010': { name: 'first' }, 'mdc-011': { name: 'span' },
-                'mdc-014': { name: 'lines' }, 'mdc-020': { name: 'em' }, 'mdc-021': { name: 'span' }
-              };
-              function ringLogo(doc, url, size) {
-                var ring = doc.createElement('span');
-                ring.style.cssText = 'display:inline-block;box-sizing:border-box;width:' + size + ';height:' + size + ';aspect-ratio:1;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);flex:0 0 auto;vertical-align:middle';
+                + '';
+              // come è scritto il nome nei modelli (per metterci quello del locale nell'anteprima)
+              var NAME_MODE = { 'mdc-004': 'br', 'mdc-008': 'span', 'mdc-010': 'first', 'mdc-011': 'span', 'mdc-014': 'lines', 'mdc-016': 'i', 'mdc-020': 'em', 'mdc-021': 'span' };
+              // dove sta il tondo del logo nelle miniature (assets/anteprime): sinistra, alto, larghezza in % della larghezza
+              var LOGO_POS = {"demo-fuoco-brace": [40.26, 6.67, 19.49], "demo-sakura-neon": [40.26, 6.67, 19.49], "mdc-001": [40.26, 6.67, 19.49], "mdc-002": [40.26, 6.67, 19.49], "mdc-003": [40.26, 6.67, 19.49], "mdc-004": [40.26, 6.67, 19.49], "mdc-005": [40.26, 6.67, 19.49], "mdc-006": [40.26, 6.67, 19.49], "mdc-007": [40.26, 6.67, 19.49], "mdc-008": [40.26, 6.67, 19.49], "mdc-009": [40.26, 6.67, 19.49], "mdc-010": [40.26, 6.67, 19.49], "mdc-011": [40.26, 6.67, 19.49], "mdc-012": [40.26, 18.46, 19.49], "mdc-013": [40.26, 6.67, 19.49], "mdc-014": [40.26, 6.67, 19.49], "mdc-015": [40.26, 6.67, 19.49], "mdc-016": [40.26, 6.67, 19.49], "mdc-017": [40.26, 16.92, 19.49], "mdc-018": [40.26, 6.67, 19.49], "mdc-019": [40.26, 6.67, 19.49]};
+              function ringLogo(doc, url) {
+                var ring = doc.createElement('span'); ring.className = 'dsm-logo';
+                ring.style.cssText = 'display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle';
                 var im = doc.createElement('img'); im.src = url; im.alt = 'Logo';
                 im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:contain;padding:9%;border:3px solid #fff;background:#fff';
                 ring.appendChild(im); return ring;
@@ -892,47 +879,25 @@
                 var e = doc.createElement(mode); e.textContent = ' ' + b;
                 h1.appendChild(e);
               }
-              // logo largo (scritta): targhetta arrotondata invece del tondo, come nel menu vero
-              function makeWide(r) {
-                var wi = r.querySelector('img');
-                var wide = function () {
-                  var q = wi.naturalWidth / wi.naturalHeight; if (!(q > 1.3)) return;
-                  r.style.setProperty('width', Math.round(Math.min(r.offsetHeight * q * 0.9, 240)) + 'px', 'important'); r.style.maxWidth = '72vw';
-                  r.style.setProperty('border-radius', '18px', 'important'); wi.style.borderRadius = '15px'; wi.style.padding = '5px 9px';
-                };
-                if (wi.complete) wide(); else wi.addEventListener('load', wide);
-              }
-              function findIn(root, sel) { return root.querySelector(sel); }
+              // anteprima con logo, copertina e nome del ristoratore: la copertina è uguale in tutti i modelli
               function personalize(doc, t) {
-                var cfg = BRAND_LOOK[t[0]], pv = PREVIEW_LOOK[t[0]] || {};
+                var cfg = BRAND_LOOK[t[0]];
                 if (!doc || !cfg) return;
                 var logo = brand.logo && brand.logo.url, cover = brand.cover && brand.cover.url, name = $('f-business').value.trim();
                 var head = doc.querySelector(cfg.at);
                 if (!head) return;
-                var st = doc.createElement('style'); st.textContent = BRAND_CSS + (cfg.css || ''); doc.head.appendChild(st);
                 if (cover) {
+                  var st = doc.createElement('style'); st.textContent = BRAND_CSS + (cfg.css || ''); doc.head.appendChild(st);
                   head.classList.add('dsm-cov', 'dsm-cov-' + cfg.tx);
-                  if (cfg.top) head.classList.add('dsm-cov-top');
                   if (cfg.h1 === false) head.classList.add('dsm-cov-noh1');
                   head.style.setProperty('--dsm-tint', 'rgba(' + cfg.rgb + ',' + cfg.a + ')'); head.style.setProperty('--dsm-cover', 'url("' + cover + '")');
                   var bg = doc.createElement('span'); bg.className = 'dsm-cov-bg'; bg.setAttribute('aria-hidden', 'true');
                   head.insertBefore(bg, head.firstChild);
                 }
-                var h1 = head.querySelector('h1');
-                if (logo) {
-                  var mono = pv.mono && doc.querySelector(pv.mono);
-                  if (mono && t[0] === 'mdc-016') { var ra = ringLogo(doc, logo, '76px'); ra.className = 'dsm-logo'; mono.parentNode.replaceChild(ra, mono); makeWide(ra); }
-                  else if (mono) { mono.textContent = ''; mono.appendChild(ringLogo(doc, logo, '100%')); }
-                  else if (cfg.logo && h1) {
-                    var k = cfg.logo !== 'h1' ? findIn(head, cfg.logo.replace(/^(\w+)$/, '$1')) : null;
-                    var at = k && (k.compareDocumentPosition(h1) & 4) ? k : h1; // 4 = il nome viene dopo
-                    var box = doc.createElement('div'); box.className = 'dsm-hlogo';
-                    var r = ringLogo(doc, logo, '64px'); r.className = 'dsm-logo'; box.appendChild(r);
-                    at.parentNode.insertBefore(box, at);
-                    makeWide(r);
-                  }
-                }
-                if (name && h1) setName(doc, h1, name, pv.name);
+                var slot = head.querySelector('.dsm-hd-logo');
+                if (logo && slot) { slot.textContent = ''; slot.appendChild(ringLogo(doc, logo)); }
+                var h1 = head.querySelector('.dsm-hd h1');
+                if (name && h1) setName(doc, h1, name, NAME_MODE[t[0]]);
               }
 
               function openPreview(t, from) {
@@ -1114,19 +1079,22 @@
               var bumpT;
               function bump() { var ph = document.querySelector('.phone'); if (!ph) return; ph.classList.remove('bump'); void ph.offsetWidth; ph.classList.add('bump'); }
               function livePhone(t) {
-                // il logo caricato appare nel tondo in alto del modello Aura
-                var lg = brand && brand.logo && brand.logo.url && t && t[0] === 'mdc-016' ? brand.logo.url : null;
-                ['live-logo', 'mini-logo'].forEach(function (id) { var b = $(id); if (!b) return; b.hidden = !lg; if (lg) b.querySelector('img').src = lg; });
+                // il logo caricato appare nel tondo in alto al centro della miniatura (uguale in tutti i modelli)
+                var lp = t && LOGO_POS[t[3]], lg = brand && brand.logo && brand.logo.url && lp ? brand.logo.url : null;
+                ['live-logo', 'mini-logo'].forEach(function (id) {
+                  var b = $(id); if (!b) return; b.hidden = !lg; if (!lg) return;
+                  b.querySelector('img').src = lg; b.style.left = lp[0] + '%'; b.style.top = id === 'live-logo' ? '34px' : '0'; b.style.marginTop = lp[1] + '%'; b.style.width = lp[2] + '%';
+                });
                 var mi = $('mini-img'), ma = $('mini-any');
                 if (mi) {
-                  if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
+                  if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115b'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
                   else { mi.hidden = true; ma.hidden = false; $('mini-theme').textContent = 'Lo stile lo scegliamo noi per te'; }
                   $('mini-open').hidden = !t;
                   $('mini-open').onclick = t ? function () { openPreview(t, $('mini-open')); } : null;
                   var mp = document.querySelector('.mini-phone'); if (mp) { mp.classList.remove('bump'); void mp.offsetWidth; mp.classList.add('bump'); }
                 }
                 var img = $('live-img'), any = $('live-any'); if (!img) return;
-                if (t) { img.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115'; img.hidden = false; any.hidden = true; $('live-theme').textContent = 'Modello «' + t[1] + '» · ' + t[2]; }
+                if (t) { img.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115b'; img.hidden = false; any.hidden = true; $('live-theme').textContent = 'Modello «' + t[1] + '» · ' + t[2]; }
                 else { img.hidden = true; any.hidden = false; $('live-theme').textContent = 'Lo stile lo scegliamo noi per te'; }
                 bump();
               }

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy, cookies and terms – DS Service</title>
+<meta name="description" content="Privacy policy, cookie policy, terms and conditions and legal notes of DS Service di Fabio Dos Santos Souza, Meldola (FC), Italy: digital menus, websites, applications, software and management systems.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dsfabio.com/en/privacy">
+<link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy">
+<link rel="alternate" hreflang="en" href="https://dsfabio.com/en/privacy">
+<link rel="alternate" hreflang="es" href="https://dsfabio.com/es/privacy">
+<link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy">
+<link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy">
+<link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy">
+<link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy">
+<link rel="stylesheet" href="/assets/fonts/syne-manrope.css">
+<style>
+  :root {
+    /* stesso stile chiaro di Attiva, Assistenza e dsmenu.it */
+    --bg: #fbf8f4;
+    --paper: #ffffff;
+    --ink: #1d1630;
+    --sub: #6b6480;
+    --line: #ece6f2;
+    --accent: #6d4aff;
+    --accent-soft: #f3eefc;
+    --warn-soft: #fff7e6;
+    --radius: 22px;
+    --shadow: 0 24px 60px -32px rgba(60,30,120,.25);
+    --grad: linear-gradient(120deg, #ff3cac, #7b5cff 55%, #22d3ee);
+    --btn: linear-gradient(120deg, #7b5cff, #b44cff 60%, #ff3cac);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.7 Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before, body::after { content: ""; position: fixed; z-index: -1; border-radius: 50%; filter: blur(80px); opacity: .45; pointer-events: none; }
+  body::before { width: 520px; height: 520px; top: -180px; left: -160px; background: #ffd0ec; }
+  body::after { width: 560px; height: 560px; top: 180px; right: -220px; background: #cfe9ff; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* Barra in alto */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(251,248,244,.85);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-in {
+    max-width: 1120px; margin: 0 auto; padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-family: Syne, Manrope, sans-serif; font-weight: 800; letter-spacing: -.02em; color: var(--ink); text-decoration: none; font-size: 1.2rem; }
+  .brand span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .home-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--btn); background-size: 160% 100%; color: #fff; text-decoration: none;
+    padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: .92rem; box-shadow: 0 12px 26px -12px rgba(123,92,255,.75);
+    transition: background-position .4s ease, transform .15s ease;
+  }
+  .home-btn:hover { background-position: 100% 0; transform: translateY(-1px); }
+  .home-btn svg { width: 16px; height: 16px; }
+
+  /* Intestazione */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 48px 20px 24px; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; font-weight: 800; color: var(--accent); margin: 0 0 14px; padding: 6px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: 0 4px 16px rgba(109,74,255,.08); }
+  .hero h1 { font-family: Syne, Manrope, sans-serif; font-weight: 800; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.1; margin: 0 0 12px; letter-spacing: -.02em; }
+  .hero p { color: var(--sub); margin: 0; max-width: 760px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .85rem; color: var(--sub); }
+
+  /* Layout */
+  .layout { max-width: 1120px; margin: 0 auto; padding: 8px 20px 64px; display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+  .toc { position: sticky; top: 76px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .toc p { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--sub); font-weight: 700; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .toc a { display: block; padding: 7px 10px; border-radius: 10px; text-decoration: none; color: var(--ink); font-size: .93rem; }
+  .toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  .toc .part { margin-top: 10px; font-weight: 700; color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; padding: 0 10px; }
+
+  .doc { display: grid; gap: 24px; min-width: 0; }
+  .block { min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); scroll-margin-top: 84px; }
+  .block > h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -.01em; margin: 0 0 4px; line-height: 1.3; }
+  .block > .lead { color: var(--sub); margin: 0 0 18px; font-size: .95rem; }
+  .part-title { display: flex; align-items: center; gap: 12px; margin: 16px 0 -8px; }
+  .part-title span { background: var(--btn); color: #fff; font-weight: 800; border-radius: 8px; padding: 2px 10px; font-size: .85rem; }
+  .part-title h2 { margin: 0; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .1em; color: var(--sub); }
+  h3 { font-size: 1.05rem; margin: 24px 0 6px; scroll-margin-top: 84px; }
+  p, li { color: var(--sub); }
+  strong { color: var(--ink); }
+  ul, ol.list { padding-left: 1.25em; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+
+  .card-id { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 8px 0 4px; }
+  .card-id div { background: #faf8fd; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .card-id small { display: block; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; color: var(--sub); font-weight: 700; }
+  .card-id b { display: block; color: var(--ink); font-weight: 600; word-break: break-word; }
+
+  .note { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 12px; padding: 12px 16px; margin: 14px 0; color: var(--ink); }
+  .note.warn { background: var(--warn-soft); border-left-color: #c98a00; }
+  .note p { margin: 0; color: inherit; }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0 14px; border: 1px solid var(--line); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--sub); }
+  th { background: var(--bg); color: var(--ink); font-weight: 700; font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { color: var(--ink); font-weight: 600; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .86em; color: var(--ink); }
+
+  .footer { border-top: 1px solid var(--line); background: rgba(255,255,255,.55); }
+  .footer-in { max-width: 1120px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; color: var(--sub); font-size: .9rem; }
+  .to-top { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 50%; background: var(--btn); color: #fff; display: grid; place-items: center; text-decoration: none; box-shadow: var(--shadow); font-size: 1.1rem; }
+  .to-top:hover { filter: brightness(1.08); }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .block { padding: 22px 18px; }
+  }
+  @media (max-width: 380px) {
+    .home-btn { padding: 8px 12px; font-size: .85rem; }
+  }
+  @media print {
+    .topbar, .toc, .to-top { display: none !important; }
+    body { background: #fff; }
+    .layout { display: block; padding: 0; }
+    .block { box-shadow: none; border: 0; padding: 0 0 16px; page-break-inside: auto; }
+    a { color: inherit; }
+  }
+  /* Selettore lingua e avviso traduzione */
+  .lang { position: relative; flex: 0 0 auto; margin-left: auto; }
+  .lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-weight: 800; font-size: .8rem; color: var(--ink); user-select: none; }
+  .lang summary::-webkit-details-marker { display: none; }
+  .lang[open] summary { border-color: var(--accent); }
+  .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 130; min-width: 170px; display: grid; padding: 6px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(60,30,120,.18); }
+  .lang-list a { padding: 10px 12px; border-radius: 10px; text-decoration: none; color: var(--sub); font-weight: 700; font-size: .92rem; }
+  .lang-list a:hover, .lang-list a[aria-current] { background: var(--accent-soft); color: var(--accent); }
+  .tr-note { margin: 18px 0 0; max-width: 720px; padding: 12px 16px; border-radius: 14px; background: var(--warn-soft); border: 1px solid #f3e0b5; color: var(--ink); font-size: .92rem; }
+  @media (max-width: 480px) { .home-btn span { display: none; } .home-btn { padding: 10px 12px; } }
+  .tr-note a { color: var(--accent); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/en">DS <span>SERVICE</span></a>
+    <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> EN</summary><div class="lang-list"><a href="/privacy" hreflang="it" lang="it">Italiano</a><a href="/en/privacy" hreflang="en" lang="en" aria-current="true">English</a><a href="/es/privacy" hreflang="es" lang="es">Español</a><a href="/pt/privacy" hreflang="pt" lang="pt">Português</a><a href="/de/privacy" hreflang="de" lang="de">Deutsch</a><a href="/fr/privacy" hreflang="fr" lang="fr">Français</a></div></details>
+    <a class="home-btn" href="/en" aria-label="Back to the home page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Back to the home page</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <p class="eyebrow">Legal</p>
+  <h1>Privacy, cookies and terms of service</h1>
+  <p>This page brings together in a single document the privacy policy, the cookie policy, the terms and conditions of our services and the legal notes of DS Service. It is written clearly and, where needed, refers to the applicable laws.</p>
+  <div class="meta">
+    <span class="chip">Last updated: 15 November 2026</span>
+    <span class="chip">In force since 11 November 2026</span>
+    <span class="chip">Version 2.5</span>
+  </div>
+  <p class="tr-note" role="note">This is a courtesy translation. In case of any difference, the Italian version of this page prevails. <a href="/privacy">Italiano</a></p>
+</section>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#titolare">Who we are</a></li>
+      <li class="part">A · Privacy</li>
+      <li><a href="#privacy">Privacy policy</a></li>
+      <li><a href="#dati">Data, purposes and retention</a></li>
+      <li><a href="#attivazione">Activation form</a></li>
+      <li><a href="#assistenza">Support form</a></li>
+      <li><a href="#fornitori">Providers and transfers</a></li>
+      <li><a href="#sicurezza">Security</a></li>
+      <li><a href="#diritti">Your rights</a></li>
+      <li class="part">B · Cookies</li>
+      <li><a href="#cookies">Cookie policy</a></li>
+      <li class="part">C · Terms</li>
+      <li><a href="#terms">Terms and conditions</a></li>
+      <li><a href="#contenuti">Content and notices</a></li>
+      <li><a href="#dpa">Data processed on behalf of the customer</a></li>
+      <li><a href="#foro">Law and disputes</a></li>
+      <li class="part">D · Other</li>
+      <li><a href="#normativa">Applicable laws</a></li>
+      <li><a href="#modifiche">Changes to this page</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <!-- ===================== CHI SIAMO ===================== -->
+    <section class="block" id="titolare">
+      <h2>Who we are</h2>
+      <p class="lead">Identification details of the service provider and data controller (art. 7 Italian Legislative Decree 70/2003; art. 13 EU Regulation 2016/679).</p>
+      <div class="card-id">
+        <div><small>Business name</small><b>DS Service di Fabio Dos Santos Souza</b></div>
+        <div><small>Owner</small><b>Fabio Dos Santos Souza</b></div>
+        <div><small>Registered address</small><b>Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italy</b></div>
+        <div><small>Tax code</small><b>DSSFBA84A03Z602O</b></div>
+        <div><small>VAT number</small><b>Being assigned</b></div>
+        <div><small>Email</small><b><a href="mailto:info@dsfabio.com">info@dsfabio.com</a></b></div>
+        <div><small>Website</small><b><a href="https://dsfabio.com">dsfabio.com</a></b></div>
+      </div>
+      <p><strong>DS Service</strong> creates digital menus with QR codes, websites, applications, software and management systems for businesses. The VAT number will be shown on this page as soon as it is assigned.</p>
+      <p><strong>Data Protection Officer (DPO):</strong> not appointed, as it is not required for our activity (art. 37 GDPR). For any question about personal data, write to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+    </section>
+
+    <!-- ===================== PARTE A: PRIVACY ===================== -->
+    <div class="part-title"><span>A</span><h2>Privacy policy</h2></div>
+
+    <section class="block" id="privacy">
+      <h2>Information on the processing of personal data</h2>
+      <p class="lead">Provided under articles 13 and 14 of Regulation (EU) 2016/679 (GDPR) and Italian Legislative Decree 196/2003 (Personal Data Protection Code), as amended by Legislative Decree 101/2018.</p>
+      <p>This notice concerns the people whose data we process through the website <strong>dsfabio.com</strong>, the digital menus, websites, applications and management systems we create or host for our customers, the activation and support forms and the reserved customer management area. In particular:</p>
+      <ul>
+        <li><strong>visitors</strong> to the website and to the digital menus and websites we publish;</li>
+        <li><strong>prospective customers</strong> who contact us for information or for the free trial;</li>
+        <li><strong>customers</strong> (businesses and professionals) and their owners, contacts and staff;</li>
+        <li><strong>sales partners</strong> authorised to use the reserved area.</li>
+      </ul>
+      <p>The data controller is <strong>DS Service di Fabio Dos Santos Souza</strong>, with the contact details given in the <a href="#titolare">Who we are</a> section.</p>
+      <div class="note"><p><strong>In short:</strong> we only collect the data needed to provide the service, we do no advertising or profiling, we do not sell data, we make no automated decisions and we delete data at the deadlines indicated below.</p></div>
+    </section>
+
+    <section class="block" id="dati">
+      <h2>What data we process, why and for how long</h2>
+      <p class="lead">For each purpose we indicate the legal basis (art. 6 GDPR) and the retention period (art. 5.1.e GDPR).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Activity</th><th>Data processed</th><th>Purpose and legal basis</th><th>Retention</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Browsing the website, the digital menus and the websites we host</td>
+              <td>Technical data recorded by the server: IP address, date and time, requested page, browser and device type</td>
+              <td>Operation and security of the website, prevention of abuse. Legitimate interest (art. 6.1.f)</td>
+              <td>At most 30 days, unless needed to establish offences</td>
+            </tr>
+            <tr>
+              <td>Request for information or a quote (email)</td>
+              <td>What you choose to send us: usually first and last name, business name, city, phone, email, project description, photos or files</td>
+              <td>Replying and preparing quotes. Pre-contractual measures requested by you (art. 6.1.b)</td>
+              <td>12 months from the last contact if you do not become a customer</td>
+            </tr>
+            <tr>
+              <td>Free trial request from the <a href="#attivazione">activation form</a></td>
+              <td>Business name, address, postcode, city and province, first and last name of the owner or contact person, mobile, email, optional links to website and social media, chosen menu template, optional tagline, notes, attached photos or PDFs (menu, logo, allergens), date of consent to the privacy notice</td>
+              <td>Checking the request, contacting you and preparing the free trial. Pre-contractual measures requested by you (art. 6.1.b)</td>
+              <td>Not confirmed by email: deleted after 7 days. Approved or rejected: normally deleted within 30 days of the decision. If you become a customer, the data moves to your customer record (next row)</td>
+            </tr>
+            <tr>
+              <td>Customer management</td>
+              <td>Business name, owner or contact person, address, mobile, email, links to menu, website and social media, customer code, trial, renewal and payment dates, internal service notes</td>
+              <td>Providing the service, the free trial, support and service communications by email (expiry reminders, payment and renewal confirmations, confirmation of completed changes). Performance of the contract (art. 6.1.b)</td>
+              <td>For the whole duration of the relationship and for 24 months after it ends</td>
+            </tr>
+            <tr>
+              <td>Project content</td>
+              <td>Content provided by the customer for menus, websites, applications and management systems: texts, prices, allergens, logo, photos, documents</td>
+              <td>Creating, publishing and updating the commissioned work. Performance of the contract (art. 6.1.b)</td>
+              <td>For the duration of the relationship; when it ends we hand the content over to the customer and delete it within 90 days</td>
+            </tr>
+            <tr>
+              <td>Support requests</td>
+              <td>Customer code, type of change, notes written by the customer, attached photos and PDFs</td>
+              <td>Making the requested changes. Performance of the contract (art. 6.1.b)</td>
+              <td>Request: for the duration of the relationship. Photos and PDFs: deleted 90 days after the request is closed</td>
+            </tr>
+            <tr>
+              <td>Protection of the support and activation forms</td>
+              <td>Encrypted fingerprint of the IP address (the plain IP is not stored) and browser type</td>
+              <td>Blocking automated submissions, attempts to guess customer codes, fake requests and spam. Legitimate interest (art. 6.1.f)</td>
+              <td>Support form: IP fingerprint 24 hours. Activation form: kept with the request and deleted with it. Browser type: kept with the request</td>
+            </tr>
+            <tr>
+              <td>Payments</td>
+              <td>Amount, date, outcome and data needed for tax documents. Card details are handled only by the payment provider: we do not see them</td>
+              <td>Collecting the fee. Performance of the contract (art. 6.1.b) and tax obligations (art. 6.1.c)</td>
+              <td>10 years (art. 2220 Italian Civil Code; art. 22 Presidential Decree 600/1973)</td>
+            </tr>
+            <tr>
+              <td>Reserved customer management area</td>
+              <td>Email, password (stored only in encrypted form), two-step verification data, technical access log</td>
+              <td>Allowing access only to authorised people and protecting the data. Performance of the collaboration (art. 6.1.b) and legitimate interest in security (art. 6.1.f)</td>
+              <td>For the duration of the collaboration; technical logs according to the provider’s timeframes, in any case no longer than 12 months</td>
+            </tr>
+            <tr>
+              <td>Protection of rights</td>
+              <td>Only the strictly necessary data among those listed above</td>
+              <td>Establishing, exercising or defending a right in court. Legitimate interest (art. 6.1.f)</td>
+              <td>For the duration of the dispute and until the deadlines for appeal have expired</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Providing data</h3>
+      <p>Providing the data needed for the contract and for support is essential: without it we cannot provide the service or make changes. Other data, such as free-text notes, is optional.</p>
+      <h3>What we do not do</h3>
+      <ul>
+        <li>We do not use the data for advertising, newsletters or marketing, and we do not transfer or sell it to third parties.</li>
+        <li>To prepare menu drafts we may use an artificial intelligence service (see Providers): it only reads the menu pages, makes no decisions about people, and every draft is checked and published by a person.</li>
+        <li>We do no profiling and make no decisions based solely on automated processing (art. 22 GDPR).</li>
+        <li>We do not process special categories of data (art. 9 GDPR) or data relating to criminal convictions (art. 10 GDPR).</li>
+      </ul>
+      <h3>Minors</h3>
+      <p>Our services are aimed at businesses and professionals. We do not knowingly collect data of children under 14 (art. 2-quinquies Italian Legislative Decree 196/2003).</p>
+    </section>
+
+    <section class="block" id="attivazione">
+      <h2>Free trial activation form</h2>
+      <p class="lead">Specific information for those requesting the free trial from the <a href="/en/attiva">Activation</a> page.</p>
+      <ul>
+        <li>After you submit it, we send you an <strong>email with a confirmation link</strong>, valid for 48 hours. Until you open it, the request is not shown to us as pending; if you do not confirm it, it is deleted after 7 days.</li>
+        <li>Every confirmed request is checked before activation: either by an automated assistant based on artificial intelligence (see Providers), which only checks that the material is the menu of a venue and contains no inappropriate content, or by the owner or an authorised collaborator. If the assistant has doubts, the request stays pending and a person decides. The outcome concerns the activation of the free trial, and you can always ask for it to be reviewed by writing to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</li>
+        <li>If the request is approved, we contact you to prepare the menu and the data is transferred to your customer record; from then on the timeframes of the «Customer management» row apply.</li>
+        <li>We ask you to attach the menu you use today: up to 10 files (JPG, PNG, WebP photos or PDFs up to 10 MB), kept in a private archive. If you wish, you can also upload your logo and a cover image (or ask us in the notes): we use them for the menu and publish them with it. Please do not include data about other people or unnecessary information.</li>
+        <li>The venue’s VAT number is optional: if you provide it, we show it at the bottom of the digital menu.</li>
+        <li>For security we apply limits on submissions per device and overall, and we accept only one open request per email address.</li>
+        <li>The form does not use cookies. So that you don’t lose what you have written if your phone reloads the page, it keeps the completed fields, the chosen template and where the visit came from in the browser tab’s temporary storage (see Cookie policy): they are deleted when you submit the request or close the tab. The data is sent to our database on Supabase (European Union) only when you press the submit button.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="assistenza">
+      <h2>Customer support form</h2>
+      <p class="lead">Specific information for customers using the menu change request form.</p>
+      <ul>
+        <li>The form asks for the <strong>customer code</strong> shown on the sheet you received: without a valid code the request is not saved. The code is personal: do not share it with others.</li>
+        <li>You can attach up to 5 files (JPG, PNG, WebP photos or PDFs up to 10 MB). Photos are reduced automatically before sending.</li>
+        <li>For security we apply limits on submissions: 5 wrong codes per hour per device, an overall limit on wrong attempts and a maximum number of daily requests per customer. Once the limits are exceeded, the form is temporarily locked.</li>
+        <li>Requests are visible only to the owner and to the sales partner who follows your venue.</li>
+        <li>When the request is completed we send a confirmation email to the address registered for your venue.</li>
+        <li>Please do not include in the notes or attachments data about other people (for example photos in which customers or employees can be recognised) or information not needed for the request.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="fornitori">
+      <h2>Who sees the data: providers and transfers</h2>
+      <p class="lead">Recipients of the data (art. 13.1.e GDPR) and transfers to third countries (arts. 44–49 GDPR).</p>
+      <h3>Authorised people</h3>
+      <p>The data is accessed by the owner and by authorised and instructed sales partners (art. 29 GDPR and art. 2-quaterdecies Italian Legislative Decree 196/2003). Each partner only sees the customers they follow.</p>
+      <h3>Providers processing data on our behalf</h3>
+      <p>They are appointed as data processors (art. 28 GDPR) under contracts that guarantee confidentiality and security.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Provider</th><th>Service</th><th>Where the data is</th><th>Safeguards</th></tr></thead>
+          <tbody>
+            <tr><td>Vercel Inc. (USA)</td><td>Hosting of the website, the digital menus, customers’ websites and applications and the reserved area</td><td>Global network, including locations in the USA</td><td>EU-US Data Privacy Framework and Standard Contractual Clauses</td></tr>
+            <tr><td>Supabase Inc. (USA)</td><td>Customer database, receipt of requests from the activation and support forms and private archive of attachments</td><td>European Union (Frankfurt, Germany)</td><td>Data stored in the EU; Standard Contractual Clauses for any support access</td></tr>
+            <tr><td>Resend (Plus Five Five Inc., USA)</td><td>Sending service emails: free trial request confirmation, expiry reminders, payment, renewal and completed change confirmations</td><td>European Union (Ireland) for sending; company based in the USA</td><td>EU-US Data Privacy Framework and the provider’s data processing agreement</td></tr>
+            <tr><td>Anthropic (Anthropic PBC, USA)</td><td>Artificial intelligence reading (Claude) of photos and PDFs of the paper menu, to prepare a draft of the digital menu. It receives only the menu pages and other attachments, the public business data (venue name, address, contacts and social profiles), the notes written in the activation form (also to check the material before the automatic approval of the trial) and the text of the customer’s requests concerning the menu. It does not receive the owner’s personal contact details. The draft is always checked and published by a person</td><td>Provider’s servers, including in the USA</td><td>Provider’s data processing agreement with Standard Contractual Clauses; under the provider’s commercial terms, data sent via API is not used to train the models</td></tr>
+            <tr><td>Telegram (Telegram FZ-LLC, United Arab Emirates)</td><td>Internal notifications to the owner and partners about customer activity (new requests, expiries, payments). Notifications contain only the business name, city or customer code and type of notification: no contact details and no customer notes</td><td>Provider’s servers, including outside the European Union</td><td>Data reduced to the strict minimum; details remain in the reserved area, accessible only with credentials</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Independent controllers</h3>
+      <ul>
+        <li><strong>Stripe Payments Europe Ltd.</strong> (Ireland), which handles card payments made through our payment link and the related renewals, under its own privacy notice.</li>
+        <li><strong>Tax advisers and professionals</strong> who assist us with legal obligations, bound by professional secrecy.</li>
+        <li><strong>Public authorities</strong>, when required by law.</li>
+      </ul>
+      <h3>Transfers outside the European Union</h3>
+      <p>When a provider processes data outside the European Economic Area, the transfer is based on the European Commission’s adequacy decision of 10 July 2023 on the EU-US Data Privacy Framework (art. 45 GDPR), for certified companies, or on the Standard Contractual Clauses approved by the Commission (art. 46 GDPR). You can ask us for a copy of the safeguards by writing to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+      <p>Internal notifications sent via Telegram contain only data about the customer’s business (venue name, city or customer code, type of notification) and no contact details: we keep them to a minimum precisely because the provider also operates outside the European Economic Area.</p>
+    </section>
+
+    <section class="block" id="sicurezza">
+      <h2>How we protect the data</h2>
+      <p class="lead">Technical and organisational measures appropriate to the risk (art. 32 GDPR).</p>
+      <ul>
+        <li>Always encrypted connections (HTTPS) and SSL certificate on website and menus.</li>
+        <li>Reserved area accessible only with personal credentials; two-step verification is mandatory for the administrator.</li>
+        <li>Access rules enforced directly by the database: each partner sees and edits only their own customers.</li>
+        <li>Attachments in a private archive, viewable only through temporary links.</li>
+        <li>Public sign-up of new accounts disabled: accounts are created only by the owner.</li>
+        <li>Limits against abuse of public forms, email confirmation and manual approval of activation requests, deletion of data at the stated deadlines.</li>
+        <li>Public forms can only submit requests: they cannot read, change or delete any data already in the database.</li>
+      </ul>
+      <p>In the event of a personal data breach, we inform the Italian Data Protection Authority within 72 hours and, if the risk is high, also the people concerned (arts. 33 and 34 GDPR).</p>
+    </section>
+
+    <section class="block" id="diritti">
+      <h2>Your rights</h2>
+      <p class="lead">Arts. 15–22 and 77 GDPR.</p>
+      <p>At any time you can request:</p>
+      <ul>
+        <li><strong>access</strong> to your data and a copy (art. 15);</li>
+        <li><strong>rectification</strong> of inaccurate or incomplete data (art. 16);</li>
+        <li><strong>erasure</strong> (art. 17), except for data we must keep by law;</li>
+        <li><strong>restriction</strong> of processing (art. 18);</li>
+        <li><strong>portability</strong>, i.e. receiving the data in a structured and readable format (art. 20);</li>
+        <li><strong>objection</strong> to processing based on legitimate interest (art. 21).</li>
+      </ul>
+      <p>Write to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>. The request is free of charge. We reply within one month, extendable by two months in complex cases (art. 12.3 GDPR); we may ask you to confirm your identity.</p>
+      <h3>Complaint to the supervisory authority</h3>
+      <p>If you believe the processing violates the law, you can lodge a complaint with the <strong>Garante per la protezione dei dati personali</strong> (Italian Data Protection Authority), Piazza Venezia 11, 00187 Rome, <a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>, <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a> (art. 77 GDPR), or apply to the courts (art. 79 GDPR).</p>
+    </section>
+
+    <!-- ===================== PARTE B: COOKIE ===================== -->
+    <div class="part-title"><span>B</span><h2>Cookie policy</h2></div>
+
+    <section class="block" id="cookies">
+      <h2>Cookies and browser storage</h2>
+      <p class="lead">Notice under art. 122 Italian Legislative Decree 196/2003, Directive 2002/58/EC and the Italian Data Protection Authority’s Guidelines on cookies and other tracking tools of 10 June 2021.</p>
+      <div class="note"><p><strong>We do not use profiling, advertising or statistics cookies</strong> and we do not use analytics tools such as Google Analytics. For this reason we do not ask for any consent: the only tools present are technical and necessary.</p></div>
+      <h3>What we use</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Where</th><th>Type</th><th>Purpose</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td><code>dsf-cookie-ok</code></td><td>Website dsfabio.com</td><td>Browser local storage, technical</td><td>Remembers that you closed the information notice, so it is not shown again</td><td>Until you clear the browser data</td></tr>
+            <tr><td><code>dsf-attiva-dati</code>, <code>dsf-attiva-tema</code></td><td>Activation page of dsfabio.com</td><td>Tab temporary storage (sessionStorage), technical</td><td>Keeps the fields already filled in and the chosen template if the page reloads (for example after opening the camera)</td><td>Until the request is submitted or the tab is closed</td></tr>
+            <tr><td><code>dsf-utm</code>, <code>dsf-hi-menu</code></td><td>Website dsfabio.com</td><td>Tab temporary storage (sessionStorage), technical</td><td>Remembers which page or link you came from (for example a venue’s menu), to pass it on to the activation form, and whether you closed the welcome message</td><td>Until the tab is closed</td></tr>
+            <tr><td><code>dsm-v-…</code></td><td>Digital menus on dsmenu.it</td><td>Browser local storage, anonymous first-party statistics</td><td>Contains only the menu name and the date: it is used to count only one visit per day per device. The count is anonymous and aggregated, identifies no one and is not shared with third parties</td><td>Until you clear the browser data</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>This data stays on your device, is not used to recognise you on other websites and is not used for statistics. It is one of the strictly necessary tools for which consent is not required (art. 122, paragraph 1, Italian Legislative Decree 196/2003).</p>
+      <h3>Third-party services</h3>
+      <ul>
+        <li>Fonts, images and libraries are loaded directly from our website: while browsing you do not contact Google Fonts or other external services.</li>
+        <li>When you press the submit button, the activation and support forms send the request to our database on Supabase (servers in the European Union), without using cookies.</li>
+        <li>The payment link opens Stripe’s secure page, which applies its own cookie rules.</li>
+      </ul>
+      <h3 id="menu">Digital menus (dsmenu.it)</h3>
+      <p>The digital menus of the venues that are our customers are static information pages: <strong>they do not use cookies, do not ask for data and contain no third-party profiling, advertising or analytics tools</strong>. For this reason no consent banner is needed.</p>
+      <ul>
+        <li>To know how many times a menu is opened, the browser only stores a marker with the menu name and the date (<code>dsm-v-…</code>, see table) and our database adds 1 to that day’s count. No IP addresses, devices or other data identifying the viewer are stored: it is anonymous first-party statistics, treated as technical tools by the Italian Data Protection Authority’s Guidelines of 10 June 2021.</li>
+        <li>Pages are served by Vercel and menu images by Supabase (see Providers), which may record technical connection data for security for as long as strictly necessary.</li>
+        <li>The buttons to call, write on WhatsApp, open Google Maps, reviews or the venue’s social media lead to external services only when you tap them: from then on the rules of those services apply.</li>
+        <li>The menu content (dishes, prices, allergens, venue details) is provided by the venue, which is responsible for it.</li>
+      </ul>
+      <h3>How to delete them</h3>
+      <p>You can delete local storage and cookies at any time from your browser settings, under Privacy or Site data. The website will keep working: you will just be shown the notice again.</p>
+      <p>If in future we introduce tools that require consent, we will activate them only after asking for it with a banner compliant with the Italian Data Protection Authority’s Guidelines, with the option to refuse as easily as to accept.</p>
+    </section>
+
+    <!-- ===================== PARTE C: TERMINI ===================== -->
+    <div class="part-title"><span>C</span><h2>Terms and conditions</h2></div>
+
+    <section class="block" id="terms">
+      <h2>Terms and conditions of the services</h2>
+      <p class="lead">General conditions for the provision of DS Service’s services. Written agreements made with the individual customer (quote, offer or contract) prevail over this page.</p>
+
+      <h3>1. Provider and recipients</h3>
+      <p>The services are provided by DS Service di Fabio Dos Santos Souza (details in <a href="#titolare">Who we are</a>) and are aimed at businesses and professionals. The consumer protection rules of Italian Legislative Decree 206/2005 (Consumer Code) do not apply, unless the customer is a consumer: in that case all mandatory protections remain in place, including the right of withdrawal within 14 days (art. 52 Consumer Code).</p>
+
+      <h3>2. Our services</h3>
+      <ul>
+        <li><strong>Digital menus with QR code</strong> for food service businesses, under the conditions of points 3, 4 and 5.</li>
+        <li><strong>Websites</strong>: showcase websites, presentation pages and business websites.</li>
+        <li><strong>Applications</strong> for the web and mobile devices.</li>
+        <li><strong>Software and management systems</strong> for businesses, for example managing customers, requests, bookings or orders.</li>
+      </ul>
+      <p>For websites, applications, software and management systems, the conditions of point 6 and those indicated in the quote accepted by the customer apply.</p>
+
+      <h3>3. Digital menus: what the service includes</h3>
+      <ul>
+        <li>custom digital menu and QR codes ready to print for tables, counter and window;</li>
+        <li>icons for the 14 allergens listed in Regulation (EU) 1169/2011;</li>
+        <li>hosting, dedicated web address and SSL certificate;</li>
+        <li>up to 10 changes a month to dishes and prices, requested from the <a href="/en/assistenza">Support</a> page with the customer code or by scanning the QR code on the customer sheet provided;</li>
+        <li>a confirmation email when the requested change is online;</li>
+        <li>for questions about the subscription, a reply by email from info@dsfabio.com, normally within a few hours on working days.</li>
+      </ul>
+
+      <h3>4. Digital menus: free trial, price and payment</h3>
+      <ul>
+        <li>The free trial is requested from the <a href="/en/attiva">activation form</a>, by confirming your email address through the link we send you. Each request is checked by hand: we may decline it, for example if the data is incomplete or cannot be linked to a real business, with no obligation for you.</li>
+        <li>The free trial lasts 30 days from delivery of the menu and does not require payment details.</li>
+        <li>At the end of the trial, if you do not continue, you pay nothing: the menu is paused (anyone scanning the QR code sees a notice that the menu is not available at the moment) and you can reactivate it whenever you want by paying the subscription.</li>
+        <li>After the trial the service costs <strong>€189 per year</strong> (promotional price; list price €229), all included, payable in advance for each year. The price shown in your payment link stays the same at renewals: any changes are communicated to you at least 60 days before the expiry date and, if you do not accept them, you can cancel at no cost.</li>
+        <li>You can pay by card through the secure payment link we send you, handled by Stripe (we neither see nor store your card details), or by bank transfer or in cash, by prior agreement.</li>
+        <li>The contract is concluded upon payment of the first year; the tax document is issued following payment.</li>
+      </ul>
+
+      <h3>5. Digital menus: duration, renewal and cancellation</h3>
+      <ul>
+        <li>The service lasts one year from the payment date (even if you pay before the end of the free trial).</li>
+        <li><strong>Card payment:</strong> the subscription renews automatically every year on the expiry date, at the same price, charged to the card used for the first payment. You receive a confirmation by email at every renewal.</li>
+        <li><strong>Cancelling the renewal:</strong> you can cancel at any time up to <strong>30 days before the annual expiry date</strong> by writing to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>; we confirm the cancellation in writing. The service stays active until the end of the year already paid and there will be no further charges. A cancellation communicated after this deadline takes effect from the following renewal.</li>
+        <li><strong>Payment by bank transfer or cash:</strong> there are no automatic charges. We remind you of the expiry date by email 5 and 2 days before, and the service continues with payment for the new year; to stop, simply do not renew.</li>
+        <li>No refunds are provided for partial periods, except where required by law.</li>
+      </ul>
+
+      <h3>6. Websites, applications, software and management systems</h3>
+      <ul>
+        <li><strong>Quote:</strong> for each project we send a written quote with features, price, payment terms, delivery times and any ongoing services (hosting, maintenance, support). The contract is concluded when the customer accepts the quote in writing, including by email.</li>
+        <li><strong>Customer cooperation:</strong> delivery times also depend on the customer providing texts, images, access and approvals on time.</li>
+        <li><strong>Acceptance testing:</strong> on delivery the customer checks the work and reports any defects within 15 days; we fix them at no extra cost if the work does not match the quote. Requests for new features not provided for are subject to a separate quote.</li>
+        <li><strong>Ongoing services:</strong> hosting, maintenance and support have the duration and cost indicated in the quote and can be cancelled with the notice stated there; failing that, with 30 days’ written notice.</li>
+        <li><strong>Third-party services:</strong> domains, cloud services, app stores, payment or email systems may have their own costs and conditions, which we state in the quote and which are borne by the customer, unless otherwise agreed.</li>
+        <li><strong>Rights to the work produced:</strong> unless otherwise agreed in writing, once the fee has been paid the customer obtains the right to use the website, application or software created for their business without time limits. Components, libraries and generic tools developed by DS Service and reusable in other projects remain its property; third-party components are subject to their respective licences.</li>
+      </ul>
+
+      <h3>7. Customer obligations</h3>
+      <ul>
+        <li>Provide correct and up-to-date content. For menus, in particular, prices and allergen information, for which the customer remains responsible as a food business operator (EU Reg. 1169/2011).</li>
+        <li>Hold the rights to the logo, photos and texts sent to us and not provide unlawful content or content that infringes third-party rights.</li>
+        <li>Keep customer codes, passwords and access details safe and inform us immediately of any unauthorised use.</li>
+        <li>Use the services in compliance with the law, including data protection law for the data of their own customers entered in websites, applications or management systems.</li>
+        <li>For menus, always keep a paper copy available as a backup in case of technical problems.</li>
+      </ul>
+
+      <h3>8. Ownership of content</h3>
+      <p>Texts, photos, logos and data provided by the customer remain their property; the customer grants us a licence to use them solely to provide the services. Graphics, templates and software of the digital menu service remain the property of DS Service. For custom projects, point 6 applies. We show work created for a customer as an example only with their consent.</p>
+
+      <h3>9. Availability and liability</h3>
+      <ul>
+        <li>We do our best to keep the menus, websites, applications and management systems we host online, but we cannot guarantee an uninterrupted service or the operation of third-party services (hosting, email delivery, the connection of the customer or their users).</li>
+        <li>Scheduled maintenance is carried out, whenever possible, at times of lower use.</li>
+        <li>Support covers the services we provide, not the customer’s devices or networks.</li>
+        <li>Except in cases of wilful misconduct or gross negligence (art. 1229 Italian Civil Code), our liability is limited to the amount paid by the customer for the service concerned in the last 12 months.</li>
+      </ul>
+
+      <h3>10. Suspension</h3>
+      <ul>
+        <li><strong>Expiry without payment:</strong> if at the expiry date (end of the free trial or of the year) payment is not received, or the automatic card charge fails, the menu is <strong>suspended</strong>: anyone scanning the QR code sees a page with your contact details. We inform you by email. Suspension has no costs and involves no penalties.</li>
+        <li><strong>Reactivation:</strong> the service remains suspended until you pay. You can reactivate it at any time by paying for the year: the menu goes back online immediately and automatically, with all its content and the same QR code, and the new year starts from the payment date.</li>
+        <li><strong>Prolonged suspension:</strong> if the service remains suspended for more than <strong>12 months</strong>, the relationship is considered terminated and point 11 applies (handover of content and deletion after 90 days).</li>
+        <li>We may also suspend a service in the event of manifestly unlawful content or use contrary to the law, informing the customer and stating the reason.</li>
+      </ul>
+
+      <h3>11. Portability at the end of the relationship</h3>
+      <p>When a service ends, for any reason, we hand over your content and data free of charge in a structured and commonly used format within 30 days of the request, so that you can use them with another provider (in line with Regulation (EU) 2023/2854, Data Act). 90 days after termination we delete the content, except for data that must be kept by law.</p>
+    </section>
+
+    <section class="block" id="contenuti">
+      <h2>Published content and notices</h2>
+      <p class="lead">Obligations of hosting services under Regulation (EU) 2022/2065 (Digital Services Act).</p>
+      <h3>Point of contact</h3>
+      <p>For authorities, customers and users, the single point of contact is <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>, in Italian or English (arts. 11 and 12 DSA).</p>
+      <h3>Reporting unlawful content</h3>
+      <p>Anyone who believes that a menu, website or application we publish contains unlawful information can report it to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>, stating (art. 16 DSA):</p>
+      <ul>
+        <li>the reasons why they consider the content unlawful;</li>
+        <li>the exact web address of the content;</li>
+        <li>name and email address, unless the report concerns offences for which the law allows anonymity;</li>
+        <li>a statement of good faith on the accuracy of the information provided.</li>
+      </ul>
+      <p>We examine reports promptly and impartially, communicate the decision to the person reporting and, if we remove or restrict content, explain the reasons to the customer concerned (art. 17 DSA), who can contest the decision by replying to the same address.</p>
+    </section>
+
+    <section class="block" id="dpa">
+      <h2>Data processed on behalf of the customer</h2>
+      <p class="lead">Data processing agreement under art. 28 GDPR, forming an integral part of the contract.</p>
+      <p>If the customer enters personal data in a menu, website, application or management system that we create, host or manage for them (for example data of their customers, employees or suppliers), the customer is the controller of that data and DS Service processes it as processor on their behalf. To this end DS Service:</p>
+      <ul>
+        <li>processes the data only to provide, host and maintain the service, according to the customer’s documented instructions;</li>
+        <li>binds authorised people to confidentiality;</li>
+        <li>adopts the security measures described in the <a href="#sicurezza">Security</a> section;</li>
+        <li>uses the sub-processors listed in the <a href="#fornitori">Providers</a> section and informs the customer of any changes, allowing them to object;</li>
+        <li>assists the customer in responding to data subjects’ requests and informs them without undue delay of any data breaches;</li>
+        <li>at the end of the service returns or deletes the data, as set out in point 11 of the Terms;</li>
+        <li>makes available the information needed to demonstrate compliance with these obligations.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="foro">
+      <h2>Applicable law and disputes</h2>
+      <ul>
+        <li>These terms are governed by <strong>Italian law</strong>.</li>
+        <li>For disputes with businesses and professionals, the <strong>Court of Forlì</strong> (Italy) has exclusive jurisdiction. If the customer is a consumer, the court of the place where the consumer resides has jurisdiction (art. 66-bis Consumer Code).</li>
+        <li>Before taking any action, please write to us at <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>: we always look for an amicable solution. Mediation under Italian Legislative Decree 28/2010 remains available.</li>
+        <li>The European ODR platform for online dispute resolution is no longer active since 20 July 2025 (Regulation (EU) 2024/3228).</li>
+      </ul>
+      <h3>Accessibility</h3>
+      <p>DS Service is a micro-enterprise and, as such, is exempt from the obligations of Italian Legislative Decree 82/2022 implementing the European Accessibility Act (Directive (EU) 2019/882). We are nevertheless committed to making the website and menus readable and usable by everyone: if you encounter difficulties, write to us and we will help you.</p>
+    </section>
+
+    <!-- ===================== PARTE D ===================== -->
+    <div class="part-title"><span>D</span><h2>References and updates</h2></div>
+
+    <section class="block" id="normativa">
+      <h2>Applicable laws</h2>
+      <ul>
+        <li>Regulation (EU) 2016/679 – General Data Protection Regulation (GDPR).</li>
+        <li>Italian Legislative Decree no. 196 of 30 June 2003 – Personal Data Protection Code, as amended by Legislative Decree no. 101 of 10 August 2018.</li>
+        <li>Directive 2002/58/EC (ePrivacy) and art. 122 Italian Legislative Decree 196/2003 on cookies.</li>
+        <li>Italian Data Protection Authority, Guidelines on cookies and other tracking tools, 10 June 2021.</li>
+        <li>Commission Implementing Decision (EU) 2023/1795 of 10 July 2023 – EU-US Data Privacy Framework.</li>
+        <li>Regulation (EU) 2022/2065 – Digital Services Act.</li>
+        <li>Regulation (EU) 2023/2854 – Data Act.</li>
+        <li>Italian Legislative Decree no. 70 of 9 April 2003 – Electronic commerce.</li>
+        <li>Italian Legislative Decree no. 206 of 6 September 2005 – Consumer Code, where applicable.</li>
+        <li>Regulation (EU) 1169/2011 – Provision of food information to consumers.</li>
+        <li>Directive (EU) 2019/882 and Italian Legislative Decree no. 82 of 27 May 2022 – Accessibility.</li>
+        <li>Regulation (EU) 2024/3228 – Repeal of the ODR platform.</li>
+        <li>Italian Civil Code, in particular arts. 1229 and 2220; Presidential Decree no. 600 of 29 September 1973, art. 22.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="modifiche">
+      <h2>Changes to this page</h2>
+      <p>We may update this page to adapt it to new laws or changes to the service. The date of the last update is always shown at the top.</p>
+      <p>For customers, changes to the Terms that affect the service are communicated by email at least 30 days before they take effect. Anyone who does not accept them can cancel without penalties before that date. Changes never worsen services already paid for.</p>
+      <div class="note"><p>Questions about this page? Write to <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p></div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <span>© 2026 DS Service di Fabio Dos Santos Souza · Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italy · Tax code DSSFBA84A03Z602O · VAT number being assigned</span>
+    <a class="home-btn" href="/en">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Back to the home page</span>
+    </a>
+  </div>
+</footer>
+
+<a class="to-top" href="#top" aria-label="Back to the top of the page">↑</a>
+
+</body>
+</html>

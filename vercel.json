@@ -23,11 +23,6 @@
       "permanent": true
     },
     {
-      "source": "/:lang(en|de|es|fr|pt)/privacy",
-      "destination": "/privacy",
-      "permanent": true
-    },
-    {
       "source": "/prova-gratis",
       "destination": "https://dsmenu.it/",
       "permanent": true

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz, Cookies und AGB – DS Service</title>
+<meta name="description" content="Datenschutzerklärung, Cookie-Richtlinie, Allgemeine Geschäftsbedingungen und rechtliche Hinweise von DS Service di Fabio Dos Santos Souza, Meldola (FC), Italien: digitale Speisekarten, Websites, Apps, Software und Verwaltungssysteme.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dsfabio.com/de/privacy">
+<link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy">
+<link rel="alternate" hreflang="en" href="https://dsfabio.com/en/privacy">
+<link rel="alternate" hreflang="es" href="https://dsfabio.com/es/privacy">
+<link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy">
+<link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy">
+<link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy">
+<link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy">
+<link rel="stylesheet" href="/assets/fonts/syne-manrope.css">
+<style>
+  :root {
+    /* stesso stile chiaro di Attiva, Assistenza e dsmenu.it */
+    --bg: #fbf8f4;
+    --paper: #ffffff;
+    --ink: #1d1630;
+    --sub: #6b6480;
+    --line: #ece6f2;
+    --accent: #6d4aff;
+    --accent-soft: #f3eefc;
+    --warn-soft: #fff7e6;
+    --radius: 22px;
+    --shadow: 0 24px 60px -32px rgba(60,30,120,.25);
+    --grad: linear-gradient(120deg, #ff3cac, #7b5cff 55%, #22d3ee);
+    --btn: linear-gradient(120deg, #7b5cff, #b44cff 60%, #ff3cac);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.7 Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before, body::after { content: ""; position: fixed; z-index: -1; border-radius: 50%; filter: blur(80px); opacity: .45; pointer-events: none; }
+  body::before { width: 520px; height: 520px; top: -180px; left: -160px; background: #ffd0ec; }
+  body::after { width: 560px; height: 560px; top: 180px; right: -220px; background: #cfe9ff; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* Barra in alto */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(251,248,244,.85);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-in {
+    max-width: 1120px; margin: 0 auto; padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-family: Syne, Manrope, sans-serif; font-weight: 800; letter-spacing: -.02em; color: var(--ink); text-decoration: none; font-size: 1.2rem; }
+  .brand span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .home-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--btn); background-size: 160% 100%; color: #fff; text-decoration: none;
+    padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: .92rem; box-shadow: 0 12px 26px -12px rgba(123,92,255,.75);
+    transition: background-position .4s ease, transform .15s ease;
+  }
+  .home-btn:hover { background-position: 100% 0; transform: translateY(-1px); }
+  .home-btn svg { width: 16px; height: 16px; }
+
+  /* Intestazione */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 48px 20px 24px; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; font-weight: 800; color: var(--accent); margin: 0 0 14px; padding: 6px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: 0 4px 16px rgba(109,74,255,.08); }
+  .hero h1 { font-family: Syne, Manrope, sans-serif; font-weight: 800; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.1; margin: 0 0 12px; letter-spacing: -.02em; }
+  .hero p { color: var(--sub); margin: 0; max-width: 760px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .85rem; color: var(--sub); }
+
+  /* Layout */
+  .layout { max-width: 1120px; margin: 0 auto; padding: 8px 20px 64px; display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+  .toc { position: sticky; top: 76px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .toc p { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--sub); font-weight: 700; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .toc a { display: block; padding: 7px 10px; border-radius: 10px; text-decoration: none; color: var(--ink); font-size: .93rem; }
+  .toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  .toc .part { margin-top: 10px; font-weight: 700; color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; padding: 0 10px; }
+
+  .doc { display: grid; gap: 24px; min-width: 0; }
+  .block { min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); scroll-margin-top: 84px; }
+  .block > h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -.01em; margin: 0 0 4px; line-height: 1.3; }
+  .block > .lead { color: var(--sub); margin: 0 0 18px; font-size: .95rem; }
+  .part-title { display: flex; align-items: center; gap: 12px; margin: 16px 0 -8px; }
+  .part-title span { background: var(--btn); color: #fff; font-weight: 800; border-radius: 8px; padding: 2px 10px; font-size: .85rem; }
+  .part-title h2 { margin: 0; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .1em; color: var(--sub); }
+  h3 { font-size: 1.05rem; margin: 24px 0 6px; scroll-margin-top: 84px; }
+  p, li { color: var(--sub); }
+  strong { color: var(--ink); }
+  ul, ol.list { padding-left: 1.25em; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+
+  .card-id { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 8px 0 4px; }
+  .card-id div { background: #faf8fd; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .card-id small { display: block; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; color: var(--sub); font-weight: 700; }
+  .card-id b { display: block; color: var(--ink); font-weight: 600; word-break: break-word; }
+
+  .note { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 12px; padding: 12px 16px; margin: 14px 0; color: var(--ink); }
+  .note.warn { background: var(--warn-soft); border-left-color: #c98a00; }
+  .note p { margin: 0; color: inherit; }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0 14px; border: 1px solid var(--line); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--sub); }
+  th { background: var(--bg); color: var(--ink); font-weight: 700; font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { color: var(--ink); font-weight: 600; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .86em; color: var(--ink); }
+
+  .footer { border-top: 1px solid var(--line); background: rgba(255,255,255,.55); }
+  .footer-in { max-width: 1120px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; color: var(--sub); font-size: .9rem; }
+  .to-top { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 50%; background: var(--btn); color: #fff; display: grid; place-items: center; text-decoration: none; box-shadow: var(--shadow); font-size: 1.1rem; }
+  .to-top:hover { filter: brightness(1.08); }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .block { padding: 22px 18px; }
+  }
+  @media (max-width: 380px) {
+    .home-btn { padding: 8px 12px; font-size: .85rem; }
+  }
+  @media print {
+    .topbar, .toc, .to-top { display: none !important; }
+    body { background: #fff; }
+    .layout { display: block; padding: 0; }
+    .block { box-shadow: none; border: 0; padding: 0 0 16px; page-break-inside: auto; }
+    a { color: inherit; }
+  }
+  /* Selettore lingua e avviso traduzione */
+  .lang { position: relative; flex: 0 0 auto; margin-left: auto; }
+  .lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-weight: 800; font-size: .8rem; color: var(--ink); user-select: none; }
+  .lang summary::-webkit-details-marker { display: none; }
+  .lang[open] summary { border-color: var(--accent); }
+  .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 130; min-width: 170px; display: grid; padding: 6px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(60,30,120,.18); }
+  .lang-list a { padding: 10px 12px; border-radius: 10px; text-decoration: none; color: var(--sub); font-weight: 700; font-size: .92rem; }
+  .lang-list a:hover, .lang-list a[aria-current] { background: var(--accent-soft); color: var(--accent); }
+  .tr-note { margin: 18px 0 0; max-width: 720px; padding: 12px 16px; border-radius: 14px; background: var(--warn-soft); border: 1px solid #f3e0b5; color: var(--ink); font-size: .92rem; }
+  @media (max-width: 480px) { .home-btn span { display: none; } .home-btn { padding: 10px 12px; } }
+  .tr-note a { color: var(--accent); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/de">DS <span>SERVICE</span></a>
+    <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> DE</summary><div class="lang-list"><a href="/privacy" hreflang="it" lang="it">Italiano</a><a href="/en/privacy" hreflang="en" lang="en">English</a><a href="/es/privacy" hreflang="es" lang="es">Español</a><a href="/pt/privacy" hreflang="pt" lang="pt">Português</a><a href="/de/privacy" hreflang="de" lang="de" aria-current="true">Deutsch</a><a href="/fr/privacy" hreflang="fr" lang="fr">Français</a></div></details>
+    <a class="home-btn" href="/de" aria-label="Zur Startseite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Zur Startseite</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <p class="eyebrow">Rechtliches</p>
+  <h1>Datenschutz, Cookies und Nutzungsbedingungen</h1>
+  <p>Auf dieser Seite fassen wir in einem einzigen Dokument die Datenschutzerklärung, die Cookie-Richtlinie, die Geschäftsbedingungen unserer Leistungen und die rechtlichen Hinweise von DS Service zusammen. Sie ist verständlich geschrieben und verweist, wo nötig, auf die geltenden Vorschriften.</p>
+  <div class="meta">
+    <span class="chip">Letzte Aktualisierung: 15. November 2026</span>
+    <span class="chip">Gültig seit 11. November 2026</span>
+    <span class="chip">Version 2.5</span>
+  </div>
+  <p class="tr-note" role="note">Dies ist eine Höflichkeitsübersetzung. Bei Abweichungen gilt die italienische Fassung dieser Seite. <a href="/privacy">Italiano</a></p>
+</section>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Inhalt">
+    <p>Inhalt</p>
+    <ol>
+      <li><a href="#titolare">Wer wir sind</a></li>
+      <li class="part">A · Datenschutz</li>
+      <li><a href="#privacy">Datenschutzerklärung</a></li>
+      <li><a href="#dati">Daten, Zwecke und Fristen</a></li>
+      <li><a href="#attivazione">Aktivierungsformular</a></li>
+      <li><a href="#assistenza">Supportformular</a></li>
+      <li><a href="#fornitori">Dienstleister und Übermittlungen</a></li>
+      <li><a href="#sicurezza">Sicherheit</a></li>
+      <li><a href="#diritti">Ihre Rechte</a></li>
+      <li class="part">B · Cookies</li>
+      <li><a href="#cookies">Cookie-Richtlinie</a></li>
+      <li class="part">C · Bedingungen</li>
+      <li><a href="#terms">AGB</a></li>
+      <li><a href="#contenuti">Inhalte und Meldungen</a></li>
+      <li><a href="#dpa">Daten im Auftrag des Kunden</a></li>
+      <li><a href="#foro">Recht und Streitigkeiten</a></li>
+      <li class="part">D · Sonstiges</li>
+      <li><a href="#normativa">Rechtsgrundlagen</a></li>
+      <li><a href="#modifiche">Änderungen dieser Seite</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <!-- ===================== CHI SIAMO ===================== -->
+    <section class="block" id="titolare">
+      <h2>Wer wir sind</h2>
+      <p class="lead">Angaben zum Diensteanbieter und Verantwortlichen (Art. 7 ital. GvD 70/2003; Art. 13 Verordnung (EU) 2016/679).</p>
+      <div class="card-id">
+        <div><small>Firma</small><b>DS Service di Fabio Dos Santos Souza</b></div>
+        <div><small>Inhaber</small><b>Fabio Dos Santos Souza</b></div>
+        <div><small>Sitz</small><b>Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italien</b></div>
+        <div><small>Steuernummer</small><b>DSSFBA84A03Z602O</b></div>
+        <div><small>USt-IdNr.</small><b>Wird zugeteilt</b></div>
+        <div><small>E-Mail</small><b><a href="mailto:info@dsfabio.com">info@dsfabio.com</a></b></div>
+        <div><small>Website</small><b><a href="https://dsfabio.com">dsfabio.com</a></b></div>
+      </div>
+      <p><strong>DS Service</strong> erstellt digitale Speisekarten mit QR-Code, Websites, Apps, Software und Verwaltungssysteme für Unternehmen. Die USt-IdNr. wird auf dieser Seite angegeben, sobald sie zugeteilt ist.</p>
+      <p><strong>Datenschutzbeauftragter (DSB):</strong> nicht benannt, da für unsere Tätigkeit nicht vorgeschrieben (Art. 37 DSGVO). Bei Fragen zu personenbezogenen Daten schreiben Sie an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+    </section>
+
+    <!-- ===================== PARTE A: PRIVACY ===================== -->
+    <div class="part-title"><span>A</span><h2>Datenschutzerklärung</h2></div>
+
+    <section class="block" id="privacy">
+      <h2>Informationen zur Verarbeitung personenbezogener Daten</h2>
+      <p class="lead">Erteilt gemäß Art. 13 und 14 der Verordnung (EU) 2016/679 (DSGVO) und des ital. GvD 196/2003 (Datenschutzkodex), geändert durch GvD 101/2018.</p>
+      <p>Diese Informationen betreffen die Personen, deren Daten wir über die Website <strong>dsfabio.com</strong>, die digitalen Speisekarten, Websites, Apps und Verwaltungssysteme, die wir für unsere Kunden erstellen oder hosten, die Aktivierungs- und Supportformulare sowie den geschützten Bereich der Kundenverwaltung verarbeiten. Insbesondere:</p>
+      <ul>
+        <li><strong>Besucher</strong> der Website sowie der von uns veröffentlichten digitalen Speisekarten und Websites;</li>
+        <li><strong>Interessenten</strong>, die uns für Informationen oder den kostenlosen Test kontaktieren;</li>
+        <li><strong>Kunden</strong> (Unternehmen und Freiberufler) sowie deren Inhaber, Ansprechpartner und Mitarbeiter;</li>
+        <li><strong>Vertriebspartner</strong>, die zur Nutzung des geschützten Bereichs berechtigt sind.</li>
+      </ul>
+      <p>Verantwortlicher ist <strong>DS Service di Fabio Dos Santos Souza</strong>, mit den im Abschnitt <a href="#titolare">Wer wir sind</a> angegebenen Daten.</p>
+      <div class="note"><p><strong>Kurz gesagt:</strong> Wir erheben nur die Daten, die für die Erbringung der Leistung nötig sind, betreiben keine Werbung und kein Profiling, verkaufen keine Daten, treffen keine automatisierten Entscheidungen und löschen die Daten zu den unten genannten Fristen.</p></div>
+    </section>
+
+    <section class="block" id="dati">
+      <h2>Welche Daten wir verarbeiten, warum und wie lange</h2>
+      <p class="lead">Für jeden Zweck nennen wir die Rechtsgrundlage (Art. 6 DSGVO) und die Speicherdauer (Art. 5 Abs. 1 lit. e DSGVO).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tätigkeit</th><th>Verarbeitete Daten</th><th>Zweck und Rechtsgrundlage</th><th>Speicherdauer</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Besuch der Website, der digitalen Speisekarten und der von uns gehosteten Websites</td>
+              <td>Vom Server erfasste technische Daten: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser- und Gerätetyp</td>
+              <td>Betrieb und Sicherheit der Website, Verhinderung von Missbrauch. Berechtigtes Interesse (Art. 6 Abs. 1 lit. f)</td>
+              <td>Höchstens 30 Tage, sofern sie nicht zur Aufklärung von Straftaten benötigt werden</td>
+            </tr>
+            <tr>
+              <td>Anfrage nach Informationen oder einem Angebot (E-Mail)</td>
+              <td>Was Sie uns senden möchten: in der Regel Vor- und Nachname, Name des Betriebs, Ort, Telefon, E-Mail, Projektbeschreibung, Fotos oder Dateien</td>
+              <td>Beantwortung und Erstellung von Angeboten. Von Ihnen angefragte vorvertragliche Maßnahmen (Art. 6 Abs. 1 lit. b)</td>
+              <td>12 Monate ab dem letzten Kontakt, wenn Sie nicht Kunde werden</td>
+            </tr>
+            <tr>
+              <td>Anfrage des kostenlosen Tests über das <a href="#attivazione">Aktivierungsformular</a></td>
+              <td>Name des Betriebs, Adresse, PLZ, Ort und Provinz, Vor- und Nachname des Inhabers oder Ansprechpartners, Mobilnummer, E-Mail, optionale Links zu Website und sozialen Netzwerken, gewählte Speisekartenvorlage, optionaler Slogan, Anmerkungen, angehängte Fotos oder PDFs (Speisekarte, Logo, Allergene), Datum der Zustimmung zur Datenschutzerklärung</td>
+              <td>Prüfung der Anfrage, Kontaktaufnahme und Vorbereitung des kostenlosen Tests. Von Ihnen angefragte vorvertragliche Maßnahmen (Art. 6 Abs. 1 lit. b)</td>
+              <td>Nicht per E-Mail bestätigt: nach 7 Tagen gelöscht. Angenommen oder abgelehnt: in der Regel innerhalb von 30 Tagen nach der Entscheidung gelöscht. Wenn Sie Kunde werden, gehen die Daten in Ihre Kundenakte über (nächste Zeile)</td>
+            </tr>
+            <tr>
+              <td>Kundenverwaltung</td>
+              <td>Name des Betriebs, Inhaber oder Ansprechpartner, Adresse, Mobilnummer, E-Mail, Links zu Speisekarte, Website und sozialen Netzwerken, Kundencode, Test-, Verlängerungs- und Zahlungsdaten, interne Servicenotizen</td>
+              <td>Erbringung der Leistung, des kostenlosen Tests, des Supports und der Servicemitteilungen per E-Mail (Ablaufhinweise, Zahlungs- und Verlängerungsbestätigungen, Bestätigung erledigter Änderungen). Vertragserfüllung (Art. 6 Abs. 1 lit. b)</td>
+              <td>Für die gesamte Dauer der Geschäftsbeziehung und 24 Monate nach deren Ende</td>
+            </tr>
+            <tr>
+              <td>Projektinhalte</td>
+              <td>Vom Kunden bereitgestellte Inhalte für Speisekarten, Websites, Apps und Verwaltungssysteme: Texte, Preise, Allergene, Logo, Fotos, Dokumente</td>
+              <td>Erstellung, Veröffentlichung und Aktualisierung der beauftragten Arbeit. Vertragserfüllung (Art. 6 Abs. 1 lit. b)</td>
+              <td>Für die Dauer der Geschäftsbeziehung; an deren Ende übergeben wir die Inhalte dem Kunden und löschen sie innerhalb von 90 Tagen</td>
+            </tr>
+            <tr>
+              <td>Supportanfragen</td>
+              <td>Kundencode, Art der Änderung, vom Kunden verfasste Anmerkungen, angehängte Fotos und PDFs</td>
+              <td>Durchführung der angefragten Änderungen. Vertragserfüllung (Art. 6 Abs. 1 lit. b)</td>
+              <td>Anfrage: für die Dauer der Geschäftsbeziehung. Fotos und PDFs: 90 Tage nach Abschluss der Anfrage gelöscht</td>
+            </tr>
+            <tr>
+              <td>Schutz der Support- und Aktivierungsformulare</td>
+              <td>Verschlüsselter Fingerabdruck der IP-Adresse (die IP im Klartext wird nicht gespeichert) und Browsertyp</td>
+              <td>Blockieren automatisierter Einsendungen, Versuche, Kundencodes zu erraten, gefälschter Anfragen und Spam. Berechtigtes Interesse (Art. 6 Abs. 1 lit. f)</td>
+              <td>Supportformular: IP-Fingerabdruck 24 Stunden. Aktivierungsformular: mit der Anfrage gespeichert und zusammen mit ihr gelöscht. Browsertyp: mit der Anfrage gespeichert</td>
+            </tr>
+            <tr>
+              <td>Zahlungen</td>
+              <td>Betrag, Datum, Ergebnis und für Steuerbelege erforderliche Daten. Kartendaten verarbeitet ausschließlich der Zahlungsdienstleister: Wir sehen sie nicht</td>
+              <td>Einzug des Entgelts. Vertragserfüllung (Art. 6 Abs. 1 lit. b) und steuerliche Pflichten (Art. 6 Abs. 1 lit. c)</td>
+              <td>10 Jahre (Art. 2220 ital. Zivilgesetzbuch; Art. 22 D.P.R. 600/1973)</td>
+            </tr>
+            <tr>
+              <td>Geschützter Bereich der Kundenverwaltung</td>
+              <td>E-Mail, Passwort (nur verschlüsselt gespeichert), Daten der Zwei-Faktor-Verifizierung, technisches Zugriffsprotokoll</td>
+              <td>Zugang nur für berechtigte Personen und Schutz der Daten. Durchführung der Zusammenarbeit (Art. 6 Abs. 1 lit. b) und berechtigtes Interesse an der Sicherheit (Art. 6 Abs. 1 lit. f)</td>
+              <td>Für die Dauer der Zusammenarbeit; technische Protokolle nach den Fristen des Anbieters, in jedem Fall nicht länger als 12 Monate</td>
+            </tr>
+            <tr>
+              <td>Wahrung von Rechten</td>
+              <td>Nur die unbedingt erforderlichen Daten unter den oben genannten</td>
+              <td>Feststellung, Ausübung oder Verteidigung von Rechtsansprüchen vor Gericht. Berechtigtes Interesse (Art. 6 Abs. 1 lit. f)</td>
+              <td>Für die Dauer des Streits und bis zum Ablauf der Rechtsmittelfristen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Bereitstellung der Daten</h3>
+      <p>Die Bereitstellung der für Vertrag und Support nötigen Daten ist erforderlich: Ohne sie können wir die Leistung nicht erbringen und keine Änderungen vornehmen. Andere Daten, etwa freie Anmerkungen, sind freiwillig.</p>
+      <h3>Was wir nicht tun</h3>
+      <ul>
+        <li>Wir nutzen die Daten nicht für Werbung, Newsletter oder Marketing und geben sie weder an Dritte weiter noch verkaufen wir sie.</li>
+        <li>Zur Vorbereitung von Speisekartenentwürfen können wir einen Dienst für künstliche Intelligenz nutzen (siehe Dienstleister): Er liest nur die Seiten der Speisekarte, trifft keine Entscheidungen über Personen, und jeder Entwurf wird von einem Menschen geprüft und veröffentlicht.</li>
+        <li>Wir betreiben kein Profiling und treffen keine ausschließlich auf automatisierter Verarbeitung beruhenden Entscheidungen (Art. 22 DSGVO).</li>
+        <li>Wir verarbeiten keine besonderen Kategorien von Daten (Art. 9 DSGVO) und keine Daten über strafrechtliche Verurteilungen (Art. 10 DSGVO).</li>
+      </ul>
+      <h3>Minderjährige</h3>
+      <p>Unsere Leistungen richten sich an Unternehmen und Freiberufler. Wir erheben wissentlich keine Daten von Kindern unter 14 Jahren (Art. 2-quinquies ital. GvD 196/2003).</p>
+    </section>
+
+    <section class="block" id="attivazione">
+      <h2>Formular zur Aktivierung des kostenlosen Tests</h2>
+      <p class="lead">Besondere Informationen für alle, die den kostenlosen Test über die Seite <a href="/de/attiva">Aktivieren</a> anfragen.</p>
+      <ul>
+        <li>Nach dem Absenden senden wir Ihnen eine <strong>E-Mail mit einem Bestätigungslink</strong>, gültig für 48 Stunden. Solange Sie ihn nicht öffnen, erscheint die Anfrage bei uns nicht als offen; bestätigen Sie sie nicht, wird sie nach 7 Tagen gelöscht.</li>
+        <li>Jede bestätigte Anfrage wird vor der Aktivierung geprüft: entweder von einem automatischen, auf künstlicher Intelligenz basierenden Assistenten (siehe Dienstleister), der nur prüft, ob das Material die Speisekarte eines Lokals ist und keine unangemessenen Inhalte enthält, oder vom Inhaber bzw. einem berechtigten Mitarbeiter. Hat der Assistent Zweifel, bleibt die Anfrage offen und ein Mensch entscheidet. Das Ergebnis betrifft die Aktivierung des kostenlosen Tests, und Sie können jederzeit eine Überprüfung verlangen, indem Sie an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> schreiben.</li>
+        <li>Wird die Anfrage angenommen, kontaktieren wir Sie, um die Speisekarte vorzubereiten, und die Daten gehen in Ihre Kundenakte über; ab dann gelten die Fristen der Zeile «Kundenverwaltung».</li>
+        <li>Wir bitten Sie, die Speisekarte anzuhängen, die Sie heute verwenden: bis zu 10 Dateien (Fotos JPG, PNG, WebP oder PDFs bis 10 MB), die in einem privaten Archiv gespeichert werden. Wenn Sie möchten, können Sie auch Ihr Logo und ein Titelbild hochladen (oder uns in den Anmerkungen darum bitten): Wir verwenden sie für die Speisekarte und veröffentlichen sie mit ihr. Bitte geben Sie keine Daten anderer Personen und keine unnötigen Informationen an.</li>
+        <li>Die USt-IdNr. des Lokals ist freiwillig: Wenn Sie sie angeben, zeigen wir sie unten in der digitalen Speisekarte an.</li>
+        <li>Aus Sicherheitsgründen begrenzen wir die Einsendungen pro Gerät und insgesamt und akzeptieren nur eine offene Anfrage pro E-Mail-Adresse.</li>
+        <li>Das Formular verwendet keine Cookies. Damit Sie das Geschriebene nicht verlieren, wenn das Handy die Seite neu lädt, speichert es die ausgefüllten Felder, die gewählte Vorlage und die Herkunft des Besuchs im temporären Speicher des Browser-Tabs (siehe Cookie-Richtlinie): Sie werden gelöscht, wenn Sie die Anfrage absenden oder den Tab schließen. Die Daten werden erst dann an unsere Datenbank bei Supabase (Europäische Union) gesendet, wenn Sie auf die Schaltfläche zum Absenden tippen.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="assistenza">
+      <h2>Kundensupport-Formular</h2>
+      <p class="lead">Besondere Informationen für Kunden, die das Formular für Änderungswünsche an der Speisekarte nutzen.</p>
+      <ul>
+        <li>Das Formular fragt den <strong>Kundencode</strong> ab, der auf dem Ihnen übergebenen Kundenblatt steht: Ohne gültigen Code wird die Anfrage nicht gespeichert. Der Code ist persönlich: Geben Sie ihn nicht an andere weiter.</li>
+        <li>Sie können bis zu 5 Dateien anhängen (Fotos JPG, PNG, WebP oder PDFs bis 10 MB). Fotos werden vor dem Senden automatisch verkleinert.</li>
+        <li>Aus Sicherheitsgründen begrenzen wir die Einsendungen: 5 falsche Codes pro Stunde pro Gerät, eine Gesamtgrenze für Fehlversuche und eine Höchstzahl täglicher Anfragen pro Kunde. Bei Überschreitung wird das Formular vorübergehend gesperrt.</li>
+        <li>Die Anfragen sind nur für den Inhaber und den Vertriebspartner sichtbar, der Ihr Lokal betreut.</li>
+        <li>Wenn die Anfrage erledigt ist, senden wir eine Bestätigungs-E-Mail an die für Ihr Lokal hinterlegte Adresse.</li>
+        <li>Bitte geben Sie in den Anmerkungen oder Anhängen keine Daten anderer Personen an (zum Beispiel Fotos, auf denen Gäste oder Mitarbeiter erkennbar sind) und keine Informationen, die für die Anfrage nicht nötig sind.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="fornitori">
+      <h2>Wer die Daten sieht: Dienstleister und Übermittlungen</h2>
+      <p class="lead">Empfänger der Daten (Art. 13 Abs. 1 lit. e DSGVO) und Übermittlungen in Drittländer (Art. 44–49 DSGVO).</p>
+      <h3>Berechtigte Personen</h3>
+      <p>Zugriff auf die Daten haben der Inhaber und berechtigte, entsprechend unterwiesene Vertriebspartner (Art. 29 DSGVO und Art. 2-quaterdecies ital. GvD 196/2003). Jeder Partner sieht nur die Kunden, die er betreut.</p>
+      <h3>Dienstleister, die Daten in unserem Auftrag verarbeiten</h3>
+      <p>Sie sind als Auftragsverarbeiter benannt (Art. 28 DSGVO), mit Verträgen, die Vertraulichkeit und Sicherheit gewährleisten.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dienstleister</th><th>Leistung</th><th>Wo sich die Daten befinden</th><th>Garantien</th></tr></thead>
+          <tbody>
+            <tr><td>Vercel Inc. (USA)</td><td>Hosting der Website, der digitalen Speisekarten, der Websites und Apps der Kunden und des geschützten Bereichs</td><td>Globales Netz, einschließlich Standorten in den USA</td><td>EU-US Data Privacy Framework und Standardvertragsklauseln</td></tr>
+            <tr><td>Supabase Inc. (USA)</td><td>Kundendatenbank, Empfang der Anfragen aus Aktivierungs- und Supportformular und privates Archiv der Anhänge</td><td>Europäische Union (Frankfurt, Deutschland)</td><td>Daten in der EU gespeichert; Standardvertragsklauseln für etwaige Supportzugriffe</td></tr>
+            <tr><td>Resend (Plus Five Five Inc., USA)</td><td>Versand von Service-E-Mails: Bestätigung der Anfrage zum kostenlosen Test, Ablaufhinweise, Zahlungs-, Verlängerungs- und Änderungsbestätigungen</td><td>Europäische Union (Irland) für den Versand; Unternehmen mit Sitz in den USA</td><td>EU-US Data Privacy Framework und Auftragsverarbeitungsvertrag des Anbieters</td></tr>
+            <tr><td>Anthropic (Anthropic PBC, USA)</td><td>Auslesen von Fotos und PDFs der Papierspeisekarte mit künstlicher Intelligenz (Claude), um einen Entwurf der digitalen Speisekarte vorzubereiten. Erhält nur die Seiten der Speisekarte und die übrigen Anhänge, die öffentlichen Betriebsdaten (Name des Lokals, Adresse, Kontakte und Social-Media-Profile), die im Aktivierungsformular geschriebenen Anmerkungen (auch zur Prüfung des Materials vor der automatischen Freigabe des Tests) und den Text der Kundenanfragen zur Speisekarte. Erhält keine persönlichen Kontaktdaten des Inhabers. Der Entwurf wird immer von einem Menschen geprüft und veröffentlicht</td><td>Server des Anbieters, auch in den USA</td><td>Auftragsverarbeitungsvertrag des Anbieters mit Standardvertragsklauseln; gemäß den Geschäftsbedingungen des Anbieters werden per API gesendete Daten nicht zum Trainieren der Modelle verwendet</td></tr>
+            <tr><td>Telegram (Telegram FZ-LLC, Vereinigte Arabische Emirate)</td><td>Interne Benachrichtigungen an den Inhaber und die Partner über Kundenaktivitäten (neue Anfragen, Fälligkeiten, Zahlungen). Die Benachrichtigungen enthalten nur den Namen des Betriebs, den Ort oder den Kundencode und die Art der Meldung: keine Kontaktdaten und keine Kundennotizen</td><td>Server des Anbieters, auch außerhalb der Europäischen Union</td><td>Daten auf das unbedingt Nötige beschränkt; die Details bleiben im geschützten Bereich, der nur mit Zugangsdaten erreichbar ist</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Eigenständige Verantwortliche</h3>
+      <ul>
+        <li><strong>Stripe Payments Europe Ltd.</strong> (Irland), die die über unseren Zahlungslink geleisteten Kartenzahlungen und die zugehörigen Verlängerungen nach ihrer eigenen Datenschutzerklärung abwickelt.</li>
+        <li><strong>Steuerberater und Fachleute</strong>, die uns bei gesetzlichen Pflichten unterstützen und der beruflichen Schweigepflicht unterliegen.</li>
+        <li><strong>Behörden</strong>, wenn das Gesetz es verlangt.</li>
+      </ul>
+      <h3>Übermittlungen außerhalb der Europäischen Union</h3>
+      <p>Wenn ein Dienstleister Daten außerhalb des Europäischen Wirtschaftsraums verarbeitet, stützt sich die Übermittlung auf den Angemessenheitsbeschluss der Europäischen Kommission vom 10. Juli 2023 zum EU-US Data Privacy Framework (Art. 45 DSGVO) für zertifizierte Unternehmen oder auf die von der Kommission genehmigten Standardvertragsklauseln (Art. 46 DSGVO). Eine Kopie der Garantien können Sie unter <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> anfordern.</p>
+      <p>Die über Telegram gesendeten internen Benachrichtigungen enthalten nur Daten über den Betrieb des Kunden (Name des Lokals, Ort oder Kundencode, Art der Meldung) und keine Kontaktdaten: Wir halten sie gerade deshalb minimal, weil der Anbieter auch außerhalb des Europäischen Wirtschaftsraums tätig ist.</p>
+    </section>
+
+    <section class="block" id="sicurezza">
+      <h2>Wie wir die Daten schützen</h2>
+      <p class="lead">Dem Risiko angemessene technische und organisatorische Maßnahmen (Art. 32 DSGVO).</p>
+      <ul>
+        <li>Stets verschlüsselte Verbindungen (HTTPS) und SSL-Zertifikat auf Website und Speisekarten.</li>
+        <li>Geschützter Bereich nur mit persönlichen Zugangsdaten erreichbar; die Zwei-Faktor-Verifizierung ist für den Administrator verpflichtend.</li>
+        <li>Zugriffsregeln direkt von der Datenbank durchgesetzt: Jeder Partner sieht und bearbeitet nur seine eigenen Kunden.</li>
+        <li>Anhänge in einem privaten Archiv, nur über temporäre Links einsehbar.</li>
+        <li>Öffentliche Registrierung neuer Konten deaktiviert: Konten werden nur vom Inhaber angelegt.</li>
+        <li>Grenzen gegen den Missbrauch der öffentlichen Formulare, E-Mail-Bestätigung und manuelle Freigabe der Aktivierungsanfragen, Löschung der Daten zu den angegebenen Fristen.</li>
+        <li>Die öffentlichen Formulare können nur Anfragen senden: Sie können keine bereits in der Datenbank vorhandenen Daten lesen, ändern oder löschen.</li>
+      </ul>
+      <p>Bei einer Verletzung des Schutzes personenbezogener Daten informieren wir die italienische Datenschutzbehörde (Garante) innerhalb von 72 Stunden und, bei hohem Risiko, auch die betroffenen Personen (Art. 33 und 34 DSGVO).</p>
+    </section>
+
+    <section class="block" id="diritti">
+      <h2>Deine Rechte</h2>
+      <p class="lead">Art. 15–22 und 77 DSGVO.</p>
+      <p>Sie können jederzeit verlangen:</p>
+      <ul>
+        <li><strong>Auskunft</strong> über Ihre Daten und eine Kopie (Art. 15);</li>
+        <li><strong>Berichtigung</strong> unrichtiger oder unvollständiger Daten (Art. 16);</li>
+        <li><strong>Löschung</strong> (Art. 17), mit Ausnahme der Daten, die wir gesetzlich aufbewahren müssen;</li>
+        <li><strong>Einschränkung</strong> der Verarbeitung (Art. 18);</li>
+        <li><strong>Datenübertragbarkeit</strong>, also den Erhalt der Daten in einem strukturierten und lesbaren Format (Art. 20);</li>
+        <li><strong>Widerspruch</strong> gegen Verarbeitungen auf Grundlage des berechtigten Interesses (Art. 21).</li>
+      </ul>
+      <p>Schreiben Sie an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>. Die Anfrage ist kostenlos. Wir antworten innerhalb eines Monats, in komplexen Fällen verlängerbar um zwei Monate (Art. 12 Abs. 3 DSGVO); wir können Sie bitten, Ihre Identität zu bestätigen.</p>
+      <h3>Beschwerde bei der Aufsichtsbehörde</h3>
+      <p>Wenn Sie der Ansicht sind, dass die Verarbeitung gegen die Vorschriften verstößt, können Sie Beschwerde beim <strong>Garante per la protezione dei dati personali</strong> (italienische Datenschutzbehörde) einlegen, Piazza Venezia 11, 00187 Rom, <a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>, <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a> (Art. 77 DSGVO), oder sich an die Gerichte wenden (Art. 79 DSGVO).</p>
+    </section>
+
+    <!-- ===================== PARTE B: COOKIE ===================== -->
+    <div class="part-title"><span>B</span><h2>Cookie-Richtlinie</h2></div>
+
+    <section class="block" id="cookies">
+      <h2>Cookies und Speicherung im Browser</h2>
+      <p class="lead">Informationen gemäß Art. 122 ital. GvD 196/2003, der Richtlinie 2002/58/EG und den Leitlinien der italienischen Datenschutzbehörde zu Cookies und anderen Tracking-Instrumenten vom 10. Juni 2021.</p>
+      <div class="note"><p><strong>Wir verwenden keine Profiling-, Werbe- oder Statistik-Cookies</strong> und keine Analysetools wie Google Analytics. Daher bitten wir um keine Einwilligung: Die einzigen vorhandenen Instrumente sind technisch notwendig.</p></div>
+      <h3>Was wir verwenden</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Wo</th><th>Art</th><th>Zweck</th><th>Dauer</th></tr></thead>
+          <tbody>
+            <tr><td><code>dsf-cookie-ok</code></td><td>Website dsfabio.com</td><td>Lokaler Speicher des Browsers, technisch</td><td>Merkt sich, dass Sie den Hinweis geschlossen haben, damit er nicht erneut erscheint</td><td>Bis Sie die Browserdaten löschen</td></tr>
+            <tr><td><code>dsf-attiva-dati</code>, <code>dsf-attiva-tema</code></td><td>Aktivierungsseite von dsfabio.com</td><td>Temporärer Speicher des Tabs (sessionStorage), technisch</td><td>Behält die bereits ausgefüllten Felder und die gewählte Vorlage, wenn die Seite neu lädt (zum Beispiel nach dem Öffnen der Kamera)</td><td>Bis zum Absenden der Anfrage oder zum Schließen des Tabs</td></tr>
+            <tr><td><code>dsf-utm</code>, <code>dsf-hi-menu</code></td><td>Website dsfabio.com</td><td>Temporärer Speicher des Tabs (sessionStorage), technisch</td><td>Merkt sich, von welcher Seite oder welchem Link Sie gekommen sind (zum Beispiel der Speisekarte eines Lokals), um dies dem Aktivierungsformular mitzuteilen, und ob Sie die Willkommensnachricht geschlossen haben</td><td>Bis zum Schließen des Tabs</td></tr>
+            <tr><td><code>dsm-v-…</code></td><td>Digitale Speisekarten auf dsmenu.it</td><td>Lokaler Speicher des Browsers, anonyme eigene Statistik</td><td>Enthält nur den Namen der Speisekarte und das Datum: Damit wird pro Gerät nur ein Besuch pro Tag gezählt. Die Zählung ist anonym und aggregiert, identifiziert niemanden und wird nicht an Dritte weitergegeben</td><td>Bis Sie die Browserdaten löschen</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Diese Daten bleiben auf Ihrem Gerät, dienen nicht dazu, Sie auf anderen Websites zu erkennen, und werden nicht für Statistiken verwendet. Sie gehören zu den unbedingt erforderlichen Instrumenten, für die keine Einwilligung nötig ist (Art. 122 Abs. 1 ital. GvD 196/2003).</p>
+      <h3>Dienste Dritter</h3>
+      <ul>
+        <li>Schriften, Bilder und Bibliotheken werden direkt von unserer Website geladen: Beim Surfen kontaktieren Sie weder Google Fonts noch andere externe Dienste.</li>
+        <li>Wenn Sie auf die Schaltfläche zum Absenden tippen, senden die Aktivierungs- und Supportformulare die Anfrage an unsere Datenbank bei Supabase (Server in der Europäischen Union), ohne Cookies zu verwenden.</li>
+        <li>Der Zahlungslink öffnet die sichere Seite von Stripe, die ihre eigenen Cookie-Regeln anwendet.</li>
+      </ul>
+      <h3 id="menu">Digitale Speisekarten (dsmenu.it)</h3>
+      <p>Die digitalen Speisekarten der Kundenlokale sind statische Informationsseiten: <strong>Sie verwenden keine Cookies, fragen keine Daten ab und enthalten keine Profiling-, Werbe- oder Analysetools Dritter</strong>. Daher ist kein Einwilligungsbanner nötig.</p>
+      <ul>
+        <li>Um zu wissen, wie oft eine Speisekarte geöffnet wird, speichert der Browser nur eine Markierung mit dem Namen der Speisekarte und dem Datum (<code>dsm-v-…</code>, siehe Tabelle), und unsere Datenbank zählt für diesen Tag 1 hinzu. Es werden keine IP-Adressen, Geräte oder anderen Daten gespeichert, die Betrachter identifizieren: Es handelt sich um eine anonyme eigene Statistik, die nach den Leitlinien der italienischen Datenschutzbehörde vom 10. Juni 2021 technischen Instrumenten gleichgestellt ist.</li>
+        <li>Die Seiten werden von Vercel und die Bilder der Speisekarten von Supabase ausgeliefert (siehe Dienstleister), die aus Sicherheitsgründen technische Verbindungsdaten für die unbedingt erforderliche Zeit erfassen können.</li>
+        <li>Die Schaltflächen zum Anrufen, Schreiben per WhatsApp, Öffnen von Google Maps, der Bewertungen oder der sozialen Netzwerke des Lokals führen erst dann zu externen Diensten, wenn Sie darauf tippen: Ab dann gelten die Regeln dieser Dienste.</li>
+        <li>Die Inhalte der Speisekarte (Gerichte, Preise, Allergene, Angaben zum Lokal) stellt das Lokal bereit, das dafür verantwortlich ist.</li>
+      </ul>
+      <h3>Wie Sie sie löschen</h3>
+      <p>Sie können den lokalen Speicher und Cookies jederzeit in den Browsereinstellungen unter Datenschutz oder Websitedaten löschen. Die Website funktioniert weiter: Es wird lediglich der Hinweis erneut angezeigt.</p>
+      <p>Sollten wir künftig Instrumente einführen, die eine Einwilligung erfordern, aktivieren wir sie erst, nachdem wir sie über ein den Leitlinien der Datenschutzbehörde entsprechendes Banner eingeholt haben, mit der Möglichkeit, ebenso einfach abzulehnen wie zuzustimmen.</p>
+    </section>
+
+    <!-- ===================== PARTE C: TERMINI ===================== -->
+    <div class="part-title"><span>C</span><h2>Geschäftsbedingungen</h2></div>
+
+    <section class="block" id="terms">
+      <h2>Allgemeine Geschäftsbedingungen der Leistungen</h2>
+      <p class="lead">Allgemeine Bedingungen für die Erbringung der Leistungen von DS Service. Schriftliche Vereinbarungen mit dem einzelnen Kunden (Angebot, Offerte oder Vertrag) haben Vorrang vor dieser Seite.</p>
+
+      <h3>1. Anbieter und Zielgruppe</h3>
+      <p>Die Leistungen werden von DS Service di Fabio Dos Santos Souza erbracht (Angaben unter <a href="#titolare">Wer wir sind</a>) und richten sich an Unternehmen und Freiberufler. Die Verbraucherschutzvorschriften des ital. GvD 206/2005 (Verbrauchergesetzbuch) gelten nicht, es sei denn, der Kunde ist Verbraucher: In diesem Fall bleiben alle zwingenden Schutzrechte bestehen, einschließlich des Widerrufsrechts innerhalb von 14 Tagen (Art. 52 Verbrauchergesetzbuch).</p>
+
+      <h3>2. Unsere Leistungen</h3>
+      <ul>
+        <li><strong>Digitale Speisekarten mit QR-Code</strong> für Gastronomiebetriebe, zu den Bedingungen der Punkte 3, 4 und 5.</li>
+        <li><strong>Websites</strong>: Präsentationswebsites, Vorstellungsseiten und Unternehmenswebsites.</li>
+        <li><strong>Apps</strong> für das Web und mobile Geräte.</li>
+        <li><strong>Software und Verwaltungssysteme</strong> für Unternehmen, zum Beispiel zur Verwaltung von Kunden, Anfragen, Reservierungen oder Bestellungen.</li>
+      </ul>
+      <p>Für Websites, Apps, Software und Verwaltungssysteme gelten die Bedingungen von Punkt 6 und die im vom Kunden angenommenen Angebot genannten.</p>
+
+      <h3>3. Digitale Speisekarten: was die Leistung umfasst</h3>
+      <ul>
+        <li>individuelle digitale Speisekarte und druckfertige QR-Codes für Tische, Theke und Schaufenster;</li>
+        <li>Symbole der 14 in der Verordnung (EU) 1169/2011 vorgesehenen Allergene;</li>
+        <li>Hosting, eigene Webadresse und SSL-Zertifikat;</li>
+        <li>bis zu 10 Änderungen pro Monat an Gerichten und Preisen, angefragt über die Seite <a href="/de/assistenza">Support</a> mit dem Kundencode oder durch Scannen des QR-Codes auf dem übergebenen Kundenblatt;</li>
+        <li>eine Bestätigungs-E-Mail, wenn die gewünschte Änderung online ist;</li>
+        <li>bei Fragen zum Abonnement Antwort per E-Mail von info@dsfabio.com, an Werktagen in der Regel innerhalb weniger Stunden.</li>
+      </ul>
+
+      <h3>4. Digitale Speisekarten: kostenloser Test, Preis und Zahlung</h3>
+      <ul>
+        <li>Der kostenlose Test wird über das <a href="/de/attiva">Aktivierungsformular</a> angefragt, indem Sie Ihre E-Mail-Adresse über den Link bestätigen, den wir Ihnen senden. Jede Anfrage wird manuell geprüft: Wir können sie ablehnen, zum Beispiel wenn die Daten unvollständig sind oder keinem echten Betrieb zugeordnet werden können, ohne jede Verpflichtung für Sie.</li>
+        <li>Der kostenlose Test dauert 30 Tage ab Übergabe der Speisekarte und erfordert keine Zahlungsdaten.</li>
+        <li>Wenn Sie nach dem Test nicht weitermachen, zahlen Sie nichts: Die Speisekarte wird pausiert (wer den QR-Code scannt, sieht einen Hinweis, dass die Speisekarte derzeit nicht verfügbar ist), und Sie können sie jederzeit durch Zahlung des Abonnements wieder aktivieren.</li>
+        <li>Nach dem Test kostet die Leistung <strong>189 € pro Jahr</strong> (Aktionspreis; Listenpreis 229 €), alles inklusive, jährlich im Voraus zu zahlen. Der in Ihrem Zahlungslink angegebene Preis bleibt bei Verlängerungen gleich: Etwaige Änderungen teilen wir Ihnen mindestens 60 Tage vor Ablauf mit, und wenn Sie sie nicht akzeptieren, können Sie kostenlos kündigen.</li>
+        <li>Sie können per Karte über den sicheren Zahlungslink zahlen, den wir Ihnen senden und der von Stripe abgewickelt wird (wir sehen und speichern die Kartendaten nicht), oder nach Absprache per Überweisung oder bar.</li>
+        <li>Der Vertrag kommt mit der Zahlung des ersten Jahres zustande; der Steuerbeleg wird nach der Zahlung ausgestellt.</li>
+      </ul>
+
+      <h3>5. Digitale Speisekarten: Laufzeit, Verlängerung und Kündigung</h3>
+      <ul>
+        <li>Die Leistung läuft ein Jahr ab dem Zahlungsdatum (auch wenn Sie vor Ende des kostenlosen Tests zahlen).</li>
+        <li><strong>Kartenzahlung:</strong> Das Abonnement verlängert sich jedes Jahr zum Ablaufdatum automatisch zum gleichen Preis, mit Belastung der bei der ersten Zahlung verwendeten Karte. Bei jeder Verlängerung erhalten Sie eine Bestätigung per E-Mail.</li>
+        <li><strong>Verlängerung kündigen:</strong> Sie können jederzeit bis <strong>30 Tage vor dem jährlichen Ablauf</strong> kündigen, indem Sie an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> schreiben; wir bestätigen die Kündigung schriftlich. Die Leistung bleibt bis zum Ende des bereits bezahlten Jahres aktiv, und es erfolgen keine weiteren Belastungen. Eine nach dieser Frist mitgeteilte Kündigung wirkt ab der darauffolgenden Verlängerung.</li>
+        <li><strong>Zahlung per Überweisung oder bar:</strong> Es gibt keine automatischen Belastungen. Wir erinnern Sie 5 und 2 Tage vor Ablauf per E-Mail, und die Leistung läuft mit der Zahlung des neuen Jahres weiter; um aufzuhören, verlängern Sie einfach nicht.</li>
+        <li>Für Teilzeiträume gibt es keine Erstattungen, außer in den gesetzlich vorgesehenen Fällen.</li>
+      </ul>
+
+      <h3>6. Websites, Apps, Software und Verwaltungssysteme</h3>
+      <ul>
+        <li><strong>Angebot:</strong> Für jedes Projekt senden wir ein schriftliches Angebot mit Funktionen, Preis, Zahlungsweise, Lieferzeiten und etwaigen laufenden Leistungen (Hosting, Wartung, Support). Der Vertrag kommt zustande, wenn der Kunde das Angebot schriftlich annimmt, auch per E-Mail.</li>
+        <li><strong>Mitwirkung des Kunden:</strong> Die Lieferzeiten hängen auch davon ab, dass der Kunde Texte, Bilder, Zugänge und Freigaben rechtzeitig bereitstellt.</li>
+        <li><strong>Abnahme:</strong> Bei Lieferung prüft der Kunde die Arbeit und meldet etwaige Mängel innerhalb von 15 Tagen; wir beheben sie kostenlos, wenn die Arbeit nicht dem Angebot entspricht. Wünsche nach neuen, nicht vorgesehenen Funktionen werden separat angeboten.</li>
+        <li><strong>Laufende Leistungen:</strong> Hosting, Wartung und Support haben die im Angebot angegebene Laufzeit und Kosten und können mit der dort vorgesehenen Frist gekündigt werden; andernfalls mit einer schriftlichen Frist von 30 Tagen.</li>
+        <li><strong>Dienste Dritter:</strong> Domains, Cloud-Dienste, App-Stores, Zahlungs- oder E-Mail-Systeme können eigene Kosten und Bedingungen haben, die wir im Angebot angeben und die, sofern nicht anders vereinbart, der Kunde trägt.</li>
+        <li><strong>Rechte an der erstellten Arbeit:</strong> Sofern nicht schriftlich anders vereinbart, erhält der Kunde nach Zahlung des Entgelts das zeitlich unbegrenzte Recht, die für seinen Betrieb erstellte Website, App oder Software zu nutzen. Von DS Service entwickelte, in anderen Projekten wiederverwendbare Komponenten, Bibliotheken und allgemeine Werkzeuge bleiben deren Eigentum; Komponenten Dritter unterliegen ihren jeweiligen Lizenzen.</li>
+      </ul>
+
+      <h3>7. Pflichten des Kunden</h3>
+      <ul>
+        <li>Korrekte und aktuelle Inhalte bereitstellen. Bei Speisekarten insbesondere Preise und Allergeninformationen, für die der Kunde als Lebensmittelunternehmer verantwortlich bleibt (VO (EU) 1169/2011).</li>
+        <li>Die Rechte an Logo, Fotos und Texten besitzen, die er uns sendet, und keine rechtswidrigen oder die Rechte Dritter verletzenden Inhalte bereitstellen.</li>
+        <li>Kundencodes, Passwörter und Zugänge sicher aufbewahren und uns jede unbefugte Nutzung sofort melden.</li>
+        <li>Die Leistungen gesetzeskonform nutzen, einschließlich der Datenschutzvorschriften für die Daten seiner eigenen Kunden, die in Websites, Apps oder Verwaltungssysteme eingegeben werden.</li>
+        <li>Bei Speisekarten stets ein Papierexemplar als Reserve für technische Probleme bereithalten.</li>
+      </ul>
+
+      <h3>8. Eigentum an den Inhalten</h3>
+      <p>Vom Kunden bereitgestellte Texte, Fotos, Logos und Daten bleiben sein Eigentum; der Kunde räumt uns eine Nutzungslizenz ausschließlich zur Erbringung der Leistungen ein. Grafiken, Vorlagen und Software des Dienstes für digitale Speisekarten bleiben Eigentum von DS Service. Für individuelle Projekte gilt Punkt 6. Für einen Kunden erstellte Arbeiten zeigen wir nur mit seiner Zustimmung als Beispiel.</p>
+
+      <h3>9. Verfügbarkeit und Haftung</h3>
+      <ul>
+        <li>Wir tun unser Bestes, um die von uns gehosteten Speisekarten, Websites, Apps und Verwaltungssysteme online zu halten, können aber weder einen unterbrechungsfreien Dienst noch das Funktionieren von Diensten Dritter garantieren (Hosting, E-Mail-Versand, Internetverbindung des Kunden oder seiner Nutzer).</li>
+        <li>Geplante Wartungsarbeiten erfolgen, wann immer möglich, zu nutzungsschwachen Zeiten.</li>
+        <li>Der Support umfasst die von uns erbrachten Leistungen, nicht die Geräte oder Netze des Kunden.</li>
+        <li>Außer bei Vorsatz oder grober Fahrlässigkeit (Art. 1229 ital. Zivilgesetzbuch) ist unsere Haftung auf den Betrag begrenzt, den der Kunde in den letzten 12 Monaten für die betreffende Leistung gezahlt hat.</li>
+      </ul>
+
+      <h3>10. Sperrung</h3>
+      <ul>
+        <li><strong>Ablauf ohne Zahlung:</strong> Geht zum Ablaufdatum (Ende des kostenlosen Tests oder des Jahres) keine Zahlung ein oder schlägt die automatische Kartenbelastung fehl, wird die Speisekarte <strong>gesperrt</strong>: Wer den QR-Code scannt, sieht eine Seite mit Ihren Kontaktdaten. Wir informieren Sie per E-Mail. Die Sperrung ist kostenlos und zieht keine Vertragsstrafen nach sich.</li>
+        <li><strong>Reaktivierung:</strong> Die Leistung bleibt gesperrt, bis Sie zahlen. Sie können sie jederzeit durch Zahlung des Jahres wieder aktivieren: Die Speisekarte ist sofort und automatisch wieder online, mit allen Inhalten und demselben QR-Code, und das neue Jahr beginnt am Zahlungsdatum.</li>
+        <li><strong>Längere Sperrung:</strong> Bleibt die Leistung länger als <strong>12 Monate</strong> gesperrt, gilt die Geschäftsbeziehung als beendet und es gilt Punkt 11 (Übergabe der Inhalte und Löschung nach 90 Tagen).</li>
+        <li>Wir können eine Leistung auch bei offensichtlich rechtswidrigen Inhalten oder gesetzwidriger Nutzung sperren; wir informieren den Kunden und nennen den Grund.</li>
+      </ul>
+
+      <h3>11. Datenübertragbarkeit am Ende der Geschäftsbeziehung</h3>
+      <p>Endet eine Leistung, aus welchem Grund auch immer, übergeben wir Ihre Inhalte und Daten kostenlos in einem strukturierten, gängigen Format innerhalb von 30 Tagen nach der Anfrage, damit Sie sie bei einem anderen Anbieter nutzen können (im Einklang mit der Verordnung (EU) 2023/2854, Data Act). 90 Tage nach Beendigung löschen wir die Inhalte, mit Ausnahme der Daten, die gesetzlich aufbewahrt werden müssen.</p>
+    </section>
+
+    <section class="block" id="contenuti">
+      <h2>Veröffentlichte Inhalte und Meldungen</h2>
+      <p class="lead">Pflichten von Hostingdiensten gemäß Verordnung (EU) 2022/2065 (Digital Services Act).</p>
+      <h3>Kontaktstelle</h3>
+      <p>Für Behörden, Kunden und Nutzer ist die einzige Kontaktstelle <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>, auf Italienisch oder Englisch (Art. 11 und 12 DSA).</p>
+      <h3>Meldung rechtswidriger Inhalte</h3>
+      <p>Wer der Ansicht ist, dass eine von uns veröffentlichte Speisekarte, Website oder App rechtswidrige Informationen enthält, kann dies an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> melden und dabei angeben (Art. 16 DSA):</p>
+      <ul>
+        <li>die Gründe, aus denen der Inhalt als rechtswidrig angesehen wird;</li>
+        <li>die genaue Webadresse des Inhalts;</li>
+        <li>Name und E-Mail-Adresse, sofern die Meldung nicht Straftaten betrifft, bei denen das Gesetz Anonymität zulässt;</li>
+        <li>eine Erklärung, dass die Angaben nach bestem Wissen richtig sind.</li>
+      </ul>
+      <p>Wir prüfen die Meldungen zügig und unparteiisch, teilen der meldenden Person die Entscheidung mit und erläutern, falls wir einen Inhalt entfernen oder einschränken, dem betroffenen Kunden die Gründe (Art. 17 DSA), der die Entscheidung durch Antwort an dieselbe Adresse anfechten kann.</p>
+    </section>
+
+    <section class="block" id="dpa">
+      <h2>Im Auftrag des Kunden verarbeitete Daten</h2>
+      <p class="lead">Auftragsverarbeitungsvereinbarung gemäß Art. 28 DSGVO, Bestandteil des Vertrags.</p>
+      <p>Gibt der Kunde personenbezogene Daten in eine Speisekarte, Website, App oder ein Verwaltungssystem ein, das wir für ihn erstellen, hosten oder betreuen (zum Beispiel Daten seiner Kunden, Mitarbeiter oder Lieferanten), ist der Kunde für diese Daten verantwortlich und DS Service verarbeitet sie als Auftragsverarbeiter in seinem Auftrag. Dazu verpflichtet sich DS Service:</p>
+      <ul>
+        <li>die Daten nur zur Erbringung, zum Hosting und zur Wartung der Leistung zu verarbeiten, nach den dokumentierten Weisungen des Kunden;</li>
+        <li>die berechtigten Personen zur Vertraulichkeit zu verpflichten;</li>
+        <li>die im Abschnitt <a href="#sicurezza">Sicherheit</a> beschriebenen Sicherheitsmaßnahmen zu treffen;</li>
+        <li>die im Abschnitt <a href="#fornitori">Dienstleister</a> genannten Unterauftragsverarbeiter einzusetzen und den Kunden über Änderungen zu informieren, sodass er widersprechen kann;</li>
+        <li>den Kunden bei der Beantwortung von Anfragen betroffener Personen zu unterstützen und ihn unverzüglich über etwaige Datenschutzverletzungen zu informieren;</li>
+        <li>die Daten am Ende der Leistung zurückzugeben oder zu löschen, wie in Punkt 11 der Bedingungen vorgesehen;</li>
+        <li>die zum Nachweis der Einhaltung dieser Pflichten nötigen Informationen bereitzustellen.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="foro">
+      <h2>Anwendbares Recht und Streitigkeiten</h2>
+      <ul>
+        <li>Diese Bedingungen unterliegen dem <strong>italienischen Recht</strong>.</li>
+        <li>Für Streitigkeiten mit Unternehmen und Freiberuflern ist ausschließlich das <strong>Gericht Forlì</strong> (Italien) zuständig. Ist der Kunde Verbraucher, ist das Gericht am Wohnsitz des Verbrauchers zuständig (Art. 66-bis Verbrauchergesetzbuch).</li>
+        <li>Bevor Sie Schritte einleiten, schreiben Sie uns an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>: Wir suchen immer eine gütliche Lösung. Die Mediation nach ital. GvD 28/2010 steht weiterhin offen.</li>
+        <li>Die europäische OS-Plattform zur Online-Streitbeilegung ist seit dem 20. Juli 2025 nicht mehr aktiv (Verordnung (EU) 2024/3228).</li>
+      </ul>
+      <h3>Barrierefreiheit</h3>
+      <p>DS Service ist ein Kleinstunternehmen und als solches von den Pflichten des ital. GvD 82/2022 zur Umsetzung des European Accessibility Act (Richtlinie (EU) 2019/882) befreit. Dennoch bemühen wir uns, Website und Speisekarten für alle lesbar und nutzbar zu machen: Wenn Sie auf Schwierigkeiten stoßen, schreiben Sie uns und wir helfen Ihnen.</p>
+    </section>
+
+    <!-- ===================== PARTE D ===================== -->
+    <div class="part-title"><span>D</span><h2>Verweise und Aktualisierungen</h2></div>
+
+    <section class="block" id="normativa">
+      <h2>Rechtsgrundlagen</h2>
+      <ul>
+        <li>Verordnung (EU) 2016/679 – Datenschutz-Grundverordnung (DSGVO).</li>
+        <li>Ital. GvD Nr. 196 vom 30. Juni 2003 – Datenschutzkodex, geändert durch GvD Nr. 101 vom 10. August 2018.</li>
+        <li>Richtlinie 2002/58/EG (ePrivacy) und Art. 122 ital. GvD 196/2003 zu Cookies.</li>
+        <li>Italienische Datenschutzbehörde, Leitlinien zu Cookies und anderen Tracking-Instrumenten, 10. Juni 2021.</li>
+        <li>Durchführungsbeschluss (EU) 2023/1795 der Kommission vom 10. Juli 2023 – EU-US Data Privacy Framework.</li>
+        <li>Verordnung (EU) 2022/2065 – Digital Services Act.</li>
+        <li>Verordnung (EU) 2023/2854 – Data Act.</li>
+        <li>Ital. GvD Nr. 70 vom 9. April 2003 – Elektronischer Geschäftsverkehr.</li>
+        <li>Ital. GvD Nr. 206 vom 6. September 2005 – Verbrauchergesetzbuch, soweit anwendbar.</li>
+        <li>Verordnung (EU) 1169/2011 – Information der Verbraucher über Lebensmittel.</li>
+        <li>Richtlinie (EU) 2019/882 und ital. GvD Nr. 82 vom 27. Mai 2022 – Barrierefreiheit.</li>
+        <li>Verordnung (EU) 2024/3228 – Aufhebung der OS-Plattform.</li>
+        <li>Ital. Zivilgesetzbuch, insbesondere Art. 1229 und 2220; D.P.R. Nr. 600 vom 29. September 1973, Art. 22.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="modifiche">
+      <h2>Änderungen dieser Seite</h2>
+      <p>Wir können diese Seite aktualisieren, um sie an neue Vorschriften oder Änderungen der Leistung anzupassen. Das Datum der letzten Aktualisierung steht immer oben.</p>
+      <p>Für Kunden werden Änderungen der Bedingungen, die die Leistung betreffen, mindestens 30 Tage vor Inkrafttreten per E-Mail mitgeteilt. Wer sie nicht akzeptiert, kann vor diesem Datum ohne Vertragsstrafen kündigen. Änderungen verschlechtern niemals bereits bezahlte Leistungen.</p>
+      <div class="note"><p>Fragen zu dieser Seite? Schreiben Sie an <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p></div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <span>© 2026 DS Service di Fabio Dos Santos Souza · Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italien · Steuernummer DSSFBA84A03Z602O · USt-IdNr. wird zugeteilt</span>
+    <a class="home-btn" href="/de">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Zur Startseite</span>
+    </a>
+  </div>
+</footer>
+
+<a class="to-top" href="#top" aria-label="Zurück zum Seitenanfang">↑</a>
+
+</body>
+</html>

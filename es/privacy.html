@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad, cookies y condiciones – DS Service</title>
+<meta name="description" content="Política de privacidad, política de cookies, términos y condiciones y aviso legal de DS Service di Fabio Dos Santos Souza, Meldola (FC), Italia: menús digitales, sitios web, aplicaciones, software y sistemas de gestión.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dsfabio.com/es/privacy">
+<link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy">
+<link rel="alternate" hreflang="en" href="https://dsfabio.com/en/privacy">
+<link rel="alternate" hreflang="es" href="https://dsfabio.com/es/privacy">
+<link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy">
+<link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy">
+<link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy">
+<link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy">
+<link rel="stylesheet" href="/assets/fonts/syne-manrope.css">
+<style>
+  :root {
+    /* stesso stile chiaro di Attiva, Assistenza e dsmenu.it */
+    --bg: #fbf8f4;
+    --paper: #ffffff;
+    --ink: #1d1630;
+    --sub: #6b6480;
+    --line: #ece6f2;
+    --accent: #6d4aff;
+    --accent-soft: #f3eefc;
+    --warn-soft: #fff7e6;
+    --radius: 22px;
+    --shadow: 0 24px 60px -32px rgba(60,30,120,.25);
+    --grad: linear-gradient(120deg, #ff3cac, #7b5cff 55%, #22d3ee);
+    --btn: linear-gradient(120deg, #7b5cff, #b44cff 60%, #ff3cac);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.7 Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before, body::after { content: ""; position: fixed; z-index: -1; border-radius: 50%; filter: blur(80px); opacity: .45; pointer-events: none; }
+  body::before { width: 520px; height: 520px; top: -180px; left: -160px; background: #ffd0ec; }
+  body::after { width: 560px; height: 560px; top: 180px; right: -220px; background: #cfe9ff; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* Barra in alto */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(251,248,244,.85);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-in {
+    max-width: 1120px; margin: 0 auto; padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-family: Syne, Manrope, sans-serif; font-weight: 800; letter-spacing: -.02em; color: var(--ink); text-decoration: none; font-size: 1.2rem; }
+  .brand span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .home-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--btn); background-size: 160% 100%; color: #fff; text-decoration: none;
+    padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: .92rem; box-shadow: 0 12px 26px -12px rgba(123,92,255,.75);
+    transition: background-position .4s ease, transform .15s ease;
+  }
+  .home-btn:hover { background-position: 100% 0; transform: translateY(-1px); }
+  .home-btn svg { width: 16px; height: 16px; }
+
+  /* Intestazione */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 48px 20px 24px; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; font-weight: 800; color: var(--accent); margin: 0 0 14px; padding: 6px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: 0 4px 16px rgba(109,74,255,.08); }
+  .hero h1 { font-family: Syne, Manrope, sans-serif; font-weight: 800; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.1; margin: 0 0 12px; letter-spacing: -.02em; }
+  .hero p { color: var(--sub); margin: 0; max-width: 760px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .85rem; color: var(--sub); }
+
+  /* Layout */
+  .layout { max-width: 1120px; margin: 0 auto; padding: 8px 20px 64px; display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+  .toc { position: sticky; top: 76px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .toc p { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--sub); font-weight: 700; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .toc a { display: block; padding: 7px 10px; border-radius: 10px; text-decoration: none; color: var(--ink); font-size: .93rem; }
+  .toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  .toc .part { margin-top: 10px; font-weight: 700; color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; padding: 0 10px; }
+
+  .doc { display: grid; gap: 24px; min-width: 0; }
+  .block { min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); scroll-margin-top: 84px; }
+  .block > h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -.01em; margin: 0 0 4px; line-height: 1.3; }
+  .block > .lead { color: var(--sub); margin: 0 0 18px; font-size: .95rem; }
+  .part-title { display: flex; align-items: center; gap: 12px; margin: 16px 0 -8px; }
+  .part-title span { background: var(--btn); color: #fff; font-weight: 800; border-radius: 8px; padding: 2px 10px; font-size: .85rem; }
+  .part-title h2 { margin: 0; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .1em; color: var(--sub); }
+  h3 { font-size: 1.05rem; margin: 24px 0 6px; scroll-margin-top: 84px; }
+  p, li { color: var(--sub); }
+  strong { color: var(--ink); }
+  ul, ol.list { padding-left: 1.25em; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+
+  .card-id { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 8px 0 4px; }
+  .card-id div { background: #faf8fd; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .card-id small { display: block; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; color: var(--sub); font-weight: 700; }
+  .card-id b { display: block; color: var(--ink); font-weight: 600; word-break: break-word; }
+
+  .note { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 12px; padding: 12px 16px; margin: 14px 0; color: var(--ink); }
+  .note.warn { background: var(--warn-soft); border-left-color: #c98a00; }
+  .note p { margin: 0; color: inherit; }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0 14px; border: 1px solid var(--line); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--sub); }
+  th { background: var(--bg); color: var(--ink); font-weight: 700; font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { color: var(--ink); font-weight: 600; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .86em; color: var(--ink); }
+
+  .footer { border-top: 1px solid var(--line); background: rgba(255,255,255,.55); }
+  .footer-in { max-width: 1120px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; color: var(--sub); font-size: .9rem; }
+  .to-top { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 50%; background: var(--btn); color: #fff; display: grid; place-items: center; text-decoration: none; box-shadow: var(--shadow); font-size: 1.1rem; }
+  .to-top:hover { filter: brightness(1.08); }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .block { padding: 22px 18px; }
+  }
+  @media (max-width: 380px) {
+    .home-btn { padding: 8px 12px; font-size: .85rem; }
+  }
+  @media print {
+    .topbar, .toc, .to-top { display: none !important; }
+    body { background: #fff; }
+    .layout { display: block; padding: 0; }
+    .block { box-shadow: none; border: 0; padding: 0 0 16px; page-break-inside: auto; }
+    a { color: inherit; }
+  }
+  /* Selettore lingua e avviso traduzione */
+  .lang { position: relative; flex: 0 0 auto; margin-left: auto; }
+  .lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-weight: 800; font-size: .8rem; color: var(--ink); user-select: none; }
+  .lang summary::-webkit-details-marker { display: none; }
+  .lang[open] summary { border-color: var(--accent); }
+  .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 130; min-width: 170px; display: grid; padding: 6px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(60,30,120,.18); }
+  .lang-list a { padding: 10px 12px; border-radius: 10px; text-decoration: none; color: var(--sub); font-weight: 700; font-size: .92rem; }
+  .lang-list a:hover, .lang-list a[aria-current] { background: var(--accent-soft); color: var(--accent); }
+  .tr-note { margin: 18px 0 0; max-width: 720px; padding: 12px 16px; border-radius: 14px; background: var(--warn-soft); border: 1px solid #f3e0b5; color: var(--ink); font-size: .92rem; }
+  @media (max-width: 480px) { .home-btn span { display: none; } .home-btn { padding: 10px 12px; } }
+  .tr-note a { color: var(--accent); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/es">DS <span>SERVICE</span></a>
+    <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> ES</summary><div class="lang-list"><a href="/privacy" hreflang="it" lang="it">Italiano</a><a href="/en/privacy" hreflang="en" lang="en">English</a><a href="/es/privacy" hreflang="es" lang="es" aria-current="true">Español</a><a href="/pt/privacy" hreflang="pt" lang="pt">Português</a><a href="/de/privacy" hreflang="de" lang="de">Deutsch</a><a href="/fr/privacy" hreflang="fr" lang="fr">Français</a></div></details>
+    <a class="home-btn" href="/es" aria-label="Volver al inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Volver al inicio</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <p class="eyebrow">Aviso legal</p>
+  <h1>Privacidad, cookies y condiciones del servicio</h1>
+  <p>En esta página reunimos en un único documento la política de privacidad, la política de cookies, los términos y condiciones de nuestros servicios y el aviso legal de DS Service. Está escrita de forma clara y, cuando es necesario, remite a las normas aplicables.</p>
+  <div class="meta">
+    <span class="chip">Última actualización: 15 de noviembre de 2026</span>
+    <span class="chip">En vigor desde el 11 de noviembre de 2026</span>
+    <span class="chip">Versión 2.5</span>
+  </div>
+  <p class="tr-note" role="note">Esta es una traducción de cortesía. En caso de diferencias, prevalece la versión italiana de esta página. <a href="/privacy">Italiano</a></p>
+</section>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Índice">
+    <p>Índice</p>
+    <ol>
+      <li><a href="#titolare">Quiénes somos</a></li>
+      <li class="part">A · Privacidad</li>
+      <li><a href="#privacy">Política de privacidad</a></li>
+      <li><a href="#dati">Datos, finalidades y plazos</a></li>
+      <li><a href="#attivazione">Formulario de activación</a></li>
+      <li><a href="#assistenza">Formulario de soporte</a></li>
+      <li><a href="#fornitori">Proveedores y transferencias</a></li>
+      <li><a href="#sicurezza">Seguridad</a></li>
+      <li><a href="#diritti">Tus derechos</a></li>
+      <li class="part">B · Cookies</li>
+      <li><a href="#cookies">Política de cookies</a></li>
+      <li class="part">C · Condiciones</li>
+      <li><a href="#terms">Términos y condiciones</a></li>
+      <li><a href="#contenuti">Contenidos y avisos</a></li>
+      <li><a href="#dpa">Datos por cuenta del cliente</a></li>
+      <li><a href="#foro">Ley y litigios</a></li>
+      <li class="part">D · Otros</li>
+      <li><a href="#normativa">Normas de referencia</a></li>
+      <li><a href="#modifiche">Cambios en esta página</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <!-- ===================== CHI SIAMO ===================== -->
+    <section class="block" id="titolare">
+      <h2>Quiénes somos</h2>
+      <p class="lead">Datos identificativos del prestador del servicio y responsable del tratamiento (art. 7 D.Lgs. italiano 70/2003; art. 13 Reglamento UE 2016/679).</p>
+      <div class="card-id">
+        <div><small>Denominación</small><b>DS Service di Fabio Dos Santos Souza</b></div>
+        <div><small>Titular</small><b>Fabio Dos Santos Souza</b></div>
+        <div><small>Domicilio social</small><b>Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italia</b></div>
+        <div><small>Código fiscal</small><b>DSSFBA84A03Z602O</b></div>
+        <div><small>NIF-IVA</small><b>En trámite de asignación</b></div>
+        <div><small>Email</small><b><a href="mailto:info@dsfabio.com">info@dsfabio.com</a></b></div>
+        <div><small>Sitio web</small><b><a href="https://dsfabio.com">dsfabio.com</a></b></div>
+      </div>
+      <p><strong>DS Service</strong> crea menús digitales con código QR, sitios web, aplicaciones, software y sistemas de gestión para empresas. El número de IVA se indicará en esta página en cuanto sea asignado.</p>
+      <p><strong>Delegado de protección de datos (DPD):</strong> no designado, porque no es obligatorio para nuestra actividad (art. 37 RGPD). Para cualquier pregunta sobre datos personales escribe a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+    </section>
+
+    <!-- ===================== PARTE A: PRIVACY ===================== -->
+    <div class="part-title"><span>A</span><h2>Política de privacidad</h2></div>
+
+    <section class="block" id="privacy">
+      <h2>Información sobre el tratamiento de datos personales</h2>
+      <p class="lead">Facilitada conforme a los artículos 13 y 14 del Reglamento (UE) 2016/679 (RGPD) y del D.Lgs. italiano 196/2003 (Código de protección de datos personales), modificado por el D.Lgs. 101/2018.</p>
+      <p>Esta información se refiere a las personas cuyos datos tratamos a través del sitio <strong>dsfabio.com</strong>, los menús digitales, sitios web, aplicaciones y sistemas de gestión que creamos o alojamos para nuestros clientes, los formularios de activación y de soporte y el área reservada de gestión de clientes. En particular:</p>
+      <ul>
+        <li><strong>visitantes</strong> del sitio y de los menús digitales y sitios web que publicamos;</li>
+        <li><strong>potenciales clientes</strong> que nos contactan para pedir información o la prueba gratuita;</li>
+        <li><strong>clientes</strong> (empresas y profesionales) y sus titulares, contactos y personal;</li>
+        <li><strong>colaboradores comerciales</strong> autorizados a utilizar el área reservada.</li>
+      </ul>
+      <p>El responsable del tratamiento es <strong>DS Service di Fabio Dos Santos Souza</strong>, con los datos indicados en la sección <a href="#titolare">Quiénes somos</a>.</p>
+      <div class="note"><p><strong>En resumen:</strong> recogemos solo los datos necesarios para prestar el servicio, no hacemos publicidad ni elaboramos perfiles, no vendemos datos, no tomamos decisiones automatizadas y eliminamos los datos en los plazos indicados a continuación.</p></div>
+    </section>
+
+    <section class="block" id="dati">
+      <h2>Qué datos tratamos, por qué y durante cuánto tiempo</h2>
+      <p class="lead">Para cada finalidad indicamos la base jurídica (art. 6 RGPD) y el plazo de conservación (art. 5.1.e RGPD).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Actividad</th><th>Datos tratados</th><th>Finalidad y base jurídica</th><th>Conservación</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Navegación por el sitio, los menús digitales y los sitios que alojamos</td>
+              <td>Datos técnicos registrados por el servidor: dirección IP, fecha y hora, página solicitada, tipo de navegador y de dispositivo</td>
+              <td>Funcionamiento y seguridad del sitio, prevención de abusos. Interés legítimo (art. 6.1.f)</td>
+              <td>Como máximo 30 días, salvo que sean necesarios para investigar delitos</td>
+            </tr>
+            <tr>
+              <td>Solicitud de información o presupuesto (email)</td>
+              <td>Lo que decidas enviarnos: normalmente nombre y apellidos, nombre comercial, ciudad, teléfono, email, descripción del proyecto, fotos o archivos</td>
+              <td>Responder y preparar presupuestos. Medidas precontractuales solicitadas por ti (art. 6.1.b)</td>
+              <td>12 meses desde el último contacto si no te conviertes en cliente</td>
+            </tr>
+            <tr>
+              <td>Solicitud de la prueba gratuita desde el <a href="#attivazione">formulario de activación</a></td>
+              <td>Nombre comercial, dirección, código postal, ciudad y provincia, nombre y apellidos del titular o persona de contacto, móvil, email, enlaces opcionales a sitio web y redes sociales, plantilla de menú elegida, eslogan opcional, notas, fotos o PDF adjuntos (menú, logotipo, alérgenos), fecha de aceptación de la información de privacidad</td>
+              <td>Revisar la solicitud, contactarte y preparar la prueba gratuita. Medidas precontractuales solicitadas por ti (art. 6.1.b)</td>
+              <td>No confirmada por email: se elimina a los 7 días. Aprobada o rechazada: normalmente se elimina en un plazo de 30 días desde la decisión. Si te conviertes en cliente, los datos pasan a tu ficha de cliente (fila siguiente)</td>
+            </tr>
+            <tr>
+              <td>Gestión de clientes</td>
+              <td>Nombre comercial, titular o persona de contacto, dirección, móvil, email, enlaces a menú, sitio web y redes sociales, código de cliente, fechas de prueba, renovación y pago, notas internas del servicio</td>
+              <td>Prestar el servicio, la prueba gratuita, el soporte y las comunicaciones de servicio por email (avisos de vencimiento, confirmaciones de pago y renovación, confirmación de cambios realizados). Ejecución del contrato (art. 6.1.b)</td>
+              <td>Durante toda la relación y 24 meses después de su finalización</td>
+            </tr>
+            <tr>
+              <td>Contenidos de los proyectos</td>
+              <td>Contenidos facilitados por el cliente para menús, sitios, aplicaciones y sistemas de gestión: textos, precios, alérgenos, logotipo, fotos, documentos</td>
+              <td>Crear, publicar y actualizar el trabajo encargado. Ejecución del contrato (art. 6.1.b)</td>
+              <td>Durante la relación; al finalizar entregamos los contenidos al cliente y los eliminamos en un plazo de 90 días</td>
+            </tr>
+            <tr>
+              <td>Solicitudes de soporte</td>
+              <td>Código de cliente, tipo de cambio, notas escritas por el cliente, fotos y PDF adjuntos</td>
+              <td>Realizar los cambios solicitados. Ejecución del contrato (art. 6.1.b)</td>
+              <td>Solicitud: durante la relación. Fotos y PDF: se eliminan 90 días después del cierre de la solicitud</td>
+            </tr>
+            <tr>
+              <td>Protección de los formularios de soporte y activación</td>
+              <td>Huella cifrada de la dirección IP (la IP en claro no se guarda) y tipo de navegador</td>
+              <td>Bloquear envíos automáticos, intentos de adivinar códigos de cliente, solicitudes falsas y spam. Interés legítimo (art. 6.1.f)</td>
+              <td>Formulario de soporte: huella IP 24 horas. Formulario de activación: se conserva con la solicitud y se elimina junto a ella. Tipo de navegador: se conserva con la solicitud</td>
+            </tr>
+            <tr>
+              <td>Pagos</td>
+              <td>Importe, fecha, resultado y datos necesarios para los documentos fiscales. Los datos de la tarjeta los gestiona únicamente el proveedor de pagos: nosotros no los vemos</td>
+              <td>Cobrar el importe. Ejecución del contrato (art. 6.1.b) y obligaciones fiscales (art. 6.1.c)</td>
+              <td>10 años (art. 2220 Código Civil italiano; art. 22 D.P.R. 600/1973)</td>
+            </tr>
+            <tr>
+              <td>Área reservada de gestión de clientes</td>
+              <td>Email, contraseña (guardada solo en forma cifrada), datos de verificación en dos pasos, registro técnico de accesos</td>
+              <td>Permitir el acceso solo a personas autorizadas y proteger los datos. Ejecución de la colaboración (art. 6.1.b) e interés legítimo en la seguridad (art. 6.1.f)</td>
+              <td>Durante la colaboración; registros técnicos según los plazos del proveedor, en todo caso no más de 12 meses</td>
+            </tr>
+            <tr>
+              <td>Defensa de derechos</td>
+              <td>Solo los datos estrictamente necesarios de entre los indicados arriba</td>
+              <td>Constatar, ejercer o defender un derecho ante los tribunales. Interés legítimo (art. 6.1.f)</td>
+              <td>Durante el litigio y hasta que venzan los plazos de recurso</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Comunicación de los datos</h3>
+      <p>Facilitar los datos necesarios para el contrato y el soporte es imprescindible: sin ellos no podemos prestar el servicio ni hacer los cambios. Otros datos, como las notas libres, son opcionales.</p>
+      <h3>Lo que no hacemos</h3>
+      <ul>
+        <li>No usamos los datos para publicidad, boletines o marketing y no los cedemos ni vendemos a terceros.</li>
+        <li>Para preparar los borradores de los menús podemos utilizar un servicio de inteligencia artificial (ver Proveedores): solo lee las páginas del menú, no toma decisiones sobre las personas y cada borrador lo revisa y publica una persona.</li>
+        <li>No elaboramos perfiles ni tomamos decisiones basadas únicamente en tratamientos automatizados (art. 22 RGPD).</li>
+        <li>No tratamos categorías especiales de datos (art. 9 RGPD) ni datos relativos a condenas penales (art. 10 RGPD).</li>
+      </ul>
+      <h3>Menores</h3>
+      <p>Nuestros servicios están dirigidos a empresas y profesionales. No recogemos conscientemente datos de menores de 14 años (art. 2-quinquies D.Lgs. italiano 196/2003).</p>
+    </section>
+
+    <section class="block" id="attivazione">
+      <h2>Formulario de activación de la prueba gratuita</h2>
+      <p class="lead">Información específica para quien solicita la prueba gratuita desde la página <a href="/es/attiva">Activa</a>.</p>
+      <ul>
+        <li>Tras el envío te mandamos un <strong>email con un enlace de confirmación</strong>, válido durante 48 horas. Hasta que lo abras, la solicitud no nos aparece como pendiente; si no la confirmas, se elimina a los 7 días.</li>
+        <li>Cada solicitud confirmada se revisa antes de la activación: o bien un asistente automático basado en inteligencia artificial (ver Proveedores), que solo comprueba que el material sea la carta de un local y no contenga contenidos inapropiados, o bien el titular o un colaborador autorizado. Si el asistente tiene dudas, la solicitud queda pendiente y decide una persona. El resultado se refiere a la activación de la prueba gratuita y siempre puedes pedir que se revise escribiendo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</li>
+        <li>Si la solicitud se aprueba, te contactamos para preparar el menú y los datos pasan a tu ficha de cliente; a partir de ese momento se aplican los plazos de la fila «Gestión de clientes».</li>
+        <li>Te pedimos que adjuntes la carta que usas hoy: hasta 10 archivos (fotos JPG, PNG, WebP o PDF de hasta 10 MB), guardados en un archivo privado. Si quieres, también puedes subir tu logotipo y una imagen de portada (o pedírnoslo en las notas): los usamos para el menú y los publicamos con él. No incluyas datos de otras personas ni información innecesaria.</li>
+        <li>El número de IVA del local es opcional: si lo indicas, lo mostramos al pie del menú digital.</li>
+        <li>Por seguridad aplicamos límites a los envíos por dispositivo y en total, y aceptamos una sola solicitud abierta por dirección de email.</li>
+        <li>El formulario no usa cookies. Para que no pierdas lo que has escrito si el móvil recarga la página, guarda los campos rellenados, la plantilla elegida y la procedencia de la visita en la memoria temporal de la pestaña del navegador (ver Política de cookies): se borran cuando envías la solicitud o cierras la pestaña. Los datos se envían a nuestra base de datos en Supabase (Unión Europea) solo cuando pulsas el botón de envío.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="assistenza">
+      <h2>Formulario de soporte al cliente</h2>
+      <p class="lead">Información específica para los clientes que usan el formulario de solicitud de cambios en el menú.</p>
+      <ul>
+        <li>El formulario pide el <strong>código de cliente</strong> que figura en la ficha que has recibido: sin un código válido la solicitud no se guarda. El código es personal: no lo compartas con otras personas.</li>
+        <li>Puedes adjuntar hasta 5 archivos (fotos JPG, PNG, WebP o PDF de hasta 10 MB). Las fotos se reducen automáticamente antes del envío.</li>
+        <li>Por seguridad aplicamos límites a los envíos: 5 códigos erróneos por hora por dispositivo, un límite global de intentos erróneos y un número máximo de solicitudes diarias por cliente. Superados los límites, el formulario se bloquea temporalmente.</li>
+        <li>Las solicitudes solo son visibles para el titular y para el colaborador comercial que lleva tu local.</li>
+        <li>Cuando la solicitud se completa, enviamos un email de confirmación a la dirección registrada para tu local.</li>
+        <li>No incluyas en las notas ni en los adjuntos datos de otras personas (por ejemplo fotos en las que se reconozcan clientes o empleados) ni información no necesaria para la solicitud.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="fornitori">
+      <h2>Quién ve los datos: proveedores y transferencias</h2>
+      <p class="lead">Destinatarios de los datos (art. 13.1.e RGPD) y transferencias a terceros países (arts. 44–49 RGPD).</p>
+      <h3>Personas autorizadas</h3>
+      <p>Acceden a los datos el titular y los colaboradores comerciales autorizados e instruidos (art. 29 RGPD y art. 2-quaterdecies D.Lgs. italiano 196/2003). Cada colaborador solo ve los clientes que lleva.</p>
+      <h3>Proveedores que tratan datos por nuestra cuenta</h3>
+      <p>Están designados como encargados del tratamiento (art. 28 RGPD) con contratos que garantizan confidencialidad y seguridad.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Proveedor</th><th>Servicio</th><th>Dónde están los datos</th><th>Garantías</th></tr></thead>
+          <tbody>
+            <tr><td>Vercel Inc. (EE. UU.)</td><td>Alojamiento del sitio, de los menús digitales, de los sitios y aplicaciones de los clientes y del área reservada</td><td>Red global, incluidas sedes en EE. UU.</td><td>EU-US Data Privacy Framework y Cláusulas Contractuales Tipo</td></tr>
+            <tr><td>Supabase Inc. (EE. UU.)</td><td>Base de datos de clientes, recepción de las solicitudes de los formularios de activación y soporte y archivo privado de adjuntos</td><td>Unión Europea (Fráncfort, Alemania)</td><td>Datos almacenados en la UE; Cláusulas Contractuales Tipo para posibles accesos de asistencia</td></tr>
+            <tr><td>Resend (Plus Five Five Inc., EE. UU.)</td><td>Envío de emails de servicio: confirmación de la solicitud de prueba gratuita, avisos de vencimiento, confirmaciones de pago, renovación y cambios realizados</td><td>Unión Europea (Irlanda) para el envío; empresa con sede en EE. UU.</td><td>EU-US Data Privacy Framework y acuerdo de tratamiento de datos del proveedor</td></tr>
+            <tr><td>Anthropic (Anthropic PBC, EE. UU.)</td><td>Lectura con inteligencia artificial (Claude) de fotos y PDF de la carta en papel, para preparar un borrador del menú digital. Recibe solo las páginas del menú y los demás adjuntos, los datos públicos del negocio (nombre del local, dirección, contactos y perfiles sociales), las notas escritas en el formulario de activación (también para revisar el material antes de la aprobación automática de la prueba) y el texto de las solicitudes del cliente relativas al menú. No recibe los datos de contacto personales del titular. El borrador siempre lo revisa y publica una persona</td><td>Servidores del proveedor, también en EE. UU.</td><td>Acuerdo de tratamiento de datos del proveedor con Cláusulas Contractuales Tipo; según las condiciones comerciales del proveedor, los datos enviados por API no se usan para entrenar los modelos</td></tr>
+            <tr><td>Telegram (Telegram FZ-LLC, Emiratos Árabes Unidos)</td><td>Notificaciones internas al titular y a los colaboradores sobre la actividad de los clientes (nuevas solicitudes, vencimientos, pagos). Las notificaciones contienen solo el nombre comercial, la ciudad o el código de cliente y el tipo de aviso: ningún dato de contacto ni nota del cliente</td><td>Servidores del proveedor, también fuera de la Unión Europea</td><td>Datos reducidos al mínimo indispensable; los detalles permanecen en el área reservada, accesible solo con credenciales</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Responsables independientes</h3>
+      <ul>
+        <li><strong>Stripe Payments Europe Ltd.</strong> (Irlanda), que gestiona los pagos con tarjeta realizados a través de nuestro enlace de pago y las renovaciones correspondientes, según su propia política de privacidad.</li>
+        <li><strong>Asesores fiscales y profesionales</strong> que nos asisten en las obligaciones legales, sujetos a secreto profesional.</li>
+        <li><strong>Autoridades públicas</strong>, cuando lo exija la ley.</li>
+      </ul>
+      <h3>Transferencias fuera de la Unión Europea</h3>
+      <p>Cuando un proveedor trata datos fuera del Espacio Económico Europeo, la transferencia se basa en la decisión de adecuación de la Comisión Europea de 10 de julio de 2023 sobre el EU-US Data Privacy Framework (art. 45 RGPD), para las empresas certificadas, o en las Cláusulas Contractuales Tipo aprobadas por la Comisión (art. 46 RGPD). Puedes pedirnos una copia de las garantías escribiendo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p>
+      <p>Las notificaciones internas enviadas por Telegram contienen solo datos sobre la actividad del cliente (nombre del local, ciudad o código de cliente, tipo de aviso) y ningún dato de contacto: las mantenemos al mínimo precisamente porque el proveedor opera también fuera del Espacio Económico Europeo.</p>
+    </section>
+
+    <section class="block" id="sicurezza">
+      <h2>Cómo protegemos los datos</h2>
+      <p class="lead">Medidas técnicas y organizativas adecuadas al riesgo (art. 32 RGPD).</p>
+      <ul>
+        <li>Conexiones siempre cifradas (HTTPS) y certificado SSL en sitio y menús.</li>
+        <li>Área reservada accesible solo con credenciales personales; la verificación en dos pasos es obligatoria para el administrador.</li>
+        <li>Reglas de acceso aplicadas directamente por la base de datos: cada colaborador ve y modifica solo sus propios clientes.</li>
+        <li>Adjuntos en un archivo privado, visibles solo mediante enlaces temporales.</li>
+        <li>Registro público de nuevas cuentas desactivado: las cuentas solo las crea el titular.</li>
+        <li>Límites contra el abuso de los formularios públicos, confirmación por email y aprobación manual de las solicitudes de activación, eliminación de los datos en los plazos indicados.</li>
+        <li>Los formularios públicos solo pueden enviar solicitudes: no pueden leer, modificar ni eliminar ningún dato ya presente en la base de datos.</li>
+      </ul>
+      <p>En caso de violación de datos personales informamos a la autoridad italiana de protección de datos (Garante) en un plazo de 72 horas y, si el riesgo es alto, también a las personas afectadas (arts. 33 y 34 RGPD).</p>
+    </section>
+
+    <section class="block" id="diritti">
+      <h2>Tus derechos</h2>
+      <p class="lead">Arts. 15–22 y 77 RGPD.</p>
+      <p>En cualquier momento puedes solicitar:</p>
+      <ul>
+        <li>el <strong>acceso</strong> a tus datos y una copia (art. 15);</li>
+        <li>la <strong>rectificación</strong> de datos inexactos o incompletos (art. 16);</li>
+        <li>la <strong>supresión</strong> (art. 17), salvo los datos que debamos conservar por ley;</li>
+        <li>la <strong>limitación</strong> del tratamiento (art. 18);</li>
+        <li>la <strong>portabilidad</strong>, es decir, recibir los datos en un formato estructurado y legible (art. 20);</li>
+        <li>la <strong>oposición</strong> a los tratamientos basados en el interés legítimo (art. 21).</li>
+      </ul>
+      <p>Escribe a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>. La solicitud es gratuita. Respondemos en el plazo de un mes, ampliable en dos meses en casos complejos (art. 12.3 RGPD); podemos pedirte que confirmes tu identidad.</p>
+      <h3>Reclamación ante la autoridad de control</h3>
+      <p>Si consideras que el tratamiento infringe la normativa, puedes presentar una reclamación ante el <strong>Garante per la protezione dei dati personali</strong> (autoridad italiana de protección de datos), Piazza Venezia 11, 00187 Roma, <a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>, <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a> (art. 77 RGPD), o acudir a los tribunales (art. 79 RGPD).</p>
+    </section>
+
+    <!-- ===================== PARTE B: COOKIE ===================== -->
+    <div class="part-title"><span>B</span><h2>Política de cookies</h2></div>
+
+    <section class="block" id="cookies">
+      <h2>Cookies y almacenamiento en el navegador</h2>
+      <p class="lead">Información conforme al art. 122 D.Lgs. italiano 196/2003, la Directiva 2002/58/CE y las Directrices del Garante italiano sobre cookies y otros instrumentos de seguimiento de 10 de junio de 2021.</p>
+      <div class="note"><p><strong>No utilizamos cookies de perfilado, publicitarias ni estadísticas</strong> y no usamos herramientas de análisis como Google Analytics. Por eso no pedimos ningún consentimiento: las únicas herramientas presentes son técnicas y necesarias.</p></div>
+      <h3>Qué utilizamos</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nombre</th><th>Dónde</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr></thead>
+          <tbody>
+            <tr><td><code>dsf-cookie-ok</code></td><td>Sitio dsfabio.com</td><td>Almacenamiento local del navegador, técnico</td><td>Recuerda que has cerrado el aviso informativo, para no mostrarlo de nuevo</td><td>Hasta que borres los datos del navegador</td></tr>
+            <tr><td><code>dsf-attiva-dati</code>, <code>dsf-attiva-tema</code></td><td>Página de activación de dsfabio.com</td><td>Memoria temporal de la pestaña (sessionStorage), técnica</td><td>Conserva los campos ya rellenados y la plantilla elegida si la página se recarga (por ejemplo, tras abrir la cámara)</td><td>Hasta el envío de la solicitud o el cierre de la pestaña</td></tr>
+            <tr><td><code>dsf-utm</code>, <code>dsf-hi-menu</code></td><td>Sitio dsfabio.com</td><td>Memoria temporal de la pestaña (sessionStorage), técnica</td><td>Recuerda desde qué página o enlace has llegado (por ejemplo, el menú de un local), para comunicarlo al formulario de activación, y si has cerrado el mensaje de bienvenida</td><td>Hasta el cierre de la pestaña</td></tr>
+            <tr><td><code>dsm-v-…</code></td><td>Menús digitales en dsmenu.it</td><td>Almacenamiento local del navegador, estadística anónima propia</td><td>Contiene solo el nombre del menú y la fecha: sirve para contar una sola visita al día por dispositivo. El recuento es anónimo y agregado, no identifica a nadie y no se comparte con terceros</td><td>Hasta que borres los datos del navegador</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Estos datos permanecen en tu dispositivo, no sirven para reconocerte en otros sitios y no se usan con fines estadísticos. Son herramientas estrictamente necesarias para las que no se requiere consentimiento (art. 122, apartado 1, D.Lgs. italiano 196/2003).</p>
+      <h3>Servicios de terceros</h3>
+      <ul>
+        <li>Fuentes, imágenes y librerías se cargan directamente desde nuestro sitio: durante la navegación no contactas con Google Fonts ni con otros servicios externos.</li>
+        <li>Al pulsar el botón de envío, los formularios de activación y soporte envían la solicitud a nuestra base de datos en Supabase (servidores en la Unión Europea), sin usar cookies.</li>
+        <li>El enlace de pago abre la página segura de Stripe, que aplica sus propias normas sobre cookies.</li>
+      </ul>
+      <h3 id="menu">Menús digitales (dsmenu.it)</h3>
+      <p>Los menús digitales de los locales clientes son páginas informativas estáticas: <strong>no usan cookies, no piden datos y no contienen herramientas de terceros de perfilado, publicidad o análisis</strong>. Por eso no es necesario ningún banner de consentimiento.</p>
+      <ul>
+        <li>Para saber cuántas veces se abre un menú, el navegador guarda solo una marca con el nombre del menú y la fecha (<code>dsm-v-…</code>, ver tabla) y nuestra base de datos suma 1 al recuento de ese día. No se guardan direcciones IP, dispositivos ni otros datos que identifiquen a quien mira: es una estadística anónima propia, que las Directrices del Garante italiano de 10 de junio de 2021 equiparan a las herramientas técnicas.</li>
+        <li>Las páginas las sirve Vercel y las imágenes de los menús Supabase (ver Proveedores), que pueden registrar datos técnicos de conexión por seguridad durante el tiempo estrictamente necesario.</li>
+        <li>Los botones para llamar, escribir por WhatsApp, abrir Google Maps, las reseñas o las redes sociales del local llevan a servicios externos solo cuando los pulsas: a partir de ese momento se aplican las normas de esos servicios.</li>
+        <li>Los contenidos del menú (platos, precios, alérgenos, datos del local) los facilita el local, que es responsable de ellos.</li>
+      </ul>
+      <h3>Cómo borrarlos</h3>
+      <p>Puedes borrar en cualquier momento el almacenamiento local y las cookies desde la configuración del navegador, en Privacidad o Datos de sitios. El sitio seguirá funcionando: solo volverá a mostrarse el aviso.</p>
+      <p>Si en el futuro introducimos herramientas que requieran consentimiento, las activaremos solo después de pedirlo con un banner conforme a las Directrices del Garante, con la posibilidad de rechazar con la misma facilidad con la que se acepta.</p>
+    </section>
+
+    <!-- ===================== PARTE C: TERMINI ===================== -->
+    <div class="part-title"><span>C</span><h2>Términos y condiciones</h2></div>
+
+    <section class="block" id="terms">
+      <h2>Términos y condiciones de los servicios</h2>
+      <p class="lead">Condiciones generales para la prestación de los servicios de DS Service. Los acuerdos escritos con cada cliente (presupuesto, oferta o contrato) prevalecen sobre esta página.</p>
+
+      <h3>1. Prestador y destinatarios</h3>
+      <p>Los servicios los presta DS Service di Fabio Dos Santos Souza (datos en <a href="#titolare">Quiénes somos</a>) y se dirigen a empresas y profesionales. No se aplican las normas de protección del consumidor del D.Lgs. italiano 206/2005 (Código del Consumo), salvo que el cliente sea un consumidor: en ese caso se mantienen todas las protecciones obligatorias, incluido el derecho de desistimiento en 14 días (art. 52 Código del Consumo).</p>
+
+      <h3>2. Nuestros servicios</h3>
+      <ul>
+        <li><strong>Menús digitales con código QR</strong> para locales de restauración, en las condiciones de los puntos 3, 4 y 5.</li>
+        <li><strong>Sitios web</strong>: sitios escaparate, páginas de presentación y sitios corporativos.</li>
+        <li><strong>Aplicaciones</strong> para la web y dispositivos móviles.</li>
+        <li><strong>Software y sistemas de gestión</strong> para empresas, por ejemplo gestión de clientes, solicitudes, reservas o pedidos.</li>
+      </ul>
+      <p>Para sitios, aplicaciones, software y sistemas de gestión se aplican las condiciones del punto 6 y las indicadas en el presupuesto aceptado por el cliente.</p>
+
+      <h3>3. Menús digitales: qué incluye el servicio</h3>
+      <ul>
+        <li>menú digital personalizado y códigos QR listos para imprimir para mesas, barra y escaparate;</li>
+        <li>iconos de los 14 alérgenos previstos por el Reglamento (UE) 1169/2011;</li>
+        <li>alojamiento, dirección web dedicada y certificado SSL;</li>
+        <li>hasta 10 cambios al mes en platos y precios, solicitados desde la página <a href="/es/assistenza">Soporte</a> con el código de cliente o escaneando el código QR de la ficha de cliente entregada;</li>
+        <li>un email de confirmación cuando el cambio solicitado está en línea;</li>
+        <li>para preguntas sobre la suscripción, respuesta por email desde info@dsfabio.com, normalmente en pocas horas en días laborables.</li>
+      </ul>
+
+      <h3>4. Menús digitales: prueba gratuita, precio y pago</h3>
+      <ul>
+        <li>La prueba gratuita se solicita desde el <a href="/es/attiva">formulario de activación</a>, confirmando tu dirección de email mediante el enlace que te enviamos. Cada solicitud se revisa a mano: podemos rechazarla, por ejemplo si los datos están incompletos o no corresponden a una actividad real, sin ningún compromiso para ti.</li>
+        <li>La prueba gratuita dura 30 días desde la entrega del menú y no requiere datos de pago.</li>
+        <li>Al final de la prueba, si no continúas, no pagas nada: el menú se pone en pausa (quien escanee el código QR ve un aviso de que el menú no está disponible por el momento) y puedes reactivarlo cuando quieras pagando la suscripción.</li>
+        <li>Tras la prueba el servicio cuesta <strong>189 € al año</strong> (precio promocional; precio de lista 229 €), todo incluido, que se paga por adelantado cada año. El precio indicado en tu enlace de pago se mantiene igual en las renovaciones: cualquier cambio se te comunica al menos 60 días antes del vencimiento y, si no lo aceptas, puedes cancelar sin coste.</li>
+        <li>Puedes pagar con tarjeta a través del enlace de pago seguro que te enviamos, gestionado por Stripe (no vemos ni guardamos los datos de la tarjeta), o mediante transferencia bancaria o en efectivo, previo acuerdo.</li>
+        <li>El contrato se perfecciona con el pago del primer año; el documento fiscal se emite tras el pago.</li>
+      </ul>
+
+      <h3>5. Menús digitales: duración, renovación y cancelación</h3>
+      <ul>
+        <li>El servicio dura un año desde la fecha de pago (también si pagas antes de que termine la prueba gratuita).</li>
+        <li><strong>Pago con tarjeta:</strong> la suscripción se renueva automáticamente cada año en la fecha de vencimiento, al mismo precio, con cargo a la tarjeta utilizada en el primer pago. Recibes una confirmación por email en cada renovación.</li>
+        <li><strong>Cancelar la renovación:</strong> puedes cancelar en cualquier momento hasta <strong>30 días antes del vencimiento anual</strong> escribiendo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>; te confirmamos la cancelación por escrito. El servicio sigue activo hasta el final del año ya pagado y no habrá más cargos. Una cancelación comunicada después de ese plazo surte efecto a partir de la renovación siguiente.</li>
+        <li><strong>Pago por transferencia o en efectivo:</strong> no hay cargos automáticos. Te recordamos el vencimiento por email 5 y 2 días antes, y el servicio continúa con el pago del nuevo año; para terminar basta con no renovar.</li>
+        <li>No se prevén reembolsos por periodos parciales, salvo en los casos previstos por la ley.</li>
+      </ul>
+
+      <h3>6. Sitios web, aplicaciones, software y sistemas de gestión</h3>
+      <ul>
+        <li><strong>Presupuesto:</strong> para cada proyecto enviamos un presupuesto escrito con funciones, precio, forma de pago, plazos de entrega y posibles servicios continuos (alojamiento, mantenimiento, soporte). El contrato se perfecciona cuando el cliente acepta el presupuesto por escrito, también por email.</li>
+        <li><strong>Colaboración del cliente:</strong> los plazos de entrega también dependen de que el cliente facilite a tiempo textos, imágenes, accesos y aprobaciones.</li>
+        <li><strong>Pruebas de aceptación:</strong> en la entrega el cliente revisa el trabajo y comunica posibles defectos en un plazo de 15 días; los corregimos sin coste si el trabajo no se ajusta al presupuesto. Las solicitudes de nuevas funciones no previstas se presupuestan aparte.</li>
+        <li><strong>Servicios continuos:</strong> alojamiento, mantenimiento y soporte tienen la duración y el coste indicados en el presupuesto y pueden cancelarse con el preaviso allí previsto; en su defecto, con 30 días de preaviso por escrito.</li>
+        <li><strong>Servicios de terceros:</strong> dominios, servicios en la nube, tiendas de aplicaciones, sistemas de pago o de email pueden tener costes y condiciones propios, que indicamos en el presupuesto y que corren a cargo del cliente, salvo acuerdo distinto.</li>
+        <li><strong>Derechos sobre el trabajo realizado:</strong> salvo acuerdo escrito distinto, una vez pagado el importe el cliente obtiene el derecho a usar sin límite de tiempo el sitio, la aplicación o el software creado para su actividad. Los componentes, librerías y herramientas genéricas desarrollados por DS Service y reutilizables en otros proyectos siguen siendo de su propiedad; los componentes de terceros están sujetos a sus respectivas licencias.</li>
+      </ul>
+
+      <h3>7. Obligaciones del cliente</h3>
+      <ul>
+        <li>Facilitar contenidos correctos y actualizados. Para los menús, en particular, precios e información sobre alérgenos, de los que el cliente sigue siendo responsable como operador del sector alimentario (Reg. UE 1169/2011).</li>
+        <li>Tener los derechos sobre el logotipo, las fotos y los textos que nos envía y no facilitar contenidos ilícitos o que vulneren derechos de terceros.</li>
+        <li>Custodiar códigos de cliente, contraseñas y accesos e informarnos de inmediato de cualquier uso no autorizado.</li>
+        <li>Utilizar los servicios respetando la ley, incluida la normativa de protección de datos para los datos de sus propios clientes introducidos en sitios, aplicaciones o sistemas de gestión.</li>
+        <li>Para los menús, tener siempre disponible una copia en papel como respaldo en caso de problemas técnicos.</li>
+      </ul>
+
+      <h3>8. Propiedad de los contenidos</h3>
+      <p>Textos, fotos, logotipos y datos facilitados por el cliente siguen siendo de su propiedad; el cliente nos concede una licencia de uso exclusivamente para prestar los servicios. Gráficos, plantillas y software del servicio de menú digital siguen siendo propiedad de DS Service. Para los proyectos a medida se aplica el punto 6. Mostramos trabajos realizados para un cliente como ejemplo solo con su consentimiento.</p>
+
+      <h3>9. Disponibilidad y responsabilidad</h3>
+      <ul>
+        <li>Hacemos todo lo posible para mantener en línea los menús, sitios, aplicaciones y sistemas de gestión que alojamos, pero no podemos garantizar un servicio sin interrupciones ni el funcionamiento de servicios de terceros (alojamiento, envío de emails, conexión del cliente o de sus usuarios).</li>
+        <li>El mantenimiento programado se realiza, siempre que sea posible, en horarios de menor uso.</li>
+        <li>El soporte cubre los servicios que prestamos, no los dispositivos ni las redes del cliente.</li>
+        <li>Salvo en casos de dolo o culpa grave (art. 1229 Código Civil italiano), nuestra responsabilidad se limita al importe pagado por el cliente por el servicio en cuestión en los últimos 12 meses.</li>
+      </ul>
+
+      <h3>10. Suspensión</h3>
+      <ul>
+        <li><strong>Vencimiento sin pago:</strong> si en la fecha de vencimiento (fin de la prueba gratuita o del año) no se recibe el pago, o el cargo automático en la tarjeta falla, el menú se <strong>suspende</strong>: quien escanee el código QR ve una página con tus datos de contacto. Te lo comunicamos por email. La suspensión no tiene costes ni conlleva penalizaciones.</li>
+        <li><strong>Reactivación:</strong> el servicio permanece suspendido hasta que pagues. Puedes reactivarlo en cualquier momento pagando el año: el menú vuelve a estar en línea de inmediato y automáticamente, con todos sus contenidos y el mismo código QR, y el nuevo año empieza desde la fecha de pago.</li>
+        <li><strong>Suspensión prolongada:</strong> si el servicio permanece suspendido más de <strong>12 meses</strong>, la relación se considera terminada y se aplica el punto 11 (entrega de los contenidos y eliminación a los 90 días).</li>
+        <li>También podemos suspender un servicio en caso de contenidos manifiestamente ilícitos o de uso contrario a la ley, informando al cliente e indicando el motivo.</li>
+      </ul>
+
+      <h3>11. Portabilidad al final de la relación</h3>
+      <p>Cuando un servicio termina, por cualquier motivo, te entregamos gratuitamente tus contenidos y datos en un formato estructurado y de uso común en un plazo de 30 días desde la solicitud, para que puedas usarlos con otro proveedor (en línea con el Reglamento (UE) 2023/2854, Data Act). 90 días después de la finalización eliminamos los contenidos, salvo los datos que deban conservarse por ley.</p>
+    </section>
+
+    <section class="block" id="contenuti">
+      <h2>Contenidos publicados y avisos</h2>
+      <p class="lead">Obligaciones de los servicios de alojamiento de datos conforme al Reglamento (UE) 2022/2065 (Digital Services Act).</p>
+      <h3>Punto de contacto</h3>
+      <p>Para autoridades, clientes y usuarios el punto de contacto único es <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>, en italiano o en inglés (arts. 11 y 12 DSA).</p>
+      <h3>Notificación de contenidos ilícitos</h3>
+      <p>Quien considere que un menú, sitio o aplicación que publicamos contiene información ilícita puede notificarlo a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a> indicando (art. 16 DSA):</p>
+      <ul>
+        <li>los motivos por los que considera ilícito el contenido;</li>
+        <li>la dirección web exacta del contenido;</li>
+        <li>nombre y dirección de email, salvo que la notificación se refiera a delitos para los que la ley permite el anonimato;</li>
+        <li>una declaración de buena fe sobre la exactitud de la información facilitada.</li>
+      </ul>
+      <p>Examinamos las notificaciones con rapidez e imparcialidad, comunicamos la decisión a quien notifica y, si eliminamos o limitamos un contenido, explicamos los motivos al cliente afectado (art. 17 DSA), que puede impugnar la decisión respondiendo a la misma dirección.</p>
+    </section>
+
+    <section class="block" id="dpa">
+      <h2>Datos tratados por cuenta del cliente</h2>
+      <p class="lead">Acuerdo de tratamiento de datos conforme al art. 28 RGPD, que forma parte integrante del contrato.</p>
+      <p>Si el cliente introduce datos personales en un menú, sitio, aplicación o sistema de gestión que creamos, alojamos o gestionamos para él (por ejemplo, datos de sus clientes, empleados o proveedores), el cliente es el responsable de esos datos y DS Service los trata como encargado por su cuenta. Para ello DS Service:</p>
+      <ul>
+        <li>trata los datos solo para prestar, alojar y mantener el servicio, según las instrucciones documentadas del cliente;</li>
+        <li>obliga a las personas autorizadas a guardar confidencialidad;</li>
+        <li>adopta las medidas de seguridad descritas en la sección <a href="#sicurezza">Seguridad</a>;</li>
+        <li>recurre a los subencargados indicados en la sección <a href="#fornitori">Proveedores</a> e informa al cliente de cualquier cambio, permitiéndole oponerse;</li>
+        <li>ayuda al cliente a responder a las solicitudes de los interesados y le informa sin dilación indebida de posibles violaciones de datos;</li>
+        <li>al final del servicio devuelve o elimina los datos, como se prevé en el punto 11 de las Condiciones;</li>
+        <li>pone a disposición la información necesaria para demostrar el cumplimiento de estas obligaciones.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="foro">
+      <h2>Ley aplicable y litigios</h2>
+      <ul>
+        <li>Estas condiciones se rigen por la <strong>ley italiana</strong>.</li>
+        <li>Para los litigios con empresas y profesionales es competente en exclusiva el <strong>Tribunal de Forlì</strong> (Italia). Si el cliente es un consumidor, es competente el tribunal del lugar de residencia del consumidor (art. 66-bis Código del Consumo).</li>
+        <li>Antes de emprender cualquier acción, escríbenos a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>: siempre buscamos una solución amistosa. Queda disponible la mediación prevista por el D.Lgs. italiano 28/2010.</li>
+        <li>La plataforma europea ODR para la resolución de litigios en línea ya no está activa desde el 20 de julio de 2025 (Reglamento (UE) 2024/3228).</li>
+      </ul>
+      <h3>Accesibilidad</h3>
+      <p>DS Service es una microempresa y, como tal, está exenta de las obligaciones del D.Lgs. italiano 82/2022 de transposición del European Accessibility Act (Directiva (UE) 2019/882). Aun así nos esforzamos para que el sitio y los menús sean legibles y utilizables por todos: si encuentras dificultades, escríbenos y te ayudaremos.</p>
+    </section>
+
+    <!-- ===================== PARTE D ===================== -->
+    <div class="part-title"><span>D</span><h2>Referencias y actualizaciones</h2></div>
+
+    <section class="block" id="normativa">
+      <h2>Normas de referencia</h2>
+      <ul>
+        <li>Reglamento (UE) 2016/679 – Reglamento General de Protección de Datos (RGPD).</li>
+        <li>D.Lgs. italiano n.º 196 de 30 de junio de 2003 – Código de protección de datos personales, modificado por el D.Lgs. n.º 101 de 10 de agosto de 2018.</li>
+        <li>Directiva 2002/58/CE (ePrivacy) y art. 122 D.Lgs. italiano 196/2003 sobre cookies.</li>
+        <li>Garante italiano de protección de datos, Directrices sobre cookies y otros instrumentos de seguimiento, 10 de junio de 2021.</li>
+        <li>Decisión de Ejecución (UE) 2023/1795 de la Comisión, de 10 de julio de 2023 – EU-US Data Privacy Framework.</li>
+        <li>Reglamento (UE) 2022/2065 – Digital Services Act.</li>
+        <li>Reglamento (UE) 2023/2854 – Data Act.</li>
+        <li>D.Lgs. italiano n.º 70 de 9 de abril de 2003 – Comercio electrónico.</li>
+        <li>D.Lgs. italiano n.º 206 de 6 de septiembre de 2005 – Código del Consumo, cuando sea aplicable.</li>
+        <li>Reglamento (UE) 1169/2011 – Información alimentaria facilitada al consumidor.</li>
+        <li>Directiva (UE) 2019/882 y D.Lgs. italiano n.º 82 de 27 de mayo de 2022 – Accesibilidad.</li>
+        <li>Reglamento (UE) 2024/3228 – Derogación de la plataforma ODR.</li>
+        <li>Código Civil italiano, en particular arts. 1229 y 2220; D.P.R. n.º 600 de 29 de septiembre de 1973, art. 22.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="modifiche">
+      <h2>Cambios en esta página</h2>
+      <p>Podemos actualizar esta página para adaptarla a nuevas normas o a cambios del servicio. La fecha de la última actualización figura siempre al principio.</p>
+      <p>Para los clientes, los cambios en las Condiciones que afecten al servicio se comunican por email al menos 30 días antes de su entrada en vigor. Quien no los acepte puede cancelar sin penalizaciones antes de esa fecha. Los cambios nunca empeoran los servicios ya pagados.</p>
+      <div class="note"><p>¿Preguntas sobre esta página? Escribe a <a href="mailto:info@dsfabio.com">info@dsfabio.com</a>.</p></div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <span>© 2026 DS Service di Fabio Dos Santos Souza · Via Antonio Maria Valsalva 31, 47014 Meldola (FC), Italia · Código fiscal DSSFBA84A03Z602O · NIF-IVA en trámite de asignación</span>
+    <a class="home-btn" href="/es">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Volver al inicio</span>
+    </a>
+  </div>
+</footer>
+
+<a class="to-top" href="#top" aria-label="Volver al principio de la página">↑</a>
+
+</body>
+</html>

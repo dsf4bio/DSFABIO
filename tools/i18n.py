@@ -19,8 +19,8 @@ PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagame
 NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'}
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
 JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'}
-# Pagine solo in italiano (testo legale): le altre lingue rimandano qui (vercel.json)
-IT_ONLY = {'privacy'}
+# Pagine solo in italiano (nessuna al momento)
+IT_ONLY = set()
 LANGS = {
     'it': ('it_IT', 'Italiano'), 'en': ('en_GB', 'English'), 'es': ('es_ES', 'Español'),
     'pt': ('pt_BR', 'Português'), 'de': ('de_DE', 'Deutsch'), 'fr': ('fr_FR', 'Français'),
@@ -429,6 +429,9 @@ def localize_common(src, page, lang):
     src = re.sub(r'(<link rel="canonical" href="[^"]*">)', r'\1\n' + alternates(page).replace('\\', '\\\\'), src, count=1)
     if '<button class="burger"' in src:
         src = src.replace('<button class="burger"', switcher(page, lang) + '\n      <button class="burger"', 1)
+    elif '<a class="home-btn"' in src:
+        # pagina Privacy: il selettore va prima del pulsante "Torna alla home"
+        src = src.replace('<a class="home-btn"', switcher(page, lang) + '\n    <a class="home-btn"', 1)
     else:
         # pagine Attiva e Assistenza: il selettore va dopo la navigazione dell'intestazione
         src = re.sub(r'(<header class="top">.*?</nav>)', lambda m: m.group(1) + '\n      ' + switcher(page, lang), src, count=1, flags=re.S)
@@ -490,6 +493,9 @@ def translate_page(src, page, lang, d):
     # link assoluti interni ("/", "/assistenza"): stessa pagina nella lingua
     res = re.sub(r'href="/([a-z-]*)([#?][^"]*)?"', lambda m: ('href="/%s%s"' % (lang, m.group(2) or '')) if m.group(1) == '' else
                  ('href="/%s/%s%s"' % (lang, m.group(1), m.group(2) or '') if m.group(1) in LOCAL_PAGES else m.group(0)), res)
+    # Privacy: avviso che la versione italiana prevale
+    if page == 'privacy' and d.get('__privacy_note__'):
+        res = re.sub(r'(<div class="meta">.*?</div>)', lambda m: m.group(1) + '\n  <p class="tr-note" role="note">%s <a href="/privacy">Italiano</a></p>' % html.escape(d['__privacy_note__']), res, count=1, flags=re.S)
     return localize_common(res, page, lang), missing
 
 

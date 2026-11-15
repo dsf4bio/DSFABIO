@@ -299,7 +299,25 @@
                 #dsf-assistenza .dsf-step, #dsf-assistenza .dsf-thumb, #dsf-assistenza .dsf-invalid { animation: none; }
                 .dsf-confetti { display: none; }
               }
-              @media (max-width: 960px) { #dsf-assistenza .dsf-mob-meter { display: block; } }
+              #dsf-assistenza .dsf-minilive { display: none; }
+              @media (max-width: 960px) {
+                #dsf-assistenza .dsf-mob-meter { display: block; }
+                #dsf-assistenza .dsf-theme-chosen { display: none; }
+                #dsf-assistenza .dsf-minilive { display: flex; gap: 16px; align-items: center; margin-top: 6px; padding: 14px; border-radius: 18px;
+                  background: linear-gradient(120deg, #f1ecff, #fff0f8 60%, #e8fbff); }
+                #dsf-assistenza .mini-phone { flex: none; width: 104px; padding: 6px; border-radius: 22px; background: #1d1630; box-shadow: 0 14px 26px -12px rgba(29, 22, 48, .55); }
+                #dsf-assistenza .mini-phone.bump { animation: dsf-pop .4s both; }
+                #dsf-assistenza .mini-screen { position: relative; aspect-ratio: 9 / 17; border-radius: 17px; overflow: hidden; background: #f3eefc; }
+                #dsf-assistenza .mini-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+                #dsf-assistenza .mini-any { position: absolute; inset: 0; display: grid; place-items: center; font-size: 30px; background: linear-gradient(135deg, #ff3cac, #7b5cff 55%, #22d3ee); }
+                #dsf-assistenza .mini-txt { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+                #dsf-assistenza .mini-kicker { font-size: .72em; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: #6d4aff; }
+                #dsf-assistenza .mini-txt b { font-size: 1.05em; line-height: 1.2; overflow-wrap: anywhere; }
+                #dsf-assistenza #mini-theme { font-size: .85em; color: #6b6480; }
+                #dsf-assistenza .mini-url { font-size: .78em; font-weight: 700; color: #15803d; overflow-wrap: anywhere; }
+                #dsf-assistenza .mini-url::before { content: '🔗 '; }
+                #dsf-assistenza #mini-open { margin-top: 6px; }
+              }
               @media (max-width: 560px) {
                 #dsf-assistenza .dsf-stepper li { padding: 8px 10px; font-size: .85em; }
                 #dsf-assistenza .dsf-stepper span { width: 26px; height: 26px; }
@@ -314,7 +332,7 @@
               }
             </style>
 
-            <form id="dsf-form" novalidate>
+            <form id="dsf-form" novalidate action="#" onsubmit="return false">
               <!-- passi -->
               <ol class="dsf-stepper" aria-label="Passaggi">
                 <li class="is-on" id="dsf-st1"><span>1</span><b>Locale e menu</b></li>
@@ -337,6 +355,19 @@
                   <p class="dsf-sub">Scorri e tocca un modello, oppure lascia «Consigliatemi voi». Potrai cambiarlo anche dopo.</p>
                   <div class="dsf-themes" id="dsf-themes" role="radiogroup" aria-label="Modello del menu"></div>
                   <p class="dsf-theme-chosen" id="dsf-theme-chosen" aria-live="polite"></p>
+                  <div class="dsf-minilive" id="dsf-minilive">
+                    <div class="mini-phone"><div class="mini-screen">
+                      <img id="mini-img" alt="" hidden>
+                      <div class="mini-any" id="mini-any">✨</div>
+                    </div></div>
+                    <div class="mini-txt">
+                      <small class="mini-kicker">Il tuo menu sarà così</small>
+                      <b id="mini-name">Il tuo locale</b>
+                      <span id="mini-theme">Lo stile lo scegliamo noi per te</span>
+                      <span class="mini-url" id="mini-url">dsmenu.it/il-tuo-locale</span>
+                      <button type="button" class="dsf-theme-prev" id="mini-open" hidden>👁 Apri l'anteprima</button>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="dsf-block">
@@ -599,8 +630,12 @@
                 $('dsf-success-text').textContent = text;
                 $('dsf-success-hint').textContent = hint || '';
                 if (!bad) confetti();
-                var side = document.querySelector('.side .live'); if (side) side.hidden = true;
-                root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                var side = document.querySelector('.side'); if (side) side.hidden = true;
+                document.querySelector('.dsf-page .grid').style.gridTemplateColumns = 'minmax(0, 1fr)';
+                // anche la testata della pagina dice com'è andata (su telefono è la prima cosa che si vede)
+                $('dsf-hero-title').textContent = bad ? title : (icon === '✓' ? '🎉 Email confermata!' : '🎉 Richiesta inviata!');
+                $('dsf-hero-text').textContent = bad ? '' : (icon === '✓' ? 'Ora pensiamo noi al tuo menu.' : 'Manca solo un passo: conferma la tua email.');
+                try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
               }
 
               // ---- arrivo dal link dell'email: conferma ----
@@ -611,8 +646,7 @@
                 $('dsf-hero-title').textContent = 'Conferma della richiesta';
                 $('dsf-hero-text').textContent = 'Un attimo, stiamo confermando la tua email…';
                 rpc('signup_confirm', { p_token: token }).then(function (d) {
-                  $('dsf-hero-title').textContent = 'Attiva il tuo menu digitale';
-                  $('dsf-hero-text').textContent = 'Prepariamo noi il menu del tuo locale con il QR code, e lo provi gratis per 30 giorni.';
+
                   if (d && d.ok) {
                     done('✓', 'Email confermata!', 'Grazie' + (d.business ? ', abbiamo ricevuto la richiesta per ' + d.business : '') + '. Ti contattiamo noi a breve: il tuo menu è pronto in circa 24 ore.',
                          'Intanto puoi dare un’occhiata ai modelli su dsfabio.com/modelli.');
@@ -856,6 +890,14 @@
               var bumpT;
               function bump() { var ph = document.querySelector('.phone'); if (!ph) return; ph.classList.remove('bump'); void ph.offsetWidth; ph.classList.add('bump'); }
               function livePhone(t) {
+                var mi = $('mini-img'), ma = $('mini-any');
+                if (mi) {
+                  if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
+                  else { mi.hidden = true; ma.hidden = false; $('mini-theme').textContent = 'Lo stile lo scegliamo noi per te'; }
+                  $('mini-open').hidden = !t;
+                  $('mini-open').onclick = t ? function () { openPreview(t, $('mini-open')); } : null;
+                  var mp = document.querySelector('.mini-phone'); if (mp) { mp.classList.remove('bump'); void mp.offsetWidth; mp.classList.add('bump'); }
+                }
                 var img = $('live-img'), any = $('live-any'); if (!img) return;
                 if (t) { img.src = '/assets/anteprime/' + t[3] + '.jpg'; img.hidden = false; any.hidden = true; $('live-theme').textContent = 'Modello «' + t[1] + '» · ' + t[2]; }
                 else { img.hidden = true; any.hidden = false; $('live-theme').textContent = 'Lo stile lo scegliamo noi per te'; }
@@ -869,6 +911,8 @@
                 sl.hidden = !(s1 && slug); if (s1 && slug) sl.textContent = '🔗 Il tuo menu sarà su dsmenu.it/' + slug + ' (se libero)';
                 if ($('live-url')) $('live-url').textContent = 'dsmenu.it/' + (slug || 'il-tuo-locale');
                 if ($('live-name')) $('live-name').textContent = name || 'Il tuo locale';
+                if ($('mini-name')) $('mini-name').textContent = name || 'Il tuo locale';
+                if ($('mini-url')) $('mini-url').textContent = 'dsmenu.it/' + (slug || 'il-tuo-locale');
                 var s3 = files.some(function (f) { return !f.working; });
                 var owner = cap(val('f-owner')), mob = $('f-mobile').value.replace(/[\s./()-]/g, ''), mail = val('f-email').toLowerCase();
                 var p = PREFIXES.filter(function (x) { return x[0] === $('f-prefix').value; })[0] || PREFIXES[0];

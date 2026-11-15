@@ -147,12 +147,20 @@ h1 .w{display:inline-block}
 /* ---------- Esempi ---------- */
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .demo{display:flex;flex-direction:column;text-decoration:none;padding:0}
-.demo-prev{position:relative;height:230px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
-.demo-prev .big{font-size:5.5rem;line-height:1;filter:drop-shadow(0 16px 26px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
-.demo:hover .demo-prev .big{transform:scale(1.12) rotate(-8deg)}
-.p-fire{background:radial-gradient(70% 70% at 50% 100%,#5a240e,#120d0a)}
-.p-neon{background:radial-gradient(60% 60% at 20% 10%,rgba(255,60,172,.6),transparent 60%),radial-gradient(60% 60% at 90% 80%,rgba(34,211,238,.5),transparent 60%),#0d0a1f}
-.p-gold{background:linear-gradient(160deg,#efe4cf,#b08d57)}
+/* anteprime vere dentro telefono e tablet: il menu scorre piano da solo */
+.demo-prev{position:relative;height:420px;display:grid;place-items:end center;padding-top:28px;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(70% 60% at 50% 100%,#efe8ff,transparent 70%),linear-gradient(180deg,#fff,#f7f3fd)}
+.dv-tablet{background:radial-gradient(70% 60% at 50% 100%,#ffe6d6,transparent 70%),linear-gradient(180deg,#fff,#fdf5ef)}
+.dev{position:relative;display:block;margin-bottom:-38px;background:#1d1630;box-shadow:0 30px 60px -24px rgba(60,30,120,.55),inset 0 0 0 2px #3a3052;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.dev-phone{width:196px;height:410px;padding:8px;border-radius:34px}
+.dev-phone::before{content:"";position:absolute;z-index:3;top:14px;left:50%;width:58px;height:16px;margin-left:-29px;border-radius:10px;background:#1d1630}
+.dev-tablet{width:300px;height:410px;padding:11px;border-radius:26px}
+.dev-scr{position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:26px;background:#fff}
+.dev-tablet .dev-scr{border-radius:16px}
+.dev-scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.dev-scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;background:#fff;opacity:0;transition:opacity .5s}
+.dev-scr iframe.ok{opacity:1}
+.demo:hover .dev{transform:translateY(-8px)}
+@media (max-width:600px){.demo-prev{height:400px}}
 .demo-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
 .demo-body h3{font-family:Syne,sans-serif;font-size:1.25rem}
 .demo-body p{color:var(--sub);font-size:.92rem}
@@ -352,15 +360,15 @@ h1 .w{display:inline-block}
     </div>
     <div class="demos">
       <a class="card demo rv" href="/demo-sakura-neon">
-        <div class="demo-prev p-neon"><span class="big" aria-hidden="true">🍣</span></div>
+        <div class="demo-prev dv-phone" data-live="demo-sakura-neon"><span class="dev dev-phone" aria-hidden="true"><span class="dev-scr"><img src="/assets/anteprime/demo-sakura-neon.jpg?v=20261115c" alt="" loading="lazy" decoding="async" width="390" height="808"></span></span></div>
         <div class="demo-body"><div class="tagline"><span>Sushis</span><span>Bar à cocktails</span><span>IT / EN</span></div><h3>Sakura Neon</h3><p>Couleurs néon, changement de catégorie animé et menu en deux langues.</p><span class="go">Ouvrir l’exemple →</span></div>
       </a>
       <a class="card demo rv" href="/mdc-008" style="--d:1">
-        <div class="demo-prev p-fire"><span class="big" aria-hidden="true">🔥</span></div>
+        <div class="demo-prev dv-tablet" data-live="mdc-008"><span class="dev dev-tablet" aria-hidden="true"><span class="dev-scr"><img src="/assets/anteprime/mdc-008.jpg?v=20261115c" alt="" loading="lazy" decoding="async" width="390" height="808"></span></span></div>
         <div class="demo-body"><div class="tagline"><span>Restaurant</span><span>Pizzeria</span></div><h3>Forno Rosso</h3><p>La bouche du four à bois avec ses flammes qui dansent : impossible de ne pas le remarquer.</p><span class="go">Ouvrir l’exemple →</span></div>
       </a>
       <a class="card demo rv" href="/mdc-001" style="--d:2">
-        <div class="demo-prev p-gold"><span class="big" aria-hidden="true">🍷</span></div>
+        <div class="demo-prev dv-phone" data-live="mdc-001"><span class="dev dev-phone" aria-hidden="true"><span class="dev-scr"><img src="/assets/anteprime/mdc-001.jpg?v=20261115c" alt="" loading="lazy" decoding="async" width="390" height="808"></span></span></div>
         <div class="demo-body"><div class="tagline"><span>Restaurant</span><span>Gastronomique</span></div><h3>Gusto 360°</h3><p>Raffiné comme une carte sur papier de qualité, avec menu dégustation et vins.</p><span class="go">Ouvrir l’exemple →</span></div>
       </a>
     </div>
@@ -620,6 +628,24 @@ function showCat(i) {
 }
 showCat(0);
 if (!reduced) setInterval(function () { if (!document.hidden) { ci = (ci + 1) % CATS.length; showCat(ci); } }, 2600);
+
+/* ---------- Esempi: il menu vero dentro telefono e tablet, scorre piano da solo ---------- */
+(function () {
+  var boxes = $$('[data-live]'); if (reduced || !boxes.length) return;
+  function mount(box) {
+    var scr = $('.dev-scr', box), a = box.closest('a'), w = box.classList.contains('dv-tablet') ? 820 : 390;
+    var f = document.createElement('iframe');
+    f.tabIndex = -1; f.title = ''; f.setAttribute('aria-hidden', 'true'); f.loading = 'lazy';
+    f.style.width = w + 'px';
+    var fit = function () { var k = scr.clientWidth / w; f.style.transform = 'scale(' + k + ')'; f.style.height = Math.ceil(scr.clientHeight / k) + 'px'; };
+    f.addEventListener('load', function () { setTimeout(function () { f.classList.add('ok'); }, 400); });
+    f.src = a.href.split('?')[0] + '?anteprima&scorri';
+    scr.appendChild(f); fit(); addEventListener('resize', fit);
+  }
+  if (!('IntersectionObserver' in window)) return boxes.forEach(mount);
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); mount(e.target); } }); }, {rootMargin: '300px'});
+  boxes.forEach(function (b) { io.observe(b); });
+})();
 
 /* ---------- Lingue (bento) ---------- */
 var sws = $$('#sw > span'), wi = 0;

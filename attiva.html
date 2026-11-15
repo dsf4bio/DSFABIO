@@ -65,7 +65,8 @@
     .dsf-page .phone { position: relative; width: 180px; margin: 0 auto; padding: 10px; border-radius: 34px; background: #1d1630; box-shadow: 0 30px 60px -20px rgba(29, 22, 48, .45); transition: transform .4s; }
     .dsf-page .phone.bump { animation: dsf-bump .45s ease; }
     @keyframes dsf-bump { 40% { transform: scale(1.04) rotate(-1deg); } }
-    .dsf-page .phone-screen { position: relative; border-radius: 26px; overflow: hidden; height: 300px; background: #f3eefc; }
+    .dsf-page .phone-screen { position: relative; border-radius: 26px; overflow: hidden; height: 346px; background: #f3eefc; }
+    .dsf-page [hidden] { display: none !important; }
     .dsf-page .phone-url { position: absolute; z-index: 2; top: 8px; left: 8px; right: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94);
       font-size: 10.5px; font-weight: 700; color: #1d1630; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
     .dsf-page .phone-url::before { content: '🔒 '; }
@@ -307,7 +308,7 @@
                   background: linear-gradient(120deg, #f1ecff, #fff0f8 60%, #e8fbff); }
                 #dsf-assistenza .mini-phone { flex: none; width: 104px; padding: 6px; border-radius: 22px; background: #1d1630; box-shadow: 0 14px 26px -12px rgba(29, 22, 48, .55); }
                 #dsf-assistenza .mini-phone.bump { animation: dsf-pop .4s both; }
-                #dsf-assistenza .mini-screen { position: relative; width: 100%; height: 176px; border-radius: 17px; overflow: hidden; background: #f3eefc; }
+                #dsf-assistenza .mini-screen { position: relative; width: 100%; height: 200px; border-radius: 17px; overflow: hidden; background: #f3eefc; }
                 #dsf-assistenza .mini-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
                 #dsf-assistenza .mini-any { position: absolute; inset: 0; display: grid; place-items: center; font-size: 30px; background: linear-gradient(135deg, #ff3cac, #7b5cff 55%, #22d3ee); }
                 #dsf-assistenza .mini-txt { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }

@@ -39,14 +39,14 @@
 .pick .btn{margin-left:auto;flex:0 0 auto}
 @media (max-width:700px){.pick{flex-direction:column;align-items:flex-start}.pick .btn{margin-left:0;width:100%}}
 .chips-f{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 34px}
-.chip{padding:10px 16px;border-radius:999px;font-weight:800;font-size:.88rem;background:var(--card);border:1px solid var(--line);color:var(--sub);transition:all .3s}
-.chip:hover{color:#fff}
-.chip[aria-pressed="true"]{background:var(--grad);color:#0d0a1f;border-color:transparent;box-shadow:0 8px 22px rgba(255,60,172,.35)}
+.chip{padding:10px 16px;border-radius:999px;font-weight:800;font-size:.88rem;background:#fff;border:1px solid var(--line);color:var(--sub);transition:all .3s}
+.chip:hover{color:var(--txt);border-color:var(--line-h)}
+.chip[aria-pressed="true"]{background:var(--btn);color:#fff;border-color:transparent;box-shadow:0 10px 22px -10px rgba(123,92,255,.7)}
 .grid-m{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .model{padding:0;display:flex;flex-direction:column}
 .model.hide{display:none}
 .m-prev{position:relative;height:470px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
-.phone{position:relative;width:216px;height:432px;border-radius:32px;overflow:hidden;background:#0b0914;border:7px solid #0b0914;box-shadow:0 0 0 1px rgba(255,255,255,.16),0 24px 50px rgba(0,0,0,.55);transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.phone{position:relative;width:216px;height:432px;border-radius:32px;overflow:hidden;background:#0b0914;border:7px solid #0b0914;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 24px 50px -18px rgba(60,30,120,.55);transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
 .phone::before{content:"";position:absolute;z-index:2;top:6px;left:50%;width:62px;height:18px;margin-left:-31px;border-radius:12px;background:#0b0914}
 .phone iframe{position:absolute;left:0;top:0;width:390px;height:808px;border:0;transform:scale(.5179);transform-origin:0 0;pointer-events:none;background:#fff;opacity:0;transition:opacity .5s}
 .phone iframe.shown{opacity:1}
@@ -54,17 +54,17 @@
 .ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
 .model:hover .phone{transform:translateY(-6px) rotate(-1.5deg)}
 .m-hit{position:absolute;inset:0;z-index:3}
-.m-hit:focus-visible{outline:3px solid var(--cyan);outline-offset:-3px}
-.m-code{position:absolute;z-index:4;pointer-events:none;left:14px;top:14px;font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px)}
+.m-hit:focus-visible{outline:3px solid var(--violet);outline-offset:-3px}
+.m-code{position:absolute;z-index:4;pointer-events:none;left:14px;top:14px;font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--txt);box-shadow:0 4px 12px rgba(0,0,0,.12)}
 .m-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
-.m-group{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.m-group{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
 .m-body h2{font-family:Syne,sans-serif;font-size:1.35rem;line-height:1.15}
 .m-body p{color:var(--sub);font-size:.93rem}
 .page-hero .lead strong{color:var(--txt)}
 .tagline{display:flex;flex-wrap:wrap;gap:6px}
-.tagline span{font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.07);color:var(--sub)}
+.tagline span{font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--tint);color:var(--sub)}
 .m-actions{display:flex;gap:8px;margin-top:auto;padding-top:12px}
-.btn.sm{padding:10px 16px;font-size:.86rem;flex:1}
+.btn.sm{min-height:44px;padding:10px 16px;border-radius:12px;font-size:.86rem;flex:1}
 .note-box{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
 .note-box .card h2{font-family:Syne,sans-serif;font-size:1.1rem;margin:4px 0 6px}
 .note-box .card p{color:var(--sub);font-size:.92rem}

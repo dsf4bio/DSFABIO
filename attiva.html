@@ -753,7 +753,7 @@
                 input.type = 'radio'; input.name = 'theme'; input.value = t ? t[0] : ''; input.id = 'th-' + (t ? t[0] : 'any');
                 var label = document.createElement('label'); label.htmlFor = input.id;
                 var pic = el('span', 'dsf-theme-img' + (t ? '' : ' dsf-any'));
-                if (t) { var img = document.createElement('img'); img.src = '/assets/anteprime/' + t[3] + '.jpg'; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.width = 390; img.height = 520; pic.appendChild(img); }
+                if (t) { var img = document.createElement('img'); img.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115'; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.width = 390; img.height = 520; pic.appendChild(img); }
                 else pic.textContent = '✨';
                 label.appendChild(pic);
                 label.appendChild(el('b', '', t ? t[1] : 'Consigliatemi voi'));
@@ -1119,14 +1119,14 @@
                 ['live-logo', 'mini-logo'].forEach(function (id) { var b = $(id); if (!b) return; b.hidden = !lg; if (lg) b.querySelector('img').src = lg; });
                 var mi = $('mini-img'), ma = $('mini-any');
                 if (mi) {
-                  if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
+                  if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
                   else { mi.hidden = true; ma.hidden = false; $('mini-theme').textContent = 'Lo stile lo scegliamo noi per te'; }
                   $('mini-open').hidden = !t;
                   $('mini-open').onclick = t ? function () { openPreview(t, $('mini-open')); } : null;
                   var mp = document.querySelector('.mini-phone'); if (mp) { mp.classList.remove('bump'); void mp.offsetWidth; mp.classList.add('bump'); }
                 }
                 var img = $('live-img'), any = $('live-any'); if (!img) return;
-                if (t) { img.src = '/assets/anteprime/' + t[3] + '.jpg'; img.hidden = false; any.hidden = true; $('live-theme').textContent = 'Modello «' + t[1] + '» · ' + t[2]; }
+                if (t) { img.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115'; img.hidden = false; any.hidden = true; $('live-theme').textContent = 'Modello «' + t[1] + '» · ' + t[2]; }
                 else { img.hidden = true; any.hidden = false; $('live-theme').textContent = 'Lo stile lo scegliamo noi per te'; }
                 bump();
               }

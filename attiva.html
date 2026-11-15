@@ -271,9 +271,9 @@
               #dsf-assistenza .dsf-bt-img { display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg, #f1ecff, #ffe9f5); color: #6d4aff; font-size: 26px; font-style: normal; }
               #dsf-assistenza .dsf-bt-img i { font-style: normal; }
               #dsf-assistenza .dsf-bt-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-              #dsf-assistenza .dsf-bt-round img { object-fit: contain; padding: 9%; }
               #dsf-assistenza .dsf-bt-round { width: 72px; height: 72px; border-radius: 50%; padding: 3px; background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); }
               #dsf-assistenza .dsf-bt-round i, #dsf-assistenza .dsf-bt-round img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: #fff; display: grid; place-items: center; box-sizing: border-box; }
+              #dsf-assistenza .dsf-bt-round img { border: 0; object-fit: cover; }
               #dsf-assistenza .dsf-bt-land { width: 100%; max-width: 220px; height: 72px; border-radius: 12px; }
               #dsf-assistenza .dsf-bt.has .dsf-bt-pick { border-style: solid; border-color: #9be3b6; }
               #dsf-assistenza .dsf-bt-see { display: block; width: 100%; margin-top: 12px; padding: 12px 14px; border-radius: 999px; border: 1.5px solid #c9b8ff; background: #f6f2ff; color: #4b2fd6; font: inherit; font-weight: 700; cursor: pointer; }
@@ -862,7 +862,7 @@
                 var ring = doc.createElement('span'); ring.className = 'dsm-logo';
                 ring.style.cssText = 'display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle';
                 var im = doc.createElement('img'); im.src = url; im.alt = 'Logo';
-                im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:contain;padding:9%;border:3px solid #fff;background:#fff';
+                im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff';
                 ring.appendChild(im); return ring;
               }
               function setName(doc, h1, name, mode) {
@@ -883,23 +883,73 @@
               }
               // anteprima con logo, copertina e nome del ristoratore: la copertina è uguale in tutti i modelli
               function personalize(doc, t) {
+                // si può riapplicare a ogni modifica: rimette com'era quello che il ristoratore ha tolto
                 var cfg = BRAND_LOOK[t[0]];
                 if (!doc || !cfg) return;
                 var logo = brand.logo && brand.logo.url, cover = brand.cover && brand.cover.url, name = $('f-business').value.trim();
                 var head = doc.querySelector(cfg.at);
                 if (!head) return;
+                var st = doc.getElementById('dsf-brand-css');
+                if (!st) { st = doc.createElement('style'); st.id = 'dsf-brand-css'; st.textContent = BRAND_CSS + (cfg.css || ''); doc.head.appendChild(st); }
+                var bg = head.querySelector('.dsm-cov-bg');
                 if (cover) {
-                  var st = doc.createElement('style'); st.textContent = BRAND_CSS + (cfg.css || ''); doc.head.appendChild(st);
                   head.classList.add('dsm-cov', 'dsm-cov-' + cfg.tx);
                   if (cfg.h1 === false) head.classList.add('dsm-cov-noh1');
                   head.style.setProperty('--dsm-tint', 'rgba(' + cfg.rgb + ',' + cfg.a + ')'); head.style.setProperty('--dsm-cover', 'url("' + cover + '")');
-                  var bg = doc.createElement('span'); bg.className = 'dsm-cov-bg'; bg.setAttribute('aria-hidden', 'true');
-                  head.insertBefore(bg, head.firstChild);
+                  if (!bg) { bg = doc.createElement('span'); bg.className = 'dsm-cov-bg'; bg.setAttribute('aria-hidden', 'true'); head.insertBefore(bg, head.firstChild); }
+                } else {
+                  head.classList.remove('dsm-cov', 'dsm-cov-dk', 'dsm-cov-lt', 'dsm-cov-noh1');
+                  if (bg) bg.remove();
                 }
                 var slot = head.querySelector('.dsm-hd-logo');
-                if (logo && slot) { slot.textContent = ''; slot.appendChild(ringLogo(doc, logo)); }
+                if (slot) {
+                  if (slot.dataset.orig == null) slot.dataset.orig = slot.innerHTML;
+                  var cur = slot.querySelector('img');
+                  if (logo) { if (!cur || cur.getAttribute('src') !== logo) { slot.textContent = ''; slot.appendChild(ringLogo(doc, logo)); } }
+                  else if (cur) slot.innerHTML = slot.dataset.orig;
+                }
                 var h1 = head.querySelector('.dsm-hd h1');
-                if (name && h1) setName(doc, h1, name, NAME_MODE[t[0]]);
+                if (h1) {
+                  if (h1.dataset.orig == null) { h1.dataset.orig = h1.innerHTML; h1.dataset.origLabel = h1.getAttribute('aria-label') || ''; }
+                  if (name) setName(doc, h1, name, NAME_MODE[t[0]]);
+                  else { h1.innerHTML = h1.dataset.orig; if (h1.dataset.origLabel) h1.setAttribute('aria-label', h1.dataset.origLabel); }
+                }
+              }
+
+              // telefoni d'esempio (accanto al modulo e sotto ai modelli): il modello vero, rimpicciolito,
+              // con logo, copertina e nome aggiornati in tempo reale
+              function liveFrame(screen, t, top) {
+                if (!screen) return;
+                var f = screen.querySelector('iframe.dsf-lf');
+                if (!t || !screen.clientWidth) { if (f) f.remove(); return; }
+                var sc = screen.clientWidth / 390;
+                if (!f) {
+                  f = document.createElement('iframe'); f.className = 'dsf-lf'; f.tabIndex = -1; f.setAttribute('aria-hidden', 'true'); f.title = '';
+                  f.style.cssText = 'position:absolute;left:0;top:' + top + 'px;width:390px;border:0;transform-origin:0 0;pointer-events:none;opacity:0;transition:opacity .3s;background:transparent';
+                  f.addEventListener('load', function () {
+                    try {
+                      var d = f.contentDocument, ns = d.createElement('style');
+                      ns.textContent = 'html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}';
+                      d.head.appendChild(ns);
+                      personalize(d, f._t); f.style.opacity = '1';
+                    } catch (e) {}
+                  });
+                  screen.appendChild(f);
+                }
+                f.style.transform = 'scale(' + sc + ')'; f.style.height = Math.ceil((screen.clientHeight - top) / sc) + 'px';
+                f._t = t;
+                if (f.dataset.page !== t[3]) { f.style.opacity = '0'; f.dataset.page = t[3]; f.src = '/' + t[3] + '?anteprima'; }
+                else { try { personalize(f.contentDocument, t); } catch (e) {} }
+              }
+              var lfTimer;
+              addEventListener('resize', function () { refreshLive(); });
+              function refreshLive() {
+                clearTimeout(lfTimer);
+                lfTimer = setTimeout(function () {
+                  var t = THEMES.filter(function (x) { return x[0] === selectedTheme(); })[0];
+                  liveFrame(document.querySelector('.phone-screen'), t, 34);
+                  liveFrame(document.querySelector('.mini-screen'), t, 0);
+                }, 250);
               }
 
               function openPreview(t, from) {
@@ -1090,12 +1140,8 @@
               var bumpT;
               function bump() { var ph = document.querySelector('.phone'); if (!ph) return; ph.classList.remove('bump'); void ph.offsetWidth; ph.classList.add('bump'); }
               function livePhone(t) {
-                // il logo caricato appare nel tondo in alto al centro della miniatura (uguale in tutti i modelli)
-                var lp = t && typeof LOGO_POS !== 'undefined' ? LOGO_POS[t[3]] : null, lg = brand && brand.logo && brand.logo.url && lp ? brand.logo.url : null;
-                ['live-logo', 'mini-logo'].forEach(function (id) {
-                  var b = $(id); if (!b) return; b.hidden = !lg; if (!lg) return;
-                  b.querySelector('img').src = lg; b.style.left = lp[0] + '%'; b.style.top = id === 'live-logo' ? '34px' : '0'; b.style.marginTop = lp[1] + '%'; b.style.width = lp[2] + '%';
-                });
+                ['live-logo', 'mini-logo'].forEach(function (id) { var b = $(id); if (b) b.hidden = true; });
+                if (typeof refreshLive === 'function') refreshLive();
                 var mi = $('mini-img'), ma = $('mini-any');
                 if (mi) {
                   if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg?v=20261115b'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
@@ -1117,6 +1163,7 @@
                 sl.hidden = !(s1 && slug); if (s1 && slug) sl.textContent = '🔗 Il tuo menu sarà su dsmenu.it/' + slug + ' (se libero)';
                 if ($('live-url')) $('live-url').textContent = 'dsmenu.it/' + (slug || 'il-tuo-locale');
                 if ($('live-name')) $('live-name').textContent = name || 'Il tuo locale';
+                if (typeof refreshLive === 'function' && progress._n !== name) { progress._n = name; refreshLive(); }
                 if ($('mini-name')) $('mini-name').textContent = name || 'Il tuo locale';
                 if ($('mini-url')) $('mini-url').textContent = 'dsmenu.it/' + (slug || 'il-tuo-locale');
                 var s3 = files.some(function (f) { return !f.working; });

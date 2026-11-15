@@ -408,7 +408,7 @@
 
                 <div class="dsf-block">
                   <label class="dsf-q" for="f-notes"><span class="dsf-ico">✏️</span> Vuoi dirci altro sul menu? <em class="dsf-opt">facoltativo</em></label>
-                  <textarea class="dsf-textarea" id="f-notes" name="notes" maxlength="1000" placeholder="Es. piatti da aggiungere o togliere, prezzi cambiati, il logo è nell'ultima foto, orari in cui preferisci essere contattato…"></textarea>
+                  <textarea class="dsf-textarea" id="f-notes" name="notes" maxlength="1000" placeholder="Es. piatti da aggiungere o togliere, prezzi cambiati, «usate il logo e la foto della sala come copertina» (allegali qui sopra), orari in cui preferisci essere contattato…"></textarea>
                 </div>
 
                 <div class="dsf-actions">
@@ -462,6 +462,11 @@
                       <input class="dsf-input" id="f-prov" name="province" maxlength="2" list="dsf-province" placeholder="FC" autocapitalize="characters" style="text-transform:uppercase" required>
                       <datalist id="dsf-province"></datalist>
                     </div>
+                  </div>
+                  <div class="dsf-field">
+                    <label class="dsf-label" for="f-vat">Partita IVA del locale <em class="dsf-opt">facoltativa</em></label>
+                    <input class="dsf-input" id="f-vat" name="vat" maxlength="16" inputmode="numeric" autocomplete="off" placeholder="es. 01234567890">
+                    <div class="dsf-hint">La mostriamo in fondo al menu, come previsto per le attività con un sito.</div>
                   </div>
                 </div>
 
@@ -870,12 +875,14 @@
                 if (p[0] !== '39') num = num.replace(/^0+/, '');
                 if (!/^\d+$/.test(num) || !p[2].test(num)) throw ['Controlla il numero di cellulare.', 'f-mobile'];
                 if (!/^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email)) throw ['Controlla l\'indirizzo email.', 'f-email'];
+                var vat = $('f-vat').value.toUpperCase().replace(/[\s.]/g, '').replace(/^IT/, '');
+                if (vat && !/^\d{11}$/.test(vat)) throw ['La partita IVA ha 11 cifre (es. 01234567890). Se non la hai sotto mano, lascia vuoto.', 'f-vat'];
                 if (!$('dsf-privacy').checked) throw ['Per inviare la richiesta accetta l\'informativa privacy e i termini del servizio.', 'dsf-privacy'];
                 return {
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true,
+                  notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true, vat: vat || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
@@ -995,7 +1002,7 @@
               window.addEventListener('popstate', function () { if (step === 2) goStep(1, true); });
 
               // i dati scritti restano se il telefono ricarica la pagina (es. dopo aver aperto la fotocamera)
-              var KEEP = ['f-business', 'f-notes', 'f-address', 'f-cap', 'f-city', 'f-prov', 'f-owner', 'f-prefix', 'f-mobile', 'f-email', 'f-web', 'f-ig', 'f-fb', 'f-source'];
+              var KEEP = ['f-business', 'f-notes', 'f-address', 'f-cap', 'f-city', 'f-prov', 'f-vat', 'f-owner', 'f-prefix', 'f-mobile', 'f-email', 'f-web', 'f-ig', 'f-fb', 'f-source'];
               if (!token) {
                 try {
                   var kept = JSON.parse(sessionStorage.getItem('dsf-attiva-dati') || '{}');
@@ -1036,7 +1043,7 @@
                   });
                 }).then(function () {
                   if (!result.ok) {
-                    var map = { business_name: 'f-business', owner_name: 'f-owner', address: 'f-address', city: 'f-city', postal_code: 'f-cap',
+                    var map = { vat: 'f-vat', business_name: 'f-business', owner_name: 'f-owner', address: 'f-address', city: 'f-city', postal_code: 'f-cap',
                                 province: 'f-prov', mobile: 'f-mobile', email: 'f-email', website_url: 'f-web', instagram_url: 'f-ig', facebook_url: 'f-fb' };
                     return showError(result.message || 'Invio non riuscito. Riprova.', map[result.field]);
                   }

@@ -321,10 +321,12 @@
               @media (min-width: 761px) {
                 .dsf-pv { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 20px;
                   background: radial-gradient(70% 60% at 50% 40%, rgba(123, 92, 255, .35), transparent 70%), rgba(20, 16, 36, .82); backdrop-filter: blur(8px); }
-                .dsf-pv-phone { position: relative; flex: none; width: auto; height: min(844px, calc(100vh - 140px)); aspect-ratio: 390 / 844; padding: 12px; border-radius: 52px;
+                .dsf-pv-phone { position: relative; flex: none; box-sizing: content-box; width: calc(390px * var(--pv-s, 1)); height: calc(844px * var(--pv-s, 1)); padding: 12px; border-radius: 52px;
                   background: #111; box-shadow: 0 0 0 2px #3a3a44, 0 40px 90px rgba(0, 0, 0, .55); }
                 .dsf-pv-phone::before { content: ''; position: absolute; z-index: 2; top: 22px; left: 50%; transform: translateX(-50%); width: 110px; height: 30px; border-radius: 20px; background: #111; }
-                .dsf-pv iframe { width: 100%; height: 100%; border-radius: 40px; }
+                .dsf-pv-scr { width: 100%; height: 100%; overflow: hidden; border-radius: 40px; }
+                /* il menu è largo 390 px come su un telefono vero, poi rimpicciolito per stare nello schermo */
+                .dsf-pv iframe { width: 390px; height: 844px; transform: scale(var(--pv-s, 1)); transform-origin: 0 0; }
                 .dsf-pv-x { top: 20px; right: 20px; width: 44px; height: 44px; background: rgba(255, 255, 255, .16); }
                 .dsf-pv-x:hover { background: rgba(255, 255, 255, .28); }
                 .dsf-pv-pick { position: static; transform: none; }
@@ -904,14 +906,23 @@
                 lastFocus = from;
                 var ov = el('div', 'dsf-pv'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Anteprima del modello ' + t[1]);
                 var frame = document.createElement('iframe');
-                frame.addEventListener('load', function () { try { personalize(frame.contentDocument, t); } catch (e) {} });
+                frame.addEventListener('load', function () {
+                  try {
+                    var d = frame.contentDocument;
+                    // niente barra di scorrimento del computer dentro al telefono (stringerebbe il menu)
+                    var ns = d.createElement('style'); ns.textContent = 'html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}'; d.head.appendChild(ns);
+                    personalize(d, t);
+                  } catch (e) {}
+                });
                 frame.src = '/' + t[3] + '?anteprima'; frame.title = 'Anteprima del modello ' + t[1]; frame.loading = 'eager';
                 var x = el('button', 'dsf-pv-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Chiudi l\'anteprima e torna al modulo');
                 var pick = el('button', 'dsf-pv-pick', '✓ Scelgo ' + t[1]); pick.type = 'button';
-                var phone = el('div', 'dsf-pv-phone'); phone.appendChild(frame);
+                var phone = el('div', 'dsf-pv-phone'), scr = el('div', 'dsf-pv-scr'); scr.appendChild(frame); phone.appendChild(scr);
+                function fit() { phone.style.setProperty('--pv-s', Math.min(1, (innerHeight - 140) / 844).toFixed(4)); }
+                fit(); addEventListener('resize', fit);
                 ov.appendChild(phone); ov.appendChild(x); ov.appendChild(pick);
                 ov.addEventListener('click', function (e) { if (e.target === ov) done(); });
-                function done() { document.removeEventListener('keydown', onKey); ov.remove(); document.body.classList.remove('dsf-pv-open'); if (lastFocus) lastFocus.focus({ preventScroll: true }); }
+                function done() { document.removeEventListener('keydown', onKey); removeEventListener('resize', fit); ov.remove(); document.body.classList.remove('dsf-pv-open'); if (lastFocus) lastFocus.focus({ preventScroll: true }); }
                 function onKey(e) { if (e.key === 'Escape') done(); }
                 x.addEventListener('click', done);
                 pick.addEventListener('click', function () { pickTheme(t[0], false); done(); });

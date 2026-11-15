@@ -45,6 +45,49 @@ function el(html) { var d = document.createElement('div'); d.innerHTML = html.tr
 var TRIAL = '/attiva?modello=' + encodeURIComponent(MODEL);
 var ESC = function (t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
 
+/* ---------- Anteprima comandata dalla pagina che la contiene (dsmenu.it) ----------
+   ?scorri → il menu scorre piano da solo, in giù e poi torna su.
+   Messaggi accettati: {dsm:'scroll', y} · {dsm:'items'} (fino ai piatti) · {dsm:'open'} (apre la scheda del
+   primo piatto) · {dsm:'close'} · {dsm:'auto', on}. Risponde {dsm:'ready'} quando il menu è pronto. */
+function remote() {
+  var auto = false, raf = 0, dir = 1, pause = 0, last = 0;
+  var se = document.scrollingElement || document.documentElement;
+  function ease(to, ms) {
+    cancelAnimationFrame(raf); var from = se.scrollTop, t0 = performance.now();
+    (function f(t) { var k = Math.min(1, (t - t0) / ms); k = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      se.scrollTop = from + (to - from) * k; if (k < 1) raf = requestAnimationFrame(f); else if (auto) loop(); })(t0);
+  }
+  function loop() {
+    cancelAnimationFrame(raf); last = performance.now();
+    (function f(t) {
+      if (!auto) return;
+      var dt = Math.min(64, t - last); last = t;
+      var max = Math.min(se.scrollHeight - innerHeight, 3200);
+      if (pause > 0) pause -= dt;
+      else if (dir > 0) { se.scrollTop += dt * .035; if (se.scrollTop >= max - 1) { dir = -1; pause = 1600; } }
+      else { auto = false; ease(0, 2600); setTimeout(function () { auto = true; dir = 1; pause = 1800; loop(); }, 2700); return; }
+      raf = requestAnimationFrame(f);
+    })(last);
+  }
+  function first() {
+    var sel = ['.card[data-k]', '[data-c][data-i]', '.dish', '.item', '.card', 'main button', 'main li'];
+    for (var i = 0; i < sel.length; i++) { var e = document.querySelector(sel[i]); if (e && e.offsetParent !== null) return e; }
+    return null;
+  }
+  function items() { var e = first(); return e ? Math.max(0, e.getBoundingClientRect().top + se.scrollTop - innerHeight * .28) : 0; }
+  addEventListener('message', function (ev) {
+    if (!/^https:\/\/(www\.)?(dsmenu\.it|dsfabio\.com)$|^http:\/\/(localhost|127\.0\.0\.1|dsm\.local)(:\d+)?$/.test(ev.origin)) return;
+    var m = ev.data || {}; if (!m.dsm) return;
+    if (m.dsm === 'auto') { auto = !!m.on; dir = 1; pause = 0; if (auto) loop(); else cancelAnimationFrame(raf); }
+    else if (m.dsm === 'scroll') { auto = false; ease(+m.y || 0, m.ms || 1200); }
+    else if (m.dsm === 'items') { auto = false; ease(items(), m.ms || 1200); }
+    else if (m.dsm === 'open') { var e = first(); if (e) e.click(); }
+    else if (m.dsm === 'close') { if (window.Piatti && Piatti.close) Piatti.close(); }
+  });
+  function ready() { try { parent.postMessage({dsm: 'ready'}, '*'); } catch (e) {} if (/[?&]scorri\b/.test(location.search)) { auto = true; pause = 1500; loop(); } }
+  if (document.readyState === 'complete') setTimeout(ready, 300); else addEventListener('load', function () { setTimeout(ready, 300); });
+}
+
 function init() {
   /* Dentro l'anteprima della pagina Modelli (iframe): solo il menu, senza fascia demo né invito */
   if (PREVIEW) {
@@ -52,6 +95,7 @@ function init() {
     var ps = document.createElement('style');
     ps.textContent = '.demo,.demo-bar{display:none!important}html{scrollbar-width:none}html::-webkit-scrollbar{display:none}';
     document.head.appendChild(ps);
+    remote();
     return;
   }
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);

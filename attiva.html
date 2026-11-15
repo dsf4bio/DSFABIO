@@ -71,6 +71,10 @@
       font-size: 10.5px; font-weight: 700; color: #1d1630; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
     .dsf-page .phone-url::before { content: '🔒 '; }
     .dsf-page .phone-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: opacity .35s; }
+    .dsf-page .phone-logo { position: absolute; z-index: 1; left: 2.4%; top: 11.4%; width: 20.3%; aspect-ratio: 1; height: auto; border-radius: 50%; padding: 1.5%;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); box-sizing: border-box; animation: dsf-pop .35s both; }
+    .dsf-page .phone-logo img { position: static; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #fff; border: 2px solid #fff; box-sizing: border-box; }
+    @keyframes dsf-pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
     .dsf-page .phone-any { position: absolute; inset: 0; display: grid; place-content: center; gap: 8px; padding: 20px; background: var(--grad); color: #fff; font-weight: 800; font-size: 14px; }
     .dsf-page .phone-any b { font-size: 44px; line-height: 1; }
     .dsf-page .live-name { margin: 14px 0 2px; font-weight: 800; font-size: 18px; }
@@ -256,6 +260,22 @@
               #dsf-assistenza .dsf-files-ok { margin: 10px 0 0; padding: 10px 12px; border-radius: 12px; background: #effaf3; color: #15803d; font-size: .9em; font-weight: 700; animation: dsf-pop .3s both; }
               #dsf-assistenza .dsf-tips { margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
               #dsf-assistenza .dsf-tips li { font-size: .8em; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: #f6f2fc; color: #5b5470; }
+              /* logo e copertina */
+              #dsf-assistenza .dsf-brand { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 12px; }
+              #dsf-assistenza .dsf-bt { position: relative; }
+              #dsf-assistenza .dsf-bt-pick { display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; padding: 12px 10px; border: 2px dashed #d9cdf3; border-radius: 16px; background: #fff; cursor: pointer; text-align: center; transition: border-color .15s, transform .12s; }
+              #dsf-assistenza .dsf-bt-pick:hover { border-color: var(--acc); }
+              #dsf-assistenza .dsf-bt-pick:active { transform: scale(.98); }
+              #dsf-assistenza .dsf-bt-pick b { font-size: .95em; }
+              #dsf-assistenza .dsf-bt-pick small { font-size: .74em; color: #8a82a0; line-height: 1.3; }
+              #dsf-assistenza .dsf-bt-img { display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg, #f1ecff, #ffe9f5); color: #6d4aff; font-size: 26px; font-style: normal; }
+              #dsf-assistenza .dsf-bt-img i { font-style: normal; }
+              #dsf-assistenza .dsf-bt-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+              #dsf-assistenza .dsf-bt-round { width: 72px; height: 72px; border-radius: 50%; padding: 3px; background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); }
+              #dsf-assistenza .dsf-bt-round i, #dsf-assistenza .dsf-bt-round img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: #fff; display: grid; place-items: center; box-sizing: border-box; }
+              #dsf-assistenza .dsf-bt-land { width: 100%; max-width: 220px; height: 72px; border-radius: 12px; }
+              #dsf-assistenza .dsf-bt.has .dsf-bt-pick { border-style: solid; border-color: #9be3b6; }
+              #dsf-assistenza .dsf-bt-x { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 50%; border: 0; background: rgba(29, 22, 48, .75); color: #fff; font-size: 16px; line-height: 1; cursor: pointer; }
               /* privacy, pulsanti, errori */
               #dsf-assistenza .dsf-consent { display: flex; gap: 10px; align-items: flex-start; margin: 6px 0 18px; padding: 12px 14px; border-radius: 14px; background: #f8f6fc; cursor: pointer; font-size: .92em; }
               #dsf-assistenza .dsf-consent input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--acc); flex: none; }
@@ -373,6 +393,7 @@
                   <div class="dsf-minilive" id="dsf-minilive">
                     <div class="mini-phone"><div class="mini-screen">
                       <img id="mini-img" alt="" hidden>
+                      <span class="phone-logo" id="mini-logo" hidden><img alt=""></span>
                       <div class="mini-any" id="mini-any">✨</div>
                     </div></div>
                     <div class="mini-txt">
@@ -383,6 +404,23 @@
                       <button type="button" class="dsf-theme-prev" id="mini-open" hidden>👁 Apri l'anteprima</button>
                     </div>
                   </div>
+                </div>
+
+                <div class="dsf-block">
+                  <div class="dsf-q"><span class="dsf-ico">🖼️</span> Logo e copertina <em class="dsf-opt">facoltativi</em></div>
+                  <p class="dsf-sub">Se li hai, caricali qui: li mettiamo noi nel menu. Il logo va nel tondo in alto e in fondo al menu; la copertina dietro al nome del locale (modello Aura).</p>
+                  <div class="dsf-brand">
+                    <div class="dsf-bt">
+                      <label class="dsf-bt-pick" for="dsf-logo"><span class="dsf-bt-img dsf-bt-round" id="bt-logo"><i>＋</i></span><b>Logo</b><small>meglio quadrato</small></label>
+                      <button type="button" class="dsf-bt-x" id="bt-logo-x" aria-label="Togli il logo" hidden>×</button>
+                    </div>
+                    <div class="dsf-bt dsf-bt-wide">
+                      <label class="dsf-bt-pick" for="dsf-cover"><span class="dsf-bt-img dsf-bt-land" id="bt-cover"><i>＋</i></span><b>Copertina</b><small>una foto orizzontale del locale o di un piatto</small></label>
+                      <button type="button" class="dsf-bt-x" id="bt-cover-x" aria-label="Togli la copertina" hidden>×</button>
+                    </div>
+                  </div>
+                  <input class="dsf-hidden-input" id="dsf-logo" type="file" accept="image/jpeg,image/png,image/webp">
+                  <input class="dsf-hidden-input" id="dsf-cover" type="file" accept="image/jpeg,image/png,image/webp">
                 </div>
 
                 <div class="dsf-block">
@@ -551,6 +589,7 @@
               <div class="phone-screen">
                 <div class="phone-url" id="live-url">dsmenu.it/il-tuo-locale</div>
                 <img class="phone-img" id="live-img" alt="" hidden>
+                <span class="phone-logo" id="live-logo" hidden><img alt=""></span>
                 <div class="phone-any" id="live-any"><b>✨</b>Lo stile adatto al tuo locale lo scegliamo noi</div>
               </div>
             </div>
@@ -858,7 +897,7 @@
               function checkStep1() {
                 if (val('f-business').length < 2) throw ['Scrivi il nome del locale.', 'f-business'];
                 if (!files.length) throw ['Allega il tuo menu: un PDF o le foto delle pagine, ben leggibili. Ci serve per prepararlo.', 'dsf-drop'];
-                if (files.some(function (f) { return f.working; })) throw ['Un attimo: stiamo preparando le foto.'];
+                if (files.some(function (f) { return f.working; }) || (brand.logo && brand.logo.working) || (brand.cover && brand.cover.working)) throw ['Un attimo: stiamo preparando le foto.'];
               }
               function read() {
                 checkStep1();
@@ -904,10 +943,42 @@
               })();
 
               // ---- guida dal vivo: telefono di anteprima, elenco che si spunta, avanzamento ----
+              // ---- logo e copertina (facoltativi) ----
+              var brand = { logo: null, cover: null };
+              function setBrand(kind, file) {
+                var old = brand[kind]; if (old && old.url) URL.revokeObjectURL(old.url);
+                brand[kind] = null; drawBrand();
+                if (!file) return;
+                var item = { file: file, working: true }; brand[kind] = item; drawBrand();
+                prepare(file).then(function (f) {
+                  if (brand[kind] !== item) return;
+                  item.file = new File([f], (kind === 'logo' ? 'logo-' : 'copertina-') + f.name, { type: f.type });
+                  item.url = URL.createObjectURL(item.file); item.working = false; drawBrand();
+                }, function (err) { if (brand[kind] === item) { brand[kind] = null; drawBrand(); } showError(err.message); });
+              }
+              function drawBrand() {
+                ['logo', 'cover'].forEach(function (kind) {
+                  var box = $('bt-' + kind), it = brand[kind];
+                  box.textContent = '';
+                  if (it && it.url) { var im = document.createElement('img'); im.src = it.url; im.alt = kind === 'logo' ? 'Il tuo logo' : 'La tua copertina'; box.appendChild(im); }
+                  else box.appendChild(el('i', '', it && it.working ? '…' : '＋'));
+                  box.closest('.dsf-bt').classList.toggle('has', !!(it && it.url));
+                  $('bt-' + kind + '-x').hidden = !it;
+                });
+                livePhone(THEMES.filter(function (x) { return x[0] === selectedTheme(); })[0]);
+              }
+              $('dsf-logo').addEventListener('change', function (e) { setBrand('logo', e.target.files[0]); e.target.value = ''; });
+              $('dsf-cover').addEventListener('change', function (e) { setBrand('cover', e.target.files[0]); e.target.value = ''; });
+              $('bt-logo-x').addEventListener('click', function () { setBrand('logo', null); });
+              $('bt-cover-x').addEventListener('click', function () { setBrand('cover', null); });
+
               function slugOf(x) { return String(x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' e ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50); }
               var bumpT;
               function bump() { var ph = document.querySelector('.phone'); if (!ph) return; ph.classList.remove('bump'); void ph.offsetWidth; ph.classList.add('bump'); }
               function livePhone(t) {
+                // il logo caricato appare nel tondo in alto del modello Aura
+                var lg = brand && brand.logo && brand.logo.url && t && t[0] === 'mdc-016' ? brand.logo.url : null;
+                ['live-logo', 'mini-logo'].forEach(function (id) { var b = $(id); if (!b) return; b.hidden = !lg; if (lg) b.querySelector('img').src = lg; });
                 var mi = $('mini-img'), ma = $('mini-any');
                 if (mi) {
                   if (t) { mi.src = '/assets/anteprime/' + t[3] + '.jpg'; mi.hidden = false; ma.hidden = true; $('mini-theme').textContent = 'Modello «' + t[1] + '»'; }
@@ -1028,9 +1099,10 @@
                 var result, uploadedCount = 0;
                 rpc('signup_submit', { p: data }).then(function (r) {
                   result = r || {};
-                  if (!result.ok || !result.request_id || !files.length) return;
+                  var all = files.concat([brand.logo, brand.cover].filter(function (b) { return b && b.url; }));
+                  if (!result.ok || !result.request_id || !all.length) return;
                   var uploaded = [];
-                  return files.reduce(function (pr, item, i) {
+                  return all.reduce(function (pr, item, i) {
                     return pr.then(function () {
                       var path = 'incoming/' + result.request_id + '/' + (i + 1) + '-' + safeName(item.file.name);
                       return upload(path, item.file).then(function (ok) { return ok || upload(path, item.file); }).then(function (ok) {

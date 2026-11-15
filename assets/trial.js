@@ -84,7 +84,18 @@ function remote() {
     else if (m.dsm === 'open') { var e = first(); if (e) e.click(); }
     else if (m.dsm === 'close') { if (window.Piatti && Piatti.close) Piatti.close(); }
   });
-  function ready() { try { parent.postMessage({dsm: 'ready'}, '*'); } catch (e) {} if (/[?&]scorri\b/.test(location.search)) { auto = true; pause = 1500; loop(); } }
+  var SCORRI = /[?&]scorri\b/.test(location.search), idle = 0;
+  // se chi guarda scorre o tocca il menu, lo scorrimento automatico si ferma e riparte dopo qualche secondo
+  function hold() {
+    if (!SCORRI) return;
+    auto = false; cancelAnimationFrame(raf); clearTimeout(idle);
+    idle = setTimeout(function wake() {
+      if (document.documentElement.style.overflow === 'hidden') { idle = setTimeout(wake, 2000); return; } // scheda del piatto aperta
+      auto = true; dir = 1; pause = 600; loop();
+    }, 6000);
+  }
+  ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (ev) { addEventListener(ev, hold, {passive: true}); });
+  function ready() { try { parent.postMessage({dsm: 'ready'}, '*'); } catch (e) {} if (SCORRI) { auto = true; pause = 1500; loop(); } }
   if (document.readyState === 'complete') setTimeout(ready, 300); else addEventListener('load', function () { setTimeout(ready, 300); });
 }
 

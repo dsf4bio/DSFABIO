@@ -1117,7 +1117,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: withLang($('f-notes').value.trim()) || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
+                  notes: withLang($('f-notes').value.trim()) || null, lang: (document.documentElement.lang || 'it').slice(0, 2), theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
@@ -1327,7 +1327,7 @@
                   done('✉', 'Check your email',
                     result.already
                       ? 'We already have an open request for ' + data.email + ': confirm it from the link we sent you, or wait for us to contact you.'
-                      : 'We’ve sent an email to ' + data.email + '. Press the "Conferma la richiesta" button to complete it: then we’ll contact you to prepare your menu.',
+                      : 'We’ve sent an email to ' + data.email + '. Press the "Confirm the request" button to complete it: then we’ll contact you to prepare your menu.',
                     (lost ? '⚠️ We couldn’t receive the menu files: reply to the confirmation email and attach them. ' : '')
                       + 'Can’t find it? Also check your spam or promotions folder. The link is valid for 48 hours.');
                 }).catch(function (err) {

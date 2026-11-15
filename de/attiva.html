@@ -1117,7 +1117,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: withLang($('f-notes').value.trim()) || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
+                  notes: withLang($('f-notes').value.trim()) || null, lang: (document.documentElement.lang || 'it').slice(0, 2), theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
@@ -1327,7 +1327,7 @@
                   done('✉', 'Prüfe deine E-Mails',
                     result.already
                       ? 'Wir haben bereits eine offene Anfrage für ' + data.email + ': Bestätige sie über den Link, den wir dir geschickt haben, oder warte, bis wir uns melden.'
-                      : 'Wir haben eine E-Mail geschickt an ' + data.email + '. Klicke auf die Schaltfläche "Conferma la richiesta", um sie abzuschließen: Danach melden wir uns, um deine Speisekarte zu erstellen.',
+                      : 'Wir haben eine E-Mail geschickt an ' + data.email + '. Klicke auf die Schaltfläche "Anfrage bestätigen", um sie abzuschließen: Danach melden wir uns, um deine Speisekarte zu erstellen.',
                     (lost ? '⚠️ Wir konnten die Dateien der Speisekarte nicht empfangen: Antworte auf die Bestätigungs-E-Mail und hänge sie an. ' : '')
                       + 'Nicht gefunden? Schau auch im Spam- oder Werbeordner nach. Der Link ist 48 Stunden gültig.');
                 }).catch(function (err) {

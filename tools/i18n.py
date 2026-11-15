@@ -14,9 +14,11 @@ from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'i18n')
-PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza']
+PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici']
+# pagine di servizio (dopo il pagamento): tradotte ma fuori dalla sitemap
+NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'}
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
-JS_PAGES = {'attiva', 'assistenza'}
+JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'}
 # Pagine solo in italiano (testo legale): le altre lingue rimandano qui (vercel.json)
 IT_ONLY = {'privacy'}
 LANGS = {
@@ -485,6 +487,9 @@ def translate_page(src, page, lang, d):
             return 'href="/%s/%s%s"' % (lang, path, rest)
         return m.group(0)
     res = re.sub(r'href="https://dsfabio\.com/([a-z-]*)([#?][^"]*)?"', absfix, res)
+    # link assoluti interni ("/", "/assistenza"): stessa pagina nella lingua
+    res = re.sub(r'href="/([a-z-]*)([#?][^"]*)?"', lambda m: ('href="/%s%s"' % (lang, m.group(2) or '')) if m.group(1) == '' else
+                 ('href="/%s/%s%s"' % (lang, m.group(1), m.group(2) or '') if m.group(1) in LOCAL_PAGES else m.group(0)), res)
     return localize_common(res, page, lang), missing
 
 
@@ -513,7 +518,7 @@ def build():
 def sitemap():
     pri = {'index': '1.0', 'modelli': '0.8', 'about': '0.6', 'privacy': '0.2', 'attiva': '0.9', 'assistenza': '0.3'}
     rows = []
-    for page in PAGES:
+    for page in [p for p in PAGES if p not in NO_SITEMAP]:
         alts = ''.join('\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, page_url(page, l)) for l in LANGS)
         for lang in (['it'] if page in IT_ONLY else LANGS):
             if page in IT_ONLY:

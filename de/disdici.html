@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kündigung der digitalen Speisekarte · DS Service</title>
+  <meta name="description" content="Verwalte die Kündigung deiner digitalen Speisekarte.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0d0a1f">
+  <link rel="stylesheet" href="/assets/fonts/syne-manrope.css">
+  <style>
+    /* =================================================================
+       DS Service · stesso stile chiaro delle pagine Attiva e Assistenza
+       Tutti gli stili valgono solo dentro .dsf-page: non toccano altro.
+       ================================================================= */
+    html { -webkit-text-size-adjust: 100%; }
+    body.dsf-body { margin: 0; background: #fbf8f4; }
+    .dsf-page {
+      --bg: #fbf8f4; --card: #ffffff; --text: #1d1630; --muted: #6b6480; --line: #ece6f2;
+      --violet: #6d4aff; --pink: #ff3cac; --cyan: #06b6d4; --ok: #16a34a; --err: #dc2626;
+      --grad: linear-gradient(120deg, #ff3cac, #7b5cff 55%, #22d3ee);
+      --btn: linear-gradient(120deg, #7b5cff, #b44cff 60%, #ff3cac);
+      min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow-x: clip;
+      color: var(--text); font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.55;
+      background: var(--bg);
+    }
+    .dsf-page::before, .dsf-page::after { content: ''; position: absolute; z-index: 0; border-radius: 50%; filter: blur(70px); opacity: .45; pointer-events: none; animation: dsf-float 22s ease-in-out infinite alternate; }
+    .dsf-page::before { width: 520px; height: 520px; top: -180px; left: -160px; background: #ffd0ec; }
+    .dsf-page::after { width: 560px; height: 560px; top: 120px; right: -220px; background: #cfe9ff; animation-delay: -9s; }
+    @keyframes dsf-float { to { transform: translate(40px, 60px) scale(1.08); } }
+    .dsf-page > * { position: relative; z-index: 1; }
+    .dsf-page *, .dsf-page *::before, .dsf-page *::after { box-sizing: border-box; }
+    .dsf-page a { color: inherit; text-decoration: none; }
+    .dsf-page .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    .dsf-page h1 { font-family: 'Syne', 'Manrope', sans-serif; letter-spacing: -0.02em; }
+    .dsf-page h2, .dsf-page h3, .dsf-page h4 { font-family: 'Manrope', sans-serif; font-weight: 800; letter-spacing: -0.01em; }
+
+    /* intestazione */
+    .dsf-page .top { position: sticky; top: 0; z-index: 20; background: rgba(251, 248, 244, .85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .dsf-page .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+    .dsf-page .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.02em; }
+    .dsf-page .logo span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .dsf-page .nav { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; color: var(--muted); }
+    .dsf-page .nav a:hover { color: var(--text); }
+    .dsf-page .nav .is-active { color: var(--violet); }
+    .dsf-page .cta { padding: 9px 16px; border-radius: 999px; background: var(--btn); color: #fff !important; font-weight: 700; white-space: nowrap; }
+    .dsf-page .menu-btn { display: none; background: #fff; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 7px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+    /* testata */
+    .dsf-page .hero { text-align: center; padding: 44px 0 26px; }
+    .dsf-page .badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line);
+      box-shadow: 0 4px 16px rgba(109, 74, 255, .08); font-size: 13px; font-weight: 700; color: var(--violet); margin-bottom: 16px; }
+    .dsf-page h1 { margin: 0 0 12px; font-size: clamp(27px, 5vw, 46px); line-height: 1.08; font-weight: 800; }
+    .dsf-page h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .dsf-page .hero p { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: 17px; }
+
+    /* contenuto */
+    .dsf-page main { flex: 1; padding-bottom: 56px; }
+    .dsf-page .grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
+    .dsf-page .card { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 30px; box-shadow: 0 24px 60px -24px rgba(60, 30, 120, .22); }
+    .dsf-page .side { display: grid; gap: 18px; position: sticky; top: 84px; }
+    .dsf-page .side .card { padding: 24px; font-size: 14px; }
+    .dsf-page .side h2 { margin: 0 0 10px; font-size: 16px; }
+    .dsf-page .side p { margin: 0 0 10px; color: var(--muted); }
+    .dsf-page .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; color: var(--muted); }
+    .dsf-page .steps li { counter-increment: s; display: flex; gap: 10px; }
+    .dsf-page .steps li::before { content: counter(s); flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; color: #fff; background: linear-gradient(135deg, #7b5cff, #ff3cac); }
+    .dsf-page .contact { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); margin-top: 8px; font-weight: 600; background: #fff; }
+    .dsf-page .contact:hover { border-color: var(--violet); }
+
+    /* footer */
+    .dsf-page footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); background: rgba(255, 255, 255, .5); }
+    .dsf-page footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+    .dsf-page footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+    .dsf-page footer a:hover { color: var(--text); }
+
+    /* modulo: stessi campi e pulsanti della pagina Attiva */
+    .dsf-page #dsf-assistenza { --dsf-accent: #6d4aff; --dsf-accent-text: #fff; --dsf-field-bg: #f8f6fc; --dsf-border: #e3dcef; --dsf-error: #dc2626; --dsf-ok: #16a34a; max-width: none; }
+    .dsf-page #dsf-assistenza .dsf-label, .dsf-page #dsf-assistenza legend.dsf-label { font-weight: 700; font-size: .92em; }
+    .dsf-page #dsf-assistenza .dsf-hint { color: var(--muted); opacity: 1; }
+    .dsf-page #dsf-assistenza .dsf-input, .dsf-page #dsf-assistenza .dsf-textarea { padding: 13px 14px; font-size: 16px; color: var(--text); border-width: 1.5px; border-radius: 12px; transition: border-color .15s, box-shadow .15s, background .15s; }
+    .dsf-page #dsf-assistenza .dsf-input::placeholder, .dsf-page #dsf-assistenza .dsf-textarea::placeholder { color: #a79fbb; }
+    .dsf-page #dsf-assistenza .dsf-input:focus, .dsf-page #dsf-assistenza .dsf-textarea:focus { background: #fff; box-shadow: 0 0 0 4px rgba(109, 74, 255, .14); }
+    .dsf-page #dsf-assistenza .dsf-choice { border-width: 1.5px; border-radius: 14px; background: #fff; font-weight: 600; transition: border-color .15s, background .15s; }
+    .dsf-page #dsf-assistenza .dsf-choice:hover { border-color: #c9b8ff; }
+    .dsf-page #dsf-assistenza .dsf-choice.is-on { background: #f6f2ff; }
+    .dsf-page #dsf-assistenza .dsf-drop { border: 2px dashed #d9cdf3; border-radius: 18px; background: linear-gradient(135deg, #faf7ff, #fff5fb); padding: 22px; }
+    .dsf-page #dsf-assistenza .dsf-drop strong { font-weight: 800; color: var(--violet); }
+    .dsf-page #dsf-assistenza .dsf-file { background: #fff; border-radius: 12px; }
+    .dsf-page #dsf-assistenza .dsf-btn { min-height: 56px; border-radius: 16px; background: var(--btn); background-size: 160% 100%; color: #fff; font-weight: 800;
+      box-shadow: 0 14px 30px -12px rgba(123, 92, 255, .75); transition: transform .12s, background-position .4s, box-shadow .2s; }
+    .dsf-page #dsf-assistenza .dsf-btn:hover { background-position: 100% 0; box-shadow: 0 18px 34px -12px rgba(255, 60, 172, .6); }
+    .dsf-page #dsf-assistenza .dsf-btn:active { transform: scale(.98); }
+    .dsf-page #dsf-assistenza .dsf-btn-sm { min-height: 50px; border-radius: 14px; }
+    .dsf-page #dsf-assistenza .dsf-btn-ghost { background: #fff; color: var(--text); border: 1.5px solid var(--dsf-border); box-shadow: none; min-height: 44px; border-radius: 12px; font-weight: 700; }
+    .dsf-page #dsf-assistenza .dsf-btn-ghost:hover { border-color: var(--violet); box-shadow: none; }
+    .dsf-page #dsf-assistenza .dsf-sec { border-radius: 16px; background: #fff; }
+    .dsf-page #dsf-assistenza .dsf-sec > h4 { background: #f8f6fc; }
+    .dsf-page #dsf-assistenza .dsf-summary { border-color: #c9b8ff; background: #f6f2ff; border-radius: 14px; }
+    .dsf-page #dsf-assistenza .dsf-edit { background: #faf8fd; border-radius: 14px; }
+    .dsf-page #dsf-assistenza .dsf-error { background: #fef2f2; border-color: #fecaca; color: #991b1b; border-radius: 12px; }
+    .dsf-page #dsf-assistenza .dsf-success-icon { background: #dcfce7; }
+
+    @media (max-width: 960px) {
+      .dsf-page .grid { grid-template-columns: minmax(0, 1fr); }
+      .dsf-page .side { position: static; }
+      .dsf-page .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 20px 16px; background: #fff; border-bottom: 1px solid var(--line); }
+      .dsf-page .nav.open { display: flex; }
+      .dsf-page .nav a { padding: 10px 0; width: 100%; }
+      .dsf-page .nav .cta { margin-top: 8px; text-align: center; }
+      .dsf-page .menu-btn { display: block; }
+    }
+    @media (max-width: 560px) {
+      .dsf-page .card { padding: 22px 16px; border-radius: 22px; }
+      .dsf-page .hero { padding: 30px 0 18px; }
+      .dsf-page .hero p { font-size: 15.5px; }
+      .dsf-page .wrap { padding: 0 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .dsf-page::before, .dsf-page::after { animation: none; } }
+  </style>
+<style>
+  .sec-card { max-width: 560px; margin: 0 auto; }
+  .sec-card p { line-height: 1.6; }
+  .sec-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px; margin: 8px 0 0;
+    border: 0; border-radius: 16px; background: var(--btn); background-size: 160% 100%; color: #fff; font: inherit; font-weight: 800; font-size: 1.05em; cursor: pointer; padding: 10px 14px; box-shadow: 0 14px 30px -12px rgba(123, 92, 255, .75); transition: background-position .4s, transform .12s; }
+  .sec-btn:hover { background-position: 100% 0; }
+  .sec-btn:active { transform: scale(.98); }
+  .sec-btn.danger { background: #e5484d; box-shadow: 0 14px 30px -12px rgba(229, 72, 77, .7); }
+  .why-title { margin: 16px 0 8px; font-weight: 600; font-size: .95em; }
+  .why-title span { font-weight: 400; opacity: .7; }
+  .why-list { display: grid; gap: 6px; }
+  .why { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff; cursor: pointer; font-size: .95em; }
+  .why:has(input:checked) { border-color: var(--violet); background: #f6f2ff; }
+  .why input { accent-color: #6d4aff; width: 17px; height: 17px; margin: 0; flex: none; }
+  .why-more { display: block; margin: 12px 0 6px; font-size: .9em; opacity: .85; }
+  #sec-reason { width: 100%; border-radius: 14px; border: 1.5px solid #ddd3ee; background: #fff; color: inherit; font: inherit; padding: 10px 12px; }
+  .sec-btn[disabled] { opacity: .6; cursor: wait; }
+  .sec-msg { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: #f6f2ff; border: 1px solid #e4dbf7; line-height: 1.5; }
+  .sec-msg.ok { background: #ecfdf3; border-color: #bbf7d0; color: #14532d; }
+  .sec-msg.err { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .sec-list { margin: 12px 0 0; padding-left: 20px; line-height: 1.7; }
+  .sec-box { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+  [hidden] { display: none !important; }
+  </style>
+</head>
+<body class="dsf-body">
+<div class="dsf-page">
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="https://dsfabio.com/de">DS <span>Service</span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="dsf-nav">Menü</button>
+      <nav class="nav" id="dsf-nav" aria-label="Navigation">
+        <a href="/de#come-funziona">So funktioniert’s</a>
+        <a href="https://dsfabio.com/de/modelli">Vorlagen</a>
+        <a href="/de#offerta">Angebot</a>
+        <a href="https://dsfabio.com/de/about">Über mich</a>
+        <a href="/de#faq">FAQ</a>
+        <a href="https://dsfabio.com/de/assistenza">Support</a>
+        <a class="cta" href="https://dsfabio.com/de/attiva">30 Tage kostenlos testen</a>
+      </nav>
+      <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> DE</summary><div class="lang-list"><a href="/disdici" hreflang="it" lang="it">Italiano</a><a href="/en/disdici" hreflang="en" lang="en">English</a><a href="/es/disdici" hreflang="es" lang="es">Español</a><a href="/pt/disdici" hreflang="pt" lang="pt">Português</a><a href="/de/disdici" hreflang="de" lang="de" aria-current="true">Deutsch</a><a href="/fr/disdici" hreflang="fr" lang="fr">Français</a></div></details>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Dein Abo</h1>
+        <p>Kündige die Verlängerung selbst: Die Speisekarte bleibt bis zum Ende des bezahlten Zeitraums aktiv.</p>
+      </div>
+    </section>
+    <div class="wrap">
+        <section class="card sec-card" aria-label="Kündigung">
+          <h2 id="sec-title">Wird geladen…</h2>
+          <div id="sec-ask" hidden>
+            <p id="sec-lead"></p>
+            <ul class="sec-list">
+              <li>die Speisekarte bleibt <strong>bis zum <span class="js-until"></span> online</strong>, danach schließt sie sich von selbst;</li>
+              <li><strong>du erhältst keine</strong> Zahlungserinnerungen mehr;</li>
+              <li>wir bewahren Gerichte, Fotos und QR-Code auf: Wenn du eines Tages wieder starten willst, bezahle einfach über den Link in unseren E-Mails.</li>
+            </ul>
+            <div id="sec-why">
+              <p class="why-title">Hilfst du uns, besser zu werden? Warum möchtest du nicht verlängern? <span>(optional)</span></p>
+              <div class="why-list" role="radiogroup" aria-label="Grund">
+                <label class="why"><input type="radio" name="why" value="poco_usato"><span>Meine Gäste nutzen sie kaum</span></label>
+                <label class="why"><input type="radio" name="why" value="prezzo"><span>Es ist zu teuer</span></label>
+                <label class="why"><input type="radio" name="why" value="chiuso"><span>Ich schließe oder verkaufe das Lokal</span></label>
+                <label class="why"><input type="radio" name="why" value="altro_servizio"><span>Ich wechsle zu einem anderen Anbieter</span></label>
+                <label class="why"><input type="radio" name="why" value="problemi"><span>Ich hatte Probleme mit dem Service</span></label>
+                <label class="why"><input type="radio" name="why" value="altro"><span>Sonstiges</span></label>
+              </div>
+              <label for="sec-reason" class="why-more">Möchtest du noch etwas hinzufügen?</label>
+              <textarea id="sec-reason" maxlength="500" rows="2"></textarea>
+            </div>
+            <button class="sec-btn danger" id="sec-go" type="button">Kündigung bestätigen</button>
+            <p style="margin-top:12px;opacity:.75;font-size:.92em">Doch anders entschieden? Schließ einfach diese Seite: Es ändert sich nichts.</p>
+          </div>
+          <div id="sec-card" hidden>
+            <p>Dein Abo verlängert sich automatisch über die Karte.</p>
+            <p id="sec-portal-txt" hidden>Um die Verlängerung zu kündigen (dann buchen wir nichts ab), nutze das Stripe-Kundenportal: Es fragt nach der E-Mail, mit der du bezahlt hast, und schickt dir einen Code.</p>
+            <p>Die Speisekarte bleibt bis zum <strong class="js-until"></strong> online.</p>
+            <a class="sec-btn" id="sec-portal" href="#" rel="noopener" hidden>Stripe-Portal öffnen</a>
+            <p id="sec-noportal" hidden>Um die Verlängerung zu kündigen, antworte auf eine unserer E-Mails oder schreib an <a id="sec-mail" style="text-decoration:underline" href="mailto:info@dsfabio.com">info@dsfabio.com</a>: Wir kündigen die Verlängerung für dich.</p>
+          </div>
+          <p class="sec-msg" id="sec-msg" hidden role="status" aria-live="polite"></p>
+          <div id="sec-undo" hidden style="margin-top:14px">
+            <button class="sec-btn" style="background:#fff;color:var(--text);border:1.5px solid var(--line);box-shadow:none" id="sec-undo-go" type="button">Ich habe es mir anders überlegt: Kündigung zurücknehmen</button>
+          </div>
+        </section>
+    </div>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 DS Service di Fabio Dos Santos Souza · Meldola (FC)</span>
+      <nav aria-label="Rechtliches">
+        <a href="https://dsfabio.com/de">Startseite</a>
+        <a href="https://dsfabio.com/privacy#privacy">Datenschutz</a>
+        <a href="https://dsfabio.com/privacy#cookies">Cookies</a>
+        <a href="https://dsfabio.com/privacy#terms">AGB</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+<script>
+  (function () {
+    var btn = document.querySelector('.dsf-page .menu-btn'), nav = document.getElementById('dsf-nav');
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  })();
+</script>
+<script>
+(function () {
+  var SUPABASE_URL = 'https://xzhbyxvlrxemujrqatbl.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_sfam2xLCQig0550kvfkUdg_yGaU0IA_';
+  function rpc(name, body) {
+    return fetch(SUPABASE_URL + '/rest/v1/rpc/' + name, {
+      method: 'POST', headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (r) { return r.json().catch(function () { return null; }).then(function (j) {
+      if (!r.ok) throw new Error((j && j.message) || 'Dienst nicht verfügbar, bitte gleich noch einmal versuchen.'); return j; }); });
+  }
+  // il codice del link resta solo in memoria: lo togliamo subito dall'indirizzo
+  var token = '';
+  try { var qs = new URLSearchParams(location.search); token = (qs.get('t') || '').toLowerCase();
+        if (qs.has('t')) history.replaceState(null, '', location.pathname); } catch (e) {}
+  if (!/^[0-9a-f]{32}$/.test(token)) token = '';
+  function $(id) { return document.getElementById(id); }
+  function msg(text, kind) { var m = $('sec-msg'); m.textContent = text; m.className = 'sec-msg ' + (kind || ''); m.hidden = false; }
+  function until(v) { [].forEach.call(document.querySelectorAll('.js-until'), function (n) { n.textContent = v || ''; }); }
+  // in prova: nessuna disdetta, solo il link all'assistenza
+  function trialInfo() {
+    hideAll();
+    $('sec-title').textContent = 'Brauchst du Hilfe?';
+    var m = $('sec-msg'); m.className = 'sec-msg'; m.hidden = false; m.textContent = 'Für alle Anfragen zu deiner Speisekarte geh auf die Seite ';
+    var a = document.createElement('a'); a.href = 'https://dsfabio.com/assistenza'; a.textContent = 'Support'; a.style.textDecoration = 'underline'; a.style.fontWeight = '700';
+    m.appendChild(a); m.appendChild(document.createTextNode('.'));
+  }
+  // motivo scelto: si salva sempre (anche per chi disdice dal portale Stripe)
+  function whyCode() { var r = document.querySelector('input[name="why"]:checked'); return r ? r.value : ''; }
+  function whyText() {
+    var r = document.querySelector('input[name="why"]:checked');
+    var t = r ? r.parentNode.textContent.trim() : '';
+    var note = ($('sec-reason').value || '').trim();
+    return [t, note].filter(Boolean).join(' · ') || null;
+  }
+  function saveWhy() {
+    if (!whyCode()) return Promise.resolve();
+    return Promise.race([
+      rpc('billing_cancel_reason', { p_token: token, p_code: whyCode(), p_note: ($('sec-reason').value || '').trim() || null }).catch(function () {}),
+      new Promise(function (ok) { setTimeout(ok, 2500); })]);
+  }
+  function hideAll() { $('sec-ask').hidden = true; $('sec-card').hidden = true; $('sec-undo').hidden = true; }
+  function showCard(info) {
+    hideAll(); $('sec-card').hidden = false;
+    // il riquadro del motivo va sopra il pulsante del portale
+    var why = $('sec-why'); var anchor = $('sec-portal');
+    if (why && anchor && why.parentNode !== $('sec-card')) $('sec-card').insertBefore(why, anchor);
+    if (info.portal && /^https:\/\//.test(info.portal)) { var a = $('sec-portal'); a.href = info.portal; a.hidden = false; $('sec-portal-txt').hidden = false; }
+    else { $('sec-noportal').hidden = false; if (info.contact) { $('sec-mail').textContent = info.contact; $('sec-mail').href = 'mailto:' + info.contact; } }
+  }
+  function cancelled(info) {
+    hideAll();
+    $('sec-title').textContent = 'Kündigung erfasst';
+    msg('✅ Die Speisekarte von ' + info.business + ' bleibt online bis zum ' + info.until + ', danach schließt sie sich von selbst. Du erhältst keine Erinnerungen mehr. Wir haben dir eine Bestätigung per E-Mail geschickt.', 'ok');
+    if (info.source !== 'stripe') $('sec-undo').hidden = false;
+  }
+  if (!token) { $('sec-title').textContent = 'Ungültiger Link'; msg('Öffne den Link in der E-Mail, die wir dir geschickt haben. Bei Fragen schreib an info@dsfabio.com.', 'err'); return; }
+  var info = null;
+  rpc('billing_cancel_info', { p_token: token }).then(function (r) {
+    if (!r || !r.ok) { $('sec-title').textContent = 'Ungültiger Link'; return msg((r && r.message) || 'Ungültiger Link.', 'err'); }
+    info = r; until(r.until);
+    $('sec-title').textContent = 'Digitale Speisekarte von ' + r.business;
+    if (r.trial && !r.cancelled) return trialInfo();
+    if (!r.live) return msg('Der Service ist im Moment nicht aktiv: Es gibt nichts zu kündigen. Bei Fragen schreib an ' + (r.contact || 'info@dsfabio.com') + '.', '');
+    if (r.cancelled) return cancelled(r);
+    if (r.card) return showCard(r);
+    $('sec-lead').textContent = 'Du möchtest das Abo nicht verlängern? Bestätige es hier:';
+    $('sec-ask').hidden = false;
+  }).catch(function (e) { $('sec-title').textContent = 'Dienst nicht verfügbar'; msg(e.message, 'err'); });
+
+  var go = $('sec-go');
+  go.addEventListener('click', function () {
+    go.disabled = true; go.textContent = 'Wird gesendet…';
+    saveWhy().then(function () { return rpc('billing_cancel_request', { p_token: token, p_reason: whyText() }); }).then(function (r) {
+      if (r && r.card) { info.portal = r.portal; return showCard(info); }
+      if (r && r.trial) return trialInfo();
+      if (!r || !r.ok) throw new Error((r && r.message) || 'Kündigung fehlgeschlagen.');
+      info.until = r.until || info.until; info.source = 'cliente'; cancelled(info);
+    }).catch(function (e) { go.disabled = false; go.textContent = 'Kündigung bestätigen'; msg(e.message + ' Wenn es nicht klappt, schreib an info@dsfabio.com.', 'err'); });
+  });
+  $('sec-portal').addEventListener('click', function (e) {
+    if (!whyCode()) return;
+    e.preventDefault();
+    var href = this.href;
+    saveWhy().then(function () { location.href = href; });
+  });
+  var undo = $('sec-undo-go');
+  undo.addEventListener('click', function () {
+    undo.disabled = true;
+    rpc('billing_cancel_undo', { p_token: token }).then(function (r) {
+      if (r && r.card) { info.portal = r.portal; return showCard(info); }
+      if (!r || !r.ok) throw new Error((r && r.message) || 'Fehlgeschlagen.');
+      hideAll(); $('sec-title').textContent = 'Kündigung zurückgenommen';
+      msg('👍 Super, die Kündigung ist zurückgenommen: Die Speisekarte von ' + info.business + ' läuft weiter wie bisher. Vor dem Ablauf schicken wir dir die Erinnerung zur Verlängerung.', 'ok');
+    }).catch(function (e) { undo.disabled = false; msg(e.message, 'err'); });
+  });
+})();
+</script>
+</body>
+</html>

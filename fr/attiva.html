@@ -1117,7 +1117,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: withLang($('f-notes').value.trim()) || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
+                  notes: withLang($('f-notes').value.trim()) || null, lang: (document.documentElement.lang || 'it').slice(0, 2), theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
@@ -1327,7 +1327,7 @@
                   done('✉', 'Vérifiez vos e-mails',
                     result.already
                       ? 'Nous avons déjà une demande ouverte pour ' + data.email + ' : confirmez-la depuis le lien que nous vous avons envoyé, ou attendez que nous vous contactions.'
-                      : 'Nous avons envoyé un e-mail à ' + data.email + '. Cliquez sur le bouton "Conferma la richiesta" pour finaliser : nous vous contacterons ensuite pour préparer votre menu.',
+                      : 'Nous avons envoyé un e-mail à ' + data.email + '. Cliquez sur le bouton "Confirmer la demande" pour finaliser : nous vous contacterons ensuite pour préparer votre menu.',
                     (lost ? '⚠️ Nous n’avons pas pu recevoir les fichiers du menu : répondez à l’e-mail de confirmation en les joignant. ' : '')
                       + 'Vous ne le trouvez pas ? Vérifiez aussi le dossier spam ou promotions. Le lien est valable 48 heures.');
                 }).catch(function (err) {

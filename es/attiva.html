@@ -1117,7 +1117,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: withLang($('f-notes').value.trim()) || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
+                  notes: withLang($('f-notes').value.trim()) || null, lang: (document.documentElement.lang || 'it').slice(0, 2), theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
@@ -1327,7 +1327,7 @@
                   done('✉', 'Revisa tu email',
                     result.already
                       ? 'Ya tenemos una solicitud abierta para ' + data.email + ': confírmala desde el enlace que te enviamos, o espera a que te contactemos.'
-                      : 'Te hemos enviado un email a ' + data.email + '. Pulsa el botón "Conferma la richiesta" para completarla: luego te contactamos para preparar tu menú.',
+                      : 'Te hemos enviado un email a ' + data.email + '. Pulsa el botón "Confirmar la solicitud" para completarla: luego te contactamos para preparar tu menú.',
                     (lost ? '⚠️ No hemos podido recibir los archivos del menú: responde al email de confirmación adjuntándolos. ' : '')
                       + '¿No lo encuentras? Revisa también la carpeta de spam o promociones. El enlace vale 48 horas.');
                 }).catch(function (err) {

@@ -147,7 +147,99 @@
   <url><loc>https://dsfabio.com/privacy</loc><priority>0.2</priority>
   </url>
   <url><loc>https://dsfabio.com/attiva</loc><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+  </url>
+  <url><loc>https://dsfabio.com/en/attiva</loc><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+  </url>
+  <url><loc>https://dsfabio.com/es/attiva</loc><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+  </url>
+  <url><loc>https://dsfabio.com/pt/attiva</loc><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+  </url>
+  <url><loc>https://dsfabio.com/de/attiva</loc><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+  </url>
+  <url><loc>https://dsfabio.com/fr/attiva</loc><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/assistenza</loc><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+  </url>
+  <url><loc>https://dsfabio.com/en/assistenza</loc><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+  </url>
+  <url><loc>https://dsfabio.com/es/assistenza</loc><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+  </url>
+  <url><loc>https://dsfabio.com/pt/assistenza</loc><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+  </url>
+  <url><loc>https://dsfabio.com/de/assistenza</loc><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+  </url>
+  <url><loc>https://dsfabio.com/fr/assistenza</loc><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
   </url>
 </urlset>

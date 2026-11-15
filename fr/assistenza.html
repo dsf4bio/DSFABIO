@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assistance menu · DS Service</title>
+  <meta name="description" content="Mettez à jour votre menu digital : ajouter, modifier ou retirer des plats, ou mettre à jour les prix. Il vous faut seulement votre code client.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#fbf8f4">
+  <link rel="canonical" href="https://dsfabio.com/fr/assistenza">
+<link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza">
+<link rel="alternate" hreflang="en" href="https://dsfabio.com/en/assistenza">
+<link rel="alternate" hreflang="es" href="https://dsfabio.com/es/assistenza">
+<link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza">
+<link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza">
+<link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza">
+<link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza">
+  <link rel="stylesheet" href="/assets/fonts/syne-manrope.css">
+  <style>
+    /* =================================================================
+       Pagina Assistenza – DS Service · stesso stile chiaro della pagina Attiva
+       Tutti gli stili valgono solo dentro .dsf-page: non toccano altro.
+       ================================================================= */
+    html { -webkit-text-size-adjust: 100%; }
+    body.dsf-body { margin: 0; background: #fbf8f4; }
+    .dsf-page {
+      --bg: #fbf8f4; --card: #ffffff; --text: #1d1630; --muted: #6b6480; --line: #ece6f2;
+      --violet: #6d4aff; --pink: #ff3cac; --cyan: #06b6d4; --ok: #16a34a; --err: #dc2626;
+      --grad: linear-gradient(120deg, #ff3cac, #7b5cff 55%, #22d3ee);
+      --btn: linear-gradient(120deg, #7b5cff, #b44cff 60%, #ff3cac);
+      min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow-x: clip;
+      color: var(--text); font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.55;
+      background: var(--bg);
+    }
+    .dsf-page::before, .dsf-page::after { content: ''; position: absolute; z-index: 0; border-radius: 50%; filter: blur(70px); opacity: .45; pointer-events: none; animation: dsf-float 22s ease-in-out infinite alternate; }
+    .dsf-page::before { width: 520px; height: 520px; top: -180px; left: -160px; background: #ffd0ec; }
+    .dsf-page::after { width: 560px; height: 560px; top: 120px; right: -220px; background: #cfe9ff; animation-delay: -9s; }
+    @keyframes dsf-float { to { transform: translate(40px, 60px) scale(1.08); } }
+    .dsf-page > * { position: relative; z-index: 1; }
+    .dsf-page *, .dsf-page *::before, .dsf-page *::after { box-sizing: border-box; }
+    .dsf-page a { color: inherit; text-decoration: none; }
+    .dsf-page .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    .dsf-page h1 { font-family: 'Syne', 'Manrope', sans-serif; letter-spacing: -0.02em; }
+    .dsf-page h2, .dsf-page h3, .dsf-page h4 { font-family: 'Manrope', sans-serif; font-weight: 800; letter-spacing: -0.01em; }
+
+    /* intestazione */
+    .dsf-page .top { position: sticky; top: 0; z-index: 20; background: rgba(251, 248, 244, .85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .dsf-page .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+    .dsf-page .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.02em; }
+    .dsf-page .logo span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .dsf-page .nav { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; color: var(--muted); }
+    .dsf-page .nav a:hover { color: var(--text); }
+    .dsf-page .nav .is-active { color: var(--violet); }
+    .dsf-page .cta { padding: 9px 16px; border-radius: 999px; background: var(--btn); color: #fff !important; font-weight: 700; white-space: nowrap; }
+    .dsf-page .menu-btn { display: none; background: #fff; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 7px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+    /* testata */
+    .dsf-page .hero { text-align: center; padding: 44px 0 26px; }
+    .dsf-page .badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line);
+      box-shadow: 0 4px 16px rgba(109, 74, 255, .08); font-size: 13px; font-weight: 700; color: var(--violet); margin-bottom: 16px; }
+    .dsf-page h1 { margin: 0 0 12px; font-size: clamp(27px, 5vw, 46px); line-height: 1.08; font-weight: 800; }
+    .dsf-page h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .dsf-page .hero p { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: 17px; }
+
+    /* contenuto */
+    .dsf-page main { flex: 1; padding-bottom: 56px; }
+    .dsf-page .grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
+    .dsf-page .card { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 30px; box-shadow: 0 24px 60px -24px rgba(60, 30, 120, .22); }
+    .dsf-page .side { display: grid; gap: 18px; position: sticky; top: 84px; }
+    .dsf-page .side .card { padding: 24px; font-size: 14px; }
+    .dsf-page .side h2 { margin: 0 0 10px; font-size: 16px; }
+    .dsf-page .side p { margin: 0 0 10px; color: var(--muted); }
+    .dsf-page .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; color: var(--muted); }
+    .dsf-page .steps li { counter-increment: s; display: flex; gap: 10px; }
+    .dsf-page .steps li::before { content: counter(s); flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; color: #fff; background: linear-gradient(135deg, #7b5cff, #ff3cac); }
+    .dsf-page .contact { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); margin-top: 8px; font-weight: 600; background: #fff; }
+    .dsf-page .contact:hover { border-color: var(--violet); }
+
+    /* footer */
+    .dsf-page footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); background: rgba(255, 255, 255, .5); }
+    .dsf-page footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+    .dsf-page footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+    .dsf-page footer a:hover { color: var(--text); }
+
+    /* modulo: stessi campi e pulsanti della pagina Attiva */
+    .dsf-page #dsf-assistenza { --dsf-accent: #6d4aff; --dsf-accent-text: #fff; --dsf-field-bg: #f8f6fc; --dsf-border: #e3dcef; --dsf-error: #dc2626; --dsf-ok: #16a34a; max-width: none; }
+    .dsf-page #dsf-assistenza .dsf-label, .dsf-page #dsf-assistenza legend.dsf-label { font-weight: 700; font-size: .92em; }
+    .dsf-page #dsf-assistenza .dsf-hint { color: var(--muted); opacity: 1; }
+    .dsf-page #dsf-assistenza .dsf-input, .dsf-page #dsf-assistenza .dsf-textarea { padding: 13px 14px; font-size: 16px; color: var(--text); border-width: 1.5px; border-radius: 12px; transition: border-color .15s, box-shadow .15s, background .15s; }
+    .dsf-page #dsf-assistenza .dsf-input::placeholder, .dsf-page #dsf-assistenza .dsf-textarea::placeholder { color: #a79fbb; }
+    .dsf-page #dsf-assistenza .dsf-input:focus, .dsf-page #dsf-assistenza .dsf-textarea:focus { background: #fff; box-shadow: 0 0 0 4px rgba(109, 74, 255, .14); }
+    .dsf-page #dsf-assistenza .dsf-choice { border-width: 1.5px; border-radius: 14px; background: #fff; font-weight: 600; transition: border-color .15s, background .15s; }
+    .dsf-page #dsf-assistenza .dsf-choice:hover { border-color: #c9b8ff; }
+    .dsf-page #dsf-assistenza .dsf-choice.is-on { background: #f6f2ff; }
+    .dsf-page #dsf-assistenza .dsf-drop { border: 2px dashed #d9cdf3; border-radius: 18px; background: linear-gradient(135deg, #faf7ff, #fff5fb); padding: 22px; }
+    .dsf-page #dsf-assistenza .dsf-drop strong { font-weight: 800; color: var(--violet); }
+    .dsf-page #dsf-assistenza .dsf-file { background: #fff; border-radius: 12px; }
+    .dsf-page #dsf-assistenza .dsf-btn { min-height: 56px; border-radius: 16px; background: var(--btn); background-size: 160% 100%; color: #fff; font-weight: 800;
+      box-shadow: 0 14px 30px -12px rgba(123, 92, 255, .75); transition: transform .12s, background-position .4s, box-shadow .2s; }
+    .dsf-page #dsf-assistenza .dsf-btn:hover { background-position: 100% 0; box-shadow: 0 18px 34px -12px rgba(255, 60, 172, .6); }
+    .dsf-page #dsf-assistenza .dsf-btn:active { transform: scale(.98); }
+    .dsf-page #dsf-assistenza .dsf-btn-sm { min-height: 50px; border-radius: 14px; }
+    .dsf-page #dsf-assistenza .dsf-btn-ghost { background: #fff; color: var(--text); border: 1.5px solid var(--dsf-border); box-shadow: none; min-height: 44px; border-radius: 12px; font-weight: 700; }
+    .dsf-page #dsf-assistenza .dsf-btn-ghost:hover { border-color: var(--violet); box-shadow: none; }
+    .dsf-page #dsf-assistenza .dsf-sec { border-radius: 16px; background: #fff; }
+    .dsf-page #dsf-assistenza .dsf-sec > h4 { background: #f8f6fc; }
+    .dsf-page #dsf-assistenza .dsf-summary { border-color: #c9b8ff; background: #f6f2ff; border-radius: 14px; }
+    .dsf-page #dsf-assistenza .dsf-edit { background: #faf8fd; border-radius: 14px; }
+    .dsf-page #dsf-assistenza .dsf-error { background: #fef2f2; border-color: #fecaca; color: #991b1b; border-radius: 12px; }
+    .dsf-page #dsf-assistenza .dsf-success-icon { background: #dcfce7; }
+
+    /* selettore della lingua (come nel resto del sito) */
+    .dsf-page .top .nav { margin-left: auto; }
+    .dsf-page .lang { position: relative; flex: 0 0 auto; margin-left: 14px; }
+    .dsf-page .lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-weight: 800; font-size: 13px; color: var(--text); user-select: none; }
+    .dsf-page .lang summary::-webkit-details-marker { display: none; }
+    .dsf-page .lang[open] summary { border-color: var(--violet); }
+    .dsf-page .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; min-width: 170px; display: grid; padding: 6px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(60, 30, 120, .18); }
+    .dsf-page .lang-list a { padding: 10px 12px; border-radius: 10px; color: var(--muted); font-weight: 700; font-size: 14px; }
+    .dsf-page .lang-list a:hover { background: #f3eefc; color: var(--text); }
+    .dsf-page .lang-list a[aria-current] { color: var(--violet); background: #f3eefc; }
+
+    @media (max-width: 960px) {
+      .dsf-page .lang { order: 2; margin-left: auto; margin-right: 8px; }
+      .dsf-page .menu-btn { order: 3; }
+      .dsf-page .grid { grid-template-columns: minmax(0, 1fr); }
+      .dsf-page .side { position: static; }
+      .dsf-page .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 20px 16px; background: #fff; border-bottom: 1px solid var(--line); }
+      .dsf-page .nav.open { display: flex; }
+      .dsf-page .nav a { padding: 10px 0; width: 100%; }
+      .dsf-page .nav .cta { margin-top: 8px; text-align: center; }
+      .dsf-page .menu-btn { display: block; }
+    }
+    @media (max-width: 560px) {
+      .dsf-page .card { padding: 22px 16px; border-radius: 22px; }
+      .dsf-page .hero { padding: 30px 0 18px; }
+      .dsf-page .hero p { font-size: 15.5px; }
+      .dsf-page .wrap { padding: 0 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .dsf-page::before, .dsf-page::after { animation: none; } }
+  </style>
+</head>
+<body class="dsf-body">
+<div class="dsf-page">
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="https://dsfabio.com/fr">DS <span>Service</span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="dsf-nav">Menu</button>
+      <nav class="nav" id="dsf-nav" aria-label="Navigation">
+        <a href="/fr#come-funziona">Comment ça marche</a>
+        <a href="https://dsfabio.com/fr/modelli">Modèles</a>
+        <a href="/fr#offerta">Offre</a>
+        <a href="https://dsfabio.com/fr/about">Qui suis-je</a>
+        <a href="/fr#faq">FAQ</a>
+        <a class="is-active" href="https://dsfabio.com/fr/assistenza" aria-current="page">Assistance</a>
+        <a class="cta" href="https://dsfabio.com/fr/attiva">Essai gratuit 30 jours</a>
+      </nav>
+      <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> FR</summary><div class="lang-list"><a href="/assistenza" hreflang="it" lang="it">Italiano</a><a href="/en/assistenza" hreflang="en" lang="en">English</a><a href="/es/assistenza" hreflang="es" lang="es">Español</a><a href="/pt/assistenza" hreflang="pt" lang="pt">Português</a><a href="/de/assistenza" hreflang="de" lang="de">Deutsch</a><a href="/fr/assistenza" hreflang="fr" lang="fr" aria-current="true">Français</a></div></details>
+      </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="badge">🛠️ Assistance clients</span>
+        <h1>Mettez à jour votre <em>menu</em></h1>
+        <p>Dites-nous quoi changer : plats, descriptions ou prix. Jusqu’à 10 modifications par mois sont incluses.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="grid">
+        <section class="card" aria-label="Formulaire de demande">
+          <div id="dsf-assistenza">
+            <style>
+              #dsf-assistenza {
+                /* ---- colori: cambiali qui per uniformarli al sito ---- */
+                --dsf-accent: #7c5cff;        /* pulsanti, bordi attivi */
+                --dsf-accent-text: #ffffff;   /* testo sui pulsanti */
+                --dsf-field-bg: rgba(127, 127, 127, 0.08);
+                --dsf-border: rgba(127, 127, 127, 0.35);
+                --dsf-error: #e5484d;
+                --dsf-ok: #2fb66d;
+                /* ----------------------------------------------------- */
+                font: inherit;
+                color: inherit;
+                max-width: 640px;
+                margin: 0 auto;
+                box-sizing: border-box;
+                text-align: left;
+              }
+              #dsf-assistenza *, #dsf-assistenza *::before, #dsf-assistenza *::after { box-sizing: border-box; }
+              /* le etichette del modulo non prendono i colori/stili generici del sito */
+              #dsf-assistenza label, #dsf-assistenza legend, #dsf-assistenza .dsf-label, #dsf-assistenza .dsf-choice,
+              #dsf-assistenza .dsf-drop, #dsf-assistenza .dsf-consent, #dsf-assistenza .dsf-file {
+                color: inherit; text-transform: none; letter-spacing: normal;
+              }
+              #dsf-assistenza ul, #dsf-assistenza li { list-style: none; }
+              #dsf-assistenza .dsf-field { margin: 0 0 18px; }
+              #dsf-assistenza .dsf-label { display: block; font-weight: 600; margin: 0 0 6px; font-size: 0.95em; }
+              #dsf-assistenza .dsf-hint { font-size: 0.82em; opacity: 0.7; margin-top: 4px; }
+              #dsf-assistenza .dsf-privacy-note { margin: -6px 0 16px; }
+              #dsf-assistenza .dsf-input,
+              #dsf-assistenza .dsf-textarea {
+                display: block; width: 100%; margin: 0; padding: 12px 14px;
+                font: inherit; color: inherit; background: var(--dsf-field-bg);
+                border: 1px solid var(--dsf-border); border-radius: 10px; outline: none;
+                -webkit-appearance: none; appearance: none;
+              }
+              #dsf-assistenza .dsf-textarea { min-height: 120px; resize: vertical; }
+              #dsf-assistenza .dsf-input:focus,
+              #dsf-assistenza .dsf-textarea:focus { border-color: var(--dsf-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--dsf-accent) 25%, transparent); }
+              #dsf-assistenza .dsf-code { max-width: 260px; font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: 700; font-size: 1.15em; letter-spacing: 0.12em; text-transform: uppercase; }
+              #dsf-assistenza .dsf-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border: 0; padding: 0; margin: 0; }
+              #dsf-assistenza .dsf-choice {
+                display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 14px; margin: 0;
+                border: 1px solid var(--dsf-border); border-radius: 10px; cursor: pointer; background: var(--dsf-field-bg);
+                font-weight: 500;
+              }
+              #dsf-assistenza .dsf-choice input { width: 18px; height: 18px; margin: 0; accent-color: var(--dsf-accent); flex: none; }
+              #dsf-assistenza .dsf-choice.is-on { border-color: var(--dsf-accent); box-shadow: inset 0 0 0 1px var(--dsf-accent); }
+              #dsf-assistenza .dsf-drop {
+                display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 18px; text-align: center;
+                border: 1.5px dashed var(--dsf-border); border-radius: 12px; cursor: pointer; background: var(--dsf-field-bg);
+              }
+              #dsf-assistenza .dsf-drop:hover, #dsf-assistenza .dsf-drop.is-over { border-color: var(--dsf-accent); }
+              #dsf-assistenza .dsf-drop strong { font-weight: 600; }
+              #dsf-assistenza .dsf-drop span { font-size: 0.82em; opacity: 0.7; }
+              #dsf-assistenza .dsf-hidden-input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
+              #dsf-assistenza .dsf-files { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+              #dsf-assistenza .dsf-file { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--dsf-border); border-radius: 8px; font-size: 0.9em; }
+              #dsf-assistenza .dsf-file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+              #dsf-assistenza .dsf-file button { background: none; border: 0; color: inherit; font-size: 1.3em; line-height: 1; cursor: pointer; padding: 0 4px; opacity: 0.7; }
+              #dsf-assistenza .dsf-consent { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 20px; cursor: pointer; font-size: 0.92em; }
+              #dsf-assistenza .dsf-consent input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--dsf-accent); flex: none; }
+              #dsf-assistenza .dsf-btn {
+                display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px;
+                padding: 0 20px; border: 0; border-radius: 12px; cursor: pointer;
+                background: var(--dsf-accent); color: var(--dsf-accent-text); font: inherit; font-weight: 700; font-size: 1.05em;
+              }
+              #dsf-assistenza .dsf-btn:disabled { opacity: 0.6; cursor: wait; }
+              #dsf-assistenza .dsf-btn-ghost { background: transparent; color: inherit; border: 1px solid var(--dsf-border); width: auto; min-height: 44px; font-size: 1em; }
+              #dsf-assistenza .dsf-spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: dsf-spin .7s linear infinite; }
+              @keyframes dsf-spin { to { transform: rotate(360deg); } }
+              #dsf-assistenza .dsf-error { background: color-mix(in srgb, var(--dsf-error) 14%, transparent); border: 1px solid color-mix(in srgb, var(--dsf-error) 45%, transparent); border-radius: 10px; padding: 12px 14px; margin: 0 0 18px; }
+              #dsf-assistenza .dsf-success { text-align: center; padding: 32px 12px; }
+              #dsf-assistenza .dsf-success-icon { width: 60px; height: 60px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 30px; font-weight: 700; color: var(--dsf-ok); background: color-mix(in srgb, var(--dsf-ok) 15%, transparent); }
+              #dsf-assistenza .dsf-success h3 { margin: 0 0 8px; font-size: 1.3em; }
+              #dsf-assistenza .dsf-success p { margin: 0 0 20px; opacity: 0.85; }
+              #dsf-assistenza .dsf-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+              #dsf-assistenza [hidden] { display: none !important; }
+              #dsf-assistenza .dsf-consent a { color: var(--dsf-accent); }
+              @media (max-width: 560px) { #dsf-assistenza .dsf-choices { grid-template-columns: 1fr; } }
+              /* ---- menu del cliente (modifica guidata) ---- */
+              #dsf-assistenza .dsf-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+              #dsf-assistenza .dsf-row .dsf-code { flex: 1 1 200px; }
+              #dsf-assistenza .dsf-btn-sm { width: auto; min-height: 48px; padding: 0 22px; font-size: 1em; }
+              #dsf-assistenza .dsf-menu-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin: 6px 0 12px; }
+              #dsf-assistenza .dsf-menu-head h3 { margin: 0; font-size: 1.15em; }
+              #dsf-assistenza .dsf-sec { border: 1px solid var(--dsf-border); border-radius: 12px; margin: 0 0 12px; overflow: hidden; }
+              #dsf-assistenza .dsf-sec > h4 { margin: 0; padding: 10px 14px; font-size: 1em; background: var(--dsf-field-bg); border-bottom: 1px solid var(--dsf-border); }
+              #dsf-assistenza .dsf-item { padding: 10px 14px; border-bottom: 1px solid var(--dsf-border); }
+              #dsf-assistenza .dsf-item:last-of-type { border-bottom: 0; }
+              #dsf-assistenza .dsf-item-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+              #dsf-assistenza .dsf-item-name { flex: 1 1 160px; min-width: 0; font-weight: 600; }
+              #dsf-assistenza .dsf-item-desc { font-size: 0.85em; opacity: 0.7; margin-top: 2px; }
+              #dsf-assistenza .dsf-price { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+              #dsf-assistenza .dsf-old { text-decoration: line-through; opacity: 0.55; font-weight: 400; margin-right: 6px; }
+              #dsf-assistenza .dsf-link { background: none; border: 0; padding: 6px 8px; color: var(--dsf-accent); font: inherit; font-size: 0.88em; font-weight: 600; cursor: pointer; border-radius: 8px; }
+              #dsf-assistenza .dsf-link:hover { background: var(--dsf-field-bg); }
+              #dsf-assistenza .dsf-tag { display: inline-block; font-size: 0.72em; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--dsf-accent) 22%, transparent); }
+              #dsf-assistenza .dsf-item.is-removed .dsf-item-name, #dsf-assistenza .dsf-item.is-removed .dsf-price { text-decoration: line-through; opacity: 0.5; }
+              #dsf-assistenza .dsf-item.is-changed { background: color-mix(in srgb, var(--dsf-accent) 8%, transparent); }
+              #dsf-assistenza .dsf-edit { margin-top: 10px; padding: 12px; border-radius: 10px; background: var(--dsf-field-bg); border: 1px solid var(--dsf-border); }
+              #dsf-assistenza .dsf-edit .dsf-field { margin-bottom: 12px; }
+              #dsf-assistenza .dsf-grid2 { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 10px; }
+              #dsf-assistenza .dsf-al { display: flex; flex-wrap: wrap; gap: 6px; }
+              #dsf-assistenza .dsf-al label { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--dsf-border); border-radius: 999px; font-size: 0.85em; cursor: pointer; }
+              #dsf-assistenza .dsf-al input { width: 16px; height: 16px; margin: 0; accent-color: var(--dsf-accent); }
+              #dsf-assistenza .dsf-al label:has(input:checked) { border-color: var(--dsf-accent); box-shadow: inset 0 0 0 1px var(--dsf-accent); }
+              #dsf-assistenza .dsf-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+              #dsf-assistenza .dsf-price-input { width: 96px; padding: 8px 10px; text-align: right; }
+              #dsf-assistenza .dsf-add { display: block; width: 100%; text-align: left; padding: 10px 14px; border-top: 1px dashed var(--dsf-border); border-radius: 0; }
+              #dsf-assistenza .dsf-summary { border: 1px solid var(--dsf-accent); border-radius: 12px; padding: 12px 14px; margin: 0 0 18px; }
+              #dsf-assistenza .dsf-summary h4 { margin: 0 0 8px; font-size: 1em; }
+              #dsf-assistenza .dsf-summary li { display: flex; gap: 8px; align-items: center; justify-content: space-between; padding: 4px 0; font-size: 0.9em; }
+              #dsf-assistenza .dsf-invalid { border-color: var(--dsf-error) !important; }
+              #dsf-assistenza .dsf-flags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+              #dsf-assistenza .dsf-flag { --fc: #6b7280; border: 1px solid color-mix(in srgb, var(--fc) 55%, transparent); background: transparent; color: inherit; font: inherit; font-size: 0.76em; font-weight: 600; padding: 4px 9px; border-radius: 999px; cursor: pointer; opacity: 0.7; }
+              #dsf-assistenza .dsf-flag:hover { opacity: 1; }
+              #dsf-assistenza .dsf-flag.is-on { background: var(--fc); border-color: var(--fc); color: #fff; opacity: 1; }
+              @media (max-width: 560px) { #dsf-assistenza .dsf-grid2 { grid-template-columns: 1fr; } }
+            </style>
+
+            <form id="dsf-form" novalidate>
+              <div id="dsf-error" role="alert"></div>
+
+              <div class="dsf-field">
+                <label class="dsf-label" for="dsf-code">Code client *</label>
+                <div class="dsf-row">
+                  <input class="dsf-input dsf-code" id="dsf-code" name="client_code" maxlength="12"
+                         autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+                  <button class="dsf-btn dsf-btn-sm" type="button" id="dsf-load">Continuer</button>
+                </div>
+                <div class="dsf-hint" id="dsf-code-hint">Vous le trouverez sur la fiche client que nous vous avons remise.</div>
+              </div>
+
+              <div id="dsf-menu-step" hidden>
+                <div class="dsf-menu-head">
+                  <h3 id="dsf-menu-title"></h3>
+                  <button class="dsf-btn dsf-btn-ghost" type="button" id="dsf-price-mode">💶 Modifier plusieurs prix à la fois</button>
+                </div>
+                <p class="dsf-summary" id="dsf-pending" hidden style="font-size:.9em">⏳ Certaines modifications déjà demandées attendent d’être publiées : vous les voyez déjà ci-dessous.</p>
+                <p class="dsf-hint" style="margin:0 0 12px">Touchez ✏️ pour modifier un plat, 🗑 pour le retirer, ＋ pour en ajouter un. Sous chaque plat, vous pouvez activer une étiquette : <strong>Épuisé</strong> (si un plat manque pendant quelques jours, c’est mieux que de le retirer), Nouveauté, En promotion… Les modifications sont publiées après notre contrôle.</p>
+                <div id="dsf-menu"></div>
+                <div class="dsf-summary" id="dsf-summary" hidden></div>
+              </div>
+
+              <div id="dsf-classic" hidden>
+              <!-- menu non ancora pubblicato: il modulo serve solo per il materiale -->
+              <div class="dsf-summary" id="dsf-prep" hidden>
+                <strong>🛠️ Le menu de <span id="dsf-prep-name"></span> est en préparation.</strong>
+                Appena è online ti mandiamo il link e il QR code. Intanto, se hai altro materiale da mandarci, come foto o PDF del tuo menu, puoi caricarlo qui sotto e premere Invia.
+                <div style="margin-top:6px;opacity:.75;font-size:.9em">Pour l’instant, le formulaire sert uniquement à envoyer du matériel supplémentaire.</div>
+              </div>
+              <fieldset class="dsf-field" id="dsf-types" style="border:0;padding:0;margin:0 0 18px">
+                <legend class="dsf-label"><span id="dsf-classic-title">Que souhaitez-vous faire ?</span> * <span style="font-weight:400;opacity:.7">(plusieurs choix possibles)</span></legend>
+                <div class="dsf-choices">
+                  <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiunta_piatto"> ➕ Ajouter un plat</label>
+                  <label class="dsf-choice"><input type="checkbox" name="request_types" value="modifica_piatto"> ✏️ Modifier un plat</label>
+                  <label class="dsf-choice"><input type="checkbox" name="request_types" value="rimozione_piatto"> 🗑️ Retirer un plat</label>
+                  <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiornamento_prezzi"> 💶 Mettre à jour les prix</label>
+                </div>
+              </fieldset>
+              </div>
+
+              <div id="dsf-rest" hidden>
+
+
+              <div class="dsf-field">
+                <label class="dsf-label" for="dsf-details" id="dsf-details-label">Notes</label>
+                <textarea class="dsf-textarea" id="dsf-details" name="details" maxlength="1000"
+                          placeholder="Écrivez tout ce qu’il faut : nom des plats, ingrédients, nouveaux prix, catégorie…"></textarea>
+                <div class="dsf-hint"><span id="dsf-count">0</span> / 1000</div>
+              </div>
+
+              <div class="dsf-field">
+                <span class="dsf-label">Photos ou PDF (facultatifs)</span>
+                <label class="dsf-drop" id="dsf-drop" for="dsf-file">
+                  <strong>Ajouter des photos ou un PDF</strong>
+                  <span>JPG, PNG, WebP ou PDF · 5 fichiers max · les photos sont allégées avant l’envoi · PDF jusqu’à 10 Mo</span>
+                </label>
+                <input class="dsf-hidden-input" id="dsf-file" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple>
+                <ul class="dsf-files" id="dsf-files"></ul>
+              </div>
+
+              <!-- campo trappola per i bot: invisibile alle persone -->
+              <div class="dsf-trap" aria-hidden="true">
+                <label for="dsf-website">Laisser vide</label>
+                <input id="dsf-website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
+              <label class="dsf-consent">
+                <input type="checkbox" id="dsf-privacy" name="privacy" required>
+                <span>J’ai lu la <a href="https://dsfabio.com/privacy#assistenza" target="_blank" rel="noopener">politique de confidentialité</a> de l’assistance clients. *</span>
+              </label>
+              <p class="dsf-hint dsf-privacy-note">Nous utilisons les données uniquement pour traiter la demande. Les photos et PDF sont supprimés 90 jours après la clôture de la demande.</p>
+
+              <button class="dsf-btn" id="dsf-submit" type="submit">Envoyer la demande</button>
+              </div>
+            </form>
+
+            <div class="dsf-success" id="dsf-success" hidden aria-live="polite">
+              <div class="dsf-success-icon" aria-hidden="true">✓</div>
+              <h3>Demande envoyée</h3>
+              <p id="dsf-success-text"></p>
+              <button class="dsf-btn dsf-btn-ghost" type="button" id="dsf-again">Envoyer une autre demande</button>
+            </div>
+
+            <script>
+            (function () {
+              // ---- collegamento al database (chiave pubblica: può stare nel sito) ----
+              var SUPABASE_URL = 'https://xzhbyxvlrxemujrqatbl.supabase.co';
+              var SUPABASE_KEY = 'sb_publishable_sfam2xLCQig0550kvfkUdg_yGaU0IA_';
+              var BUCKET = 'request-attachments';
+              var MAX_FILES = 5, MAX_PDF_MB = 10, MAX_IMAGE_MB = 15, MAX_SIDE = 1600;
+              // -------------------------------------------------------------------------
+
+              var root = document.getElementById('dsf-assistenza');
+              var $ = function (id) { return document.getElementById(id); };
+              var form = $('dsf-form'), errorBox = $('dsf-error'), submit = $('dsf-submit');
+              var codeInput = $('dsf-code'), details = $('dsf-details'), list = $('dsf-files'), drop = $('dsf-drop');
+              var files = [];
+              var headers = { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY };
+
+              function showError(msg) {
+                errorBox.textContent = '';
+                if (!msg) return;
+                var box = document.createElement('div');
+                box.className = 'dsf-error';
+                box.textContent = msg;
+                errorBox.appendChild(box);
+                errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+              function size(b) { return b >= 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+              function safeName(n) { return (n.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w.\-]+/g, '_').slice(-80)) || 'file'; }
+
+              // codice: maiuscolo, solo lettere e numeri; O→0 e I→1 (nei codici non ci sono O e I)
+              function cleanCode(v) {
+                return String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/O/g, '0').replace(/I/g, '1').slice(0, 8);
+              }
+              var CODE_PATTERN = /^[A-Z0-9]{8}$/;
+              codeInput.addEventListener('input', function () {
+                var p = codeInput.selectionStart;
+                codeInput.value = cleanCode(codeInput.value);
+                try { codeInput.setSelectionRange(p, p); } catch (e) {}
+              });
+              // sicurezza: il codice cliente si scrive SEMPRE a mano. Un eventuale ?codice=… nei vecchi
+              // link viene ignorato e tolto dall'indirizzo (non resta nella cronologia del browser).
+              try {
+                var qs = new URLSearchParams(location.search);
+                if (qs.has('codice') || qs.has('code')) {
+                  qs.delete('codice'); qs.delete('code');
+                  history.replaceState(null, '', location.pathname + (qs.toString() ? '?' + qs : '') + location.hash);
+                }
+              } catch (e) {}
+              details.addEventListener('input', function () { $('dsf-count').textContent = details.value.length; });
+              root.querySelectorAll('.dsf-choice input').forEach(function (cb) {
+                cb.addEventListener('change', function () { cb.parentNode.classList.toggle('is-on', cb.checked); });
+              });
+
+              // ---- allegati ----
+              function renderFiles() {
+                list.textContent = '';
+                files.forEach(function (item, i) {
+                  var li = document.createElement('li'); li.className = 'dsf-file';
+                  var name = document.createElement('span'); name.className = 'dsf-file-name';
+                  name.textContent = (item.file.type === 'application/pdf' ? '📄 ' : '🖼️ ') + item.file.name;
+                  var info = document.createElement('span'); info.style.opacity = '.7';
+                  info.textContent = item.working ? 'préparation…' : size(item.file.size);
+                  var rm = document.createElement('button'); rm.type = 'button'; rm.textContent = '×';
+                  rm.setAttribute('aria-label', 'Retirer ' + item.file.name);
+                  rm.onclick = function () { files.splice(i, 1); renderFiles(); };
+                  li.append(name, info, rm); list.appendChild(li);
+                });
+                drop.hidden = files.length >= MAX_FILES;
+              }
+
+              function prepare(file) {
+                var isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
+                var isImg = ['image/jpeg', 'image/png', 'image/webp'].indexOf(file.type) >= 0;
+                if (!isPdf && !isImg) return Promise.reject(new Error('"' + file.name + '" : format non accepté. Utilisez JPG, PNG, WebP ou PDF.'));
+                if (isPdf) {
+                  if (file.size > MAX_PDF_MB * 1048576) return Promise.reject(new Error('"' + file.name + '" dépasse ' + MAX_PDF_MB + ' MB.'));
+                  return Promise.resolve(file.type ? file : new File([file], file.name, { type: 'application/pdf' }));
+                }
+                if (file.size > MAX_IMAGE_MB * 1048576) return Promise.reject(new Error('"' + file.name + '" dépasse ' + MAX_IMAGE_MB + ' MB.'));
+                return createImageBitmap(file, { imageOrientation: 'from-image' }).then(function (bmp) {
+                  var scale = Math.min(1, MAX_SIDE / Math.max(bmp.width, bmp.height));
+                  if (scale === 1 && file.size < 819200) { if (bmp.close) bmp.close(); return file; }
+                  var c = document.createElement('canvas');
+                  c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+                  var ctx = c.getContext('2d'), png = file.type === 'image/png';
+                  if (!png) { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); }
+                  ctx.drawImage(bmp, 0, 0, c.width, c.height);
+                  if (bmp.close) bmp.close();
+                  return new Promise(function (res) { c.toBlob(res, png ? 'image/png' : 'image/jpeg', 0.85); }).then(function (blob) {
+                    if (!blob) return file;
+                    var name = png ? file.name : file.name.replace(/\.(png|webp|jpe?g)$/i, '') + '.jpg';
+                    return new File([blob], name, { type: png ? 'image/png' : 'image/jpeg' });
+                  });
+                }, function () { throw new Error('"' + file.name + '" : image illisible. Essayez de l’enregistrer en JPG.'); });
+              }
+
+              function addFiles(chosen) {
+                showError('');
+                Array.prototype.forEach.call(chosen, function (original) {
+                  if (files.length >= MAX_FILES) { showError('Vous pouvez joindre au maximum ' + MAX_FILES + ' fichiers.'); return; }
+                  var item = { file: original, working: true };
+                  files.push(item); renderFiles();
+                  prepare(original).then(function (f) { item.file = f; item.working = false; renderFiles(); },
+                    function (err) { files = files.filter(function (x) { return x !== item; }); renderFiles(); showError(err.message); });
+                });
+              }
+              $('dsf-file').addEventListener('change', function (e) { addFiles(e.target.files); e.target.value = ''; });
+              drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('is-over'); });
+              drop.addEventListener('dragleave', function () { drop.classList.remove('is-over'); });
+              drop.addEventListener('drop', function (e) { e.preventDefault(); drop.classList.remove('is-over'); addFiles(e.dataTransfer.files); });
+
+              // ---- chiamate al database ----
+              function rpc(name, body) {
+                return fetch(SUPABASE_URL + '/rest/v1/rpc/' + name, {
+                  method: 'POST',
+                  headers: Object.assign({ 'Content-Type': 'application/json' }, headers),
+                  body: JSON.stringify(body),
+                }).then(function (r) {
+                  return r.json().catch(function () { return null; }).then(function (data) {
+                    if (!r.ok) { var e = new Error((data && data.message) || ('HTTP ' + r.status)); e.status = r.status; throw e; }
+                    return data;
+                  });
+                });
+              }
+              function upload(path, file) {
+                return fetch(SUPABASE_URL + '/storage/v1/object/' + BUCKET + '/' + path.split('/').map(encodeURIComponent).join('/'), {
+                  method: 'POST',
+                  headers: Object.assign({ 'Content-Type': file.type || 'application/octet-stream', 'x-upsert': 'false' }, headers),
+                  body: file,
+                }).then(function (r) { return r.ok; }, function () { return false; });
+              }
+
+              // ---- menu del cliente: modifica guidata ----
+              var ALLERGENS = [['glutine', '🌾 Gluten'], ['crostacei', '🦐 Crustacés'], ['uova', '🥚 Œufs'], ['pesce', '🐟 Poisson'],
+                ['arachidi', '🥜 Arachides'], ['soia', '🫘 Soja'], ['latte', '🥛 Lait'], ['frutta', '🌰 Fruits à coque'],
+                ['sedano', '🥬 Céleri'], ['senape', '🟡 Moutarde'], ['sesamo', '⚪ Sésame'], ['solfiti', '🍷 Sulfites'],
+                ['lupini', '🌼 Lupin'], ['molluschi', '🐚 Mollusques']];
+              // etichette del piatto (migrazione 060 del gestionale), colorate come nel menu online
+              var FLAGS = [['esaurito', '🚫 Épuisé', '#6b7280'], ['novita', '✨ Nouveauté', '#7c3aed'], ['offerta', '🏷️ En promotion', '#16a34a'],
+                ['consigliato', '⭐ Recommandé', '#2563eb'], ['stagione', '🍂 De saison', '#ea580c']];
+              var menuBox = $('dsf-menu'), menuStep = $('dsf-menu-step'), classic = $('dsf-classic'), summaryBox = $('dsf-summary');
+              var M = null;            // menu caricato: { code, business, sections }
+              var PREP = false;        // menu non ancora pubblicato: solo materiale aggiuntivo
+              var edits = {};          // id piatto → { name, description, price, allergens }
+              var removed = {};        // id piatto → true
+              var adds = [];           // nuovi piatti: { key, section_id, name, description, price, allergens }
+              var openKey = null;      // riquadro di modifica aperto
+              var priceMode = false;   // "cambia più prezzi insieme"
+
+              function h(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+              function euro(p) { return typeof p === 'number' ? p.toFixed(2).replace('.', ',') + ' €' : '—'; }
+              function parsePrice(v) {
+                var t = String(v || '').replace('€', '').replace(/\s/g, '').replace(',', '.');
+                if (!t) return null;
+                var n = Number(t);
+                return isFinite(n) && n >= 0 && n <= 10000 ? Math.round(n * 100) / 100 : NaN;
+              }
+              function findItem(id) {
+                for (var i = 0; i < M.sections.length; i++) for (var j = 0; j < M.sections[i].items.length; j++) {
+                  if (M.sections[i].items[j].id === id) return M.sections[i].items[j];
+                }
+                return null;
+              }
+              function current(it) {
+                var e = edits[it.id] || {};
+                return {
+                  name: 'name' in e ? e.name : it.name, description: 'description' in e ? e.description : (it.description || ''),
+                  price: 'price' in e ? e.price : it.price, allergens: 'allergens' in e ? e.allergens : (it.allergens || []),
+                  flags: 'flags' in e ? e.flags : (it.flags || [])
+                };
+              }
+              function sameList(a, b) { return (a || []).slice().sort().join() === (b || []).slice().sort().join(); }
+              function cleanEdit(it) {
+                var e = edits[it.id]; if (!e) return;
+                if ('name' in e && e.name === it.name) delete e.name;
+                if ('description' in e && e.description === (it.description || '')) delete e.description;
+                if ('price' in e && e.price === it.price) delete e.price;
+                if ('allergens' in e && sameList(e.allergens, it.allergens)) delete e.allergens;
+                if ('flags' in e && sameList(e.flags, it.flags)) delete e.flags;
+                if (!Object.keys(e).length) delete edits[it.id];
+              }
+
+              function allergenPicker(selected, withNone) {
+                var box = h('div', 'dsf-al'), none = null;
+                ALLERGENS.forEach(function (a) {
+                  var l = h('label'), cb = h('input'); cb.type = 'checkbox'; cb.value = a[0];
+                  cb.checked = selected.indexOf(a[0]) >= 0;
+                  cb.addEventListener('change', function () { if (cb.checked && none) none.checked = false; });
+                  l.append(cb, document.createTextNode(a[1])); box.appendChild(l);
+                });
+                if (withNone) {
+                  var l = h('label'); none = h('input'); none.type = 'checkbox'; none.value = '';
+                  none.addEventListener('change', function () {
+                    if (none.checked) box.querySelectorAll('input[value]:not([value=""])').forEach(function (x) { x.checked = false; });
+                  });
+                  l.append(none, document.createTextNode('Aucun de ces allergènes')); box.appendChild(l);
+                }
+                box.read = function () {
+                  var v = Array.prototype.filter.call(box.querySelectorAll('input'), function (x) { return x.checked && x.value; }).map(function (x) { return x.value; });
+                  if (withNone && !v.length && !none.checked) return null; // non ha indicato nulla
+                  return v;
+                };
+                return box;
+              }
+              function field(label, input, hint) {
+                var f = h('div', 'dsf-field'), l = h('span', 'dsf-label', label); f.append(l, input);
+                if (hint) f.appendChild(h('div', 'dsf-hint', hint));
+                return f;
+              }
+              function input(value, ph, max) {
+                var i = h('input', 'dsf-input'); i.value = value == null ? '' : value; if (ph) i.placeholder = ph; if (max) i.maxLength = max; return i;
+              }
+
+              // riquadro di modifica: piatto esistente (it) oppure nuovo (add)
+              function editor(it, add, sectionId) {
+                var c = it ? current(it) : (add || { name: '', description: '', price: null, allergens: [] });
+                var box = h('div', 'dsf-edit');
+                var name = input(c.name, 'Nom du plat', 80);
+                var price = input(typeof c.price === 'number' ? String(c.price).replace('.', ',') : '', 'ex. 12,50', 10);
+                price.inputMode = 'decimal';
+                var desc = h('textarea', 'dsf-textarea'); desc.value = c.description || ''; desc.maxLength = 300; desc.style.minHeight = '64px';
+                desc.placeholder = 'Ingrédients ou description (facultatif)';
+                var al = allergenPicker(c.allergens || [], !it);
+                var grid = h('div', 'dsf-grid2'); grid.append(field('Nom *', name), field('Prix (€)', price));
+                var err = h('div', 'dsf-hint'); err.style.color = 'var(--dsf-error)';
+                var ok = h('button', 'dsf-btn dsf-btn-sm', it ? 'Confirmer la modification' : 'Ajouter au menu'); ok.type = 'button';
+                var no = h('button', 'dsf-btn dsf-btn-ghost', 'Annuler'); no.type = 'button';
+                no.onclick = function () { openKey = null; renderMenu(); };
+                ok.onclick = function () {
+                  var p = parsePrice(price.value), n = name.value.trim(), allergens = al.read();
+                  name.classList.toggle('dsf-invalid', !n); price.classList.toggle('dsf-invalid', p !== p || (!it && p === null));
+                  if (!n) { err.textContent = 'Indiquez le nom du plat.'; return; }
+                  if (p !== p) { err.textContent = 'Prix non valide : indiquez seulement le nombre, ex. 12,50.'; return; }
+                  if (!it && p === null) { err.textContent = 'Indiquez le prix du nouveau plat.'; return; }
+                  if (!it && allergens === null) { err.textContent = 'Indiquez les allergènes, ou cochez "Aucun de ces allergènes".'; return; }
+                  if (it) {
+                    var keepFlags = edits[it.id] && 'flags' in edits[it.id] ? edits[it.id].flags : undefined;
+                    edits[it.id] = { name: n, description: desc.value.trim(), price: p, allergens: allergens };
+                    if (keepFlags !== undefined) edits[it.id].flags = keepFlags;
+                    cleanEdit(it);
+                  } else if (add) {
+                    add.name = n; add.description = desc.value.trim(); add.price = p; add.allergens = allergens;
+                  } else {
+                    adds.push({ key: 'n' + Date.now(), section_id: sectionId, name: n, description: desc.value.trim(), price: p, allergens: allergens });
+                  }
+                  openKey = null; renderMenu();
+                };
+                var actions = h('div', 'dsf-actions'); actions.append(no, ok);
+                box.append(grid, field('Description', desc),
+                  field(it ? 'Allergènes' : 'Allergènes *', al, 'Indiquez tous les allergènes présents (Règl. UE 1169/2011) : la déclaration relève de votre responsabilité.'),
+                  err, actions);
+                setTimeout(function () { name.focus(); }, 30);
+                return box;
+              }
+
+              // etichette sotto il piatto: un tocco le accende o le spegne
+              function flagPicker(it, c) {
+                var box = h('div', 'dsf-flags');
+                FLAGS.forEach(function (f) {
+                  var on = (c.flags || []).indexOf(f[0]) >= 0;
+                  var b = h('button', 'dsf-flag' + (on ? ' is-on' : ''), f[1]); b.type = 'button';
+                  b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                  b.style.setProperty('--fc', f[2]);
+                  b.onclick = function () {
+                    var cur = current(it).flags.slice(), i = cur.indexOf(f[0]);
+                    if (i >= 0) cur.splice(i, 1); else {
+                      if (cur.length >= 4) return;
+                      cur.push(f[0]);
+                    }
+                    edits[it.id] = edits[it.id] || {};
+                    edits[it.id].flags = FLAGS.map(function (x) { return x[0]; }).filter(function (k) { return cur.indexOf(k) >= 0; });
+                    cleanEdit(it); renderMenu();
+                  };
+                  box.appendChild(b);
+                });
+                return box;
+              }
+              function flagNames(list) {
+                return (list || []).map(function (k) { var f = FLAGS.filter(function (x) { return x[0] === k; })[0]; return f ? f[1] : k; }).join(', ') || 'nessuna';
+              }
+
+              function renderMenu() {
+                menuBox.textContent = '';
+                M.sections.forEach(function (s) {
+                  var sec = h('div', 'dsf-sec'); sec.appendChild(h('h4', null, s.title));
+                  s.items.forEach(function (it) {
+                    var c = current(it), row = h('div', 'dsf-item'), line = h('div', 'dsf-item-line');
+                    if (removed[it.id]) row.classList.add('is-removed'); else if (edits[it.id]) row.classList.add('is-changed');
+                    var nm = h('span', 'dsf-item-name', c.name);
+                    if (edits[it.id] && !removed[it.id]) { nm.appendChild(document.createTextNode(' ')); nm.appendChild(h('span', 'dsf-tag', 'modificato')); }
+                    line.appendChild(nm);
+                    if (priceMode && !removed[it.id]) {
+                      var pi = input(typeof c.price === 'number' ? String(c.price).replace('.', ',') : '', '—', 10);
+                      pi.className = 'dsf-input dsf-price-input'; pi.inputMode = 'decimal'; pi.setAttribute('aria-label', 'Prix de ' + c.name);
+                      pi.addEventListener('change', function () {
+                        var p = parsePrice(pi.value);
+                        pi.classList.toggle('dsf-invalid', p !== p);
+                        if (p !== p) return;
+                        edits[it.id] = edits[it.id] || {}; edits[it.id].price = p; cleanEdit(it); renderSummary();
+                        row.classList.toggle('is-changed', !!edits[it.id]);
+                      });
+                      line.appendChild(pi);
+                    } else {
+                      var pr = h('span', 'dsf-price');
+                      if (edits[it.id] && 'price' in edits[it.id]) pr.appendChild(h('span', 'dsf-old', euro(it.price)));
+                      pr.appendChild(document.createTextNode(euro(c.price)));
+                      line.appendChild(pr);
+                    }
+                    if (!priceMode) {
+                      if (removed[it.id]) {
+                        var undo = h('button', 'dsf-link', 'Annuler le retrait'); undo.type = 'button';
+                        undo.onclick = function () { delete removed[it.id]; renderMenu(); };
+                        line.appendChild(undo);
+                      } else {
+                        var ed = h('button', 'dsf-link', '✏️ Modifier'); ed.type = 'button';
+                        ed.onclick = function () { openKey = it.id; renderMenu(); };
+                        var rm = h('button', 'dsf-link', '🗑 Retirer'); rm.type = 'button';
+                        rm.onclick = function () { removed[it.id] = true; delete edits[it.id]; if (openKey === it.id) openKey = null; renderMenu(); };
+                        line.append(ed, rm);
+                      }
+                    }
+                    row.appendChild(line);
+                    if (c.description) row.appendChild(h('div', 'dsf-item-desc', c.description));
+                    if (!priceMode && !removed[it.id]) row.appendChild(flagPicker(it, c));
+                    if (openKey === it.id && !priceMode) row.appendChild(editor(it));
+                    sec.appendChild(row);
+                  });
+                  adds.filter(function (a) { return a.section_id === s.id; }).forEach(function (a) {
+                    var row = h('div', 'dsf-item is-changed'), line = h('div', 'dsf-item-line');
+                    var nm = h('span', 'dsf-item-name', a.name + ' '); nm.appendChild(h('span', 'dsf-tag', 'nuovo'));
+                    var ed = h('button', 'dsf-link', '✏️ Modifier'); ed.type = 'button'; ed.onclick = function () { openKey = a.key; renderMenu(); };
+                    var rm = h('button', 'dsf-link', '🗑 Retirer'); rm.type = 'button';
+                    rm.onclick = function () { adds = adds.filter(function (x) { return x !== a; }); renderMenu(); };
+                    line.append(nm, h('span', 'dsf-price', euro(a.price)), ed, rm); row.appendChild(line);
+                    if (openKey === a.key) row.appendChild(editor(null, a));
+                    sec.appendChild(row);
+                  });
+                  if (!priceMode) {
+                    if (openKey === 'add:' + s.id) {
+                      var row = h('div', 'dsf-item'); row.appendChild(h('strong', null, 'Nouveau plat dans ' + s.title));
+                      row.appendChild(editor(null, null, s.id)); sec.appendChild(row);
+                    } else {
+                      var add = h('button', 'dsf-link dsf-add', '＋ Ajouter un plat dans ' + s.title); add.type = 'button';
+                      add.onclick = function () { openKey = 'add:' + s.id; renderMenu(); };
+                      sec.appendChild(add);
+                    }
+                  }
+                  menuBox.appendChild(sec);
+                });
+                renderSummary();
+              }
+
+              function buildOps() {
+                var ops = [];
+                Object.keys(edits).forEach(function (id) {
+                  if (removed[id] || !findItem(id)) return;
+                  var e = edits[id], op = { op: 'update', item_id: id };
+                  ['name', 'description', 'price', 'allergens', 'flags'].forEach(function (k) { if (k in e) op[k] = e[k]; });
+                  ops.push(op);
+                });
+                Object.keys(removed).forEach(function (id) { ops.push({ op: 'remove', item_id: id }); });
+                adds.forEach(function (a) {
+                  ops.push({ op: 'add', section_id: a.section_id, name: a.name, description: a.description, price: a.price, allergens: a.allergens });
+                });
+                return ops;
+              }
+
+              function renderSummary() {
+                var lines = [];
+                Object.keys(edits).forEach(function (id) {
+                  var it = findItem(id); if (!it || removed[id]) return;
+                  var e = edits[id], parts = [];
+                  if ('name' in e) parts.push('nom → ' + e.name);
+                  if ('price' in e) parts.push(euro(it.price) + ' → ' + euro(e.price));
+                  if ('description' in e) parts.push('description');
+                  if ('allergens' in e) parts.push('allergènes');
+                  if ('flags' in e) parts.push('étiquettes → ' + flagNames(e.flags));
+                  lines.push(['✏️ ' + it.name + ': ' + parts.join(' · '), function () { delete edits[id]; renderMenu(); }]);
+                });
+                Object.keys(removed).forEach(function (id) {
+                  var it = findItem(id); if (it) lines.push(['🗑 Retirer ' + it.name, function () { delete removed[id]; renderMenu(); }]);
+                });
+                adds.forEach(function (a) {
+                  lines.push(['➕ Nouveau : ' + a.name + ' ' + euro(a.price), function () { adds = adds.filter(function (x) { return x !== a; }); renderMenu(); }]);
+                });
+                summaryBox.textContent = '';
+                summaryBox.hidden = !lines.length;
+                if (!lines.length) return;
+                summaryBox.appendChild(h('h4', null, 'Vos modifications (' + lines.length + ')'));
+                var ul = h('ul'); ul.style.margin = '0'; ul.style.padding = '0';
+                lines.forEach(function (l) {
+                  var li = h('li'), b = h('button', 'dsf-link', 'Annuler'); b.type = 'button'; b.onclick = l[1];
+                  li.append(h('span', null, l[0]), b); ul.appendChild(li);
+                });
+                summaryBox.appendChild(ul);
+              }
+
+              $('dsf-price-mode').addEventListener('click', function () {
+                priceMode = !priceMode; openKey = null;
+                this.textContent = priceMode ? '✓ Prix terminés' : '💶 Modifier plusieurs prix à la fois';
+                renderMenu();
+              });
+
+              function resetMenu() {
+                M = null; edits = {}; removed = {}; adds = []; openKey = null; priceMode = false;
+                PREP = false; $('dsf-prep').hidden = true; $('dsf-types').hidden = false;
+                menuStep.hidden = true; classic.hidden = true; $('dsf-rest').hidden = true;
+                $('dsf-price-mode').textContent = '💶 Modifier plusieurs prix à la fois';
+              }
+              function loadMenu() {
+                showError('');
+                var code = codeInput.value.trim();
+                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Code client non valide : vérifiez la fiche client que nous vous avons remise.'); }
+                var btn = $('dsf-load'); btn.disabled = true; btn.innerHTML = '<span class="dsf-spin"></span>';
+                rpc('menu_request_load', { p_code: code }).then(function (r) {
+                  resetMenu();
+                  if (!r || !r.ok) return showError((r && r.message) || 'Code non valide.');
+                  $('dsf-rest').hidden = false;
+                  if (r.has_menu) {
+                    M = r; menuStep.hidden = false;
+                    $('dsf-menu-title').textContent = 'Le menu de ' + r.business;
+                    $('dsf-pending').hidden = !r.pending;
+                    $('dsf-details-label').textContent = 'Autre chose à nous demander (facultatif)';
+                    details.placeholder = 'Autres demandes que vous ne trouvez pas ci-dessus : nouvelles sections, photos, horaires, textes…';
+                    renderMenu();
+                  } else {
+                    // menu non ancora pubblicato: niente modifiche, solo materiale per prepararlo
+                    PREP = true; classic.hidden = false;
+                    $('dsf-prep-name').textContent = r.business;
+                    $('dsf-prep').hidden = false; $('dsf-types').hidden = true;
+                    $('dsf-details-label').textContent = 'Notes sur le matériel (facultatives)';
+                    details.placeholder = 'Ex. "le menu à jour est celui du PDF", "voici notre logo"…';
+                  }
+                  menuStep.scrollIntoView && setTimeout(function () { (r.has_menu ? menuStep : classic).scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+                }).catch(function (err) {
+                  // funzione non ancora disponibile o errore del server: modulo classico, l'assistenza non si blocca
+                  if (err && err.status && err.status !== 429) {
+                    resetMenu(); $('dsf-rest').hidden = false; classic.hidden = false;
+                    $('dsf-classic-title').textContent = 'Que souhaitez-vous faire ?';
+                  } else showError('Échec de la connexion. Réessayez.');
+                }).then(function () {
+                  btn.disabled = false; btn.textContent = 'Continuer';
+                });
+              }
+              $('dsf-load').addEventListener('click', loadMenu);
+              codeInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); loadMenu(); } });
+              codeInput.addEventListener('input', function () { if (M || !classic.hidden) resetMenu(); });
+
+              if (CODE_PATTERN.test(codeInput.value)) loadMenu();
+
+              // ---- invio ----
+              form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                showError('');
+                var code = codeInput.value.trim();
+                var types = Array.prototype.map.call(root.querySelectorAll('input[name=request_types]:checked'), function (x) { return x.value; });
+                if (!code) { codeInput.focus(); return showError('Saisissez le code client.'); }
+                if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Code client non valide : vérifiez la fiche client que nous vous avons remise.'); }
+                var ops = M ? buildOps() : [];
+                if (M && openKey) return showError('Vous avez une modification ouverte : appuyez sur "Confirmer la modification" (ou "Annuler") avant d’envoyer.');
+                if (M && !ops.length && !details.value.trim() && !files.length) return showError('Indiquez au moins une modification du menu, ou écrivez ce dont vous avez besoin.');
+                if (PREP && !files.length && !details.value.trim()) return showError('Ajoutez les photos ou les PDF de votre menu (ou écrivez une note), puis appuyez sur Envoyer.');
+                if (!M && !PREP && !types.length) return showError('Choisissez au moins une option dans "Que souhaitez-vous faire ?".');
+                if (!$('dsf-privacy').checked) return showError('Pour envoyer la demande, confirmez avoir lu la politique de confidentialité.');
+                if (files.some(function (f) { return f.working; })) return showError('Attendez que les pièces jointes soient prêtes.');
+
+                submit.disabled = true;
+                submit.innerHTML = '<span class="dsf-spin"></span> Invio in corso';
+                var result;
+                (ops.length
+                  ? (function () {
+                      var args = {
+                        p_code: code, p_ops: ops, p_details: details.value.trim() || null,
+                        p_privacy: true, p_website: $('dsf-website').value || null,
+                      };
+                      // con allegati la modifica aspetta sempre il controllo di una persona
+                      if (files.length) args.p_with_files = true;
+                      return rpc('submit_menu_request', args).catch(function (err) {
+                        // database senza la migrazione 029: riprova senza il campo nuovo
+                        if (err && err.status === 404 && args.p_with_files) { delete args.p_with_files; return rpc('submit_menu_request', args); }
+                        throw err;
+                      });
+                    })()
+                  : (function () {
+                      var args = {
+                        p_code: code, p_types: M ? ['modifica_piatto'] : PREP ? ['materiale_aggiuntivo'] : types,
+                        p_details: PREP ? ('📎 Materiale per il menu in preparazione' + (details.value.trim() ? ': ' + details.value.trim() : '')).slice(0, 1000) : (details.value.trim() || null),
+                        p_privacy: true, p_website: $('dsf-website').value || null,
+                      };
+                      return rpc('submit_support_request', args).then(function (r) {
+                        // database senza la migrazione 050: il tipo "materiale aggiuntivo" non esiste ancora
+                        if (PREP && r && r.code === 'invalid_type') { args.p_types = ['aggiunta_piatto']; return rpc('submit_support_request', args); }
+                        return r;
+                      });
+                    })()
+                ).then(function (data) {
+                  result = data || {};
+                  if (!result.ok || !result.request_id || !files.length) return;
+                  // allegati nella cartella della richiesta appena creata, poi collegati
+                  var uploaded = [];
+                  return files.reduce(function (p, item, i) {
+                    return p.then(function () {
+                      var path = 'incoming/' + result.request_id + '/' + (i + 1) + '-' + safeName(item.file.name);
+                      return upload(path, item.file).then(function (ok) {
+                        if (ok) uploaded.push({ path: path, name: item.file.name, type: item.file.type, size: item.file.size });
+                      });
+                    });
+                  }, Promise.resolve()).then(function () {
+                    if (uploaded.length) return rpc('attach_request_files', { p_request_id: result.request_id, p_files: uploaded }).catch(function () {});
+                  }).then(function () {
+                    if (uploaded.length < files.length) result.warning = 'Certaines pièces jointes n’ont pas été chargées : vous pouvez les envoyer avec une nouvelle demande.';
+                  });
+                }).then(function () {
+                  if (!result.ok) return showError(result.message || 'Échec de l’envoi. Réessayez.');
+                  $('dsf-success-text').textContent = (result.request_number
+                    ? 'Nous avons bien reçu votre demande n° ' + result.request_number + '. '
+                    : 'Nous avons bien reçu votre demande. ') + // stesso messaggio per tutte le richieste: il cliente non vede chi la gestisce
+                    (PREP ? 'Merci : nous utiliserons le matériel pour préparer votre menu. Dès qu’il sera en ligne, nous vous enverrons le lien et le QR code.'
+                      : 'On s’en occupe : nous vous prévenons par e-mail dès que les modifications sont en ligne.') + (result.warning ? ' ' + result.warning : '');
+                  form.hidden = true;
+                  $('dsf-success').hidden = false;
+                  root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }).catch(function (err) {
+                  console.error('DS Service assistenza:', err);
+                  showError('Échec de l’envoi. Vérifiez la connexion et réessayez.');
+                }).then(function () {
+                  submit.disabled = false;
+                  submit.textContent = 'Envoyer la demande';
+                });
+              });
+
+              $('dsf-again').addEventListener('click', function () {
+                var code = codeInput.value;
+                form.reset(); codeInput.value = code;
+                root.querySelectorAll('.dsf-choice').forEach(function (l) { l.classList.remove('is-on'); });
+                files = []; renderFiles(); $('dsf-count').textContent = '0';
+                $('dsf-success').hidden = true; form.hidden = false;
+                resetMenu();
+                if (CODE_PATTERN.test(codeInput.value)) loadMenu();
+              });
+            })();
+            </script>
+          </div>
+        </section>
+
+        <aside class="side">
+          <div class="card">
+            <h2>Comment ça marche</h2>
+            <ol class="steps">
+              <li>Saisissez votre code client : vous le trouverez sur la fiche client que nous vous avons remise.</li>
+              <li>Choisissez ce que vous voulez changer, même plusieurs éléments à la fois.</li>
+              <li>Écrivez les détails et joignez des photos ou PDF si besoin.</li>
+              <li>Recevez la confirmation : nous vous envoyons un e-mail dès que la modification est en ligne.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h2>Besoin d’aide ?</h2>
+            <p>Vous ne trouvez pas le code ou avez une question ? Écrivez-nous.</p>
+            <a class="contact" href="mailto:info@dsfabio.com">✉️ info@dsfabio.com</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 DS Service di Fabio Dos Santos Souza · Meldola (FC)</span>
+      <nav aria-label="Liens légaux">
+        <a href="https://dsfabio.com/fr">Accueil</a>
+        <a href="https://dsfabio.com/privacy#privacy">Confidentialité</a>
+        <a href="https://dsfabio.com/privacy#cookies">Cookies</a>
+        <a href="https://dsfabio.com/privacy#terms">Conditions générales</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+<script>
+  (function () {
+    var btn = document.querySelector('.dsf-page .menu-btn'), nav = document.getElementById('dsf-nav');
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  })();
+</script>
+</body>
+</html>

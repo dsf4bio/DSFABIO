@@ -98,7 +98,7 @@ function trialLink(model) {
   var q = [];
   if (model) q.push('modello=' + encodeURIComponent(model));
   if (utm) q.push(utm);
-  return '/attiva' + (q.length ? '?' + q.join('&') : '');
+  return ROOT + 'attiva' + (q.length ? '?' + q.join('&') : '');
 }
 /* Benvenuto per chi arriva dal menu di un nostro cliente */
 (function () {

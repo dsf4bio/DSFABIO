@@ -8,6 +8,13 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#fbf8f4">
   <link rel="canonical" href="https://dsfabio.com/attiva">
+<link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva">
+<link rel="alternate" hreflang="en" href="https://dsfabio.com/en/attiva">
+<link rel="alternate" hreflang="es" href="https://dsfabio.com/es/attiva">
+<link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva">
+<link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva">
+<link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva">
+<link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva">
   <link rel="stylesheet" href="/assets/fonts/syne-manrope.css">
   <style>
     /* =================================================================
@@ -104,7 +111,20 @@
     .dsf-page footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
     .dsf-page footer a:hover { color: var(--text); }
 
+    /* selettore della lingua (come nel resto del sito) */
+    .dsf-page .top .nav { margin-left: auto; }
+    .dsf-page .lang { position: relative; flex: 0 0 auto; margin-left: 14px; }
+    .dsf-page .lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-weight: 800; font-size: 13px; color: var(--text); user-select: none; }
+    .dsf-page .lang summary::-webkit-details-marker { display: none; }
+    .dsf-page .lang[open] summary { border-color: var(--violet); }
+    .dsf-page .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; min-width: 170px; display: grid; padding: 6px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(60, 30, 120, .18); }
+    .dsf-page .lang-list a { padding: 10px 12px; border-radius: 10px; color: var(--muted); font-weight: 700; font-size: 14px; }
+    .dsf-page .lang-list a:hover { background: #f3eefc; color: var(--text); }
+    .dsf-page .lang-list a[aria-current] { color: var(--violet); background: #f3eefc; }
+
     @media (max-width: 960px) {
+      .dsf-page .lang { order: 2; margin-left: auto; margin-right: 8px; }
+      .dsf-page .menu-btn { order: 3; }
       .dsf-page .grid { grid-template-columns: minmax(0, 1fr); }
       .dsf-page .side { position: static; }
       .dsf-page .side { display: none; }
@@ -139,7 +159,8 @@
         <a href="https://dsfabio.com/assistenza">Assistenza</a>
         <a class="cta" href="https://dsfabio.com/attiva" aria-current="page">Prova gratis 30 giorni</a>
       </nav>
-    </div>
+      <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> IT</summary><div class="lang-list"><a href="/attiva" hreflang="it" lang="it" aria-current="true">Italiano</a><a href="/en/attiva" hreflang="en" lang="en">English</a><a href="/es/attiva" hreflang="es" lang="es">Español</a><a href="/pt/attiva" hreflang="pt" lang="pt">Português</a><a href="/de/attiva" hreflang="de" lang="de">Deutsch</a><a href="/fr/attiva" hreflang="fr" lang="fr">Français</a></div></details>
+      </div>
   </header>
 
   <main>
@@ -1069,6 +1090,11 @@
                 if (!files.length) throw ['Allega il tuo menu: un PDF o le foto delle pagine, ben leggibili. Ci serve per prepararlo.', 'dsf-drop'];
                 if (files.some(function (f) { return f.working; }) || (brand.logo && brand.logo.working) || (brand.cover && brand.cover.working)) throw ['Un attimo: stiamo preparando le foto.'];
               }
+              // richiesta compilata in un'altra lingua: lo staff lo vede nelle note (in italiano, è per noi)
+              function withLang(notes) {
+                var L = { en: 'inglese', es: 'spagnolo', pt: 'portoghese', de: 'tedesco', fr: 'francese' }[(document.documentElement.lang || 'it').slice(0, 2)];
+                return L ? ('🌐 Modulo compilato in ' + L + (notes ? '\n' + notes : '')).slice(0, 1000) : notes;
+              }
               function read() {
                 checkStep1();
                 var business = val('f-business'), owner = cap(val('f-owner')), address = val('f-address'),
@@ -1091,7 +1117,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
+                  notes: withLang($('f-notes').value.trim()) || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };

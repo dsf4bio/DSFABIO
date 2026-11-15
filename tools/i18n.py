@@ -14,7 +14,9 @@ from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'i18n')
-PAGES = ['index', 'modelli', 'about', 'privacy']
+PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza']
+# Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
+JS_PAGES = {'attiva', 'assistenza'}
 # Pagine solo in italiano (testo legale): le altre lingue rimandano qui (vercel.json)
 IT_ONLY = {'privacy'}
 LANGS = {
@@ -23,7 +25,7 @@ LANGS = {
 }
 SITE = 'https://dsfabio.com'
 INLINE = {'a', 'strong', 'em', 'b', 'i', 'span', 'br', 'small', 'sup', 'sub', 'code', 'mark', 'abbr', 'u', 's', 'wbr', 'time',
-          'svg', 'path', 'rect', 'circle', 'g', 'line', 'polyline', 'polygon', 'use', 'img'}
+          'svg', 'path', 'rect', 'circle', 'g', 'line', 'polyline', 'polygon', 'use', 'img', 'input'}
 VOID = {'br', 'img', 'meta', 'link', 'input', 'hr', 'wbr', 'source', 'col', 'area', 'base', 'embed', 'param', 'track',
         'path', 'rect', 'circle', 'line', 'polyline', 'polygon', 'use'}
 SKIP = {'script', 'style', 'svg', 'noscript', 'template'}
@@ -139,7 +141,7 @@ def wa_text(href):
     return q.get('text', [None])[0]
 
 
-def segments_of(src):
+def segments_of(src, js=False):
     p = Segmenter(src)
     p.feed(src)
     out = []  # (start, end, kind)
@@ -151,6 +153,9 @@ def segments_of(src):
     out.append((m.start(1), m.end(1), 'html'))
     for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', src, re.S):
         out.append((m.start(1), m.end(1), 'json'))
+    if js:
+        for s, e, q, t in js_literals(src):
+            out.append((s, e, 'js' + q))
     # niente sovrapposizioni: gli attributi dentro un blocco li gestisce mask/unmask
     out.sort(key=lambda x: (x[0], -x[1]))
     res, last = [], -1
@@ -159,6 +164,69 @@ def segments_of(src):
             res.append((s, e, k))
             last = e
     return res
+
+
+JS_LIT = re.compile(r"'((?:[^'\\\n]|\\.)*)'|\"((?:[^\"\\\n]|\\.)*)\"")
+JS_SKIP = {'Escape', 'Enter', 'POST', 'Content-Type', 'Bearer ', 'NFD', 'HTTP '}
+# testi degli script che restano in italiano: arrivano al gestionale (li legge lo staff) o sono nomi propri
+JS_KEEP = {'📎 Materiale per il menu in preparazione', 'materiale aggiuntivo', 'DS Service attivazione:', 'DS Service assistenza:',
+           '🌐 Modulo compilato in '}
+
+
+def js_unescape(t):
+    return re.sub(r"\\(['\"\\])", r'\1', t)
+
+
+def js_escape(t, q):
+    return t.replace('\\', '\\\\').replace(q, '\\' + q).replace('\n', '\\n')
+
+
+def js_strings(js):
+    """Stringhe '...' e "..." di uno script, saltando commenti e template `...`. -> (inizio, fine, apice)"""
+    i, n = 0, len(js)
+    while i < n:
+        c = js[i]
+        if c == '/' and js.startswith('//', i):
+            j = js.find('\n', i)
+            i = n if j < 0 else j
+        elif c == '/' and js.startswith('/*', i):
+            j = js.find('*/', i + 2)
+            i = n if j < 0 else j + 2
+        elif c in '\'"`':
+            j = i + 1
+            while j < n and js[j] != c:
+                if js[j] == '\\':
+                    j += 1
+                elif js[j] == '\n' and c != '`':
+                    break
+                j += 1
+            if c != '`' and j < n and js[j] == c:
+                yield i + 1, j, c
+            i = j + 1
+        else:
+            i += 1
+
+
+def js_literals(src):
+    """Stringhe degli script della pagina (non i JSON-LD né gli script esterni)."""
+    for m in re.finditer(r'<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>(.*?)</script>', src, re.S):
+        a, js = m.start(1), m.group(1)
+        for s, e, q in js_strings(js):
+            t = js_unescape(js[s:e])
+            if t in JS_SKIP or not LETTER.search(t):
+                continue
+            yield a + s, a + e, q, t
+
+
+def js_is_text(t):
+    """Per extract: sembra un testo per le persone (non codice, classi CSS, indirizzi)."""
+    if re.search(r'(^|\s)(dsf|is|has)-[\w-]+|^[a-z]+/[\w.+-]+$|[a-z-]+:[^ ]*;|^\(|^:[a-z]|^\??[a-z]+$|^[A-Z]{2}( [A-Z]{2})+ ?$|^ ?[KM]B\.?$|\.jpg|^px;|<span', t):
+        return False
+    if re.search(r'^(https?:|/|#|\.[\w-]+($|[ .:>\[{]))', t) or re.search(r'[{};]\s*$', t):
+        return False
+    if re.fullmatch(r'[\w.:#\[\]=*>(),"-]+', t) and not re.search(r'[àèéìòù]', t):
+        return re.fullmatch(r'[A-ZÀ-Ù][a-zà-ù]+[.!?…:]?', t) is not None
+    return True
 
 
 TAG = re.compile(r'<(/?)([a-zA-Z][\w-]*)([^>]*?)(/?)>')
@@ -255,10 +323,10 @@ def strip_lang(src):
     return re.sub(r'<details class="lang">.*?</details>\n?\s*', '', src, flags=re.S)
 
 
-def collect(src):
+def collect(src, js=False):
     src = strip_lang(src)
     found = []
-    for s, e, k in segments_of(src):
+    for s, e, k in segments_of(src, js):
         raw = src[s:e]
         if k == 'html':
             _, core, _ = split_ws(raw)
@@ -275,6 +343,10 @@ def collect(src):
                 found.append(t)
         elif k == 'json':
             json_strings(json.loads(raw), found)
+        elif k.startswith('js'):
+            t = js_unescape(raw)
+            if js_is_text(t):
+                found.append(t)
     return found
 
 
@@ -282,8 +354,8 @@ def extract():
     seen, order = set(), []
     for page in [p for p in PAGES if p not in IT_ONLY]:
         src = open(os.path.join(ROOT, page + '.html'), encoding='utf-8').read()
-        for t in collect(src):
-            if t not in seen and LETTER.search(t):
+        for t in collect(src, page in JS_PAGES):
+            if t not in seen and LETTER.search(t) and t not in JS_KEEP:
                 seen.add(t)
                 order.append(t)
     os.makedirs(DIR, exist_ok=True)
@@ -353,7 +425,11 @@ def localize_common(src, page, lang):
     src = re.sub(r'\n<link rel="alternate" hreflang="[^"]*" href="[^"]*">', '', src)
     src = re.sub(r'<details class="lang">.*?</details>', '', src, flags=re.S)
     src = re.sub(r'(<link rel="canonical" href="[^"]*">)', r'\1\n' + alternates(page).replace('\\', '\\\\'), src, count=1)
-    src = src.replace('<button class="burger"', switcher(page, lang) + '\n      <button class="burger"', 1)
+    if '<button class="burger"' in src:
+        src = src.replace('<button class="burger"', switcher(page, lang) + '\n      <button class="burger"', 1)
+    else:
+        # pagine Attiva e Assistenza: il selettore va dopo la navigazione dell'intestazione
+        src = re.sub(r'(<header class="top">.*?</nav>)', lambda m: m.group(1) + '\n      ' + switcher(page, lang), src, count=1, flags=re.S)
     return src
 
 
@@ -367,7 +443,7 @@ def translate_page(src, page, lang, d):
         return t
 
     out, pos = [], 0
-    for s, e, k in segments_of(src):
+    for s, e, k in segments_of(src, page in JS_PAGES):
         out.append(src[pos:s])
         raw = src[s:e]
         if k == 'html':
@@ -384,6 +460,10 @@ def translate_page(src, page, lang, d):
         elif k == 'json':
             data = json_translate(json.loads(raw), tr)
             out.append(json.dumps(data, ensure_ascii=False))
+        elif k.startswith('js'):
+            t = js_unescape(raw)
+            # nello script si traduce solo ciò che è nel dizionario (il resto è codice o resta in italiano)
+            out.append(js_escape(d[t], k[2]) if t in d and t not in JS_KEEP else raw)
         pos = e
     out.append(src[pos:])
     res = ''.join(out)
@@ -396,6 +476,15 @@ def translate_page(src, page, lang, d):
     res = re.sub(r'(<meta property="og:url" content=")[^"]*(">)', r'\g<1>%s\2' % page_url(page, lang), res)
     for p in PAGES:
         res = res.replace('"%s"' % page_url(p, 'it'), '"%s"' % page_url(p, lang))
+    # link assoluti a dsfabio.com (pagine Attiva e Assistenza): stessa pagina nella lingua scelta
+    def absfix(m):
+        path, rest = m.group(1), m.group(2) or ''
+        if path == '':
+            return 'href="/%s%s"' % (lang, rest)
+        if path in LOCAL_PAGES:
+            return 'href="/%s/%s%s"' % (lang, path, rest)
+        return m.group(0)
+    res = re.sub(r'href="https://dsfabio\.com/([a-z-]*)([#?][^"]*)?"', absfix, res)
     return localize_common(res, page, lang), missing
 
 
@@ -422,7 +511,7 @@ def build():
 
 
 def sitemap():
-    pri = {'index': '1.0', 'modelli': '0.8', 'about': '0.6', 'privacy': '0.2'}
+    pri = {'index': '1.0', 'modelli': '0.8', 'about': '0.6', 'privacy': '0.2', 'attiva': '0.9', 'assistenza': '0.3'}
     rows = []
     for page in PAGES:
         alts = ''.join('\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, page_url(page, l)) for l in LANGS)
@@ -430,9 +519,6 @@ def sitemap():
             if page in IT_ONLY:
                 alts = ''
             rows.append('  <url><loc>%s</loc><priority>%s</priority>%s\n  </url>' % (page_url(page, lang), pri[page], alts))
-    # pagine solo in italiano che non passano dalle traduzioni
-    for page, p in (('attiva', '0.9'), ('assistenza', '0.3')):
-        rows.append('  <url><loc>%s</loc><priority>%s</priority>\n  </url>' % (SITE + '/' + page, p))
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(rows) + '\n</urlset>\n')
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(xml)

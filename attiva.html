@@ -410,7 +410,7 @@
 
                 <div class="dsf-block">
                   <div class="dsf-q"><span class="dsf-ico">🖼️</span> Logo e copertina <em class="dsf-opt">facoltativi</em></div>
-                  <p class="dsf-sub">Se li hai, caricali qui: li mettiamo noi nel menu. Il logo va nel tondo in alto e in fondo al menu; la copertina dietro al nome del locale (modello Aura).</p>
+                  <p class="dsf-sub">Se li hai, caricali qui: li mettiamo noi nel menu. Il logo va in alto vicino al nome e in fondo al menu; la copertina dietro al nome del locale. Vanno bene con tutti i modelli.</p>
                   <div class="dsf-brand">
                     <div class="dsf-bt">
                       <label class="dsf-bt-pick" for="dsf-logo"><span class="dsf-bt-img dsf-bt-round" id="bt-logo"><i>＋</i></span><b>Logo</b><small>meglio quadrato</small></label>
@@ -807,30 +807,81 @@
 
               // anteprima del modello in una finestra a misura di telefono
               var lastFocus = null;
-              // nell'anteprima del modello Aura mette il logo, la copertina e il nome caricati dal ristoratore
+              // anteprima con logo, copertina e nome del ristoratore, su tutti i modelli.
+              // Stessa tabella di dsmenu/api/menu.js (BRAND_LOOK): at = intestazione dietro cui va la copertina,
+              // tint = velo del colore del modello, logo 'h1' = tondo sopra al nome, mono = tondo già presente nel modello
+              function dk(rgb, a, b) { return 'linear-gradient(180deg,rgba(' + rgb + ',' + (a || 0.74) + '),rgba(' + rgb + ',' + (b || 0.6) + '))'; }
+              function lt(rgb) { return dk(rgb, 0.8, 0.7); }
+              var BRAND_LOOK = {
+                'mdc-001': { at: 'header.hero', tint: lt('250,246,238'), mono: '.mono' },
+                'mdc-002': { at: 'header.top', tint: dk('196,32,38', 0.8, 0.7), logo: 'h1' },
+                'mdc-003': { at: 'header.top', tint: lt('255,250,242'), mono: '.blob' },
+                'mdc-004': { at: 'header.top', tint: dk('20,20,22', 0.8, 0.72), logo: 'h1', name: 'br' },
+                'mdc-005': { at: 'header.top', tint: dk('58,36,22', 0.78, 0.66), logo: 'h1' },
+                'mdc-006': { at: 'header.top', tint: dk('16,72,140', 0.72, 0.6), logo: 'h1' },
+                'mdc-007': { at: 'header.top', tint: dk('20,18,16', 0.8, 0.7), logo: 'h1' },
+                'mdc-008': { at: 'header.hero', tint: dk('20,12,10', 0.78, 0.66), logo: 'h1', name: 'span' },
+                'mdc-009': { at: 'header.hero', tint: dk('8,22,40', 0.78, 0.66), logo: 'h1' },
+                'mdc-010': { at: 'section.build', tint: lt('255,212,64'), logo: 'h1', name: 'first' },
+                'mdc-011': { at: 'header.hero', tint: dk('16,16,16', 0.78, 0.68), logo: 'h1', name: 'span' },
+                'mdc-012': { at: 'header.hero', tint: lt('250,240,222'), logo: 'h1' },
+                'mdc-013': { at: 'header.hero', tint: dk('14,30,70', 0.78, 0.68), logo: 'h1' },
+                'mdc-014': { at: 'header.hero', tint: dk('20,40,30', 0.76, 0.64), logo: 'h1', name: 'lines' },
+                'mdc-015': { at: 'header.top', tint: dk('40,16,70', 0.78, 0.7), mono: '.logo' },
+                'mdc-016': { at: 'header.hero', tint: 'linear-gradient(165deg,rgba(70,82,31,.72),rgba(38,46,15,.5))', mono: '.hero-logo .dsm-logo', top: true, name: 'i' },
+                'mdc-017': { at: 'header.top', tint: dk('46,26,14', 0.76, 0.64), logo: 'h1' },
+                'mdc-018': { at: 'header.hero', tint: dk('196,32,38', 0.8, 0.7), logo: 'h1' },
+                'mdc-019': { at: 'header.hero', tint: lt('250,243,228'), logo: 'h1' },
+                'mdc-020': { at: 'header.hero', tint: lt('253,236,240'), logo: 'h1', name: 'em' },
+                'mdc-021': { at: 'header.wall', tint: dk('18,12,10', 0.78, 0.68), logo: 'h1', name: 'span' }
+              };
+              var BRAND_CSS = ':where(.dsm-cov){position:relative}.dsm-cov{isolation:isolate}'
+                + '.dsm-cov>.dsm-cov-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:var(--dsm-tint),var(--dsm-cover) center center/cover no-repeat}'
+                + '@media (max-width:760px){.dsm-cov-top>.dsm-cov-bg{bottom:auto;height:min(60%,560px);-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}}'
+                + '.dsm-hlogo{margin:0 0 12px;line-height:0}';
+              function ringLogo(doc, url, size) {
+                var ring = doc.createElement('span');
+                ring.style.cssText = 'display:inline-block;box-sizing:border-box;width:' + size + ';height:' + size + ';aspect-ratio:1;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);flex:0 0 auto;vertical-align:middle';
+                var im = doc.createElement('img'); im.src = url; im.alt = 'Logo';
+                im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#fff';
+                ring.appendChild(im); return ring;
+              }
+              function setName(doc, h1, name, mode) {
+                var w = name.split(/\s+/), a = w.length > 1 ? w.slice(0, -1).join(' ') : name, b = w.length > 1 ? w[w.length - 1] : '';
+                if (h1.hasAttribute('aria-label')) h1.setAttribute('aria-label', name);
+                if (mode === 'first') { for (var n = h1.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) { n.nodeValue = name; return; } return; }
+                if (mode === 'lines') {
+                  var cls = (h1.querySelector('.line') || {}).className || 'line';
+                  h1.textContent = '';
+                  w.forEach(function (x) { var sp = doc.createElement('span'); sp.className = cls; sp.setAttribute('aria-hidden', 'true'); sp.textContent = x; h1.appendChild(sp); });
+                  return;
+                }
+                h1.textContent = mode && b ? a : name;
+                if (!mode || !b) return;
+                if (mode === 'br') { h1.appendChild(doc.createElement('br')); var s1 = doc.createElement('span'); s1.textContent = b; h1.appendChild(s1); return; }
+                var e = doc.createElement(mode); e.textContent = ' ' + b;
+                h1.appendChild(e);
+              }
               function personalize(doc, t) {
-                if (!doc || t[0] !== 'mdc-016') return;
+                var cfg = BRAND_LOOK[t[0]];
+                if (!doc || !cfg) return;
                 var logo = brand.logo && brand.logo.url, cover = brand.cover && brand.cover.url, name = $('f-business').value.trim();
-                var slot = doc.querySelector('.hero-logo .dsm-logo');
-                if (logo && slot) {
-                  slot.textContent = '';
-                  var im = doc.createElement('img'); im.src = logo; im.alt = 'Logo';
-                  im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#fff';
-                  slot.appendChild(im);
-                }
+                var head = doc.querySelector(cfg.at);
+                if (!head) return;
+                var st = doc.createElement('style'); st.textContent = BRAND_CSS; doc.head.appendChild(st);
                 if (cover) {
-                  var st = doc.createElement('style');
-                  st.textContent = '.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(165deg,rgba(70,82,31,.72),rgba(38,46,15,.5)),url("' + cover + '") center center/cover no-repeat}'
-                    + '.hero>*{position:relative;z-index:1}'
-                    + '@media (max-width:760px){.hero::before{bottom:auto;height:min(60%,560px);-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}}';
-                  doc.head.appendChild(st);
+                  head.classList.add('dsm-cov'); if (cfg.top) head.classList.add('dsm-cov-top');
+                  head.style.setProperty('--dsm-tint', cfg.tint); head.style.setProperty('--dsm-cover', 'url("' + cover + '")');
+                  var bg = doc.createElement('span'); bg.className = 'dsm-cov-bg'; bg.setAttribute('aria-hidden', 'true');
+                  head.insertBefore(bg, head.firstChild);
                 }
-                var h1 = doc.querySelector('.hero h1');
-                if (name && h1) {
-                  var w = name.split(/\s+/), last = w.length > 1 ? w.pop() : '';
-                  h1.textContent = w.join(' ') + (last ? ' ' : '');
-                  if (last) { var i = doc.createElement('i'); i.textContent = last; h1.appendChild(i); }
+                var h1 = head.querySelector('h1');
+                if (logo) {
+                  var mono = cfg.mono && doc.querySelector(cfg.mono);
+                  if (mono) { mono.textContent = ''; mono.appendChild(ringLogo(doc, logo, cfg.top ? '100%' : '100%')); }
+                  else if (cfg.logo === 'h1' && h1) { var box = doc.createElement('div'); box.className = 'dsm-hlogo'; box.appendChild(ringLogo(doc, logo, '64px')); h1.parentNode.insertBefore(box, h1); }
                 }
+                if (name && h1) setName(doc, h1, name, cfg.name);
               }
 
               function openPreview(t, from) {
@@ -1001,8 +1052,9 @@
               $('dsf-logo').addEventListener('change', function (e) { setBrand('logo', e.target.files[0]); e.target.value = ''; });
               $('dsf-cover').addEventListener('change', function (e) { setBrand('cover', e.target.files[0]); e.target.value = ''; });
               $('bt-see').addEventListener('click', function () {
-                // logo e copertina si vedono nel modello Aura: se ne hai scelto un altro te lo mostriamo lo stesso, poi scegli tu
-                openPreview(THEMES.filter(function (x) { return x[0] === 'mdc-016'; })[0], this);
+                // il modello scelto con il tuo logo e la tua copertina (se non l'hai ancora scelto: Aura, poi scegli tu)
+                var id = selectedTheme();
+                openPreview(THEMES.filter(function (x) { return x[0] === (BRAND_LOOK[id] ? id : 'mdc-016'); })[0], this);
               });
               $('bt-logo-x').addEventListener('click', function () { setBrand('logo', null); });
               $('bt-cover-x').addEventListener('click', function () { setBrand('cover', null); });

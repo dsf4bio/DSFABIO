@@ -1080,7 +1080,7 @@
               function bump() { var ph = document.querySelector('.phone'); if (!ph) return; ph.classList.remove('bump'); void ph.offsetWidth; ph.classList.add('bump'); }
               function livePhone(t) {
                 // il logo caricato appare nel tondo in alto al centro della miniatura (uguale in tutti i modelli)
-                var lp = t && LOGO_POS[t[3]], lg = brand && brand.logo && brand.logo.url && lp ? brand.logo.url : null;
+                var lp = t && typeof LOGO_POS !== 'undefined' ? LOGO_POS[t[3]] : null, lg = brand && brand.logo && brand.logo.url && lp ? brand.logo.url : null;
                 ['live-logo', 'mini-logo'].forEach(function (id) {
                   var b = $(id); if (!b) return; b.hidden = !lg; if (!lg) return;
                   b.querySelector('img').src = lg; b.style.left = lp[0] + '%'; b.style.top = id === 'live-logo' ? '34px' : '0'; b.style.marginTop = lp[1] + '%'; b.style.width = lp[2] + '%';

@@ -260,6 +260,10 @@
               #dsf-assistenza .dsf-files-ok { margin: 10px 0 0; padding: 10px 12px; border-radius: 12px; background: #effaf3; color: #15803d; font-size: .9em; font-weight: 700; animation: dsf-pop .3s both; }
               #dsf-assistenza .dsf-tips { margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
               #dsf-assistenza .dsf-tips li { font-size: .8em; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: #f6f2fc; color: #5b5470; }
+              /* slogan */
+              #dsf-assistenza .dsf-tg-l { display: flex; align-items: center; gap: 8px; margin: 16px 0 6px; font-weight: 700; font-size: .92em; }
+              #dsf-assistenza .dsf-tg-n { margin-left: auto; font-size: .82em; font-weight: 700; color: #8a82a0; font-variant-numeric: tabular-nums; }
+              #dsf-assistenza .dsf-tg-n.full { color: #dc2626; }
               /* logo e copertina */
               #dsf-assistenza .dsf-brand { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 12px; }
               #dsf-assistenza .dsf-bt { position: relative; }
@@ -388,6 +392,8 @@
                   <label class="dsf-q" for="f-business"><span class="dsf-ico">🍽️</span> Come si chiama il tuo locale?</label>
                   <input class="dsf-input dsf-input-big" id="f-business" name="business_name" maxlength="120" autocomplete="organization" placeholder="es. Pizzeria Da Mario" required>
                   <div class="dsf-slug" id="dsf-slug" hidden></div>
+                  <label class="dsf-tg-l" for="f-tagline">Slogan sotto il nome <em class="dsf-opt">facoltativo</em><span class="dsf-tg-n" id="tg-count">0/60</span></label>
+                  <input class="dsf-input" id="f-tagline" name="tagline" maxlength="60" autocomplete="off" placeholder="es. Pizza napoletana dal 1985">
                 </div>
 
                 <div class="dsf-block">
@@ -911,6 +917,15 @@
                   if (name) setName(doc, h1, name, NAME_MODE[t[0]]);
                   else { h1.innerHTML = h1.dataset.orig; if (h1.dataset.origLabel) h1.setAttribute('aria-label', h1.dataset.origLabel); }
                 }
+                // slogan sotto il nome
+                var hd = head.querySelector('.dsm-hd'), tgv = ($('f-tagline') || { value: '' }).value.trim();
+                if (hd) {
+                  var pp = hd.querySelector(':scope > p');
+                  if (hd.dataset.tg == null) hd.dataset.tg = pp ? pp.textContent : '\u0000';
+                  if (tgv) { if (!pp) { pp = doc.createElement('p'); hd.appendChild(pp); } pp.textContent = tgv; }
+                  else if (hd.dataset.tg === '\u0000') { if (pp) pp.remove(); }
+                  else if (pp) pp.textContent = hd.dataset.tg;
+                }
               }
 
               // telefoni d'esempio (accanto al modulo e sotto ai modelli): il modello vero, rimpicciolito,
@@ -1076,7 +1091,7 @@
                   business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
-                  notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true, vat: vat || null,
+                  notes: $('f-notes').value.trim() || null, theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
                   source: $('f-source').value || null, source_detail: arrivedFrom,
                   company_site: $('dsf-company').value || '', elapsed_ms: Date.now() - startedAt,
                 };
@@ -1160,7 +1175,8 @@
                 sl.hidden = !(s1 && slug); if (s1 && slug) sl.textContent = '🔗 Il tuo menu sarà su dsmenu.it/' + slug + ' (se libero)';
                 if ($('live-url')) $('live-url').textContent = 'dsmenu.it/' + (slug || 'il-tuo-locale');
                 if ($('live-name')) $('live-name').textContent = name || 'Il tuo locale';
-                if (typeof refreshLive === 'function' && progress._n !== name) { progress._n = name; refreshLive(); }
+                var tgk = name + '|' + val('f-tagline'); var tc = $('tg-count'); if (tc) { tc.textContent = $('f-tagline').value.length + '/60'; tc.classList.toggle('full', $('f-tagline').value.length >= 60); }
+                if (typeof refreshLive === 'function' && progress._n !== tgk) { progress._n = tgk; refreshLive(); }
                 if ($('mini-name')) $('mini-name').textContent = name || 'Il tuo locale';
                 if ($('mini-url')) $('mini-url').textContent = 'dsmenu.it/' + (slug || 'il-tuo-locale');
                 var s3 = files.some(function (f) { return !f.working; });
@@ -1234,7 +1250,7 @@
               window.addEventListener('popstate', function () { if (step === 2) goStep(1, true); });
 
               // i dati scritti restano se il telefono ricarica la pagina (es. dopo aver aperto la fotocamera)
-              var KEEP = ['f-business', 'f-notes', 'f-address', 'f-cap', 'f-city', 'f-prov', 'f-vat', 'f-owner', 'f-prefix', 'f-mobile', 'f-email', 'f-web', 'f-ig', 'f-fb', 'f-source'];
+              var KEEP = ['f-business', 'f-tagline', 'f-notes', 'f-address', 'f-cap', 'f-city', 'f-prov', 'f-vat', 'f-owner', 'f-prefix', 'f-mobile', 'f-email', 'f-web', 'f-ig', 'f-fb', 'f-source'];
               if (!token) {
                 try {
                   var kept = JSON.parse(sessionStorage.getItem('dsf-attiva-dati') || '{}');

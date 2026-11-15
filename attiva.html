@@ -73,7 +73,7 @@
     .dsf-page .phone-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: opacity .35s; }
     .dsf-page .phone-logo { position: absolute; z-index: 1; left: 2.4%; top: 11.4%; width: 20.3%; aspect-ratio: 1; height: auto; border-radius: 50%; padding: 1.5%;
       background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); box-sizing: border-box; animation: dsf-pop .35s both; }
-    .dsf-page .phone-logo img { position: static; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #fff; border: 2px solid #fff; box-sizing: border-box; }
+    .dsf-page .phone-logo img { position: static; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 9%; background: #fff; border: 2px solid #fff; box-sizing: border-box; }
     @keyframes dsf-pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
     .dsf-page .phone-any { position: absolute; inset: 0; display: grid; place-content: center; gap: 8px; padding: 20px; background: var(--grad); color: #fff; font-weight: 800; font-size: 14px; }
     .dsf-page .phone-any b { font-size: 44px; line-height: 1; }
@@ -271,6 +271,7 @@
               #dsf-assistenza .dsf-bt-img { display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg, #f1ecff, #ffe9f5); color: #6d4aff; font-size: 26px; font-style: normal; }
               #dsf-assistenza .dsf-bt-img i { font-style: normal; }
               #dsf-assistenza .dsf-bt-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+              #dsf-assistenza .dsf-bt-round img { object-fit: contain; padding: 9%; }
               #dsf-assistenza .dsf-bt-round { width: 72px; height: 72px; border-radius: 50%; padding: 3px; background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); }
               #dsf-assistenza .dsf-bt-round i, #dsf-assistenza .dsf-bt-round img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: #fff; display: grid; place-items: center; box-sizing: border-box; }
               #dsf-assistenza .dsf-bt-land { width: 100%; max-width: 220px; height: 72px; border-radius: 12px; }
@@ -833,7 +834,11 @@
                   css: '.hero>.dsm-hlogo{max-width:960px;margin:0 auto 16px}@media (max-width:760px){.hero>.dsm-hlogo{text-align:center}}' },
                 'mdc-013': { at: 'header.hero', rgb: '12,26,62', a: 0.5, tx: 'dk', logo: 'h1' },
                 'mdc-014': { at: 'header.hero', rgb: '16,34,26', a: 0.48, tx: 'dk', logo: 'p.kicker' },
-                'mdc-015': { at: 'header.top', rgb: '34,14,60', a: 0.55, tx: 'dk', logo: false, h1: false },
+                'mdc-015': { at: 'header.top', rgb: '30,12,54', a: 0.5, tx: 'dk', logo: false, h1: false,
+                  // con la copertina la barra in alto diventa una testata con la foto: logo grande, nome sotto, lingua in alto a destra
+                  css: '.top.dsm-cov{max-width:none;min-height:250px;align-items:flex-end;padding:20px max(18px,calc(50% - 432px)) 22px;margin-bottom:6px}'
+                    + '.top.dsm-cov .brand{flex-direction:column;align-items:flex-start;gap:12px}.top.dsm-cov .logo{width:72px;height:72px}'
+                    + '.top.dsm-cov #lang{align-self:flex-start}.top.dsm-cov .tagline{text-shadow:0 1px 3px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.5)}' },
                 'mdc-016': { at: 'header.hero', rgb: '52,62,22', a: 0.5, tx: 'dk', logo: false, top: true },
                 'mdc-017': { at: 'header.top', rgb: '40,22,12', a: 0.46, tx: 'dk', logo: 'div.plank' },
                 'mdc-018': { at: 'header.hero', rgb: '20,14,12', a: 0.42, tx: 'dk', logo: 'small',
@@ -842,13 +847,13 @@
                     + '.hero.dsm-cov h1{text-shadow:0 3px 22px rgba(0,0,0,.55)}.hero.dsm-cov p{padding-bottom:22px}' },
                 'mdc-019': { at: 'header.hero', rgb: '250,243,228', a: 0.6, tx: 'lt', logo: 'small' },
                 'mdc-020': { at: 'header.hero', rgb: '253,238,242', a: 0.58, tx: 'lt', logo: 'small' },
-                'mdc-021': { at: 'header.wall', rgb: '16,10,8', a: 0.5, tx: 'dk', logo: 'div.neon' },
+                'mdc-021': { at: 'header.wall', rgb: '16,10,8', a: 0.5, tx: 'dk', logo: 'div.neon', css: '.wall>.dsm-hlogo{margin-bottom:26px}' },
               };
               var BRAND_CSS = ':where(.dsm-cov){position:relative}.dsm-cov{isolation:isolate}'
                 // foto + velo; in basso sfuma nello sfondo del modello, così non c'è uno stacco netto
                 + '.dsm-cov>.dsm-cov-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;'
                 + 'background:linear-gradient(var(--dsm-tint),var(--dsm-tint)),var(--dsm-cover) center center/cover no-repeat;'
-                + '-webkit-mask-image:linear-gradient(180deg,#000 0,#000 52%,rgba(0,0,0,.45) 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 52%,rgba(0,0,0,.45) 78%,transparent 100%)}'
+                + '-webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.12) 82%,transparent 92%);mask-image:linear-gradient(180deg,#000 0,#000 45%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.12) 82%,transparent 92%)}'
                 + '@media (max-width:760px){.dsm-cov-top>.dsm-cov-bg{bottom:auto;height:min(62%,580px)}}'
                 // testi sempre leggibili sulla foto
                 + '.dsm-cov-dk p,.dsm-cov-dk small,.dsm-cov-dk .kick,.dsm-cov-dk .kicker,.dsm-cov-dk .est{text-shadow:0 1px 3px rgba(0,0,0,.6),0 2px 16px rgba(0,0,0,.45)}'
@@ -868,7 +873,7 @@
                 var ring = doc.createElement('span');
                 ring.style.cssText = 'display:inline-block;box-sizing:border-box;width:' + size + ';height:' + size + ';aspect-ratio:1;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);flex:0 0 auto;vertical-align:middle';
                 var im = doc.createElement('img'); im.src = url; im.alt = 'Logo';
-                im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#fff';
+                im.style.cssText = 'display:block;box-sizing:border-box;width:100%;height:100%;border-radius:50%;object-fit:contain;padding:9%;border:3px solid #fff;background:#fff';
                 ring.appendChild(im); return ring;
               }
               function setName(doc, h1, name, mode) {
@@ -886,6 +891,16 @@
                 if (mode === 'br') { h1.appendChild(doc.createElement('br')); var s1 = doc.createElement('span'); s1.textContent = b; h1.appendChild(s1); return; }
                 var e = doc.createElement(mode); e.textContent = ' ' + b;
                 h1.appendChild(e);
+              }
+              // logo largo (scritta): targhetta arrotondata invece del tondo, come nel menu vero
+              function makeWide(r) {
+                var wi = r.querySelector('img');
+                var wide = function () {
+                  var q = wi.naturalWidth / wi.naturalHeight; if (!(q > 1.3)) return;
+                  r.style.setProperty('width', Math.round(Math.min(r.offsetHeight * q * 0.9, 240)) + 'px', 'important'); r.style.maxWidth = '72vw';
+                  r.style.setProperty('border-radius', '18px', 'important'); wi.style.borderRadius = '15px'; wi.style.padding = '5px 9px';
+                };
+                if (wi.complete) wide(); else wi.addEventListener('load', wide);
               }
               function findIn(root, sel) { return root.querySelector(sel); }
               function personalize(doc, t) {
@@ -906,13 +921,15 @@
                 var h1 = head.querySelector('h1');
                 if (logo) {
                   var mono = pv.mono && doc.querySelector(pv.mono);
-                  if (mono) { mono.textContent = ''; mono.appendChild(ringLogo(doc, logo, '100%')); }
+                  if (mono && t[0] === 'mdc-016') { var ra = ringLogo(doc, logo, '76px'); ra.className = 'dsm-logo'; mono.parentNode.replaceChild(ra, mono); makeWide(ra); }
+                  else if (mono) { mono.textContent = ''; mono.appendChild(ringLogo(doc, logo, '100%')); }
                   else if (cfg.logo && h1) {
                     var k = cfg.logo !== 'h1' ? findIn(head, cfg.logo.replace(/^(\w+)$/, '$1')) : null;
                     var at = k && (k.compareDocumentPosition(h1) & 4) ? k : h1; // 4 = il nome viene dopo
                     var box = doc.createElement('div'); box.className = 'dsm-hlogo';
                     var r = ringLogo(doc, logo, '64px'); r.className = 'dsm-logo'; box.appendChild(r);
                     at.parentNode.insertBefore(box, at);
+                    makeWide(r);
                   }
                 }
                 if (name && h1) setName(doc, h1, name, pv.name);

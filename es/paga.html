@@ -235,9 +235,11 @@
   }
   function $(id) { return document.getElementById(id); }
   function msg(text, kind) { var m = $('pl-msg'); m.textContent = text; m.className = 'sec-msg ' + (kind || ''); m.hidden = false; }
+  var CUR = 'eur';   // valuta del cliente (dal database): eur o usd
   function money(c) {
-    var e = c / 100, n = c % 100 ? e.toFixed(2) : String(e);
-    return LANG === 'en' ? '€' + n : n.replace('.', ',') + ' €';   // €169 in inglese, 169 € nelle altre lingue
+    var e = c / 100, n = c % 100 ? e.toFixed(2) : String(e), usd = CUR === 'usd';
+    if (LANG === 'en') return (usd ? '$' : '€') + n;            // $199 / €169 in inglese
+    return usd ? 'US$ ' + n.replace('.', ',') : n.replace('.', ',') + ' €';
   }
   function fill(t, o) { return t.replace(/\{(\w+)\}/g, function (_, k) { return o[k] == null ? '' : o[k]; }); }
   function date(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
@@ -260,6 +262,7 @@
       return;
     }
     if (!r || !r.ok) { $('pl-title').textContent = 'Enlace no válido'; return msg('Enlace no válido.', 'err'); }
+    CUR = String(r.currency || 'eur').toLowerCase();
     $('pl-title').textContent = fill('Menú digital de {b}', { b: r.business });
     var annual = r.annual_cents;
     var plans = [{ months: r.interval_months || 12, cents: annual, saving_cents: 0, percent: 0 }].concat(r.plans || []);

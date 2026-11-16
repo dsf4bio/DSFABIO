@@ -2,9 +2,9 @@
 const {chromium}=require('playwright'); const path=require('path');
 const T={
  it:{a:'Menu digitale',b:'con QR code',sub:'per il tuo ristorante',feat:'Allergeni · Più lingue · Aggiornamenti inclusi',pill:'30 giorni gratis · poi <s>199 €</s> 169 €/anno'},
- en:{a:'Digital menu',b:'with QR code',sub:'for your restaurant',feat:'Allergens · Multiple languages · Updates included',pill:'30 days free · then <s>€199</s> €169/year'},
+ en:{a:'Digital menu',b:'with QR code',sub:'for your restaurant',feat:'Allergens · Multiple languages · Updates included',pill:'30 days free · then <s>$229</s> $199/year'},
  es:{a:'Menú digital',b:'con código QR',sub:'para tu restaurante',feat:'Alérgenos · Varios idiomas · Actualizaciones incluidas',pill:'30 días gratis · luego <s>199 €</s> 169 €/año'},
- pt:{a:'Cardápio digital',b:'com QR code',sub:'para o seu restaurante',feat:'Alérgenos · Vários idiomas · Atualizações incluídas',pill:'30 dias grátis · depois <s>199 €</s> 169 €/ano'},
+ pt:{a:'Cardápio digital',b:'com QR code',sub:'para o seu restaurante',feat:'Alérgenos · Vários idiomas · Atualizações incluídas',pill:'30 dias grátis · depois <s>US$ 229</s> US$ 199/ano'},
  de:{a:'Digitale Speisekarte',b:'mit QR-Code',sub:'für dein Restaurant',feat:'Allergene · Mehrere Sprachen · Updates inklusive',pill:'30 Tage gratis · dann <s>199 €</s> 169 €/Jahr'},
  fr:{a:'Menu digital',b:'avec QR code',sub:'pour votre restaurant',feat:'Allergènes · Plusieurs langues · Mises à jour incluses',pill:'30 jours gratuits · puis <s>199 €</s> 169 €/an'},
 };

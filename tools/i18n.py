@@ -22,6 +22,9 @@ PAGES += DEMOS
 NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
 JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
+# lingue con i prezzi in dollari (come nel gestionale, impostazione billing_usd_langs)
+USD_LANGS = {'en', 'pt'}
+
 # Pagine solo in italiano (nessuna al momento)
 IT_ONLY = set()
 LANGS = {
@@ -486,6 +489,9 @@ def translate_page(src, page, lang, d):
     out.append(src[pos:])
     res = ''.join(out)
     res = res.replace('<html lang="it">', '<html lang="%s">' % lang, 1)
+    # inglese e portoghese: prezzi in dollari anche nei dati strutturati (Google)
+    if lang in USD_LANGS:
+        res = res.replace('"price": "169.00"', '"price": "199.00"').replace('"priceCurrency": "EUR"', '"priceCurrency": "USD"')
     # immagine di anteprima (social) nella lingua della pagina
     res = res.replace('https://dsfabio.com/og-image.png', 'https://dsfabio.com/og-image-%s.png' % lang)
     if sakura_en:

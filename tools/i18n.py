@@ -23,7 +23,7 @@ NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', '
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
 JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
 # lingue con i prezzi in dollari (come nel gestionale, impostazione billing_usd_langs)
-USD_LANGS = {'en', 'pt'}
+USD_LANGS = set()   # dal 084 la valuta dipende dal paese (USA e Canada): il sito mostra sempre gli euro
 
 # pagine senza selettore della lingua (pagamento: si apre già nella lingua del cliente)
 NO_SWITCHER = set()

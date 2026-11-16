@@ -2360,7 +2360,6 @@
  "Menu digitale di {b}": "Menú digital de {b}",
  "Alla scadenza l'abbonamento si <1>rinnova automaticamente ogni anno</1> al prezzo annuale (anche dopo un piano di 2 o 3 anni): a ogni rinnovo ricevi la conferma via email.": "Al vencimiento la suscripción se <1>renueva automáticamente cada año</1> al precio anual (también después de un plan de 2 o 3 años): en cada renovación recibes la confirmación por email.",
  "Puoi <1>disdire il rinnovo fino a 30 giorni prima della scadenza</1> scrivendo a info@dsfabio.com o dalla pagina Assistenza: il servizio resta attivo fino alla fine del periodo pagato.": "Puedes <1>cancelar la renovación hasta 30 días antes del vencimiento</1> escribiendo a info@dsfabio.com o desde la página de Asistencia: el servicio sigue activo hasta el final del periodo pagado.",
- "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "Para los clientes con facturación en dólares estadounidenses (páginas en inglés y portugués) los precios son: <1>199 $ al año</1> (precio de lista 229 $), 2 años 349 $ y 3 años 499 $, en las mismas condiciones.",
  "← Indietro": "← Atrás",
  "Risparmi {s}": "Ahorras {s}",
  "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>Términos y condiciones</1>\n        <2>Privacidad</2>\n        <3>Cookies</3>",
@@ -2371,5 +2370,13 @@
  "Canada": "Canadá",
  "Controlla il codice postale.": "Revisa el código postal.",
  "Scegli lo stato o la provincia.": "Elige el estado o la provincia.",
- "Controlla il codice fiscale del locale. Se non lo hai sotto mano, lascia vuoto.": "Revisa el número fiscal del local. Si no lo tienes a mano, déjalo vacío."
+ "Controlla il codice fiscale del locale. Se non lo hai sotto mano, lascia vuoto.": "Revisa el número fiscal del local. Si no lo tienes a mano, déjalo vacío.",
+ "Per i locali con sede negli Stati Uniti o in Canada la fatturazione è in dollari USA, con prezzi convertiti al cambio: <1>187 $ all'anno</1> (prezzo di listino 220 $), 2 anni 330 $ e 3 anni 474 $, alle stesse condizioni. In tutti gli altri paesi si paga in euro.": "Para los locales con sede en Estados Unidos o Canadá la facturación es en dólares estadounidenses, con precios convertidos al tipo de cambio: <1>187 $ al año</1> (precio de lista 220 $), 2 años 330 $ y 3 años 474 $, en las mismas condiciones. En todos los demás países se paga en euros.",
+ "Liechtenstein": "Liechtenstein",
+ "Lussemburgo": "Luxemburgo",
+ "Belgio": "Bélgica",
+ "Monaco": "Mónaco",
+ "Andorra": "Andorra",
+ "Irlanda": "Irlanda",
+ "Malta": "Malta"
 }

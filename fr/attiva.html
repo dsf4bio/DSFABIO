@@ -678,12 +678,14 @@
               var startedAt = Date.now();
               var headers = { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY };
 
+              // paesi delle lingue del sito (Europa) + Stati Uniti e Canada
               var PREFIXES = [
                 ['39', 'Italie', /^3\d{8,9}$/], ['378', 'Saint-Marin', /^\d{6,10}$/], ['41', 'Suisse', /^7[5-9]\d{7}$/],
-                ['33', 'France', /^[67]\d{8}$/], ['49', 'Allemagne', /^1[5-7]\d{8,9}$/], ['43', 'Autriche', /^6\d{8,12}$/],
-                ['34', 'Espagne', /^[67]\d{8}$/], ['351', 'Portugal', /^9\d{8}$/], ['44', 'Royaume-Uni', /^7\d{9}$/],
-                ['40', 'Roumanie', /^7\d{8}$/], ['355', 'Albanie', /^6[6-9]\d{7}$/], ['212', 'Maroc', /^[67]\d{8}$/],
-                ['55', 'Brésil', /^\d{2}9\d{8}$/], ['1', 'États-Unis / Canada', /^[2-9]\d{9}$/]];
+                ['423', 'Liechtenstein', /^[67]\d{6}$/], ['43', 'Autriche', /^6\d{8,12}$/], ['49', 'Allemagne', /^1[5-7]\d{8,9}$/],
+                ['352', 'Luxembourg', /^6\d{8}$/], ['32', 'Belgique', /^4\d{8}$/], ['33', 'France', /^[67]\d{8}$/],
+                ['377', 'Monaco', /^[346]\d{7,8}$/], ['34', 'Espagne', /^[67]\d{8}$/], ['376', 'Andorre', /^[346]\d{5}$/],
+                ['351', 'Portugal', /^9\d{8}$/], ['44', 'Royaume-Uni', /^7\d{9}$/], ['353', 'Irlande', /^8[35-9]\d{7}$/],
+                ['356', 'Malte', /^[79]\d{7}$/], ['1', 'États-Unis / Canada', /^[2-9]\d{9}$/]];
               var PROVINCES = ('AG AL AN AO AP AQ AR AT AV BA BG BI BL BN BO BR BS BT BZ CA CB CE CH CI CL CN CO CR CS CT CZ '
                 + 'EN FC FE FG FI FM FR GE GO GR IM IS KR LC LE LI LO LT LU MB MC ME MI MN MO MS MT NA NO NU OG OR OT PA PC PD PE '
                 + 'PG PI PN PO PR PT PU PV PZ RA RC RE RG RI RM RN RO SA SI SO SP SR SS SU SV TA TE TN TO TP TR TS TV UD VA VB VC '
@@ -694,26 +696,29 @@
               // [sigla, nome, prefisso, codice postale, esempio, provincia/stato ('' = non richiesto), codice fiscale]
               var COUNTRIES = [
                 ['IT', 'Italie', '39', /^\d{5}$/, '47121', 'prov', ''], ['SM', 'Saint-Marin', '378', /^4789\d$/, '47890', '', 'COE'],
-                ['CH', 'Suisse', '41', /^\d{4}$/, '6900', '', 'IDI / UID'], ['FR', 'France', '33', /^\d{5}$/, '75001', '', 'SIRET / TVA'],
-                ['DE', 'Allemagne', '49', /^\d{5}$/, '10115', '', 'USt-IdNr.'], ['AT', 'Autriche', '43', /^\d{4}$/, '1010', '', 'UID'],
-                ['ES', 'Espagne', '34', /^\d{5}$/, '28001', '', 'NIF'], ['PT', 'Portugal', '351', /^\d{4}-\d{3}$/, '1000-001', '', 'NIF'],
+                ['CH', 'Suisse', '41', /^\d{4}$/, '6900', '', 'IDI / UID'], ['LI', 'Liechtenstein', '423', /^94\d{2}$/, '9490', '', 'UID'],
+                ['AT', 'Autriche', '43', /^\d{4}$/, '1010', '', 'UID'], ['DE', 'Allemagne', '49', /^\d{5}$/, '10115', '', 'USt-IdNr.'],
+                ['LU', 'Luxembourg', '352', /^\d{4}$/, '1009', '', 'TVA'], ['BE', 'Belgique', '32', /^\d{4}$/, '1000', '', 'TVA / BTW'],
+                ['FR', 'France', '33', /^\d{5}$/, '75001', '', 'SIRET / TVA'], ['MC', 'Monaco', '377', /^980\d{2}$/, '98000', '', 'TVA'],
+                ['ES', 'Espagne', '34', /^\d{5}$/, '28001', '', 'NIF'], ['AD', 'Andorre', '376', /^AD\d{3}$/, 'AD500', '', 'NRT'],
+                ['PT', 'Portugal', '351', /^\d{4}-\d{3}$/, '1000-001', '', 'NIF'],
                 ['GB', 'Royaume-Uni', '44', /^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$/, 'SW1A 1AA', '', 'VAT number'],
-                ['RO', 'Roumanie', '40', /^\d{6}$/, '010011', '', 'CUI'], ['AL', 'Albanie', '355', /^\d{4}$/, '1001', '', 'NIPT'],
-                ['MA', 'Maroc', '212', /^\d{5}$/, '20000', '', 'ICE'], ['BR', 'Brésil', '55', /^\d{5}-\d{3}$/, '01310-100', 'state', 'CNPJ'],
+                ['IE', 'Irlande', '353', /^[A-Z]\d[\dW] [A-Z\d]{4}$/, 'D02 X285', '', 'VAT number'], ['MT', 'Malte', '356', /^[A-Z]{3} \d{4}$/, 'VLT 1117', '', 'VAT number'],
                 ['US', 'États-Unis', '1', /^\d{5}(-\d{4})?$/, '10001', 'state', 'EIN'], ['CA', 'Canada', '1', /^[A-Z]\d[A-Z] \d[A-Z]\d$/, 'K1A 0B1', 'prov', 'BN']];
               var REGIONS = {
                 IT: PROVINCES,
-                BR: 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' '),
                 US: ('AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' '),
                 CA: 'AB BC MB NB NL NS NT NU ON PE QC SK YT'.split(' ')
               };
-              var REGION_EX = { IT: 'FC', BR: 'SP', US: 'NY', CA: 'ON' };
+              var REGION_EX = { IT: 'FC', US: 'NY', CA: 'ON' };
               COUNTRIES.forEach(function (c) { var o = document.createElement('option'); o.value = c[0]; o.textContent = c[1]; $('f-country').appendChild(o); });
               var VAT_LABEL = $('f-vat-lab').firstChild.nodeValue, CAP_LABEL = $('f-cap-lab').textContent, PROV_LABEL = $('f-prov-lab').textContent;
               function country() { return COUNTRIES.filter(function (c) { return c[0] === $('f-country').value; })[0] || COUNTRIES[0]; }
               function postalNorm(v) {
                 var c = country()[0]; v = v.toUpperCase().replace(/\s+/g, ' ').trim();
-                if (c === 'BR' && /^\d{8}$/.test(v)) return v.slice(0, 5) + '-' + v.slice(5);
+                if (c === 'IE' && /^[A-Z0-9]{7}$/.test(v)) return v.slice(0, 3) + ' ' + v.slice(3);
+                if (c === 'MT' && /^[A-Z]{3}\d{4}$/.test(v)) return v.slice(0, 3) + ' ' + v.slice(3);
+                if (c === 'LU' && /^L-?\d{4}$/.test(v)) return v.slice(-4);
                 if (c === 'PT' && /^\d{7}$/.test(v)) return v.slice(0, 4) + '-' + v.slice(4);
                 if (c === 'CA' && /^[A-Z]\d[A-Z]\d[A-Z]\d$/.test(v)) return v.slice(0, 3) + ' ' + v.slice(3);
                 if (c === 'GB' && /^[A-Z0-9]{5,7}$/.test(v)) return v.slice(0, -3) + ' ' + v.slice(-3);
@@ -723,10 +728,10 @@
               function regionOk() { var c = country(); return !c[5] || (REGIONS[c[0]] || []).indexOf(val('f-prov').toUpperCase()) >= 0; }
               function applyCountry() {
                 var c = country(), cap = $('f-cap'), prov = $('f-prov');
-                $('f-cap-lab').textContent = c[0] === 'IT' || c[0] === 'SM' ? CAP_LABEL : c[0] === 'BR' ? 'CEP' : c[0] === 'US' ? 'ZIP code' : 'Code postal';
+                $('f-cap-lab').textContent = c[0] === 'IT' || c[0] === 'SM' ? CAP_LABEL : c[0] === 'US' ? 'ZIP code' : 'Code postal';
                 cap.placeholder = c[4];
                 cap.maxLength = c[0] === 'US' ? 10 : 9;
-                cap.inputMode = c[0] === 'GB' || c[0] === 'CA' ? 'text' : 'numeric';
+                cap.inputMode = /[A-Z]/.test(c[4]) ? 'text' : 'numeric';
                 $('f-prov-box').hidden = !c[5];
                 prov.required = !!c[5];
                 $('f-prov-lab').textContent = c[5] === 'state' ? 'État' : PROV_LABEL;
@@ -749,7 +754,7 @@
               (function () {
                 // pagina in un'altra lingua: paese e prefisso più probabili
                 var L = (document.documentElement.lang || 'it').slice(0, 2);
-                var c = { pt: 'BR', en: 'US', es: 'ES', de: 'DE', fr: 'FR' }[L];
+                var c = { pt: 'PT', en: 'GB', es: 'ES', de: 'DE', fr: 'FR' }[L];
                 if (c) { $('f-country').value = c; $('f-prefix').value = COUNTRIES.filter(function (x) { return x[0] === c; })[0][2]; }
               })();
 

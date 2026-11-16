@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#424e1d">
+<title>Aura · Modèle de menu digital (exemple) | DS Service</title>
+<meta name="description" content="Restaurant moderne : plats illustrés et animés, catégories sur des cartes qui pivotent en 3D et fiche du plat avec allergènes. Modèle de menu digital avec QR code : essayez-le sur votre téléphone, 30 jours gratuits.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="DS Service · Menus digitaux">
+<meta property="og:title" content="Aura · Modèle de menu digital (exemple) | DS Service">
+<meta property="og:description" content="Restaurant moderne avec plats animés et catégories sur cartes 3D. Essayez-le sur votre téléphone, 30 jours gratuits.">
+<meta property="og:url" content="https://dsfabio.com/fr/mdc-014">
+<meta property="og:image" content="https://dsfabio.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/fraunces-inter.css">
+<style>
+/* Palette: verde oliva · arabico chiaro · giallo chiaro */
+:root{--olive:#5b6a2b;--olive-d:#424e1d;--olive-dd:#2a3212;--ink:#252c12;--sub:#4b5331;--arab:#ecdfc8;--arab-l:#f7f0e2;--paper:#fffbf2;--yel:#f8eba9;--yel-d:#e9d46f;--line:rgba(42,50,18,.16);
+--bg:var(--arab);--gold:var(--olive);
+--pm-bg:#fffbf2;--pm-ink:#252c12;--pm-sub:#4b5331;--pm-accent:#5b6a2b;--pm-accent-ink:#fffbf2;--pm-head:Fraunces,Georgia,serif;--pm-line:rgba(42,50,18,.22);--pm-art:radial-gradient(circle closest-side,#fcf3c4 0,#f8eba9 90%,#e9d46f 91%,#e9d46f 93%,transparent 94%),linear-gradient(160deg,#ecdfc8,#e3d2b4)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--arab);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:clip}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--olive);outline-offset:3px;border-radius:12px}
+.demo{background:var(--olive-dd);color:var(--yel);text-align:center;font-size:.74rem;font-weight:800;padding:7px 12px}
+.serif{font-family:Fraunces,Georgia,serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+
+/* HERO in verde oliva */
+.hero{position:relative;overflow:hidden;padding:40px 0 46px;color:#fffbf2;background:radial-gradient(60% 70% at 85% 25%,rgba(248,235,169,.16),transparent 70%),linear-gradient(165deg,#647431,#424e1d 70%);border-radius:0 0 34px 34px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+.hero-logo{margin:0 0 14px}
+.kick{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--yel);font-weight:700}
+.hero h1{font-size:clamp(3.4rem,13vw,7.2rem);line-height:.9;font-weight:500;letter-spacing:-.02em;margin:12px 0 14px;color:#fffbf2}
+.hero h1 i{font-style:italic;color:var(--yel)}
+.hero p{color:#f1ead6;max-width:440px;font-size:1.02rem}
+.info{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.info span{font-size:.78rem;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,251,242,.3);color:#fffbf2}
+.info .open::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--yel);margin-right:7px}
+.orbit{position:relative;width:min(360px,80vw);aspect-ratio:1;margin:0 auto}
+.orbit .ring{position:absolute;inset:0;animation:spin 30s linear infinite}
+.orbit .ring text{fill:var(--yel);font-size:11.5px;letter-spacing:6px;font-family:Inter,sans-serif;font-weight:700}
+.orbit .dish{position:absolute;inset:15%;border-radius:50%;background:radial-gradient(circle at 50% 42%,#fbf1bf,#f0dd86);box-shadow:0 26px 50px rgba(20,24,8,.45),0 0 0 8px rgba(255,251,242,.12);display:grid;place-items:center;overflow:hidden}
+.orbit .dish .pa{width:84%;height:84%}
+.orbit .dish img.pa-photo{width:100%;height:100%;border-radius:50%;box-shadow:none}
+.ic .pa-steam,.dish .pa-steam,.back .pa-steam,.pm-art .pa-steam{stroke:#7d8a4a}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:760px){.hero{padding:30px 0 36px}.hero-grid{grid-template-columns:1fr}.orbit{margin-top:4px;width:min(300px,76vw)}}
+
+/* CATEGORIE: barra fissa e piena, card che si girano */
+.cats-wrap{position:sticky;top:0;z-index:20;background:var(--arab);border-bottom:1px solid var(--line);box-shadow:0 8px 18px -12px rgba(42,50,18,.45);padding:12px 0}
+.cats{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 18px;margin:0 -18px;scrollbar-width:none;overscroll-behavior-x:contain}
+.cats::-webkit-scrollbar{display:none}
+.flip{flex:0 0 148px;height:96px;perspective:900px;scroll-snap-align:start}
+.flip-in{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.flip[aria-pressed="true"] .flip-in{transform:rotateY(180deg)}
+@media (hover:hover){.flip:not([aria-pressed="true"]):hover .flip-in{transform:rotateY(14deg)}}
+.face{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;text-align:left}
+.front{background:var(--paper);border:1px solid var(--line)}
+.front small{font-size:.7rem;letter-spacing:.2em;color:var(--olive);font-weight:700}
+.front b{font-family:Fraunces,serif;font-weight:600;font-size:1.15rem;line-height:1.1;color:var(--ink)}
+.back{transform:rotateY(180deg);background:var(--olive);color:#fffbf2;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:6px;padding:10px 12px;position:absolute}
+.back .pa,.back img.pa-photo{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;background:var(--yel);padding:3px;box-shadow:none}
+.back img.pa-photo{padding:0}
+.back>span{min-width:0}
+.back b{font-family:Fraunces,serif;font-weight:600;font-size:1.1rem;line-height:1.1;display:block}
+.back small{font-size:.72rem;font-weight:700;color:var(--yel)}
+@media (max-width:520px){.flip{flex-basis:132px;height:84px}.front b{font-size:1.05rem}.back .pa,.back img.pa-photo{width:36px;height:36px}.back b{font-size:1rem}}
+
+/* PIATTI: icona su disco giallo, testi su fondo chiaro pieno */
+main{padding-top:22px}
+.cat-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 18px}
+.cat-title h2{font-family:Fraunces,serif;font-weight:600;font-size:clamp(2rem,6vw,3rem);line-height:1;color:var(--olive-dd)}
+.cat-title p{color:var(--sub);font-size:.92rem;max-width:320px;text-align:right}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:44px}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}.cat-title{flex-direction:column}.cat-title p{text-align:left}}
+.card{position:relative;display:flex;flex-direction:column;text-align:left;border-radius:24px;background:var(--paper);border:1px solid var(--line);overflow:hidden;box-shadow:0 10px 24px -16px rgba(42,50,18,.5);transition:transform .4s cubic-bezier(.2,.9,.2,1),box-shadow .4s;opacity:0;transform:translateY(24px)}
+.card.in{opacity:1;transform:none;transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.2,1),box-shadow .4s}
+@media (hover:hover){.card:hover{box-shadow:0 18px 34px -16px rgba(42,50,18,.6)}}
+.card .pic{position:relative;height:184px;display:grid;place-items:center;overflow:hidden;background:var(--arab-l);border-bottom:1px solid var(--line)}
+.card .ic{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#fcf3c4,var(--yel) 70%);box-shadow:inset 0 0 0 4px rgba(233,212,111,.7);display:grid;place-items:center}
+.card .ic .pa{width:84%;height:84%;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+.card .ic img.pa-photo{width:100%;height:100%;border-radius:50%;box-shadow:none}
+@media (hover:hover){.card:hover .ic .pa{transform:scale(1.06) rotate(-4deg)}}
+.card .body{padding:14px 18px 18px;background:var(--paper)}
+.card h3{font-family:Fraunces,serif;font-weight:600;font-size:1.3rem;line-height:1.15;color:var(--ink)}
+.card p{color:var(--sub);font-size:.92rem;margin:6px 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card .al{display:flex;gap:3px;font-size:.9rem}
+.card .price{font-family:Fraunces,serif;font-weight:700;font-size:1.1rem;color:#fffbf2;background:var(--olive);padding:3px 12px;border-radius:999px;white-space:nowrap}
+.card .tag{position:absolute;top:12px;left:12px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--olive-dd);color:var(--yel)}
+.card .plus{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--olive);color:#fffbf2;font-weight:800;transition:transform .4s}
+@media (hover:hover){.card:hover .plus{transform:rotate(90deg)}}
+@media (prefers-reduced-motion:reduce){.orbit .ring{animation:none}.card{opacity:1;transform:none}.flip-in{transition:none}}
+
+/* Piè di pagina (su dsmenu.it lo compone il server con i dati del locale) */
+footer{text-align:center;padding:30px 18px 34px;font-size:.9rem;line-height:1.5;background:var(--olive-dd);color:#ece5cf}
+footer strong{display:block;font-size:1.5rem;line-height:1.1;margin-bottom:6px;font-family:Fraunces,Georgia,serif;font-weight:600;color:var(--yel)}
+footer .finfo{opacity:.92}
+footer small{opacity:.8}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.95}
+</style>
+<style id="dsm-hd-css">.dsm-hdr{min-height:0!important;height:auto!important;padding:0!important;display:block!important;max-width:none!important;width:auto!important;margin-left:0!important;margin-right:0!important;text-align:center!important;grid-template-columns:none!important}.dsm-old{display:none!important}.dsm-hd{position:relative;max-width:760px;margin:0 auto;padding:30px 20px 38px;text-align:center}.dsm-hd-logo{display:block;width:84px;height:84px;margin:0 auto 16px;line-height:0}.dsm-hd-logo>.dsm-logo{width:100%!important;height:100%!important}.dsm-hd h1{margin-left:auto!important;margin-right:auto!important;margin-top:0!important;text-align:center!important}.dsm-hd>p{margin:12px auto 0!important;max-width:520px;text-align:center!important;padding:0!important}.dsm-hd small{display:none!important}.dsm-cov .dsm-hd{padding-bottom:96px}@media (max-width:600px){.dsm-hd{padding:26px 18px 32px}.dsm-hd-logo{width:76px;height:76px}.dsm-cov .dsm-hd{padding-bottom:84px}}</style>
+</head>
+<body>
+<div class="demo">MODÈLE DE DÉMONSTRATION · plats, prix et informations sont fictifs</div>
+<header class="hero dsm-hdr">
+<div class="dsm-hd"><span class="dsm-hd-logo"><span class="dsm-logo dsm-mono" aria-hidden="true" style="display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle"><span style="display:grid;place-items:center;width:100%;height:100%;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:#fffbf2;color:#2a1b14;font:700 2.1rem/1 Georgia,'Times New Roman',serif">A</span></span></span><h1 class="serif">Au<i>ra</i></h1><p>Saison, terroir et technique. Touchez un plat pour découvrir ingrédients et allergènes.</p></div>
+<div class="dsm-old" hidden>
+<div class="wrap hero-grid">
+<div>
+<div class="hero-logo" title="Ici se place le logo de l’établissement"><span class="dsm-logo" aria-hidden="true" style="display:inline-block;box-sizing:border-box;width:76px;height:76px;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle"><span style="display:grid;place-items:center;width:100%;height:100%;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:#fffbf2;color:#424e1d;font:600 2rem/1 'Fraunces',Georgia,serif">A</span></span></div>
+<span class="kick">Cuisine contemporaine · Milan</span>
+
+
+<div class="info dsm-fake"><span class="open">Ouvert maintenant · jusqu’à 23h30</span><span>Via Tortona 12</span><span>🇮🇹 · 🇬🇧</span></div>
+</div>
+<div class="orbit" aria-hidden="true">
+<svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150 150m-132 0a132 132 0 1 1 264 0a132 132 0 1 1-264 0"/></defs><text><textPath href="#circ" id="ring-t">SAISON · TERROIR · TECHNIQUE · SAISON · TERROIR · TECHNIQUE ·</textPath></text></svg>
+<div class="dish" id="hero-dish"></div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="cats-wrap"><div class="wrap"><nav class="cats" id="cats" aria-label="Catégories du menu"></nav></div></div>
+
+<main class="wrap">
+<div class="cat-title"><h2 id="cat-name"></h2><p id="cat-desc"></p></div>
+<div class="grid" id="grid"></div>
+</main>
+<footer>
+  <strong>Aura</strong>
+  <div class="finfo">Via Tortona 12, Milan · Tél. 02 1234567</div><small>Données d’exemple</small>
+</footer>
+
+<script src="/assets/piatti.js"></script>
+<script>
+Piatti.styleEmoji = true; // emoji grandi del prodotto (foto del locale se caricate)
+(function () {
+'use strict';
+/* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
+var M = [
+  {n:'Entrées', d:'Pour ouvrir la soirée, légers et de saison.', ic:['insalata',{}], items:[
+    {n:'Burrata et tomates', d:'Burrata des Pouilles, tomates confites, basilic et huile au citron.', p:'14 €', art:'insalata', al:['latte'], tags:['Végétarien']},
+    {n:'Planche du terroir', d:'Charcuteries lombardes, fromages au lait cru, mostarda de fruits.', p:'18 €', art:'tagliere', al:['latte','senape','solfiti'], tags:['À partager']},
+    {n:'Velouté de potiron', d:'Potiron de Mantoue, amaretto croquant, huile à la sauge.', p:'12 €', art:'zuppa', o:{c:'#e08a2c',top:'crostini'}, al:['glutine','frutta','latte']}
+  ]},
+  {n:'Pâtes', d:'Pâtes fraîches étirées chaque matin.', ic:['pasta',{}], items:[
+    {n:'Spaghetto à la tomate', d:'Spaghetto de Gragnano, trois tomates, basilic frais. Simple, parfait.', p:'16 €', art:'pasta', al:['glutine'], tags:['Notre classique']},
+    {n:'Risotto au safran', d:'Carnaroli crémeux, pistils de safran, moelle rôtie.', p:'19 €', art:'risotto', al:['latte','sedano']},
+    {n:'Linguine aux moules', d:'Linguine, moules, tomates cerises et persil.', p:'18 €', art:'pasta', o:{extra:'cozze'}, al:['glutine','molluschi']},
+    {n:'Tagliolini au pesto', d:'Pesto de basilic génois, pignons grillés, haricots verts croquants.', p:'17 €', art:'pasta', o:{s:'#4f9a3a'}, al:['glutine','latte','frutta'], tags:['Végétarien']}
+  ]},
+  {n:'Plats', d:'Grill, four et pêche du jour.', ic:['tagliata',{}], items:[
+    {n:'Tagliata de bœuf', d:'Faux-filet maturé 30 jours, roquette, sel Maldon.', p:'26 €', art:'tagliata', al:[], tags:['Cuisson au choix']},
+    {n:'Bar au four', d:'Bar entier, citron d’Amalfi, fenouil au sel.', p:'24 €', art:'pesce', al:['pesce']}
+  ]},
+  {n:'Desserts', d:'Faits maison, chaque jour.', ic:['pannacotta',{}], items:[
+    {n:'Panna cotta aux fruits rouges', d:'Panna cotta à la vanille Bourbon, coulis de framboise.', p:'8 €', art:'pannacotta', al:['latte']},
+    {n:'Tiramisù Aura', d:'Biscuits à la cuillère, mascarpone fouetté, expresso, cacao amer.', p:'9 €', art:'tiramisu', al:['glutine','uova','latte'], tags:['Le plus aimé']},
+    {n:'Millefeuille aux fraises', d:'Feuilletage caramélisé, crème diplomate, fraises.', p:'10 €', art:'torta', al:['glutine','uova','latte']}
+  ]}
+];
+/* ============ */
+var $ = function (s) { return document.querySelector(s); };
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Piatto in testata: il primo primo piatto (pasta, risotto, pizza…), altrimenti il primo del menu */
+var all = [];
+M.forEach(function (c) { (c.items || []).forEach(function (it) { all.push([it, c]); }); });
+var star = all.filter(function (x) { var k = x[0].art || Piatti.guess(x[0].n); return /pasta|risotto|pizza|tagliata|pesce|lasagna/.test(k || ''); })[0] || all[0];
+if (star) $('#hero-dish').innerHTML = Piatti.art(star[0], star[1]);
+
+var cats = $('#cats'), grid = $('#grid'), cur = -1;
+cats.innerHTML = M.map(function (c, i) {
+  return '<button class="flip" type="button" aria-pressed="false" data-i="' + i + '"><span class="flip-in">' +
+    '<span class="face front"><small>0' + (i + 1) + '</small><b>' + c.n + '</b></span>' +
+    '<span class="face back">' + Piatti.catArt(c) + '<span><b>' + c.n + '</b><small>' + c.items.length + (c.items.length === 1 ? ' plat' : ' plats') + '</small></span></span>' +
+    '</span></button>';
+}).join('');
+
+function show(i) {
+  if (i === cur) return; cur = i;
+  var c = M[i];
+  Array.prototype.forEach.call(cats.children, function (b, k) { b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+  $('#cat-name').innerHTML = c.n; $('#cat-desc').innerHTML = c.s || c.d || '';
+  var list = c.items.map(function (it) { it.cat = c.n; it.catObj = c; return it; });
+  grid.innerHTML = list.map(function (it, k) {
+    var tag = (it.tags && it.tags[0]) || Piatti.label(it);
+    return '<button class="card" type="button" data-k="' + k + '" aria-label="' + it.n + ', ' + Piatti.price(it.p) + '">' +
+      '<div class="pic"><span class="ic">' + Piatti.art(it, c) + '</span></div>' +
+      (tag ? '<span class="tag">' + tag + '</span>' : '') + '<span class="plus" aria-hidden="true">+</span>' +
+      '<div class="body"><h3>' + it.n + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '') + '<div class="row"><span class="al">' + Piatti.alIcons(it.al) + '</span><span class="price">' + Piatti.price(it.p) + '</span></div></div></button>';
+  }).join('');
+  Array.prototype.forEach.call(grid.children, function (card, k) {
+    card.addEventListener('click', function () { Piatti.modal(list, k, card); });
+    setTimeout(function () { card.classList.add('in'); }, reduced ? 0 : 90 * k + 60);
+  });
+}
+cats.addEventListener('click', function (e) { var b = e.target.closest('.flip'); if (b) { show(+b.getAttribute('data-i')); b.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', inline: 'center', block: 'nearest'}); } });
+show(0);
+})();
+</script>
+<script src="/assets/trial.js" data-model="Aura" defer></script>
+</body>
+</html>

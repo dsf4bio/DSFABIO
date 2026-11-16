@@ -42,7 +42,48 @@ var CSS = [
 ].join('\n');
 
 function el(html) { var d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
-var TRIAL = '/attiva?modello=' + encodeURIComponent(MODEL);
+/* Testi nella lingua della pagina (/en/mdc-001 ha <html lang="en">) */
+var LANG = (document.documentElement.getAttribute('lang') || 'it').slice(0, 2);
+var TX = {
+  it: {eye: 'Ti piace questo menu?', h: 'Questo menu può essere <span class="dsf-gt">il tuo</span>, già da domani',
+    lead: 'Compila il modulo e allega il tuo menu, anche solo in foto: lo prepariamo noi con i tuoi piatti, il tuo logo e i tuoi colori. Tu stampi il QR e lo metti sui tavoli.',
+    pts: ['<b>24 ore</b>e il menu è online', '<b>30 giorni</b>di prova gratis', '<b>189 €/anno</b>tutto incluso'],
+    btn: '🚀 Prova gratis il modello ', small: 'Nessun pagamento anticipato · Prova senza impegno · Pronto in 24 ore',
+    back: '← Guarda gli altri modelli', pill: '✨ Provalo gratis', ckL: 'Avviso sui cookie',
+    ck: '🍪 Questo sito usa solo cookie tecnici, necessari a farlo funzionare: niente profilazione, statistiche o pubblicità.', ckI: 'Informativa', ok: 'Ok, ho capito'},
+  en: {eye: 'Like this menu?', h: 'This menu can be <span class="dsf-gt">yours</span>, as soon as tomorrow',
+    lead: 'Fill in the form and attach your menu, even just a photo: we set it up with your dishes, your logo and your colours. You print the QR code and put it on the tables.',
+    pts: ['<b>24 hours</b>and your menu is online', '<b>30 days</b>free trial', '<b>€189/year</b>all included'],
+    btn: '🚀 Try the template for free: ', small: 'No upfront payment · No commitment · Ready in 24 hours',
+    back: '← See the other templates', pill: '✨ Try it free', ckL: 'Cookie notice',
+    ck: '🍪 This site only uses technical cookies needed to make it work: no profiling, statistics or advertising.', ckI: 'Policy', ok: 'OK, got it'},
+  es: {eye: '¿Te gusta este menú?', h: 'Este menú puede ser <span class="dsf-gt">el tuyo</span>, desde mañana',
+    lead: 'Rellena el formulario y adjunta tu carta, aunque sea en foto: la preparamos nosotros con tus platos, tu logotipo y tus colores. Tú imprimes el QR y lo pones en las mesas.',
+    pts: ['<b>24 horas</b>y el menú está en línea', '<b>30 días</b>de prueba gratis', '<b>189 €/año</b>todo incluido'],
+    btn: '🚀 Prueba gratis la plantilla ', small: 'Sin pago por adelantado · Sin compromiso · Listo en 24 horas',
+    back: '← Ver las otras plantillas', pill: '✨ Pruébalo gratis', ckL: 'Aviso de cookies',
+    ck: '🍪 Este sitio solo usa cookies técnicas, necesarias para que funcione: nada de perfiles, estadísticas ni publicidad.', ckI: 'Información', ok: 'Vale, entendido'},
+  pt: {eye: 'Gostou deste cardápio?', h: 'Este cardápio pode ser <span class="dsf-gt">o seu</span>, já amanhã',
+    lead: 'Preencha o formulário e anexe o seu cardápio, mesmo só em foto: nós o preparamos com os seus pratos, o seu logotipo e as suas cores. Você imprime o QR code e coloca nas mesas.',
+    pts: ['<b>24 horas</b>e o cardápio está no ar', '<b>30 dias</b>de teste grátis', '<b>189 €/ano</b>tudo incluído'],
+    btn: '🚀 Teste grátis o modelo ', small: 'Nenhum pagamento antecipado · Sem compromisso · Pronto em 24 horas',
+    back: '← Ver os outros modelos', pill: '✨ Teste grátis', ckL: 'Aviso de cookies',
+    ck: '🍪 Este site usa apenas cookies técnicos, necessários para funcionar: nada de criação de perfis, estatísticas ou publicidade.', ckI: 'Saiba mais', ok: 'Ok, entendi'},
+  de: {eye: 'Gefällt dir diese Speisekarte?', h: 'Diese Speisekarte kann schon morgen <span class="dsf-gt">deine</span> sein',
+    lead: 'Fülle das Formular aus und hänge deine Speisekarte an, auch nur als Foto: Wir erstellen sie mit deinen Gerichten, deinem Logo und deinen Farben. Du druckst den QR-Code und stellst ihn auf die Tische.',
+    pts: ['<b>24 Stunden</b>und die Karte ist online', '<b>30 Tage</b>kostenlos testen', '<b>189 €/Jahr</b>alles inklusive'],
+    btn: '🚀 Vorlage kostenlos testen: ', small: 'Keine Vorauszahlung · Unverbindlich · In 24 Stunden fertig',
+    back: '← Die anderen Vorlagen ansehen', pill: '✨ Kostenlos testen', ckL: 'Cookie-Hinweis',
+    ck: '🍪 Diese Website verwendet nur technische Cookies, die für den Betrieb nötig sind: kein Profiling, keine Statistiken, keine Werbung.', ckI: 'Mehr erfahren', ok: 'Ok, verstanden'},
+  fr: {eye: 'Ce menu vous plaît ?', h: 'Ce menu peut être <span class="dsf-gt">le vôtre</span>, dès demain',
+    lead: 'Remplissez le formulaire et joignez votre carte, même en photo : nous la préparons avec vos plats, votre logo et vos couleurs. Vous imprimez le QR code et le posez sur les tables.',
+    pts: ['<b>24 heures</b>et le menu est en ligne', '<b>30 jours</b>d’essai gratuit', '<b>189 €/an</b>tout compris'],
+    btn: '🚀 Essayez gratuitement le modèle ', small: 'Aucun paiement à l’avance · Sans engagement · Prêt en 24 heures',
+    back: '← Voir les autres modèles', pill: '✨ Essai gratuit', ckL: 'Avis sur les cookies',
+    ck: '🍪 Ce site utilise uniquement des cookies techniques, nécessaires à son fonctionnement : ni profilage, ni statistiques, ni publicité.', ckI: 'En savoir plus', ok: 'OK, compris'}
+};
+var L = TX[LANG] || TX.it;
+var TRIAL = (TX[LANG] && LANG !== 'it' ? '/' + LANG : '') + '/attiva?modello=' + encodeURIComponent(MODEL);
 var ESC = function (t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
 
 /* ---------- Anteprima comandata dalla pagina che la contiene (dsmenu.it) ----------
@@ -114,20 +155,20 @@ function init() {
   /* Call to action in fondo */
   var cta = el(
   '<section class="dsf dsf-cta" aria-labelledby="dsf-cta-t"><div class="in">' +
-    '<span class="dsf-eye">Ti piace questo menu?</span>' +
-    '<h2 id="dsf-cta-t">Questo menu può essere <span class="dsf-gt">il tuo</span>, già da domani</h2>' +
-    '<p class="lead">Compila il modulo e allega il tuo menu, anche solo in foto: lo prepariamo noi con i tuoi piatti, il tuo logo e i tuoi colori. Tu stampi il QR e lo metti sui tavoli.</p>' +
-    '<ul class="dsf-pts"><li><b>24 ore</b>e il menu è online</li><li><b>30 giorni</b>di prova gratis</li><li><b>189 €/anno</b>tutto incluso</li></ul>' +
-    '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '">🚀 Prova gratis il modello ' + ESC(MODEL) + '</a></div>' +
-    '<span class="dsf-small">Nessun pagamento anticipato · Prova senza impegno · Pronto in 24 ore</span>' +
-    '<a class="dsf-link" href="modelli">← Guarda gli altri modelli</a>' +
+    '<span class="dsf-eye">' + L.eye + '</span>' +
+    '<h2 id="dsf-cta-t">' + L.h + '</h2>' +
+    '<p class="lead">' + L.lead + '</p>' +
+    '<ul class="dsf-pts"><li>' + L.pts.join('</li><li>') + '</li></ul>' +
+    '<div class="dsf-btns"><a class="dsf-btn dsf-main" href="' + ESC(TRIAL) + '">' + L.btn + ESC(MODEL) + '</a></div>' +
+    '<span class="dsf-small">' + L.small + '</span>' +
+    '<a class="dsf-link" href="modelli">' + L.back + '</a>' +
   '</div></section>');
   document.body.appendChild(cta);
 
   /* Pulsante nella fascia "modello dimostrativo" */
   var bar = document.querySelector('.demo, .demo-bar');
   if (bar && !bar.querySelector('.dsf-pill')) {
-    var pill = el('<a class="dsf-pill" href="' + ESC(TRIAL) + '" target="_top">✨ Provalo gratis</a>');
+    var pill = el('<a class="dsf-pill" href="' + ESC(TRIAL) + '" target="_top">' + L.pill + '</a>');
     bar.appendChild(pill);
   }
 
@@ -135,7 +176,7 @@ function init() {
   var seen = false;
   try { seen = !!localStorage.getItem('dsf-cookie-ok'); } catch (err) {}
   if (!seen) {
-    var ck = el('<div class="dsf dsf-ck" role="region" aria-label="Avviso sui cookie"><p>🍪 Questo sito usa solo cookie tecnici, necessari a farlo funzionare: niente profilazione, statistiche o pubblicità. <a href="privacy#cookies">Informativa</a></p><button type="button">Ok, ho capito</button></div>');
+    var ck = el('<div class="dsf dsf-ck" role="region" aria-label="' + L.ckL + '"><p>' + L.ck + ' <a href="privacy#cookies">' + L.ckI + '</a></p><button type="button">' + L.ok + '</button></div>');
     ck.querySelector('button').addEventListener('click', function () {
       try { localStorage.setItem('dsf-cookie-ok', '1'); } catch (err) {}
       ck.remove();

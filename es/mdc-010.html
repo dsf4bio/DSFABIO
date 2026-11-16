@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#ffd23f">
+<title>Smash Lab · Plantilla de menú digital (ejemplo) | DS Service</title>
+<meta name="description" content="Hamburguesería street food: pegatinas, franjas en movimiento, hamburguesas en 3D y ficha con alérgenos. Plantilla de menú digital con código QR.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="DS Service · Menús digitales">
+<meta property="og:title" content="Smash Lab · Plantilla de menú digital (ejemplo) | DS Service">
+<meta property="og:description" content="Hamburguesería street food: pegatinas, franjas en movimiento, hamburguesas en 3D y ficha con alérgenos. Plantilla de menú digital con código QR.">
+<meta property="og:url" content="https://dsfabio.com/es/mdc-010">
+<meta property="og:image" content="https://dsfabio.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/bowlbyone-inter.css">
+<style>
+:root{--yel:#ffd23f;--red:#ff3b30;--blk:#111;--cream:#fff8e7;--ink:#111;--sub:#4a4a4a;
+--pm-bg:#fff8e7;--pm-ink:#111;--pm-sub:#4a4a4a;--pm-accent:#ff3b30;--pm-accent-ink:#fff;--pm-head:'Bowlby One',sans-serif;--pm-line:#111;--pm-art:radial-gradient(70% 70% at 50% 45%,#fff3c4,#ffd23f)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5;overflow-x:clip}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:10px}
+.demo{background:var(--blk);color:var(--yel);text-align:center;font-size:.74rem;font-weight:800;padding:7px 12px}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+.bw{font-family:'Bowlby One',Impact,sans-serif;font-weight:400}
+/* copertina gialla a puntini */
+.hero{position:relative;overflow:hidden;color:var(--blk)}
+.hero:not(.dsm-cov){background:var(--yel) radial-gradient(rgba(0,0,0,.12) 2px,transparent 2.6px) 0 0/20px 20px}
+.hero h1{font-family:'Bowlby One',Impact,sans-serif;font-weight:400;font-size:clamp(2.5rem,12vw,4.8rem);line-height:.92;text-transform:uppercase;color:var(--blk);text-shadow:4px 4px 0 var(--red);transform:rotate(-2deg)}
+.hero.dsm-cov h1{color:#fff;text-shadow:4px 4px 0 var(--red),0 6px 24px rgba(0,0,0,.45)}
+.hero .dsm-hd>p{display:inline-block;margin-top:22px!important;background:var(--blk);color:var(--yel);font-weight:800;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;transform:rotate(1.5deg)}
+.hero.dsm-cov p{text-shadow:none}
+/* striscia che scorre */
+.tape{background:var(--blk);color:var(--yel);overflow:hidden;white-space:nowrap;border-block:3px solid var(--blk)}
+.tape span{display:inline-block;padding:9px 0;font-family:'Bowlby One',sans-serif;font-size:1rem;letter-spacing:.04em;animation:tape 26s linear infinite}
+@keyframes tape{to{transform:translateX(-50%)}}
+/* categorie: adesivi */
+.navbar{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:3px solid var(--blk)}
+.cats{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:12px 16px;max-width:860px;margin:0 auto}
+.cats::-webkit-scrollbar{display:none}
+.cat{flex:none;display:flex;align-items:center;gap:6px;border:3px solid var(--blk);background:#fff;border-radius:14px;padding:6px 12px 6px 8px;font-weight:900;font-size:.88rem;text-transform:uppercase;cursor:pointer;box-shadow:3px 3px 0 var(--blk);transform:rotate(var(--r,0deg));transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s}
+.cat .pa{width:26px;height:26px}
+.cat.on{background:var(--red);color:#fff;transform:rotate(0) scale(1.06)}
+/* sezioni */
+main{padding-top:6px;padding-bottom:30px}
+.sec{padding-top:22px}
+.sec-h{display:flex;align-items:center;gap:12px;margin:6px 0 16px}
+.sec-h .ill{flex:none;width:64px;height:64px;border:3px solid var(--blk);border-radius:50%;background:var(--yel);display:grid;place-items:center;box-shadow:3px 3px 0 var(--blk)}
+.sec-h .ill .pa{width:46px;height:46px}
+.sec-h h2{font-family:'Bowlby One',sans-serif;font-weight:400;font-size:1.8rem;line-height:1;text-transform:uppercase}
+.sec-h small{display:block;font-weight:700;color:var(--sub);font-size:.85rem;margin-top:4px}
+.list{display:grid;gap:16px}
+@media (min-width:700px){.list{grid-template-columns:1fr 1fr}}
+.card{position:relative;display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:3px solid var(--blk);border-radius:18px;padding:12px 12px 12px 10px;cursor:pointer;box-shadow:6px 6px 0 var(--blk);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--blk)}
+.card:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--blk)}
+.bun{flex:none;width:78px;height:78px;border-radius:50%;background:var(--yel);border:3px solid var(--blk);display:grid;place-items:center;overflow:hidden}
+.bun .pa{width:60px;height:60px}
+.bun img.pa-photo{width:100%;height:100%;border-radius:50%}
+.card .tx{flex:1;min-width:0;padding-right:58px}
+.card h3{font-family:'Bowlby One',sans-serif;font-weight:400;font-size:1.06rem;line-height:1.1;text-transform:uppercase}
+.card p{color:var(--sub);font-size:.86rem;line-height:1.35;margin-top:4px}
+.card .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;font-size:.85rem}
+.chip{font-size:.68rem;font-weight:900;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--blk);color:var(--yel)}
+.chip.hot{background:var(--red);color:#fff}
+.sticker{position:absolute;top:-12px;right:-8px;min-width:62px;text-align:center;font-family:'Bowlby One',sans-serif;font-size:1rem;color:#fff;background:var(--red);border:3px solid var(--blk);border-radius:12px;padding:6px 8px;transform:rotate(6deg);box-shadow:3px 3px 0 var(--blk)}
+/* le carte "sbattono" sul tavolo, l'adesivo del prezzo si stacca e si riattacca */
+.js-rv .rv{opacity:0;transform:scale(1.18) rotate(-3deg)}
+.js-rv .rv.in{opacity:1;transform:none;animation:slam .55s cubic-bezier(.2,1.6,.4,1) both}
+.js-rv .rv.in .sticker{animation:peel .8s .35s ease both}
+@keyframes slam{0%{opacity:0;transform:scale(1.18) rotate(-3deg)}60%{opacity:1;transform:scale(.97) rotate(.6deg)}100%{transform:none}}
+@keyframes peel{0%{transform:rotate(6deg) scale(1)}40%{transform:rotate(-8deg) scale(1.15)}100%{transform:rotate(6deg) scale(1)}}
+.note{max-width:828px;margin:0 auto 26px;width:calc(100% - 32px);background:#fff;border:3px solid var(--blk);border-radius:16px;padding:14px 16px;font-size:.92rem;box-shadow:5px 5px 0 var(--yel)}
+
+[hidden]{display:none!important}
+footer{text-align:center;padding:34px 18px 38px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.45rem;line-height:1.15;margin-bottom:6px}
+footer .finfo{opacity:.85}footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{background:var(--blk);color:#fff}footer strong{font-family:'Bowlby One',sans-serif;font-weight:400;color:var(--yel);text-transform:uppercase}
+footer .fallergeni{border-top-color:rgba(255,255,255,.3)!important}
+
+/* dsmenu: riquadri con dati di esempio nascosti */
+.dsm-fake{display:none!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<style id="dsm-hd-css">.dsm-hdr{min-height:0!important;height:auto!important;padding:0!important;display:block!important;max-width:none!important;width:auto!important;margin-left:0!important;margin-right:0!important;text-align:center!important;grid-template-columns:none!important}.dsm-old{display:none!important}.dsm-hd{position:relative;max-width:760px;margin:0 auto;padding:30px 20px 38px;text-align:center}.dsm-hd-logo{display:block;width:84px;height:84px;margin:0 auto 16px;line-height:0}.dsm-hd-logo>.dsm-logo{width:100%!important;height:100%!important}.dsm-hd h1{margin-left:auto!important;margin-right:auto!important;margin-top:0!important;text-align:center!important}.dsm-hd>p{margin:12px auto 0!important;max-width:520px;text-align:center!important;padding:0!important}.dsm-hd small{display:none!important}.dsm-cov .dsm-hd{padding-bottom:96px}@media (max-width:600px){.dsm-hd{padding:26px 18px 32px}.dsm-hd-logo{width:76px;height:76px}.dsm-cov .dsm-hd{padding-bottom:84px}}</style>
+</head>
+<body>
+<div class="demo">PLANTILLA DE DEMOSTRACIÓN · platos, precios y datos son ficticios</div>
+<header class="hero dsm-hdr">
+<div class="dsm-hd"><span class="dsm-hd-logo"><span class="dsm-logo dsm-mono" aria-hidden="true" style="display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle"><span style="display:grid;place-items:center;width:100%;height:100%;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:#fffbf2;color:#2a1b14;font:700 2.1rem/1 Georgia,'Times New Roman',serif">S</span></span></span><h1>Smash Lab</h1><p>Smash burger · patatas · batidos</p></div>
+</header>
+<div class="tape" aria-hidden="true"><span id="tape"></span></div>
+<div class="navbar"><nav class="cats" id="cats" aria-label="Categorías"></nav></div>
+<main class="wrap" id="menu" aria-live="polite"></main>
+
+<footer>
+  <strong>Smash Lab</strong>
+  <div class="finfo">Via Emilia 120, Bologna · Tel. 051 123456</div><small>Datos de ejemplo</small>
+</footer>
+
+<script src="/assets/piatti.js"></script>
+<script>
+(function () {
+'use strict';
+var M = [{"n": "Smash burger","s": "Doble carne aplastada en la plancha","e": "🍔","items": [{"n": "Classic Smash","d": "Doble smash, cheddar, cebolla, pepinillos, salsa de la casa","p": 10,"al": ["glutine","latte","senape","uova"],"e": "🍔","top": 1},{"n": "Bacon Bomb","d": "Doble smash, bacon crujiente, cheddar, salsa BBQ","p": 12,"al": ["glutine","latte","senape"],"e": "🥓"},{"n": "Hot Diablo","d": "Smash, jalapeño, pepper jack, salsa picante","p": 11,"al": ["glutine","latte","uova"],"e": "🌶️","hot": 1},{"n": "Green Smash","d": "Hamburguesa vegetal, lechuga, tomate, mayonesa vegana","p": 11,"al": ["glutine","soia","senape"],"e": "🥬","veg": 1,"isNew": 1}]},{"n": "Fritos","s": "Crujientes, recién hechas","e": "🍟","items": [{"n": "Patatas fritas","d": "Con piel, sal ahumada","p": 4,"al": [],"e": "🍟","veg": 1},{"n": "Cheese fries","d": "Patatas, salsa cheddar, bacon","p": 6.5,"al": ["latte"],"e": "🧀"},{"n": "Onion rings","d": "Aros de cebolla rebozados con cerveza","p": 5,"al": ["glutine"],"e": "🧅","veg": 1},{"n": "Alitas picantes","d": "6 alitas con salsa buffalo","p": 7,"al": ["latte","sedano"],"e": "🍗","hot": 1}]},{"n": "Batidos","s": "Batidos espesos para pajita","e": "🥤","items": [{"n": "Vainilla","d": "Helado de vainilla, nata montada","p": 5.5,"al": ["latte"],"e": "🥤"},{"n": "Chocolate y galleta","d": "Cacao, galletas de chocolate, nata","p": 6,"al": ["latte","glutine","soia"],"e": "🍫"}]},{"n": "Refrescos","s": "","e": "🥤","items": [{"n": "Cerveza artesanal","d": "IPA 0,33 l","p": 5,"al": ["glutine"],"e": "🍺"},{"n": "Cola, naranja, limonada","d": "Lata 0,33 l","p": 3,"al": [],"e": "🥤"}]}];
+Piatti.style3d = true; // immagini 3D del prodotto (o le foto del locale, se caricate)
+
+var NAV = function (c) { return '<button class="cat" type="button" data-k="' + c.k + '" style="--r:' + ((c.k % 3) - 1) * 2 + 'deg">' + Piatti.catArt(c) + '<span>' + c.n + '</span></button>'; };
+var HEAD = function (c) { return '<div class="sec-h"><span class="ill" aria-hidden="true">' + Piatti.catArt(c) + '</span><div><h2 id="h' + c.k + '">' + c.n + '</h2><small>' + (c.s ? c.s + ' · ' : '') + plural(c.items.length) + '</small></div></div>'; };
+var CARD = function (it, c, i) {
+  var lb = tag(it);
+  return '<button class="card rv" type="button" data-c="' + c.k + '" data-i="' + i + '" style="animation-delay:' + (i % 4) * 90 + 'ms">'
+    + '<span class="bun">' + Piatti.art(it, c) + '</span><span class="tx"><h3>' + it.n + '</h3>' + (it.d ? '<p>' + it.d + '</p>' : '')
+    + '<span class="meta">' + (lb ? '<span class="chip' + (it.hot ? ' hot' : '') + '">' + lb + '</span>' : '') + '<span aria-label="Allergeni">' + Piatti.alIcons(it.al) + '</span></span></span>'
+    + '<span class="sticker">' + Piatti.price(it.p) + '</span></button>';
+};
+/* striscia: le categorie del locale che scorrono */
+var tp = M.map(function (c) { return (c.e || '🍔') + ' ' + String(c.n).replace(/<[^>]+>/g, '').toUpperCase(); }).join('   ') + '   ';
+document.getElementById('tape').textContent = Array(9).join(tp);
+
+
+var $ = function (s) { return document.querySelector(s); };
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var nav = $('#cats'), menu = $('#menu');
+M.forEach(function (c, k) { c.k = k; (c.items || []).forEach(function (it) { it.cat = c.n; it.catObj = c; }); });
+var plural = function (n) { return n + (n === 1 ? ' opción' : ' opciones'); };
+var tag = function (it) { return Piatti.label(it); };
+nav.innerHTML = M.map(NAV).join('');
+menu.innerHTML = M.map(function (c) {
+  return '<section class="sec" id="c' + c.k + '" aria-labelledby="h' + c.k + '">' + HEAD(c)
+    + '<div class="list">' + c.items.map(function (it, i) { return CARD(it, c, i); }).join('') + '</div></section>';
+}).join('') + '<p class="empty" id="empty" hidden></p>';
+/* scheda del piatto */
+menu.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-i]'); if (!b) return;
+  var c = M[+b.getAttribute('data-c')];
+  Piatti.modal(c.items, +b.getAttribute('data-i'), b);
+});
+/* categorie: vai alla sezione, e la categoria attiva segue lo scorrimento */
+var navBox = nav.closest('.navbar') || nav;
+nav.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-k]'); if (!b) return;
+  var s = document.getElementById('c' + b.getAttribute('data-k'));
+  var y = s.getBoundingClientRect().top + scrollY - navBox.offsetHeight - 10;
+  scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+});
+var secs = [].slice.call(menu.querySelectorAll('.sec')), btns = [].slice.call(nav.querySelectorAll('[data-k]')), on = -1;
+function spy() {
+  var y = navBox.getBoundingClientRect().bottom + 24, cur = 0;
+  secs.forEach(function (s, k) { if (!s.hidden && s.getBoundingClientRect().top <= y) cur = k; });
+  if (cur === on) return; on = cur;
+  btns.forEach(function (b, k) { b.classList.toggle('on', k === cur); b.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+  var b = btns[cur]; if (b && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: b.offsetLeft - nav.clientWidth / 2 + b.offsetWidth / 2, behavior: reduced ? 'auto' : 'smooth' });
+  if (typeof MOVED === 'function') MOVED(cur, b);
+}
+addEventListener('scroll', spy, { passive: true }); addEventListener('resize', spy); spy();
+/* comparsa animata dei piatti quando entrano nello schermo */
+if ('IntersectionObserver' in window && !reduced) {
+  document.documentElement.classList.add('js-rv');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -6% 0px' });
+  [].forEach.call(menu.querySelectorAll('.rv, .sec'), function (el) { io.observe(el); });
+}
+})();
+</script>
+<script src="/assets/trial.js" data-model="Smash Lab" defer></script>
+</body>
+</html>

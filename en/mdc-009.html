@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0b1020">
+<title>Ice Lounge · Digital menu template (example) | DS Service</title>
+<meta name="description" content="Elegant cocktail bar: soft lights, Art Deco gold lines, 3D drinks and a card with ingredients and allergens. Digital menu template with QR code.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="DS Service · Digital menus">
+<meta property="og:title" content="Ice Lounge · Digital menu template (example) | DS Service">
+<meta property="og:description" content="Elegant cocktail bar: soft lights, Art Deco gold lines, 3D drinks and a card with ingredients and allergens. Digital menu template with QR code.">
+<meta property="og:url" content="https://dsfabio.com/en/mdc-009">
+<meta property="og:image" content="https://dsfabio.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/cormorantgaramond-inter.css">
+<style>
+:root{--night:#0b1020;--night2:#121a33;--gold:#d8b26e;--gold2:#f3dca8;--ice:#9fe3ff;--ink:#eef2ff;--sub:#9aa6c7;--line:rgba(216,178,110,.28);
+--pm-bg:#121a33;--pm-ink:#eef2ff;--pm-sub:#9aa6c7;--pm-accent:#d8b26e;--pm-accent-ink:#0b1020;--pm-head:'Cormorant Garamond',serif;--pm-line:rgba(216,178,110,.3);--pm-art:radial-gradient(70% 70% at 50% 45%,#1d2a52,#0b1020)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--night);line-height:1.5;overflow-x:clip}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+.demo{background:#000;color:var(--gold2);text-align:center;font-size:.74rem;font-weight:700;padding:7px 12px;letter-spacing:.04em}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px}
+.serif{font-family:'Cormorant Garamond',serif}
+/* copertina: luci soffuse che respirano */
+.hero{position:relative;color:var(--ink);overflow:hidden}
+.hero:not(.dsm-cov){background:radial-gradient(40% 50% at 20% 30%,rgba(159,227,255,.22),transparent 70%),radial-gradient(45% 55% at 85% 20%,rgba(216,178,110,.25),transparent 70%),radial-gradient(60% 60% at 50% 110%,rgba(122,92,255,.25),transparent 70%),var(--night);background-size:160% 160%;animation:breathe 14s ease-in-out infinite alternate}
+@keyframes breathe{to{background-position:100% 60%}}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:clamp(2.8rem,12vw,5rem);line-height:.95;color:#fff;letter-spacing:.01em}
+.hero p{color:var(--gold2);font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;font-weight:600}
+.hero .dsm-hd::after{content:"";display:block;width:140px;height:14px;margin:16px auto 0;background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold) 70%,transparent) 50% 50%/100% 1px no-repeat,radial-gradient(circle,var(--gold) 0 3px,transparent 4px) 50% 50%/14px 14px no-repeat}
+/* categorie: schede con riga oro che scorre */
+.navbar{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.navbar{position:sticky}.cats{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;max-width:820px;margin:0 auto;padding:0 10px}
+.cats::-webkit-scrollbar{display:none}
+.cat{flex:none;border:0;background:none;cursor:pointer;padding:15px 12px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--sub);transition:color .3s}
+.cat.on{color:var(--gold2)}
+.bar{position:absolute;bottom:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));box-shadow:0 0 12px rgba(216,178,110,.7);transition:transform .45s cubic-bezier(.3,1.2,.4,1),width .45s cubic-bezier(.3,1.2,.4,1)}
+/* sezioni */
+main{padding-top:12px;padding-bottom:30px}
+.sec{padding-top:26px}
+.sec-h{text-align:center;margin:6px 0 18px}
+.sec-h .ill{display:block;width:70px;height:70px;margin:0 auto 4px;animation:float 5s ease-in-out infinite}
+.sec-h .ill .pa{width:100%;height:100%;filter:drop-shadow(0 10px 18px rgba(159,227,255,.25))}
+@keyframes float{50%{transform:translateY(-6px) rotate(-3deg)}}
+.sec-h h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.2rem;line-height:1;color:#fff;position:relative;display:inline-block;background:linear-gradient(100deg,#fff 40%,var(--gold2) 50%,#fff 60%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec.in .sec-h h2{animation:shine 2.4s ease .2s 1}
+@keyframes shine{from{background-position:100% 0}to{background-position:0 0}}
+.sec-h small{display:block;margin-top:6px;color:var(--gold);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase}
+.list{display:grid;gap:2px}
+.drink{display:flex;gap:14px;align-items:center;width:100%;text-align:left;border:0;background:none;cursor:pointer;padding:14px 6px;border-bottom:1px solid var(--line);border-radius:4px;transition:background .25s}
+.drink:hover{background:rgba(255,255,255,.04)}
+.glass{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.18),rgba(255,255,255,.04) 60%);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 0 18px rgba(159,227,255,.12)}
+.glass .pa{width:44px;height:44px}
+.glass img.pa-photo{width:56px;height:56px;border-radius:50%}
+.drink .tx{flex:1;min-width:0}
+.drink .row{display:flex;align-items:baseline;gap:8px}
+.drink h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:1.42rem;line-height:1.1;color:#fff}
+.drink .dots{flex:1;min-width:16px;border-bottom:1px dotted rgba(216,178,110,.5);transform:translateY(-4px)}
+.drink .price{flex:none;color:var(--gold2);font-weight:600;font-size:1rem;font-variant-numeric:tabular-nums}
+.drink p{color:var(--sub);font-size:.86rem;line-height:1.4;margin-top:3px}
+.drink .meta{display:flex;gap:8px;align-items:center;margin-top:5px;font-size:.8rem}
+.chip{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:3px 8px;border:1px solid var(--gold);color:var(--gold2);border-radius:3px}
+.drink.sig{background:linear-gradient(90deg,rgba(216,178,110,.10),transparent 70%)}
+/* comparsa: dal blu, a fuoco */
+.js-rv .rv{opacity:0;transform:translateX(-18px);filter:blur(6px);transition:opacity .7s ease,transform .7s ease,filter .7s ease}
+.js-rv .rv.in{opacity:1;transform:none;filter:none}
+.note{max-width:784px;margin:0 auto 26px;width:calc(100% - 36px);border:1px solid var(--line);border-radius:6px;padding:14px 16px;font-size:.9rem;color:var(--sub);text-align:center}
+.note b{color:var(--gold2)}
+
+[hidden]{display:none!important}
+footer{text-align:center;padding:34px 18px 38px;font-size:.9rem;line-height:1.5}
+footer strong{display:block;font-size:1.45rem;line-height:1.15;margin-bottom:6px}
+footer .finfo{opacity:.85}footer small{opacity:.7}
+.soc{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.soc a:hover{transform:translateY(-4px) scale(1.06)}
+.soc a.fb{background:#1877F2}.soc a.wa{background:#25D366}.soc a.tt{background:#111}
+.soc a.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.soc svg{width:22px;height:22px}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.85rem}
+.flinks a,footer .fby a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+footer{background:#070a15;color:var(--sub);border-top:1px solid var(--line)}footer strong{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:#fff;font-size:1.8rem}
+footer .fallergeni{border-top-color:var(--line)!important}
+
+/* dsmenu: riquadri con dati di esempio nascosti */
+.dsm-fake{display:none!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<style id="dsm-hd-css">.dsm-hdr{min-height:0!important;height:auto!important;padding:0!important;display:block!important;max-width:none!important;width:auto!important;margin-left:0!important;margin-right:0!important;text-align:center!important;grid-template-columns:none!important}.dsm-old{display:none!important}.dsm-hd{position:relative;max-width:760px;margin:0 auto;padding:30px 20px 38px;text-align:center}.dsm-hd-logo{display:block;width:84px;height:84px;margin:0 auto 16px;line-height:0}.dsm-hd-logo>.dsm-logo{width:100%!important;height:100%!important}.dsm-hd h1{margin-left:auto!important;margin-right:auto!important;margin-top:0!important;text-align:center!important}.dsm-hd>p{margin:12px auto 0!important;max-width:520px;text-align:center!important;padding:0!important}.dsm-hd small{display:none!important}.dsm-cov .dsm-hd{padding-bottom:96px}@media (max-width:600px){.dsm-hd{padding:26px 18px 32px}.dsm-hd-logo{width:76px;height:76px}.dsm-cov .dsm-hd{padding-bottom:84px}}</style>
+</head>
+<body>
+<div class="demo">DEMO TEMPLATE · dishes, prices and details are fictional</div>
+<header class="hero dsm-hdr">
+<div class="dsm-hd"><span class="dsm-hd-logo"><span class="dsm-logo dsm-mono" aria-hidden="true" style="display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle"><span style="display:grid;place-items:center;width:100%;height:100%;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:#fffbf2;color:#2a1b14;font:700 2.1rem/1 Georgia,'Times New Roman',serif">I</span></span></span><h1>Ice Lounge</h1><p>Cocktail bar · signatures & classics</p></div>
+</header>
+<div class="navbar"><nav class="cats" id="cats" aria-label="Categories"></nav><span class="bar" id="bar" aria-hidden="true"></span></div>
+<main class="wrap" id="menu" aria-live="polite"></main>
+
+<footer>
+  <strong>Ice Lounge</strong>
+  <div class="finfo">Via dei Mille 21, Milan · Tel. 02 1234567</div><small>Sample details</small>
+</footer>
+
+<script src="/assets/piatti.js"></script>
+<script>
+(function () {
+'use strict';
+var M = [{"n": "Signature","s": "Created at our bar","e": "🍸","items": [{"n": "Glacier","d": "Gin, glacial mint syrup, lime, clear ice cube","p": 11,"al": [],"e": "🍸","top": 1},{"n": "Velvet Night","d": "Dark rum, vermouth, cocoa, orange peel","p": 12,"al": ["latte"],"e": "🥃","top": 1},{"n": "Aurora","d": "Vodka, raspberry, lime, topped with prosecco","p": 11,"al": ["solfiti"],"e": "🍹","isNew": 1},{"n": "Blue Lagoon","d": "Vodka, blue curaçao, lemon, soda","p": 10,"al": [],"e": "🍸"}]},{"n": "Classics","s": "Recipes that never fade","e": "🍸","items": [{"n": "Negroni","d": "Gin, bitter, red vermouth","p": 9,"al": ["solfiti"],"e": "🥃"},{"n": "Moscow Mule","d": "Vodka, ginger beer, lime","p": 9,"al": [],"e": "🍹"},{"n": "Margarita","d": "Tequila, triple sec, lime, salt","p": 9,"al": [],"e": "🍸"},{"n": "Old Fashioned","d": "Bourbon, sugar, Angostura, orange","p": 10,"al": [],"e": "🥃"}]},{"n": "Spritz and wines","s": "For the aperitivo","e": "🍷","items": [{"n": "Spritz","d": "Aperitivo bitter, prosecco, soda","p": 7,"al": ["solfiti"],"e": "🍹"},{"n": "Glass of sparkling wine","d": "Franciacorta brut","p": 8,"al": ["solfiti"],"e": "🥂"},{"n": "Glass of red","d": "Langhe Nebbiolo","p": 7,"al": ["solfiti"],"e": "🍷"}]},{"n": "Soft drinks","s": "Zero alcohol, full flavour","e": "🧃","items": [{"n": "Virgin Mojito","d": "Mint, lime, cane sugar, soda","p": 6,"al": [],"e": "🍹"},{"n": "Ginger Fizz","d": "Ginger, lemon, honey, tonic water","p": 6,"al": [],"e": "🍋"}]},{"n": "Nibbles","s": "With your drink","e": "🫒","items": [{"n": "Cured meat platter","d": "Italian cured meats, breadsticks, focaccia","p": 14,"al": ["glutine"],"e": "🧀"},{"n": "Olives and almonds","d": "Taggiasca olives and toasted almonds","p": 5,"al": ["frutta"],"e": "🫒"}]}];
+Piatti.style3d = true; // immagini 3D del prodotto (o le foto del locale, se caricate)
+
+var NAV = function (c) { return '<button class="cat" type="button" data-k="' + c.k + '">' + c.n + '</button>'; };
+var HEAD = function (c) { return '<div class="sec-h"><span class="ill" aria-hidden="true">' + Piatti.catArt(c) + '</span><h2 id="h' + c.k + '">' + c.n + '</h2><small>' + (c.s || plural(c.items.length)) + '</small></div>'; };
+var CARD = function (it, c, i) {
+  var lb = tag(it);
+  return '<button class="drink rv' + (it.top ? ' sig' : '') + '" type="button" data-c="' + c.k + '" data-i="' + i + '" style="transition-delay:' + (i % 5) * 80 + 'ms">'
+    + '<span class="glass">' + Piatti.art(it, c) + '</span><span class="tx"><span class="row"><h3>' + it.n + '</h3><span class="dots"></span><span class="price">' + Piatti.price(it.p) + '</span></span>'
+    + (it.d ? '<p>' + it.d + '</p>' : '') + '<span class="meta">' + (lb ? '<span class="chip">' + (it.top ? 'Signature' : lb) + '</span>' : '') + '<span aria-label="Allergeni">' + Piatti.alIcons(it.al) + '</span></span></span></button>';
+};
+var barB = null, bar = document.getElementById('bar'), navEl = document.getElementById('cats');
+function place() { if (!barB) return; bar.style.width = barB.offsetWidth - 24 + 'px'; bar.style.transform = 'translateX(' + (navEl.offsetLeft + barB.offsetLeft - navEl.scrollLeft + 12) + 'px)'; }
+var MOVED = function (k, b) { barB = b; place(); };
+navEl.addEventListener('scroll', place, { passive: true }); addEventListener('resize', place);
+
+
+var $ = function (s) { return document.querySelector(s); };
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var nav = $('#cats'), menu = $('#menu');
+M.forEach(function (c, k) { c.k = k; (c.items || []).forEach(function (it) { it.cat = c.n; it.catObj = c; }); });
+var plural = function (n) { return n + (n === 1 ? ' choice' : ' choices'); };
+var tag = function (it) { return Piatti.label(it); };
+nav.innerHTML = M.map(NAV).join('');
+menu.innerHTML = M.map(function (c) {
+  return '<section class="sec" id="c' + c.k + '" aria-labelledby="h' + c.k + '">' + HEAD(c)
+    + '<div class="list">' + c.items.map(function (it, i) { return CARD(it, c, i); }).join('') + '</div></section>';
+}).join('') + '<p class="empty" id="empty" hidden></p>';
+/* scheda del piatto */
+menu.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-i]'); if (!b) return;
+  var c = M[+b.getAttribute('data-c')];
+  Piatti.modal(c.items, +b.getAttribute('data-i'), b);
+});
+/* categorie: vai alla sezione, e la categoria attiva segue lo scorrimento */
+var navBox = nav.closest('.navbar') || nav;
+nav.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-k]'); if (!b) return;
+  var s = document.getElementById('c' + b.getAttribute('data-k'));
+  var y = s.getBoundingClientRect().top + scrollY - navBox.offsetHeight - 10;
+  scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+});
+var secs = [].slice.call(menu.querySelectorAll('.sec')), btns = [].slice.call(nav.querySelectorAll('[data-k]')), on = -1;
+function spy() {
+  var y = navBox.getBoundingClientRect().bottom + 24, cur = 0;
+  secs.forEach(function (s, k) { if (!s.hidden && s.getBoundingClientRect().top <= y) cur = k; });
+  if (cur === on) return; on = cur;
+  btns.forEach(function (b, k) { b.classList.toggle('on', k === cur); b.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+  var b = btns[cur]; if (b && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: b.offsetLeft - nav.clientWidth / 2 + b.offsetWidth / 2, behavior: reduced ? 'auto' : 'smooth' });
+  if (typeof MOVED === 'function') MOVED(cur, b);
+}
+addEventListener('scroll', spy, { passive: true }); addEventListener('resize', spy); spy();
+/* comparsa animata dei piatti quando entrano nello schermo */
+if ('IntersectionObserver' in window && !reduced) {
+  document.documentElement.classList.add('js-rv');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -6% 0px' });
+  [].forEach.call(menu.querySelectorAll('.rv, .sec'), function (el) { io.observe(el); });
+}
+})();
+</script>
+<script src="/assets/trial.js" data-model="Ice Lounge" defer></script>
+</body>
+</html>

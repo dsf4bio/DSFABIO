@@ -15,10 +15,13 @@ from html.parser import HTMLParser
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'i18n')
 PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici']
+# Menu dimostrativi della pagina Modelli (mdc-*, demo-*): piatti e testi negli script
+DEMOS = sorted(f[:-5] for f in os.listdir(ROOT) if re.match(r'(mdc|demo)-[\w-]+\.html$', f))
+PAGES += DEMOS
 # pagine di servizio (dopo il pagamento): tradotte ma fuori dalla sitemap
-NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'}
+NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'} | set(DEMOS)
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
-JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'}
+JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'} | set(DEMOS)
 # Pagine solo in italiano (nessuna al momento)
 IT_ONLY = set()
 LANGS = {
@@ -441,11 +444,20 @@ def localize_common(src, page, lang):
 def translate_page(src, page, lang, d):
     missing = []
 
+    # traduzione specifica di una pagina ("mdc-012|Crudo"): serve quando la stessa parola
+    # ha significati diversi in due menu (crudo di pesce / prosciutto crudo)
+    def look(t):
+        return d.get(page + '|' + t, d.get(t))
+
     def tr(t):
-        if t in d:
-            return d[t]
+        v = look(t)
+        if v is not None:
+            return v
         missing.append(t)
         return t
+
+    # Sakura Neon ha già italiano e inglese: in inglese parte in inglese e i suoi testi italiani restano
+    sakura_en = page == 'demo-sakura-neon' and lang == 'en'
 
     out, pos = [], 0
     for s, e, k in segments_of(src, page in JS_PAGES):
@@ -468,11 +480,17 @@ def translate_page(src, page, lang, d):
         elif k.startswith('js'):
             t = js_unescape(raw)
             # nello script si traduce solo ciò che è nel dizionario (il resto è codice o resta in italiano)
-            out.append(js_escape(d[t], k[2]) if t in d and t not in JS_KEEP else raw)
+            v = None if (sakura_en or t in JS_KEEP) else look(t)
+            out.append(js_escape(v, k[2]) if v is not None else raw)
         pos = e
     out.append(src[pos:])
     res = ''.join(out)
     res = res.replace('<html lang="it">', '<html lang="%s">' % lang, 1)
+    if sakura_en:
+        res = res.replace("let lang = 'it'", "let lang = 'en'", 1)
+    elif page == 'demo-sakura-neon':
+        # i testi "italiani" ora sono nella lingua della pagina: l'attributo lang deve dirlo
+        res = res.replace("document.documentElement.lang = lang;", "document.documentElement.lang = lang === 'it' ? '%s' : lang;" % lang, 1)
     res = res.replace('<meta property="og:locale" content="it_IT">', '<meta property="og:locale" content="%s">' % LANGS[lang][0])
     res = res.replace('"inLanguage": "it-IT"', '"inLanguage": "%s"' % lang)
     res = absolutize(res, lang)
@@ -493,6 +511,8 @@ def translate_page(src, page, lang, d):
     # link assoluti interni ("/", "/assistenza"): stessa pagina nella lingua
     res = re.sub(r'href="/([a-z-]*)([#?][^"]*)?"', lambda m: ('href="/%s%s"' % (lang, m.group(2) or '')) if m.group(1) == '' else
                  ('href="/%s/%s%s"' % (lang, m.group(1), m.group(2) or '') if m.group(1) in LOCAL_PAGES else m.group(0)), res)
+    # anteprime animate dei menu nella pagina Modelli (iframe data-src="/mdc-001")
+    res = re.sub(r'data-src="/((?:mdc|demo)-[\w-]+)"', lambda m: 'data-src="/%s/%s"' % (lang, m.group(1)) if m.group(1) in LOCAL_PAGES else m.group(0), res)
     # Privacy: avviso che la versione italiana prevale
     if page == 'privacy' and d.get('__privacy_note__'):
         res = re.sub(r'(<div class="meta">.*?</div>)', lambda m: m.group(1) + '\n  <p class="tr-note" role="note">%s <a href="/privacy">Italiano</a></p>' % html.escape(d['__privacy_note__']), res, count=1, flags=re.S)

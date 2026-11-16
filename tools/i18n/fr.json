@@ -2360,5 +2360,8 @@
  "Menu digitale di {b}": "Menu digital de {b}",
  "Alla scadenza l'abbonamento si <1>rinnova automaticamente ogni anno</1> al prezzo annuale (anche dopo un piano di 2 o 3 anni): a ogni rinnovo ricevi la conferma via email.": "À l’échéance, l’abonnement se <1>renouvelle automatiquement chaque année</1> au prix annuel (y compris après une formule de 2 ou 3 ans) : à chaque renouvellement, vous recevez la confirmation par e-mail.",
  "Puoi <1>disdire il rinnovo fino a 30 giorni prima della scadenza</1> scrivendo a info@dsfabio.com o dalla pagina Assistenza: il servizio resta attivo fino alla fine del periodo pagato.": "Vous pouvez <1>résilier le renouvellement jusqu’à 30 jours avant l’échéance</1> en écrivant à info@dsfabio.com ou depuis la page Assistance : le service reste actif jusqu’à la fin de l’période payée.",
- "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "Pour les clients facturés en dollars américains (pages en anglais et en portugais), les prix sont : <1>199 $ par an</1> (prix catalogue 229 $), 2 ans 349 $ et 3 ans 499 $, aux mêmes conditions."
+ "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "Pour les clients facturés en dollars américains (pages en anglais et en portugais), les prix sont : <1>199 $ par an</1> (prix catalogue 229 $), 2 ans 349 $ et 3 ans 499 $, aux mêmes conditions.",
+ "← Indietro": "← Retour",
+ "Risparmi {s}": "Vous économisez {s}",
+ "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>Conditions générales</1>\n        <2>Confidentialité</2>\n        <3>Cookies</3>"
 }

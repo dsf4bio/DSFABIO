@@ -2359,5 +2359,8 @@
  "Menu digitale di {b}": "Digital menu of {b}",
  "Alla scadenza l'abbonamento si <1>rinnova automaticamente ogni anno</1> al prezzo annuale (anche dopo un piano di 2 o 3 anni): a ogni rinnovo ricevi la conferma via email.": "At the end of the period the subscription <1>renews automatically every year</1> at the annual price (also after a 2- or 3-year plan): you receive a confirmation by email at each renewal.",
  "Puoi <1>disdire il rinnovo fino a 30 giorni prima della scadenza</1> scrivendo a info@dsfabio.com o dalla pagina Assistenza: il servizio resta attivo fino alla fine del periodo pagato.": "You can <1>cancel the renewal up to 30 days before the expiry date</1> by writing to info@dsfabio.com or from the Support page: the service stays active until the end of the paid period.",
- "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "For customers billed in US dollars (English and Portuguese pages) the prices are: <1>$199 per year</1> (list price $229), 2 years $349 and 3 years $499, on the same terms."
+ "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "For customers billed in US dollars (English and Portuguese pages) the prices are: <1>$199 per year</1> (list price $229), 2 years $349 and 3 years $499, on the same terms.",
+ "← Indietro": "← Back",
+ "Risparmi {s}": "You save {s}",
+ "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>Terms and conditions</1>\n        <2>Privacy</2>\n        <3>Cookies</3>"
 }

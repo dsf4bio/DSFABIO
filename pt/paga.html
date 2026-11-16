@@ -130,7 +130,7 @@
   .plan .p-was { color: #9b94ad; text-decoration: line-through; font-size: .95em; min-height: 1.4em; }
   .plan .p-price { font-family: 'Syne', 'Manrope', sans-serif; font-weight: 800; font-size: 2.1em; line-height: 1.05; }
   .plan .p-per { color: var(--muted); font-size: .92em; }
-  .plan .p-save { margin-top: 8px; align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: #ecfdf3; color: #15803d; font-weight: 800; font-size: .85em; }
+  .plan .p-save { margin-top: 10px; align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: #dcfce7; color: #15803d; font-weight: 800; font-size: .95em; }
   .plan .p-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap; padding: 4px 12px; border-radius: 999px; background: var(--btn); color: #fff; font-size: .78em; font-weight: 800; }
   .plan .p-check { position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-size: 13px; color: #fff; }
   .plan:has(input:checked) .p-check { background: var(--violet); border-color: var(--violet); }
@@ -142,6 +142,9 @@
   .pay-alt { margin: 18px 0 0; padding-top: 14px; border-top: 1px dashed var(--line); color: var(--muted); font-size: .92em; text-align: center; }
   .sec-msg { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: #f6f2ff; border: 1px solid #e4dbf7; line-height: 1.5; }
   .sec-msg.err { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .dsf-page .back { background: none; border: 0; padding: 8px 4px; font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; }
+  .dsf-page .back:hover { color: var(--text); }
+  .dsf-page footer a { text-decoration: underline; text-underline-offset: 2px; }
   [hidden] { display: none !important; }
   @media (max-width: 680px) {
     .plans { grid-template-columns: minmax(0, 1fr); gap: 16px; }
@@ -161,19 +164,9 @@
 
   <header class="top">
     <div class="wrap">
-      <a class="logo" href="https://dsfabio.com/pt">DS <span>Service</span></a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="dsf-nav">Menu</button>
-      <nav class="nav" id="dsf-nav" aria-label="Navegação">
-        <a href="/pt#come-funziona">Como funciona</a>
-        <a href="https://dsfabio.com/pt/modelli">Modelos</a>
-        <a href="/pt#offerta">Oferta</a>
-        <a href="https://dsfabio.com/pt/about">Quem sou</a>
-        <a href="/pt#faq">FAQ</a>
-        <a href="https://dsfabio.com/pt/assistenza">Suporte</a>
-        <a class="cta" href="https://dsfabio.com/pt/attiva">Teste grátis por 30 dias</a>
-      </nav>
-      <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> PT</summary><div class="lang-list"><a href="/paga" hreflang="it" lang="it">Italiano</a><a href="/en/paga" hreflang="en" lang="en">English</a><a href="/es/paga" hreflang="es" lang="es">Español</a><a href="/pt/paga" hreflang="pt" lang="pt" aria-current="true">Português</a><a href="/de/paga" hreflang="de" lang="de">Deutsch</a><a href="/fr/paga" hreflang="fr" lang="fr">Français</a></div></details>
-      </div>
+      <span class="logo">DS <span>Service</span></span>
+      <button class="back" id="pl-back" type="button">← Voltar</button>
+    </div>
   </header>
 
 
@@ -202,23 +195,13 @@
     <div class="wrap">
       <span>© 2026 DS Service di Fabio Dos Santos Souza · Meldola (FC)</span>
       <nav aria-label="Links legais">
-        <a href="https://dsfabio.com/pt">Início</a>
+        <a href="/pt/privacy#terms">Termos e condições</a>
         <a href="/pt/privacy#privacy">Privacidade</a>
         <a href="/pt/privacy#cookies">Cookies</a>
-        <a href="/pt/privacy#terms">Termos e condições</a>
       </nav>
     </div>
   </footer>
 </div>
-<script>
-  (function () {
-    var btn = document.querySelector('.dsf-page .menu-btn'), nav = document.getElementById('dsf-nav');
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(open));
-    });
-  })();
-</script>
 <script>
 (function () {
   var SUPABASE_URL = 'https://xzhbyxvlrxemujrqatbl.supabase.co';
@@ -244,6 +227,10 @@
   function fill(t, o) { return t.replace(/\{(\w+)\}/g, function (_, k) { return o[k] == null ? '' : o[k]; }); }
   function date(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
 
+  $('pl-back').addEventListener('click', function () {
+    if (history.length > 1) history.back(); else location.href = 'https://dsfabio.com' + BASE;
+  });
+
   var token = '';
   try { token = (new URLSearchParams(location.search).get('t') || '').toLowerCase(); } catch (e) {}
   if (!/^[0-9a-f]{32}$/.test(token)) {
@@ -266,21 +253,22 @@
     $('pl-title').textContent = fill('Cardápio digital de {b}', { b: r.business });
     var annual = r.annual_cents;
     var plans = [{ months: r.interval_months || 12, cents: annual, saving_cents: 0, percent: 0 }].concat(r.plans || []);
-    var best = plans.length > 1 ? plans[plans.length - 1].months : 0;
+    // il piano di 2 anni è il più scelto: evidenziato e già selezionato
+    var popular = plans.some(function (p) { return p.months === 24; }) ? 24 : 0;
     var list = $('pl-list');
     plans.forEach(function (p, i) {
       var years = Math.round(p.months / 12);
       var lab = document.createElement('label'); lab.className = 'plan';
-      var inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'piano'; inp.value = String(p.months); if (i === 0) inp.checked = true;
+      var inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'piano'; inp.value = String(p.months); if (popular ? p.months === popular : i === 0) inp.checked = true;
       lab.appendChild(inp);
       function add(cls, text) { var el = document.createElement('span'); el.className = cls; el.textContent = text; lab.appendChild(el); return el; }
-      if (p.months === best) add('p-tag', 'O mais vantajoso');
+      if (p.months === popular) add('p-tag', 'O mais escolhido');
       var ck = add('p-check', '✓'); ck.setAttribute('aria-hidden', 'true');
       add('p-name', years === 1 ? '1 ano' : fill('{n} anos', { n: years }));
       add('p-was', p.months === 12 && r.list_cents > annual ? money(r.list_cents) : (p.saving_cents ? money(annual * years) : ''));
       add('p-price', money(p.cents));
       add('p-per', years === 1 ? 'por ano, renovação automática' : fill('{x} por ano · pagamento único', { x: money(Math.round(p.cents / years)) }));
-      if (p.saving_cents) add('p-save', fill('Você economiza {s} (−{p}%)', { s: money(p.saving_cents), p: p.percent }));
+      if (p.saving_cents) add('p-save', fill('Você economiza {s}', { s: money(p.saving_cents) }));
       list.appendChild(lab);
     });
     function note() {

@@ -1780,7 +1780,7 @@
  "Naturale o frizzante 0,75 l": "Sem gás ou com gás 0,75 l",
  "Fatto in casa": "Feito em casa",
  "Crudo": "Cru",
- "Il più scelto": "O mais pedido",
+ "Il più scelto": "O mais escolhido",
  "</small></h2><div class=\"arrows\"><button data-dir=\"-1\" aria-label=\"Indietro\">‹</button><button data-dir=\"1\" aria-label=\"Avanti\">›</button></div></div><div class=\"track\" tabindex=\"0\" aria-label=\"": "</small></h2><div class=\"arrows\"><button data-dir=\"-1\" aria-label=\"Voltar\">‹</button><button data-dir=\"1\" aria-label=\"Avançar\">›</button></div></div><div class=\"track\" tabindex=\"0\" aria-label=\"",
  ", scorri per vedere tutti i piatti\">": ", deslize para ver todos os pratos\">",
  "</ul><p>Per informazioni su allergeni e intolleranze chiedi al personale. Il pesce crudo è abbattuto secondo la normativa.</p></section>": "</ul><p>Para informações sobre alérgenos e intolerâncias, pergunte à equipe. O peixe cru é ultracongelado conforme a lei.</p></section>",
@@ -2360,5 +2360,8 @@
  "Menu digitale di {b}": "Cardápio digital de {b}",
  "Alla scadenza l'abbonamento si <1>rinnova automaticamente ogni anno</1> al prezzo annuale (anche dopo un piano di 2 o 3 anni): a ogni rinnovo ricevi la conferma via email.": "No vencimento a assinatura é <1>renovada automaticamente todo ano</1> pelo preço anual (também depois de um plano de 2 ou 3 anos): a cada renovação você recebe a confirmação por e-mail.",
  "Puoi <1>disdire il rinnovo fino a 30 giorni prima della scadenza</1> scrivendo a info@dsfabio.com o dalla pagina Assistenza: il servizio resta attivo fino alla fine del periodo pagato.": "Você pode <1>cancelar a renovação até 30 dias antes do vencimento</1> escrevendo para info@dsfabio.com ou pela página de Suporte: o serviço continua ativo até o fim do período pago.",
- "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "Para os clientes com cobrança em dólares americanos (páginas em inglês e português) os preços são: <1>US$ 199 por ano</1> (preço de tabela US$ 229), 2 anos US$ 349 e 3 anos US$ 499, nas mesmas condições."
+ "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "Para os clientes com cobrança em dólares americanos (páginas em inglês e português) os preços são: <1>US$ 199 por ano</1> (preço de tabela US$ 229), 2 anos US$ 349 e 3 anos US$ 499, nas mesmas condições.",
+ "← Indietro": "← Voltar",
+ "Risparmi {s}": "Você economiza {s}",
+ "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>Termos e condições</1>\n        <2>Privacidade</2>\n        <3>Cookies</3>"
 }

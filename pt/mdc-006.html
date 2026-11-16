@@ -197,7 +197,7 @@ var $$ = function (s, c) { return Array.prototype.slice.call((c || document).que
 $('#today').textContent = new Date().toLocaleDateString('it-IT', {weekday:'long', day:'numeric', month:'long'});
 $('#fishes').innerHTML = PESCATO.map(function (f) { return '<div class="fsh"><span aria-hidden="true">' + f[0] + '</span><b>' + f[1] + '</b><small>' + f[2] + '</small></div>'; }).join('');
 function als(a) { return a.length ? a.map(function (k) { return '<span class="al" title="' + AL[k][1] + '" aria-label="' + AL[k][1] + '">' + AL[k][0] + '</span>'; }).join('') : '<span class="none">Nessun allergene dichiarato</span>'; }
-var TAGS = {raw:['raw','Cru'], top:['','O mais pedido']};
+var TAGS = {raw:['raw','Cru'], top:['','O mais escolhido']};
 var html = '';
 MENU.forEach(function (c) {
   html += '<section class="sec" id="' + c.id + '" aria-labelledby="h-' + c.id + '"><div class="sec-h"><h2 id="h-' + c.id + '">' + c.t + '<small>' + c.s + '</small></h2><div class="arrows"><button data-dir="-1" aria-label="Voltar">‹</button><button data-dir="1" aria-label="Avançar">›</button></div></div><div class="track" tabindex="0" aria-label="' + c.t + ', deslize para ver todos os pratos">';

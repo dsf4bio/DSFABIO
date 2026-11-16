@@ -25,6 +25,9 @@ JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 
 # lingue con i prezzi in dollari (come nel gestionale, impostazione billing_usd_langs)
 USD_LANGS = {'en', 'pt'}
 
+# pagine senza selettore della lingua (pagamento: si apre già nella lingua del cliente)
+NO_SWITCHER = {'paga'}
+
 # Pagine solo in italiano (nessuna al momento)
 IT_ONLY = set()
 LANGS = {
@@ -433,7 +436,9 @@ def localize_common(src, page, lang):
     src = re.sub(r'\n<link rel="alternate" hreflang="[^"]*" href="[^"]*">', '', src)
     src = re.sub(r'<details class="lang">.*?</details>', '', src, flags=re.S)
     src = re.sub(r'(<link rel="canonical" href="[^"]*">)', r'\1\n' + alternates(page).replace('\\', '\\\\'), src, count=1)
-    if '<button class="burger"' in src:
+    if page in NO_SWITCHER:
+        pass
+    elif '<button class="burger"' in src:
         src = src.replace('<button class="burger"', switcher(page, lang) + '\n      <button class="burger"', 1)
     elif '<a class="home-btn"' in src:
         # pagina Privacy: il selettore va prima del pulsante "Torna alla home"

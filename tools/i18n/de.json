@@ -2363,5 +2363,13 @@
  "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "Für Kunden mit Abrechnung in US-Dollar (Seiten auf Englisch und Portugiesisch) gelten folgende Preise: <1>199 $ pro Jahr</1> (Listenpreis 229 $), 2 Jahre 349 $ und 3 Jahre 499 $, zu denselben Bedingungen.",
  "← Indietro": "← Zurück",
  "Risparmi {s}": "Du sparst {s}",
- "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>AGB</1>\n        <2>Datenschutz</2>\n        <3>Cookies</3>"
+ "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>AGB</1>\n        <2>Datenschutz</2>\n        <3>Cookies</3>",
+ "Paese": "Land",
+ "Codice postale": "Postleitzahl",
+ "Stato": "Bundesstaat",
+ "Stati Uniti": "Vereinigte Staaten",
+ "Canada": "Kanada",
+ "Controlla il codice postale.": "Prüfe die Postleitzahl.",
+ "Scegli lo stato o la provincia.": "Wähle den Bundesstaat oder die Provinz.",
+ "Controlla il codice fiscale del locale. Se non lo hai sotto mano, lascia vuoto.": "Prüfe die Steuernummer des Lokals. Wenn du sie nicht zur Hand hast, lass das Feld leer."
 }

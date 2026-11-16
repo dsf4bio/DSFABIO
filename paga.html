@@ -142,8 +142,14 @@
   .pay-alt { margin: 18px 0 0; padding-top: 14px; border-top: 1px dashed var(--line); color: var(--muted); font-size: .92em; text-align: center; }
   .sec-msg { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: #f6f2ff; border: 1px solid #e4dbf7; line-height: 1.5; }
   .sec-msg.err { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
-  .dsf-page .back { background: none; border: 0; padding: 8px 4px; font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; }
-  .dsf-page .back:hover { color: var(--text); }
+  /* scelta della lingua */
+  .dsf-page header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .dsf-page .lang { position: relative; }
+  .dsf-page .lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-weight: 800; font-size: .82rem; user-select: none; }
+  .dsf-page .lang summary::-webkit-details-marker { display: none; }
+  .dsf-page .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 130; min-width: 170px; display: grid; padding: 6px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(60, 30, 120, .18); }
+  .dsf-page .lang-list a { padding: 10px 12px; border-radius: 10px; text-decoration: none; color: var(--muted); font-weight: 700; font-size: .92rem; }
+  .dsf-page .lang-list a:hover, .dsf-page .lang-list a[aria-current] { background: #f6f2ff; color: var(--text); }
   .dsf-page footer a { text-decoration: underline; text-underline-offset: 2px; }
   [hidden] { display: none !important; }
   @media (max-width: 680px) {
@@ -165,8 +171,8 @@
   <header class="top">
     <div class="wrap">
       <span class="logo">DS <span>Service</span></span>
-      <button class="back" id="pl-back" type="button">← Indietro</button>
-    </div>
+      <details class="lang"><summary aria-label="Lingua / Language"><span aria-hidden="true">🌐</span> IT</summary><div class="lang-list"><a href="/paga" hreflang="it" lang="it" aria-current="true">Italiano</a><a href="/en/paga" hreflang="en" lang="en">English</a><a href="/es/paga" hreflang="es" lang="es">Español</a><a href="/pt/paga" hreflang="pt" lang="pt">Português</a><a href="/de/paga" hreflang="de" lang="de">Deutsch</a><a href="/fr/paga" hreflang="fr" lang="fr">Français</a></div></details>
+      </div>
   </header>
 
 
@@ -227,19 +233,23 @@
   function fill(t, o) { return t.replace(/\{(\w+)\}/g, function (_, k) { return o[k] == null ? '' : o[k]; }); }
   function date(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
 
-  $('pl-back').addEventListener('click', function () {
-    if (history.length > 1) history.back(); else location.href = 'https://dsfabio.com' + BASE;
+  var token = '', chosen = false;
+  try {
+    var qs0 = new URLSearchParams(location.search);
+    token = (qs0.get('t') || '').toLowerCase();
+    chosen = qs0.get('lingua') === '1';   // lingua scelta a mano dal cliente: niente cambio automatico
+  } catch (e) {}
+  // il selettore lingua tiene il link di pagamento
+  [].forEach.call(document.querySelectorAll('.lang-list a'), function (a) {
+    if (/^[0-9a-f]{32}$/.test(token)) a.href = a.getAttribute('href') + '?t=' + token + '&lingua=1';
   });
-
-  var token = '';
-  try { token = (new URLSearchParams(location.search).get('t') || '').toLowerCase(); } catch (e) {}
   if (!/^[0-9a-f]{32}$/.test(token)) {
     $('pl-title').textContent = 'Link non valido';
     return msg('Apri il link dall\'email che ti abbiamo inviato. Per qualsiasi dubbio scrivici a info@dsfabio.com.', 'err');
   }
 
   rpc('billing_plan_options', { p_token: token }).then(function (r) {
-    if (r && r.lang && r.lang !== LANG && /^(it|en|es|pt|de|fr)$/.test(r.lang)) {
+    if (!chosen && r && r.lang && r.lang !== LANG && /^(it|en|es|pt|de|fr)$/.test(r.lang)) {
       // pagina nella lingua del cliente
       location.replace((r.lang === 'it' ? '' : '/' + r.lang) + '/paga?t=' + token);
       return;
@@ -283,7 +293,7 @@
     $('pl-form').hidden = false;
   }).catch(function (e) {
     // scelta del piano non ancora disponibile: pagamento annuale come prima
-    if (e.status === 404) { location.replace('/paga-stripe?t=' + token); return; }
+    if (e.status === 404) { location.replace('/paga-stripe?t=' + token + '&lang=' + LANG); return; }
     $('pl-title').textContent = 'Servizio non disponibile'; msg(e.message, 'err');
   });
 
@@ -291,7 +301,8 @@
     e.preventDefault();
     var m = (document.querySelector('input[name="piano"]:checked') || {}).value || '12';
     var b = $('pl-go'); b.disabled = true; b.textContent = 'Apro il pagamento…';
-    location.href = '/paga-stripe?t=' + token + '&piano=' + encodeURIComponent(m);
+    // Stripe nella stessa lingua della pagina
+    location.href = '/paga-stripe?t=' + token + '&piano=' + encodeURIComponent(m) + '&lang=' + LANG;
     setTimeout(function () { b.disabled = false; b.textContent = 'Continua al pagamento sicuro'; }, 8000);
   });
 })();

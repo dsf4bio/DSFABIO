@@ -26,7 +26,7 @@ JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 
 USD_LANGS = {'en', 'pt'}
 
 # pagine senza selettore della lingua (pagamento: si apre già nella lingua del cliente)
-NO_SWITCHER = {'paga'}
+NO_SWITCHER = set()
 
 # Pagine solo in italiano (nessuna al momento)
 IT_ONLY = set()
@@ -438,6 +438,10 @@ def localize_common(src, page, lang):
     src = re.sub(r'(<link rel="canonical" href="[^"]*">)', r'\1\n' + alternates(page).replace('\\', '\\\\'), src, count=1)
     if page in NO_SWITCHER:
         pass
+    elif page == 'paga':
+        # pagina dei piani: solo logo e lingua
+        src = src.replace('<span class="logo">DS <span>Service</span></span>',
+                          '<span class="logo">DS <span>Service</span></span>\n      ' + switcher(page, lang), 1)
     elif '<button class="burger"' in src:
         src = src.replace('<button class="burger"', switcher(page, lang) + '\n      <button class="burger"', 1)
     elif '<a class="home-btn"' in src:

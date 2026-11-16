@@ -2362,5 +2362,13 @@
  "Per i clienti con fatturazione in dollari USA (pagine in inglese e portoghese) i prezzi sono: <1>199 $ all'anno</1> (prezzo di listino 229 $), 2 anni 349 $ e 3 anni 499 $, alle stesse condizioni.": "For customers billed in US dollars (English and Portuguese pages) the prices are: <1>$199 per year</1> (list price $229), 2 years $349 and 3 years $499, on the same terms.",
  "← Indietro": "← Back",
  "Risparmi {s}": "You save {s}",
- "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>Terms and conditions</1>\n        <2>Privacy</2>\n        <3>Cookies</3>"
+ "<1>Termini e condizioni</1>\n        <2>Privacy</2>\n        <3>Cookie</3>": "<1>Terms and conditions</1>\n        <2>Privacy</2>\n        <3>Cookies</3>",
+ "Paese": "Country",
+ "Codice postale": "Postcode",
+ "Stato": "State",
+ "Stati Uniti": "United States",
+ "Canada": "Canada",
+ "Controlla il codice postale.": "Check the postcode.",
+ "Scegli lo stato o la provincia.": "Choose the state or province.",
+ "Controlla il codice fiscale del locale. Se non lo hai sotto mano, lascia vuoto.": "Check the business tax number. If you don’t have it to hand, leave it blank."
 }

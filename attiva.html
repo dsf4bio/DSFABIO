@@ -228,7 +228,7 @@
               @keyframes dsf-shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
               #dsf-assistenza .dsf-slug { display: inline-block; margin-top: 8px; padding: 6px 12px; border-radius: 14px; background: #effaf3; color: #15803d; font-size: .85em; font-weight: 700; animation: dsf-pop .3s both; max-width: 100%; overflow-wrap: anywhere; }
               #dsf-assistenza .dsf-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 12px; }
-              #dsf-assistenza .dsf-cols-addr { display: grid; grid-template-columns: 110px minmax(0, 1fr) 90px; gap: 0 12px; }
+              #dsf-assistenza .dsf-cols-addr { display: grid; grid-template-columns: 140px minmax(0, 1fr) 100px; gap: 0 12px; }
               #dsf-assistenza .dsf-phone { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px; }
               #dsf-assistenza details.dsf-more { margin: 0 0 18px; border: 1.5px solid var(--fbd); border-radius: 14px; padding: 0 14px; background: #fff; }
               #dsf-assistenza details.dsf-more summary { cursor: pointer; padding: 13px 0; font-weight: 700; }
@@ -389,8 +389,9 @@
                 #dsf-assistenza .dsf-stepper span { width: 26px; height: 26px; }
                 #dsf-assistenza .dsf-q { font-size: 1.08em; }
                 #dsf-assistenza .dsf-cols { grid-template-columns: 1fr; }
-                #dsf-assistenza .dsf-cols-addr { grid-template-columns: 100px minmax(0, 1fr); }
+                #dsf-assistenza .dsf-cols-addr { grid-template-columns: 130px minmax(0, 1fr); }
                 #dsf-assistenza .dsf-cols-addr .dsf-prov { grid-column: 1 / -1; }
+                #dsf-assistenza .dsf-country { width: 100%; }
                 #dsf-assistenza .dsf-phone { grid-template-columns: 116px minmax(0, 1fr); }
                 #dsf-assistenza .dsf-actions { position: sticky; bottom: 0; z-index: 5; margin: 0 -16px; padding: 18px 16px calc(14px + env(safe-area-inset-bottom));
                   background: linear-gradient(rgba(255, 255, 255, 0), #fff 30%); }
@@ -517,28 +518,32 @@
                 <div class="dsf-block">
                   <div class="dsf-q"><span class="dsf-ico">📍</span> Dove si trova il locale</div>
                   <div class="dsf-field">
+                    <label class="dsf-label" for="f-country">Paese</label>
+                    <select class="dsf-select dsf-country" id="f-country" name="country" autocomplete="country"></select>
+                  </div>
+                  <div class="dsf-field">
                     <label class="dsf-label" for="f-address">Indirizzo</label>
                     <input class="dsf-input" id="f-address" name="address" maxlength="200" autocomplete="street-address" placeholder="es. Via Roma 12" required>
                   </div>
                   <div class="dsf-cols-addr">
                     <div class="dsf-field">
-                      <label class="dsf-label" for="f-cap">CAP</label>
+                      <label class="dsf-label" for="f-cap" id="f-cap-lab">CAP</label>
                       <input class="dsf-input" id="f-cap" name="postal_code" maxlength="5" inputmode="numeric" autocomplete="postal-code" required>
                     </div>
                     <div class="dsf-field">
                       <label class="dsf-label" for="f-city">Città</label>
                       <input class="dsf-input" id="f-city" name="city" maxlength="80" autocomplete="address-level2" required>
                     </div>
-                    <div class="dsf-field dsf-prov">
-                      <label class="dsf-label" for="f-prov">Provincia</label>
+                    <div class="dsf-field dsf-prov" id="f-prov-box">
+                      <label class="dsf-label" for="f-prov" id="f-prov-lab">Provincia</label>
                       <input class="dsf-input" id="f-prov" name="province" maxlength="2" list="dsf-province" placeholder="FC" autocapitalize="characters" style="text-transform:uppercase" required>
                       <datalist id="dsf-province"></datalist>
                     </div>
                   </div>
                   <div class="dsf-field">
-                    <label class="dsf-label" for="f-vat">Partita IVA del locale <em class="dsf-opt">facoltativa</em></label>
-                    <input class="dsf-input" id="f-vat" name="vat" maxlength="16" inputmode="numeric" autocomplete="off" placeholder="es. 01234567890">
-                    <div class="dsf-hint">La mostriamo in fondo al menu, come previsto per le attività con un sito.</div>
+                    <label class="dsf-label" for="f-vat" id="f-vat-lab">Partita IVA del locale <em class="dsf-opt">facoltativa</em></label>
+                    <input class="dsf-input" id="f-vat" name="vat" maxlength="24" inputmode="numeric" autocomplete="off" placeholder="es. 01234567890">
+                    <div class="dsf-hint" id="f-vat-hint">La mostriamo in fondo al menu, come previsto per le attività con un sito.</div>
                   </div>
                 </div>
 
@@ -684,7 +689,69 @@
                 + 'PG PI PN PO PR PT PU PV PZ RA RC RE RG RI RM RN RO SA SI SO SP SR SS SU SV TA TE TN TO TP TR TS TV UD VA VB VC '
                 + 'VE VI VR VS VT VV').split(' ');
               PREFIXES.forEach(function (p) { var o = document.createElement('option'); o.value = p[0]; o.textContent = '+' + p[0] + ' ' + p[1]; $('f-prefix').appendChild(o); });
-              PROVINCES.forEach(function (p) { var o = document.createElement('option'); o.value = p; $('dsf-province').appendChild(o); });
+
+              // indirizzo secondo il paese: codice postale, provincia/stato e codice fiscale
+              // [sigla, nome, prefisso, codice postale, esempio, provincia/stato ('' = non richiesto), codice fiscale]
+              var COUNTRIES = [
+                ['IT', 'Italia', '39', /^\d{5}$/, '47121', 'prov', ''], ['SM', 'San Marino', '378', /^4789\d$/, '47890', '', 'COE'],
+                ['CH', 'Svizzera', '41', /^\d{4}$/, '6900', '', 'IDI / UID'], ['FR', 'Francia', '33', /^\d{5}$/, '75001', '', 'SIRET / TVA'],
+                ['DE', 'Germania', '49', /^\d{5}$/, '10115', '', 'USt-IdNr.'], ['AT', 'Austria', '43', /^\d{4}$/, '1010', '', 'UID'],
+                ['ES', 'Spagna', '34', /^\d{5}$/, '28001', '', 'NIF'], ['PT', 'Portogallo', '351', /^\d{4}-\d{3}$/, '1000-001', '', 'NIF'],
+                ['GB', 'Regno Unito', '44', /^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$/, 'SW1A 1AA', '', 'VAT number'],
+                ['RO', 'Romania', '40', /^\d{6}$/, '010011', '', 'CUI'], ['AL', 'Albania', '355', /^\d{4}$/, '1001', '', 'NIPT'],
+                ['MA', 'Marocco', '212', /^\d{5}$/, '20000', '', 'ICE'], ['BR', 'Brasile', '55', /^\d{5}-\d{3}$/, '01310-100', 'state', 'CNPJ'],
+                ['US', 'Stati Uniti', '1', /^\d{5}(-\d{4})?$/, '10001', 'state', 'EIN'], ['CA', 'Canada', '1', /^[A-Z]\d[A-Z] \d[A-Z]\d$/, 'K1A 0B1', 'prov', 'BN']];
+              var REGIONS = {
+                IT: PROVINCES,
+                BR: 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' '),
+                US: ('AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' '),
+                CA: 'AB BC MB NB NL NS NT NU ON PE QC SK YT'.split(' ')
+              };
+              var REGION_EX = { IT: 'FC', BR: 'SP', US: 'NY', CA: 'ON' };
+              COUNTRIES.forEach(function (c) { var o = document.createElement('option'); o.value = c[0]; o.textContent = c[1]; $('f-country').appendChild(o); });
+              var VAT_LABEL = $('f-vat-lab').firstChild.nodeValue, CAP_LABEL = $('f-cap-lab').textContent, PROV_LABEL = $('f-prov-lab').textContent;
+              function country() { return COUNTRIES.filter(function (c) { return c[0] === $('f-country').value; })[0] || COUNTRIES[0]; }
+              function postalNorm(v) {
+                var c = country()[0]; v = v.toUpperCase().replace(/\s+/g, ' ').trim();
+                if (c === 'BR' && /^\d{8}$/.test(v)) return v.slice(0, 5) + '-' + v.slice(5);
+                if (c === 'PT' && /^\d{7}$/.test(v)) return v.slice(0, 4) + '-' + v.slice(4);
+                if (c === 'CA' && /^[A-Z]\d[A-Z]\d[A-Z]\d$/.test(v)) return v.slice(0, 3) + ' ' + v.slice(3);
+                if (c === 'GB' && /^[A-Z0-9]{5,7}$/.test(v)) return v.slice(0, -3) + ' ' + v.slice(-3);
+                return v;
+              }
+              function postalOk() { return country()[3].test(postalNorm(val('f-cap'))); }
+              function regionOk() { var c = country(); return !c[5] || (REGIONS[c[0]] || []).indexOf(val('f-prov').toUpperCase()) >= 0; }
+              function applyCountry() {
+                var c = country(), cap = $('f-cap'), prov = $('f-prov');
+                $('f-cap-lab').textContent = c[0] === 'IT' || c[0] === 'SM' ? CAP_LABEL : c[0] === 'BR' ? 'CEP' : c[0] === 'US' ? 'ZIP code' : 'Codice postale';
+                cap.placeholder = c[4];
+                cap.maxLength = c[0] === 'US' ? 10 : 9;
+                cap.inputMode = c[0] === 'GB' || c[0] === 'CA' ? 'text' : 'numeric';
+                $('f-prov-box').hidden = !c[5];
+                prov.required = !!c[5];
+                $('f-prov-lab').textContent = c[5] === 'state' ? 'Stato' : PROV_LABEL;
+                prov.placeholder = REGION_EX[c[0]] || '';
+                var dl = $('dsf-province'); dl.textContent = '';
+                (REGIONS[c[0]] || []).forEach(function (r) { var o = document.createElement('option'); o.value = r; dl.appendChild(o); });
+                $('f-vat-lab').firstChild.nodeValue = c[6] ? c[6] + ' ' : VAT_LABEL;
+                $('f-vat').placeholder = c[0] === 'IT' ? 'es. 01234567890' : '';
+                $('f-vat').inputMode = c[0] === 'IT' ? 'numeric' : 'text';
+                $('f-vat-hint').hidden = c[0] !== 'IT';   // obbligo di legge italiano
+              }
+              // il paese segue il prefisso del cellulare finché il cliente non lo sceglie a mano
+              var countryTouched = false;
+              $('f-country').addEventListener('change', function () { countryTouched = true; applyCountry(); progress(); });
+              $('f-prefix').addEventListener('change', function () {
+                if (countryTouched) return;
+                var c = COUNTRIES.filter(function (x) { return x[2] === $('f-prefix').value; })[0];
+                if (c) { $('f-country').value = c[0]; applyCountry(); }
+              });
+              (function () {
+                // pagina in un'altra lingua: paese e prefisso più probabili
+                var L = (document.documentElement.lang || 'it').slice(0, 2);
+                var c = { pt: 'BR', en: 'US', es: 'ES', de: 'DE', fr: 'FR' }[L];
+                if (c) { $('f-country').value = c; $('f-prefix').value = COUNTRIES.filter(function (x) { return x[0] === c; })[0][2]; }
+              })();
 
               function showError(msg, fieldId) {
                 errorBox.textContent = '';
@@ -1099,23 +1166,26 @@
               function read() {
                 checkStep1();
                 var business = val('f-business'), owner = cap(val('f-owner')), address = val('f-address'),
-                    cap5 = val('f-cap').replace(/\s/g, ''), city = cap(val('f-city')), prov = val('f-prov').toUpperCase(),
+                    cap5 = postalNorm(val('f-cap')), city = cap(val('f-city')), prov = country()[5] ? val('f-prov').toUpperCase() : '',
                     email = val('f-email').toLowerCase(), num = $('f-mobile').value.replace(/[\s./()-]/g, '');
                 if (address.length < 3) throw ['Scrivi l\'indirizzo del locale.', 'f-address'];
-                if (!/^\d{5}$/.test(cap5)) throw ['Il CAP ha 5 cifre.', 'f-cap'];
+                if (!postalOk()) throw [country()[0] === 'IT' ? 'Il CAP ha 5 cifre.' : 'Controlla il codice postale.', 'f-cap'];
                 if (city.length < 2) throw ['Scrivi la città.', 'f-city'];
-                if (PROVINCES.indexOf(prov) < 0) throw ['Scrivi la sigla della provincia (es. FC).', 'f-prov'];
+                if (!regionOk()) throw [country()[0] === 'IT' ? 'Scrivi la sigla della provincia (es. FC).' : 'Scegli lo stato o la provincia.', 'f-prov'];
                 if (owner.length < 2 || owner.indexOf(' ') < 0) throw ['Scrivi nome e cognome.', 'f-owner'];
                 var p = PREFIXES.filter(function (x) { return x[0] === $('f-prefix').value; })[0];
                 if (/^(\+|00)/.test(num)) throw ['Scrivi il numero senza prefisso: il prefisso si sceglie dal menu.', 'f-mobile'];
                 if (p[0] !== '39') num = num.replace(/^0+/, '');
                 if (!/^\d+$/.test(num) || !p[2].test(num)) throw ['Controlla il numero di cellulare.', 'f-mobile'];
                 if (!/^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email)) throw ['Controlla l\'indirizzo email.', 'f-email'];
-                var vat = $('f-vat').value.toUpperCase().replace(/[\s.]/g, '').replace(/^IT/, '');
-                if (vat && !/^\d{11}$/.test(vat)) throw ['La partita IVA ha 11 cifre (es. 01234567890). Se non la hai sotto mano, lascia vuoto.', 'f-vat'];
+                var vat = $('f-vat').value.toUpperCase().replace(/[\s.]/g, '');
+                if (country()[0] !== 'IT') {
+                  vat = vat.replace(/[^0-9A-Z]/g, '');
+                  if (vat && !/^[A-Z0-9]{5,20}$/.test(vat)) throw ['Controlla il codice fiscale del locale. Se non lo hai sotto mano, lascia vuoto.', 'f-vat'];
+                } else if ((vat = vat.replace(/^IT/, '')) && !/^\d{11}$/.test(vat)) throw ['La partita IVA ha 11 cifre (es. 01234567890). Se non la hai sotto mano, lascia vuoto.', 'f-vat'];
                 if (!$('dsf-privacy').checked) throw ['Per inviare la richiesta accetta l\'informativa privacy e i termini del servizio.', 'dsf-privacy'];
                 return {
-                  business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov,
+                  business_name: business, owner_name: owner, address: address, postal_code: cap5, city: city, province: prov, country: country()[0],
                   mobile: '+' + p[0] + ' ' + num, email: email,
                   website_url: val('f-web') || null, instagram_url: val('f-ig') || null, facebook_url: val('f-fb') || null,
                   notes: withLang($('f-notes').value.trim()) || null, lang: (document.documentElement.lang || 'it').slice(0, 2), theme: selectedTheme(), privacy: true, vat: vat || null, tagline: $('f-tagline').value.trim() || null,
@@ -1213,9 +1283,9 @@
                 var okMob = okField('f-mobile', /^\d+$/.test(p[0] !== '39' ? mob.replace(/^0+/, '') : mob) && p[2].test(p[0] !== '39' ? mob.replace(/^0+/, '') : mob));
                 var okMail = okField('f-email', /^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(mail));
                 var okAddr = okField('f-address', val('f-address').length >= 3);
-                var okCap = okField('f-cap', /^\d{5}$/.test(val('f-cap')));
+                var okCap = okField('f-cap', postalOk());
                 var okCity = okField('f-city', val('f-city').length >= 2);
-                var okProv = okField('f-prov', PROVINCES.indexOf(val('f-prov').toUpperCase()) >= 0);
+                var okProv = country()[5] ? okField('f-prov', regionOk()) : true;
                 var items = { 'c-name': s1, 'c-theme': true, 'c-menu': s3, 'c-contact': okOwner && okMob && okMail, 'c-addr': okAddr && okCap && okCity && okProv, 'c-privacy': $('dsf-privacy').checked };
                 var done = 0, total = 0;
                 Object.keys(items).forEach(function (k) { total++; if (items[k]) done++; var li = $(k); if (li) li.classList.toggle('ok', items[k]); });
@@ -1277,13 +1347,14 @@
               window.addEventListener('popstate', function () { if (step === 2) goStep(1, true); });
 
               // i dati scritti restano se il telefono ricarica la pagina (es. dopo aver aperto la fotocamera)
-              var KEEP = ['f-business', 'f-tagline', 'f-notes', 'f-address', 'f-cap', 'f-city', 'f-prov', 'f-vat', 'f-owner', 'f-prefix', 'f-mobile', 'f-email', 'f-web', 'f-ig', 'f-fb', 'f-source'];
+              var KEEP = ['f-business', 'f-tagline', 'f-notes', 'f-country', 'f-address', 'f-cap', 'f-city', 'f-prov', 'f-vat', 'f-owner', 'f-prefix', 'f-mobile', 'f-email', 'f-web', 'f-ig', 'f-fb', 'f-source'];
               if (!token) {
                 try {
                   var kept = JSON.parse(sessionStorage.getItem('dsf-attiva-dati') || '{}');
-                  KEEP.forEach(function (id) { if (kept[id] && !$(id).value) $(id).value = kept[id]; });
+                  KEEP.forEach(function (id) { if (kept[id] && (!$(id).value || id === 'f-prefix' || id === 'f-country')) $(id).value = kept[id]; });
                 } catch (e) {}
               }
+              applyCountry();
               form.addEventListener('input', function () {
                 var o = {}; KEEP.forEach(function (id) { if ($(id).value) o[id] = $(id).value; });
                 try { sessionStorage.setItem('dsf-attiva-dati', JSON.stringify(o)); } catch (e) {}

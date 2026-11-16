@@ -235,7 +235,10 @@
   }
   function $(id) { return document.getElementById(id); }
   function msg(text, kind) { var m = $('pl-msg'); m.textContent = text; m.className = 'sec-msg ' + (kind || ''); m.hidden = false; }
-  function money(c) { var e = c / 100; return (c % 100 ? e.toFixed(2).replace('.', ',') : String(e)) + ' €'; }
+  function money(c) {
+    var e = c / 100, n = c % 100 ? e.toFixed(2) : String(e);
+    return LANG === 'en' ? '€' + n : n.replace('.', ',') + ' €';   // €169 in inglese, 169 € nelle altre lingue
+  }
   function fill(t, o) { return t.replace(/\{(\w+)\}/g, function (_, k) { return o[k] == null ? '' : o[k]; }); }
   function date(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
 

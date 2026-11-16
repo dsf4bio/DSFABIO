@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cancelamento do cardápio digital · DS Service</title>
-  <meta name="description" content="Gerencie o cancelamento do seu cardápio digital.">
+  <title>Cancelamento do menu digital · DS Service</title>
+  <meta name="description" content="Gerencie o cancelamento do seu menu digital.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0d0a1f">
@@ -169,22 +169,22 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <h1>Sua assinatura</h1>
-        <p>Cancele a renovação você mesmo: o cardápio continua ativo até o fim do período já pago.</p>
+        <h1>A sua subscrição</h1>
+        <p>Cancele a renovação mesmo: o menu continua ativo até ao fim do período já pago.</p>
       </div>
     </section>
     <div class="wrap">
         <section class="card sec-card" aria-label="Cancelamento">
-          <h2 id="sec-title">Carregando…</h2>
+          <h2 id="sec-title">A carregar…</h2>
           <div id="sec-ask" hidden>
             <p id="sec-lead"></p>
             <ul class="sec-list">
-              <li>o cardápio continua <strong>online até <span class="js-until"></span></strong>, depois fecha sozinho;</li>
-              <li><strong>você não receberá mais</strong> lembretes de pagamento;</li>
+              <li>o menu continua <strong>online até <span class="js-until"></span></strong>, depois fecha sozinho;</li>
+              <li><strong>não receberá mais</strong> lembretes de pagamento;</li>
               <li>guardamos pratos, fotos e QR code: se um dia quiser recomeçar, basta pagar pelo link que está nos nossos e-mails.</li>
             </ul>
             <div id="sec-why">
-              <p class="why-title">Pode nos ajudar a melhorar? Por que você não quer renovar? <span>(opcional)</span></p>
+              <p class="why-title">Pode nos ajudar a melhorar? Por que não quer renovar? <span>(opcional)</span></p>
               <div class="why-list" role="radiogroup" aria-label="Motivo">
                 <label class="why"><input type="radio" name="why" value="poco_usato"><span>Meus clientes usam pouco</span></label>
                 <label class="why"><input type="radio" name="why" value="prezzo"><span>Custa caro demais</span></label>
@@ -200,11 +200,11 @@
             <p style="margin-top:12px;opacity:.75;font-size:.92em">Mudou de ideia? Pode fechar esta página: nada muda.</p>
           </div>
           <div id="sec-card" hidden>
-            <p>Sua assinatura é renovada automaticamente com o cartão.</p>
-            <p id="sec-portal-txt" hidden>Para cancelar a renovação (assim não cobramos nada) use o portal de clientes da Stripe: ele pede o e-mail com que você pagou e envia um código.</p>
-            <p>O cardápio continua online até <strong class="js-until"></strong>.</p>
+            <p>A sua subscrição é renovada automaticamente com o cartão.</p>
+            <p id="sec-portal-txt" hidden>Para cancelar a renovação (assim não cobramos nada) use o portal de clientes da Stripe: ele pede o e-mail com que pagou e envia um código.</p>
+            <p>O menu continua online até <strong class="js-until"></strong>.</p>
             <a class="sec-btn" id="sec-portal" href="#" rel="noopener" hidden>Abrir o portal da Stripe</a>
-            <p id="sec-noportal" hidden>Para cancelar a renovação responda a um dos nossos e-mails ou escreva para <a id="sec-mail" style="text-decoration:underline" href="mailto:info@dsfabio.com">info@dsfabio.com</a>: cancelamos a renovação para você.</p>
+            <p id="sec-noportal" hidden>Para cancelar a renovação responda a um dos nossos e-mails ou escreva para <a id="sec-mail" style="text-decoration:underline" href="mailto:info@dsfabio.com">info@dsfabio.com</a>: cancelamos a renovação para si.</p>
           </div>
           <p class="sec-msg" id="sec-msg" hidden role="status" aria-live="polite"></p>
           <div id="sec-undo" hidden style="margin-top:14px">
@@ -257,7 +257,7 @@
   function trialInfo() {
     hideAll();
     $('sec-title').textContent = 'Precisa de ajuda?';
-    var m = $('sec-msg'); m.className = 'sec-msg'; m.hidden = false; m.textContent = 'Para qualquer pedido sobre seu cardápio vá à página ';
+    var m = $('sec-msg'); m.className = 'sec-msg'; m.hidden = false; m.textContent = 'Para qualquer pedido sobre o seu menu vá à página ';
     var a = document.createElement('a'); a.href = 'https://dsfabio.com/assistenza'; a.textContent = 'Suporte'; a.style.textDecoration = 'underline'; a.style.fontWeight = '700';
     m.appendChild(a); m.appendChild(document.createTextNode('.'));
   }
@@ -287,7 +287,7 @@
   function cancelled(info) {
     hideAll();
     $('sec-title').textContent = 'Cancelamento registrado';
-    msg('✅ O cardápio de ' + info.business + ' continua online até ' + info.until + ', depois fecha sozinho. Você não receberá mais lembretes. Enviamos uma confirmação por e-mail.', 'ok');
+    msg('✅ O menu de ' + info.business + ' continua online até ' + info.until + ', depois fecha sozinho. Não receberá mais lembretes. Enviamos uma confirmação por e-mail.', 'ok');
     if (info.source !== 'stripe') $('sec-undo').hidden = false;
   }
   if (!token) { $('sec-title').textContent = 'Link inválido'; msg('Abra o link do e-mail que enviamos. Para qualquer dúvida escreva para info@dsfabio.com.', 'err'); return; }
@@ -295,18 +295,18 @@
   rpc('billing_cancel_info', { p_token: token }).then(function (r) {
     if (!r || !r.ok) { $('sec-title').textContent = 'Link inválido'; return msg((r && r.message) || 'Link inválido.', 'err'); }
     info = r; until(r.until);
-    $('sec-title').textContent = 'Cardápio digital de ' + r.business;
+    $('sec-title').textContent = 'Menu digital de ' + r.business;
     if (r.trial && !r.cancelled) return trialInfo();
     if (!r.live) return msg('O serviço não está ativo no momento: não há nada a cancelar. Para qualquer dúvida escreva para ' + (r.contact || 'info@dsfabio.com') + '.', '');
     if (r.cancelled) return cancelled(r);
     if (r.card) return showCard(r);
-    $('sec-lead').textContent = 'Não quer renovar a assinatura? Confirme aqui:';
+    $('sec-lead').textContent = 'Não quer renovar a subscrição? Confirme aqui:';
     $('sec-ask').hidden = false;
   }).catch(function (e) { $('sec-title').textContent = 'Serviço indisponível'; msg(e.message, 'err'); });
 
   var go = $('sec-go');
   go.addEventListener('click', function () {
-    go.disabled = true; go.textContent = 'Enviando…';
+    go.disabled = true; go.textContent = 'A enviar…';
     saveWhy().then(function () { return rpc('billing_cancel_request', { p_token: token, p_reason: whyText() }); }).then(function (r) {
       if (r && r.card) { info.portal = r.portal; return showCard(info); }
       if (r && r.trial) return trialInfo();
@@ -327,7 +327,7 @@
       if (r && r.card) { info.portal = r.portal; return showCard(info); }
       if (!r || !r.ok) throw new Error((r && r.message) || 'Não foi possível.');
       hideAll(); $('sec-title').textContent = 'Cancelamento desfeito';
-      msg('👍 Perfeito, o cancelamento foi desfeito: o cardápio de ' + info.business + ' continua como antes. Antes do vencimento enviamos o lembrete de renovação.', 'ok');
+      msg('👍 Perfeito, o cancelamento foi desfeito: o menu de ' + info.business + ' continua como antes. Antes do vencimento enviamos o lembrete de renovação.', 'ok');
     }).catch(function (e) { undo.disabled = false; msg(e.message, 'err'); });
   });
 })();

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bloquear um pedido · DS Service</title>
-  <meta name="description" content="Bloqueie o pedido e proteja seu cardápio.">
+  <meta name="description" content="Bloqueie o pedido e proteja o seu menu.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0d0a1f">
@@ -162,22 +162,22 @@
     <section class="hero">
       <div class="wrap">
         <h1>Não foi você?</h1>
-        <p>Bloqueie o pedido e proteja seu cardápio.</p>
+        <p>Bloqueie o pedido e proteja o seu menu.</p>
       </div>
     </section>
     <div class="wrap">
         <section class="card sec-card" aria-label="Bloquear o pedido">
-          <h2 id="sec-title">Verificando o pedido…</h2>
+          <h2 id="sec-title">A verificar o pedido…</h2>
           <div id="sec-info" hidden>
             <div class="sec-box" id="sec-req"></div>
-            <p>Se <strong>não</strong> foi você que enviou este pedido, clique no botão:</p>
+            <p>Se <strong>não</strong> foi que enviou este pedido, clique no botão:</p>
             <ul class="sec-list">
-              <li>a alteração <strong>não vai ao ar</strong> (se já estiver, deixamos o cardápio como era);</li>
-              <li>seu código de cliente é <strong>desativado para sempre</strong> e criamos um novo;</li>
+              <li>a alteração <strong>não vai ao ar</strong> (se já estiver, deixamos o menu como era);</li>
+              <li>o seu código de cliente é <strong>desativado para sempre</strong> e criamos um novo;</li>
               <li>enviamos a nova ficha de cliente por e-mail.</li>
             </ul>
             <button class="sec-btn danger" id="sec-go" type="button">🛑 Não fui eu – bloquear a alteração</button>
-            <p style="margin-top:12px;opacity:.75;font-size:.92em">Se foi você que enviou, pode fechar esta página: não precisa fazer nada.</p>
+            <p style="margin-top:12px;opacity:.75;font-size:.92em">Se foi que enviou, pode fechar esta página: não precisa de fazer nada.</p>
           </div>
           <p class="sec-msg" id="sec-msg" hidden role="status" aria-live="polite"></p>
         </section>
@@ -225,15 +225,15 @@
 
   var go = $('sec-go');
   function done(name) {
-    $('sec-title').textContent = 'Pronto, seu cardápio está protegido';
+    $('sec-title').textContent = 'Pronto, o seu menu está protegido';
     $('sec-info').hidden = true;
-    msg('✅ Bloqueamos o pedido' + (name ? ' para ' + name : '') + ' e mudamos seu código de cliente: o antigo não funciona mais. Em breve enviaremos a nova ficha por e-mail. Para qualquer dúvida escreva para info@dsfabio.com.', 'ok');
+    msg('✅ Bloqueamos o pedido' + (name ? ' para ' + name : '') + ' e mudamos o seu código de cliente: o antigo não funciona mais. Em breve enviaremos a nova ficha por e-mail. Para qualquer dúvida escreva para info@dsfabio.com.', 'ok');
   }
   if (!token) { $('sec-title').textContent = 'Link inválido'; msg('Abra o botão do e-mail que enviamos. Se algo não estiver certo, escreva logo para info@dsfabio.com.', 'err'); }
   else rpc('request_block_info', { p_token: token }).then(function (r) {
     if (!r || !r.ok) { $('sec-title').textContent = 'Link inválido'; return msg((r && r.message) || 'Link inválido.', 'err'); }
     if (r.done) return done(r.business);
-    $('sec-title').textContent = 'Pedido para o cardápio de ' + r.business;
+    $('sec-title').textContent = 'Pedido para o menu de ' + r.business;
     var box = $('sec-req'); box.textContent = '';
     var b = document.createElement('strong'); b.textContent = r.subject; box.appendChild(b);
     box.appendChild(document.createElement('br'));
@@ -241,7 +241,7 @@
     $('sec-info').hidden = false;
   }).catch(function (e) { $('sec-title').textContent = 'Serviço indisponível'; msg(e.message, 'err'); });
   go.addEventListener('click', function () {
-    go.disabled = true; go.textContent = 'Bloqueando…';
+    go.disabled = true; go.textContent = 'A bloquear…';
     rpc('request_block', { p_token: token }).then(function (r) {
       if (!r || !r.ok) throw new Error((r && r.message) || 'Falha no bloqueio.');
       done(r.business);

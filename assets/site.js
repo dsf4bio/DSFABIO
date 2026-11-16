@@ -20,7 +20,7 @@ var I18N = {
   es: {open: 'Abrir el menú', close: 'Cerrar el menú',  bar: 'Prueba gratuita', barBtn: '🚀 Prueba gratis 30 días',
     ck: 'Este sitio solo usa cookies técnicas, necesarias para su funcionamiento: sin perfiles, estadísticas ni publicidad.', ckMore: 'Más información', ckOk: 'Vale, entendido', ckAria: 'Aviso de cookies'},
   pt: {open: 'Abrir o menu', close: 'Fechar o menu',  bar: 'Teste gratuito', barBtn: '🚀 Teste grátis por 30 dias',
-    ck: 'Este site usa apenas cookies técnicos, necessários para o seu funcionamento: sem criação de perfis, estatísticas ou publicidade.', ckMore: 'Saiba mais', ckOk: 'Ok, entendi', ckAria: 'Aviso sobre cookies'},
+    ck: 'Este site usa apenas cookies técnicos, necessários para o seu funcionamento: sem criação de perfis, estatísticas ou publicidade.', ckMore: 'Saiba mais', ckOk: 'Ok, percebi', ckAria: 'Aviso sobre cookies'},
   de: {open: 'Menü öffnen', close: 'Menü schließen',  bar: 'Kostenloser Test', barBtn: '🚀 30 Tage kostenlos testen',
     ck: 'Diese Website verwendet nur technische Cookies, die für den Betrieb nötig sind: kein Profiling, keine Statistiken, keine Werbung.', ckMore: 'Mehr erfahren', ckOk: 'Ok, verstanden', ckAria: 'Cookie-Hinweis'},
   fr: {open: 'Ouvrir le menu', close: 'Fermer le menu',  bar: 'Essai gratuit', barBtn: '🚀 Essai gratuit 30 jours',

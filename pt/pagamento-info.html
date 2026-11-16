@@ -49,7 +49,7 @@
       <svg id="ko" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg>
     </div>
     <h1 id="title">Link inválido</h1>
-    <p id="text">Este link não está mais ativo. Escreva para info@dsfabio.com e enviamos o certo.</p>
+    <p id="text">Este link já não está ativo. Escreva para info@dsfabio.com e enviamos o certo.</p>
     <div class="actions">
       <a class="btn btn-dark" href="/pt">Voltar ao início</a>
       <a class="btn btn-light" href="mailto:info@dsfabio.com">Envie-nos um e-mail</a>
@@ -62,12 +62,12 @@
       var nome = (q.get('nome') || '').slice(0, 80);
       var di = nome ? ' de ' + nome : '';
       var stati = {
-        'gia-attivo': [true, 'Assinatura já ativa',
-          "A assinatura" + di + " já está ativa com renovação automática: você não precisa fazer nada."],
+        'gia-attivo': [true, 'Subscrição já ativa',
+          "A subscrição" + di + " já está ativa com renovação automática: não precisa de fazer nada."],
         'link-non-valido': [false, 'Link inválido',
-          "Este link não está mais ativo ou não foi copiado por inteiro. Escreva para nós e enviamos o certo."],
+          "Este link já não está ativo ou não foi copiado por inteiro. Escreva para nós e enviamos o certo."],
         'non-disponibile': [false, 'Pagamento indisponível',
-          "O pagamento online não está ativo no momento. Escreva para nós e ajudamos você a concluí-lo."],
+          "O pagamento online não está ativo no momento. Escreva para nós e ajudamos a concluí-lo."],
         'errore': [false, 'Pagamento indisponível',
           "Não conseguimos abrir a página de pagamento. Tente novamente em alguns minutos ou escreva para nós."]
       };

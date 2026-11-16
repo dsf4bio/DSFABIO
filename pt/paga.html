@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Escolha o seu plano · DS Service</title>
-  <meta name="description" content="Escolha por quanto tempo ativar o seu cardápio digital e pague com segurança.">
+  <meta name="description" content="Escolha por quanto tempo ativar o seu menu digital e pague com segurança.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0d0a1f">
@@ -180,12 +180,12 @@
     <section class="hero">
       <div class="wrap">
         <h1>Escolha o seu <em>plano</em></h1>
-        <p id="pl-lead">Mesmo cardápio, mesmo QR code, mesmo serviço: escolha por quanto tempo ativá-lo.</p>
+        <p id="pl-lead">Mesmo menu, mesmo QR code, mesmo serviço: escolha por quanto tempo ativá-lo.</p>
       </div>
     </section>
     <div class="wrap">
       <section class="card plans-card" aria-labelledby="pl-title">
-        <h2 id="pl-title">Carregando…</h2>
+        <h2 id="pl-title">A carregar…</h2>
         <form id="pl-form" hidden>
           <div class="plans" id="pl-list" role="radiogroup" aria-label="Plano"></div>
           <p class="plan-note" id="pl-note"></p>
@@ -260,7 +260,7 @@
     }
     if (!r || !r.ok) { $('pl-title').textContent = 'Link inválido'; return msg('Link inválido.', 'err'); }
     CUR = String(r.currency || 'eur').toLowerCase();
-    $('pl-title').textContent = fill('Cardápio digital de {b}', { b: r.business });
+    $('pl-title').textContent = fill('Menu digital de {b}', { b: r.business });
     var annual = r.annual_cents;
     var plans = [{ months: r.interval_months || 12, cents: annual, saving_cents: 0, percent: 0 }].concat(r.plans || []);
     // il piano di 2 anni è il più scelto: evidenziato e già selezionato
@@ -278,15 +278,15 @@
       add('p-was', p.months === 12 && r.list_cents > annual ? money(r.list_cents) : (p.saving_cents ? money(annual * years) : ''));
       add('p-price', money(p.cents));
       add('p-per', years === 1 ? 'por ano, renovação automática' : fill('{x} por ano · pagamento único', { x: money(Math.round(p.cents / years)) }));
-      if (p.saving_cents) add('p-save', fill('Você economiza {s}', { s: money(p.saving_cents) }));
+      if (p.saving_cents) add('p-save', fill('Economiza {s}', { s: money(p.saving_cents) }));
       list.appendChild(lab);
     });
     function note() {
       var m = Number((document.querySelector('input[name="piano"]:checked') || {}).value || 12);
       var t = m > 12
-        ? fill('Você paga uma única vez por {n} anos. No vencimento a renovação passa a ser anual por {a}: você pode cancelá-la quando quiser até 30 dias antes.', { n: Math.round(m / 12), a: money(annual) })
-        : 'A renovação é automática todo ano: você pode cancelá-la quando quiser até 30 dias antes do vencimento.';
-      if (r.charge_on) t = fill('Hoje você não paga nada: o cartão será cobrado em {d}, no vencimento atual.', { d: date(r.charge_on) }) + ' ' + t;
+        ? fill('Paga uma única vez por {n} anos. No vencimento a renovação passa a ser anual por {a}: pode cancelá-la quando quiser até 30 dias antes.', { n: Math.round(m / 12), a: money(annual) })
+        : 'A renovação é automática todos os anos: pode cancelá-la quando quiser até 30 dias antes do vencimento.';
+      if (r.charge_on) t = fill('Hoje não paga nada: o cartão será cobrado em {d}, no vencimento atual.', { d: date(r.charge_on) }) + ' ' + t;
       $('pl-note').textContent = t;
     }
     list.addEventListener('change', note); note();
@@ -300,7 +300,7 @@
   $('pl-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var m = (document.querySelector('input[name="piano"]:checked') || {}).value || '12';
-    var b = $('pl-go'); b.disabled = true; b.textContent = 'Abrindo o pagamento…';
+    var b = $('pl-go'); b.disabled = true; b.textContent = 'A abrir o pagamento…';
     // Stripe nella stessa lingua della pagina
     location.href = '/paga-stripe?t=' + token + '&piano=' + encodeURIComponent(m) + '&lang=' + LANG;
     setTimeout(function () { b.disabled = false; b.textContent = 'Continuar para o pagamento seguro'; }, 8000);

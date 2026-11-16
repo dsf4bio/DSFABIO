@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#ffd9e0">
-<title>Zucchero Velo · Modelo de cardápio digital (exemplo) | DS Service</title>
-<meta name="description" content="Café e confeitaria: redomas de vidro que se levantam para escolher a categoria, doces animados, açúcar de confeiteiro caindo e ficha com alérgenos. Modelo de cardápio digital com QR code: teste pelo celular, 30 dias grátis.">
+<title>Zucchero Velo · Modelo de menu digital (exemplo) | DS Service</title>
+<meta name="description" content="Café e confeitaria: redomas de vidro que se levantam para escolher a categoria, doces animados, açúcar em pó a cair e ficha com alergénios. Modelo de menu digital com QR code: teste pelo telemóvel, 30 dias grátis.">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="DS Service · Cardápios digitais">
-<meta property="og:title" content="Zucchero Velo · Modelo de cardápio digital (exemplo) | DS Service">
-<meta property="og:description" content="Café e confeitaria com redomas de vidro que se levantam. Teste pelo celular, 30 dias grátis.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:site_name" content="DS Service · Menus digitais">
+<meta property="og:title" content="Zucchero Velo · Modelo de menu digital (exemplo) | DS Service">
+<meta property="og:description" content="Café e confeitaria com redomas de vidro que se levantam. Teste pelo telemóvel, 30 dias grátis.">
 <meta property="og:url" content="https://dsfabio.com/pt/mdc-018">
 <meta property="og:image" content="https://dsfabio.com/og-image-pt.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -114,7 +114,7 @@ footer strong{font-family:"DM Serif Display",Georgia,serif;font-weight:400;color
 <body>
 <div class="demo">MODELO DE DEMONSTRAÇÃO · pratos, preços e dados são fictícios</div>
 <header class="hero dsm-hdr" id="hero">
-<div class="dsm-hd"><span class="dsm-hd-logo"><span class="dsm-logo dsm-mono" aria-hidden="true" style="display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle"><span style="display:grid;place-items:center;width:100%;height:100%;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:#fffbf2;color:#2a1b14;font:700 2.1rem/1 Georgia,'Times New Roman',serif">Z</span></span></span><h1 class="serif">Zucchero <em>Velo</em></h1><p>Folhados, confeitaria fresca e café torrado em pequenos lotes. Do café da manhã ao happy hour.</p></div>
+<div class="dsm-hd"><span class="dsm-hd-logo"><span class="dsm-logo dsm-mono" aria-hidden="true" style="display:inline-block;box-sizing:border-box;width:100%;height:100%;padding:3px;border-radius:50%;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);vertical-align:middle"><span style="display:grid;place-items:center;width:100%;height:100%;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:#fffbf2;color:#2a1b14;font:700 2.1rem/1 Georgia,'Times New Roman',serif">Z</span></span></span><h1 class="serif">Zucchero <em>Velo</em></h1><p>Folhados, confeitaria fresca e café torrado em pequenos lotes. Do pequeno-almoço ao happy hour.</p></div>
 <div class="dsm-old" hidden>
 <span class="floaty a" id="fa" aria-hidden="true"></span><span class="floaty b" id="fb" aria-hidden="true"></span><span class="floaty c" id="fc" aria-hidden="true"></span>
 <small>Café · confeitaria · desde 1987</small>
@@ -124,7 +124,7 @@ footer strong{font-family:"DM Serif Display",Georgia,serif;font-weight:400;color
 </div>
 </header>
 
-<nav class="domes wrap" id="domes" aria-label="Categorias do cardápio"></nav>
+<nav class="domes wrap" id="domes" aria-label="Categorias do menu"></nav>
 
 <main class="wrap">
 <div class="sec-h"><h2 class="serif" id="cat-name"></h2><p id="cat-desc"></p></div>
@@ -141,7 +141,7 @@ footer strong{font-family:"DM Serif Display",Georgia,serif;font-weight:400;color
 'use strict';
 /* ====== DATI DEL MENU: su dsmenu.it arrivano dal gestionale ====== */
 var M = [
-  {n:'Café da manhã', d:'Folhados assados a manhã toda', ic:['cornetto',{sugar:false}], items:[
+  {n:'Pequeno-almoço', d:'Folhados assados a manhã toda', ic:['cornetto',{sugar:false}], items:[
     {n:'Croissant simples', d:'Folhado de manteiga francesa, 27 camadas, glaçagem de damasco.', p:'1,40 €', art:'cornetto', al:['glutine','uova','latte'], new:1, big:1},
     {n:'Croissant de chocolate', d:'Recheado de chocolate amargo 60%.', p:'1,70 €', art:'cornetto', o:{fill:'#5a2e14'}, al:['glutine','uova','latte','soia']},
     {n:'Croissant de creme', d:'Creme de confeiteiro de baunilha, feito em casa.', p:'1,70 €', art:'cornetto', o:{fill:'#f6d66b'}, al:['glutine','uova','latte']}
@@ -149,7 +149,7 @@ var M = [
   {n:'Cafeteria', d:'Blend 100% arábica torrado por nós', ic:['caffe',{}], items:[
     {n:'Cappuccino', d:'Espresso e leite vaporizado em microespuma, com latte art.', p:'1,60 €', art:'cappuccino', al:['latte'], big:1},
     {n:'Espresso', d:'Creme de avelã, notas de cacau e frutas secas.', p:'1,20 €', art:'caffe', al:[]},
-    {n:'Suco de laranja', d:'Laranjas sicilianas espremidas na hora.', p:'3,50 €', art:'spremuta', al:[]}
+    {n:'Sumo de laranja', d:'Laranjas sicilianas espremidas na hora.', p:'3,50 €', art:'spremuta', al:[]}
   ]},
   {n:'Confeitaria', d:'Doces frescos do dia', ic:['torta',{}], items:[
     {n:'Torta de morango', d:'Pão de ló, creme chantili e morangos frescos.', p:'4,50 €', art:'torta', al:['glutine','uova','latte'], big:1, new:1},
@@ -160,7 +160,7 @@ var M = [
   ]},
   {n:'Aperitivo', d:'A partir das 18h, com petiscos da casa', ic:['spritz',{}], items:[
     {n:'Spritz', d:'Aperitivo, prosecco, soda e uma fatia de laranja.', p:'6 €', art:'spritz', al:['solfiti'], big:1},
-    {n:'Rosa Velo', d:'Gim, xarope de rosas, limão e tônica. O nosso drinque autoral.', p:'8 €', art:'cocktail', o:{c:'#ff8fab',g1:'#ffd27a',g2:'#fff1c9'}, al:['solfiti']},
+    {n:'Rosa Velo', d:'Gim, xarope de rosas, limão e tónica. O nosso cocktail autoral.', p:'8 €', art:'cocktail', o:{c:'#ff8fab',g1:'#ffd27a',g2:'#fff1c9'}, al:['solfiti']},
     {n:'Tábua doce e salgada', d:'Frios, Parmigiano 30 meses, mostarda de frutas e mini focaccias.', p:'10 €', art:'tagliere', al:['glutine','latte','senape']}
   ]}
 ];

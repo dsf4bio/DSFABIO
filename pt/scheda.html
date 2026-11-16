@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sua ficha de cliente · DS Service</title>
-  <meta name="description" content="Baixe o PDF com os dados do seu cardápio e o código de cliente.">
+  <title>A sua ficha de cliente · DS Service</title>
+  <meta name="description" content="Baixe o PDF com os dados do seu menu e o código de cliente.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0d0a1f">
@@ -161,20 +161,20 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <h1>Sua ficha de cliente</h1>
-        <p>Baixe o PDF com os dados do seu cardápio e o código de cliente.</p>
+        <h1>A sua ficha de cliente</h1>
+        <p>Baixe o PDF com os dados do seu menu e o código de cliente.</p>
       </div>
     </section>
     <div class="wrap">
         <section class="card sec-card" aria-label="Baixe a ficha de cliente">
-          <h2>Baixar a ficha</h2>
-          <p>A ficha contém o <strong>código de cliente</strong> que você precisa para pedir alterações no cardápio pela página de Suporte.</p>
+          <h2>Descarregar a ficha</h2>
+          <p>A ficha contém o <strong>código de cliente</strong> que precisa para pedir alterações no menu pela página de Suporte.</p>
           <ul class="sec-list">
-            <li>Salve no celular ou no computador.</li>
+            <li>Salve no telemóvel ou no computador.</li>
             <li>O link funciona por pouco tempo e para poucos downloads.</li>
-            <li>Não compartilhe o código: quem o conhece pode enviar pedidos para o seu cardápio.</li>
+            <li>Não compartilhe o código: quem o conhece pode enviar pedidos para o seu menu.</li>
           </ul>
-          <button class="sec-btn" id="sec-go" type="button">⬇️ Baixe sua ficha</button>
+          <button class="sec-btn" id="sec-go" type="button">⬇️ Baixe a sua ficha</button>
           <p class="sec-msg" id="sec-msg" hidden role="status" aria-live="polite"></p>
         </section>
     </div>
@@ -222,7 +222,7 @@
   var go = $('sec-go');
   if (!token) { go.hidden = true; msg('Link inválido. Abra o botão do e-mail que enviamos ou escreva para info@dsfabio.com.', 'err'); }
   go.addEventListener('click', function () {
-    go.disabled = true; go.textContent = 'Preparando o PDF…';
+    go.disabled = true; go.textContent = 'A preparar o PDF…';
     rpc('client_sheet_download', { p_token: token }).then(function (r) {
       if (!r || !r.ok) throw new Error((r && r.message) || 'Falha no download.');
       var bin = atob(r.pdf), bytes = new Uint8Array(bin.length);
@@ -231,8 +231,8 @@
       var a = document.createElement('a'); a.href = url; a.download = r.filename || 'scheda-cliente.pdf';
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function () { URL.revokeObjectURL(url); }, 20000);
-      msg('✅ Ficha baixada. ' + (r.left > 0 ? 'Você pode baixá-la mais ' + r.left + (r.left === 1 ? ' vez.' : ' vezes.') : 'Era o último download disponível: guarde o arquivo.'), 'ok');
-      go.disabled = false; go.textContent = '⬇️ Baixar de novo';
+      msg('✅ Ficha baixada. ' + (r.left > 0 ? 'Pode baixá-la mais ' + r.left + (r.left === 1 ? ' vez.' : ' vezes.') : 'Era o último download disponível: guarde o ficheiro.'), 'ok');
+      go.disabled = false; go.textContent = '⬇️ Descarregar de novo';
       if (r.left <= 0) go.hidden = true;
     }).catch(function (e) { msg(e.message, 'err'); go.hidden = true; });
   });

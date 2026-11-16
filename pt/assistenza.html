@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Suporte do cardápio · DS Service</title>
-  <meta name="description" content="Atualize seu cardápio digital: adicionar, alterar ou remover pratos, ou atualizar preços. Você só precisa do código de cliente.">
+  <title>Suporte do menu · DS Service</title>
+  <meta name="description" content="Atualize o seu menu digital: adicionar, alterar ou remover pratos, ou atualizar preços. Só precisa do código de cliente.">
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#fbf8f4">
   <link rel="canonical" href="https://dsfabio.com/pt/assistenza">
@@ -165,7 +165,7 @@
     <section class="hero">
       <div class="wrap">
         <span class="badge">🛠️ Suporte ao cliente</span>
-        <h1>Atualize seu <em>cardápio</em></h1>
+        <h1>Atualize seu <em>menu</em></h1>
         <p>Diga o que mudar: pratos, descrições ou preços. Estão incluídas até 10 alterações por mês.</p>
       </div>
     </section>
@@ -304,7 +304,7 @@
                          autocomplete="off" autocapitalize="characters" spellcheck="false" required>
                   <button class="dsf-btn dsf-btn-sm" type="button" id="dsf-load">Continuar</button>
                 </div>
-                <div class="dsf-hint" id="dsf-code-hint">Você o encontra na ficha de cliente que entregamos.</div>
+                <div class="dsf-hint" id="dsf-code-hint">O encontra na ficha de cliente que entregamos.</div>
               </div>
 
               <div id="dsf-menu-step" hidden>
@@ -312,8 +312,8 @@
                   <h3 id="dsf-menu-title"></h3>
                   <button class="dsf-btn dsf-btn-ghost" type="button" id="dsf-price-mode">💶 Altere vários preços de uma vez</button>
                 </div>
-                <p class="dsf-summary" id="dsf-pending" hidden style="font-size:.9em">⏳ Algumas alterações que você já pediu aguardam publicação: você já as vê aqui embaixo.</p>
-                <p class="dsf-hint" style="margin:0 0 12px">Toque em ✏️ para alterar um prato, 🗑 para removê-lo, ＋ para adicionar um. Abaixo de cada prato você pode ativar uma etiqueta: <strong>Esgotado</strong> (se um prato acabar por alguns dias, é melhor do que removê-lo), Novidade, Em oferta… As alterações vão ao ar depois da nossa verificação.</p>
+                <p class="dsf-summary" id="dsf-pending" hidden style="font-size:.9em">⏳ Algumas alterações que já pediu aguardam publicação: já as vê aqui embaixo.</p>
+                <p class="dsf-hint" style="margin:0 0 12px">Toque em ✏️ para alterar um prato, 🗑 para removê-lo, ＋ para adicionar um. Abaixo de cada prato pode ativar uma etiqueta: <strong>Esgotado</strong> (se um prato acabar por alguns dias, é melhor do que removê-lo), Novidade, Em oferta… As alterações vão ao ar depois da nossa verificação.</p>
                 <div id="dsf-menu"></div>
                 <div class="dsf-summary" id="dsf-summary" hidden></div>
               </div>
@@ -321,12 +321,12 @@
               <div id="dsf-classic" hidden>
               <!-- menu non ancora pubblicato: il modulo serve solo per il materiale -->
               <div class="dsf-summary" id="dsf-prep" hidden>
-                <strong>🛠️ O cardápio de <span id="dsf-prep-name"></span> está sendo preparado.</strong>
+                <strong>🛠️ O menu de <span id="dsf-prep-name"></span> está a ser preparado.</strong>
                 Appena è online ti mandiamo il link e il QR code. Intanto, se hai altro materiale da mandarci, come foto o PDF del tuo menu, puoi caricarlo qui sotto e premere Invia.
                 <div style="margin-top:6px;opacity:.75;font-size:.9em">Por enquanto o formulário serve apenas para enviar material adicional.</div>
               </div>
               <fieldset class="dsf-field" id="dsf-types" style="border:0;padding:0;margin:0 0 18px">
-                <legend class="dsf-label"><span id="dsf-classic-title">O que você quer fazer?</span> * <span style="font-weight:400;opacity:.7">(pode escolher mais de um)</span></legend>
+                <legend class="dsf-label"><span id="dsf-classic-title">O que quer fazer?</span> * <span style="font-weight:400;opacity:.7">(pode escolher mais de um)</span></legend>
                 <div class="dsf-choices">
                   <label class="dsf-choice"><input type="checkbox" name="request_types" value="aggiunta_piatto"> ➕ Adicionar prato</label>
                   <label class="dsf-choice"><input type="checkbox" name="request_types" value="modifica_piatto"> ✏️ Alterar prato</label>
@@ -350,7 +350,7 @@
                 <span class="dsf-label">Fotos ou PDF (opcionais)</span>
                 <label class="dsf-drop" id="dsf-drop" for="dsf-file">
                   <strong>Adicionar fotos ou PDF</strong>
-                  <span>JPG, PNG, WebP ou PDF · máx. 5 arquivos · as fotos são reduzidas antes do envio · PDF até 10 MB</span>
+                  <span>JPG, PNG, WebP ou PDF · máx. 5 ficheiros · as fotos são reduzidas antes do envio · PDF até 10 MB</span>
                 </label>
                 <input class="dsf-hidden-input" id="dsf-file" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple>
                 <ul class="dsf-files" id="dsf-files"></ul>
@@ -366,7 +366,7 @@
                 <input type="checkbox" id="dsf-privacy" name="privacy" required>
                 <span>Li a <a href="/pt/privacy#assistenza" target="_blank" rel="noopener">política de privacidade</a> do suporte ao cliente. *</span>
               </label>
-              <p class="dsf-hint dsf-privacy-note">Usamos os dados apenas para tratar o pedido. Fotos e PDFs são excluídos 90 dias após o encerramento do pedido.</p>
+              <p class="dsf-hint dsf-privacy-note">Usamos os dados apenas para tratar o pedido. Fotos e PDFs são eliminados 90 dias após o encerramento do pedido.</p>
 
               <button class="dsf-btn" id="dsf-submit" type="submit">Enviar o pedido</button>
               </div>
@@ -439,7 +439,7 @@
                   var name = document.createElement('span'); name.className = 'dsf-file-name';
                   name.textContent = (item.file.type === 'application/pdf' ? '📄 ' : '🖼️ ') + item.file.name;
                   var info = document.createElement('span'); info.style.opacity = '.7';
-                  info.textContent = item.working ? 'preparando…' : size(item.file.size);
+                  info.textContent = item.working ? 'a preparar…' : size(item.file.size);
                   var rm = document.createElement('button'); rm.type = 'button'; rm.textContent = '×';
                   rm.setAttribute('aria-label', 'Remover ' + item.file.name);
                   rm.onclick = function () { files.splice(i, 1); renderFiles(); };
@@ -477,7 +477,7 @@
               function addFiles(chosen) {
                 showError('');
                 Array.prototype.forEach.call(chosen, function (original) {
-                  if (files.length >= MAX_FILES) { showError('Você pode anexar no máximo ' + MAX_FILES + ' arquivos.'); return; }
+                  if (files.length >= MAX_FILES) { showError('Pode anexar no máximo ' + MAX_FILES + ' ficheiros.'); return; }
                   var item = { file: original, working: true };
                   files.push(item); renderFiles();
                   prepare(original).then(function (f) { item.file = f; item.working = false; renderFiles(); },
@@ -573,7 +573,7 @@
                   none.addEventListener('change', function () {
                     if (none.checked) box.querySelectorAll('input[value]:not([value=""])').forEach(function (x) { x.checked = false; });
                   });
-                  l.append(none, document.createTextNode('Nenhum destes alérgenos')); box.appendChild(l);
+                  l.append(none, document.createTextNode('Nenhum destes alergénios')); box.appendChild(l);
                 }
                 box.read = function () {
                   var v = Array.prototype.filter.call(box.querySelectorAll('input'), function (x) { return x.checked && x.value; }).map(function (x) { return x.value; });
@@ -603,7 +603,7 @@
                 var al = allergenPicker(c.allergens || [], !it);
                 var grid = h('div', 'dsf-grid2'); grid.append(field('Nome *', name), field('Preço (€)', price));
                 var err = h('div', 'dsf-hint'); err.style.color = 'var(--dsf-error)';
-                var ok = h('button', 'dsf-btn dsf-btn-sm', it ? 'Confirmar alteração' : 'Adicionar ao cardápio'); ok.type = 'button';
+                var ok = h('button', 'dsf-btn dsf-btn-sm', it ? 'Confirmar alteração' : 'Adicionar ao menu'); ok.type = 'button';
                 var no = h('button', 'dsf-btn dsf-btn-ghost', 'Cancelar'); no.type = 'button';
                 no.onclick = function () { openKey = null; renderMenu(); };
                 ok.onclick = function () {
@@ -612,7 +612,7 @@
                   if (!n) { err.textContent = 'Escreva o nome do prato.'; return; }
                   if (p !== p) { err.textContent = 'Preço inválido: escreva só o número, ex. 12,50.'; return; }
                   if (!it && p === null) { err.textContent = 'Informe o preço do novo prato.'; return; }
-                  if (!it && allergens === null) { err.textContent = 'Indique os alérgenos ou marque "Nenhum destes alérgenos".'; return; }
+                  if (!it && allergens === null) { err.textContent = 'Indique os alergénios ou marque "Nenhum destes alergénios".'; return; }
                   if (it) {
                     var keepFlags = edits[it.id] && 'flags' in edits[it.id] ? edits[it.id].flags : undefined;
                     edits[it.id] = { name: n, description: desc.value.trim(), price: p, allergens: allergens };
@@ -627,7 +627,7 @@
                 };
                 var actions = h('div', 'dsf-actions'); actions.append(no, ok);
                 box.append(grid, field('Descrição', desc),
-                  field(it ? 'Alérgenos' : 'Alérgenos *', al, 'Indique todos os alérgenos presentes (Reg. UE 1169/2011): a declaração é de sua responsabilidade.'),
+                  field(it ? 'Alergénios' : 'Alergénios *', al, 'Indique todos os alergénios presentes (Reg. UE 1169/2011): a declaração é da sua responsabilidade.'),
                   err, actions);
                 setTimeout(function () { name.focus(); }, 30);
                 return box;
@@ -753,7 +753,7 @@
                   if ('name' in e) parts.push('nome → ' + e.name);
                   if ('price' in e) parts.push(euro(it.price) + ' → ' + euro(e.price));
                   if ('description' in e) parts.push('descrição');
-                  if ('allergens' in e) parts.push('alérgenos');
+                  if ('allergens' in e) parts.push('alergénios');
                   if ('flags' in e) parts.push('etiquetas → ' + flagNames(e.flags));
                   lines.push(['✏️ ' + it.name + ': ' + parts.join(' · '), function () { delete edits[id]; renderMenu(); }]);
                 });
@@ -766,7 +766,7 @@
                 summaryBox.textContent = '';
                 summaryBox.hidden = !lines.length;
                 if (!lines.length) return;
-                summaryBox.appendChild(h('h4', null, 'Suas alterações (' + lines.length + ')'));
+                summaryBox.appendChild(h('h4', null, 'As suas alterações (' + lines.length + ')'));
                 var ul = h('ul'); ul.style.margin = '0'; ul.style.padding = '0';
                 lines.forEach(function (l) {
                   var li = h('li'), b = h('button', 'dsf-link', 'Cancelar'); b.type = 'button'; b.onclick = l[1];
@@ -798,10 +798,10 @@
                   $('dsf-rest').hidden = false;
                   if (r.has_menu) {
                     M = r; menuStep.hidden = false;
-                    $('dsf-menu-title').textContent = 'O cardápio de ' + r.business;
+                    $('dsf-menu-title').textContent = 'O menu de ' + r.business;
                     $('dsf-pending').hidden = !r.pending;
                     $('dsf-details-label').textContent = 'Algo mais a pedir (opcional)';
-                    details.placeholder = 'Outros pedidos que você não encontra acima: novas seções, fotos, horários, textos…';
+                    details.placeholder = 'Outros pedidos que não encontra acima: novas secções, fotos, horários, textos…';
                     renderMenu();
                   } else {
                     // menu non ancora pubblicato: niente modifiche, solo materiale per prepararlo
@@ -809,14 +809,14 @@
                     $('dsf-prep-name').textContent = r.business;
                     $('dsf-prep').hidden = false; $('dsf-types').hidden = true;
                     $('dsf-details-label').textContent = 'Notas sobre o material (opcionais)';
-                    details.placeholder = 'Ex. "o cardápio atualizado é o do PDF", "este é o nosso logo"…';
+                    details.placeholder = 'Ex. "o menu atualizado é o do PDF", "este é o nosso logo"…';
                   }
                   menuStep.scrollIntoView && setTimeout(function () { (r.has_menu ? menuStep : classic).scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
                 }).catch(function (err) {
                   // funzione non ancora disponibile o errore del server: modulo classico, l'assistenza non si blocca
                   if (err && err.status && err.status !== 429) {
                     resetMenu(); $('dsf-rest').hidden = false; classic.hidden = false;
-                    $('dsf-classic-title').textContent = 'O que você quer fazer?';
+                    $('dsf-classic-title').textContent = 'O que quer fazer?';
                   } else showError('Falha na conexão. Tente de novo.');
                 }).then(function () {
                   btn.disabled = false; btn.textContent = 'Continuar';
@@ -837,12 +837,12 @@
                 if (!code) { codeInput.focus(); return showError('Insira o código de cliente.'); }
                 if (!CODE_PATTERN.test(code)) { codeInput.focus(); return showError('Código de cliente inválido: verifique a ficha de cliente que entregamos.'); }
                 var ops = M ? buildOps() : [];
-                if (M && openKey) return showError('Você tem uma alteração aberta: clique em "Confirmar alteração" (ou "Cancelar") antes de enviar.');
-                if (M && !ops.length && !details.value.trim() && !files.length) return showError('Indique pelo menos uma alteração no cardápio ou escreva do que precisa.');
-                if (PREP && !files.length && !details.value.trim()) return showError('Adicione as fotos ou os PDFs do seu cardápio (ou escreva uma nota) e clique em Enviar.');
-                if (!M && !PREP && !types.length) return showError('Escolha pelo menos uma opção em "O que você quer fazer?".');
+                if (M && openKey) return showError('Tem uma alteração aberta: clique em "Confirmar alteração" (ou "Cancelar") antes de enviar.');
+                if (M && !ops.length && !details.value.trim() && !files.length) return showError('Indique pelo menos uma alteração no menu ou escreva do que precisa.');
+                if (PREP && !files.length && !details.value.trim()) return showError('Adicione as fotos ou os PDFs do seu menu (ou escreva uma nota) e clique em Enviar.');
+                if (!M && !PREP && !types.length) return showError('Escolha pelo menos uma opção em "O que quer fazer?".');
                 if (!$('dsf-privacy').checked) return showError('Para enviar o pedido, confirme que leu a política de privacidade.');
-                if (files.some(function (f) { return f.working; })) return showError('Aguarde até os anexos ficarem prontos.');
+                if (files.some(function (f) { return f.working; })) return showError('Aguarde até aos anexos ficarem prontos.');
 
                 submit.disabled = true;
                 submit.innerHTML = '<span class="dsf-spin"></span> Invio in corso';
@@ -888,15 +888,15 @@
                   }, Promise.resolve()).then(function () {
                     if (uploaded.length) return rpc('attach_request_files', { p_request_id: result.request_id, p_files: uploaded }).catch(function () {});
                   }).then(function () {
-                    if (uploaded.length < files.length) result.warning = 'Alguns anexos não foram enviados: você pode mandá-los com um novo pedido.';
+                    if (uploaded.length < files.length) result.warning = 'Alguns anexos não foram enviados: pode mandá-los com um novo pedido.';
                   });
                 }).then(function () {
                   if (!result.ok) return showError(result.message || 'Falha no envio. Tente de novo.');
                   $('dsf-success-text').textContent = (result.request_number
-                    ? 'Recebemos seu pedido nº ' + result.request_number + '. '
-                    : 'Recebemos seu pedido. ') + // stesso messaggio per tutte le richieste: il cliente non vede chi la gestisce
-                    (PREP ? 'Obrigado: usaremos o material para preparar seu cardápio. Assim que estiver no ar, enviamos o link e o QR code.'
-                      : 'Deixe com a gente: avisamos por e-mail assim que as alterações estiverem no ar.') + (result.warning ? ' ' + result.warning : '');
+                    ? 'Recebemos o seu pedido nº ' + result.request_number + '. '
+                    : 'Recebemos o seu pedido. ') + // stesso messaggio per tutte le richieste: il cliente non vede chi la gestisce
+                    (PREP ? 'Obrigado: usaremos o material para preparar o seu menu. Assim que estiver online, enviamos o link e o QR code.'
+                      : 'Deixe connosco: avisamos por e-mail assim que as alterações estiverem online.') + (result.warning ? ' ' + result.warning : '');
                   form.hidden = true;
                   $('dsf-success').hidden = false;
                   root.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -927,10 +927,10 @@
           <div class="card">
             <h2>Como funciona</h2>
             <ol class="steps">
-              <li>Insira o código de cliente: você o encontra na ficha de cliente que entregamos.</li>
+              <li>Insira o código de cliente: o encontra na ficha de cliente que entregamos.</li>
               <li>Escolha o que quer mudar, até vários itens juntos.</li>
               <li>Escreva os detalhes e anexe fotos ou PDF se precisar.</li>
-              <li>Receba a confirmação: enviamos um e-mail assim que a alteração estiver no ar.</li>
+              <li>Receba a confirmação: enviamos um e-mail assim que a alteração estiver online.</li>
             </ol>
           </div>
           <div class="card">

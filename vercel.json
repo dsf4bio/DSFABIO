@@ -35,7 +35,7 @@
   ],
   "rewrites": [
     {
-      "source": "/paga",
+      "source": "/paga-stripe",
       "destination": "https://xzhbyxvlrxemujrqatbl.supabase.co/functions/v1/paga"
     }
   ],

@@ -14,14 +14,14 @@ from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'i18n')
-PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici']
+PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga']
 # Menu dimostrativi della pagina Modelli (mdc-*, demo-*): piatti e testi negli script
 DEMOS = sorted(f[:-5] for f in os.listdir(ROOT) if re.match(r'(mdc|demo)-[\w-]+\.html$', f))
 PAGES += DEMOS
 # pagine di servizio (dopo il pagamento): tradotte ma fuori dalla sitemap
-NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'} | set(DEMOS)
+NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
-JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici'} | set(DEMOS)
+JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
 # Pagine solo in italiano (nessuna al momento)
 IT_ONLY = set()
 LANGS = {

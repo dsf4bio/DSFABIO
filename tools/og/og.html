@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../assets/fonts/inter.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{font-family:'Inter',sans-serif;color:#fff;position:relative;
+ background:radial-gradient(circle at 330px 640px,rgba(20,140,150,.75) 0,rgba(20,140,150,0) 330px),linear-gradient(115deg,#8a2a7c 0%,#5a2a78 35%,#46307e 70%,#3f2f8f 100%)}
+.brand{position:absolute;left:70px;top:64px;display:flex;align-items:center;gap:18px}
+.logo{width:56px;height:56px;border-radius:12px;background:#ff3ea5}
+.brand b{font-size:30px;font-weight:700}
+.t{position:absolute;left:70px;top:178px;width:720px}
+h1{font-weight:800;line-height:1.08;letter-spacing:-1px;white-space:nowrap}
+h1 .a{display:block;color:#fff}
+h1 .b{display:block;color:#22d3ee}
+.sub{margin-top:26px;font-size:30px;font-weight:700}
+.feat{margin-top:22px;font-size:25px;color:#d8cdea;font-weight:400}
+.pill{position:absolute;left:70px;top:493px;height:66px;padding:0 34px;border-radius:33px;background:#ff3ea5;color:#1d1036;font-size:28px;font-weight:800;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.pill s{color:#9a1f63;font-weight:600;text-decoration-thickness:2px}
+.phone{position:absolute;left:860px;top:90px;width:250px;height:470px;border-radius:44px;background:#2a2550;padding:14px}
+.scr{width:100%;height:100%;border-radius:32px;background:#16122c;padding:20px}
+.bar{height:30px;border-radius:15px;background:#7c5cff;margin-bottom:20px}
+.row{height:70px;border-radius:12px;background:#262044;margin-bottom:18px;display:flex;align-items:center;padding:0 10px;gap:12px}
+.sq{width:50px;height:50px;border-radius:8px}
+.ln{flex:1}.ln i{display:block;height:10px;border-radius:5px;background:#e8e6f0;width:88px;margin-bottom:12px}.ln i+i{background:#8b86a3;width:58px;margin:0}
+</style></head><body>
+<div class="brand"><div class="logo"></div><b>DSFabio</b></div>
+<div class="t"><h1 id="h"><span class="a" id="a"></span><span class="b" id="b"></span></h1>
+<div class="sub" id="sub"></div><div class="feat" id="feat"></div></div>
+<div class="pill" id="pill"></div>
+<div class="phone"><div class="scr"><div class="bar"></div>
+<div class="row"><div class="sq" style="background:#ff3ea5"></div><div class="ln"><i></i><i></i></div></div>
+<div class="row"><div class="sq" style="background:#7c5cff"></div><div class="ln"><i></i><i></i></div></div>
+<div class="row"><div class="sq" style="background:#22d3ee"></div><div class="ln"><i></i><i></i></div></div>
+<div class="row"><div class="sq" style="background:#c6f35b"></div><div class="ln"><i></i><i></i></div></div>
+</div></div>
+<script>
+function fill(t){a.textContent=t.a;b.textContent=t.b;sub.textContent=t.sub;feat.textContent=t.feat;pill.innerHTML=t.pill;
+ var s=80;h.style.fontSize=s+'px';while((a.scrollWidth>720||b.scrollWidth>720)&&s>40){s-=2;h.style.fontSize=s+'px';}}
+</script></body></html>

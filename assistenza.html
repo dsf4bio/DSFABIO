@@ -139,6 +139,7 @@
     }
     @media (prefers-reduced-motion: reduce) { .dsf-page::before, .dsf-page::after { animation: none; } }
   </style>
+<script src="assets/msg.js"></script>
 </head>
 <body class="dsf-body">
 <div class="dsf-page">
@@ -497,7 +498,7 @@
                 }).then(function (r) {
                   return r.json().catch(function () { return null; }).then(function (data) {
                     if (!r.ok) { var e = new Error((data && data.message) || ('HTTP ' + r.status)); e.status = r.status; throw e; }
-                    return data;
+                    return window.dsMsgAll ? window.dsMsgAll(data) : data;
                   });
                 });
               }

@@ -135,6 +135,7 @@
   .sec-box { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
   [hidden] { display: none !important; }
   </style>
+<script src="/assets/msg.js"></script>
 </head>
 <body class="dsf-body">
 <div class="dsf-page">
@@ -208,7 +209,7 @@
       method: 'POST', headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     }).then(function (r) { return r.json().catch(function () { return null; }).then(function (j) {
-      if (!r.ok) throw new Error((j && j.message) || 'Dienst nicht verfügbar, bitte gleich noch einmal versuchen.'); return j; }); });
+      if (!r.ok) throw new Error((j && j.message) || 'Dienst nicht verfügbar, bitte gleich noch einmal versuchen.'); return window.dsMsgAll ? window.dsMsgAll(j) : j; }); });
   }
   // il codice del link resta solo in memoria: lo togliamo subito dall'indirizzo (cronologia, schermate)
   var token = '';

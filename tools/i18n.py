@@ -486,6 +486,8 @@ def translate_page(src, page, lang, d):
     out.append(src[pos:])
     res = ''.join(out)
     res = res.replace('<html lang="it">', '<html lang="%s">' % lang, 1)
+    # immagine di anteprima (social) nella lingua della pagina
+    res = res.replace('https://dsfabio.com/og-image.png', 'https://dsfabio.com/og-image-%s.png' % lang)
     if sakura_en:
         res = res.replace("let lang = 'it'", "let lang = 'en'", 1)
     elif page == 'demo-sakura-neon':

@@ -657,9 +657,9 @@
  "1 file pronto": "1 ficheiro pronto",
  " file pronti": " ficheiros prontos",
  " Altre pagine? Aggiungile pure.": " Mais páginas? Pode adicionar.",
- "\": formato non accettato. Usa JPG, PNG, WebP o PDF.": "\": formato não aceito. Use JPG, PNG, WebP ou PDF.",
+ "\": formato non accettato. Usa JPG, PNG, WebP o PDF.": "\": formato não aceite. Use JPG, PNG, WebP ou PDF.",
  "\" supera ": "\" ultrapassa ",
- "\": immagine non leggibile. Prova a salvarla come JPG.": "\": imagem ilegível. Tente salvá-la como JPG.",
+ "\": immagine non leggibile. Prova a salvarla come JPG.": "\": imagem ilegível. Tente guardá-la como JPG.",
  "Puoi allegare al massimo ": "Pode anexar no máximo ",
  " file.": " ficheiros.",
  "Scrivi il nome del locale.": "Escreva o nome do local.",
@@ -2378,5 +2378,7 @@
  "Monaco": "Mónaco",
  "Andorra": "Andorra",
  "Irlanda": "Irlanda",
- "Malta": "Malta"
+ "Malta": "Malta",
+ "<1>Ultimo aggiornamento: 16 novembre 2026</1>\n    <2>In vigore dal 16 novembre 2026</2>\n    <3>Versione 2.7</3>": "<1>Última atualização: 16 de novembro de 2026</1>\n    <2>Em vigor desde 16 de novembro de 2026</2>\n    <3>Versão 2.7</3>",
+ "Appena è online ti mandiamo il link e il QR code. Intanto, se hai altro materiale da mandarci, come foto o PDF del tuo menu, puoi caricarlo qui sotto e premere Invia.": "Assim que estiver online, enviamos-lhe o link e o QR code. Entretanto, se tiver mais material para nos enviar, como fotos ou o PDF do seu menu, pode carregá-lo aqui em baixo e premir Enviar."
 }

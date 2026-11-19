@@ -1132,7 +1132,7 @@
               function prepare(file) {
                 var isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
                 var isImg = ['image/jpeg', 'image/png', 'image/webp'].indexOf(file.type) >= 0;
-                if (!isPdf && !isImg) return Promise.reject(new Error('"' + file.name + '": formato não aceito. Use JPG, PNG, WebP ou PDF.'));
+                if (!isPdf && !isImg) return Promise.reject(new Error('"' + file.name + '": formato não aceite. Use JPG, PNG, WebP ou PDF.'));
                 if (isPdf) {
                   if (file.size > MAX_PDF_MB * 1048576) return Promise.reject(new Error('"' + file.name + '" ultrapassa ' + MAX_PDF_MB + ' MB.'));
                   return Promise.resolve(file.type ? file : new File([file], file.name, { type: 'application/pdf' }));
@@ -1152,7 +1152,7 @@
                     var name = png ? file.name : file.name.replace(/\.(png|webp|jpe?g)$/i, '') + '.jpg';
                     return new File([blob], name, { type: png ? 'image/png' : 'image/jpeg' });
                   });
-                }, function () { throw new Error('"' + file.name + '": imagem ilegível. Tente salvá-la como JPG.'); });
+                }, function () { throw new Error('"' + file.name + '": imagem ilegível. Tente guardá-la como JPG.'); });
               }
               function addFiles(chosen) {
                 showError('');

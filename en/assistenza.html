@@ -322,7 +322,7 @@
               <!-- menu non ancora pubblicato: il modulo serve solo per il materiale -->
               <div class="dsf-summary" id="dsf-prep" hidden>
                 <strong>🛠️ The menu of <span id="dsf-prep-name"></span> is being prepared.</strong>
-                Appena è online ti mandiamo il link e il QR code. Intanto, se hai altro materiale da mandarci, come foto o PDF del tuo menu, puoi caricarlo qui sotto e premere Invia.
+                <div>As soon as it’s online we’ll send you the link and the QR code. In the meantime, if you have more material to send us, such as photos or a PDF of your menu, you can upload it below and press Send.</div>
                 <div style="margin-top:6px;opacity:.75;font-size:.9em">For now the form is only for sending additional material.</div>
               </div>
               <fieldset class="dsf-field" id="dsf-types" style="border:0;padding:0;margin:0 0 18px">
@@ -419,8 +419,14 @@
               });
               // sicurezza: il codice cliente si scrive SEMPRE a mano. Un eventuale ?codice=… nei vecchi
               // link viene ignorato e tolto dall'indirizzo (non resta nella cronologia del browser).
+              var langChosen = false;
               try {
                 var qs = new URLSearchParams(location.search);
+                langChosen = qs.get('lingua') === '1';
+                // chi cambia lingua dal menu la sceglie lui: niente cambio automatico
+                [].forEach.call(document.querySelectorAll('.lang-list a'), function (a) {
+                  a.href = a.getAttribute('href').split('?')[0] + '?lingua=1';
+                });
                 if (qs.has('codice') || qs.has('code')) {
                   qs.delete('codice'); qs.delete('code');
                   history.replaceState(null, '', location.pathname + (qs.toString() ? '?' + qs : '') + location.hash);
@@ -795,6 +801,13 @@
                 rpc('menu_request_load', { p_code: code }).then(function (r) {
                   resetMenu();
                   if (!r || !r.ok) return showError((r && r.message) || 'Invalid code.');
+                  // pagina nella lingua del cliente (salvo che l'abbia scelta lui dal menu delle lingue)
+                  var L = (document.documentElement.lang || 'it').slice(0, 2);
+                  if (!langChosen && r.lang && r.lang !== L && /^(it|en|es|pt|de|fr)$/.test(r.lang)) {
+                    try { sessionStorage.setItem('dsf-assist-code', JSON.stringify({ c: code, t: Date.now() })); } catch (e) {}
+                    location.replace('/' + (r.lang === 'it' ? '' : r.lang + '/') + 'assistenza?lingua=1');
+                    return;
+                  }
                   $('dsf-rest').hidden = false;
                   if (r.has_menu) {
                     M = r; menuStep.hidden = false;
@@ -826,6 +839,13 @@
               codeInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); loadMenu(); } });
               codeInput.addEventListener('input', function () { if (M || !classic.hidden) resetMenu(); });
 
+              // arrivo dal cambio automatico di lingua: il codice passa solo nella memoria della scheda
+              // (mai nell'indirizzo) e vale 2 minuti
+              try {
+                var kept = JSON.parse(sessionStorage.getItem('dsf-assist-code') || 'null');
+                sessionStorage.removeItem('dsf-assist-code');
+                if (kept && Date.now() - kept.t < 120000 && CODE_PATTERN.test(kept.c)) codeInput.value = kept.c;
+              } catch (e) {}
               if (CODE_PATTERN.test(codeInput.value)) loadMenu();
 
               // ---- invio ----

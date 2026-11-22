@@ -7,6 +7,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/"/>
   </url>
   <url><loc>https://dsfabio.com/en</loc><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/"/>
@@ -15,6 +16,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/"/>
   </url>
   <url><loc>https://dsfabio.com/es</loc><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/"/>
@@ -23,6 +25,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/"/>
   </url>
   <url><loc>https://dsfabio.com/pt</loc><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/"/>
@@ -31,6 +34,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/"/>
   </url>
   <url><loc>https://dsfabio.com/de</loc><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/"/>
@@ -39,6 +43,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/"/>
   </url>
   <url><loc>https://dsfabio.com/fr</loc><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/"/>
@@ -47,6 +52,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/"/>
   </url>
   <url><loc>https://dsfabio.com/modelli</loc><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/modelli"/>
@@ -55,6 +61,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/modelli"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/modelli"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/modelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/modelli"/>
   </url>
   <url><loc>https://dsfabio.com/en/modelli</loc><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/modelli"/>
@@ -63,6 +70,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/modelli"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/modelli"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/modelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/modelli"/>
   </url>
   <url><loc>https://dsfabio.com/es/modelli</loc><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/modelli"/>
@@ -71,6 +79,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/modelli"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/modelli"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/modelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/modelli"/>
   </url>
   <url><loc>https://dsfabio.com/pt/modelli</loc><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/modelli"/>
@@ -79,6 +88,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/modelli"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/modelli"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/modelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/modelli"/>
   </url>
   <url><loc>https://dsfabio.com/de/modelli</loc><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/modelli"/>
@@ -87,6 +97,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/modelli"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/modelli"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/modelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/modelli"/>
   </url>
   <url><loc>https://dsfabio.com/fr/modelli</loc><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/modelli"/>
@@ -95,6 +106,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/modelli"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/modelli"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/modelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/modelli"/>
   </url>
   <url><loc>https://dsfabio.com/about</loc><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/about"/>
@@ -103,6 +115,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/about"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/about"/>
   </url>
   <url><loc>https://dsfabio.com/en/about</loc><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/about"/>
@@ -111,6 +124,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/about"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/about"/>
   </url>
   <url><loc>https://dsfabio.com/es/about</loc><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/about"/>
@@ -119,6 +133,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/about"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/about"/>
   </url>
   <url><loc>https://dsfabio.com/pt/about</loc><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/about"/>
@@ -127,6 +142,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/about"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/about"/>
   </url>
   <url><loc>https://dsfabio.com/de/about</loc><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/about"/>
@@ -135,6 +151,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/about"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/about"/>
   </url>
   <url><loc>https://dsfabio.com/fr/about</loc><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/about"/>
@@ -143,6 +160,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/about"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/about"/>
   </url>
   <url><loc>https://dsfabio.com/privacy</loc><priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy"/>
@@ -151,6 +169,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy"/>
   </url>
   <url><loc>https://dsfabio.com/en/privacy</loc><priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy"/>
@@ -159,6 +178,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy"/>
   </url>
   <url><loc>https://dsfabio.com/es/privacy</loc><priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy"/>
@@ -167,6 +187,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy"/>
   </url>
   <url><loc>https://dsfabio.com/pt/privacy</loc><priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy"/>
@@ -175,6 +196,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy"/>
   </url>
   <url><loc>https://dsfabio.com/de/privacy</loc><priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy"/>
@@ -183,6 +205,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy"/>
   </url>
   <url><loc>https://dsfabio.com/fr/privacy</loc><priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/privacy"/>
@@ -191,6 +214,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/privacy"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/privacy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/privacy"/>
   </url>
   <url><loc>https://dsfabio.com/attiva</loc><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
@@ -199,6 +223,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/en/attiva</loc><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
@@ -207,6 +232,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/es/attiva</loc><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
@@ -215,6 +241,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/pt/attiva</loc><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
@@ -223,6 +250,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/de/attiva</loc><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
@@ -231,6 +259,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/fr/attiva</loc><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/attiva"/>
@@ -239,6 +268,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/attiva"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/attiva"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/attiva"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/attiva"/>
   </url>
   <url><loc>https://dsfabio.com/assistenza</loc><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
@@ -247,6 +277,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza"/>
   </url>
   <url><loc>https://dsfabio.com/en/assistenza</loc><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
@@ -255,6 +286,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza"/>
   </url>
   <url><loc>https://dsfabio.com/es/assistenza</loc><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
@@ -263,6 +295,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza"/>
   </url>
   <url><loc>https://dsfabio.com/pt/assistenza</loc><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
@@ -271,6 +304,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza"/>
   </url>
   <url><loc>https://dsfabio.com/de/assistenza</loc><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
@@ -279,6 +313,7 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza"/>
   </url>
   <url><loc>https://dsfabio.com/fr/assistenza</loc><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dsfabio.com/assistenza"/>
@@ -287,5 +322,6 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://dsfabio.com/pt/assistenza"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://dsfabio.com/de/assistenza"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/assistenza"/>
   </url>
 </urlset>

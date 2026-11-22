@@ -563,6 +563,8 @@ def sitemap():
     rows = []
     for page in [p for p in PAGES if p not in NO_SITEMAP]:
         alts = ''.join('\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, page_url(page, l)) for l in LANGS)
+        # x-default = versione italiana, come nel tag della pagina
+        alts += '\n    <xhtml:link rel="alternate" hreflang="x-default" href="%s"/>' % page_url(page, 'it')
         for lang in (['it'] if page in IT_ONLY else LANGS):
             if page in IT_ONLY:
                 alts = ''

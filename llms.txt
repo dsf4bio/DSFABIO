@@ -43,6 +43,12 @@
 - [Esempio La Piadaia](https://dsfabio.com/mdc-017): piadineria con le categorie su un mazzo di carte.
 - [Esempio Zucchero Velo](https://dsfabio.com/mdc-018): bar pasticceria con le campane di vetro.
 - [Esempio The Copper Fox](https://dsfabio.com/mdc-019): pub con le spine della birra e insegna al neon.
+- [Menu digitale per ristoranti e trattorie](https://dsfabio.com/menu-digitale-ristorante): piatti del giorno, carta dei vini, menu degustazione e modelli adatti.
+- [Menu digitale per pizzerie](https://dsfabio.com/menu-digitale-pizzeria): ricerca per ingrediente, categorie, allergeni e modelli per pizzerie.
+- [Menu digitale per bar, pub e caffetterie](https://dsfabio.com/menu-digitale-bar): colazioni, aperitivi, birre e cocktail, con i modelli per bar e pub.
+- [Menu digitale per sushi e ristoranti di pesce](https://dsfabio.com/menu-digitale-sushi): foto dei piatti, pescato al peso, allergeni e menu in italiano e inglese.
+- [Menu digitale per hamburgerie](https://dsfabio.com/menu-digitale-hamburgeria): burger con foto, cursore del piccante e modelli per street food.
+- [Menu digitale per kebab e piadinerie](https://dsfabio.com/menu-digitale-kebab-piadineria): prezzi per formato (panino, piadina, box, piatto) e piadina da comporre.
 - [Attiva la prova gratuita](https://dsfabio.com/attiva): modulo per richiedere la prova di 30 giorni, con conferma via email.
 - [Assistenza clienti](https://dsfabio.com/assistenza): richieste di aggiornamento per chi è già cliente.
 - [Privacy, cookie e termini](https://dsfabio.com/privacy): informativa, cookie e condizioni del servizio.

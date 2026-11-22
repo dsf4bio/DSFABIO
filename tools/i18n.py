@@ -15,6 +15,9 @@ from html.parser import HTMLParser
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'i18n')
 PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga']
+# Pagine "menu digitale per tipo di locale"
+SETTORI = ['menu-digitale-ristorante', 'menu-digitale-pizzeria', 'menu-digitale-bar', 'menu-digitale-sushi', 'menu-digitale-hamburgeria', 'menu-digitale-kebab-piadineria']
+PAGES += SETTORI
 # Menu dimostrativi della pagina Modelli (mdc-*, demo-*): piatti e testi negli script
 DEMOS = sorted(f[:-5] for f in os.listdir(ROOT) if re.match(r'(mdc|demo)-[\w-]+\.html$', f))
 PAGES += DEMOS
@@ -560,6 +563,7 @@ def build():
 
 def sitemap():
     pri = {'index': '1.0', 'modelli': '0.8', 'about': '0.6', 'privacy': '0.2', 'attiva': '0.9', 'assistenza': '0.3'}
+    pri.update({p: '0.7' for p in SETTORI})
     rows = []
     for page in [p for p in PAGES if p not in NO_SITEMAP]:
         alts = ''.join('\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, page_url(page, l)) for l in LANGS)

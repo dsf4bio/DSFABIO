@@ -18,6 +18,7 @@ PAGES = ['index', 'modelli', 'about', 'privacy', 'attiva', 'assistenza', 'pagame
 # Pagine "menu digitale per tipo di locale"
 SETTORI = ['menu-digitale-ristorante', 'menu-digitale-pizzeria', 'menu-digitale-bar', 'menu-digitale-sushi', 'menu-digitale-hamburgeria', 'menu-digitale-kebab-piadineria']
 PAGES += SETTORI
+PAGES += ['allergeni-menu-ristorante']
 # Menu dimostrativi della pagina Modelli (mdc-*, demo-*): piatti e testi negli script
 DEMOS = sorted(f[:-5] for f in os.listdir(ROOT) if re.match(r'(mdc|demo)-[\w-]+\.html$', f))
 PAGES += DEMOS
@@ -32,7 +33,7 @@ USD_LANGS = set()   # dal 084 la valuta dipende dal paese (USA e Canada): il sit
 NO_SWITCHER = set()
 
 # Pagine solo in italiano (nessuna al momento)
-IT_ONLY = set()
+IT_ONLY = {'allergeni-menu-ristorante'}   # guide sulla normativa italiana: solo in italiano
 LANGS = {
     'it': ('it_IT', 'Italiano'), 'en': ('en_GB', 'English'), 'es': ('es_ES', 'Español'),
     'pt': ('pt_PT', 'Português'), 'de': ('de_DE', 'Deutsch'), 'fr': ('fr_FR', 'Français'),
@@ -564,6 +565,7 @@ def build():
 def sitemap():
     pri = {'index': '1.0', 'modelli': '0.8', 'about': '0.6', 'privacy': '0.2', 'attiva': '0.9', 'assistenza': '0.3'}
     pri.update({p: '0.7' for p in SETTORI})
+    pri['allergeni-menu-ristorante'] = '0.6'
     rows = []
     for page in [p for p in PAGES if p not in NO_SITEMAP]:
         alts = ''.join('\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, page_url(page, l)) for l in LANGS)

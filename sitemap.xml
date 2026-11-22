@@ -648,4 +648,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dsfabio.com/fr/menu-digitale-kebab-piadineria"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dsfabio.com/menu-digitale-kebab-piadineria"/>
   </url>
+  <url><loc>https://dsfabio.com/allergeni-menu-ristorante</loc><priority>0.6</priority>
+  </url>
 </urlset>

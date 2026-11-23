@@ -9,7 +9,7 @@ Ogni file <lingua>.json è un oggetto {"testo italiano": "traduzione"}.
 Le pagine italiane restano la fonte: dopo averle modificate si rilancia extract,
 si traducono i testi nuovi e si rilancia build.
 """
-import html, json, os, re, sys, urllib.parse
+import datetime, hashlib, html, json, os, re, subprocess, sys, urllib.parse
 from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -563,7 +563,35 @@ def build():
     sitemap()
 
 
+def page_file(page, lang):
+    return os.path.join(ROOT, page + '.html') if lang == 'it' else os.path.join(ROOT, lang, page + '.html')
+
+
+def lastmod(page, lang, store):
+    # data dell'ultima modifica reale: cambia solo quando cambia il contenuto della pagina generata
+    path = page_file(page, lang)
+    h = hashlib.sha1(open(path, 'rb').read()).hexdigest()[:16]
+    key = os.path.relpath(path, ROOT)
+    old = store.get(key)
+    if old and old[0] == h:
+        return old[1]
+    day = datetime.date.today().isoformat()
+    if not old:
+        # prima volta: data dell'ultimo commit del file, se nel frattempo non e' cambiato
+        try:
+            dirty = subprocess.run(['git', 'status', '--porcelain', '--', key], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+            if not dirty:
+                d = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', key], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+                day = d or day
+        except OSError:
+            pass
+    store[key] = [h, day]
+    return day
+
+
 def sitemap():
+    lm_file = os.path.join(DIR, 'lastmod.json')
+    store = json.load(open(lm_file, encoding='utf-8')) if os.path.exists(lm_file) else {}
     pri = {'index': '1.0', 'modelli': '0.8', 'about': '0.6', 'privacy': '0.2', 'attiva': '0.9', 'assistenza': '0.3'}
     pri.update({p: '0.7' for p in SETTORI})
     pri.update({p: '0.6' for p in GUIDE})
@@ -575,10 +603,11 @@ def sitemap():
         for lang in (['it'] if page in IT_ONLY else LANGS):
             if page in IT_ONLY:
                 alts = ''
-            rows.append('  <url><loc>%s</loc><priority>%s</priority>%s\n  </url>' % (page_url(page, lang), pri[page], alts))
+            rows.append('  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority>%s\n  </url>' % (page_url(page, lang), lastmod(page, lang, store), pri[page], alts))
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(rows) + '\n</urlset>\n')
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(xml)
+    json.dump(dict(sorted(store.items())), open(lm_file, 'w', encoding='utf-8'), indent=1)
 
 
 if __name__ == '__main__':

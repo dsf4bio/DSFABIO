@@ -24,7 +24,7 @@ PAGES += GUIDE
 DEMOS = sorted(f[:-5] for f in os.listdir(ROOT) if re.match(r'(mdc|demo)-[\w-]+\.html$', f))
 PAGES += DEMOS
 # pagine di servizio (dopo il pagamento): tradotte ma fuori dalla sitemap
-NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
+NO_SITEMAP = {'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga', 'assistenza'} | set(DEMOS)
 # Pagine con testi anche negli script (messaggi, errori): si traducono le stringhe JS presenti nel dizionario
 JS_PAGES = {'attiva', 'assistenza', 'pagamento-ok', 'pagamento-info', 'scheda', 'blocca', 'disdici', 'paga'} | set(DEMOS)
 # lingue con i prezzi in dollari (come nel gestionale, impostazione billing_usd_langs)
